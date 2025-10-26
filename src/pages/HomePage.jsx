@@ -1,21 +1,37 @@
-import styles from './HomePage.module.css'; // Agar stil kerak bo'lsa
+import styles from "./HomePage.module.css"; // Agar stil kerak bo'lsa
 
 function HomePage() {
   return (
     <div className={styles.homeContainer}>
-      <h1>Junior Dasturchi Intervyu Savollariga Xush Kelibsiz!</h1>
+      <h1>Junior Software Engineer Texnik Suhbatlariga Tizimli Tayyorgarlik</h1>
       <p>
-        Bu loyiha frontend yo'nalishidagi, ayniqsa junior dasturchilar uchun eng muhim va dolzarb intervyu savollarini bir joyga to'plash maqsadida yaratilgan.
+        Software Engineering sohasida o'z karyerasini boshlayotganlar uchun
+        mo‘ljallangan ushbu keng qamrovli resursga xush kelibsiz. Ushbu
+        platforma turli yo‘nalishlardagi texnologiyalar uchun eng muhim va
+        dolzarb texnik intervyu savollarini markazlashtirish maqsadida ishlab
+        chiqilgan.
       </p>
       <p>
-        Texnologiyalar jadal rivojlanayotgan bugungi kunda ishga kirish uchun suhbatlardan muvaffaqiyatli o'tish har qachongidan ham muhimroq. Ushbu platforma sizga HTML, CSS, JavaScript, React va boshqa zamonaviy texnologiyalar bo'yicha bilimlaringizni sinab ko'rish va mustahkamlashga yordam beradi.
+        Texnologiyalar shiddat bilan rivojlanayotgan davrda, texnik suhbatlarga
+        puxta tayyorgarlik ko‘rish muvaffaqiyatli karyeraning poydevoridir. Bu
+        yerda siz tanlagan mavzu bo'yicha bilimlaringizni sinovdan o‘tkazish,
+        mustahkamlash va chuqurlashtirish imkoniyatiga ega bo‘lasiz.
       </p>
-      <h2>Qanday foydalanish kerak?</h2>
+
+      <h2>Platformadan Foydalanish Yo‘riqnomasi:</h2>
       <p>
-        Chap tomondagi menyudan o'zingizni qiziqtirgan mavzuni tanlang. Shundan so'ng, o'sha mavzuga oid savollar ro'yxati paydo bo'ladi. Har bir savolni bosish orqali uning batafsil javobini, kod misollarini va intervyu uchun qisqa javob variantini ko'rishingiz mumkin.
+        Navigatsiya panelidan o'zingizga kerakli texnologiya (`mavzu`) bo‘limini
+        tanlang. Tanlangan bo‘limda tegishli intervyu savollari ro‘yxati
+        keltirilgan. Har bir savolga murojaat qilib, uning batafsil tahlili,
+        fundamental tushuntirishlar, amaliy kod namunalari va intervyu uchun
+        tavsiya etilgan javob formatini ko‘rishingiz mumkin bo‘ladi.
       </p>
-      <p>
-        Omad yor bo'lsin!
+
+      <p className={styles.emphasis}>
+        Muntazam tayyorgarlik va chuqur tushuncha — bu sizning texnik
+        suhbatlardagi muvaffaqiyatingiz garovidir. Ushbu resurs sizning
+        professional engineering ko'nikmalaringizni rivojlantirishga hissa
+        qo‘shishiga ishonamiz.
       </p>
     </div>
   );

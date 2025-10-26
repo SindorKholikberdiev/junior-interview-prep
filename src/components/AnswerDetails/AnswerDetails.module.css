@@ -42,3 +42,41 @@
   margin-top: 1rem;
   color: var(--interview-text);
 }
+
+.keyTermList {
+  margin-top: 0.75rem;
+}
+
+.keyTermItem {
+  margin-bottom: 0.75rem;
+}
+
+.keyTermItem dt {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.keyTermItem dd {
+  margin-left: 0;
+  color: var(--text-secondary);
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--code-shadow);
+  margin-top: 0.75rem;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}

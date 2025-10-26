@@ -29,6 +29,8 @@ const normalizeAnswerData = (question) => {
       differences,
       whyUsed,
       dependencyArray,
+      keyTerms,
+      videoUrl,
     } = question.answer;
 
     return {
@@ -39,6 +41,8 @@ const normalizeAnswerData = (question) => {
       differences,
       whyUsed,
       dependencyArray,
+      keyTerms: keyTerms || question.keyTerms,
+      videoUrl: videoUrl || question.videoUrl,
     };
   }
 
@@ -50,6 +54,8 @@ const normalizeAnswerData = (question) => {
     differences: question.differences,
     whyUsed: question.whyUsed,
     dependencyArray: question.dependencyArray,
+    keyTerms: question.keyTerms,
+    videoUrl: question.videoUrl,
   };
 };
 

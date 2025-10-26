@@ -54,8 +54,14 @@ const AnswerDetails = ({ answer, formatText }) => {
     return null;
   }
 
-  const { description, detailedExplanation, codeExamples, interviewAnswer } =
-    answer;
+  const {
+    description,
+    detailedExplanation,
+    codeExamples,
+    interviewAnswer,
+    keyTerms,
+    videoUrl,
+  } = answer;
 
   return (
     <div className={styles.answerDetail}>
@@ -107,6 +113,35 @@ const AnswerDetails = ({ answer, formatText }) => {
           <p className={styles.interviewAnswer}>
             {formatText(interviewAnswer)}
           </p>
+        </>
+      )}
+
+      {Array.isArray(keyTerms) && keyTerms.length > 0 && (
+        <>
+          <h2 className={styles.sectionTitle}>Asosiy atamalar:</h2>
+          <dl className={styles.keyTermList}>
+            {keyTerms.map((item, index) => (
+              <div key={index} className={styles.keyTermItem}>
+                <dt>{formatText(item.term)}</dt>
+                <dd>{formatText(item.definition)}</dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      )}
+
+      {videoUrl && (
+        <>
+          <h2 className={styles.sectionTitle}>Video orqali ko'rish:</h2>
+          <div className={styles.videoWrapper}>
+            <iframe
+              src={videoUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </>
       )}
     </div>

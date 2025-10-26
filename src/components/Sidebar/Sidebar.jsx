@@ -30,10 +30,20 @@ function customSmoothScroll(element, to, duration) {
 }
 
 function Sidebar({
+  isCompact = false,
+  searchQuery = "",
+  onSearchChange,
+  onSearchFocus,
+  onSearchBlur,
+  onSearchSubmit,
+  searchHistory = [],
+  onHistorySelect,
+  isSearchFocused = false,
   searchResults = [],
   topicNameMap = {},
   isSearchActive = false,
   onSearchPanelHoverChange,
+  onNavigate = () => {},
 }) {
   const { topicName } = useParams();
   const [questions, setQuestions] = useState([]);
@@ -41,6 +51,24 @@ function Sidebar({
   const sidebarContainerRef = useRef(null);
   const questionsListRef = useRef(null);
   const filteredQuestions = isSearchActive ? [] : questions;
+  const handleQuestionNavigate = () => {
+    onNavigate();
+  };
+  const handleSearchInput = (event) => {
+    onSearchChange?.(event.target.value);
+  };
+
+  const handleSearchKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      onSearchSubmit?.();
+    }
+  };
+
+  const handleHistoryMouseDown = (value) => (event) => {
+    event.preventDefault();
+    onHistorySelect?.(value);
+  };
 
   useEffect(() => {
     if (topicName && dataMap[topicName]) {
@@ -76,6 +104,40 @@ function Sidebar({
 
   return (
     <div className={styles.sidebarContainer} ref={sidebarContainerRef}>
+      {isCompact && (
+        <div className={styles.mobileSearchBar}>
+          <label className={styles.mobileSearchWrapper}>
+            <span className={styles.srOnly}>Savollar bo'yicha qidiruv</span>
+            <input
+              type="search"
+              placeholder="Savol yoki mavzu qidiring..."
+              value={searchQuery}
+              onChange={handleSearchInput}
+              onFocus={onSearchFocus}
+              onBlur={onSearchBlur}
+              onKeyDown={handleSearchKeyDown}
+            />
+            {isSearchFocused && searchHistory.length > 0 && (
+              <ul className={styles.mobileHistoryList}>
+                <li className={styles.mobileHistoryHeading}>
+                  So'nggi qidiruvlar
+                </li>
+                {searchHistory.map((item) => (
+                  <li key={item}>
+                    <button
+                      type="button"
+                      onMouseDown={handleHistoryMouseDown(item)}
+                      className={styles.mobileHistoryItem}
+                    >
+                      {item}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </label>
+        </div>
+      )}
       <h2>
         <Link to="/" className={styles.headerLink}>
           Mavzular
@@ -118,6 +180,7 @@ function Sidebar({
                           ? `${styles.questionLink} ${styles.activeQuestion}`
                           : styles.questionLink
                       }
+                      onClick={handleQuestionNavigate}
                     >
                       {formatText(q.question)}
                     </NavLink>
@@ -151,6 +214,7 @@ function Sidebar({
                           ? `${styles.questionLink} ${styles.activeQuestion}`
                           : styles.questionLink
                       }
+                      onClick={handleQuestionNavigate}
                     >
                       {formatText(result.question)}
                       <span className={styles.topicBadge}>

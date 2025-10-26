@@ -1,6 +1,7 @@
-import styles from "./TopNav.module.css";
+﻿import styles from "./TopNav.module.css";
 
 function TopNav({
+  isCompact = false,
   theme,
   onToggleTheme,
   language,
@@ -13,6 +14,9 @@ function TopNav({
   searchHistory = [],
   onHistorySelect,
   isSearchFocused = false,
+  onSidebarToggle,
+  isDesktop = true,
+  isSidebarOpen = true,
 }) {
   const handleLanguageSelect = (event) => {
     onLanguageChange(event.target.value);
@@ -36,39 +40,53 @@ function TopNav({
 
   return (
     <header className={styles.navbar}>
-      <div className={styles.brand}>
-        <span className={styles.brandAccent}>Junior</span> Interview Prep
+      <div className={styles.brandRow}>
+        {!isDesktop && (
+          <button
+            type="button"
+            className={styles.menuButton}
+            onClick={onSidebarToggle}
+            aria-label={isSidebarOpen ? "Menyuni yopish" : "Menyuni ochish"}
+          >
+            <span aria-hidden="true">{isSidebarOpen ? "âœ•" : "â˜°"}</span>
+          </button>
+        )}
+        <div className={styles.brand}>
+          <span className={styles.brandAccent}>Junior</span> Interview Prep
+        </div>
       </div>
 
       <div className={styles.controls}>
-        <label className={styles.searchWrapper}>
-          <span className={styles.srOnly}>Savollar bo'yicha qidiruv</span>
-          <input
-            type="search"
-            placeholder="Savol yoki mavzu qidiring..."
-            value={searchQuery}
-            onChange={handleSearchInput}
-            onFocus={onSearchFocus}
-            onBlur={onSearchBlur}
-            onKeyDown={handleSearchKeyDown}
-          />
-          {isSearchFocused && searchHistory.length > 0 && (
-            <ul className={styles.historyList}>
-              <li className={styles.historyHeading}>So‘nggi qidiruvlar</li>
-              {searchHistory.map((item) => (
-                <li key={item}>
-                  <button
-                    type="button"
-                    onMouseDown={handleHistoryMouseDown(item)}
-                    className={styles.historyItem}
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </label>
+        {!isCompact && (
+          <label className={styles.searchWrapper}>
+            <span className={styles.srOnly}>Savollar bo'yicha qidiruv</span>
+            <input
+              type="search"
+              placeholder="Savol yoki mavzu qidiring..."
+              value={searchQuery}
+              onChange={handleSearchInput}
+              onFocus={onSearchFocus}
+              onBlur={onSearchBlur}
+              onKeyDown={handleSearchKeyDown}
+            />
+            {isSearchFocused && searchHistory.length > 0 && (
+              <ul className={styles.historyList}>
+                <li className={styles.historyHeading}>So'nggi qidiruvlar</li>
+                {searchHistory.map((item) => (
+                  <li key={item}>
+                    <button
+                      type="button"
+                      onMouseDown={handleHistoryMouseDown(item)}
+                      className={styles.historyItem}
+                    >
+                      {item}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </label>
+        )}
 
         <button
           type="button"
@@ -94,3 +112,4 @@ function TopNav({
 }
 
 export default TopNav;
+

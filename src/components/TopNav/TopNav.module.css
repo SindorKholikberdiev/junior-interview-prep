@@ -15,6 +15,12 @@
   z-index: 5;
 }
 
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .brand {
   font-weight: 600;
   color: var(--text-primary);
@@ -30,6 +36,7 @@
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .searchWrapper {
@@ -102,6 +109,23 @@
   color: var(--sidebar-link-hover-color);
 }
 
+.menuButton {
+  border-radius: 999px;
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--button-text);
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+}
+
+.menuButton:hover {
+  background: var(--button-hover-bg);
+}
+
 .themeToggle {
   display: inline-flex;
   align-items: center;
@@ -113,7 +137,9 @@
   color: var(--button-text);
   font-weight: 500;
   font-size: 0.9rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .themeLabel {
@@ -148,7 +174,13 @@
   appearance: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
+  .menuButton {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -156,7 +188,8 @@
 
   .controls {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 0.5rem;
   }
 
   .languageSwitcher {

@@ -25,6 +25,14 @@ const getInitialLanguage = () => {
   return window.localStorage.getItem(LANGUAGE_STORAGE_KEY) || "uz";
 };
 
+const getIsCompactScreen = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.matchMedia("(max-width: 400px)").matches;
+};
+
 function App() {
   const [theme, setTheme] = useState(getInitialTheme);
   const [language, setLanguage] = useState(getInitialLanguage);
@@ -33,6 +41,13 @@ function App() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [isSearchPanelHovered, setIsSearchPanelHovered] = useState(false);
   const [searchHistory, setSearchHistory] = useState([]);
+  const getIsDesktop = () =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(min-width: 1024px)").matches
+      : true;
+  const [isDesktop, setIsDesktop] = useState(getIsDesktop);
+  const [isCompact, setIsCompact] = useState(getIsCompactScreen);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(getIsDesktop);
   const searchBlurTimeoutRef = useRef(null);
 
   useEffect(() => {
@@ -105,6 +120,20 @@ function App() {
     return results;
   }, [allQuestionsByTopic, normalizedSearch, topicNameMap]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const desktop = getIsDesktop();
+       const compact = getIsCompactScreen();
+      setIsDesktop(desktop);
+       setIsCompact(compact);
+      setIsSidebarOpen((prev) => (desktop ? true : prev));
+    };
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
@@ -174,19 +203,47 @@ function App() {
     }
   };
 
+  const toggleSidebar = () => {
+    if (isDesktop) {
+      return;
+    }
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+  const handleNavigation = () => {
+    if (!isDesktop) {
+      setIsSidebarOpen(false);
+    }
+  };
+
   return (
     <div className={styles.appContainer}>
-      <aside className={styles.sidebar}>
+      <aside
+        className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ""}`}
+      >
         <Sidebar
+          isCompact={isCompact}
           searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+          onSearchFocus={handleSearchFocus}
+          onSearchBlur={handleSearchBlur}
+          onSearchSubmit={handleSearchSubmit}
+          searchHistory={searchHistory}
+          onHistorySelect={handleHistorySelect}
+          isSearchFocused={isSearchFocused}
           searchResults={globalSearchResults}
           topicNameMap={topicNameMap}
           isSearchActive={isSearchActive}
           onSearchPanelHoverChange={handleSearchResultsHoverChange}
+          onNavigate={handleNavigation}
         />
       </aside>
+      {!isDesktop && isSidebarOpen && (
+        <div className={styles.backdrop} onClick={handleNavigation} />
+      )}
       <main className={styles.mainContent}>
         <TopNav
+          isCompact={isCompact}
           theme={theme}
           onToggleTheme={toggleTheme}
           language={language}
@@ -199,6 +256,9 @@ function App() {
           searchHistory={searchHistory}
           onHistorySelect={handleHistorySelect}
           isSearchFocused={isSearchFocused}
+          onSidebarToggle={toggleSidebar}
+          isDesktop={isDesktop}
+          isSidebarOpen={isSidebarOpen}
         />
         <Outlet />
       </main>

@@ -20,9 +20,11 @@
   color: var(--sidebar-link);
   font-weight: 500;
   text-decoration: none;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.85rem;
   border-radius: 5px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
   margin-bottom: 0.25rem;
 }
 
@@ -61,12 +63,16 @@
 
 .questionLink {
   display: block;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.85rem;
   color: var(--sidebar-link);
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.2s ease;
+
+  margin: 0.7rem 0;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .questionLink:hover {
@@ -104,6 +110,80 @@
   scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
+.mobileSearchBar {
+  margin-bottom: 1rem;
+}
+
+.mobileSearchWrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  padding: 0.35rem 0.85rem;
+  width: 100%;
+  position: relative;
+}
+
+.mobileSearchWrapper input {
+  border: none;
+  background: transparent;
+  color: var(--input-text);
+  width: 100%;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.mobileHistoryList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: 10px;
+  box-shadow: var(--nav-shadow);
+  list-style: none;
+  padding: 0.45rem 0;
+  margin: 0;
+  z-index: 5;
+}
+
+.mobileHistoryHeading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.85rem;
+  color: var(--text-secondary);
+}
+
+.mobileHistoryItem {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.85rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.mobileHistoryItem:hover {
+  background-color: var(--sidebar-link-hover-bg);
+  color: var(--sidebar-link-hover-color);
+}
+
 .sidebarContainer::-webkit-scrollbar {
   width: 8px;
 }
@@ -116,4 +196,46 @@
 .sidebarContainer::-webkit-scrollbar-thumb {
   background: var(--scroll-thumb);
   border-radius: 999px;
+}
+
+@media (max-width: 400px) {
+  .sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .navLink {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .questionsHeader {
+    font-size: 0.95rem;
+  }
+
+  .questionLink {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.3rem;
+    margin: 0.7rem 0;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .sidebarContainer {
+    padding: 0.75rem;
+  }
+
+  .mobileSearchWrapper {
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+  }
+}
+@media (max-width: 1024px) {
+  .questionLink {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.3rem;
+    margin: 0.7rem 0;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+  }
 }

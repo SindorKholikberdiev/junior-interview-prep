@@ -3,839 +3,794 @@
     "id": "css-q1",
     "question": "CSS nima va u nima uchun ishlatiladi?",
     "topic": "CSS Basics",
-    "answer": {
-      "definition": "CSS (Cascading Style Sheets) — bu HTML yoki XML (shu jumladan SVG, XHTML) kabi belgilash (`markup`) tillarida yozilgan hujjatlarning ko'rinishini (`presentation`) va uslubini (`styling`) tavsiflash uchun ishlatiladigan stil jadvallari tili.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U HTML elementlarining rangi, shrifti, o'lchami, joylashuvi, chegaralari, fon rasmi kabi vizual xususiyatlarini aniqlashga imkon beradi. CSS mazmunni (`HTML`) va ko'rinishni (`CSS`) bir-biridan ajratishga yordam beradi, bu esa kodni tushunarliroq, qayta ishlatilishi oson va qo'llab-quvvatlashni yengil qiladi. U shuningdek, `responsive design` (turli ekran o'lchamlariga moslashuv) uchun asosiy vositadir."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy CSS Qoidasi:",
-          "code": [
-            "/* 'h1' elementlari uchun qoida */",
-            "h1 {",
-            "  color: blue; /* Matn rangi - ko'k */",
-            "  font-size: 24px; /* Shrift o'lchami - 24 piksel */",
-            "  text-align: center; /* Matnni markazga tekislash */",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "CSS veb-sahifalarning ko'rinishini va uslubini (rang, shrift, joylashuv) belgilash uchun ishlatiladigan stil jadvallari tilidir. U mazmunni (HTML) va ko'rinishni ajratishga yordam beradi, kodni tushunarli qiladi va `responsive design`'ni amalga oshiradi."
-    }
+    "description": "CSS (Cascading Style Sheets) — bu HTML yoki XML (shu jumladan SVG, XHTML) kabi belgilash (`markup`) tillarida yozilgan hujjatlarning ko'rinishini (`presentation`) va uslubini (`styling`) tavsiflash uchun ishlatiladigan stil jadvallari tili.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U HTML elementlarining rangi, shrifti, o'lchami, joylashuvi, chegaralari, fon rasmi kabi vizual xususiyatlarini aniqlashga imkon beradi. CSS mazmunni (`HTML`) va ko'rinishni (`CSS`) bir-biridan ajratishga yordam beradi, bu esa kodni tushunarliroq, qayta ishlatilishi oson va qo'llab-quvvatlashni yengil qiladi. U shuningdek, `responsive design` (turli ekran o'lchamlariga moslashuv) uchun asosiy vositadir."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy CSS Qoidasi:",
+        "code": [
+          "/* 'h1' elementlari uchun qoida */",
+          "h1 {",
+          "  color: blue; /* Matn rangi - ko'k */",
+          "  font-size: 24px; /* Shrift o'lchami - 24 piksel */",
+          "  text-align: center; /* Matnni markazga tekislash */",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "CSS veb-sahifalarning ko'rinishini va uslubini (rang, shrift, joylashuv) belgilash uchun ishlatiladigan stil jadvallari tilidir. U mazmunni (HTML) va ko'rinishni ajratishga yordam beradi, kodni tushunarli qiladi va `responsive design`'ni amalga oshiradi."
   },
   {
     "id": "css-q2",
     "question": "CSS selektorlari (`selectors`) nima va ularning asosiy turlari qaysilar?",
     "topic": "CSS Selectors",
-    "answer": {
-      "definition": "CSS selektorlari qaysi HTML element(lar)iga stil qoidalarini qo'llash kerakligini aniqlaydigan patternlardir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Selektorlar yordamida biz juda aniq yoki juda umumiy elementlarni nishonga olishimiz mumkin. Asosiy turlari:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Element Selektori:** Tag nomi bo'yicha tanlaydi (masalan, `p`, `h1`, `div`).",
-            "**ID Selektori:** Elementning unikal `id` atributi bo'yicha tanlaydi (`#main-header`). Bir sahifada bitta `id` faqat bir marta ishlatilishi kerak.",
-            "**Class Selektori:** Elementlarning `class` atributi bo'yicha tanlaydi (`.button`, `.error-message`). Bir nechta element bir xil `class`ga ega bo'lishi mumkin.",
-            "**Atribut Selektori:** Elementning atributi yoki atribut qiymati bo'yicha tanlaydi (`[type=\"text\"]`, `[href^=\"https\"]`).",
-            "**Universal Selektor:** Barcha elementlarni tanlaydi (`*`).",
-            "**Grouping Selektor:** Bir nechta selektorlarni vergul bilan ajratib, ularga bir xil stil berish (`h1, h2, h3`).",
-            "**Descendant Selektor:** Bir element ichidagi boshqa elementni tanlaydi (`div p` - `div` ichidagi barcha `p`'lar).",
-            "**Child Selektor:** Faqat to'g'ridan-to'g'ri bola elementni tanlaydi (`ul > li` - `ul`ning bevosita ichidagi `li`'lar).",
-            "**Adjacent Sibling Selektor:** Bir elementdan keyin darhol keladigan qo'shni elementni tanlaydi (`h2 + p` - `h2` dan keyingi birinchi `p`).",
-            "**General Sibling Selektor:** Bir elementdan keyin keladigan barcha qo'shni elementlarni tanlaydi (`h2 ~ p` - `h2` dan keyingi barcha `p`'lar).",
-            "**Pseudo-class'lar:** Elementning maxsus holatini tanlaydi (`:hover`, `:focus`, `:nth-child()`).",
-            "**Pseudo-element'lar:** Elementning ma'lum bir qismiga stil beradi (`::before`, `::after`, `::first-line`)."
-          ]
-        }
-      ],
-      "interviewAnswer": "Selektorlar qaysi HTML elementiga stil qo'llashni aniqlaydi. Asosiy turlari: element (`p`), ID (`#id`), class (`.class`), atribut (`[type='text']`), universal (`*`), guruhlash (`h1, h2`), avlod (`div p`), bola (`ul > li`), qo'shni (`h2 + p`), pseudo-class (`:hover`) va pseudo-element (`::before`)."
-    }
+    "description": "CSS selektorlari qaysi HTML element(lar)iga stil qoidalarini qo'llash kerakligini aniqlaydigan patternlardir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Selektorlar yordamida biz juda aniq yoki juda umumiy elementlarni nishonga olishimiz mumkin. Asosiy turlari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Element Selektori:** Tag nomi bo'yicha tanlaydi (masalan, `p`, `h1`, `div`).",
+          "**ID Selektori:** Elementning unikal `id` atributi bo'yicha tanlaydi (`#main-header`). Bir sahifada bitta `id` faqat bir marta ishlatilishi kerak.",
+          "**Class Selektori:** Elementlarning `class` atributi bo'yicha tanlaydi (`.button`, `.error-message`). Bir nechta element bir xil `class`ga ega bo'lishi mumkin.",
+          "**Atribut Selektori:** Elementning atributi yoki atribut qiymati bo'yicha tanlaydi (`[type=\"text\"]`, `[href^=\"https\"]`).",
+          "**Universal Selektor:** Barcha elementlarni tanlaydi (`*`).",
+          "**Grouping Selektor:** Bir nechta selektorlarni vergul bilan ajratib, ularga bir xil stil berish (`h1, h2, h3`).",
+          "**Descendant Selektor:** Bir element ichidagi boshqa elementni tanlaydi (`div p` - `div` ichidagi barcha `p`'lar).",
+          "**Child Selektor:** Faqat to'g'ridan-to'g'ri bola elementni tanlaydi (`ul > li` - `ul`ning bevosita ichidagi `li`'lar).",
+          "**Adjacent Sibling Selektor:** Bir elementdan keyin darhol keladigan qo'shni elementni tanlaydi (`h2 + p` - `h2` dan keyingi birinchi `p`).",
+          "**General Sibling Selektor:** Bir elementdan keyin keladigan barcha qo'shni elementlarni tanlaydi (`h2 ~ p` - `h2` dan keyingi barcha `p`'lar).",
+          "**Pseudo-class'lar:** Elementning maxsus holatini tanlaydi (`:hover`, `:focus`, `:nth-child()`).",
+          "**Pseudo-element'lar:** Elementning ma'lum bir qismiga stil beradi (`::before`, `::after`, `::first-line`)."
+        ]
+      }
+    ],
+    "interviewAnswer": "Selektorlar qaysi HTML elementiga stil qo'llashni aniqlaydi. Asosiy turlari: element (`p`), ID (`#id`), class (`.class`), atribut (`[type='text']`), universal (`*`), guruhlash (`h1, h2`), avlod (`div p`), bola (`ul > li`), qo'shni (`h2 + p`), pseudo-class (`:hover`) va pseudo-element (`::before`)."
   },
   {
     "id": "css-q3",
     "question": "CSS'da `Box Model` nima?",
     "topic": "CSS Box Model",
-    "answer": {
-      "definition": "CSS `Box Model` — bu HTML elementlari veb-sahifada qanday qilib to'rtburchak qutilar sifatida ko'rsatilishini va bu qutilarning o'lchamlari qanday hisoblanishini tavsiflaydigan konsepsiya.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Har bir quti to'rtta qismdan iborat (ichkaridan tashqariga):"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Content:** Elementning haqiqiy mazmuni (matn, rasm). Uning o'lchamlari `width` va `height` xususiyatlari bilan belgilanadi.",
-            "**Padding:** `Content` va `border` orasidagi bo'sh joy. Elementning fon rangi `padding` sohasiga ham yoyiladi.",
-            "**Border:** `Padding` atrofidagi chegara chizig'i.",
-            "**Margin:** `Border` tashqarisidagi bo'sh joy. U elementni boshqa elementlardan ajratib turadi."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Standart `box-sizing: content-box;` qiymatida, elementning umumiy kengligi `width + padding-left + padding-right + border-left + border-right` ga teng bo'ladi. `box-sizing: border-box;` ishlatilsa, elementning umumiy kengligi faqat `width` qiymatiga teng bo'ladi va `padding` hamda `border` shu kenglikning ichida hisoblanadi, bu odatda `layout` qurishni osonlashtiradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Box Model Vizualizatsiyasi:",
-          "code": [""]
-        }
-      ],
-      "interviewAnswer": "CSS `Box Model` har bir HTML elementini to'rt qismdan iborat quti sifatida tasvirlaydi: `content`, `padding` (ichki bo'shliq), `border` (chegara) va `margin` (tashqi bo'shliq). `box-sizing: border-box;` xususiyati elementning umumiy kengligini faqat `width` bilan belgilashga yordam beradi."
-    }
+    "description": "CSS `Box Model` — bu HTML elementlari veb-sahifada qanday qilib to'rtburchak qutilar sifatida ko'rsatilishini va bu qutilarning o'lchamlari qanday hisoblanishini tavsiflaydigan konsepsiya.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Har bir quti to'rtta qismdan iborat (ichkaridan tashqariga):"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Content:** Elementning haqiqiy mazmuni (matn, rasm). Uning o'lchamlari `width` va `height` xususiyatlari bilan belgilanadi.",
+          "**Padding:** `Content` va `border` orasidagi bo'sh joy. Elementning fon rangi `padding` sohasiga ham yoyiladi.",
+          "**Border:** `Padding` atrofidagi chegara chizig'i.",
+          "**Margin:** `Border` tashqarisidagi bo'sh joy. U elementni boshqa elementlardan ajratib turadi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Standart `box-sizing: content-box;` qiymatida, elementning umumiy kengligi `width + padding-left + padding-right + border-left + border-right` ga teng bo'ladi. `box-sizing: border-box;` ishlatilsa, elementning umumiy kengligi faqat `width` qiymatiga teng bo'ladi va `padding` hamda `border` shu kenglikning ichida hisoblanadi, bu odatda `layout` qurishni osonlashtiradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Box Model Vizualizatsiyasi:",
+        "code": [
+          ""
+        ]
+      }
+    ],
+    "interviewAnswer": "CSS `Box Model` har bir HTML elementini to'rt qismdan iborat quti sifatida tasvirlaydi: `content`, `padding` (ichki bo'shliq), `border` (chegara) va `margin` (tashqi bo'shliq). `box-sizing: border-box;` xususiyati elementning umumiy kengligini faqat `width` bilan belgilashga yordam beradi."
   },
   {
     "id": "css-q4",
     "question": "`id` selektori va `class` selektori o'rtasida qanday farq bor?",
     "topic": "CSS Selectors",
-    "answer": {
-      "definition": "Ikkalasi ham elementlarni tanlash uchun ishlatiladi, ammo ularning unikaligi va qo'llanilish maqsadi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`id` selektori (`#my-element`):** `HTML` elementining unikal `id` atributiga mos keladi. Bir sahifada bitta `id` faqat bitta elementga berilishi kerak. Shuning uchun `id` selektori faqat **bitta, aniq elementni** tanlash uchun ishlatiladi. U `class` selektoriga qaraganda yuqoriroq `specificity`'ga (aniqlikka) ega."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`class` selektori (`.my-class`):** `HTML` elementlarining `class` atributiga mos keladi. Bir xil `class` nomi **bir nechta elementga** berilishi mumkin. Bu bir xil ko'rinishga ega bo'lishi kerak bo'lgan elementlar guruhiga stil berish uchun ishlatiladi. `id` selektoriga qaraganda pastroq `specificity`'ga ega."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "/* ID selektori - faqat bitta element uchun */",
-            "#page-title { font-size: 32px; }",
-            "",
-            "/* Class selektori - bir nechta element uchun */",
-            ".button { padding: 10px; background-color: blue; color: white; }",
-            ".button.warning { background-color: orange; }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`id` selektori (`#`) sahifada unikal bo'lgan bitta elementni tanlaydi va yuqori `specificity`'ga ega. `class` selektori (`.`) bir yoki bir nechta elementni tanlashi mumkin, guruhlarga stil berish uchun ishlatiladi va `specificity`'si pastroq."
-    }
+    "description": "Ikkalasi ham elementlarni tanlash uchun ishlatiladi, ammo ularning unikaligi va qo'llanilish maqsadi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`id` selektori (`#my-element`):** `HTML` elementining unikal `id` atributiga mos keladi. Bir sahifada bitta `id` faqat bitta elementga berilishi kerak. Shuning uchun `id` selektori faqat **bitta, aniq elementni** tanlash uchun ishlatiladi. U `class` selektoriga qaraganda yuqoriroq `specificity`'ga (aniqlikka) ega."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`class` selektori (`.my-class`):** `HTML` elementlarining `class` atributiga mos keladi. Bir xil `class` nomi **bir nechta elementga** berilishi mumkin. Bu bir xil ko'rinishga ega bo'lishi kerak bo'lgan elementlar guruhiga stil berish uchun ishlatiladi. `id` selektoriga qaraganda pastroq `specificity`'ga ega."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "/* ID selektori - faqat bitta element uchun */",
+          "#page-title { font-size: 32px; }",
+          "",
+          "/* Class selektori - bir nechta element uchun */",
+          ".button { padding: 10px; background-color: blue; color: white; }",
+          ".button.warning { background-color: orange; }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`id` selektori (`#`) sahifada unikal bo'lgan bitta elementni tanlaydi va yuqori `specificity`'ga ega. `class` selektori (`.`) bir yoki bir nechta elementni tanlashi mumkin, guruhlarga stil berish uchun ishlatiladi va `specificity`'si pastroq."
   },
   {
     "id": "css-q5",
     "question": "CSS `specificity` nima va u qanday ishlaydi?",
     "topic": "CSS Specificity",
-    "answer": {
-      "definition": "`Specificity` — bu brauzerning bir xil elementga bir nechta CSS qoidasi mos kelganda, qaysi qoidani qo'llashini hal qiladigan algoritm yoki qoidalar to'plami.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Har bir CSS selektori ma'lum bir `specificity` qiymatiga ega bo'ladi. Bu qiymat odatda uch (yoki to'rt) qismli raqam sifatida hisoblanadi (masalan, `0,1,3`). Selektor qanchalik aniq bo'lsa, uning `specificity`'si shunchalik yuqori bo'ladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "Hisoblash qoidalari (yuqoridan pastga, eng yuqorisi eng muhim):"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`Inline styles`:** Elementning `style` atributida yozilgan stillar eng yuqori `specificity`'ga ega (`1,0,0,0`).",
-            "**ID selektorlari:** Har bir `#id` hisobga 1 qo'shadi (`0,1,0,0`).",
-            "**Class selektorlari, Atribut selektorlari va Pseudo-class'lar:** Har biri hisobga 1 qo'shadi (`0,0,1,0`).",
-            "**Element selektorlari va Pseudo-element'lar:** Har biri hisobga 1 qo'shadi (`0,0,0,1`)."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Agar ikkita qoidaning `specificity`'si bir xil bo'lsa, CSS faylida **keyinroq kelgan** qoida qo'llaniladi. `!important` qoidasi `specificity`'ni bekor qiladi, lekin uni iloji boricha ishlatmaslik tavsiya etiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Specificity Solishtirish:",
-          "code": [
-            "p { color: black; }             /* 0,0,0,1 */",
-            "div p { color: blue; }          /* 0,0,0,2 */",
-            ".content p { color: green; }     /* 0,0,1,1 */",
-            "div.content p { color: purple; } /* 0,0,1,2 */",
-            "#main p { color: red; }          /* 0,1,0,1 */",
-            "<p style=\"color: pink;\">...</p> /* 1,0,0,0 (inline style) */",
-            "",
-            "/* Yakuniy rang pink bo'ladi */"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Specificity` brauzerning bir elementga bir nechta CSS qoidasi mos kelganda qaysi birini tanlashini hal qiladi. `Inline style` eng kuchli, keyin `ID`, keyin `class`/`attribute`/`pseudo-class`, keyin esa `element`/`pseudo-element`. `Specificity` bir xil bo'lsa, keyinroq kelgan qoida yutadi. `!important` barchasidan ustun turadi."
-    }
+    "description": "`Specificity` — bu brauzerning bir xil elementga bir nechta CSS qoidasi mos kelganda, qaysi qoidani qo'llashini hal qiladigan algoritm yoki qoidalar to'plami.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Har bir CSS selektori ma'lum bir `specificity` qiymatiga ega bo'ladi. Bu qiymat odatda uch (yoki to'rt) qismli raqam sifatida hisoblanadi (masalan, `0,1,3`). Selektor qanchalik aniq bo'lsa, uning `specificity`'si shunchalik yuqori bo'ladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Hisoblash qoidalari (yuqoridan pastga, eng yuqorisi eng muhim):"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Inline styles`:** Elementning `style` atributida yozilgan stillar eng yuqori `specificity`'ga ega (`1,0,0,0`).",
+          "**ID selektorlari:** Har bir `#id` hisobga 1 qo'shadi (`0,1,0,0`).",
+          "**Class selektorlari, Atribut selektorlari va Pseudo-class'lar:** Har biri hisobga 1 qo'shadi (`0,0,1,0`).",
+          "**Element selektorlari va Pseudo-element'lar:** Har biri hisobga 1 qo'shadi (`0,0,0,1`)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Agar ikkita qoidaning `specificity`'si bir xil bo'lsa, CSS faylida **keyinroq kelgan** qoida qo'llaniladi. `!important` qoidasi `specificity`'ni bekor qiladi, lekin uni iloji boricha ishlatmaslik tavsiya etiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Specificity Solishtirish:",
+        "code": [
+          "p { color: black; }             /* 0,0,0,1 */",
+          "div p { color: blue; }          /* 0,0,0,2 */",
+          ".content p { color: green; }     /* 0,0,1,1 */",
+          "div.content p { color: purple; } /* 0,0,1,2 */",
+          "#main p { color: red; }          /* 0,1,0,1 */",
+          "<p style=\"color: pink;\">...</p> /* 1,0,0,0 (inline style) */",
+          "",
+          "/* Yakuniy rang pink bo'ladi */"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Specificity` brauzerning bir elementga bir nechta CSS qoidasi mos kelganda qaysi birini tanlashini hal qiladi. `Inline style` eng kuchli, keyin `ID`, keyin `class`/`attribute`/`pseudo-class`, keyin esa `element`/`pseudo-element`. `Specificity` bir xil bo'lsa, keyinroq kelgan qoida yutadi. `!important` barchasidan ustun turadi."
   },
   {
     "id": "css-q6",
     "question": "CSS'da `margin` va `padding` o'rtasida qanday farq bor?",
     "topic": "CSS Box Model",
-    "answer": {
-      "definition": "Ikkalasi ham element atrofida bo'sh joy yaratadi, ammo ular `Box Model`'ning turli qismlariga ta'sir qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`padding` (Ichki bo'shliq):** Elementning **`content` (mazmuni)** va uning **`border` (chegarasi)** orasidagi bo'sh joy. Elementning fon rangi yoki rasmi `padding` sohasiga ham yoyiladi. `padding` elementning umumiy o'lchamini (agar `box-sizing: content-box` bo'lsa) oshiradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`margin` (Tashqi bo'shliq):** Elementning **`border` (chegarasi)** tashqarisidagi bo'sh joy. U elementni boshqa qo'shni elementlardan ajratib turadi. `margin`'lar ba'zan bir-biriga qo'shilib ketishi mumkin (`margin collapsing`). Elementning fon rangi `margin` sohasiga yoyilmaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Vizual Farq:",
-          "code": ["[Image showing margin vs padding in CSS Box Model]"]
-        }
-      ],
-      "interviewAnswer": "`padding` elementning ichki bo'shlig'i (kontent va chegara orasida). `margin` elementning tashqi bo'shlig'i (chegara va boshqa elementlar orasida). `padding` element o'lchamiga (odatda) qo'shiladi, `margin` qo'shilmaydi va qo'shilib ketishi mumkin."
-    }
+    "description": "Ikkalasi ham element atrofida bo'sh joy yaratadi, ammo ular `Box Model`'ning turli qismlariga ta'sir qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`padding` (Ichki bo'shliq):** Elementning **`content` (mazmuni)** va uning **`border` (chegarasi)** orasidagi bo'sh joy. Elementning fon rangi yoki rasmi `padding` sohasiga ham yoyiladi. `padding` elementning umumiy o'lchamini (agar `box-sizing: content-box` bo'lsa) oshiradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`margin` (Tashqi bo'shliq):** Elementning **`border` (chegarasi)** tashqarisidagi bo'sh joy. U elementni boshqa qo'shni elementlardan ajratib turadi. `margin`'lar ba'zan bir-biriga qo'shilib ketishi mumkin (`margin collapsing`). Elementning fon rangi `margin` sohasiga yoyilmaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Vizual Farq:",
+        "code": [
+          "[Image showing margin vs padding in CSS Box Model]"
+        ]
+      }
+    ],
+    "interviewAnswer": "`padding` elementning ichki bo'shlig'i (kontent va chegara orasida). `margin` elementning tashqi bo'shlig'i (chegara va boshqa elementlar orasida). `padding` element o'lchamiga (odatda) qo'shiladi, `margin` qo'shilmaydi va qo'shilib ketishi mumkin."
   },
   {
     "id": "css-q7",
     "question": "`position` xususiyatining asosiy qiymatlari (`static`, `relative`, `absolute`, `fixed`, `sticky`) qanday ishlaydi?",
     "topic": "CSS Positioning",
-    "answer": {
-      "definition": "`position` xususiyati elementning hujjatdagi joylashuv turini belgilaydi va `top`, `right`, `bottom`, `left` xususiyatlari bilan birgalikda uning aniq joylashuvini boshqarishga imkon beradi.",
-      "explanation": [
-        {
-          "type": "list",
-          "items": [
-            "**`static`:** Standart qiymat. Element oddiy hujjat oqimi (`normal flow`) bo'yicha joylashadi. `top`, `right`, `bottom`, `left` va `z-index` xususiyatlari unga ta'sir qilmaydi.",
-            "**`relative`:** Element oddiy hujjat oqimida o'zining standart joyiga nisbatan siljiydi (`top`, `right`, `bottom`, `left` yordamida). U egallagan joy boshqa elementlar uchun bo'sh qoladi.",
-            "**`absolute`:** Element hujjat oqimidan chiqariladi va uning eng yaqin `position`'i `static`'dan farqli bo'lgan `parent` elementiga nisbatan joylashadi (`top`, `right`, `bottom`, `left` yordamida). Agar bunday `parent` bo'lmasa, u `<body>`'ga nisbatan joylashadi. Boshqa elementlar uning joyini egallashi mumkin.",
-            "**`fixed`:** Element hujjat oqimidan chiqariladi va **brauzer oynasiga (`viewport`) nisbatan** joylashadi. Sahifa `scroll` qilinganda ham joyida qoladi. `top`, `right`, `bottom`, `left` ishlaydi.",
-            "**`sticky`:** Element oddiy hujjat oqimida (`relative` kabi) harakatlanadi, lekin foydalanuvchi sahifani `scroll` qilganda ma'lum bir nuqtaga (`top`, `right`, `bottom`, `left` bilan belgilangan) yetib kelgach, o'sha joyga \"yopishib\" (`fixed` kabi) qoladi."
-          ]
-        }
-      ],
-      "interviewAnswer": "`static` - standart oqim. `relative` - o'z joyiga nisbatan siljiydi. `absolute` - eng yaqin joylashgan `parent`'ga nisbatan siljiydi, oqimdan chiqadi. `fixed` - brauzer oynasiga nisbatan qotib qoladi, oqimdan chiqadi. `sticky` - `scroll` paytida ma'lum joyga yopishib qoladi."
-    }
+    "description": "`position` xususiyati elementning hujjatdagi joylashuv turini belgilaydi va `top`, `right`, `bottom`, `left` xususiyatlari bilan birgalikda uning aniq joylashuvini boshqarishga imkon beradi.",
+    "detailedExplanation": [
+      {
+        "type": "list",
+        "items": [
+          "**`static`:** Standart qiymat. Element oddiy hujjat oqimi (`normal flow`) bo'yicha joylashadi. `top`, `right`, `bottom`, `left` va `z-index` xususiyatlari unga ta'sir qilmaydi.",
+          "**`relative`:** Element oddiy hujjat oqimida o'zining standart joyiga nisbatan siljiydi (`top`, `right`, `bottom`, `left` yordamida). U egallagan joy boshqa elementlar uchun bo'sh qoladi.",
+          "**`absolute`:** Element hujjat oqimidan chiqariladi va uning eng yaqin `position`'i `static`'dan farqli bo'lgan `parent` elementiga nisbatan joylashadi (`top`, `right`, `bottom`, `left` yordamida). Agar bunday `parent` bo'lmasa, u `<body>`'ga nisbatan joylashadi. Boshqa elementlar uning joyini egallashi mumkin.",
+          "**`fixed`:** Element hujjat oqimidan chiqariladi va **brauzer oynasiga (`viewport`) nisbatan** joylashadi. Sahifa `scroll` qilinganda ham joyida qoladi. `top`, `right`, `bottom`, `left` ishlaydi.",
+          "**`sticky`:** Element oddiy hujjat oqimida (`relative` kabi) harakatlanadi, lekin foydalanuvchi sahifani `scroll` qilganda ma'lum bir nuqtaga (`top`, `right`, `bottom`, `left` bilan belgilangan) yetib kelgach, o'sha joyga \"yopishib\" (`fixed` kabi) qoladi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`static` - standart oqim. `relative` - o'z joyiga nisbatan siljiydi. `absolute` - eng yaqin joylashgan `parent`'ga nisbatan siljiydi, oqimdan chiqadi. `fixed` - brauzer oynasiga nisbatan qotib qoladi, oqimdan chiqadi. `sticky` - `scroll` paytida ma'lum joyga yopishib qoladi."
   },
   {
     "id": "css-q8",
     "question": "CSS'da `float` nima va u hozirda nima uchun kamroq ishlatiladi?",
     "topic": "CSS Layout",
-    "answer": {
-      "definition": "`float` xususiyati (`left` yoki `right`) elementni oddiy hujjat oqimidan chiqarib, uni o'z konteynerining chap yoki o'ng tomoniga surish va qolgan kontentni uning atrofida aylantirib o'tkazish (`wrap`) uchun ishlatilgan.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U dastlab rasmlarni matn atrofida joylashtirish uchun mo'ljallangan edi, ammo uzoq vaqt davomida (Flexbox va Grid paydo bo'lguncha) veb-sahifalarning asosiy `layout`'ini (masalan, ko'p ustunli `layout`'larni) yaratish uchun keng qo'llanilgan. Biroq, `float`'lar bilan ishlash ko'pincha `clearfix hack` kabi qo'shimcha usullarni talab qilgan va murakkab `layout`'larda muammolar keltirib chiqargan. Zamonaviy CSS'da `Flexbox` va `Grid Layout` kabi ancha kuchliroq va qulayroq `layout` modullari mavjud bo'lgani uchun, `float` endi asosan faqat o'zining asl maqsadi - kontentni element atrofida aylantirish uchun ishlatiladi."
-        }
-      ],
-      "interviewAnswer": "`float` elementni chapga yoki o'ngga surib, qolgan kontentni atrofida aylantirish uchun ishlatilgan, avvallari `layout` uchun ham keng qo'llanilgan. Hozirda `Flexbox` va `Grid` kabi zamonaviy `layout` usullari mavjud bo'lgani uchun, `float` asosan faqat matnni rasm atrofida aylantirish kabi hollarda ishlatiladi."
-    }
+    "description": "`float` xususiyati (`left` yoki `right`) elementni oddiy hujjat oqimidan chiqarib, uni o'z konteynerining chap yoki o'ng tomoniga surish va qolgan kontentni uning atrofida aylantirib o'tkazish (`wrap`) uchun ishlatilgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U dastlab rasmlarni matn atrofida joylashtirish uchun mo'ljallangan edi, ammo uzoq vaqt davomida (Flexbox va Grid paydo bo'lguncha) veb-sahifalarning asosiy `layout`'ini (masalan, ko'p ustunli `layout`'larni) yaratish uchun keng qo'llanilgan. Biroq, `float`'lar bilan ishlash ko'pincha `clearfix hack` kabi qo'shimcha usullarni talab qilgan va murakkab `layout`'larda muammolar keltirib chiqargan. Zamonaviy CSS'da `Flexbox` va `Grid Layout` kabi ancha kuchliroq va qulayroq `layout` modullari mavjud bo'lgani uchun, `float` endi asosan faqat o'zining asl maqsadi - kontentni element atrofida aylantirish uchun ishlatiladi."
+      }
+    ],
+    "interviewAnswer": "`float` elementni chapga yoki o'ngga surib, qolgan kontentni atrofida aylantirish uchun ishlatilgan, avvallari `layout` uchun ham keng qo'llanilgan. Hozirda `Flexbox` va `Grid` kabi zamonaviy `layout` usullari mavjud bo'lgani uchun, `float` asosan faqat matnni rasm atrofida aylantirish kabi hollarda ishlatiladi."
   },
   {
     "id": "css-q9",
     "question": "CSS `Flexbox` nima va uning asosiy konsepsiyalari qanday?",
     "topic": "CSS Layout (Flexbox)",
-    "answer": {
-      "definition": "`Flexbox` (Flexible Box Layout Module) — bu elementlarni bir o'lchamli (`one-dimensional`) qator (gorizontal yoki vertikal) bo'ylab joylashtirish, tekislash va bo'sh joyni taqsimlash uchun mo'ljallangan CSS `layout` moduli.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Asosiy g'oya `flex container` (elementlarga `display: flex;` berilgan `parent`) va uning ichidagi `flex items` (`child` elementlar) o'rtasidagi munosabatdir. `Flex container`'ga beriladigan asosiy xususiyatlar:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "`flex-direction`: Elementlarning joylashuv yo'nalishi (`row` - gorizontal (standart), `column` - vertikal, `row-reverse`, `column-reverse`).",
-            "`justify-content`: Elementlarni asosiy o'q (`main axis` - `flex-direction`'ga bog'liq) bo'ylab tekislash (`flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`).",
-            "`align-items`: Elementlarni kesma o'q (`cross axis` - asosiy o'qqa perpendikulyar) bo'ylab tekislash (`stretch` (standart), `flex-start`, `flex-end`, `center`, `baseline`).",
-            "`flex-wrap`: Elementlar sig'maganda keyingi qatorga o'tkazish (`nowrap` (standart), `wrap`, `wrap-reverse`).",
-            "`align-content`: Bir nechta qator mavjud bo'lganda (`flex-wrap: wrap;`), qatorlarning o'zini kesma o'q bo'ylab tekislash."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "`Flex item`'larga beriladigan asosiy xususiyatlar:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "`order`: Elementning tartibini o'zgartirish.",
-            "`flex-grow`: Elementning bo'sh joyni egallash nisbati.",
-            "`flex-shrink`: Elementning joy yetmaganda kichrayish nisbati.",
-            "`flex-basis`: Elementning asosiy o'lchami.",
-            "`align-self`: Bitta elementning `align-items` qiymatini bekor qilish."
-          ]
-        }
-      ],
-      "interviewAnswer": "`Flexbox` elementlarni bir o'lchamli qatorda (`row` yoki `column`) joylashtirish va tekislash uchun `layout` modulidir. Asosiy xususiyatlari: `display: flex` (konteyner uchun), `flex-direction`, `justify-content` (asosiy o'q bo'ylab tekislash), `align-items` (kesma o'q bo'ylab tekislash), `flex-wrap` (qatrorga o'tkazish)."
-    }
+    "description": "`Flexbox` (Flexible Box Layout Module) — bu elementlarni bir o'lchamli (`one-dimensional`) qator (gorizontal yoki vertikal) bo'ylab joylashtirish, tekislash va bo'sh joyni taqsimlash uchun mo'ljallangan CSS `layout` moduli.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy g'oya `flex container` (elementlarga `display: flex;` berilgan `parent`) va uning ichidagi `flex items` (`child` elementlar) o'rtasidagi munosabatdir. `Flex container`'ga beriladigan asosiy xususiyatlar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "`flex-direction`: Elementlarning joylashuv yo'nalishi (`row` - gorizontal (standart), `column` - vertikal, `row-reverse`, `column-reverse`).",
+          "`justify-content`: Elementlarni asosiy o'q (`main axis` - `flex-direction`'ga bog'liq) bo'ylab tekislash (`flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`).",
+          "`align-items`: Elementlarni kesma o'q (`cross axis` - asosiy o'qqa perpendikulyar) bo'ylab tekislash (`stretch` (standart), `flex-start`, `flex-end`, `center`, `baseline`).",
+          "`flex-wrap`: Elementlar sig'maganda keyingi qatorga o'tkazish (`nowrap` (standart), `wrap`, `wrap-reverse`).",
+          "`align-content`: Bir nechta qator mavjud bo'lganda (`flex-wrap: wrap;`), qatorlarning o'zini kesma o'q bo'ylab tekislash."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "`Flex item`'larga beriladigan asosiy xususiyatlar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "`order`: Elementning tartibini o'zgartirish.",
+          "`flex-grow`: Elementning bo'sh joyni egallash nisbati.",
+          "`flex-shrink`: Elementning joy yetmaganda kichrayish nisbati.",
+          "`flex-basis`: Elementning asosiy o'lchami.",
+          "`align-self`: Bitta elementning `align-items` qiymatini bekor qilish."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Flexbox` elementlarni bir o'lchamli qatorda (`row` yoki `column`) joylashtirish va tekislash uchun `layout` modulidir. Asosiy xususiyatlari: `display: flex` (konteyner uchun), `flex-direction`, `justify-content` (asosiy o'q bo'ylab tekislash), `align-items` (kesma o'q bo'ylab tekislash), `flex-wrap` (qatrorga o'tkazish)."
   },
   {
     "id": "css-q10",
     "question": "CSS `Grid Layout` nima va u `Flexbox`'dan qanday farq qiladi?",
     "topic": "CSS Layout (Grid)",
-    "answer": {
-      "definition": "CSS `Grid Layout` — bu elementlarni ikki o'lchamli (`two-dimensional`) - ham qatorlar (`rows`), ham ustunlar (`columns`) bo'ylab - joylashtirish uchun mo'ljallangan kuchli CSS `layout` moduli.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Asosiy farqi: **`Flexbox` bir o'lchamli `layout`'lar uchun** (elementlarni bitta qator yoki bitta ustunga joylashtirish), **`Grid` esa ikki o'lchamli `layout`'lar uchun** (bir vaqtning o'zida ham qatorlar, ham ustunlar bo'ylab joylashtirish) optimallashtirilgan. `Grid` yordamida murakkab `layout`'larni (`sidebar`+`main content`+`footer` kabi) ancha oson va kamroq kod bilan yaratish mumkin. `Grid container`'ga (`display: grid;`) `grid-template-columns`, `grid-template-rows`, `gap` kabi xususiyatlar berib, `grid` strukturasi aniqlanadi. `Grid item`'larni esa `grid-column-start/end`, `grid-row-start/end` (yoki qisqartmalari `grid-column`, `grid-row`) xususiyatlari yordamida `grid` ichiga joylashtirish mumkin."
-        }
-      ],
-      "interviewAnswer": "CSS `Grid` ikki o'lchamli (`qatorlar` va `ustunlar`) `layout` yaratish uchun moduldir. `Flexbox` esa asosan bir o'lchamli (`qator` yoki `ustun`) `layout` uchun mo'ljallangan. `Grid` butun sahifa `layout`'ini yoki murakkab komponent `layout`'ini qurish uchun kuchliroq, `Flexbox` esa elementlarni qator ichida tekislash kabi kichikroq vazifalar uchun qulayroq."
-    }
+    "description": "CSS `Grid Layout` — bu elementlarni ikki o'lchamli (`two-dimensional`) - ham qatorlar (`rows`), ham ustunlar (`columns`) bo'ylab - joylashtirish uchun mo'ljallangan kuchli CSS `layout` moduli.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy farqi: **`Flexbox` bir o'lchamli `layout`'lar uchun** (elementlarni bitta qator yoki bitta ustunga joylashtirish), **`Grid` esa ikki o'lchamli `layout`'lar uchun** (bir vaqtning o'zida ham qatorlar, ham ustunlar bo'ylab joylashtirish) optimallashtirilgan. `Grid` yordamida murakkab `layout`'larni (`sidebar`+`main content`+`footer` kabi) ancha oson va kamroq kod bilan yaratish mumkin. `Grid container`'ga (`display: grid;`) `grid-template-columns`, `grid-template-rows`, `gap` kabi xususiyatlar berib, `grid` strukturasi aniqlanadi. `Grid item`'larni esa `grid-column-start/end`, `grid-row-start/end` (yoki qisqartmalari `grid-column`, `grid-row`) xususiyatlari yordamida `grid` ichiga joylashtirish mumkin."
+      }
+    ],
+    "interviewAnswer": "CSS `Grid` ikki o'lchamli (`qatorlar` va `ustunlar`) `layout` yaratish uchun moduldir. `Flexbox` esa asosan bir o'lchamli (`qator` yoki `ustun`) `layout` uchun mo'ljallangan. `Grid` butun sahifa `layout`'ini yoki murakkab komponent `layout`'ini qurish uchun kuchliroq, `Flexbox` esa elementlarni qator ichida tekislash kabi kichikroq vazifalar uchun qulayroq."
   },
-
   {
     "id": "css-q11",
     "question": "CSS'da `pseudo-class` va `pseudo-element` o'rtasida qanday farq bor?",
     "topic": "CSS Selectors",
-    "answer": {
-      "definition": "Ikkalasi ham selektorlarga qo'shilib, elementlarni yoki ularning qismlarini maxsus holatlarda tanlashga yordam beradi, ammo ularning maqsadi va sintaksisi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**Pseudo-class (`:` bilan boshlanadi):** Elementning ma'lum bir **holatini** tanlaydi. Masalan, `:hover` (sichqoncha element ustida bo'lganda), `:focus` (element `focus` olganda), `:active` (element bosilgan paytda), `:visited` (havola ochilgan bo'lsa), `:nth-child(n)` (ma'lum tartibdagi `child` element), `:first-child`, `:last-child`. Ular mavjud `DOM` elementining holatini tavsiflaydi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Pseudo-element (`::` bilan boshlanadi, CSS2 da `:` ham ishlatilgan):** Elementning ma'lum bir **qismiga** stil berish yoki `DOM`'da mavjud bo'lmagan **virtual element** yaratish uchun ishlatiladi. Masalan, `::before` (element kontentidan oldin kontent qo'shadi), `::after` (element kontentidan keyin kontent qo'shadi), `::first-line` (paragrafning birinchi qatoriga stil beradi), `::first-letter` (paragrafning birinchi harfiga stil beradi), `::selection` (foydalanuvchi tanlagan matnga stil beradi)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Pseudo-class Misoli:",
-          "code": [
-            "a:hover { color: red; } /* Havola ustiga sichqoncha kelganda qizil bo'ladi */"
-          ]
-        },
-        {
-          "title": "Pseudo-element Misoli:",
-          "code": [
-            "p::first-letter { font-size: 2em; font-weight: bold; } /* Paragrafning birinchi harfi kattaroq va qalin bo'ladi */"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Pseudo-class` (`:`) elementning holatini (`:hover`, `:focus`) tanlaydi. `Pseudo-element` (`::`) elementning ma'lum bir qismini (`::first-line`) yoki virtual elementni (`::before`, `::after`) tanlaydi."
-    }
+    "description": "Ikkalasi ham selektorlarga qo'shilib, elementlarni yoki ularning qismlarini maxsus holatlarda tanlashga yordam beradi, ammo ularning maqsadi va sintaksisi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Pseudo-class (`:` bilan boshlanadi):** Elementning ma'lum bir **holatini** tanlaydi. Masalan, `:hover` (sichqoncha element ustida bo'lganda), `:focus` (element `focus` olganda), `:active` (element bosilgan paytda), `:visited` (havola ochilgan bo'lsa), `:nth-child(n)` (ma'lum tartibdagi `child` element), `:first-child`, `:last-child`. Ular mavjud `DOM` elementining holatini tavsiflaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Pseudo-element (`::` bilan boshlanadi, CSS2 da `:` ham ishlatilgan):** Elementning ma'lum bir **qismiga** stil berish yoki `DOM`'da mavjud bo'lmagan **virtual element** yaratish uchun ishlatiladi. Masalan, `::before` (element kontentidan oldin kontent qo'shadi), `::after` (element kontentidan keyin kontent qo'shadi), `::first-line` (paragrafning birinchi qatoriga stil beradi), `::first-letter` (paragrafning birinchi harfiga stil beradi), `::selection` (foydalanuvchi tanlagan matnga stil beradi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Pseudo-class Misoli:",
+        "code": [
+          "a:hover { color: red; } /* Havola ustiga sichqoncha kelganda qizil bo'ladi */"
+        ]
+      },
+      {
+        "title": "Pseudo-element Misoli:",
+        "code": [
+          "p::first-letter { font-size: 2em; font-weight: bold; } /* Paragrafning birinchi harfi kattaroq va qalin bo'ladi */"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Pseudo-class` (`:`) elementning holatini (`:hover`, `:focus`) tanlaydi. `Pseudo-element` (`::`) elementning ma'lum bir qismini (`::first-line`) yoki virtual elementni (`::before`, `::after`) tanlaydi."
   },
   {
     "id": "css-q12",
     "question": "`em` va `rem` o'lchov birliklari o'rtasida qanday farq bor?",
     "topic": "CSS Units",
-    "answer": {
-      "definition": "Ikkalasi ham nisbiy (`relative`) o'lchov birliklari bo'lib, ular `font-size`'ga bog'liq, ammo ularning qaysi `font-size`'ga nisbatan hisoblanishi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`em`:** Joriy elementning **o'zining** `font-size`'iga nisbatan hisoblanadi (agar `font-size`'ning o'zi `em`'da berilsa, u `parent` elementning `font-size`'iga nisbatan hisoblanadi). Bu ichma-ich joylashgan elementlarda `font-size`'ni hisoblashni murakkablashtirishi mumkin (kaskad effekti)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`rem` (root em):** Har doim **ildiz element (`<html>`)'ning `font-size`'iga** nisbatan hisoblanadi. Bu butun sahifa bo'ylab o'lchamlarning izchil (`consistent`) bo'lishini ta'minlaydi va hisoblashni osonlashtiradi. `rem` hozirda `responsive design` va `layout` uchun ko'proq tavsiya etiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "html { font-size: 16px; }",
-            "div { font-size: 1.5em; /* 16px * 1.5 = 24px */ }",
-            "p { font-size: 2rem; /* 16px * 2 = 32px */ }",
-            "span { padding: 0.5em; /* Span'ning o'z font-size'ining yarmi */ }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`em` joriy elementning `font-size`'iga nisbatan hisoblanadi. `rem` esa har doim ildiz element (`<html>`)'ning `font-size`'iga nisbatan hisoblanadi. `rem` butun sayt bo'ylab izchillikni saqlash uchun qulayroq."
-    }
+    "description": "Ikkalasi ham nisbiy (`relative`) o'lchov birliklari bo'lib, ular `font-size`'ga bog'liq, ammo ularning qaysi `font-size`'ga nisbatan hisoblanishi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`em`:** Joriy elementning **o'zining** `font-size`'iga nisbatan hisoblanadi (agar `font-size`'ning o'zi `em`'da berilsa, u `parent` elementning `font-size`'iga nisbatan hisoblanadi). Bu ichma-ich joylashgan elementlarda `font-size`'ni hisoblashni murakkablashtirishi mumkin (kaskad effekti)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`rem` (root em):** Har doim **ildiz element (`<html>`)'ning `font-size`'iga** nisbatan hisoblanadi. Bu butun sahifa bo'ylab o'lchamlarning izchil (`consistent`) bo'lishini ta'minlaydi va hisoblashni osonlashtiradi. `rem` hozirda `responsive design` va `layout` uchun ko'proq tavsiya etiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "html { font-size: 16px; }",
+          "div { font-size: 1.5em; /* 16px * 1.5 = 24px */ }",
+          "p { font-size: 2rem; /* 16px * 2 = 32px */ }",
+          "span { padding: 0.5em; /* Span'ning o'z font-size'ining yarmi */ }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`em` joriy elementning `font-size`'iga nisbatan hisoblanadi. `rem` esa har doim ildiz element (`<html>`)'ning `font-size`'iga nisbatan hisoblanadi. `rem` butun sayt bo'ylab izchillikni saqlash uchun qulayroq."
   },
   {
     "id": "css-q13",
     "question": "CSS'da ranglarni qanday usullar bilan belgilash mumkin?",
     "topic": "CSS Colors",
-    "answer": {
-      "definition": "CSS elementlarga rang berish uchun bir nechta formatlarni qo'llab-quvvatlaydi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy usullar:" },
-        {
-          "type": "list",
-          "items": [
-            "**Rang Nomlari (`Color Names`):** Oldindan belgilangan rang nomlari (`red`, `blue`, `green`, `lightgray` va hokazo). 140 dan ortiq nom mavjud.",
-            "**Oltilik Kod (`Hexadecimal Code`):** `#` belgisi bilan boshlanib, uch juft oltilik raqamdan iborat (`#RRGGBB`). Har bir juftlik Qizil, Yashil, Ko'k rang intensivligini (00 dan FF gacha) ifodalaydi. Qisqartirilgan shakli ham mavjud (`#RGB`). Masalan: `#FF0000` (qizil), `#00FF00` (yashil), `#FFFFFF` (oq), `#ccc` (och kulrang).",
-            "**RGB / RGBA:** `rgb(qizil, yashil, ko'k)` funksiyasi yordamida har bir rang komponenti 0 dan 255 gacha bo'lgan qiymatda beriladi. `rgba(qizil, yashil, ko'k, alfa)` esa qo'shimcha `alfa` kanali (0.0 dan 1.0 gacha) orqali shaffoflikni (`opacity`) boshqarish imkonini beradi. Masalan: `rgb(255, 0, 0)` (qizil), `rgba(0, 0, 255, 0.5)` (yarim shaffof ko'k).",
-            "**HSL / HSLA:** `hsl(tus, to'yinganlik%, yorqinlik%)` rangni Tus (`Hue`, 0-360 gradus), To'yinganlik (`Saturation`, 0-100%) va Yorqinlik (`Lightness`, 0-100%) orqali ifodalaydi. `hsla()` shaffoflik uchun `alfa` kanalini qo'shadi. Bu format ranglarni intuitivroq tanlash va o'zgartirish uchun qulay. Masalan: `hsl(120, 100%, 50%)` (yashil), `hsla(0, 100%, 50%, 0.7)` (qizil, 70% shaffof)."
-          ]
-        }
-      ],
-      "interviewAnswer": "CSS ranglarni bir necha usulda belgilash mumkin: nomlari (`red`), oltilik kod (`#FF0000` yoki `#f00`), `RGB`/`RGBA` (`rgb(255,0,0)`, `rgba(0,0,255,0.5)`) va `HSL`/`HSLA` (`hsl(120, 100%, 50%)`). `RGBA` va `HSLA` shaffoflikni boshqarish imkonini beradi."
-    }
+    "description": "CSS elementlarga rang berish uchun bir nechta formatlarni qo'llab-quvvatlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy usullar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Rang Nomlari (`Color Names`):** Oldindan belgilangan rang nomlari (`red`, `blue`, `green`, `lightgray` va hokazo). 140 dan ortiq nom mavjud.",
+          "**Oltilik Kod (`Hexadecimal Code`):** `#` belgisi bilan boshlanib, uch juft oltilik raqamdan iborat (`#RRGGBB`). Har bir juftlik Qizil, Yashil, Ko'k rang intensivligini (00 dan FF gacha) ifodalaydi. Qisqartirilgan shakli ham mavjud (`#RGB`). Masalan: `#FF0000` (qizil), `#00FF00` (yashil), `#FFFFFF` (oq), `#ccc` (och kulrang).",
+          "**RGB / RGBA:** `rgb(qizil, yashil, ko'k)` funksiyasi yordamida har bir rang komponenti 0 dan 255 gacha bo'lgan qiymatda beriladi. `rgba(qizil, yashil, ko'k, alfa)` esa qo'shimcha `alfa` kanali (0.0 dan 1.0 gacha) orqali shaffoflikni (`opacity`) boshqarish imkonini beradi. Masalan: `rgb(255, 0, 0)` (qizil), `rgba(0, 0, 255, 0.5)` (yarim shaffof ko'k).",
+          "**HSL / HSLA:** `hsl(tus, to'yinganlik%, yorqinlik%)` rangni Tus (`Hue`, 0-360 gradus), To'yinganlik (`Saturation`, 0-100%) va Yorqinlik (`Lightness`, 0-100%) orqali ifodalaydi. `hsla()` shaffoflik uchun `alfa` kanalini qo'shadi. Bu format ranglarni intuitivroq tanlash va o'zgartirish uchun qulay. Masalan: `hsl(120, 100%, 50%)` (yashil), `hsla(0, 100%, 50%, 0.7)` (qizil, 70% shaffof)."
+        ]
+      }
+    ],
+    "interviewAnswer": "CSS ranglarni bir necha usulda belgilash mumkin: nomlari (`red`), oltilik kod (`#FF0000` yoki `#f00`), `RGB`/`RGBA` (`rgb(255,0,0)`, `rgba(0,0,255,0.5)`) va `HSL`/`HSLA` (`hsl(120, 100%, 50%)`). `RGBA` va `HSLA` shaffoflikni boshqarish imkonini beradi."
   },
   {
     "id": "css-q14",
     "question": "`display: none;`, `visibility: hidden;` va `opacity: 0;` o'rtasida qanday farq bor?",
     "topic": "CSS Display & Visibility",
-    "answer": {
-      "definition": "Uchala xususiyat ham elementni ko'rinmas qilish uchun ishlatilishi mumkin, ammo ular elementning sahifadagi joylashuviga va hodisalarni qabul qilishiga turlicha ta'sir qiladi.",
-      "explanation": [
-        {
-          "type": "list",
-          "items": [
-            "**`display: none;`:** Elementni `DOM`'dan **butunlay olib tashlaydi**. U na ko'rinadi, na sahifada joy egallaydi. U hodisalarni (`click`, `hover`) qabul qila olmaydi. Bu elementni `DOM`'dan o'chirishga eng yaqin CSS usuli.",
-            "**`visibility: hidden;`:** Elementni **ko'rinmas qiladi**, lekin u sahifada o'z joyini **egallab turadi** (bo'sh joy qoladi). U ham hodisalarni qabul qila olmaydi.",
-            "**`opacity: 0;`:** Elementni **to'liq shaffof** qiladi (ko'rinmaydi), lekin u sahifada o'z joyini **egallab turadi** VA **hodisalarni qabul qila oladi**. Agar shaffof element ustiga sichqoncha olib borilsa, `:hover` ishlashi yoki `click` hodisasi yuz berishi mumkin."
-          ]
-        }
-      ],
-      "interviewAnswer": "`display: none` elementni `DOM`'dan olib tashlaydi (joy egallamaydi). `visibility: hidden` elementni yashiradi, lekin joyini saqlab qoladi. `opacity: 0` elementni shaffof qiladi, joyini saqlaydi va hodisalarni qabul qila oladi."
-    }
+    "description": "Uchala xususiyat ham elementni ko'rinmas qilish uchun ishlatilishi mumkin, ammo ular elementning sahifadagi joylashuviga va hodisalarni qabul qilishiga turlicha ta'sir qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "list",
+        "items": [
+          "**`display: none;`:** Elementni `DOM`'dan **butunlay olib tashlaydi**. U na ko'rinadi, na sahifada joy egallaydi. U hodisalarni (`click`, `hover`) qabul qila olmaydi. Bu elementni `DOM`'dan o'chirishga eng yaqin CSS usuli.",
+          "**`visibility: hidden;`:** Elementni **ko'rinmas qiladi**, lekin u sahifada o'z joyini **egallab turadi** (bo'sh joy qoladi). U ham hodisalarni qabul qila olmaydi.",
+          "**`opacity: 0;`:** Elementni **to'liq shaffof** qiladi (ko'rinmaydi), lekin u sahifada o'z joyini **egallab turadi** VA **hodisalarni qabul qila oladi**. Agar shaffof element ustiga sichqoncha olib borilsa, `:hover` ishlashi yoki `click` hodisasi yuz berishi mumkin."
+        ]
+      }
+    ],
+    "interviewAnswer": "`display: none` elementni `DOM`'dan olib tashlaydi (joy egallamaydi). `visibility: hidden` elementni yashiradi, lekin joyini saqlab qoladi. `opacity: 0` elementni shaffof qiladi, joyini saqlaydi va hodisalarni qabul qila oladi."
   },
   {
     "id": "css-q15",
     "question": "CSS'da `media queries` nima uchun ishlatiladi?",
     "topic": "CSS Responsive Design",
-    "answer": {
-      "definition": "`Media queries` — bu CSS qoidalarini faqat ma'lum shartlar (odatda qurilma xususiyatlari, masalan, ekran kengligi, balandligi, `orientation`'i) bajarilgandagina qo'llash imkonini beruvchi CSS3 xususiyatidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular `responsive web design`'ning asosiy qismidir. `Media query` yordamida biz turli ekran o'lchamlari uchun turli xil `layout`'lar va stillarni yaratishimiz mumkin. Masalan, kichik ekranlarda elementlarni vertikal joylashtirish, kattaroq ekranlarda esa gorizontal joylashtirish yoki shrift o'lchamlarini o'zgartirish."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Media Query:",
-          "code": [
-            "/* Standart stillar (kichik ekranlar uchun) */",
-            ".container { width: 100%; }",
-            "",
-            "/* Ekran kengligi 768px dan katta bo'lganda qo'llaniladigan stillar */",
-            "@media (min-width: 768px) {",
-            "  .container {",
-            "    width: 750px;",
-            "    margin: 0 auto; /* Markazga tekislash */",
-            "  }",
-            "}",
-            "",
-            "/* Ekran kengligi 1200px dan katta bo'lganda qo'llaniladigan stillar */",
-            "@media (min-width: 1200px) {",
-            "  .container {",
-            "    width: 1170px;",
-            "  }",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Media query`'lar CSS qoidalarini ma'lum shartlarga (odatda ekran kengligi) qarab qo'llash imkonini beradi. Ular `responsive design` qurish uchun ishlatiladi, ya'ni saytni turli qurilmalar ekranlariga moslashtirish uchun."
-    }
+    "description": "`Media queries` — bu CSS qoidalarini faqat ma'lum shartlar (odatda qurilma xususiyatlari, masalan, ekran kengligi, balandligi, `orientation`'i) bajarilgandagina qo'llash imkonini beruvchi CSS3 xususiyatidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular `responsive web design`'ning asosiy qismidir. `Media query` yordamida biz turli ekran o'lchamlari uchun turli xil `layout`'lar va stillarni yaratishimiz mumkin. Masalan, kichik ekranlarda elementlarni vertikal joylashtirish, kattaroq ekranlarda esa gorizontal joylashtirish yoki shrift o'lchamlarini o'zgartirish."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Media Query:",
+        "code": [
+          "/* Standart stillar (kichik ekranlar uchun) */",
+          ".container { width: 100%; }",
+          "",
+          "/* Ekran kengligi 768px dan katta bo'lganda qo'llaniladigan stillar */",
+          "@media (min-width: 768px) {",
+          "  .container {",
+          "    width: 750px;",
+          "    margin: 0 auto; /* Markazga tekislash */",
+          "  }",
+          "}",
+          "",
+          "/* Ekran kengligi 1200px dan katta bo'lganda qo'llaniladigan stillar */",
+          "@media (min-width: 1200px) {",
+          "  .container {",
+          "    width: 1170px;",
+          "  }",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Media query`'lar CSS qoidalarini ma'lum shartlarga (odatda ekran kengligi) qarab qo'llash imkonini beradi. Ular `responsive design` qurish uchun ishlatiladi, ya'ni saytni turli qurilmalar ekranlariga moslashtirish uchun."
   },
   {
     "id": "css-q16",
     "question": "CSS Preprocessor (Sass/Less) nima va uning afzalliklari qanday?",
     "topic": "CSS Preprocessors",
-    "answer": {
-      "definition": "CSS `Preprocessor`'lar (masalan, Sass, Less, Stylus) — bu standart CSS'ga qo'shimcha funksionallik (o'zgaruvchilar, `nesting`, `mixin`'lar, `inheritance` va hokazo) qo'shadigan skriptlash tillaridir. Ular yozgan kod keyinchalik brauzer tushunadigan oddiy CSS'ga kompilyatsiya qilinadi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Afzalliklari:" },
-        {
-          "type": "list",
-          "items": [
-            "**O'zgaruvchilar (`Variables`):** Ranglar, shriftlar kabi qayta-qayta ishlatiladigan qiymatlarni bitta joyda saqlash va oson o'zgartirish (`$primary-color: blue;`).",
-            "**`Nesting`:** CSS qoidalarini `HTML` strukturasi kabi ichma-ich yozish, bu kodni o'qishni osonlashtiradi (`nav { ul { li { ... }}}`).",
-            "**`Mixins`:** Qayta ishlatilishi mumkin bo'lgan stil bloklarini yaratish (masalan, `border-radius` uchun `vendor prefix`'larni avtomat qo'shadigan `mixin`).",
-            "**`Inheritance`/`Extend`:** Bir selektorning stillarini boshqasiga meros qilib olish, kod takrorlanishini kamaytirish.",
-            "**Funksiyalar va Matematik Amallar:** Stil qiymatlarini dinamik hisoblash.",
-            "**Fayllarni Bo'lish (`Partials`/`Import`):** CSS kodini kichikroq, boshqarilishi oson fayllarga bo'lish."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Kamchiligi: Kodni ishlatishdan oldin kompilyatsiya qilish kerak (buni `build tool`'lar avtomatlashtiradi)."
-        }
-      ],
-      "interviewAnswer": "CSS `Preprocessor`'lar (Sass/Less) standart CSS'ga o'zgaruvchilar, `nesting`, `mixin`'lar kabi qo'shimcha imkoniyatlar beradi. Ular kodni qisqaroq, tushunarliroq va qo'llab-quvvatlashni oson qiladi. Yozilgan kod keyin oddiy CSS'ga kompilyatsiya qilinadi."
-    }
+    "description": "CSS `Preprocessor`'lar (masalan, Sass, Less, Stylus) — bu standart CSS'ga qo'shimcha funksionallik (o'zgaruvchilar, `nesting`, `mixin`'lar, `inheritance` va hokazo) qo'shadigan skriptlash tillaridir. Ular yozgan kod keyinchalik brauzer tushunadigan oddiy CSS'ga kompilyatsiya qilinadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Afzalliklari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**O'zgaruvchilar (`Variables`):** Ranglar, shriftlar kabi qayta-qayta ishlatiladigan qiymatlarni bitta joyda saqlash va oson o'zgartirish (`$primary-color: blue;`).",
+          "**`Nesting`:** CSS qoidalarini `HTML` strukturasi kabi ichma-ich yozish, bu kodni o'qishni osonlashtiradi (`nav { ul { li { ... }}}`).",
+          "**`Mixins`:** Qayta ishlatilishi mumkin bo'lgan stil bloklarini yaratish (masalan, `border-radius` uchun `vendor prefix`'larni avtomat qo'shadigan `mixin`).",
+          "**`Inheritance`/`Extend`:** Bir selektorning stillarini boshqasiga meros qilib olish, kod takrorlanishini kamaytirish.",
+          "**Funksiyalar va Matematik Amallar:** Stil qiymatlarini dinamik hisoblash.",
+          "**Fayllarni Bo'lish (`Partials`/`Import`):** CSS kodini kichikroq, boshqarilishi oson fayllarga bo'lish."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Kamchiligi: Kodni ishlatishdan oldin kompilyatsiya qilish kerak (buni `build tool`'lar avtomatlashtiradi)."
+      }
+    ],
+    "interviewAnswer": "CSS `Preprocessor`'lar (Sass/Less) standart CSS'ga o'zgaruvchilar, `nesting`, `mixin`'lar kabi qo'shimcha imkoniyatlar beradi. Ular kodni qisqaroq, tushunarliroq va qo'llab-quvvatlashni oson qiladi. Yozilgan kod keyin oddiy CSS'ga kompilyatsiya qilinadi."
   },
   {
     "id": "css-q17",
     "question": "`z-index` xususiyati qanday ishlaydi va u qachon ta'sir qiladi?",
     "topic": "CSS Stacking Context",
-    "answer": {
-      "definition": "`z-index` xususiyati elementlarning `stacking order`'ini (bir-birining ustiga chiqish tartibini) Z-o'qi bo'ylab boshqaradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U **faqat `position` xususiyati `static`'dan farqli (`relative`, `absolute`, `fixed`, `sticky`) bo'lgan elementlarga** ta'sir qiladi. Kattaroq `z-index` qiymatiga ega element kichikroq qiymatga ega elementning ustida ko'rinadi. Agar `z-index` ko'rsatilmasa, elementlar `HTML` kodidagi tartibi bo'yicha (keyinroq kelgani ustida) joylashadi. Elementlar turli `stacking context`'larda bo'lsa, `z-index` faqat o'zining `context`'i ichida ishlaydi. Yangi `stacking context` odatda `position: absolute/relative` va `z-index` qiymati `auto`'dan farqli elementlar, yoki `opacity < 1`, `transform`, `filter` kabi xususiyatlarga ega elementlar tomonidan yaratiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            ".quti1 { position: absolute; z-index: 1; background: red; ... }",
-            ".quti2 { position: absolute; z-index: 2; background: blue; top: 10px; left: 10px; ... }",
-            "/* quti2 quti1 ning ustida ko'rinadi */"
-          ]
-        }
-      ],
-      "interviewAnswer": "`z-index` elementlarning ustma-ust chiqish tartibini belgilaydi. U faqat `position`'i `static` bo'lmagan elementlarga ta'sir qiladi. Katta raqam yuqoriroqda ko'rinadi. U faqat o'zining `stacking context`'i ichida ishlaydi."
-    }
+    "description": "`z-index` xususiyati elementlarning `stacking order`'ini (bir-birining ustiga chiqish tartibini) Z-o'qi bo'ylab boshqaradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U **faqat `position` xususiyati `static`'dan farqli (`relative`, `absolute`, `fixed`, `sticky`) bo'lgan elementlarga** ta'sir qiladi. Kattaroq `z-index` qiymatiga ega element kichikroq qiymatga ega elementning ustida ko'rinadi. Agar `z-index` ko'rsatilmasa, elementlar `HTML` kodidagi tartibi bo'yicha (keyinroq kelgani ustida) joylashadi. Elementlar turli `stacking context`'larda bo'lsa, `z-index` faqat o'zining `context`'i ichida ishlaydi. Yangi `stacking context` odatda `position: absolute/relative` va `z-index` qiymati `auto`'dan farqli elementlar, yoki `opacity < 1`, `transform`, `filter` kabi xususiyatlarga ega elementlar tomonidan yaratiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          ".quti1 { position: absolute; z-index: 1; background: red; ... }",
+          ".quti2 { position: absolute; z-index: 2; background: blue; top: 10px; left: 10px; ... }",
+          "/* quti2 quti1 ning ustida ko'rinadi */"
+        ]
+      }
+    ],
+    "interviewAnswer": "`z-index` elementlarning ustma-ust chiqish tartibini belgilaydi. U faqat `position`'i `static` bo'lmagan elementlarga ta'sir qiladi. Katta raqam yuqoriroqda ko'rinadi. U faqat o'zining `stacking context`'i ichida ishlaydi."
   },
   {
     "id": "css-q18",
     "question": "CSS'da `reset` va `normalize` nima?",
     "topic": "CSS Basics",
-    "answer": {
-      "definition": "Ikkalasi ham turli brauzerlarda elementlarning standart stillari (`user agent stylesheet`) har xil bo'lishi muammosini hal qilishga qaratilgan, ammo ular buni turli yondashuvlar bilan bajaradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**CSS `Reset`:** Barcha `HTML` elementlarining standart brauzer stillarini (`margin`, `padding`, `font-size` va hokazo) **butunlay olib tashlashga** harakat qiladi. Maqsad — barcha brauzerlarda stilni noldan, bir xil boshlang'ich nuqtadan boshlash. Kamchiligi: keraksiz stillarni ham olib tashlashi va keyinchalik ko'proq stil yozishni talab qilishi mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Normalize.css` (yoki shunga o'xshashlar):** Elementlarning standart stillarini butunlay olib tashlash o'rniga, ularni turli brauzerlarda **bir xil va izchil (`consistent`) ko'rinishga** keltirishga harakat qiladi. U faqat brauzerlar orasida farq qiladigan stillarni to'g'rilaydi va ba'zi foydali standartlarni saqlab qoladi. Bu odatda `reset`'ga qaraganda kamroq kod yozishni talab qiladi va ko'proq tavsiya etiladi."
-        }
-      ],
-      "interviewAnswer": "`Reset` CSS barcha standart brauzer stillarini olib tashlaydi. `Normalize` CSS esa standart stillarni olib tashlamaydi, balki ularni turli brauzerlarda bir xil ko'rinishga keltiradi va ba'zi xatolarni tuzatadi. `Normalize` odatda afzalroq hisoblanadi."
-    }
+    "description": "Ikkalasi ham turli brauzerlarda elementlarning standart stillari (`user agent stylesheet`) har xil bo'lishi muammosini hal qilishga qaratilgan, ammo ular buni turli yondashuvlar bilan bajaradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**CSS `Reset`:** Barcha `HTML` elementlarining standart brauzer stillarini (`margin`, `padding`, `font-size` va hokazo) **butunlay olib tashlashga** harakat qiladi. Maqsad — barcha brauzerlarda stilni noldan, bir xil boshlang'ich nuqtadan boshlash. Kamchiligi: keraksiz stillarni ham olib tashlashi va keyinchalik ko'proq stil yozishni talab qilishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Normalize.css` (yoki shunga o'xshashlar):** Elementlarning standart stillarini butunlay olib tashlash o'rniga, ularni turli brauzerlarda **bir xil va izchil (`consistent`) ko'rinishga** keltirishga harakat qiladi. U faqat brauzerlar orasida farq qiladigan stillarni to'g'rilaydi va ba'zi foydali standartlarni saqlab qoladi. Bu odatda `reset`'ga qaraganda kamroq kod yozishni talab qiladi va ko'proq tavsiya etiladi."
+      }
+    ],
+    "interviewAnswer": "`Reset` CSS barcha standart brauzer stillarini olib tashlaydi. `Normalize` CSS esa standart stillarni olib tashlamaydi, balki ularni turli brauzerlarda bir xil ko'rinishga keltiradi va ba'zi xatolarni tuzatadi. `Normalize` odatda afzalroq hisoblanadi."
   },
   {
     "id": "css-q19",
     "question": "`inline`, `block` va `inline-block` `display` qiymatlari o'rtasida qanday farq bor?",
     "topic": "CSS Display",
-    "answer": {
-      "definition": "`display` xususiyati elementning `layout`'dagi turini va ichki hamda tashqi displey xususiyatlarini belgilaydi. `inline`, `block`, va `inline-block` eng asosiy qiymatlardandir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`inline`:** Element matn oqimi ichida qoladi, yangi qator boshlamaydi. Faqat o'z kontenti kengligini egallaydi. `width`, `height`, `vertical-align` (qisman), `margin-top`, `margin-bottom` xususiyatlari unga to'liq ta'sir qilmaydi. Misollar: `<span>`, `<a>`, `<img>`."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`block`:** Element yangi qatordan boshlanadi va odatda o'z `parent`'ining to'liq kengligini egallaydi. `width`, `height`, `margin`, `padding` xususiyatlari unga to'liq ta'sir qiladi. Misollar: `<div>`, `<p>`, `<h1>`."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`inline-block`:** Element matn oqimi ichida qoladi (yangi qator boshlamaydi), xuddi `inline` kabi. Ammo, unga `width`, `height`, `margin-top/bottom`, `padding` xususiyatlarini berish mumkin, xuddi `block` kabi. U `inline` va `block`'ning gibrididir."
-        }
-      ],
-      "interviewAnswer": "`inline` qator ichida qoladi, `width`/`height` olmaydi. `block` yangi qator boshlaydi, to'liq kenglikni egallaydi, `width`/`height` oladi. `inline-block` qator ichida qoladi, lekin `width`/`height` oladi."
-    }
+    "description": "`display` xususiyati elementning `layout`'dagi turini va ichki hamda tashqi displey xususiyatlarini belgilaydi. `inline`, `block`, va `inline-block` eng asosiy qiymatlardandir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`inline`:** Element matn oqimi ichida qoladi, yangi qator boshlamaydi. Faqat o'z kontenti kengligini egallaydi. `width`, `height`, `vertical-align` (qisman), `margin-top`, `margin-bottom` xususiyatlari unga to'liq ta'sir qilmaydi. Misollar: `<span>`, `<a>`, `<img>`."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`block`:** Element yangi qatordan boshlanadi va odatda o'z `parent`'ining to'liq kengligini egallaydi. `width`, `height`, `margin`, `padding` xususiyatlari unga to'liq ta'sir qiladi. Misollar: `<div>`, `<p>`, `<h1>`."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`inline-block`:** Element matn oqimi ichida qoladi (yangi qator boshlamaydi), xuddi `inline` kabi. Ammo, unga `width`, `height`, `margin-top/bottom`, `padding` xususiyatlarini berish mumkin, xuddi `block` kabi. U `inline` va `block`'ning gibrididir."
+      }
+    ],
+    "interviewAnswer": "`inline` qator ichida qoladi, `width`/`height` olmaydi. `block` yangi qator boshlaydi, to'liq kenglikni egallaydi, `width`/`height` oladi. `inline-block` qator ichida qoladi, lekin `width`/`height` oladi."
   },
   {
     "id": "css-q20",
     "question": "CSS `transition` va `animation` xususiyatlari o'rtasida qanday farq bor?",
     "topic": "CSS Animations & Transitions",
-    "answer": {
-      "definition": "Ikkalasi ham elementlarning stillarini vaqt o'tishi bilan silliq o'zgartirish uchun ishlatiladi, ammo ularning qo'llanilishi va boshqarilishi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`transition`:** Elementning bir holatdan (`state`) ikkinchi holatga (masalan, `:hover` bo'lganda) o'tishini silliqlashtiradi. U faqat **mavjud stil o'zgarishiga javoban** ishlaydi va odatda oddiy, ikki nuqta orasidagi animatsiyalar uchun ishlatiladi. `transition-property`, `transition-duration`, `transition-timing-function`, `transition-delay` xususiyatlari bilan boshqariladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`animation`:** Ancha murakkabroq, ko'p bosqichli animatsiyalarni yaratish imkonini beradi. U `@keyframes` qoidasi yordamida animatsiyaning turli vaqt nuqtalaridagi (`0%`, `50%`, `100%`) stillarini aniqlashni talab qiladi. `animation`'lar `JavaScript`'siz ham avtomatik boshlanishi, takrorlanishi (`iteration-count`), yo'nalishini o'zgartirishi (`direction`) mumkin. `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`, `animation-iteration-count`, `animation-direction` kabi xususiyatlar bilan boshqariladi."
-        }
-      ],
-      "interviewAnswer": "`transition` oddiy, ikki holat orasidagi (masalan, `:hover`) silliq o'tish uchun ishlatiladi. `animation` esa `@keyframes` yordamida aniqlanadigan murakkab, ko'p bosqichli animatsiyalarni yaratish uchun ishlatiladi va ko'proq boshqaruv imkoniyatlariga ega."
-    }
+    "description": "Ikkalasi ham elementlarning stillarini vaqt o'tishi bilan silliq o'zgartirish uchun ishlatiladi, ammo ularning qo'llanilishi va boshqarilishi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`transition`:** Elementning bir holatdan (`state`) ikkinchi holatga (masalan, `:hover` bo'lganda) o'tishini silliqlashtiradi. U faqat **mavjud stil o'zgarishiga javoban** ishlaydi va odatda oddiy, ikki nuqta orasidagi animatsiyalar uchun ishlatiladi. `transition-property`, `transition-duration`, `transition-timing-function`, `transition-delay` xususiyatlari bilan boshqariladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`animation`:** Ancha murakkabroq, ko'p bosqichli animatsiyalarni yaratish imkonini beradi. U `@keyframes` qoidasi yordamida animatsiyaning turli vaqt nuqtalaridagi (`0%`, `50%`, `100%`) stillarini aniqlashni talab qiladi. `animation`'lar `JavaScript`'siz ham avtomatik boshlanishi, takrorlanishi (`iteration-count`), yo'nalishini o'zgartirishi (`direction`) mumkin. `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`, `animation-iteration-count`, `animation-direction` kabi xususiyatlar bilan boshqariladi."
+      }
+    ],
+    "interviewAnswer": "`transition` oddiy, ikki holat orasidagi (masalan, `:hover`) silliq o'tish uchun ishlatiladi. `animation` esa `@keyframes` yordamida aniqlanadigan murakkab, ko'p bosqichli animatsiyalarni yaratish uchun ishlatiladi va ko'proq boshqaruv imkoniyatlariga ega."
   },
-
   {
     "id": "css-q21",
     "question": "CSS'da o'lchov birliklari (`units`) qanday turlarga bo'linadi?",
     "topic": "CSS Units",
-    "answer": {
-      "definition": "CSS qiymatlarni (masalan, kenglik, balandlik, shrift o'lchami) ifodalash uchun turli xil o'lchov birliklarini taqdim etadi. Ular asosan ikki katta guruhga bo'linadi: Absolyut (`absolute`) va Nisbiy (`relative`).",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**Absolyut Birliklar:** Belgilangan, qat'iy o'lchamga ega va boshqa elementlarga bog'liq emas. Odatda chop etish (`print`) uchun yoki ekrandagi o'lcham aniq ma'lum bo'lganda ishlatiladi. Misollar: `px` (piksellar - ekranga nisbatan eng ko'p ishlatiladigan absolyut birlik), `pt` (`points`), `cm` (santimetr), `mm` (millimetr), `in` (`inches`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Nisbiy Birliklar:** Boshqa biror qiymatga (masalan, `parent` elementning `font-size`'iga, `viewport` o'lchamiga) nisbatan hisoblanadi. Ular `responsive design` va moslashuvchan `layout`'lar uchun juda muhim. Misollar: `%` (`parent` elementga nisbatan foizda), `em` (joriy elementning `font-size`'iga nisbatan), `rem` (ildiz element (`<html>`)'ning `font-size`'iga nisbatan), `vw` (`viewport width` - brauzer oynasi kengligining foizi), `vh` (`viewport height` - brauzer oynasi balandligining foizi), `vmin`/`vmax` (`viewport`'ning kichikroq/kattaroq o'lchamining foizi)."
-        }
-      ],
-      "interviewAnswer": "CSS birliklari ikki turga bo'linadi: Absolyut (`px`, `pt`) - qat'iy o'lcham; va Nisbiy (`%`, `em`, `rem`, `vw`, `vh`) - boshqa qiymatga nisbatan. Nisbiy birliklar `responsive design` uchun muhim."
-    }
+    "description": "CSS qiymatlarni (masalan, kenglik, balandlik, shrift o'lchami) ifodalash uchun turli xil o'lchov birliklarini taqdim etadi. Ular asosan ikki katta guruhga bo'linadi: Absolyut (`absolute`) va Nisbiy (`relative`).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Absolyut Birliklar:** Belgilangan, qat'iy o'lchamga ega va boshqa elementlarga bog'liq emas. Odatda chop etish (`print`) uchun yoki ekrandagi o'lcham aniq ma'lum bo'lganda ishlatiladi. Misollar: `px` (piksellar - ekranga nisbatan eng ko'p ishlatiladigan absolyut birlik), `pt` (`points`), `cm` (santimetr), `mm` (millimetr), `in` (`inches`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Nisbiy Birliklar:** Boshqa biror qiymatga (masalan, `parent` elementning `font-size`'iga, `viewport` o'lchamiga) nisbatan hisoblanadi. Ular `responsive design` va moslashuvchan `layout`'lar uchun juda muhim. Misollar: `%` (`parent` elementga nisbatan foizda), `em` (joriy elementning `font-size`'iga nisbatan), `rem` (ildiz element (`<html>`)'ning `font-size`'iga nisbatan), `vw` (`viewport width` - brauzer oynasi kengligining foizi), `vh` (`viewport height` - brauzer oynasi balandligining foizi), `vmin`/`vmax` (`viewport`'ning kichikroq/kattaroq o'lchamining foizi)."
+      }
+    ],
+    "interviewAnswer": "CSS birliklari ikki turga bo'linadi: Absolyut (`px`, `pt`) - qat'iy o'lcham; va Nisbiy (`%`, `em`, `rem`, `vw`, `vh`) - boshqa qiymatga nisbatan. Nisbiy birliklar `responsive design` uchun muhim."
   },
   {
     "id": "css-q22",
     "question": "`box-sizing` xususiyati nima qiladi?",
     "topic": "CSS Box Model",
-    "answer": {
-      "definition": "`box-sizing` xususiyati elementning umumiy kengligi (`width`) va balandligi (`height`) qanday hisoblanishini belgilaydi, ya'ni `padding` va `border` bu o'lchamlarga qo'shiladimi yoki ichida hisoblanadimi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`content-box` (Standart qiymat):** Elementga berilgan `width` va `height` faqat `content` maydoniga taalluqli bo'ladi. Elementning haqiqiy egallagan kengligi `width + padding-left + padding-right + border-left + border-right` bo'ladi. Bu `layout` qurishni qiyinlashtirishi mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`border-box`:** Elementga berilgan `width` va `height` **`padding` va `border`'ni ham o'z ichiga oladi**. Ya'ni, elementning haqiqiy egallagan kengligi aniq `width` qiymatiga teng bo'ladi. `padding` yoki `border` qo'shilsa, `content` maydoni kichrayadi. Bu `layout` qurishni ancha intuitiv va oson qiladi. Ko'pchilik dasturchilar barcha elementlarga `box-sizing: border-box;` qo'llashni afzal ko'radi (`* { box-sizing: border-box; }`)."
-        }
-      ],
-      "interviewAnswer": "`box-sizing` elementning `width` va `height` hisoblanishini belgilaydi. Standart `content-box`'da `padding` va `border` `width`/`height`'ga qo'shiladi. `border-box`'da esa `padding` va `border` `width`/`height`'ning ichida hisoblanadi, bu `layout` qurishni osonlashtiradi."
-    }
+    "description": "`box-sizing` xususiyati elementning umumiy kengligi (`width`) va balandligi (`height`) qanday hisoblanishini belgilaydi, ya'ni `padding` va `border` bu o'lchamlarga qo'shiladimi yoki ichida hisoblanadimi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`content-box` (Standart qiymat):** Elementga berilgan `width` va `height` faqat `content` maydoniga taalluqli bo'ladi. Elementning haqiqiy egallagan kengligi `width + padding-left + padding-right + border-left + border-right` bo'ladi. Bu `layout` qurishni qiyinlashtirishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`border-box`:** Elementga berilgan `width` va `height` **`padding` va `border`'ni ham o'z ichiga oladi**. Ya'ni, elementning haqiqiy egallagan kengligi aniq `width` qiymatiga teng bo'ladi. `padding` yoki `border` qo'shilsa, `content` maydoni kichrayadi. Bu `layout` qurishni ancha intuitiv va oson qiladi. Ko'pchilik dasturchilar barcha elementlarga `box-sizing: border-box;` qo'llashni afzal ko'radi (`* { box-sizing: border-box; }`)."
+      }
+    ],
+    "interviewAnswer": "`box-sizing` elementning `width` va `height` hisoblanishini belgilaydi. Standart `content-box`'da `padding` va `border` `width`/`height`'ga qo'shiladi. `border-box`'da esa `padding` va `border` `width`/`height`'ning ichida hisoblanadi, bu `layout` qurishni osonlashtiradi."
   },
   {
     "id": "css-q23",
     "question": "CSS'da `float` elementidan keyingi elementlarga ta'sirini qanday to'xtatish mumkin (`clearing floats`)?",
     "topic": "CSS Layout",
-    "answer": {
-      "definition": "`float` ishlatilganda, undan keyingi elementlar uning atrofida aylanishga harakat qiladi. Bu ta'sirni to'xtatish va keyingi elementni `float` elementidan pastda boshlash uchun \"tozalash\" (`clearing`) usullari qo'llaniladi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Eng keng tarqalgan usullar:" },
-        {
-          "type": "list",
-          "items": [
-            "**`clear` Xususiyati:** `float`'dan keyingi elementga `clear: left;`, `clear: right;` yoki `clear: both;` xususiyatini berish. Bu elementni mos ravishda chapdagi, o'ngdagi yoki har ikkala tomondagi `float` elementlardan pastga tushiradi.",
-            "**`overflow` Xususiyati (Parent'ga):** `float` elementlarni o'z ichiga olgan `parent` elementga `overflow: hidden;`, `overflow: auto;` yoki `overflow: scroll;` (lekin `visible` emas) berish ham `parent`'ni `float`'larni to'liq qamrab olishga majbur qiladi. Bu ba'zan `clearfix`'ga alternativa sifatida ishlatiladi.",
-            "**`clearfix Hack`:** Bu `float` elementlarni o'z ichiga olgan `parent` elementga maxsus `pseudo-element` (`::after`) orqali `clear: both;` qo'llaydigan klassik usul. Bu `parent`'ga qo'shimcha `markup` qo'shmasdan `float`'larni tozalash imkonini beradi."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "`clear` bilan:",
-          "code": [".keyingi-element { clear: both; }"]
-        },
-        {
-          "title": "`overflow` bilan:",
-          "code": [".parent-element { overflow: auto; /* yoki hidden */ }"]
-        },
-        {
-          "title": "`clearfix` (oddiy variant):",
-          "code": [
-            ".clearfix::after {",
-            "  content: \"\";",
-            "  display: block;",
-            "  clear: both;",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`float` ta'sirini to'xtatish uchun keyingi elementga `clear: both;` berish mumkin, yoki `float`'larni o'z ichiga olgan `parent` elementga `overflow: hidden;` (yoki `auto`) berish yoki `clearfix hack`'dan foydalanish mumkin."
-    }
+    "description": "`float` ishlatilganda, undan keyingi elementlar uning atrofida aylanishga harakat qiladi. Bu ta'sirni to'xtatish va keyingi elementni `float` elementidan pastda boshlash uchun \"tozalash\" (`clearing`) usullari qo'llaniladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eng keng tarqalgan usullar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`clear` Xususiyati:** `float`'dan keyingi elementga `clear: left;`, `clear: right;` yoki `clear: both;` xususiyatini berish. Bu elementni mos ravishda chapdagi, o'ngdagi yoki har ikkala tomondagi `float` elementlardan pastga tushiradi.",
+          "**`overflow` Xususiyati (Parent'ga):** `float` elementlarni o'z ichiga olgan `parent` elementga `overflow: hidden;`, `overflow: auto;` yoki `overflow: scroll;` (lekin `visible` emas) berish ham `parent`'ni `float`'larni to'liq qamrab olishga majbur qiladi. Bu ba'zan `clearfix`'ga alternativa sifatida ishlatiladi.",
+          "**`clearfix Hack`:** Bu `float` elementlarni o'z ichiga olgan `parent` elementga maxsus `pseudo-element` (`::after`) orqali `clear: both;` qo'llaydigan klassik usul. Bu `parent`'ga qo'shimcha `markup` qo'shmasdan `float`'larni tozalash imkonini beradi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`clear` bilan:",
+        "code": [
+          ".keyingi-element { clear: both; }"
+        ]
+      },
+      {
+        "title": "`overflow` bilan:",
+        "code": [
+          ".parent-element { overflow: auto; /* yoki hidden */ }"
+        ]
+      },
+      {
+        "title": "`clearfix` (oddiy variant):",
+        "code": [
+          ".clearfix::after {",
+          "  content: \"\";",
+          "  display: block;",
+          "  clear: both;",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`float` ta'sirini to'xtatish uchun keyingi elementga `clear: both;` berish mumkin, yoki `float`'larni o'z ichiga olgan `parent` elementga `overflow: hidden;` (yoki `auto`) berish yoki `clearfix hack`'dan foydalanish mumkin."
   },
   {
     "id": "css-q24",
     "question": "CSS o'zgaruvchilari (`variables` yoki `custom properties`) nima va ular qanday ishlatiladi?",
     "topic": "CSS Variables",
-    "answer": {
-      "definition": "CSS o'zgaruvchilari (`--` bilan boshlanadi) CSS qoidalari ichida qayta ishlatilishi mumkin bo'lgan qiymatlarni (masalan, ranglar, o'lchamlar) saqlash imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular odatda `:root` `pseudo-class`'ida (global o'zgaruvchilar uchun) yoki ma'lum bir selektor ichida (lokal o'zgaruvchilar uchun) e'lon qilinadi. Qiymatni ishlatish uchun `var()` funksiyasidan foydalaniladi (`var(--asosiy-rang)`). O'zgaruvchilar kodni takrorlanishdan saqlaydi, `theming` (mavzularni o'zgartirish)ni osonlashtiradi va `JavaScript` orqali dinamik ravishda o'zgartirilishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            ":root {",
-            "  --primary-color: #3498db;",
-            "  --base-font-size: 16px;",
-            "}",
-            "",
-            "body {",
-            "  font-size: var(--base-font-size);",
-            "}",
-            "",
-            ".button {",
-            "  background-color: var(--primary-color);",
-            "  color: white;",
-            "}",
-            "",
-            "/* JavaScript orqali o'zgartirish */",
-            "// document.documentElement.style.setProperty('--primary-color', 'red');"
-          ]
-        }
-      ],
-      "interviewAnswer": "CSS o'zgaruvchilari (`--main-color: blue;`) qiymatlarni saqlash va qayta ishlatish imkonini beradi. Ular `:root`'da e'lon qilinadi va `var(--main-color)` orqali ishlatiladi. Kodni takrorlanishdan saqlaydi va `theming`'ni osonlashtiradi."
-    }
+    "description": "CSS o'zgaruvchilari (`--` bilan boshlanadi) CSS qoidalari ichida qayta ishlatilishi mumkin bo'lgan qiymatlarni (masalan, ranglar, o'lchamlar) saqlash imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular odatda `:root` `pseudo-class`'ida (global o'zgaruvchilar uchun) yoki ma'lum bir selektor ichida (lokal o'zgaruvchilar uchun) e'lon qilinadi. Qiymatni ishlatish uchun `var()` funksiyasidan foydalaniladi (`var(--asosiy-rang)`). O'zgaruvchilar kodni takrorlanishdan saqlaydi, `theming` (mavzularni o'zgartirish)ni osonlashtiradi va `JavaScript` orqali dinamik ravishda o'zgartirilishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          ":root {",
+          "  --primary-color: #3498db;",
+          "  --base-font-size: 16px;",
+          "}",
+          "",
+          "body {",
+          "  font-size: var(--base-font-size);",
+          "}",
+          "",
+          ".button {",
+          "  background-color: var(--primary-color);",
+          "  color: white;",
+          "}",
+          "",
+          "/* JavaScript orqali o'zgartirish */",
+          "// document.documentElement.style.setProperty('--primary-color', 'red');"
+        ]
+      }
+    ],
+    "interviewAnswer": "CSS o'zgaruvchilari (`--main-color: blue;`) qiymatlarni saqlash va qayta ishlatish imkonini beradi. Ular `:root`'da e'lon qilinadi va `var(--main-color)` orqali ishlatiladi. Kodni takrorlanishdan saqlaydi va `theming`'ni osonlashtiradi."
   },
   {
     "id": "css-q25",
     "question": "`font-family` xususiyati qanday ishlaydi va `fallback` shriftlar nima uchun kerak?",
     "topic": "CSS Typography",
-    "answer": {
-      "definition": "`font-family` xususiyati element matni uchun ishlatiladigan shrift(lar) ro'yxatini belgilaydi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Brauzer ro'yxatdagi birinchi shriftni foydalanuvchi tizimida topishga harakat qiladi. Agar topilsa, o'shani ishlatadi. Agar topilmasa, ro'yxatdagi keyingi shriftni qidiradi va hokazo. **`Fallback` shriftlar** — bu ro'yxatning oxirida keladigan umumiy shrift oilalari (`serif`, `sans-serif`, `monospace`, `cursive`, `fantasy`). Ulardan kamida bittasini ko'rsatish juda muhim, chunki agar ro'yxatdagi aniq shriftlarning hech biri topilmasa, brauzer o'sha umumiy oilaga mansub standart shriftni ishlatadi va matn baribir o'qilishi mumkin bo'ladi. Shrift nomlarida bo'sh joy bo'lsa, ular qo'shtirnoq ichiga olinishi kerak."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "body {",
-            "  /* Avval 'Roboto'ni qidiradi, topilmasa 'Arial'ni, u ham topilmasa, ",
-            "     tizimdagi standart 'sans-serif' shriftni ishlatadi. */",
-            "  font-family: 'Roboto', Arial, sans-serif;",
-            "}",
-            "",
-            "code {",
-            "  font-family: Consolas, 'Courier New', monospace;",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`font-family` shriftlar ro'yxatini belgilaydi. Brauzer birinchisini topishga harakat qiladi, topilmasa keyingisiga o'tadi. Ro'yxat oxirida umumiy `fallback` oilasini (`serif`, `sans-serif`) ko'rsatish muhim, shunda hech qaysi shrift topilmasa ham, matn ko'rinadi."
-    }
+    "description": "`font-family` xususiyati element matni uchun ishlatiladigan shrift(lar) ro'yxatini belgilaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Brauzer ro'yxatdagi birinchi shriftni foydalanuvchi tizimida topishga harakat qiladi. Agar topilsa, o'shani ishlatadi. Agar topilmasa, ro'yxatdagi keyingi shriftni qidiradi va hokazo. **`Fallback` shriftlar** — bu ro'yxatning oxirida keladigan umumiy shrift oilalari (`serif`, `sans-serif`, `monospace`, `cursive`, `fantasy`). Ulardan kamida bittasini ko'rsatish juda muhim, chunki agar ro'yxatdagi aniq shriftlarning hech biri topilmasa, brauzer o'sha umumiy oilaga mansub standart shriftni ishlatadi va matn baribir o'qilishi mumkin bo'ladi. Shrift nomlarida bo'sh joy bo'lsa, ular qo'shtirnoq ichiga olinishi kerak."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "body {",
+          "  /* Avval 'Roboto'ni qidiradi, topilmasa 'Arial'ni, u ham topilmasa, ",
+          "     tizimdagi standart 'sans-serif' shriftni ishlatadi. */",
+          "  font-family: 'Roboto', Arial, sans-serif;",
+          "}",
+          "",
+          "code {",
+          "  font-family: Consolas, 'Courier New', monospace;",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`font-family` shriftlar ro'yxatini belgilaydi. Brauzer birinchisini topishga harakat qiladi, topilmasa keyingisiga o'tadi. Ro'yxat oxirida umumiy `fallback` oilasini (`serif`, `sans-serif`) ko'rsatish muhim, shunda hech qaysi shrift topilmasa ham, matn ko'rinadi."
   },
   {
     "id": "css-q26",
     "question": "CSS'da `combinator`'lar nima va ularning turlari qanday?",
     "topic": "CSS Selectors",
-    "answer": {
-      "definition": "`Combinator`'lar (birlashtiruvchilar) ikki yoki undan ortiq oddiy selektorlar orasidagi munosabatni ifodalaydi va shu munosabatga mos keladigan elementlarni tanlashga yordam beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "To'rtta asosiy `combinator` mavjud:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Descendant Combinator (bo'sh joy):** `div p` - `div` elementining ichida (qancha chuqurlikda bo'lishidan qat'iy nazar) joylashgan barcha `p` elementlarini tanlaydi.",
-            "**Child Combinator (`>`):** `ul > li` - faqat `ul` elementining bevosita (`direct`) `child`'i bo'lgan `li` elementlarini tanlaydi.",
-            "**Adjacent Sibling Combinator (`+`):** `h2 + p` - `h2` elementidan keyin darhol keladigan va u bilan bir `parent`'ga ega bo'lgan `p` elementini tanlaydi.",
-            "**General Sibling Combinator (`~`):** `h2 ~ p` - `h2` elementidan keyin keladigan va u bilan bir `parent`'ga ega bo'lgan **barcha** `p` elementlarini tanlaydi."
-          ]
-        }
-      ],
-      "interviewAnswer": "`Combinator`'lar selektorlar orasidagi munosabatni belgilaydi. Turlari: bo'sh joy (avlod), `>` (bola), `+` (keyingi qo'shni), `~` (keyingi barcha qo'shnilar)."
-    }
+    "description": "`Combinator`'lar (birlashtiruvchilar) ikki yoki undan ortiq oddiy selektorlar orasidagi munosabatni ifodalaydi va shu munosabatga mos keladigan elementlarni tanlashga yordam beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "To'rtta asosiy `combinator` mavjud:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Descendant Combinator (bo'sh joy):** `div p` - `div` elementining ichida (qancha chuqurlikda bo'lishidan qat'iy nazar) joylashgan barcha `p` elementlarini tanlaydi.",
+          "**Child Combinator (`>`):** `ul > li` - faqat `ul` elementining bevosita (`direct`) `child`'i bo'lgan `li` elementlarini tanlaydi.",
+          "**Adjacent Sibling Combinator (`+`):** `h2 + p` - `h2` elementidan keyin darhol keladigan va u bilan bir `parent`'ga ega bo'lgan `p` elementini tanlaydi.",
+          "**General Sibling Combinator (`~`):** `h2 ~ p` - `h2` elementidan keyin keladigan va u bilan bir `parent`'ga ega bo'lgan **barcha** `p` elementlarini tanlaydi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Combinator`'lar selektorlar orasidagi munosabatni belgilaydi. Turlari: bo'sh joy (avlod), `>` (bola), `+` (keyingi qo'shni), `~` (keyingi barcha qo'shnilar)."
   },
   {
     "id": "css-q27",
     "question": "`px`, `em`, `rem`, `%`, `vw`/`vh` o'lchov birliklari qachon ishlatilishi kerak?",
     "topic": "CSS Units",
-    "answer": {
-      "definition": "Har bir CSS o'lchov birligining o'zining afzalliklari va qo'llanilish sohalari bor.",
-      "explanation": [
-        {
-          "type": "list",
-          "items": [
-            "**`px` (Pixels):** Absolyut birlik. Odatda `border` qalinligi, ba'zan aniq o'lcham kerak bo'lgan elementlar (ikonlar kabi) yoki `media query breakpoint`'lari uchun ishlatiladi. `font-size` uchun ishlatish tavsiya etilmaydi (`accessibility` muammolari bo'lishi mumkin).",
-            "**`em`:** Joriy elementning `font-size`'iga nisbatan. Odatda `padding`, `margin`, `line-height` kabi `font-size` bilan birga masshtablanishi kerak bo'lgan xususiyatlar uchun ishlatiladi. Ichma-ich `font-size`'larda ehtiyot bo'lish kerak.",
-            "**`rem` (Root em):** `<html>` elementining `font-size`'iga nisbatan. Butun sahifa bo'ylab izchil masshtablanish kerak bo'lgan elementlar uchun (umumiy `layout` o'lchamlari, komponentlar o'lchamlari, asosiy `font-size`) eng ko'p tavsiya etiladigan birlik.",
-            "**`%` (Percentage):** `Parent` elementning mos xususiyatiga nisbatan foizda. `width`, `height`, `margin`, `padding` kabi `parent`'ga bog'liq bo'lishi kerak bo'lgan o'lchamlar uchun qulay.",
-            "**`vw` / `vh` (Viewport Width / Height):** Brauzer oynasining kengligi (`vw`) yoki balandligi (`vh`)'ning foizi. Odatda `full-screen` `layout`'lar, `modal` oynalar yoki `viewport`'ga bog'liq bo'lgan tipografiya uchun ishlatiladi."
-          ]
-        }
-      ],
-      "interviewAnswer": "`px` - absolyut, `border` kabi aniq o'lchamlar uchun. `em` - joriy `font-size`'ga nisbatan, `padding`/`margin` uchun. `rem` - ildiz `font-size`'iga nisbatan, umumiy `layout` va `font-size` uchun eng yaxshisi. `%` - `parent`'ga nisbatan. `vw`/`vh` - `viewport`'ga nisbatan, `full-screen` elementlar uchun."
-    }
+    "description": "Har bir CSS o'lchov birligining o'zining afzalliklari va qo'llanilish sohalari bor.",
+    "detailedExplanation": [
+      {
+        "type": "list",
+        "items": [
+          "**`px` (Pixels):** Absolyut birlik. Odatda `border` qalinligi, ba'zan aniq o'lcham kerak bo'lgan elementlar (ikonlar kabi) yoki `media query breakpoint`'lari uchun ishlatiladi. `font-size` uchun ishlatish tavsiya etilmaydi (`accessibility` muammolari bo'lishi mumkin).",
+          "**`em`:** Joriy elementning `font-size`'iga nisbatan. Odatda `padding`, `margin`, `line-height` kabi `font-size` bilan birga masshtablanishi kerak bo'lgan xususiyatlar uchun ishlatiladi. Ichma-ich `font-size`'larda ehtiyot bo'lish kerak.",
+          "**`rem` (Root em):** `<html>` elementining `font-size`'iga nisbatan. Butun sahifa bo'ylab izchil masshtablanish kerak bo'lgan elementlar uchun (umumiy `layout` o'lchamlari, komponentlar o'lchamlari, asosiy `font-size`) eng ko'p tavsiya etiladigan birlik.",
+          "**`%` (Percentage):** `Parent` elementning mos xususiyatiga nisbatan foizda. `width`, `height`, `margin`, `padding` kabi `parent`'ga bog'liq bo'lishi kerak bo'lgan o'lchamlar uchun qulay.",
+          "**`vw` / `vh` (Viewport Width / Height):** Brauzer oynasining kengligi (`vw`) yoki balandligi (`vh`)'ning foizi. Odatda `full-screen` `layout`'lar, `modal` oynalar yoki `viewport`'ga bog'liq bo'lgan tipografiya uchun ishlatiladi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`px` - absolyut, `border` kabi aniq o'lchamlar uchun. `em` - joriy `font-size`'ga nisbatan, `padding`/`margin` uchun. `rem` - ildiz `font-size`'iga nisbatan, umumiy `layout` va `font-size` uchun eng yaxshisi. `%` - `parent`'ga nisbatan. `vw`/`vh` - `viewport`'ga nisbatan, `full-screen` elementlar uchun."
   },
   {
     "id": "css-q28",
     "question": "CSS'da `inheritance` (meros olish) qanday ishlaydi?",
     "topic": "CSS Cascade & Inheritance",
-    "answer": {
-      "definition": "`Inheritance` — bu ba'zi CSS xususiyatlarining qiymatlari `parent` elementdan uning `child` elementlariga avtomatik ravishda o'tishi (meros bo'lib qolishi) mexanizmidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Barcha xususiyatlar ham meros olinmaydi. Odatda **matnga oid xususiyatlar** (`color`, `font-family`, `font-size`, `font-weight`, `line-height`, `text-align`) meros olinadi. **`Box Model`'ga oid xususiyatlar** (`width`, `height`, `padding`, `margin`, `border`) va `position` kabi `layout` xususiyatlari esa odatda **meros olinmaydi**. Agar `child` elementga o'sha xususiyat uchun aniq qiymat berilsa, u meros olingan qiymatni bekor qiladi (`override`). Shuningdek, `inherit` kalit so'zi yordamida meros olinmaydigan xususiyatni ham majburan meros olish mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "body {",
-            "  font-family: Arial, sans-serif;",
-            "  color: #333;",
-            "  border: 1px solid red; /* Bu meros olinmaydi */",
-            "}",
-            "",
-            "p {",
-            "  /* 'font-family' va 'color' 'body'dan meros olinadi */",
-            "  /* 'border' meros olinmaydi */",
-            "}",
-            "",
-            "a {",
-            "  color: blue; /* Meros olingan 'color' bekor qilinadi */",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Inheritance` `parent` elementdagi ba'zi CSS xususiyatlari (asosan matnga oid: `color`, `font-family`) qiymatlarining uning `child`'lariga avtomatik o'tishidir. `Box model` xususiyatlari (`width`, `padding`) odatda meros olinmaydi."
-    }
+    "description": "`Inheritance` — bu ba'zi CSS xususiyatlarining qiymatlari `parent` elementdan uning `child` elementlariga avtomatik ravishda o'tishi (meros bo'lib qolishi) mexanizmidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Barcha xususiyatlar ham meros olinmaydi. Odatda **matnga oid xususiyatlar** (`color`, `font-family`, `font-size`, `font-weight`, `line-height`, `text-align`) meros olinadi. **`Box Model`'ga oid xususiyatlar** (`width`, `height`, `padding`, `margin`, `border`) va `position` kabi `layout` xususiyatlari esa odatda **meros olinmaydi**. Agar `child` elementga o'sha xususiyat uchun aniq qiymat berilsa, u meros olingan qiymatni bekor qiladi (`override`). Shuningdek, `inherit` kalit so'zi yordamida meros olinmaydigan xususiyatni ham majburan meros olish mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "body {",
+          "  font-family: Arial, sans-serif;",
+          "  color: #333;",
+          "  border: 1px solid red; /* Bu meros olinmaydi */",
+          "}",
+          "",
+          "p {",
+          "  /* 'font-family' va 'color' 'body'dan meros olinadi */",
+          "  /* 'border' meros olinmaydi */",
+          "}",
+          "",
+          "a {",
+          "  color: blue; /* Meros olingan 'color' bekor qilinadi */",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Inheritance` `parent` elementdagi ba'zi CSS xususiyatlari (asosan matnga oid: `color`, `font-family`) qiymatlarining uning `child`'lariga avtomatik o'tishidir. `Box model` xususiyatlari (`width`, `padding`) odatda meros olinmaydi."
   },
   {
     "id": "css-q29",
     "question": "CSS `Cascade` nima?",
     "topic": "CSS Cascade & Inheritance",
-    "answer": {
-      "definition": "`Cascade` (Kaskad) — bu brauzerning bir xil elementga turli manbalardan (brauzerning standart stillari, tashqi `CSS` fayllar, `inline` stillar) kelib tushgan bir nechta CSS qoidasi orasidan qaysi birini yakuniy qiymat sifatida qo'llashini hal qiladigan algoritm.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Kaskad bir nechta omilni hisobga oladi (muhimlik tartibida):"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Origin and Importance:** Foydalanuvchi `stylesheet`'idagi `!important` qoidalari eng yuqori ustunlikka ega, keyin muallif (`developer`) `stylesheet`'idagi `!important` qoidalari, keyin muallifning oddiy qoidalari, keyin foydalanuvchining oddiy qoidalari va nihoyat brauzerning standart stillari.",
-            "**Specificity:** Bir xil `origin` va `importance`'ga ega qoidalar orasida `specificity`'si yuqoriroq bo'lgan qoida yutadi.",
-            "**Source Order:** Agar `origin`, `importance` va `specificity` ham bir xil bo'lsa, kodda **keyinroq kelgan** qoida qo'llaniladi."
-          ]
-        }
-      ],
-      "interviewAnswer": "`Cascade` brauzerning bir elementga bir nechta CSS qoidasi mos kelganda qaysi birini qo'llashini aniqlaydigan algoritm. U uchta narsani hisobga oladi: 1) Qoidaning Muhimligi (`!important` va manbasi), 2) Selektorning Aniqliği (`Specificity`), 3) Kod Tartibi (keyinroq kelgani yutadi)."
-    }
+    "description": "`Cascade` (Kaskad) — bu brauzerning bir xil elementga turli manbalardan (brauzerning standart stillari, tashqi `CSS` fayllar, `inline` stillar) kelib tushgan bir nechta CSS qoidasi orasidan qaysi birini yakuniy qiymat sifatida qo'llashini hal qiladigan algoritm.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Kaskad bir nechta omilni hisobga oladi (muhimlik tartibida):"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Origin and Importance:** Foydalanuvchi `stylesheet`'idagi `!important` qoidalari eng yuqori ustunlikka ega, keyin muallif (`developer`) `stylesheet`'idagi `!important` qoidalari, keyin muallifning oddiy qoidalari, keyin foydalanuvchining oddiy qoidalari va nihoyat brauzerning standart stillari.",
+          "**Specificity:** Bir xil `origin` va `importance`'ga ega qoidalar orasida `specificity`'si yuqoriroq bo'lgan qoida yutadi.",
+          "**Source Order:** Agar `origin`, `importance` va `specificity` ham bir xil bo'lsa, kodda **keyinroq kelgan** qoida qo'llaniladi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Cascade` brauzerning bir elementga bir nechta CSS qoidasi mos kelganda qaysi birini qo'llashini aniqlaydigan algoritm. U uchta narsani hisobga oladi: 1) Qoidaning Muhimligi (`!important` va manbasi), 2) Selektorning Aniqliği (`Specificity`), 3) Kod Tartibi (keyinroq kelgani yutadi)."
   },
   {
     "id": "css-q30",
     "question": "CSS'da `BEM` (Block, Element, Modifier) metodologiyasi nima?",
     "topic": "CSS Methodologies",
-    "answer": {
-      "definition": "`BEM` — bu CSS `class` nomlarini yozish uchun keng tarqalgan nomlash (`naming`) konvensiyasi bo'lib, u kodni tushunarliroq, qayta ishlatilishi oson va masshtablanuvchan (`scalable`) qilishga yordam beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U uchta asosiy qismdan iborat nomlarni taklif qiladi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Block:** Mustaqil, qayta ishlatilishi mumkin bo'lgan `UI` komponenti (`.card`, `.button`, `.menu`).",
-            "**Element:** `Block`'ning bir qismi bo'lgan, `block`'dan tashqarida alohida ma'noga ega bo'lmagan qism. `Block` nomi bilan ikki pastki chiziq (`__`) orqali bog'lanadi (`.card__title`, `.button__icon`, `.menu__item`).",
-            "**Modifier:** `Block` yoki `Element`'ning ko'rinishini, holatini yoki xatti-harakatini o'zgartiradigan `flag`. Asosiy nom bilan ikki chiziqcha (`--`) orqali bog'lanadi (`.card--highlighted`, `.button--disabled`, `.menu__item--active`)."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "`BEM` `specificity` muammolarini kamaytirishga yordam beradi (chunki asosan faqat `class` selektorlari ishlatiladi) va `CSS` kodini o'qish hamda jamoada ishlashni osonlashtiradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "BEM Misoli:",
-          "code": [
-            "",
-            "<div class=\"card card--featured\">",
-            "  ",
-            "  <img class=\"card__image\" src=\"...\" alt=\"...\">",
-            "  ",
-            "  <h2 class=\"card__title\">Sarlavha</h2>",
-            "  ",
-            "  <button class=\"card__button card__button--primary\">Batafsil</button>",
-            "</div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`BEM` CSS `class` nomlarini yozish uchun konvensiya. U nomlarni uch qismga ajratadi: `Block` (komponent, masalan `.card`), `Element` (`block` qismi, `.card__title`), `Modifier` (`block` yoki `element` varianti, `.card--dark`, `.card__title--large`). Bu kodni tushunarli va masshtablanuvchan qiladi."
-    }
+    "description": "`BEM` — bu CSS `class` nomlarini yozish uchun keng tarqalgan nomlash (`naming`) konvensiyasi bo'lib, u kodni tushunarliroq, qayta ishlatilishi oson va masshtablanuvchan (`scalable`) qilishga yordam beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U uchta asosiy qismdan iborat nomlarni taklif qiladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Block:** Mustaqil, qayta ishlatilishi mumkin bo'lgan `UI` komponenti (`.card`, `.button`, `.menu`).",
+          "**Element:** `Block`'ning bir qismi bo'lgan, `block`'dan tashqarida alohida ma'noga ega bo'lmagan qism. `Block` nomi bilan ikki pastki chiziq (`__`) orqali bog'lanadi (`.card__title`, `.button__icon`, `.menu__item`).",
+          "**Modifier:** `Block` yoki `Element`'ning ko'rinishini, holatini yoki xatti-harakatini o'zgartiradigan `flag`. Asosiy nom bilan ikki chiziqcha (`--`) orqali bog'lanadi (`.card--highlighted`, `.button--disabled`, `.menu__item--active`)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "`BEM` `specificity` muammolarini kamaytirishga yordam beradi (chunki asosan faqat `class` selektorlari ishlatiladi) va `CSS` kodini o'qish hamda jamoada ishlashni osonlashtiradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "BEM Misoli:",
+        "code": [
+          "",
+          "<div class=\"card card--featured\">",
+          "  ",
+          "  <img class=\"card__image\" src=\"...\" alt=\"...\">",
+          "  ",
+          "  <h2 class=\"card__title\">Sarlavha</h2>",
+          "  ",
+          "  <button class=\"card__button card__button--primary\">Batafsil</button>",
+          "</div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`BEM` CSS `class` nomlarini yozish uchun konvensiya. U nomlarni uch qismga ajratadi: `Block` (komponent, masalan `.card`), `Element` (`block` qismi, `.card__title`), `Modifier` (`block` yoki `element` varianti, `.card--dark`, `.card__title--large`). Bu kodni tushunarli va masshtablanuvchan qiladi."
   }
 ]

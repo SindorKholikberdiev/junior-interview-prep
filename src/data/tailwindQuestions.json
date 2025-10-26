@@ -3,900 +3,853 @@
     "id": "tw-q1",
     "question": "Tailwind CSS nima va uning asosiy g'oyasi qanday?",
     "topic": "Tailwind Basics",
-    "answer": {
-      "definition": "Tailwind CSS — bu **`utility-first`** (`birinchi navbatda utilitalar`) CSS `framework`'i bo'lib, u oldindan belgilangan, kichik, bitta maqsadli `utility class`'lar (`.pt-4`, `.flex`, `.text-red-500`) to'plamini taqdim etadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Asosiy g'oya — alohida CSS fayllarida maxsus `class`'lar (`.card`, `.button`) yozish o'rniga, kerakli stillarni to'g'ridan-to'g'ri HTML (`JSX`) `markup`'ida mavjud `utility class`'larni birlashtirib qurish. Bu yondashuv `CSS` yozish zaruratini minimallashtiradi, dizayn tizimining izchilligini (`consistency`) ta'minlaydi va `CSS` fayllarining hajmini (`bundle size`) kichik saqlashga yordam beradi (chunki ishlatilmagan `utility`'lar `production build`'da olib tashlanadi)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Tugma Misoli:",
-          "code": [
-            "<button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">",
-            "  Button",
-            "</button>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Tailwind CSS `utility-first` CSS `framework`'i. U `.pt-4`, `.flex`, `.text-red-500` kabi kichik, bitta maqsadli `class`'lar beradi. Stillar alohida CSS faylida emas, to'g'ridan-to'g'ri HTML (`JSX`) `markup`'ida shu `utility`'larni birlashtirib quriladi. Bu CSS yozishni kamaytiradi va izchillikni ta'minlaydi."
-    }
+    "description": "Tailwind CSS — bu **`utility-first`** (`birinchi navbatda utilitalar`) CSS `framework`'i bo'lib, u oldindan belgilangan, kichik, bitta maqsadli `utility class`'lar (`.pt-4`, `.flex`, `.text-red-500`) to'plamini taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy g'oya — alohida CSS fayllarida maxsus `class`'lar (`.card`, `.button`) yozish o'rniga, kerakli stillarni to'g'ridan-to'g'ri HTML (`JSX`) `markup`'ida mavjud `utility class`'larni birlashtirib qurish. Bu yondashuv `CSS` yozish zaruratini minimallashtiradi, dizayn tizimining izchilligini (`consistency`) ta'minlaydi va `CSS` fayllarining hajmini (`bundle size`) kichik saqlashga yordam beradi (chunki ishlatilmagan `utility`'lar `production build`'da olib tashlanadi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Tugma Misoli:",
+        "code": [
+          "<button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">",
+          "  Button",
+          "</button>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Tailwind CSS `utility-first` CSS `framework`'i. U `.pt-4`, `.flex`, `.text-red-500` kabi kichik, bitta maqsadli `class`'lar beradi. Stillar alohida CSS faylida emas, to'g'ridan-to'g'ri HTML (`JSX`) `markup`'ida shu `utility`'larni birlashtirib quriladi. Bu CSS yozishni kamaytiradi va izchillikni ta'minlaydi."
   },
   {
     "id": "tw-q2",
     "question": "`Utility-First` yondashuvining afzalliklari va kamchiliklari qanday?",
     "topic": "Tailwind Concepts",
-    "answer": {
-      "definition": "`Utility-first` — bu `UI`'ni oldindan belgilangan, qayta ishlatiladigan `utility class`'lar yordamida qurish metodologiyasidir.",
-      "explanation": [
-        { "type": "paragraph", "content": "**Afzalliklari:**" },
-        {
-          "type": "list",
-          "items": [
-            "**Tezlik:** Yangi `class` nomlari o'ylab topish yoki CSS fayllari o'rtasida sakrash kerak emas.",
-            "**Izchillik (`Consistency`):** Oldindan belgilangan dizayn tizimi (`design system`) (ranglar, masofalar, shriftlar) tufayli `UI` bir xil ko'rinishda bo'ladi.",
-            "**`Bundle` Hajmi:** `PurgeCSS` (yoki Tailwind JIT) yordamida ishlatilmagan `utility`'lar `production`'da olib tashlanadi, natijada CSS fayli juda kichik bo'ladi.",
-            "**`Refactoring` Osonligi:** Stillar elementning o'zida bo'lgani uchun, komponentni ko'chirganda yoki o'zgartirganda stillar bilan bog'liq kutilmagan `side effect`'lar kamroq bo'ladi.",
-            "**Moslashuvchanlik:** Tayyor komponentlardan (`Bootstrap`, `Material UI`) farqli o'laroq, `utility`'lar yordamida har qanday dizaynni qurish mumkin."
-          ]
-        },
-        { "type": "paragraph", "content": "**Kamchiliklari:**" },
-        {
-          "type": "list",
-          "items": [
-            "**HTML (`JSX`) `Bloat`:** `Markup` juda ko'p `class` nomlari bilan to'lib ketishi mumkin, bu o'qishni qiyinlashtirishi mumkin.",
-            "**O'rganish Egri Chizig'i (`Learning Curve`):** Ko'p sonli `utility class` nomlarini eslab qolish yoki qidirib topish boshida vaqt talab qilishi mumkin.",
-            "**An'anaviy CSS'dan Farqi:** An'anaviy semantik `class` nomlariga (`.product-card__title`) o'rganib qolganlar uchun g'ayrioddiy tuyulishi mumkin.",
-            "**`DRY` (Don't Repeat Yourself) Prinsipiga Ziddek Ko'rinishi:** Bir xil stil kombinatsiyalari bir nechta joyda takrorlanishi mumkin (buni `@apply` yoki komponentlar yordamida hal qilish mumkin)."
-          ]
-        }
-      ],
-      "interviewAnswer": "Afzalliklari: Tezlik, izchillik, kichik `bundle` hajmi (`purge`), oson `refactoring`, moslashuvchanlik. Kamchiliklari: HTML `bloat` (ko'p `class`'lar), o'rganish egri chizig'i, an'anaviy CSS'dan farq qilishi."
-    }
+    "description": "`Utility-first` — bu `UI`'ni oldindan belgilangan, qayta ishlatiladigan `utility class`'lar yordamida qurish metodologiyasidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Afzalliklari:**"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Tezlik:** Yangi `class` nomlari o'ylab topish yoki CSS fayllari o'rtasida sakrash kerak emas.",
+          "**Izchillik (`Consistency`):** Oldindan belgilangan dizayn tizimi (`design system`) (ranglar, masofalar, shriftlar) tufayli `UI` bir xil ko'rinishda bo'ladi.",
+          "**`Bundle` Hajmi:** `PurgeCSS` (yoki Tailwind JIT) yordamida ishlatilmagan `utility`'lar `production`'da olib tashlanadi, natijada CSS fayli juda kichik bo'ladi.",
+          "**`Refactoring` Osonligi:** Stillar elementning o'zida bo'lgani uchun, komponentni ko'chirganda yoki o'zgartirganda stillar bilan bog'liq kutilmagan `side effect`'lar kamroq bo'ladi.",
+          "**Moslashuvchanlik:** Tayyor komponentlardan (`Bootstrap`, `Material UI`) farqli o'laroq, `utility`'lar yordamida har qanday dizaynni qurish mumkin."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "**Kamchiliklari:**"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**HTML (`JSX`) `Bloat`:** `Markup` juda ko'p `class` nomlari bilan to'lib ketishi mumkin, bu o'qishni qiyinlashtirishi mumkin.",
+          "**O'rganish Egri Chizig'i (`Learning Curve`):** Ko'p sonli `utility class` nomlarini eslab qolish yoki qidirib topish boshida vaqt talab qilishi mumkin.",
+          "**An'anaviy CSS'dan Farqi:** An'anaviy semantik `class` nomlariga (`.product-card__title`) o'rganib qolganlar uchun g'ayrioddiy tuyulishi mumkin.",
+          "**`DRY` (Don't Repeat Yourself) Prinsipiga Ziddek Ko'rinishi:** Bir xil stil kombinatsiyalari bir nechta joyda takrorlanishi mumkin (buni `@apply` yoki komponentlar yordamida hal qilish mumkin)."
+        ]
+      }
+    ],
+    "interviewAnswer": "Afzalliklari: Tezlik, izchillik, kichik `bundle` hajmi (`purge`), oson `refactoring`, moslashuvchanlik. Kamchiliklari: HTML `bloat` (ko'p `class`'lar), o'rganish egri chizig'i, an'anaviy CSS'dan farq qilishi."
   },
   {
     "id": "tw-q3",
     "question": "Tailwind'da `responsive design` qanday amalga oshiriladi?",
     "topic": "Tailwind Responsive Design",
-    "answer": {
-      "definition": "Tailwind `responsive design` qurish uchun `mobile-first` yondashuvini qo'llaydi va maxsus `breakpoint prefix`'laridan (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`) foydalanadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Siz avval eng kichik ekranlar uchun standart `utility class`'larni yozasiz. Keyin, ma'lum bir `breakpoint`'dan (ekran kengligidan) boshlab stilni o'zgartirish uchun kerakli `utility class`'ning oldiga `breakpoint prefix`'ini qo'shasiz."
-        },
-        {
-          "type": "paragraph",
-          "content": "Masalan, `w-16 md:w-32 lg:w-48` `class`'i elementning kengligi boshida `16` birlik, `md` (`768px`) `breakpoint`'idan boshlab `32` birlik va `lg` (`1024px`) `breakpoint`'idan boshlab `48` birlik bo'lishini bildiradi. `Breakpoint`'lar `tailwind.config.js` faylida moslashtirilishi (`customize`) mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Responsive Kenglik va Matn Tekislash:",
-          "code": [
-            "<div class=\"w-full sm:w-1/2 md:w-1/3 text-center sm:text-left\">",
-            "  Kontent...",
-            "</div>"
-          ]
-        },
-        {
-          "title": "Elementni Katta Ekranlarda Yashirish:",
-          "code": [
-            "<div class=\"block lg:hidden\">",
-            "  Faqat kichik ekranlarda ko'rinadi",
-            "</div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Tailwind `mobile-first` yondashuvini ishlatadi. Avval kichik ekran uchun stillar yoziladi, keyin kattaroq ekranlar uchun `sm:`, `md:`, `lg:` kabi `breakpoint prefix`'lari bilan `utility class`'lar qo'shiladi. Masalan, `p-4 md:p-8` kichikda `p-4`, `md` dan `p-8` bo'ladi."
-    }
+    "description": "Tailwind `responsive design` qurish uchun `mobile-first` yondashuvini qo'llaydi va maxsus `breakpoint prefix`'laridan (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`) foydalanadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Siz avval eng kichik ekranlar uchun standart `utility class`'larni yozasiz. Keyin, ma'lum bir `breakpoint`'dan (ekran kengligidan) boshlab stilni o'zgartirish uchun kerakli `utility class`'ning oldiga `breakpoint prefix`'ini qo'shasiz."
+      },
+      {
+        "type": "paragraph",
+        "content": "Masalan, `w-16 md:w-32 lg:w-48` `class`'i elementning kengligi boshida `16` birlik, `md` (`768px`) `breakpoint`'idan boshlab `32` birlik va `lg` (`1024px`) `breakpoint`'idan boshlab `48` birlik bo'lishini bildiradi. `Breakpoint`'lar `tailwind.config.js` faylida moslashtirilishi (`customize`) mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Responsive Kenglik va Matn Tekislash:",
+        "code": [
+          "<div class=\"w-full sm:w-1/2 md:w-1/3 text-center sm:text-left\">",
+          "  Kontent...",
+          "</div>"
+        ]
+      },
+      {
+        "title": "Elementni Katta Ekranlarda Yashirish:",
+        "code": [
+          "<div class=\"block lg:hidden\">",
+          "  Faqat kichik ekranlarda ko'rinadi",
+          "</div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Tailwind `mobile-first` yondashuvini ishlatadi. Avval kichik ekran uchun stillar yoziladi, keyin kattaroq ekranlar uchun `sm:`, `md:`, `lg:` kabi `breakpoint prefix`'lari bilan `utility class`'lar qo'shiladi. Masalan, `p-4 md:p-8` kichikda `p-4`, `md` dan `p-8` bo'ladi."
   },
   {
     "id": "tw-q4",
     "question": "Tailwind'da `pseudo-class`'lar (`hover`, `focus`, `active`) qanday ishlatiladi?",
     "topic": "Tailwind State Variants",
-    "answer": {
-      "definition": "Tailwind elementning turli holatlari (`states`) uchun stillarni qo'llash uchun `pseudo-class` variantlarini (`variants`) prefiks sifatida ishlatadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Kerakli `pseudo-class` nomini (`hover`, `focus`, `active`, `disabled`, `visited`, `first`, `last`, `odd`, `even` va hokazo) kerakli `utility class`'ning oldiga ikki nuqta (`:`) bilan qo'shish kifoya. Masalan, `bg-blue-500 hover:bg-blue-700` tugma fonini ko'k qiladi va sichqoncha ustiga kelganda to'qroq ko'k qiladi. Bu variantlar `tailwind.config.js` faylida yoqilgan bo'lishi kerak (odatda standart holatda ko'pchiligi yoqilgan)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Hover va Focus Misoli:",
-          "code": [
-            "<button class=\"bg-violet-500 hover:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300 active:bg-violet-700 ...\">",
-            "  Save Changes",
-            "</button>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Element holatlari uchun stillar `hover:`, `focus:`, `active:`, `disabled:` kabi `variant prefix`'lari yordamida qo'llaniladi. Masalan, `hover:text-red-500` sichqoncha ustiga kelganda matnni qizil qiladi."
-    }
+    "description": "Tailwind elementning turli holatlari (`states`) uchun stillarni qo'llash uchun `pseudo-class` variantlarini (`variants`) prefiks sifatida ishlatadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Kerakli `pseudo-class` nomini (`hover`, `focus`, `active`, `disabled`, `visited`, `first`, `last`, `odd`, `even` va hokazo) kerakli `utility class`'ning oldiga ikki nuqta (`:`) bilan qo'shish kifoya. Masalan, `bg-blue-500 hover:bg-blue-700` tugma fonini ko'k qiladi va sichqoncha ustiga kelganda to'qroq ko'k qiladi. Bu variantlar `tailwind.config.js` faylida yoqilgan bo'lishi kerak (odatda standart holatda ko'pchiligi yoqilgan)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Hover va Focus Misoli:",
+        "code": [
+          "<button class=\"bg-violet-500 hover:bg-violet-600 focus:outline-none focus:ring focus:ring-violet-300 active:bg-violet-700 ...\">",
+          "  Save Changes",
+          "</button>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Element holatlari uchun stillar `hover:`, `focus:`, `active:`, `disabled:` kabi `variant prefix`'lari yordamida qo'llaniladi. Masalan, `hover:text-red-500` sichqoncha ustiga kelganda matnni qizil qiladi."
   },
   {
     "id": "tw-q5",
     "question": "`tailwind.config.js` fayli nima uchun kerak?",
     "topic": "Tailwind Configuration",
-    "answer": {
-      "definition": "`tailwind.config.js` — bu Tailwind CSS `framework`'ini loyihangizning ehtiyojlariga moslashtirish (`customize`) uchun ishlatiladigan konfiguratsiya faylidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu fayl yordamida siz quyidagilarni qilishingiz mumkin:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Dizayn Tizimini O'zgartirish (`theme`):** Standart ranglar palitrasi, `spacing` birliklari, `font`'lar, `breakpoint`'lar va boshqa dizayn `token`'larini o'zgartirish yoki kengaytirish.",
-            "**Variantlarni Boshqarish (`variants` - eski versiyalarda, `JIT mode`'da kamroq kerak):** Qaysi `utility`'lar uchun qaysi `pseudo-class` variantlari (`hover`, `focus`) generatsiya qilinishini boshqarish.",
-            "**`Plugin`'larni Qo'shish:** Qo'shimcha `utility`'lar yoki funksionallik qo'shadigan rasmiy yoki `third-party` `plugin`'larni (`@tailwindcss/forms`, `@tailwindcss/typography`) qo'shish.",
-            "**`PurgeCSS`/`Content` Sozlamalari:** `Production build` uchun qaysi fayllarni skanerlash kerakligini ko'rsatish, shunda ishlatilmagan `class`'lar olib tashlanadi."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy `tailwind.config.js`:",
-          "code": [
-            "/** @type {import('tailwindcss').Config} */",
-            "module.exports = {",
-            "  content: [",
-            "    \"./src/**/*.{js,jsx,ts,tsx}\",",
-            "  ],",
-            "  theme: {",
-            "    extend: {",
-            "      colors: {",
-            "        'brand-blue': '#1DA1F2',",
-            "      },",
-            "      spacing: {",
-            "        '128': '32rem',",
-            "      }",
-            "    },",
-            "  },",
-            "  plugins: [",
-            "    require('@tailwindcss/forms'),",
-            "  ],",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`tailwind.config.js` Tailwind'ni sozlash fayli. U `theme` (ranglar, `spacing`, `breakpoint`'lar), `plugins` va `content` (ishlatilmagan stillarni olib tashlash uchun qaysi fayllarni skanerlash) kabi sozlamalarni o'z ichiga oladi."
-    }
+    "description": "`tailwind.config.js` — bu Tailwind CSS `framework`'ini loyihangizning ehtiyojlariga moslashtirish (`customize`) uchun ishlatiladigan konfiguratsiya faylidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu fayl yordamida siz quyidagilarni qilishingiz mumkin:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Dizayn Tizimini O'zgartirish (`theme`):** Standart ranglar palitrasi, `spacing` birliklari, `font`'lar, `breakpoint`'lar va boshqa dizayn `token`'larini o'zgartirish yoki kengaytirish.",
+          "**Variantlarni Boshqarish (`variants` - eski versiyalarda, `JIT mode`'da kamroq kerak):** Qaysi `utility`'lar uchun qaysi `pseudo-class` variantlari (`hover`, `focus`) generatsiya qilinishini boshqarish.",
+          "**`Plugin`'larni Qo'shish:** Qo'shimcha `utility`'lar yoki funksionallik qo'shadigan rasmiy yoki `third-party` `plugin`'larni (`@tailwindcss/forms`, `@tailwindcss/typography`) qo'shish.",
+          "**`PurgeCSS`/`Content` Sozlamalari:** `Production build` uchun qaysi fayllarni skanerlash kerakligini ko'rsatish, shunda ishlatilmagan `class`'lar olib tashlanadi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy `tailwind.config.js`:",
+        "code": [
+          "/** @type {import('tailwindcss').Config} */",
+          "module.exports = {",
+          "  content: [",
+          "    \"./src/**/*.{js,jsx,ts,tsx}\",",
+          "  ],",
+          "  theme: {",
+          "    extend: {",
+          "      colors: {",
+          "        'brand-blue': '#1DA1F2',",
+          "      },",
+          "      spacing: {",
+          "        '128': '32rem',",
+          "      }",
+          "    },",
+          "  },",
+          "  plugins: [",
+          "    require('@tailwindcss/forms'),",
+          "  ],",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`tailwind.config.js` Tailwind'ni sozlash fayli. U `theme` (ranglar, `spacing`, `breakpoint`'lar), `plugins` va `content` (ishlatilmagan stillarni olib tashlash uchun qaysi fayllarni skanerlash) kabi sozlamalarni o'z ichiga oladi."
   },
   {
     "id": "tw-q6",
     "question": "Tailwind'da `@apply` direktivasi nima uchun ishlatiladi?",
     "topic": "Tailwind Features",
-    "answer": {
-      "definition": "`@apply` direktivasi CSS fayli ichida bir nechta Tailwind `utility class`'larini bitta maxsus (`custom`) CSS `class`'iga birlashtirish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu `utility-first` yondashuvining kamchiliklaridan biri — HTML'dagi `class`'lar ro'yxati juda uzun bo'lib ketishini (`markup bloat`) hal qilishning bir usuli. Agar siz bir xil `utility` kombinatsiyasini ko'p joyda ishlatayotgan bo'lsangiz (masalan, maxsus tugma stili), uni `@apply` yordamida bitta `class`'ga chiqarishingiz mumkin. Biroq, `@apply`'ni haddan tashqari ko'p ishlatish Tailwind'ning asosiy g'oyasiga biroz zid kelishi mumkin, shuning uchun uni me'yorida ishlatish tavsiya etiladi. Ko'pincha, komponent abstraksiyasi (masalan, `React`'da `Button` komponenti yaratish) yaxshiroq yechim bo'ladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`@apply` Misoli (`input.css`):",
-          "code": [
-            "@tailwind base;",
-            "@tailwind components;",
-            "@tailwind utilities;",
-            "",
-            ".btn-primary {",
-            "  @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;",
-            "}",
-            "",
-            "/* HTML'da: <button class=\"btn-primary\">Click</button> */"
-          ]
-        }
-      ],
-      "interviewAnswer": "`@apply` CSS fayli ichida bir nechta Tailwind `utility class`'larini bitta maxsus CSS `class`'iga birlashtirish uchun ishlatiladi. U HTML'dagi `class`'lar sonini kamaytirishga yordam beradi, lekin me'yorida ishlatish tavsiya etiladi."
-    }
+    "description": "`@apply` direktivasi CSS fayli ichida bir nechta Tailwind `utility class`'larini bitta maxsus (`custom`) CSS `class`'iga birlashtirish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `utility-first` yondashuvining kamchiliklaridan biri — HTML'dagi `class`'lar ro'yxati juda uzun bo'lib ketishini (`markup bloat`) hal qilishning bir usuli. Agar siz bir xil `utility` kombinatsiyasini ko'p joyda ishlatayotgan bo'lsangiz (masalan, maxsus tugma stili), uni `@apply` yordamida bitta `class`'ga chiqarishingiz mumkin. Biroq, `@apply`'ni haddan tashqari ko'p ishlatish Tailwind'ning asosiy g'oyasiga biroz zid kelishi mumkin, shuning uchun uni me'yorida ishlatish tavsiya etiladi. Ko'pincha, komponent abstraksiyasi (masalan, `React`'da `Button` komponenti yaratish) yaxshiroq yechim bo'ladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`@apply` Misoli (`input.css`):",
+        "code": [
+          "@tailwind base;",
+          "@tailwind components;",
+          "@tailwind utilities;",
+          "",
+          ".btn-primary {",
+          "  @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;",
+          "}",
+          "",
+          "/* HTML'da: <button class=\"btn-primary\">Click</button> */"
+        ]
+      }
+    ],
+    "interviewAnswer": "`@apply` CSS fayli ichida bir nechta Tailwind `utility class`'larini bitta maxsus CSS `class`'iga birlashtirish uchun ishlatiladi. U HTML'dagi `class`'lar sonini kamaytirishga yordam beradi, lekin me'yorida ishlatish tavsiya etiladi."
   },
   {
     "id": "tw-q7",
     "question": "Tailwind'da `JIT (Just-In-Time)` rejimi nima?",
     "topic": "Tailwind JIT Mode",
-    "answer": {
-      "definition": "`JIT (Just-In-Time)` kompilyatori — bu Tailwind CSS v2.1 da kiritilgan va v3.0 dan boshlab standart bo'lgan yangi kompilyatsiya mexanizmi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Eski mexanizmda Tailwind `development` paytida barcha mumkin bo'lgan `utility class`'larni (minglab) oldindan generatsiya qilib qo'yardi, bu esa `build` vaqtini sekinlashtirardi va katta CSS fayllariga olib kelardi. `JIT` rejimi esa **faqat siz loyiha fayllaringizda (`HTML`, `JS`, `JSX`) haqiqatan ishlatgan `utility class`'larni** kerak bo'lganda (`on-demand`) generatsiya qiladi. Bu quyidagi katta afzalliklarni beradi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Juda Tez `Build` Vaqti:** Faqat kerakli stillar generatsiya qilinadi.",
-            "**Barcha Variantlar Yoqilgan:** `hover`, `focus`, `md:`, `lg:` kabi barcha variantlar har bir `utility` uchun avtomatik ravishda mavjud bo'ladi (konfiguratsiyada alohida yoqish shart emas).",
-            "**Ixtiyoriy Qiymatlar (`Arbitrary Values`):** Kvadrat qavslar `[]` yordamida konfiguratsiyada mavjud bo'lmagan qiymatlarni ham ishlatish mumkin (masalan, `top-[117px]`, `bg-[#BADA55]`).",
-            "**Yaxshiroq `Development Experience`:** `Dev server` tezroq ishga tushadi va HMR tezroq ishlaydi."
-          ]
-        }
-      ],
-      "interviewAnswer": "`JIT (Just-In-Time)` rejimi (Tailwind v3+ da standart) faqat siz kodda ishlatgan `utility class`'larni kerak bo'lganda (`on-demand`) generatsiya qiladi. Bu `build` vaqtini juda tezlashtiradi, barcha `variant`'larni avtomatik yoqadi va ixtiyoriy qiymatlar (`top-[117px]`) ishlatishga imkon beradi."
-    }
+    "description": "`JIT (Just-In-Time)` kompilyatori — bu Tailwind CSS v2.1 da kiritilgan va v3.0 dan boshlab standart bo'lgan yangi kompilyatsiya mexanizmi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eski mexanizmda Tailwind `development` paytida barcha mumkin bo'lgan `utility class`'larni (minglab) oldindan generatsiya qilib qo'yardi, bu esa `build` vaqtini sekinlashtirardi va katta CSS fayllariga olib kelardi. `JIT` rejimi esa **faqat siz loyiha fayllaringizda (`HTML`, `JS`, `JSX`) haqiqatan ishlatgan `utility class`'larni** kerak bo'lganda (`on-demand`) generatsiya qiladi. Bu quyidagi katta afzalliklarni beradi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Juda Tez `Build` Vaqti:** Faqat kerakli stillar generatsiya qilinadi.",
+          "**Barcha Variantlar Yoqilgan:** `hover`, `focus`, `md:`, `lg:` kabi barcha variantlar har bir `utility` uchun avtomatik ravishda mavjud bo'ladi (konfiguratsiyada alohida yoqish shart emas).",
+          "**Ixtiyoriy Qiymatlar (`Arbitrary Values`):** Kvadrat qavslar `[]` yordamida konfiguratsiyada mavjud bo'lmagan qiymatlarni ham ishlatish mumkin (masalan, `top-[117px]`, `bg-[#BADA55]`).",
+          "**Yaxshiroq `Development Experience`:** `Dev server` tezroq ishga tushadi va HMR tezroq ishlaydi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`JIT (Just-In-Time)` rejimi (Tailwind v3+ da standart) faqat siz kodda ishlatgan `utility class`'larni kerak bo'lganda (`on-demand`) generatsiya qiladi. Bu `build` vaqtini juda tezlashtiradi, barcha `variant`'larni avtomatik yoqadi va ixtiyoriy qiymatlar (`top-[117px]`) ishlatishga imkon beradi."
   },
   {
     "id": "tw-q8",
     "question": "Tailwind `utility`'lari bilan qanday qilib maxsus (`custom`) CSS yozish mumkin?",
     "topic": "Tailwind Custom CSS",
-    "answer": {
-      "definition": "Garchi Tailwind `utility-first` bo'lsa-da, ba'zan maxsus CSS qoidalarini yozishga to'g'ri keladi. Buning bir necha yo'li bor.",
-      "explanation": [
-        {
-          "type": "list",
-          "items": [
-            "**`@apply` Direktivasidan Foydalanish:** Mavjud `utility`'larni CSS faylidagi maxsus `class`'ga birlashtirish (avvalgi savolda ko'rilgan).",
-            "**Oddiy CSS Yozish:** Siz har doim o'zingizning CSS fayllaringizga (`index.css` yoki boshqa) oddiy CSS qoidalarini yozishingiz mumkin. Bu `utility`'lar bilan hal qilib bo'lmaydigan yoki juda murakkab bo'lgan stillar uchun (masalan, ba'zi animatsiyalar, murakkab selektorlar).",
-            "**`tailwind.config.js`'ni Kengaytirish:** Ko'p hollarda maxsus stil kerak bo'lganda, uni `utility` sifatida `theme.extend` bo'limiga qo'shish mumkin (masalan, maxsus `font-size` yoki `animation`).",
-            "**`Plugin` Yaratish:** Agar maxsus funksionallik qayta ishlatilishi kerak bo'lsa, o'zingizning Tailwind `plugin`'ingizni yozishingiz mumkin."
-          ]
-        }
-      ],
-      "interviewAnswer": "Maxsus CSS yozish usullari: 1) `@apply` bilan `utility`'larni CSS `class`'iga birlashtirish. 2) Oddiy CSS fayliga (`index.css`) qo'lda qoidalar yozish. 3) `tailwind.config.js`'dagi `theme.extend` orqali yangi `utility`'lar qo'shish. 4) Maxsus `plugin` yaratish."
-    }
+    "description": "Garchi Tailwind `utility-first` bo'lsa-da, ba'zan maxsus CSS qoidalarini yozishga to'g'ri keladi. Buning bir necha yo'li bor.",
+    "detailedExplanation": [
+      {
+        "type": "list",
+        "items": [
+          "**`@apply` Direktivasidan Foydalanish:** Mavjud `utility`'larni CSS faylidagi maxsus `class`'ga birlashtirish (avvalgi savolda ko'rilgan).",
+          "**Oddiy CSS Yozish:** Siz har doim o'zingizning CSS fayllaringizga (`index.css` yoki boshqa) oddiy CSS qoidalarini yozishingiz mumkin. Bu `utility`'lar bilan hal qilib bo'lmaydigan yoki juda murakkab bo'lgan stillar uchun (masalan, ba'zi animatsiyalar, murakkab selektorlar).",
+          "**`tailwind.config.js`'ni Kengaytirish:** Ko'p hollarda maxsus stil kerak bo'lganda, uni `utility` sifatida `theme.extend` bo'limiga qo'shish mumkin (masalan, maxsus `font-size` yoki `animation`).",
+          "**`Plugin` Yaratish:** Agar maxsus funksionallik qayta ishlatilishi kerak bo'lsa, o'zingizning Tailwind `plugin`'ingizni yozishingiz mumkin."
+        ]
+      }
+    ],
+    "interviewAnswer": "Maxsus CSS yozish usullari: 1) `@apply` bilan `utility`'larni CSS `class`'iga birlashtirish. 2) Oddiy CSS fayliga (`index.css`) qo'lda qoidalar yozish. 3) `tailwind.config.js`'dagi `theme.extend` orqali yangi `utility`'lar qo'shish. 4) Maxsus `plugin` yaratish."
   },
   {
     "id": "tw-q9",
     "question": "Tailwind'da ranglar palitrasini qanday sozlash (`customize`) mumkin?",
     "topic": "Tailwind Configuration",
-    "answer": {
-      "definition": "Tailwind'ning standart ranglar palitrasini `tailwind.config.js` faylidagi `theme.colors` yoki `theme.extend.colors` bo'limi orqali to'liq almashtirish yoki kengaytirish mumkin.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`theme.colors`:** Agar siz bu bo'limni ishlatsangiz, Tailwind'ning **barcha standart ranglari olib tashlanadi** va faqat siz ko'rsatgan ranglar mavjud bo'ladi. Bu to'liq yangi palitra yaratish uchun."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`theme.extend.colors`:** Bu bo'limni ishlatish **tavsiya etiladi**. U sizga standart ranglar palitrasini **saqlab qolgan holda**, unga o'zingizning maxsus ranglaringizni qo'shish yoki standart ranglardan ba'zilarini qayta yozish (`override`) imkonini beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`tailwind.config.js` (Kengaytirish):",
-          "code": [
-            "module.exports = {",
-            "  theme: {",
-            "    extend: {",
-            "      colors: {",
-            "        'primary': '#007bff',",
-            "        'secondary': {",
-            "          light: '#6c757d',",
-            "          DEFAULT: '#5a6268', // .text-secondary uchun standart qiymat",
-            "          dark: '#343a40',",
-            "        },",
-            "        'danger': '#dc3545',",
-            "        // Standart rangni qayta yozish:",
-            "        'blue': { ",
-            "           DEFAULT: '#0d6efd', ",
-            "           '500': '#0d6efd', // .bg-blue-500 uchun yangi qiymat",
-            "           // ... boshqa blue variantlari ... ",
-            "         }",
-            "      },",
-            "    },",
-            "  },",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "Ranglarni `tailwind.config.js`'dagi `theme.extend.colors` bo'limida sozlash mumkin. Bu yerda yangi rang nomlarini (`'primary'`) yoki standart ranglarning (`'blue'`) variantlarini qo'shish yoki o'zgartirish mumkin."
-    }
+    "description": "Tailwind'ning standart ranglar palitrasini `tailwind.config.js` faylidagi `theme.colors` yoki `theme.extend.colors` bo'limi orqali to'liq almashtirish yoki kengaytirish mumkin.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`theme.colors`:** Agar siz bu bo'limni ishlatsangiz, Tailwind'ning **barcha standart ranglari olib tashlanadi** va faqat siz ko'rsatgan ranglar mavjud bo'ladi. Bu to'liq yangi palitra yaratish uchun."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`theme.extend.colors`:** Bu bo'limni ishlatish **tavsiya etiladi**. U sizga standart ranglar palitrasini **saqlab qolgan holda**, unga o'zingizning maxsus ranglaringizni qo'shish yoki standart ranglardan ba'zilarini qayta yozish (`override`) imkonini beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`tailwind.config.js` (Kengaytirish):",
+        "code": [
+          "module.exports = {",
+          "  theme: {",
+          "    extend: {",
+          "      colors: {",
+          "        'primary': '#007bff',",
+          "        'secondary': {",
+          "          light: '#6c757d',",
+          "          DEFAULT: '#5a6268', // .text-secondary uchun standart qiymat",
+          "          dark: '#343a40',",
+          "        },",
+          "        'danger': '#dc3545',",
+          "        // Standart rangni qayta yozish:",
+          "        'blue': { ",
+          "           DEFAULT: '#0d6efd', ",
+          "           '500': '#0d6efd', // .bg-blue-500 uchun yangi qiymat",
+          "           // ... boshqa blue variantlari ... ",
+          "         }",
+          "      },",
+          "    },",
+          "  },",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "Ranglarni `tailwind.config.js`'dagi `theme.extend.colors` bo'limida sozlash mumkin. Bu yerda yangi rang nomlarini (`'primary'`) yoki standart ranglarning (`'blue'`) variantlarini qo'shish yoki o'zgartirish mumkin."
   },
   {
     "id": "tw-q10",
     "question": "Tailwind'ni `React` loyihasiga qanday qo'shish mumkin?",
     "topic": "Tailwind Integration",
-    "answer": {
-      "definition": "Tailwind'ni `React` loyihasiga (ayniqsa `Vite` yoki `Create React App` bilan yaratilgan) qo'shish bir necha qadamdan iborat standart jarayondir.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy qadamlar (`Vite` uchun):" },
-        {
-          "type": "list",
-          "items": [
-            "**1. Tailwind va kerakli bog'liqliklarni o'rnatish:** `npm install -D tailwindcss postcss autoprefixer`",
-            "**2. Konfiguratsiya Fayllarini Yaratish:** `npx tailwindcss init -p`. Bu `tailwind.config.js` va `postcss.config.js` fayllarini yaratadi.",
-            "**3. `tailwind.config.js`'ni Sozlash:** `content` (yoki `purge`) qismiga qaysi fayllarda Tailwind `class`'lari ishlatilishini ko'rsatish (`'./src/**/*.{js,jsx,ts,tsx}'`).",
-            "**4. Asosiy CSS Fayliga Direktivalarni Qo'shish:** Loyihaning asosiy CSS fayliga (`src/index.css`) Tailwind direktivalarini qo'shish:\n```css\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n```",
-            "**5. CSS Faylini Import Qilish:** O'sha asosiy CSS faylini (`src/index.css`) loyihaning kirish nuqtasiga (`src/main.jsx`) `import` qilish (`import './index.css';`)."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Shundan so'ng, siz `.jsx` fayllaringizda Tailwind `utility class`'larini ishlatishni boshlashingiz mumkin."
-        }
-      ],
-      "interviewAnswer": "`React` loyihasiga Tailwind qo'shish uchun: 1) `tailwindcss`, `postcss`, `autoprefixer`'ni `devDependency` sifatida o'rnatish (`npm install -D ...`). 2) `npx tailwindcss init -p` bilan konfiguratsiya fayllarini yaratish. 3) `tailwind.config.js`'dagi `content`'ni sozlash. 4) Asosiy CSS fayliga (`index.css`) `@tailwind` direktivalarini qo'shish. 5) O'sha CSS faylini `main.jsx`'ga `import` qilish."
-    }
+    "description": "Tailwind'ni `React` loyihasiga (ayniqsa `Vite` yoki `Create React App` bilan yaratilgan) qo'shish bir necha qadamdan iborat standart jarayondir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy qadamlar (`Vite` uchun):"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**1. Tailwind va kerakli bog'liqliklarni o'rnatish:** `npm install -D tailwindcss postcss autoprefixer`",
+          "**2. Konfiguratsiya Fayllarini Yaratish:** `npx tailwindcss init -p`. Bu `tailwind.config.js` va `postcss.config.js` fayllarini yaratadi.",
+          "**3. `tailwind.config.js`'ni Sozlash:** `content` (yoki `purge`) qismiga qaysi fayllarda Tailwind `class`'lari ishlatilishini ko'rsatish (`'./src/**/*.{js,jsx,ts,tsx}'`).",
+          "**4. Asosiy CSS Fayliga Direktivalarni Qo'shish:** Loyihaning asosiy CSS fayliga (`src/index.css`) Tailwind direktivalarini qo'shish:\n```css\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n```",
+          "**5. CSS Faylini Import Qilish:** O'sha asosiy CSS faylini (`src/index.css`) loyihaning kirish nuqtasiga (`src/main.jsx`) `import` qilish (`import './index.css';`)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Shundan so'ng, siz `.jsx` fayllaringizda Tailwind `utility class`'larini ishlatishni boshlashingiz mumkin."
+      }
+    ],
+    "interviewAnswer": "`React` loyihasiga Tailwind qo'shish uchun: 1) `tailwindcss`, `postcss`, `autoprefixer`'ni `devDependency` sifatida o'rnatish (`npm install -D ...`). 2) `npx tailwindcss init -p` bilan konfiguratsiya fayllarini yaratish. 3) `tailwind.config.js`'dagi `content`'ni sozlash. 4) Asosiy CSS fayliga (`index.css`) `@tailwind` direktivalarini qo'shish. 5) O'sha CSS faylini `main.jsx`'ga `import` qilish."
   },
-
   {
     "id": "tw-q11",
     "question": "Tailwind'da `group` va `peer` variantlari nima uchun ishlatiladi?",
     "topic": "Tailwind State Variants",
-    "answer": {
-      "definition": "`group` va `peer` variantlari `parent` elementning holatiga (`state`) qarab `child` elementlarga yoki `sibling` elementlarga stil berish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`group`:** `Parent` elementga `group` `class`'i qo'shiladi. Keyin `child` elementlarga `parent`'ning ma'lum holati uchun stil berishda `group-hover:`, `group-focus:` kabi prefikslar ishlatiladi. Masalan, butun `card` ustiga sichqoncha kelganda ichidagi tugmaning rangini o'zgartirish."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`peer`:** Bir `element`ga `peer` `class`'i qo'shiladi. Undan keyin keladigan `sibling` (`qo'shni`) elementlarga o'sha `peer` elementning holatiga (`:invalid`, `:focus`, `:checked`) qarab stil berish uchun `peer-invalid:`, `peer-focus:`, `peer-checked:` kabi prefikslar ishlatiladi. Masalan, `input` `invalid` bo'lganda undan keyingi `error message`'ni ko'rsatish."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`group-hover` Misoli:",
-          "code": [
-            "<a href=\"#\" class=\"group block ...\">",
-            "  <p class=\"...\">Title</p>",
-            "  <p class=\"... group-hover:text-blue-500\">",
-            "    Content...",
-            "  </p>",
-            "</a>"
-          ]
-        },
-        {
-          "title": "`peer-invalid` Misoli:",
-          "code": [
-            "<input type=\"email\" class=\"peer ...\" />",
-            "<p class=\"invisible peer-invalid:visible text-red-500 ...\">",
-            "  Email manzili noto'g'ri.",
-            "</p>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`group` `parent`'ga qo'shiladi va `child`'larga `group-hover:` kabi prefikslar bilan `parent` holatiga qarab stil berishga imkon beradi. `peer` `element`ga qo'shiladi va undan keyingi `sibling`'larga `peer-invalid:` kabi prefikslar bilan `peer` holatiga qarab stil berishga imkon beradi."
-    }
+    "description": "`group` va `peer` variantlari `parent` elementning holatiga (`state`) qarab `child` elementlarga yoki `sibling` elementlarga stil berish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`group`:** `Parent` elementga `group` `class`'i qo'shiladi. Keyin `child` elementlarga `parent`'ning ma'lum holati uchun stil berishda `group-hover:`, `group-focus:` kabi prefikslar ishlatiladi. Masalan, butun `card` ustiga sichqoncha kelganda ichidagi tugmaning rangini o'zgartirish."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`peer`:** Bir `element`ga `peer` `class`'i qo'shiladi. Undan keyin keladigan `sibling` (`qo'shni`) elementlarga o'sha `peer` elementning holatiga (`:invalid`, `:focus`, `:checked`) qarab stil berish uchun `peer-invalid:`, `peer-focus:`, `peer-checked:` kabi prefikslar ishlatiladi. Masalan, `input` `invalid` bo'lganda undan keyingi `error message`'ni ko'rsatish."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`group-hover` Misoli:",
+        "code": [
+          "<a href=\"#\" class=\"group block ...\">",
+          "  <p class=\"...\">Title</p>",
+          "  <p class=\"... group-hover:text-blue-500\">",
+          "    Content...",
+          "  </p>",
+          "</a>"
+        ]
+      },
+      {
+        "title": "`peer-invalid` Misoli:",
+        "code": [
+          "<input type=\"email\" class=\"peer ...\" />",
+          "<p class=\"invisible peer-invalid:visible text-red-500 ...\">",
+          "  Email manzili noto'g'ri.",
+          "</p>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`group` `parent`'ga qo'shiladi va `child`'larga `group-hover:` kabi prefikslar bilan `parent` holatiga qarab stil berishga imkon beradi. `peer` `element`ga qo'shiladi va undan keyingi `sibling`'larga `peer-invalid:` kabi prefikslar bilan `peer` holatiga qarab stil berishga imkon beradi."
   },
   {
     "id": "tw-q12",
     "question": "Tailwind'da o'zingizning `utility class`'laringizni qanday qo'shishingiz mumkin?",
     "topic": "Tailwind Customization",
-    "answer": {
-      "definition": "Mavjud bo'lmagan yoki maxsus `utility class`'larni bir necha usul bilan qo'shish mumkin.",
-      "explanation": [
-        { "type": "paragraph", "content": "Usullar:" },
-        {
-          "type": "list",
-          "items": [
-            "**`tailwind.config.js` (`theme.extend`):** Eng keng tarqalgan usul. Mavjud `utility`'larni kengaytirish (masalan, yangi `spacing` qiymati) yoki yangi `utility` kategoriyasini qo'shish (masalan, maxsus `animation`).",
-            "**`Plugin` Yaratish:** Murakkabroq yoki `JavaScript` mantiqini talab qiladigan `utility`'lar uchun `tailwind.config.js`'dagi `plugins` bo'limida maxsus `plugin` yozish mumkin.",
-            "**CSS Faylida Qo'shish:** Oddiy, loyihaga xos `class`'larni asosiy CSS faylingizga (`index.css`) `@layer utilities` direktivasi ichida yozishingiz mumkin. Bu `utility`'lar Tailwind'ning boshqa `utility`'lari bilan birga `purge` qilinishi va variantlar (`hover:`, `md:`) bilan ishlashi mumkin."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "`theme.extend` Misoli:",
-          "code": [
-            "// tailwind.config.js",
-            "module.exports = {",
-            "  theme: {",
-            "    extend: {",
-            "      spacing: {",
-            "        '128': '32rem', // .p-128, .m-128 va hokazo",
-            "      },",
-            "      animation: {",
-            "        'spin-slow': 'spin 3s linear infinite', // .animate-spin-slow",
-            "      }",
-            "    }",
-            "  }",
-            "}"
-          ]
-        },
-        {
-          "title": "`@layer utilities` Misoli:",
-          "code": [
-            "/* index.css */",
-            "@tailwind base;",
-            "@tailwind components;",
-            "@tailwind utilities;",
-            "",
-            "@layer utilities {",
-            "  .content-auto {",
-            "    content-visibility: auto;",
-            "  }",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "Yangi `utility`'larni qo'shish usullari: 1) `tailwind.config.js`'dagi `theme.extend` orqali (eng ko'p ishlatiladi). 2) Maxsus `plugin` yaratish orqali. 3) Asosiy CSS fayliga `@layer utilities` direktivasi ichida yozish orqali."
-    }
+    "description": "Mavjud bo'lmagan yoki maxsus `utility class`'larni bir necha usul bilan qo'shish mumkin.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Usullar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`tailwind.config.js` (`theme.extend`):** Eng keng tarqalgan usul. Mavjud `utility`'larni kengaytirish (masalan, yangi `spacing` qiymati) yoki yangi `utility` kategoriyasini qo'shish (masalan, maxsus `animation`).",
+          "**`Plugin` Yaratish:** Murakkabroq yoki `JavaScript` mantiqini talab qiladigan `utility`'lar uchun `tailwind.config.js`'dagi `plugins` bo'limida maxsus `plugin` yozish mumkin.",
+          "**CSS Faylida Qo'shish:** Oddiy, loyihaga xos `class`'larni asosiy CSS faylingizga (`index.css`) `@layer utilities` direktivasi ichida yozishingiz mumkin. Bu `utility`'lar Tailwind'ning boshqa `utility`'lari bilan birga `purge` qilinishi va variantlar (`hover:`, `md:`) bilan ishlashi mumkin."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`theme.extend` Misoli:",
+        "code": [
+          "// tailwind.config.js",
+          "module.exports = {",
+          "  theme: {",
+          "    extend: {",
+          "      spacing: {",
+          "        '128': '32rem', // .p-128, .m-128 va hokazo",
+          "      },",
+          "      animation: {",
+          "        'spin-slow': 'spin 3s linear infinite', // .animate-spin-slow",
+          "      }",
+          "    }",
+          "  }",
+          "}"
+        ]
+      },
+      {
+        "title": "`@layer utilities` Misoli:",
+        "code": [
+          "/* index.css */",
+          "@tailwind base;",
+          "@tailwind components;",
+          "@tailwind utilities;",
+          "",
+          "@layer utilities {",
+          "  .content-auto {",
+          "    content-visibility: auto;",
+          "  }",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "Yangi `utility`'larni qo'shish usullari: 1) `tailwind.config.js`'dagi `theme.extend` orqali (eng ko'p ishlatiladi). 2) Maxsus `plugin` yaratish orqali. 3) Asosiy CSS fayliga `@layer utilities` direktivasi ichida yozish orqali."
   },
   {
     "id": "tw-q13",
     "question": "Tailwind'da `dark mode` qanday amalga oshiriladi?",
     "topic": "Tailwind Dark Mode",
-    "answer": {
-      "definition": "Tailwind `dark mode`'ni qo'llab-quvvatlash uchun o'rnatilgan mexanizmga ega. Uni ikki asosiy strategiya bilan sozlash mumkin: `media` yoki `class`.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**1. `media` Strategiyasi (Standart):** Bu strategiya operatsion tizimning rang sxemasiga (`prefers-color-scheme` `media feature`) asoslanadi. Agar OS `dark mode`'da bo'lsa, `dark:` prefiksi bilan yozilgan `utility class`'lar avtomatik qo'llaniladi. `tailwind.config.js`'da `darkMode: 'media'` (yoki hech narsa yozilmasa ham standart shu) bo'lishi kerak."
-        },
-        {
-          "type": "paragraph",
-          "content": "**2. `class` Strategiyasi:** Bu strategiya `dark mode`'ni qo'lda (`JavaScript` yordamida) boshqarish imkonini beradi. `tailwind.config.js`'da `darkMode: 'class'` sozlamasi qo'shiladi. Keyin, `dark mode` yoqilishi kerak bo'lganda, siz `<html>` (yoki boshqa `parent`) elementiga `dark` `class`'ini qo'shasiz. Shunda `dark:` prefiksi bilan yozilgan `utility class`'lar faol bo'ladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`media` Strategiyasi bilan:",
-          "code": [
-            "<div class=\"bg-white dark:bg-gray-800 text-black dark:text-white\"> ... </div>"
-          ]
-        },
-        {
-          "title": "`class` Strategiyasi bilan (`JS` bilan `<html>`'ga `dark` qo'shilgan deb faraz qiling):",
-          "code": [
-            "<div class=\"bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400\"> ... </div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Tailwind `dark mode`'ni ikki usulda qo'llab-quvvatlaydi (`tailwind.config.js`'da sozlanadi): 1) `media` (standart): OS sozlamasiga (`prefers-color-scheme`) qarab ishlaydi. 2) `class`: `<html>` `tag`iga `dark` `class`'i qo'shilganda ishlaydi (`JavaScript` bilan boshqariladi). Ikkala holda ham `dark:` prefiksi (`dark:bg-black`) ishlatiladi."
-    }
+    "description": "Tailwind `dark mode`'ni qo'llab-quvvatlash uchun o'rnatilgan mexanizmga ega. Uni ikki asosiy strategiya bilan sozlash mumkin: `media` yoki `class`.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**1. `media` Strategiyasi (Standart):** Bu strategiya operatsion tizimning rang sxemasiga (`prefers-color-scheme` `media feature`) asoslanadi. Agar OS `dark mode`'da bo'lsa, `dark:` prefiksi bilan yozilgan `utility class`'lar avtomatik qo'llaniladi. `tailwind.config.js`'da `darkMode: 'media'` (yoki hech narsa yozilmasa ham standart shu) bo'lishi kerak."
+      },
+      {
+        "type": "paragraph",
+        "content": "**2. `class` Strategiyasi:** Bu strategiya `dark mode`'ni qo'lda (`JavaScript` yordamida) boshqarish imkonini beradi. `tailwind.config.js`'da `darkMode: 'class'` sozlamasi qo'shiladi. Keyin, `dark mode` yoqilishi kerak bo'lganda, siz `<html>` (yoki boshqa `parent`) elementiga `dark` `class`'ini qo'shasiz. Shunda `dark:` prefiksi bilan yozilgan `utility class`'lar faol bo'ladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`media` Strategiyasi bilan:",
+        "code": [
+          "<div class=\"bg-white dark:bg-gray-800 text-black dark:text-white\"> ... </div>"
+        ]
+      },
+      {
+        "title": "`class` Strategiyasi bilan (`JS` bilan `<html>`'ga `dark` qo'shilgan deb faraz qiling):",
+        "code": [
+          "<div class=\"bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400\"> ... </div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Tailwind `dark mode`'ni ikki usulda qo'llab-quvvatlaydi (`tailwind.config.js`'da sozlanadi): 1) `media` (standart): OS sozlamasiga (`prefers-color-scheme`) qarab ishlaydi. 2) `class`: `<html>` `tag`iga `dark` `class`'i qo'shilganda ishlaydi (`JavaScript` bilan boshqariladi). Ikkala holda ham `dark:` prefiksi (`dark:bg-black`) ishlatiladi."
   },
   {
     "id": "tw-q14",
     "question": "Tailwind'da `arbitrary values` (`[]` sintaksisi) nima?",
     "topic": "Tailwind JIT Mode",
-    "answer": {
-      "definition": "`Arbitrary values` (`ixtiyoriy qiymatlar`) — bu Tailwind'ning `JIT` (Just-In-Time) rejimi tomonidan taqdim etilgan xususiyat bo'lib, u `tailwind.config.js`'da oldindan aniqlanmagan maxsus qiymatlarni to'g'ridan-to'g'ri `class` nomlari ichida kvadrat qavslar `[]` yordamida ishlatish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu dizayn tizimida mavjud bo'lmagan, faqat bir marta ishlatiladigan aniq bir qiymat kerak bo'lganda juda qulay. Masalan, aniq `117px` `margin` yoki maxsus `hex` rang kodi kerak bo'lsa. Bu konfiguratsiya faylini ifloslantirmasdan, `utility-first` yondashuvidan chetga chiqmaslikka yordam beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "<div class=\"top-[11px]\">...</div>",
-            "<div class=\"bg-[#bada55]\">...</div>",
-            "<div class=\"grid-cols-[1fr_500px_2fr]\">...</div>",
-            "<div class=\"text-[14px]\">...</div>",
-            "<div class=\"mt-[calc(100%-1rem)]\">...</div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Arbitrary values` (`JIT` rejimida) kvadrat qavslar `[]` yordamida `class` nomi ichida konfiguratsiyada bo'lmagan maxsus qiymatlarni ishlatish imkonini beradi. Masalan, `top-[117px]` yoki `bg-[#bada55]`."
-    }
+    "description": "`Arbitrary values` (`ixtiyoriy qiymatlar`) — bu Tailwind'ning `JIT` (Just-In-Time) rejimi tomonidan taqdim etilgan xususiyat bo'lib, u `tailwind.config.js`'da oldindan aniqlanmagan maxsus qiymatlarni to'g'ridan-to'g'ri `class` nomlari ichida kvadrat qavslar `[]` yordamida ishlatish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu dizayn tizimida mavjud bo'lmagan, faqat bir marta ishlatiladigan aniq bir qiymat kerak bo'lganda juda qulay. Masalan, aniq `117px` `margin` yoki maxsus `hex` rang kodi kerak bo'lsa. Bu konfiguratsiya faylini ifloslantirmasdan, `utility-first` yondashuvidan chetga chiqmaslikka yordam beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "<div class=\"top-[11px]\">...</div>",
+          "<div class=\"bg-[#bada55]\">...</div>",
+          "<div class=\"grid-cols-[1fr_500px_2fr]\">...</div>",
+          "<div class=\"text-[14px]\">...</div>",
+          "<div class=\"mt-[calc(100%-1rem)]\">...</div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Arbitrary values` (`JIT` rejimida) kvadrat qavslar `[]` yordamida `class` nomi ichida konfiguratsiyada bo'lmagan maxsus qiymatlarni ishlatish imkonini beradi. Masalan, `top-[117px]` yoki `bg-[#bada55]`."
   },
   {
     "id": "tw-q15",
     "question": "Tailwind `PurgeCSS` (yoki `content` sozlamasi) nima qiladi?",
     "topic": "Tailwind Optimization",
-    "answer": {
-      "definition": "Tailwind standart holatda minglab `utility class`'larni generatsiya qiladi. `PurgeCSS` (Tailwind v2) yoki `content` sozlamasi (Tailwind v3+) — bu **`production build`** paytida loyiha fayllaringizni skanerlab, **faqat haqiqatan ishlatilgan `class` nomlarini** yakuniy CSS faylida qoldiradigan va qolgan barcha ishlatilmagan stillarni **olib tashlaydigan** jarayondir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu `production` uchun CSS fayl hajmini keskin (ko'pincha bir necha yuz kilobaytdan 10-20 kilobaytgacha) kamaytirishga yordam beradi, bu esa veb-saytning yuklanish tezligini oshiradi. `tailwind.config.js`'dagi `content` (yoki eski versiyalarda `purge`) massiviga qaysi fayl turlarini va papkalarni skanerlash kerakligini ko'rsatish juda muhim (`'./src/**/*.{js,jsx,ts,tsx}'`). `JIT` rejimi `development`'da ham faqat kerakli stillarni generatsiya qilgani uchun `development` tajribasini ham yaxshilaydi."
-        }
-      ],
-      "interviewAnswer": "Tailwind `content` (yoki `purge`) sozlamasi `production build` paytida loyiha fayllarini skanerlab, faqat ishlatilgan `utility class`'larni yakuniy CSS faylida qoldiradi va qolgan minglab ishlatilmagan `class`'larni olib tashlaydi. Bu CSS fayl hajmini sezilarli darajada kamaytiradi."
-    }
+    "description": "Tailwind standart holatda minglab `utility class`'larni generatsiya qiladi. `PurgeCSS` (Tailwind v2) yoki `content` sozlamasi (Tailwind v3+) — bu **`production build`** paytida loyiha fayllaringizni skanerlab, **faqat haqiqatan ishlatilgan `class` nomlarini** yakuniy CSS faylida qoldiradigan va qolgan barcha ishlatilmagan stillarni **olib tashlaydigan** jarayondir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `production` uchun CSS fayl hajmini keskin (ko'pincha bir necha yuz kilobaytdan 10-20 kilobaytgacha) kamaytirishga yordam beradi, bu esa veb-saytning yuklanish tezligini oshiradi. `tailwind.config.js`'dagi `content` (yoki eski versiyalarda `purge`) massiviga qaysi fayl turlarini va papkalarni skanerlash kerakligini ko'rsatish juda muhim (`'./src/**/*.{js,jsx,ts,tsx}'`). `JIT` rejimi `development`'da ham faqat kerakli stillarni generatsiya qilgani uchun `development` tajribasini ham yaxshilaydi."
+      }
+    ],
+    "interviewAnswer": "Tailwind `content` (yoki `purge`) sozlamasi `production build` paytida loyiha fayllarini skanerlab, faqat ishlatilgan `utility class`'larni yakuniy CSS faylida qoldiradi va qolgan minglab ishlatilmagan `class`'larni olib tashlaydi. Bu CSS fayl hajmini sezilarli darajada kamaytiradi."
   },
   {
     "id": "tw-q16",
     "question": "Tailwind `plugin`'lari nima uchun ishlatiladi?",
     "topic": "Tailwind Plugins",
-    "answer": {
-      "definition": "Tailwind `plugin`'lari `framework`'ning asosiy funksionalligini kengaytirish, yangi `utility class`'lar qo'shish, maxsus `variant`'lar yaratish yoki boshqa `JavaScript` funksiyalarini Tailwind `build process`'iga integratsiya qilish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Rasmiy `plugin`'lar (`@tailwindcss/forms`, `@tailwindcss/typography`, `@tailwindcss/aspect-ratio`) keng tarqalgan `UI pattern`'lari uchun tayyor yechimlarni taqdim etadi. Shuningdek, `third-party` `plugin`'lar mavjud yoki siz loyihangizning maxsus ehtiyojlari uchun o'zingizning `plugin`'ingizni yozishingiz mumkin. `Plugin`'lar `tailwind.config.js` faylining `plugins` massiviga qo'shiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`tailwind.config.js`'da `plugin`'ni yoqish:",
-          "code": [
-            "module.exports = {",
-            "  // ...",
-            "  plugins: [",
-            "    require('@tailwindcss/forms'), // Forma elementlari uchun yaxshiroq standart stillar",
-            "    require('@tailwindcss/typography'), // Matnli kontent uchun 'prose' class'i",
-            "  ],",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "Tailwind `plugin`'lari `framework` funksionalligini kengaytirish uchun. Ular yangi `utility`'lar (`@tailwindcss/forms`), `variant`'lar yoki boshqa maxsus imkoniyatlarni qo'shishi mumkin. Ular `tailwind.config.js`'da ro'yxatga olinadi."
-    }
+    "description": "Tailwind `plugin`'lari `framework`'ning asosiy funksionalligini kengaytirish, yangi `utility class`'lar qo'shish, maxsus `variant`'lar yaratish yoki boshqa `JavaScript` funksiyalarini Tailwind `build process`'iga integratsiya qilish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Rasmiy `plugin`'lar (`@tailwindcss/forms`, `@tailwindcss/typography`, `@tailwindcss/aspect-ratio`) keng tarqalgan `UI pattern`'lari uchun tayyor yechimlarni taqdim etadi. Shuningdek, `third-party` `plugin`'lar mavjud yoki siz loyihangizning maxsus ehtiyojlari uchun o'zingizning `plugin`'ingizni yozishingiz mumkin. `Plugin`'lar `tailwind.config.js` faylining `plugins` massiviga qo'shiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`tailwind.config.js`'da `plugin`'ni yoqish:",
+        "code": [
+          "module.exports = {",
+          "  // ...",
+          "  plugins: [",
+          "    require('@tailwindcss/forms'), // Forma elementlari uchun yaxshiroq standart stillar",
+          "    require('@tailwindcss/typography'), // Matnli kontent uchun 'prose' class'i",
+          "  ],",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "Tailwind `plugin`'lari `framework` funksionalligini kengaytirish uchun. Ular yangi `utility`'lar (`@tailwindcss/forms`), `variant`'lar yoki boshqa maxsus imkoniyatlarni qo'shishi mumkin. Ular `tailwind.config.js`'da ro'yxatga olinadi."
   },
   {
     "id": "tw-q17",
     "question": "Tailwind'da `container` `class`'i nima qiladi?",
     "topic": "Tailwind Layout",
-    "answer": {
-      "definition": "`.container` `class`'i kontentni markazlashtirilgan va turli `breakpoint`'larda maksimal kengligi (`max-width`) cheklangan blok yaratish uchun ishlatiladigan `utility`'dir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U odatda asosiy `layout` konteyneri sifatida ishlatiladi. Standart holatda, u har bir `breakpoint`'da (`sm`, `md`, `lg`, `xl`, `2xl`) o'sha `breakpoint` qiymatiga teng `max-width` o'rnatadi va `margin-left: auto; margin-right: auto;` yordamida markazga tekislaydi. Uning markazlashtirish xususiyatini (`theme.container.center: true`) yoki `padding`'ini (`theme.container.padding`) `tailwind.config.js`'da sozlash mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Ishlatilishi:",
-          "code": ["<div class=\"container mx-auto px-4\">", "</div>"]
-        }
-      ],
-      "interviewAnswer": "`.container` `class`'i kontentni markazlashtirilgan va turli `breakpoint`'larda maksimal kengligi cheklangan blok yaratadi. U asosiy `layout` konteyneri sifatida ishlatiladi."
-    }
+    "description": "`.container` `class`'i kontentni markazlashtirilgan va turli `breakpoint`'larda maksimal kengligi (`max-width`) cheklangan blok yaratish uchun ishlatiladigan `utility`'dir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U odatda asosiy `layout` konteyneri sifatida ishlatiladi. Standart holatda, u har bir `breakpoint`'da (`sm`, `md`, `lg`, `xl`, `2xl`) o'sha `breakpoint` qiymatiga teng `max-width` o'rnatadi va `margin-left: auto; margin-right: auto;` yordamida markazga tekislaydi. Uning markazlashtirish xususiyatini (`theme.container.center: true`) yoki `padding`'ini (`theme.container.padding`) `tailwind.config.js`'da sozlash mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ishlatilishi:",
+        "code": [
+          "<div class=\"container mx-auto px-4\">",
+          "</div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`.container` `class`'i kontentni markazlashtirilgan va turli `breakpoint`'larda maksimal kengligi cheklangan blok yaratadi. U asosiy `layout` konteyneri sifatida ishlatiladi."
   },
   {
     "id": "tw-q18",
     "question": "Tailwind'da `spacing` (masofalar) qanday ishlaydi?",
     "topic": "Tailwind Spacing",
-    "answer": {
-      "definition": "Tailwind `margin` (`m-*`), `padding` (`p-*`), `width` (`w-*`), `height` (`h-*`) kabi o'lchamlarni belgilash uchun izchil (`consistent`) `spacing scale` (masofalar shkalasi)dan foydalanadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu shkala standart holatda `rem` birliklariga asoslangan (masalan, `4` qiymati `1rem` yoki `16px`'ga teng). `p-4` `padding: 1rem;`, `m-8` `margin: 2rem;`, `w-1/2` `width: 50%;`, `h-screen` `height: 100vh;` kabi `class`'lar mavjud. Bu shkala `tailwind.config.js` faylidagi `theme.spacing` yoki `theme.extend.spacing` bo'limlarida to'liq moslashtirilishi mumkin. `Arbitrary values` (`m-[13px]`) ham ishlatish mumkin."
-        }
-      ],
-      "interviewAnswer": "Tailwind `margin`, `padding`, `width`, `height` uchun `rem`'ga asoslangan izchil `spacing scale`'dan foydalanadi (masalan, `p-4` = `padding: 1rem`). Bu shkala `tailwind.config.js`'da moslashtirilishi mumkin."
-    }
+    "description": "Tailwind `margin` (`m-*`), `padding` (`p-*`), `width` (`w-*`), `height` (`h-*`) kabi o'lchamlarni belgilash uchun izchil (`consistent`) `spacing scale` (masofalar shkalasi)dan foydalanadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu shkala standart holatda `rem` birliklariga asoslangan (masalan, `4` qiymati `1rem` yoki `16px`'ga teng). `p-4` `padding: 1rem;`, `m-8` `margin: 2rem;`, `w-1/2` `width: 50%;`, `h-screen` `height: 100vh;` kabi `class`'lar mavjud. Bu shkala `tailwind.config.js` faylidagi `theme.spacing` yoki `theme.extend.spacing` bo'limlarida to'liq moslashtirilishi mumkin. `Arbitrary values` (`m-[13px]`) ham ishlatish mumkin."
+      }
+    ],
+    "interviewAnswer": "Tailwind `margin`, `padding`, `width`, `height` uchun `rem`'ga asoslangan izchil `spacing scale`'dan foydalanadi (masalan, `p-4` = `padding: 1rem`). Bu shkala `tailwind.config.js`'da moslashtirilishi mumkin."
   },
   {
     "id": "tw-q19",
     "question": "Tailwind'ni `CSS Modules` bilan birga ishlatish mumkinmi?",
     "topic": "Tailwind Integration",
-    "answer": {
-      "definition": "Ha, Tailwind'ni `CSS Modules` bilan birga ishlatish mumkin, ammo bu odatda kamroq uchraydigan holat.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Tailwind'ning asosiy g'oyasi — `utility class`'larni to'g'ridan-to'g'ri `markup`'da ishlatish. `CSS Modules` esa stillarni `JavaScript`'ga `import` qilish va `scope`'lash uchun. Ularni birga ishlatishning bir necha yo'li bor:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`@apply` bilan:** `.module.css` fayli ichida `@apply` yordamida Tailwind `utility`'larini maxsus `class`'ga birlashtirish. Bu `markup`'ni toza saqlaydi.",
-            "**Global Stillar:** Ba'zi Tailwind stillarini (`@tailwind base;` kabi) global `index.css`'da qoldirib, komponentga xos murakkab stillarni `.module.css`'da yozish.",
-            "**`compose` Xususiyati:** Ba'zi `CSS Modules` sozlamalari `compose` xususiyati yordamida boshqa `class`'lar (shu jumladan Tailwind `utility`'lari) stillarini meros olishga imkon berishi mumkin."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Ammo ko'pincha, agar loyiha asosan Tailwind bilan qurilayotgan bo'lsa, `CSS Modules`'ga ehtiyoj kamayadi yoki umuman bo'lmaydi."
-        }
-      ],
-      "interviewAnswer": "Ha, ishlatish mumkin, lekin kamroq uchraydi. `.module.css` faylida `@apply` bilan Tailwind `utility`'larini maxsus `class`'ga birlashtirish mumkin. Ammo ko'pincha faqat Tailwind'ning o'zi yetarli bo'ladi."
-    }
+    "description": "Ha, Tailwind'ni `CSS Modules` bilan birga ishlatish mumkin, ammo bu odatda kamroq uchraydigan holat.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Tailwind'ning asosiy g'oyasi — `utility class`'larni to'g'ridan-to'g'ri `markup`'da ishlatish. `CSS Modules` esa stillarni `JavaScript`'ga `import` qilish va `scope`'lash uchun. Ularni birga ishlatishning bir necha yo'li bor:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`@apply` bilan:** `.module.css` fayli ichida `@apply` yordamida Tailwind `utility`'larini maxsus `class`'ga birlashtirish. Bu `markup`'ni toza saqlaydi.",
+          "**Global Stillar:** Ba'zi Tailwind stillarini (`@tailwind base;` kabi) global `index.css`'da qoldirib, komponentga xos murakkab stillarni `.module.css`'da yozish.",
+          "**`compose` Xususiyati:** Ba'zi `CSS Modules` sozlamalari `compose` xususiyati yordamida boshqa `class`'lar (shu jumladan Tailwind `utility`'lari) stillarini meros olishga imkon berishi mumkin."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Ammo ko'pincha, agar loyiha asosan Tailwind bilan qurilayotgan bo'lsa, `CSS Modules`'ga ehtiyoj kamayadi yoki umuman bo'lmaydi."
+      }
+    ],
+    "interviewAnswer": "Ha, ishlatish mumkin, lekin kamroq uchraydi. `.module.css` faylida `@apply` bilan Tailwind `utility`'larini maxsus `class`'ga birlashtirish mumkin. Ammo ko'pincha faqat Tailwind'ning o'zi yetarli bo'ladi."
   },
   {
     "id": "tw-q20",
     "question": "Tailwind `components` direktivasi (`@tailwind components`) nima qiladi?",
     "topic": "Tailwind Basics",
-    "answer": {
-      "definition": "`@tailwind components` direktivasi Tailwind tomonidan taqdim etilgan (yoki `plugin`'lar orqali qo'shilgan) oldindan tayyorlangan, qayta ishlatilishi mumkin bo'lgan **komponent `class`**'larini CSS faylingizga kiritadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu `utility class`'lardan farqli o'laroq, `.container` kabi, bir nechta stil qoidalarini o'z ichiga olgan tayyor `class`'lardir. Tailwind'ning asosiy kutubxonasi faqat `.container` `class`'ini taqdim etadi. Boshqa komponent `class`'lari odatda `plugin`'lar orqali qo'shiladi yoki siz `@layer components` direktivasi ichida `@apply` yordamida o'zingizning qayta ishlatiladigan komponent `class`'laringizni yaratishingiz mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`index.css`'dagi direktivalar:",
-          "code": [
-            "@tailwind base;     /* Brauzer stillarini reset qiladi */",
-            "@tailwind components; /* Komponent class'larini (.container) kiritadi */",
-            "@tailwind utilities;  /* Utility class'larini kiritadi */"
-          ]
-        }
-      ],
-      "interviewAnswer": "`@tailwind components` direktivasi `.container` kabi oldindan tayyorlangan komponent `class`'larini (yoki `plugin`'lar qo'shgan `class`'larni) CSS'ga kiritadi."
-    }
+    "description": "`@tailwind components` direktivasi Tailwind tomonidan taqdim etilgan (yoki `plugin`'lar orqali qo'shilgan) oldindan tayyorlangan, qayta ishlatilishi mumkin bo'lgan **komponent `class`**'larini CSS faylingizga kiritadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `utility class`'lardan farqli o'laroq, `.container` kabi, bir nechta stil qoidalarini o'z ichiga olgan tayyor `class`'lardir. Tailwind'ning asosiy kutubxonasi faqat `.container` `class`'ini taqdim etadi. Boshqa komponent `class`'lari odatda `plugin`'lar orqali qo'shiladi yoki siz `@layer components` direktivasi ichida `@apply` yordamida o'zingizning qayta ishlatiladigan komponent `class`'laringizni yaratishingiz mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`index.css`'dagi direktivalar:",
+        "code": [
+          "@tailwind base;     /* Brauzer stillarini reset qiladi */",
+          "@tailwind components; /* Komponent class'larini (.container) kiritadi */",
+          "@tailwind utilities;  /* Utility class'larini kiritadi */"
+        ]
+      }
+    ],
+    "interviewAnswer": "`@tailwind components` direktivasi `.container` kabi oldindan tayyorlangan komponent `class`'larini (yoki `plugin`'lar qo'shgan `class`'larni) CSS'ga kiritadi."
   },
-
   {
     "id": "tw-q21",
     "question": "Tailwind'da `@layer` direktivasi nima uchun ishlatiladi?",
     "topic": "Tailwind Directives",
-    "answer": {
-      "definition": "`@layer` direktivasi Tailwind'ga o'zingizning maxsus (`custom`) stillaringizni qaysi 'qatlam'ga (`base`, `components`, yoki `utilities`) joylashtirish kerakligini aytish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Tailwind o'z stillarini uchta asosiy qatlamda tartiblaydi: `base` (HTML elementlarining standart stillari, resetlar), `components` (qayta ishlatiladigan komponent `class`'lari, masalan `.container`), va `utilities` (asosiy `utility class`'lar). `@layer` yordamida siz o'zingizning stillaringizni shu qatlamlardan biriga joylashtirishingiz mumkin. Bu sizning stillaringiz Tailwind'ning standart stillari bilan to'g'ri `cascade` bo'lishini (masalan, sizning `utility`'laringiz standart `utility`'lardan keyin kelishini) ta'minlaydi va ularga `variant`'larni (`hover:`, `md:`) qo'llash imkonini beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol (`index.css`):",
-          "code": [
-            "@tailwind base;",
-            "@tailwind components;",
-            "@tailwind utilities;",
-            "",
-            "@layer base {",
-            "  h1 { @apply text-2xl; }",
-            "  a { @apply text-blue-600 underline; }",
-            "}",
-            "",
-            "@layer components {",
-            "  .card { @apply bg-white rounded shadow p-4; }",
-            "}",
-            "",
-            "@layer utilities {",
-            "  .content-auto { content-visibility: auto; }",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`@layer` direktivasi (`base`, `components`, `utilities`) maxsus CSS qoidalarini Tailwind'ning qaysi stil qatlamiga joylashtirishni belgilaydi. Bu `cascade`'ni to'g'ri boshqarish va `variant`'larni qo'llash uchun kerak."
-    }
+    "description": "`@layer` direktivasi Tailwind'ga o'zingizning maxsus (`custom`) stillaringizni qaysi 'qatlam'ga (`base`, `components`, yoki `utilities`) joylashtirish kerakligini aytish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Tailwind o'z stillarini uchta asosiy qatlamda tartiblaydi: `base` (HTML elementlarining standart stillari, resetlar), `components` (qayta ishlatiladigan komponent `class`'lari, masalan `.container`), va `utilities` (asosiy `utility class`'lar). `@layer` yordamida siz o'zingizning stillaringizni shu qatlamlardan biriga joylashtirishingiz mumkin. Bu sizning stillaringiz Tailwind'ning standart stillari bilan to'g'ri `cascade` bo'lishini (masalan, sizning `utility`'laringiz standart `utility`'lardan keyin kelishini) ta'minlaydi va ularga `variant`'larni (`hover:`, `md:`) qo'llash imkonini beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol (`index.css`):",
+        "code": [
+          "@tailwind base;",
+          "@tailwind components;",
+          "@tailwind utilities;",
+          "",
+          "@layer base {",
+          "  h1 { @apply text-2xl; }",
+          "  a { @apply text-blue-600 underline; }",
+          "}",
+          "",
+          "@layer components {",
+          "  .card { @apply bg-white rounded shadow p-4; }",
+          "}",
+          "",
+          "@layer utilities {",
+          "  .content-auto { content-visibility: auto; }",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`@layer` direktivasi (`base`, `components`, `utilities`) maxsus CSS qoidalarini Tailwind'ning qaysi stil qatlamiga joylashtirishni belgilaydi. Bu `cascade`'ni to'g'ri boshqarish va `variant`'larni qo'llash uchun kerak."
   },
   {
     "id": "tw-q22",
     "question": "Tailwind'da `screens` sozlamasi (`tailwind.config.js`) nima uchun ishlatiladi?",
     "topic": "Tailwind Configuration",
-    "answer": {
-      "definition": "`theme.screens` (yoki `theme.extend.screens`) bo'limi loyihangizda ishlatiladigan `responsive breakpoint`'larni (`sm`, `md`, `lg`, `xl`, `2xl`) aniqlash yoki o'zgartirish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Har bir `breakpoint` nomi (`key`) va unga mos keladigan minimal ekran kengligi (`value`, odatda `px`'da) ko'rsatiladi. Siz standart `breakpoint`'larni o'zgartirishingiz, yangilarini qo'shishingiz yoki ba'zilarini olib tashlashingiz mumkin. Bu `breakpoint`'lar `sm:text-lg`, `md:flex` kabi `responsive prefix`'lar bilan ishlatiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`tailwind.config.js` Misoli:",
-          "code": [
-            "module.exports = {",
-            "  theme: {",
-            "    screens: {",
-            "      'tablet': '640px',",
-            "      // => @media (min-width: 640px) { ... }",
-            "      'laptop': '1024px',",
-            "      // => @media (min-width: 1024px) { ... }",
-            "      'desktop': '1280px',",
-            "      // => @media (min-width: 1280px) { ... }",
-            "    },",
-            "    // extend: { // Yoki standartga qo'shish",
-            "    //   screens: {",
-            "    //     '3xl': '1600px',",
-            "    //   }",
-            "    // }",
-            "  },",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`theme.screens` bo'limi `tailwind.config.js`'da `responsive breakpoint`'larni (`sm`, `md`, `lg`...) va ularning minimal kengliklarini (`640px`, `768px`...) aniqlash yoki o'zgartirish uchun ishlatiladi."
-    }
+    "description": "`theme.screens` (yoki `theme.extend.screens`) bo'limi loyihangizda ishlatiladigan `responsive breakpoint`'larni (`sm`, `md`, `lg`, `xl`, `2xl`) aniqlash yoki o'zgartirish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Har bir `breakpoint` nomi (`key`) va unga mos keladigan minimal ekran kengligi (`value`, odatda `px`'da) ko'rsatiladi. Siz standart `breakpoint`'larni o'zgartirishingiz, yangilarini qo'shishingiz yoki ba'zilarini olib tashlashingiz mumkin. Bu `breakpoint`'lar `sm:text-lg`, `md:flex` kabi `responsive prefix`'lar bilan ishlatiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`tailwind.config.js` Misoli:",
+        "code": [
+          "module.exports = {",
+          "  theme: {",
+          "    screens: {",
+          "      'tablet': '640px',",
+          "      // => @media (min-width: 640px) { ... }",
+          "      'laptop': '1024px',",
+          "      // => @media (min-width: 1024px) { ... }",
+          "      'desktop': '1280px',",
+          "      // => @media (min-width: 1280px) { ... }",
+          "    },",
+          "    // extend: { // Yoki standartga qo'shish",
+          "    //   screens: {",
+          "    //     '3xl': '1600px',",
+          "    //   }",
+          "    // }",
+          "  },",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`theme.screens` bo'limi `tailwind.config.js`'da `responsive breakpoint`'larni (`sm`, `md`, `lg`...) va ularning minimal kengliklarini (`640px`, `768px`...) aniqlash yoki o'zgartirish uchun ishlatiladi."
   },
   {
     "id": "tw-q23",
     "question": "Tailwind'da `arbitrary properties` (`style` atributi kabi) qanday ishlatiladi?",
     "topic": "Tailwind JIT Mode",
-    "answer": {
-      "definition": "`Arbitrary properties` (`JIT` rejimida) sizga kvadrat qavslar `[]` ichida to'liq CSS qoidasini yozish imkonini beradi, agar kerakli `utility class` mavjud bo'lmasa.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu `arbitrary values`'dan farq qiladi. `Arbitrary values` mavjud `utility`'ga (`top-[11px]`) maxsus qiymat beradi. `Arbitrary properties` esa butunlay yangi CSS xususiyatini (`property`) va uning qiymatini (`value`) belgilaydi (`[mask-type:luminance]`). Bu juda kamdan-kam hollarda, Tailwind qamrab olmagan maxsus CSS xususiyatlari uchun kerak bo'lishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "<div class=\"[mask-type:luminance]\">...</div>",
-            "<div class=\"[--scroll-offset:56px] lg:[--scroll-offset:44px]\">...</div>",
-            "<div class=\"[filter:blur(8px)]\">...</div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Arbitrary properties` (`JIT` rejimida) kvadrat qavslar `[]` ichida to'liq CSS `property: value;` qoidasini yozish imkonini beradi (`[mask-type:alpha]`). U Tailwind'da mavjud bo'lmagan maxsus CSS xususiyatlari uchun ishlatiladi."
-    }
+    "description": "`Arbitrary properties` (`JIT` rejimida) sizga kvadrat qavslar `[]` ichida to'liq CSS qoidasini yozish imkonini beradi, agar kerakli `utility class` mavjud bo'lmasa.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `arbitrary values`'dan farq qiladi. `Arbitrary values` mavjud `utility`'ga (`top-[11px]`) maxsus qiymat beradi. `Arbitrary properties` esa butunlay yangi CSS xususiyatini (`property`) va uning qiymatini (`value`) belgilaydi (`[mask-type:luminance]`). Bu juda kamdan-kam hollarda, Tailwind qamrab olmagan maxsus CSS xususiyatlari uchun kerak bo'lishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "<div class=\"[mask-type:luminance]\">...</div>",
+          "<div class=\"[--scroll-offset:56px] lg:[--scroll-offset:44px]\">...</div>",
+          "<div class=\"[filter:blur(8px)]\">...</div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Arbitrary properties` (`JIT` rejimida) kvadrat qavslar `[]` ichida to'liq CSS `property: value;` qoidasini yozish imkonini beradi (`[mask-type:alpha]`). U Tailwind'da mavjud bo'lmagan maxsus CSS xususiyatlari uchun ishlatiladi."
   },
   {
     "id": "tw-q24",
     "question": "`@tailwindcss/typography` `plugin`'i nima qiladi?",
     "topic": "Tailwind Plugins",
-    "answer": {
-      "definition": "`@tailwindcss/typography` — bu Tailwind uchun rasmiy `plugin` bo'lib, u `Markdown`'dan generatsiya qilingan yoki `CMS`'dan keladigan formatlanmagan HTML bloklariga (`prose`) chiroyli tipografik standartlarni avtomatik ravishda qo'llash uchun mo'ljallangan.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Odatda, `Markdown` yoki `WYSIWYG editor`'dan kelgan HTML (`<h1>`, `<p>`, `<ul>`, `<blockquote>`) Tailwind `reset`'lari tufayli hech qanday stilga ega bo'lmaydi. Bu `plugin` `.prose` nomli `class`'ni taqdim etadi. Bu `class`'ni o'sha HTML blokini o'rab turgan elementga qo'shsangiz, `plugin` uning ichidagi barcha standart HTML elementlariga (sarlavhalar, paragraflar, ro'yxatlar, kod bloklari) chiroyli va o'qilishi oson bo'lgan standart stillarni (marginlar, shrift o'lchamlari, ranglar) avtomatik qo'llaydi. `Plugin`'ning stillari `tailwind.config.js` orqali sozlanishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Ishlatilishi:",
-          "code": [
-            "<article class=\"prose lg:prose-xl\">",
-            "  <h1>Maqola Sarlavhasi</h1>",
-            "  <p>Bu Markdown'dan kelgan matn...</p>",
-            "  <ul><li>Ro'yxat elementi</li></ul>",
-            "</article>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`@tailwindcss/typography` `plugin`'i `.prose` `class`'ini qo'shadi. Bu `class` `Markdown` yoki `CMS`'dan kelgan formatlanmagan HTML (`h1`, `p`, `ul`) bloklariga chiroyli tipografik standartlarni avtomatik qo'llaydi."
-    }
+    "description": "`@tailwindcss/typography` — bu Tailwind uchun rasmiy `plugin` bo'lib, u `Markdown`'dan generatsiya qilingan yoki `CMS`'dan keladigan formatlanmagan HTML bloklariga (`prose`) chiroyli tipografik standartlarni avtomatik ravishda qo'llash uchun mo'ljallangan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Odatda, `Markdown` yoki `WYSIWYG editor`'dan kelgan HTML (`<h1>`, `<p>`, `<ul>`, `<blockquote>`) Tailwind `reset`'lari tufayli hech qanday stilga ega bo'lmaydi. Bu `plugin` `.prose` nomli `class`'ni taqdim etadi. Bu `class`'ni o'sha HTML blokini o'rab turgan elementga qo'shsangiz, `plugin` uning ichidagi barcha standart HTML elementlariga (sarlavhalar, paragraflar, ro'yxatlar, kod bloklari) chiroyli va o'qilishi oson bo'lgan standart stillarni (marginlar, shrift o'lchamlari, ranglar) avtomatik qo'llaydi. `Plugin`'ning stillari `tailwind.config.js` orqali sozlanishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ishlatilishi:",
+        "code": [
+          "<article class=\"prose lg:prose-xl\">",
+          "  <h1>Maqola Sarlavhasi</h1>",
+          "  <p>Bu Markdown'dan kelgan matn...</p>",
+          "  <ul><li>Ro'yxat elementi</li></ul>",
+          "</article>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`@tailwindcss/typography` `plugin`'i `.prose` `class`'ini qo'shadi. Bu `class` `Markdown` yoki `CMS`'dan kelgan formatlanmagan HTML (`h1`, `p`, `ul`) bloklariga chiroyli tipografik standartlarni avtomatik qo'llaydi."
   },
   {
     "id": "tw-q25",
     "question": "Tailwind'da `transition` va `animation` `utility`'lari qanday ishlatiladi?",
     "topic": "Tailwind Transitions & Animations",
-    "answer": {
-      "definition": "Tailwind CSS `transition` (o'tishlar) va `animation` (animatsiyalar) uchun ham keng qamrovli `utility class`'larni taqdim etadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Transitions`:** Odatda elementning holati (`hover`, `focus`) o'zgarganda stil o'zgarishini silliqlashtirish uchun ishlatiladi. Asosiy `class`'lar: `transition` (qaysi xususiyatlar o'tishini belgilaydi, standart holatda ko'pchiligi), `duration-{amount}` (o'tish davomiyligi), `ease-{timing}` (o'tish egri chizig'i), `delay-{amount}` (o'tish kechikishi). Bular odatda `hover:`, `focus:` kabi `variant`'lar bilan birga ishlatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Animations`:** Oldindan belgilangan (`spin`, `ping`, `pulse`, `bounce`) yoki `tailwind.config.js`'da `@keyframes` bilan aniqlangan maxsus animatsiyalarni qo'llash uchun ishlatiladi. Asosiy `class`'lar: `animate-{name}` (masalan, `animate-spin`, `animate-bounce`). Animatsiya davomiyligi, takrorlanishi va hokazolar ham `utility`'lar bilan boshqarilishi mumkin, lekin ko'pincha `@keyframes`'ning o'zida belgilanadi yoki maxsus `utility`'lar konfiguratsiyada yaratiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Transition Misoli:",
-          "code": [
-            "<button class=\"transition duration-300 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:scale-110\">Hover Me</button>"
-          ]
-        },
-        {
-          "title": "Animation Misoli:",
-          "code": [
-            "<div class=\"animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-blue-500 rounded-full\"></div>",
-            "<div class=\"animate-ping h-2 w-2 bg-blue-600 rounded-full\"></div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`transition` `utility`'lari (`transition`, `duration-*`, `ease-*`) holat o'zgarishlarini (`hover:`) silliqlashtirish uchun. `animation` `utility`'lari (`animate-spin`, `animate-ping`) oldindan belgilangan yoki maxsus `@keyframes` animatsiyalarini qo'llash uchun."
-    }
+    "description": "Tailwind CSS `transition` (o'tishlar) va `animation` (animatsiyalar) uchun ham keng qamrovli `utility class`'larni taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Transitions`:** Odatda elementning holati (`hover`, `focus`) o'zgarganda stil o'zgarishini silliqlashtirish uchun ishlatiladi. Asosiy `class`'lar: `transition` (qaysi xususiyatlar o'tishini belgilaydi, standart holatda ko'pchiligi), `duration-{amount}` (o'tish davomiyligi), `ease-{timing}` (o'tish egri chizig'i), `delay-{amount}` (o'tish kechikishi). Bular odatda `hover:`, `focus:` kabi `variant`'lar bilan birga ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Animations`:** Oldindan belgilangan (`spin`, `ping`, `pulse`, `bounce`) yoki `tailwind.config.js`'da `@keyframes` bilan aniqlangan maxsus animatsiyalarni qo'llash uchun ishlatiladi. Asosiy `class`'lar: `animate-{name}` (masalan, `animate-spin`, `animate-bounce`). Animatsiya davomiyligi, takrorlanishi va hokazolar ham `utility`'lar bilan boshqarilishi mumkin, lekin ko'pincha `@keyframes`'ning o'zida belgilanadi yoki maxsus `utility`'lar konfiguratsiyada yaratiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Transition Misoli:",
+        "code": [
+          "<button class=\"transition duration-300 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:scale-110\">Hover Me</button>"
+        ]
+      },
+      {
+        "title": "Animation Misoli:",
+        "code": [
+          "<div class=\"animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-blue-500 rounded-full\"></div>",
+          "<div class=\"animate-ping h-2 w-2 bg-blue-600 rounded-full\"></div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`transition` `utility`'lari (`transition`, `duration-*`, `ease-*`) holat o'zgarishlarini (`hover:`) silliqlashtirish uchun. `animation` `utility`'lari (`animate-spin`, `animate-ping`) oldindan belgilangan yoki maxsus `@keyframes` animatsiyalarini qo'llash uchun."
   },
   {
     "id": "tw-q26",
     "question": "Tailwind `group` va `peer` markerlaridan tashqari holatlarni qanday boshqaradi (masalan, `aria-*`, `data-*`)?",
     "topic": "Tailwind State Variants",
-    "answer": {
-      "definition": "Tailwind `pseudo-class`'lardan (`hover:`, `focus:`) tashqari, `HTML` atributlarining mavjudligi yoki qiymatiga qarab stillarni qo'llash uchun ham maxsus variantlarni (`variants`) qo'llab-quvvatlaydi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu ayniqsa `accessibility` (`ARIA` atributlari) yoki `JavaScript` tomonidan boshqariladigan maxsus holatlar (`data-*` atributlari) uchun foydali. Sintaksis `attribute-name:utility` yoki `attribute-name-value:utility` ko'rinishida bo'ladi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`aria-*` variantlari:** Elementning `ARIA` atributiga qarab stil beradi. Masalan, `aria-checked:bg-blue-600` (`aria-checked=\"true\"` bo'lganda fonni ko'k qiladi), `aria-disabled:opacity-50`.",
-            "**`data-*` variantlari:** Elementning `data-*` atributiga qarab stil beradi. Masalan, `data-[state=open]:rotate-180` (`data-state=\"open\"` bo'lganda elementni aylantiradi)."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "`aria-checked` Misoli:",
-          "code": [
-            "<div role=\"checkbox\" aria-checked=\"true\" class=\"bg-gray-200 aria-checked:bg-blue-500\">...</div>"
-          ]
-        },
-        {
-          "title": "`data-*` Misoli:",
-          "code": [
-            "<button data-state=\"closed\" class=\"data-[state=open]:bg-red-500\">...</button>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Tailwind `group`/`peer` va `pseudo-class`'lardan tashqari `ARIA` atributlari (`aria-checked:bg-blue-500`) va `data-*` atributlari (`data-[state=open]:rotate-180`) uchun ham maxsus variantlarni qo'llab-quvvatlaydi. Bu `accessibility` va `JavaScript` bilan boshqariladigan holatlar uchun foydali."
-    }
+    "description": "Tailwind `pseudo-class`'lardan (`hover:`, `focus:`) tashqari, `HTML` atributlarining mavjudligi yoki qiymatiga qarab stillarni qo'llash uchun ham maxsus variantlarni (`variants`) qo'llab-quvvatlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu ayniqsa `accessibility` (`ARIA` atributlari) yoki `JavaScript` tomonidan boshqariladigan maxsus holatlar (`data-*` atributlari) uchun foydali. Sintaksis `attribute-name:utility` yoki `attribute-name-value:utility` ko'rinishida bo'ladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`aria-*` variantlari:** Elementning `ARIA` atributiga qarab stil beradi. Masalan, `aria-checked:bg-blue-600` (`aria-checked=\"true\"` bo'lganda fonni ko'k qiladi), `aria-disabled:opacity-50`.",
+          "**`data-*` variantlari:** Elementning `data-*` atributiga qarab stil beradi. Masalan, `data-[state=open]:rotate-180` (`data-state=\"open\"` bo'lganda elementni aylantiradi)."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`aria-checked` Misoli:",
+        "code": [
+          "<div role=\"checkbox\" aria-checked=\"true\" class=\"bg-gray-200 aria-checked:bg-blue-500\">...</div>"
+        ]
+      },
+      {
+        "title": "`data-*` Misoli:",
+        "code": [
+          "<button data-state=\"closed\" class=\"data-[state=open]:bg-red-500\">...</button>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Tailwind `group`/`peer` va `pseudo-class`'lardan tashqari `ARIA` atributlari (`aria-checked:bg-blue-500`) va `data-*` atributlari (`data-[state=open]:rotate-180`) uchun ham maxsus variantlarni qo'llab-quvvatlaydi. Bu `accessibility` va `JavaScript` bilan boshqariladigan holatlar uchun foydali."
   },
   {
     "id": "tw-q27",
     "question": "Tailwind'da `Ring` `utility`'lari nima uchun ishlatiladi?",
     "topic": "Tailwind Effects",
-    "answer": {
-      "definition": "`Ring` `utility`'lari (`ring`, `ring-offset-*`, `ring-*`) element atrofida `box-shadow` yordamida yaratilgan qalin, bir xil rangdagi tashqi 'halqa' (kontur) hosil qilish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular odatda `focus` holatini bildirish uchun standart `outline`'ga chiroyliroq alternativa sifatida ishlatiladi. `outline`'dan farqli o'laroq, `ring` elementning `layout`'iga ta'sir qilmaydi (joy egallamaydi) va `border-radius`'ni hisobga oladi. `ring-{width}` halqa qalinligini, `ring-{color}` rangini, `ring-offset-{width}` esa halqa va element orasidagi bo'shliqni (odatda element fon rangida) belgilaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Focus Ring Misoli:",
-          "code": [
-            "<button class=\"... focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500\">Click Me</button>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Ring` `utility`'lari (`ring`, `ring-offset-*`, `ring-*`) element atrofida `box-shadow` bilan chizilgan tashqi 'halqa' yaratadi. Ular asosan `focus` holatini bildirish uchun `outline`'ga alternativa sifatida ishlatiladi, chunki ular `layout`'ga ta'sir qilmaydi va chiroyliroq ko'rinishi mumkin."
-    }
+    "description": "`Ring` `utility`'lari (`ring`, `ring-offset-*`, `ring-*`) element atrofida `box-shadow` yordamida yaratilgan qalin, bir xil rangdagi tashqi 'halqa' (kontur) hosil qilish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular odatda `focus` holatini bildirish uchun standart `outline`'ga chiroyliroq alternativa sifatida ishlatiladi. `outline`'dan farqli o'laroq, `ring` elementning `layout`'iga ta'sir qilmaydi (joy egallamaydi) va `border-radius`'ni hisobga oladi. `ring-{width}` halqa qalinligini, `ring-{color}` rangini, `ring-offset-{width}` esa halqa va element orasidagi bo'shliqni (odatda element fon rangida) belgilaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Focus Ring Misoli:",
+        "code": [
+          "<button class=\"... focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500\">Click Me</button>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Ring` `utility`'lari (`ring`, `ring-offset-*`, `ring-*`) element atrofida `box-shadow` bilan chizilgan tashqi 'halqa' yaratadi. Ular asosan `focus` holatini bildirish uchun `outline`'ga alternativa sifatida ishlatiladi, chunki ular `layout`'ga ta'sir qilmaydi va chiroyliroq ko'rinishi mumkin."
   },
   {
     "id": "tw-q28",
     "question": "Tailwind'da `space-*` `utility`'lari nima qiladi?",
     "topic": "Tailwind Layout",
-    "answer": {
-      "definition": "`space-x-*` va `space-y-*` `utility`'lari `Flexbox` yoki `Grid` konteyneridagi `child` elementlar orasiga gorizontal (`space-x`) yoki vertikal (`space-y`) masofa (`margin`) qo'shishning qulay usulidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular har bir `child` elementga alohida `margin` berish o'rniga, `parent` elementga bitta `class` qo'shish orqali ular orasidagi masofani boshqarish imkonini beradi. Bu kodni toza saqlaydi. Ular aslida birinchidan tashqari barcha `child` elementlarga mos `margin-left` yoki `margin-top` qo'shish orqali ishlaydi (`reversed` yo'nalishlar uchun `margin-right`/`margin-bottom`). Qiymatlar (`*` o'rnidagi raqam) `tailwind.config.js`'dagi `spacing` shkalasiga mos keladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Gorizontal Masofa:",
-          "code": [
-            "<div class=\"flex space-x-4\">",
-            "  <div>01</div>",
-            "  <div>02</div>",
-            "  <div>03</div>",
-            "</div>"
-          ]
-        },
-        {
-          "title": "Vertikal Masofa (Teskarisi):",
-          "code": [
-            "<div class=\"flex flex-col-reverse space-y-4 space-y-reverse\">",
-            "  <div>01</div>",
-            "  <div>02</div>",
-            "  <div>03</div>",
-            "</div>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`space-x-*` va `space-y-*` `utility`'lari `flex` yoki `grid` `child`'lari orasiga gorizontal yoki vertikal masofa (`margin`) qo'shish uchun `parent` elementga beriladi. Ular har bir elementga alohida `margin` berishdan ko'ra qulayroq."
-    }
+    "description": "`space-x-*` va `space-y-*` `utility`'lari `Flexbox` yoki `Grid` konteyneridagi `child` elementlar orasiga gorizontal (`space-x`) yoki vertikal (`space-y`) masofa (`margin`) qo'shishning qulay usulidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular har bir `child` elementga alohida `margin` berish o'rniga, `parent` elementga bitta `class` qo'shish orqali ular orasidagi masofani boshqarish imkonini beradi. Bu kodni toza saqlaydi. Ular aslida birinchidan tashqari barcha `child` elementlarga mos `margin-left` yoki `margin-top` qo'shish orqali ishlaydi (`reversed` yo'nalishlar uchun `margin-right`/`margin-bottom`). Qiymatlar (`*` o'rnidagi raqam) `tailwind.config.js`'dagi `spacing` shkalasiga mos keladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Gorizontal Masofa:",
+        "code": [
+          "<div class=\"flex space-x-4\">",
+          "  <div>01</div>",
+          "  <div>02</div>",
+          "  <div>03</div>",
+          "</div>"
+        ]
+      },
+      {
+        "title": "Vertikal Masofa (Teskarisi):",
+        "code": [
+          "<div class=\"flex flex-col-reverse space-y-4 space-y-reverse\">",
+          "  <div>01</div>",
+          "  <div>02</div>",
+          "  <div>03</div>",
+          "</div>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`space-x-*` va `space-y-*` `utility`'lari `flex` yoki `grid` `child`'lari orasiga gorizontal yoki vertikal masofa (`margin`) qo'shish uchun `parent` elementga beriladi. Ular har bir elementga alohida `margin` berishdan ko'ra qulayroq."
   },
   {
     "id": "tw-q29",
     "question": "Tailwind'ni mavjud CSS loyihasiga qo'shish mumkinmi?",
     "topic": "Tailwind Integration",
-    "answer": {
-      "definition": "Ha, Tailwind'ni mavjud CSS loyihasiga bosqichma-bosqich qo'shish va integratsiya qilish mumkin.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Eng yaxshi yondashuv — bu `Progressive Enhancement` kabi: 1) Tailwind'ni loyihaga o'rnating va sozlang. 2) Tailwind'ning `preflight` (asosiy `reset` stillari) ta'sirini tekshiring va kerak bo'lsa, moslashtiring (yoki `preflight: false` qilib o'chirib, o'zingizning `reset`'ingizni ishlating). 3) Yangi komponentlar yoki bo'limlarni Tailwind `utility`'lari bilan qurishni boshlang. 4) Eski CSS qoidalarini asta-sekin, komponentma-komponent Tailwind `utility`'lariga (`@apply` yoki to'g'ridan-to'g'ri `markup`'da) o'tkazing (`refactor`). Bu jarayon vaqt talab qilishi mumkin, lekin ikkala tizimni bir vaqtda ishlatib turish mumkin."
-        }
-      ],
-      "interviewAnswer": "Ha, mumkin. Tailwind'ni o'rnating, `preflight` ta'sirini tekshiring/sozlang. Yangi qismlarni Tailwind bilan quring va eski CSS'ni asta-sekin `@apply` yoki `markup`'dagi `utility`'lar bilan almashtirib boring."
-    }
+    "description": "Ha, Tailwind'ni mavjud CSS loyihasiga bosqichma-bosqich qo'shish va integratsiya qilish mumkin.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eng yaxshi yondashuv — bu `Progressive Enhancement` kabi: 1) Tailwind'ni loyihaga o'rnating va sozlang. 2) Tailwind'ning `preflight` (asosiy `reset` stillari) ta'sirini tekshiring va kerak bo'lsa, moslashtiring (yoki `preflight: false` qilib o'chirib, o'zingizning `reset`'ingizni ishlating). 3) Yangi komponentlar yoki bo'limlarni Tailwind `utility`'lari bilan qurishni boshlang. 4) Eski CSS qoidalarini asta-sekin, komponentma-komponent Tailwind `utility`'lariga (`@apply` yoki to'g'ridan-to'g'ri `markup`'da) o'tkazing (`refactor`). Bu jarayon vaqt talab qilishi mumkin, lekin ikkala tizimni bir vaqtda ishlatib turish mumkin."
+      }
+    ],
+    "interviewAnswer": "Ha, mumkin. Tailwind'ni o'rnating, `preflight` ta'sirini tekshiring/sozlang. Yangi qismlarni Tailwind bilan quring va eski CSS'ni asta-sekin `@apply` yoki `markup`'dagi `utility`'lar bilan almashtirib boring."
   },
   {
     "id": "tw-q30",
     "question": "Tailwind CSS'ning `Bootstrap` kabi komponent kutubxonalaridan asosiy farqi nima?",
     "topic": "Tailwind Concepts",
-    "answer": {
-      "definition": "Asosiy farq ularning yondashuvidadir: Tailwind **`utility-first`** `framework`, `Bootstrap` esa **`component-based`** `framework` hisoblanadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Bootstrap` (va shunga o'xshashlar: `Material UI`, `Foundation`):** Oldindan tayyorlangan, to'liq `style`'langan komponentlarni (`.btn`, `.card`, `.navbar`, `.modal`) taqdim etadi. Siz bu komponentlarni `HTML`'da ishlatasiz va ularning ko'rinishini cheklangan darajada o'zgartirishingiz mumkin. Bu tez prototiplash uchun qulay, lekin noyob (`custom`) dizayn yaratishni qiyinlashtirishi mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Tailwind CSS:** Tayyor komponentlar bermaydi. Buning o'rniga, u juda kichik, atomik `utility class`'lar (`.text-red-500`, `.p-4`, `.flex`) beradi. Siz bu `utility`'larni xuddi LEGO g'ishtlari kabi birlashtirib, **o'zingizning** noyob komponentlaringizni to'g'ridan-to'g'ri `markup`'da qurasiz. Bu ko'proq moslashuvchanlik beradi va CSS yozishni kamaytiradi, lekin `markup`'ni biroz 'ifloslantirishi' mumkin."
-        }
-      ],
-      "interviewAnswer": "Asosiy farq: `Bootstrap` tayyor komponentlar (`.btn`, `.card`) beradi, bu tez boshlash uchun qulay, lekin moslashuvchanligi kamroq. Tailwind esa komponentlar emas, balki kichik `utility class`'lar (`.p-4`, `.text-red-500`) beradi, siz ular yordamida `HTML`'da o'zingizning noyob dizayningizni qurasiz, bu ko'proq moslashuvchanlik beradi."
-    }
+    "description": "Asosiy farq ularning yondashuvidadir: Tailwind **`utility-first`** `framework`, `Bootstrap` esa **`component-based`** `framework` hisoblanadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Bootstrap` (va shunga o'xshashlar: `Material UI`, `Foundation`):** Oldindan tayyorlangan, to'liq `style`'langan komponentlarni (`.btn`, `.card`, `.navbar`, `.modal`) taqdim etadi. Siz bu komponentlarni `HTML`'da ishlatasiz va ularning ko'rinishini cheklangan darajada o'zgartirishingiz mumkin. Bu tez prototiplash uchun qulay, lekin noyob (`custom`) dizayn yaratishni qiyinlashtirishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Tailwind CSS:** Tayyor komponentlar bermaydi. Buning o'rniga, u juda kichik, atomik `utility class`'lar (`.text-red-500`, `.p-4`, `.flex`) beradi. Siz bu `utility`'larni xuddi LEGO g'ishtlari kabi birlashtirib, **o'zingizning** noyob komponentlaringizni to'g'ridan-to'g'ri `markup`'da qurasiz. Bu ko'proq moslashuvchanlik beradi va CSS yozishni kamaytiradi, lekin `markup`'ni biroz 'ifloslantirishi' mumkin."
+      }
+    ],
+    "interviewAnswer": "Asosiy farq: `Bootstrap` tayyor komponentlar (`.btn`, `.card`) beradi, bu tez boshlash uchun qulay, lekin moslashuvchanligi kamroq. Tailwind esa komponentlar emas, balki kichik `utility class`'lar (`.p-4`, `.text-red-500`) beradi, siz ular yordamida `HTML`'da o'zingizning noyob dizayningizni qurasiz, bu ko'proq moslashuvchanlik beradi."
   }
 ]

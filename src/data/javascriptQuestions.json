@@ -3,1586 +3,1513 @@
     "id": "js-q1",
     "question": "`var`, `let`, va `const` o'rtasida qanday farq bor?",
     "topic": "JS Variables & Scope",
-    "answer": {
-      "definition": "Uchala kalit so'z ham JavaScript'da o'zgaruvchilarni e'lon qilish uchun ishlatiladi, ammo ularning `scope` (ko'rinish doirasi) va qayta qiymat berish (`reassignment`)/qayta e'lon qilish (`redeclaration`) qoidalari bilan farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`var` (ES5):** Funksiya `scope`'iga ega (`function scope`). `var` o'zgaruvchilari `hoisting`'ga uchraydi (e'lon qismi yuqoriga ko'tariladi, lekin qiymati emas) va bir xil `scope`'da qayta e'lon qilinishi (`redeclare`) va qayta qiymat berilishi (`reassign`) mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`let` (ES6):** Blok `scope`'iga ega (`block scope`). `let` o'zgaruvchilari ham `hoisting`'ga uchraydi, lekin ular e'lon qilingan qatorga yetib kelmaguncha (`Temporal Dead Zone`) ularga murojaat qilib bo'lmaydi. Bir xil `scope`'da qayta e'lon qilinishi **mumkin emas**, lekin qayta qiymat berilishi **mumkin**."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`const` (ES6):** `let` kabi blok `scope`'iga ega va `Temporal Dead Zone`'ga ega. Asosiy farqi: `const` bilan e'lon qilingan o'zgaruvchiga **boshlang'ich qiymat berilishi shart** va uni keyinchalik **qayta qiymat berib bo'lmaydi (`reassign`)**. Biroq, agar `const` o'zgaruvchisi obyekt (`object`) yoki massiv (`array`) bo'lsa, obyektning xususiyatlari yoki massivning elementlarini o'zgartirish mumkin (`mutation`)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`var` (Function Scope):",
-          "code": [
-            "function testVar() { if (true) { var x = 10; } console.log(x); } testVar(); // 10"
-          ]
-        },
-        {
-          "title": "`let` (Block Scope):",
-          "code": [
-            "function testLet() { if (true) { let y = 20; } /* console.log(y); // Error! y is not defined */ } testLet();"
-          ]
-        },
-        {
-          "title": "`const` (Reassignment Error):",
-          "code": [
-            "const z = 30; /* z = 40; // Error! Assignment to constant variable. */"
-          ]
-        },
-        {
-          "title": "`const` (Mutation Allowed):",
-          "code": [
-            "const obj = {a: 1}; obj.a = 2; console.log(obj); // { a: 2 }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`var` funksiya `scope`'iga ega, `hoisting` bo'ladi, qayta e'lon qilish va qiymat berish mumkin. `let` blok `scope`'iga ega, `TDZ`'ga ega, qayta e'lon qilish mumkin emas, lekin qiymat berish mumkin. `const` `let` kabi, lekin boshlang'ich qiymat shart va qayta qiymat berib bo'lmaydi (obyekt/massiv ichini o'zgartirish mumkin)."
-    }
+    "description": "Uchala kalit so'z ham JavaScript'da o'zgaruvchilarni e'lon qilish uchun ishlatiladi, ammo ularning `scope` (ko'rinish doirasi) va qayta qiymat berish (`reassignment`)/qayta e'lon qilish (`redeclaration`) qoidalari bilan farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`var` (ES5):** Funksiya `scope`'iga ega (`function scope`). `var` o'zgaruvchilari `hoisting`'ga uchraydi (e'lon qismi yuqoriga ko'tariladi, lekin qiymati emas) va bir xil `scope`'da qayta e'lon qilinishi (`redeclare`) va qayta qiymat berilishi (`reassign`) mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`let` (ES6):** Blok `scope`'iga ega (`block scope`). `let` o'zgaruvchilari ham `hoisting`'ga uchraydi, lekin ular e'lon qilingan qatorga yetib kelmaguncha (`Temporal Dead Zone`) ularga murojaat qilib bo'lmaydi. Bir xil `scope`'da qayta e'lon qilinishi **mumkin emas**, lekin qayta qiymat berilishi **mumkin**."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`const` (ES6):** `let` kabi blok `scope`'iga ega va `Temporal Dead Zone`'ga ega. Asosiy farqi: `const` bilan e'lon qilingan o'zgaruvchiga **boshlang'ich qiymat berilishi shart** va uni keyinchalik **qayta qiymat berib bo'lmaydi (`reassign`)**. Biroq, agar `const` o'zgaruvchisi obyekt (`object`) yoki massiv (`array`) bo'lsa, obyektning xususiyatlari yoki massivning elementlarini o'zgartirish mumkin (`mutation`)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`var` (Function Scope):",
+        "code": [
+          "function testVar() { if (true) { var x = 10; } console.log(x); } testVar(); // 10"
+        ]
+      },
+      {
+        "title": "`let` (Block Scope):",
+        "code": [
+          "function testLet() { if (true) { let y = 20; } /* console.log(y); // Error! y is not defined */ } testLet();"
+        ]
+      },
+      {
+        "title": "`const` (Reassignment Error):",
+        "code": [
+          "const z = 30; /* z = 40; // Error! Assignment to constant variable. */"
+        ]
+      },
+      {
+        "title": "`const` (Mutation Allowed):",
+        "code": [
+          "const obj = {a: 1}; obj.a = 2; console.log(obj); // { a: 2 }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`var` funksiya `scope`'iga ega, `hoisting` bo'ladi, qayta e'lon qilish va qiymat berish mumkin. `let` blok `scope`'iga ega, `TDZ`'ga ega, qayta e'lon qilish mumkin emas, lekin qiymat berish mumkin. `const` `let` kabi, lekin boshlang'ich qiymat shart va qayta qiymat berib bo'lmaydi (obyekt/massiv ichini o'zgartirish mumkin)."
   },
   {
     "id": "js-q2",
     "question": "`==` va `===` operatorlari o'rtasida qanday farq bor?",
     "topic": "JS Operators",
-    "answer": {
-      "definition": "Ikkala operator ham JavaScript'da qiymatlarni solishtirish uchun ishlatiladi, ammo ular buni turli qoidalar asosida bajaradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`==` (Loose Equality / Type Coercion):** Solishtirishdan oldin operandlarning tiplarini bir xil qilishga harakat qiladi (`type coercion`). Masalan, `'5' == 5` `true` qaytaradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`===` (Strict Equality / No Type Coercion):** Operandlarning ham qiymatini, ham tipini solishtiradi. Agar tiplari har xil bo'lsa, darhol `false` qaytaradi. Masalan, `'5' === 5` `false` qaytaradi. Odatda `===` ishlatish tavsiya etiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "5 == '5'    // true",
-            "5 === '5'   // false",
-            "true == 1   // true",
-            "true === 1  // false",
-            "null == undefined // true",
-            "null === undefined // false"
-          ]
-        }
-      ],
-      "interviewAnswer": "`==` tiplarni o'zgartirib solishtiradi (`5 == '5'` true), `===` ham qiymatni, ham tipni tekshiradi (`5 === '5'` false). `===` ishlatish afzalroq."
-    }
+    "description": "Ikkala operator ham JavaScript'da qiymatlarni solishtirish uchun ishlatiladi, ammo ular buni turli qoidalar asosida bajaradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`==` (Loose Equality / Type Coercion):** Solishtirishdan oldin operandlarning tiplarini bir xil qilishga harakat qiladi (`type coercion`). Masalan, `'5' == 5` `true` qaytaradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`===` (Strict Equality / No Type Coercion):** Operandlarning ham qiymatini, ham tipini solishtiradi. Agar tiplari har xil bo'lsa, darhol `false` qaytaradi. Masalan, `'5' === 5` `false` qaytaradi. Odatda `===` ishlatish tavsiya etiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "5 == '5'    // true",
+          "5 === '5'   // false",
+          "true == 1   // true",
+          "true === 1  // false",
+          "null == undefined // true",
+          "null === undefined // false"
+        ]
+      }
+    ],
+    "interviewAnswer": "`==` tiplarni o'zgartirib solishtiradi (`5 == '5'` true), `===` ham qiymatni, ham tipni tekshiradi (`5 === '5'` false). `===` ishlatish afzalroq."
   },
   {
     "id": "js-q3",
     "question": "`null` va `undefined` o'rtasida qanday farq bor?",
     "topic": "JS Data Types",
-    "answer": {
-      "definition": "Ikkalasi ham qiymatning yo'qligini ifodalaydi, ammo turli ma'nolarga ega.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`undefined`:** O'zgaruvchi e'lon qilingan, lekin qiymat berilmaganligini bildiradi (odatda avtomatik)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`null`:** Qiymatning yo'qligini dasturchi tomonidan ataylab belgilash uchun ishlatiladi ('bo'sh' qiymat)."
-        },
-        {
-          "type": "paragraph",
-          "content": "`typeof undefined` `\"undefined\"` qaytaradi, `typeof null` esa `\"object\"` qaytaradi (eski xato)."
-        }
-      ],
-      "interviewAnswer": "`undefined` qiymat berilmaganlikni bildiradi (avtomatik). `null` esa qiymatning yo'qligini ataylab belgilash uchun ('bo'sh' qiymat). `typeof null` bu 'object'."
-    }
+    "description": "Ikkalasi ham qiymatning yo'qligini ifodalaydi, ammo turli ma'nolarga ega.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`undefined`:** O'zgaruvchi e'lon qilingan, lekin qiymat berilmaganligini bildiradi (odatda avtomatik)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`null`:** Qiymatning yo'qligini dasturchi tomonidan ataylab belgilash uchun ishlatiladi ('bo'sh' qiymat)."
+      },
+      {
+        "type": "paragraph",
+        "content": "`typeof undefined` `\"undefined\"` qaytaradi, `typeof null` esa `\"object\"` qaytaradi (eski xato)."
+      }
+    ],
+    "interviewAnswer": "`undefined` qiymat berilmaganlikni bildiradi (avtomatik). `null` esa qiymatning yo'qligini ataylab belgilash uchun ('bo'sh' qiymat). `typeof null` bu 'object'."
   },
   {
     "id": "js-q4",
     "question": "`Closure` nima va u qanday ishlaydi?",
     "topic": "JS Scope & Closures",
-    "answer": {
-      "definition": "`Closure` — bu ichki funksiyaning o'zi yaratilgan muhit (`lexical scope`)'dagi o'zgaruvchilarga kirish va ularni 'eslab qolish' qobiliyatidir, hatto tashqi funksiya ishini tugatganidan keyin ham.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ichki funksiya tashqi funksiya `scope`'idagi o'zgaruvchilarga havola saqlab qoladi. Tashqi funksiya tugasa ham, ichki funksiya o'sha o'zgaruvchilardan foydalanishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Closure Misoli:",
-          "code": [
-            "function tashqiFunksiya() {",
-            "  let tashqiOzgaruvchi = 'Salom';",
-            "  function ichkiFunksiya() { console.log(tashqiOzgaruvchi); }",
-            "  return ichkiFunksiya;",
-            "}",
-            "const meningClosure = tashqiFunksiya();",
-            "meningClosure(); // 'Salom'"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Closure` ichki funksiyaning tashqi funksiya `scope`'idagi o'zgaruvchilarga, tashqi funksiya tugaganidan keyin ham, kira olish qobiliyatidir. Ma'lumotlarni maxfiylashtirishda ishlatiladi."
-    }
+    "description": "`Closure` — bu ichki funksiyaning o'zi yaratilgan muhit (`lexical scope`)'dagi o'zgaruvchilarga kirish va ularni 'eslab qolish' qobiliyatidir, hatto tashqi funksiya ishini tugatganidan keyin ham.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ichki funksiya tashqi funksiya `scope`'idagi o'zgaruvchilarga havola saqlab qoladi. Tashqi funksiya tugasa ham, ichki funksiya o'sha o'zgaruvchilardan foydalanishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Closure Misoli:",
+        "code": [
+          "function tashqiFunksiya() {",
+          "  let tashqiOzgaruvchi = 'Salom';",
+          "  function ichkiFunksiya() { console.log(tashqiOzgaruvchi); }",
+          "  return ichkiFunksiya;",
+          "}",
+          "const meningClosure = tashqiFunksiya();",
+          "meningClosure(); // 'Salom'"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Closure` ichki funksiyaning tashqi funksiya `scope`'idagi o'zgaruvchilarga, tashqi funksiya tugaganidan keyin ham, kira olish qobiliyatidir. Ma'lumotlarni maxfiylashtirishda ishlatiladi."
   },
   {
     "id": "js-q5",
     "question": "`Promise` nima va u `callback` muammolarini qanday hal qiladi?",
     "topic": "JS Asynchronous",
-    "answer": {
-      "definition": "`Promise` — bu asinxron operatsiyaning kelajakdagi natijasini (muvaffaqiyat yoki xato) ifodalaydigan obyekt.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U uch holatda bo'ladi: `pending`, `fulfilled`, `rejected`. U `callback hell`'ni `.then()` zanjiri bilan va xatoliklarni yagona `.catch()` bilan boshqarish orqali hal qiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Promise bilan:",
-          "code": [
-            "fetchData()",
-            "  .then(result => processData(result))",
-            "  .then(finalResult => displayData(finalResult))",
-            "  .catch(error => console.error(error));"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Promise` asinxron operatsiyaning kelajakdagi natijasini bildiruvchi obyekt. U `callback hell`'ni `.then()` zanjiri bilan, xatoliklarni `.catch()` bilan osonroq boshqarishga yordam beradi."
-    }
+    "description": "`Promise` — bu asinxron operatsiyaning kelajakdagi natijasini (muvaffaqiyat yoki xato) ifodalaydigan obyekt.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U uch holatda bo'ladi: `pending`, `fulfilled`, `rejected`. U `callback hell`'ni `.then()` zanjiri bilan va xatoliklarni yagona `.catch()` bilan boshqarish orqali hal qiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Promise bilan:",
+        "code": [
+          "fetchData()",
+          "  .then(result => processData(result))",
+          "  .then(finalResult => displayData(finalResult))",
+          "  .catch(error => console.error(error));"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Promise` asinxron operatsiyaning kelajakdagi natijasini bildiruvchi obyekt. U `callback hell`'ni `.then()` zanjiri bilan, xatoliklarni `.catch()` bilan osonroq boshqarishga yordam beradi."
   },
   {
     "id": "js-q6",
     "question": "`async/await` nima va u `Promise`'lar bilan qanday ishlaydi?",
     "topic": "JS Asynchronous",
-    "answer": {
-      "definition": "`async/await` — bu `Promise`'lar bilan ishlashni osonlashtiradigan va asinxron kodni sinxron kod kabi ko'rinadigan qiladigan sintaktik yordamchi (ES2017).",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`async`:** Funksiya oldidan qo'yiladi va u har doim `Promise` qaytarishini bildiradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`await`:** Faqat `async` funksiya ichida ishlatiladi, `Promise` oldiga qo'yiladi va `Promise` bajarilguncha (bloklamasdan) kutadi. Bajarilsa qiymatini, xato bo'lsa xatoni qaytaradi (`throw`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "Kod o'qilishini yaxshilaydi va xatoliklarni `try...catch` bilan ushlashga imkon beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "async/await bilan:",
-          "code": [
-            "async function getUser(id) {",
-            "  try {",
-            "    const response = await fetch(`/api/users/${id}`);",
-            "    const data = await response.json();",
-            "    return data;",
-            "  } catch (err) {",
-            "    console.error(err);",
-            "  }",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`async` funksiya `Promise` qaytaradi. `await` `Promise` natijasini kutadi. U asinxron kodni sinxronsimon qilib yozishga va xatoliklarni `try...catch` bilan ushlashga yordam beradi."
-    }
+    "description": "`async/await` — bu `Promise`'lar bilan ishlashni osonlashtiradigan va asinxron kodni sinxron kod kabi ko'rinadigan qiladigan sintaktik yordamchi (ES2017).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`async`:** Funksiya oldidan qo'yiladi va u har doim `Promise` qaytarishini bildiradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`await`:** Faqat `async` funksiya ichida ishlatiladi, `Promise` oldiga qo'yiladi va `Promise` bajarilguncha (bloklamasdan) kutadi. Bajarilsa qiymatini, xato bo'lsa xatoni qaytaradi (`throw`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "Kod o'qilishini yaxshilaydi va xatoliklarni `try...catch` bilan ushlashga imkon beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "async/await bilan:",
+        "code": [
+          "async function getUser(id) {",
+          "  try {",
+          "    const response = await fetch(`/api/users/${id}`);",
+          "    const data = await response.json();",
+          "    return data;",
+          "  } catch (err) {",
+          "    console.error(err);",
+          "  }",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`async` funksiya `Promise` qaytaradi. `await` `Promise` natijasini kutadi. U asinxron kodni sinxronsimon qilib yozishga va xatoliklarni `try...catch` bilan ushlashga yordam beradi."
   },
   {
     "id": "js-q7",
     "question": "`map`, `filter`, va `reduce` `array` metodlari o'rtasida qanday farq bor?",
     "topic": "JS Array Methods",
-    "answer": {
-      "definition": "Uchala metod ham massiv elementlarini aylanib chiqadi va yangi qiymat hosil qiladi, lekin maqsadi va natijasi farq qiladi. Asl massivni o'zgartirmaydi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`.map()`:** Har bir elementni transformatsiya qilib, yangi, bir xil uzunlikdagi massiv qaytaradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`.filter()`:** Shartga mos kelgan elementlardan iborat yangi, qisqaroq (yoki bir xil) massiv qaytaradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`.reduce()`:** Massivni bitta yagona qiymatga (son, `string`, obyekt va hokazo) 'qisqartiradi'."
-        }
-      ],
-      "examples": [
-        {
-          "title": ".map():",
-          "code": ["[1, 2, 3].map(n => n * 2); // [2, 4, 6]"]
-        },
-        {
-          "title": ".filter():",
-          "code": ["[1, 2, 3, 4].filter(n => n % 2 === 0); // [2, 4]"]
-        },
-        {
-          "title": ".reduce():",
-          "code": ["[1, 2, 3, 4].reduce((sum, n) => sum + n, 0); // 10"]
-        }
-      ],
-      "interviewAnswer": "`.map()` elementlarni o'zgartirib yangi massiv qaytaradi. `.filter()` shartga moslarini tanlab yangi massiv qaytaradi. `.reduce()` massivni bitta qiymatga (masalan, yig'indi) qisqartiradi."
-    }
+    "description": "Uchala metod ham massiv elementlarini aylanib chiqadi va yangi qiymat hosil qiladi, lekin maqsadi va natijasi farq qiladi. Asl massivni o'zgartirmaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`.map()`:** Har bir elementni transformatsiya qilib, yangi, bir xil uzunlikdagi massiv qaytaradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`.filter()`:** Shartga mos kelgan elementlardan iborat yangi, qisqaroq (yoki bir xil) massiv qaytaradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`.reduce()`:** Massivni bitta yagona qiymatga (son, `string`, obyekt va hokazo) 'qisqartiradi'."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": ".map():",
+        "code": [
+          "[1, 2, 3].map(n => n * 2); // [2, 4, 6]"
+        ]
+      },
+      {
+        "title": ".filter():",
+        "code": [
+          "[1, 2, 3, 4].filter(n => n % 2 === 0); // [2, 4]"
+        ]
+      },
+      {
+        "title": ".reduce():",
+        "code": [
+          "[1, 2, 3, 4].reduce((sum, n) => sum + n, 0); // 10"
+        ]
+      }
+    ],
+    "interviewAnswer": "`.map()` elementlarni o'zgartirib yangi massiv qaytaradi. `.filter()` shartga moslarini tanlab yangi massiv qaytaradi. `.reduce()` massivni bitta qiymatga (masalan, yig'indi) qisqartiradi."
   },
   {
     "id": "js-q8",
     "question": "`this` kalit so'zining qiymatini aniq belgilash usullari (`call`, `apply`, `bind`) qanday ishlaydi?",
     "topic": "JS `this` Keyword",
-    "answer": {
-      "definition": "`call()`, `apply()`, va `bind()` funksiya metodlari bo'lib, ular `this` qiymatini majburan ma'lum bir obyektga bog'lash imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`.call(thisArg, arg1, ...)`:** Funksiyani darhol chaqiradi, `this` `thisArg` bo'ladi, argumentlar ketma-ket uzatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`.apply(thisArg, [argsArray])`:** Funksiyani darhol chaqiradi, `this` `thisArg` bo'ladi, argumentlar massivda uzatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`.bind(thisArg, arg1, ...)`:** Funksiyani chaqirmaydi, balki `this` qiymati `thisArg`'ga doimiy bog'langan yangi funksiya nusxasini qaytaradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "function greet(msg) { console.log(msg + ', ' + this.name); }",
-            "const user = { name: 'Ali' };",
-            "greet.call(user, 'Salom');   // Salom, Ali",
-            "greet.apply(user, ['Hayrli kun']); // Hayrli kun, Ali",
-            "const greetAli = greet.bind(user);",
-            "greetAli('Assalomu alaykum'); // Assalomu alaykum, Ali"
-          ]
-        }
-      ],
-      "interviewAnswer": "`call` va `apply` funksiyani darhol chaqirib, `this`'ni belgilaydi (`call` argumentlarni alohida, `apply` massivda oladi). `bind` esa `this`'i bog'langan yangi funksiya qaytaradi, chaqirmaydi."
-    }
+    "description": "`call()`, `apply()`, va `bind()` funksiya metodlari bo'lib, ular `this` qiymatini majburan ma'lum bir obyektga bog'lash imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`.call(thisArg, arg1, ...)`:** Funksiyani darhol chaqiradi, `this` `thisArg` bo'ladi, argumentlar ketma-ket uzatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`.apply(thisArg, [argsArray])`:** Funksiyani darhol chaqiradi, `this` `thisArg` bo'ladi, argumentlar massivda uzatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`.bind(thisArg, arg1, ...)`:** Funksiyani chaqirmaydi, balki `this` qiymati `thisArg`'ga doimiy bog'langan yangi funksiya nusxasini qaytaradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "function greet(msg) { console.log(msg + ', ' + this.name); }",
+          "const user = { name: 'Ali' };",
+          "greet.call(user, 'Salom');   // Salom, Ali",
+          "greet.apply(user, ['Hayrli kun']); // Hayrli kun, Ali",
+          "const greetAli = greet.bind(user);",
+          "greetAli('Assalomu alaykum'); // Assalomu alaykum, Ali"
+        ]
+      }
+    ],
+    "interviewAnswer": "`call` va `apply` funksiyani darhol chaqirib, `this`'ni belgilaydi (`call` argumentlarni alohida, `apply` massivda oladi). `bind` esa `this`'i bog'langan yangi funksiya qaytaradi, chaqirmaydi."
   },
   {
     "id": "js-q9",
     "question": "`Event Loop` nima va u JavaScript'da asinxronlikni qanday ta'minlaydi?",
     "topic": "JS Event Loop",
-    "answer": {
-      "definition": "`Event Loop` — bu JavaScript `runtime`'ining (brauzer/Node.js) kod bajarilishini, hodisalarni va asinxron `callback`'larni boshqaradigan mexanizmi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "JavaScript bir oqimli. Asinxron amallar (`setTimeout`, `fetch`) `Web API`'larga topshiriladi. Ular tugagach, `callback` funksiya `Callback Queue`'ga qo'yiladi. `Event Loop` doimiy ravishda `Call Stack` bo'shashini tekshiradi. `Stack` bo'shaganda, `Event Loop` `Queue`'dagi birinchi `callback`'ni `Stack`'ka qo'yadi va u ishga tushadi."
-        }
-      ],
-      "interviewAnswer": "`Event Loop` asinxronlikni boshqaradi. U `Call Stack` bo'shashini kutadi va `Callback Queue`'dagi navbatdagi `callback`'ni `Stack`'ka o'tkazib, ishga tushiradi."
-    }
+    "description": "`Event Loop` — bu JavaScript `runtime`'ining (brauzer/Node.js) kod bajarilishini, hodisalarni va asinxron `callback`'larni boshqaradigan mexanizmi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "JavaScript bir oqimli. Asinxron amallar (`setTimeout`, `fetch`) `Web API`'larga topshiriladi. Ular tugagach, `callback` funksiya `Callback Queue`'ga qo'yiladi. `Event Loop` doimiy ravishda `Call Stack` bo'shashini tekshiradi. `Stack` bo'shaganda, `Event Loop` `Queue`'dagi birinchi `callback`'ni `Stack`'ka qo'yadi va u ishga tushadi."
+      }
+    ],
+    "interviewAnswer": "`Event Loop` asinxronlikni boshqaradi. U `Call Stack` bo'shashini kutadi va `Callback Queue`'dagi navbatdagi `callback`'ni `Stack`'ka o'tkazib, ishga tushiradi."
   },
   {
     "id": "js-q10",
     "question": "`Prototype` va `Prototypal Inheritance` nima?",
     "topic": "JS Prototypes",
-    "answer": {
-      "definition": "`Prototypal Inheritance` JavaScript'da obyektlarning boshqa obyektlardan xususiyat/metodlarni meros olish usulidir. Har bir obyekt `prototype`'iga (boshqa obyektga) ishora qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Xususiyat qidirilganda, avval obyektning o'zi, keyin uning `prototype`'i, keyin uning `prototype`'ining `prototype`'i (`prototype chain`) bo'ylab qidiriladi. Bu kodni qayta ishlatishga yordam beradi. `class` sintaksisi ham shu mexanizmga asoslangan."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Misol:",
-          "code": [
-            "const animal = { speak: () => console.log('Sound') };",
-            "const dog = Object.create(animal);",
-            "dog.speak(); // 'Sound' (meros olindi)"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Prototypal Inheritance` obyektlarning boshqa obyektlardan meros olishidir. Har obyektning `prototype`'i bor (boshqa obyekt). Xususiyat qidirilganda, `prototype` zanjiri bo'ylab yuqoriga qaraladi."
-    }
+    "description": "`Prototypal Inheritance` JavaScript'da obyektlarning boshqa obyektlardan xususiyat/metodlarni meros olish usulidir. Har bir obyekt `prototype`'iga (boshqa obyektga) ishora qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Xususiyat qidirilganda, avval obyektning o'zi, keyin uning `prototype`'i, keyin uning `prototype`'ining `prototype`'i (`prototype chain`) bo'ylab qidiriladi. Bu kodni qayta ishlatishga yordam beradi. `class` sintaksisi ham shu mexanizmga asoslangan."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Misol:",
+        "code": [
+          "const animal = { speak: () => console.log('Sound') };",
+          "const dog = Object.create(animal);",
+          "dog.speak(); // 'Sound' (meros olindi)"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Prototypal Inheritance` obyektlarning boshqa obyektlardan meros olishidir. Har obyektning `prototype`'i bor (boshqa obyekt). Xususiyat qidirilganda, `prototype` zanjiri bo'ylab yuqoriga qaraladi."
   },
   {
     "id": "js-q11",
     "question": "`Hoisting` nima va u `var`, `let`, `const` bilan qanday ishlaydi?",
     "topic": "JS Scope & Hoisting",
-    "answer": {
-      "definition": "`Hoisting` — deklaratsiyalarni (`var`, `function declaration`) kod bajarilishidan oldin ularning `scope`'i yuqorisiga 'ko'tarish' mexanizmidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`var`:** Deklaratsiya ko'tariladi (`undefined` bo'ladi), lekin qiymat berish emas."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`let`/`const`:** Ham ko'tariladi, lekin e'lon qilingan joygacha `Temporal Dead Zone` (TDZ)da bo'ladi (`ReferenceError`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`function declaration`:** To'liq (nomi va tanasi) ko'tariladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`function expression`/`arrow function`:** Faqat o'zgaruvchi nomi (`var`/`let`/`const` qoidasi bo'yicha) ko'tariladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`var` Hoisting:",
-          "code": ["console.log(a); // undefined", "var a = 5;"]
-        },
-        {
-          "title": "`let` TDZ:",
-          "code": ["/* console.log(b); // ReferenceError */", "let b = 10;"]
-        }
-      ],
-      "interviewAnswer": "`Hoisting` deklaratsiyalarni yuqoriga ko'taradi. `var` deklaratsiyasi `undefined` bo'ladi. `let`/`const` deklaratsiyasi `TDZ`'da bo'ladi (xatolik). Funksiya deklaratsiyalari to'liq ko'tariladi."
-    }
+    "description": "`Hoisting` — deklaratsiyalarni (`var`, `function declaration`) kod bajarilishidan oldin ularning `scope`'i yuqorisiga 'ko'tarish' mexanizmidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`var`:** Deklaratsiya ko'tariladi (`undefined` bo'ladi), lekin qiymat berish emas."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`let`/`const`:** Ham ko'tariladi, lekin e'lon qilingan joygacha `Temporal Dead Zone` (TDZ)da bo'ladi (`ReferenceError`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`function declaration`:** To'liq (nomi va tanasi) ko'tariladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`function expression`/`arrow function`:** Faqat o'zgaruvchi nomi (`var`/`let`/`const` qoidasi bo'yicha) ko'tariladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`var` Hoisting:",
+        "code": [
+          "console.log(a); // undefined",
+          "var a = 5;"
+        ]
+      },
+      {
+        "title": "`let` TDZ:",
+        "code": [
+          "/* console.log(b); // ReferenceError */",
+          "let b = 10;"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Hoisting` deklaratsiyalarni yuqoriga ko'taradi. `var` deklaratsiyasi `undefined` bo'ladi. `let`/`const` deklaratsiyasi `TDZ`'da bo'ladi (xatolik). Funksiya deklaratsiyalari to'liq ko'tariladi."
   },
   {
     "id": "js-q12",
     "question": "JavaScript'da `scope` turlari qanday (Global, Function, Block)?",
     "topic": "JS Scope & Closures",
-    "answer": {
-      "definition": "`Scope` kodning ma'lum qismida qaysi o'zgaruvchilarga kirish mumkinligini belgilaydi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**Global Scope:** Eng yuqori daraja, hamma joydan kirish mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Function Scope:** `var` bilan e'lon qilingan o'zgaruvchilar faqat funksiya ichida ko'rinadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Block Scope:** `let`/`const` bilan e'lon qilingan o'zgaruvchilar faqat `{}` blok ichida ko'rinadi."
-        }
-      ],
-      "interviewAnswer": "Uchta asosiy `scope`: `Global` (hamma joydan), `Function` (`var` uchun), `Block` (`let`/`const` uchun `{}` ichida)."
-    }
+    "description": "`Scope` kodning ma'lum qismida qaysi o'zgaruvchilarga kirish mumkinligini belgilaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Global Scope:** Eng yuqori daraja, hamma joydan kirish mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Function Scope:** `var` bilan e'lon qilingan o'zgaruvchilar faqat funksiya ichida ko'rinadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Block Scope:** `let`/`const` bilan e'lon qilingan o'zgaruvchilar faqat `{}` blok ichida ko'rinadi."
+      }
+    ],
+    "interviewAnswer": "Uchta asosiy `scope`: `Global` (hamma joydan), `Function` (`var` uchun), `Block` (`let`/`const` uchun `{}` ichida)."
   },
   {
     "id": "js-q13",
     "question": "`Primitive` va `Reference` tiplari o'rtasida qanday farq bor?",
     "topic": "JS Data Types",
-    "answer": {
-      "definition": "JavaScript tiplari xotirada saqlanishiga ko'ra ikki turga bo'linadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Primitive` (`string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`):** Qiymati bo'yicha (`by value`) saqlanadi/uzatiladi (nusxalanadi). `Immutable`."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Reference` (`object`, `array`, `function`):** Havolasi bo'yicha (`by reference`) saqlanadi/uzatiladi (havola nusxalanadi, obyekt bitta). `Mutable`."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Primitive:",
-          "code": ["let a = 1; let b = a; b = 2; console.log(a); // 1"]
-        },
-        {
-          "title": "Reference:",
-          "code": [
-            "let obj1 = {x:1}; let obj2 = obj1; obj2.x = 2; console.log(obj1.x); // 2"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Primitive` tiplar qiymati bo'yicha nusxalanadi (`immutable`). `Reference` tiplar havolasi bo'yicha nusxalanadi (`mutable`)."
-    }
+    "description": "JavaScript tiplari xotirada saqlanishiga ko'ra ikki turga bo'linadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Primitive` (`string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`):** Qiymati bo'yicha (`by value`) saqlanadi/uzatiladi (nusxalanadi). `Immutable`."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Reference` (`object`, `array`, `function`):** Havolasi bo'yicha (`by reference`) saqlanadi/uzatiladi (havola nusxalanadi, obyekt bitta). `Mutable`."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Primitive:",
+        "code": [
+          "let a = 1; let b = a; b = 2; console.log(a); // 1"
+        ]
+      },
+      {
+        "title": "Reference:",
+        "code": [
+          "let obj1 = {x:1}; let obj2 = obj1; obj2.x = 2; console.log(obj1.x); // 2"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Primitive` tiplar qiymati bo'yicha nusxalanadi (`immutable`). `Reference` tiplar havolasi bo'yicha nusxalanadi (`mutable`)."
   },
   {
     "id": "js-q14",
     "question": "`Spread` (`...`) va `Rest` (`...`) operatorlari nima va ular qanday farq qiladi?",
     "topic": "ES6 Features",
-    "answer": {
-      "definition": "Ikkala operator ham uch nuqta (`...`) ishlatadi, ammo qarama-qarshi vazifani bajaradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Spread`:** Massiv/obyekt elementlarini alohida elementlarga 'yoyadi' (yangi massiv/obyekt yaratishda, funksiya argumenti sifatida)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Rest`:** Funksiya parametrlarining oxirida ishlatilib, qolgan argumentlarni bitta massivga yig'adi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`Spread`:",
-          "code": [
-            "const arr1 = [1, 2]; const arr2 = [3, 4]; const combined = [...arr1, ...arr2]; // [1, 2, 3, 4]"
-          ]
-        },
-        {
-          "title": "`Rest`:",
-          "code": [
-            "function sum(...nums) { return nums.reduce((s, n) => s + n, 0); } sum(1, 2, 3); // 6"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Spread` (`...`) elementlarni 'yoyadi'. `Rest` (`...`) funksiya parametrlarini massivga yig'adi."
-    }
+    "description": "Ikkala operator ham uch nuqta (`...`) ishlatadi, ammo qarama-qarshi vazifani bajaradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Spread`:** Massiv/obyekt elementlarini alohida elementlarga 'yoyadi' (yangi massiv/obyekt yaratishda, funksiya argumenti sifatida)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Rest`:** Funksiya parametrlarining oxirida ishlatilib, qolgan argumentlarni bitta massivga yig'adi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`Spread`:",
+        "code": [
+          "const arr1 = [1, 2]; const arr2 = [3, 4]; const combined = [...arr1, ...arr2]; // [1, 2, 3, 4]"
+        ]
+      },
+      {
+        "title": "`Rest`:",
+        "code": [
+          "function sum(...nums) { return nums.reduce((s, n) => s + n, 0); } sum(1, 2, 3); // 6"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Spread` (`...`) elementlarni 'yoyadi'. `Rest` (`...`) funksiya parametrlarini massivga yig'adi."
   },
   {
     "id": "js-q15",
     "question": "`Destructuring assignment` nima va u qanday ishlatiladi?",
     "topic": "ES6 Features",
-    "answer": {
-      "definition": "`Destructuring` massiv yoki obyekt elementlarini alohida o'zgaruvchilarga osonlik bilan 'ochib' olish sintaksisidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**Massiv:** Tartib bo'yicha `[]` bilan (`const [a, b] = arr`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Obyekt:** Nom bo'yicha `{}` bilan (`const {name, age} = obj`). Nomni o'zgartirish (`{name: userName}`), standart qiymatlar va `rest` (`{id, ...rest}`) ham mumkin."
-        }
-      ],
-      "examples": [
-        { "title": "Array:", "code": ["const [x, y] = [1, 2]; // x=1, y=2"] },
-        {
-          "title": "Object:",
-          "code": [
-            "const { name, age } = { name: 'Ali', age: 30 }; // name='Ali', age=30"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Destructuring` massiv (`[]`, tartib bo'yicha) yoki obyekt (`{}`, nom bo'yicha) elementlarini o'zgaruvchilarga ajratib olish imkonini beradi."
-    }
+    "description": "`Destructuring` massiv yoki obyekt elementlarini alohida o'zgaruvchilarga osonlik bilan 'ochib' olish sintaksisidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Massiv:** Tartib bo'yicha `[]` bilan (`const [a, b] = arr`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Obyekt:** Nom bo'yicha `{}` bilan (`const {name, age} = obj`). Nomni o'zgartirish (`{name: userName}`), standart qiymatlar va `rest` (`{id, ...rest}`) ham mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Array:",
+        "code": [
+          "const [x, y] = [1, 2]; // x=1, y=2"
+        ]
+      },
+      {
+        "title": "Object:",
+        "code": [
+          "const { name, age } = { name: 'Ali', age: 30 }; // name='Ali', age=30"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Destructuring` massiv (`[]`, tartib bo'yicha) yoki obyekt (`{}`, nom bo'yicha) elementlarini o'zgaruvchilarga ajratib olish imkonini beradi."
   },
   {
     "id": "js-q16",
     "question": "JavaScript'da `Error Handling` (`try...catch...finally`) qanday ishlaydi?",
     "topic": "JS Error Handling",
-    "answer": {
-      "definition": "`try...catch...finally` xatoliklarni ushlash va ularga ishlov berish mexanizmidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`try`:** Xato yuzaga kelishi mumkin kod."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`catch (error)`:** `try`'da xato bo'lsa ishlaydi, xatolik obyektini qabul qiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`finally`:** Xato bo'lsa ham, bo'lmasa ham har doim oxirida ishlaydi (`cleanup` uchun)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "try { /* code */ } catch (err) { console.error(err); } finally { console.log('Done'); }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`try` xato bo'lishi mumkin kodni o'raydi. `catch` xatoni ushlaydi. `finally` har doim ishlaydi (`cleanup`)."
-    }
+    "description": "`try...catch...finally` xatoliklarni ushlash va ularga ishlov berish mexanizmidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`try`:** Xato yuzaga kelishi mumkin kod."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`catch (error)`:** `try`'da xato bo'lsa ishlaydi, xatolik obyektini qabul qiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`finally`:** Xato bo'lsa ham, bo'lmasa ham har doim oxirida ishlaydi (`cleanup` uchun)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "try { /* code */ } catch (err) { console.error(err); } finally { console.log('Done'); }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`try` xato bo'lishi mumkin kodni o'raydi. `catch` xatoni ushlaydi. `finally` har doim ishlaydi (`cleanup`)."
   },
   {
     "id": "js-q17",
     "question": "JavaScript `modules` (ES6 `import`/`export`) nima va ular nima uchun ishlatiladi?",
     "topic": "JS Modules",
-    "answer": {
-      "definition": "ES6 `modules` kodni fayllarga (`modules`) bo'lish (`export`) va kerakli qismlarni boshqa fayllarga yuklash (`import`) imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Foydalari: Kodni tashkil qilish, qayta ishlatish, global `scope` ifloslanishining oldini olish (`namespace`), bog'liqliklarni aniqlash. Ikki turi bor: `named` (`export { a }; import { a }`) va `default` (`export default b; import b`)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Named:",
-          "code": [
-            "// lib.js\nexport const x = 1;\n// main.js\nimport { x } from './lib.js';"
-          ]
-        },
-        {
-          "title": "Default:",
-          "code": [
-            "// user.js\nexport default class User {}\n// main.js\nimport MyUser from './user.js';"
-          ]
-        }
-      ],
-      "interviewAnswer": "ES6 `modules` kodni fayllarga bo'lish (`export`) va yuklash (`import`) uchun. Kodni tashkil qiladi, qayta ishlatishni osonlashtiradi, global `scope`'ni toza saqlaydi. `named` va `default` turlari bor."
-    }
+    "description": "ES6 `modules` kodni fayllarga (`modules`) bo'lish (`export`) va kerakli qismlarni boshqa fayllarga yuklash (`import`) imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Foydalari: Kodni tashkil qilish, qayta ishlatish, global `scope` ifloslanishining oldini olish (`namespace`), bog'liqliklarni aniqlash. Ikki turi bor: `named` (`export { a }; import { a }`) va `default` (`export default b; import b`)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Named:",
+        "code": [
+          "// lib.js\nexport const x = 1;\n// main.js\nimport { x } from './lib.js';"
+        ]
+      },
+      {
+        "title": "Default:",
+        "code": [
+          "// user.js\nexport default class User {}\n// main.js\nimport MyUser from './user.js';"
+        ]
+      }
+    ],
+    "interviewAnswer": "ES6 `modules` kodni fayllarga bo'lish (`export`) va yuklash (`import`) uchun. Kodni tashkil qiladi, qayta ishlatishni osonlashtiradi, global `scope`'ni toza saqlaydi. `named` va `default` turlari bor."
   },
   {
     "id": "js-q18",
     "question": "JavaScript `event delegation` nima?",
     "topic": "JS DOM Events",
-    "answer": {
-      "definition": "`Event delegation` ko'plab `child` elementlarga `listener` qo'shish o'rniga, ularning `parent`'iga bitta `listener` qo'shish texnikasidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Hodisa `child`'da yuz berganda, u `parent`'gacha 'ko'tariladi' (`bubbling`). `Parent`'dagi `listener` uni ushlab, `event.target` orqali aynan qaysi `child` hodisani boshlaganini aniqlaydi. Bu `performance`'ni yaxshilaydi va dinamik elementlar uchun ham ishlaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "document.getElementById('myList').addEventListener('click', function(e) {",
-            "  if (e.target && e.target.nodeName === 'LI') {",
-            "    console.log('List item', e.target.textContent, 'was clicked!');",
-            "  }",
-            "});"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Event delegation` ko'p `child`'lar o'rniga `parent`'ga bitta `listener` qo'shishdir. Hodisa `parent`'ga `bubbling` orqali yetib keladi va `event.target` orqali aniqlanadi. `Performance`'ni yaxshilaydi."
-    }
+    "description": "`Event delegation` ko'plab `child` elementlarga `listener` qo'shish o'rniga, ularning `parent`'iga bitta `listener` qo'shish texnikasidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Hodisa `child`'da yuz berganda, u `parent`'gacha 'ko'tariladi' (`bubbling`). `Parent`'dagi `listener` uni ushlab, `event.target` orqali aynan qaysi `child` hodisani boshlaganini aniqlaydi. Bu `performance`'ni yaxshilaydi va dinamik elementlar uchun ham ishlaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "document.getElementById('myList').addEventListener('click', function(e) {",
+          "  if (e.target && e.target.nodeName === 'LI') {",
+          "    console.log('List item', e.target.textContent, 'was clicked!');",
+          "  }",
+          "});"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Event delegation` ko'p `child`'lar o'rniga `parent`'ga bitta `listener` qo'shishdir. Hodisa `parent`'ga `bubbling` orqali yetib keladi va `event.target` orqali aniqlanadi. `Performance`'ni yaxshilaydi."
   },
   {
     "id": "js-q19",
     "question": "`debounce` va `throttle` funksiyalari nima va ular qachon ishlatiladi?",
     "topic": "JS Performance",
-    "answer": {
-      "definition": "`Debounce` va `throttle` tez-tez sodir bo'ladigan hodisalarga javoban funksiya chaqirilishini cheklaydigan `pattern`'lardir (`performance` uchun).",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Debounce`:** Hodisalar tugaganidan keyin, ma'lum tinchlik (`delay`) davridan so'ng funksiyani **bir marta** chaqiradi (masalan, qidiruv `input`'ida yozish tugagach)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Throttle`:** Funksiya chaqirilishini ma'lum vaqt oralig'ida **ko'pi bilan bir marta** bajarish bilan cheklaydi (masalan, `scroll` paytida har 100ms'da bir)."
-        }
-      ],
-      "interviewAnswer": "`Debounce` hodisalar tugaganidan keyin bir marta ishlaydi (qidiruv). `Throttle` ma'lum vaqt oralig'ida faqat bir marta ishlaydi (`scroll`). Ikkalasi ham `performance` uchun."
-    }
+    "description": "`Debounce` va `throttle` tez-tez sodir bo'ladigan hodisalarga javoban funksiya chaqirilishini cheklaydigan `pattern`'lardir (`performance` uchun).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Debounce`:** Hodisalar tugaganidan keyin, ma'lum tinchlik (`delay`) davridan so'ng funksiyani **bir marta** chaqiradi (masalan, qidiruv `input`'ida yozish tugagach)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Throttle`:** Funksiya chaqirilishini ma'lum vaqt oralig'ida **ko'pi bilan bir marta** bajarish bilan cheklaydi (masalan, `scroll` paytida har 100ms'da bir)."
+      }
+    ],
+    "interviewAnswer": "`Debounce` hodisalar tugaganidan keyin bir marta ishlaydi (qidiruv). `Throttle` ma'lum vaqt oralig'ida faqat bir marta ishlaydi (`scroll`). Ikkalasi ham `performance` uchun."
   },
   {
     "id": "js-q20",
     "question": "JavaScript'da `strict mode` (`'use strict';`) nima va u nima uchun ishlatiladi?",
     "topic": "JS Basics",
-    "answer": {
-      "definition": "`'use strict';` JavaScript kodini qat'iyroq rejimda ishlatadigan direktivadir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U ba'zi 'yomon' xususiyatlarni (masalan, e'lon qilinmagan o'zgaruvchi) xatolikka aylantiradi, ba'zi chalkash xususiyatlarni taqiqlaydi va kodni xavfsizroq/optimizallashtirilgan qiladi. `Modules` va `class`'lar avtomatik `strict mode`'da ishlaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "'use strict'; let myVar = 10; /* undeclaredVar = 5; // ReferenceError */"
-          ]
-        }
-      ],
-      "interviewAnswer": "`'use strict';` qat'iy rejimni yoqadi. U xavfsizroq kod yozishga yordam beradi, ba'zi 'jim' xatolarni ovozli xatolarga aylantiradi. `Modules` va `class`'lar avtomatik `strict mode`'da."
-    }
+    "description": "`'use strict';` JavaScript kodini qat'iyroq rejimda ishlatadigan direktivadir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U ba'zi 'yomon' xususiyatlarni (masalan, e'lon qilinmagan o'zgaruvchi) xatolikka aylantiradi, ba'zi chalkash xususiyatlarni taqiqlaydi va kodni xavfsizroq/optimizallashtirilgan qiladi. `Modules` va `class`'lar avtomatik `strict mode`'da ishlaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "'use strict'; let myVar = 10; /* undeclaredVar = 5; // ReferenceError */"
+        ]
+      }
+    ],
+    "interviewAnswer": "`'use strict';` qat'iy rejimni yoqadi. U xavfsizroq kod yozishga yordam beradi, ba'zi 'jim' xatolarni ovozli xatolarga aylantiradi. `Modules` va `class`'lar avtomatik `strict mode`'da."
   },
-
   {
     "id": "js-q21",
     "question": "JavaScript qanday qilib `single-threaded` bo'lishiga qaramay, `non-blocking` operatsiyalarni bajaradi?",
     "topic": "JS Event Loop",
-    "answer": {
-      "definition": "JavaScript tili o'zi `single-threaded` (bir vaqtda bitta buyruqni bajaradi), ammo u ishlaydigan `runtime environment` (brauzer yoki Node.js) asinxron `API`'lar va `Event Loop` mexanizmi yordamida `non-blocking` (bloklamaydigan) operatsiyalarni amalga oshiradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Uzoq davom etadigan operatsiyalar (masalan, `fetch` so'rovi, `setTimeout`, fayl o'qish) `runtime`'ning alohida `thread`'lariga (odatda C++ da yozilgan) topshiriladi. JavaScript'ning asosiy `thread`'i esa boshqa ishlarni bajarishda davom etadi. Asinxron operatsiya tugagach, uning natijasi (yoki `callback` funksiyasi) `Callback Queue`'ga (yoki `Microtask Queue`'ga) qo'yiladi. `Event Loop` `Call Stack` bo'shashini kutadi va keyin `Queue`'dagi natijani/`callback`'ni `Stack`'ka olib kelib ishga tushiradi. Shu tariqa, asosiy `thread` bloklanmaydi."
-        }
-      ],
-      "interviewAnswer": "JavaScript tili `single-threaded`, lekin u ishlaydigan `environment` (brauzer/Node.js) `Web API`'lar/`C++ API`'lar yordamida uzoq operatsiyalarni alohida `thread`'larda bajaradi. Natija tayyor bo'lgach, `Event Loop` uni `Callback Queue`'dan `Call Stack` bo'shaganida olib keladi. Bu asosiy `thread`'ni bloklamaydi (`non-blocking`)."
-    }
+    "description": "JavaScript tili o'zi `single-threaded` (bir vaqtda bitta buyruqni bajaradi), ammo u ishlaydigan `runtime environment` (brauzer yoki Node.js) asinxron `API`'lar va `Event Loop` mexanizmi yordamida `non-blocking` (bloklamaydigan) operatsiyalarni amalga oshiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uzoq davom etadigan operatsiyalar (masalan, `fetch` so'rovi, `setTimeout`, fayl o'qish) `runtime`'ning alohida `thread`'lariga (odatda C++ da yozilgan) topshiriladi. JavaScript'ning asosiy `thread`'i esa boshqa ishlarni bajarishda davom etadi. Asinxron operatsiya tugagach, uning natijasi (yoki `callback` funksiyasi) `Callback Queue`'ga (yoki `Microtask Queue`'ga) qo'yiladi. `Event Loop` `Call Stack` bo'shashini kutadi va keyin `Queue`'dagi natijani/`callback`'ni `Stack`'ka olib kelib ishga tushiradi. Shu tariqa, asosiy `thread` bloklanmaydi."
+      }
+    ],
+    "interviewAnswer": "JavaScript tili `single-threaded`, lekin u ishlaydigan `environment` (brauzer/Node.js) `Web API`'lar/`C++ API`'lar yordamida uzoq operatsiyalarni alohida `thread`'larda bajaradi. Natija tayyor bo'lgach, `Event Loop` uni `Callback Queue`'dan `Call Stack` bo'shaganida olib keladi. Bu asosiy `thread`'ni bloklamaydi (`non-blocking`)."
   },
   {
     "id": "js-q22",
     "question": "`higher-order function` nima?",
     "topic": "JS Functions",
-    "answer": {
-      "definition": "`Higher-order function` (yuqori tartibli funksiya) — bu boshqa funksiyalarni `argument` sifatida qabul qiladigan yoki natija sifatida funksiya qaytaradigan funksiyadir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "JavaScript'da funksiyalar 'birinchi darajali fuqarolar' (`first-class citizens`) hisoblanadi, ya'ni ularni o'zgaruvchilarga tenglashtirish, obyektlarga qo'shish, `argument` sifatida uzatish va funksiyadan qaytarish mumkin. `Higher-order function`'lar kodni qisqaroq, qayta ishlatilishi oson va abstraktroq qilishga yordam beradi. `Array` metodlari (`.map()`, `.filter()`, `.reduce()`) va `event listener`'larga `callback` uzatish bunga yaxshi misol bo'la oladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Argument sifatida funksiya qabul qilish:",
-          "code": [
-            "function operate(a, b, operationFunc) { return operationFunc(a, b); }",
-            "function add(x, y) { return x + y; }",
-            "console.log(operate(5, 3, add)); // 8"
-          ]
-        },
-        {
-          "title": "Natija sifatida funksiya qaytarish (Closure):",
-          "code": [
-            "function createMultiplier(factor) {",
-            "  return function(number) { return number * factor; };",
-            "}",
-            "const double = createMultiplier(2);",
-            "console.log(double(5)); // 10"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Higher-order function` boshqa funksiyani `argument` sifatida qabul qiladi yoki natija sifatida funksiya qaytaradi. `Array` metodlari (`map`, `filter`) bunga misol."
-    }
+    "description": "`Higher-order function` (yuqori tartibli funksiya) — bu boshqa funksiyalarni `argument` sifatida qabul qiladigan yoki natija sifatida funksiya qaytaradigan funksiyadir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "JavaScript'da funksiyalar 'birinchi darajali fuqarolar' (`first-class citizens`) hisoblanadi, ya'ni ularni o'zgaruvchilarga tenglashtirish, obyektlarga qo'shish, `argument` sifatida uzatish va funksiyadan qaytarish mumkin. `Higher-order function`'lar kodni qisqaroq, qayta ishlatilishi oson va abstraktroq qilishga yordam beradi. `Array` metodlari (`.map()`, `.filter()`, `.reduce()`) va `event listener`'larga `callback` uzatish bunga yaxshi misol bo'la oladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Argument sifatida funksiya qabul qilish:",
+        "code": [
+          "function operate(a, b, operationFunc) { return operationFunc(a, b); }",
+          "function add(x, y) { return x + y; }",
+          "console.log(operate(5, 3, add)); // 8"
+        ]
+      },
+      {
+        "title": "Natija sifatida funksiya qaytarish (Closure):",
+        "code": [
+          "function createMultiplier(factor) {",
+          "  return function(number) { return number * factor; };",
+          "}",
+          "const double = createMultiplier(2);",
+          "console.log(double(5)); // 10"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Higher-order function` boshqa funksiyani `argument` sifatida qabul qiladi yoki natija sifatida funksiya qaytaradi. `Array` metodlari (`map`, `filter`) bunga misol."
   },
   {
     "id": "js-q23",
     "question": "`this` kalit so'zining `arrow function`'lardagi xususiyati qanday?",
     "topic": "ES6 Features & `this`",
-    "answer": {
-      "definition": "Oddiy funksiyalardan (`function declaration`/`expression`) farqli o'laroq, `arrow function`'lar (`=>`) o'zining shaxsiy `this` kontekstini yaratmaydi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular `this` qiymatini o'zi yaratilgan muhitdan (`lexical scope`) meros qilib oladi. Ya'ni, `arrow function` ichidagi `this` har doim uni o'rab turgan eng yaqin oddiy funksiyaning `this` qiymatiga teng bo'ladi (yoki agar u global `scope`'da yaratilgan bo'lsa, global `this`'ga). Bu xususiyat `callback` funksiyalarida (masalan, `setTimeout`, `event listener`'lar, `array` metodlari) `this` kontekstini yo'qotmaslik uchun juda qulay. Shuningdek, `arrow function`'larni `call`, `apply`, `bind` metodlari yordamida `this` qiymatini o'zgartirib bo'lmaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "const myObject = {",
-            "  value: 42,",
-            "  getValueRegular: function() {",
-            "    setTimeout(function() {",
-            "      console.log(this.value); // undefined (yoki window.value)",
-            "    }, 100);",
-            "  },",
-            "  getValueArrow: function() {",
-            "    setTimeout(() => {",
-            "      console.log(this.value); // 42 (tashqi 'this'ni oladi)",
-            "    }, 100);",
-            "  }",
-            "};",
-            "myObject.getValueRegular();",
-            "myObject.getValueArrow();"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Arrow function`'lar o'zining `this` kontekstiga ega emas. Ular `this` qiymatini o'zi yaratilgan tashqi (`lexical`) `scope`'dan meros qilib oladi. Bu `callback`'larda `this`'ni yo'qotmaslik uchun qulay. `call`/`apply`/`bind` unga ta'sir qilmaydi."
-    }
+    "description": "Oddiy funksiyalardan (`function declaration`/`expression`) farqli o'laroq, `arrow function`'lar (`=>`) o'zining shaxsiy `this` kontekstini yaratmaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular `this` qiymatini o'zi yaratilgan muhitdan (`lexical scope`) meros qilib oladi. Ya'ni, `arrow function` ichidagi `this` har doim uni o'rab turgan eng yaqin oddiy funksiyaning `this` qiymatiga teng bo'ladi (yoki agar u global `scope`'da yaratilgan bo'lsa, global `this`'ga). Bu xususiyat `callback` funksiyalarida (masalan, `setTimeout`, `event listener`'lar, `array` metodlari) `this` kontekstini yo'qotmaslik uchun juda qulay. Shuningdek, `arrow function`'larni `call`, `apply`, `bind` metodlari yordamida `this` qiymatini o'zgartirib bo'lmaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "const myObject = {",
+          "  value: 42,",
+          "  getValueRegular: function() {",
+          "    setTimeout(function() {",
+          "      console.log(this.value); // undefined (yoki window.value)",
+          "    }, 100);",
+          "  },",
+          "  getValueArrow: function() {",
+          "    setTimeout(() => {",
+          "      console.log(this.value); // 42 (tashqi 'this'ni oladi)",
+          "    }, 100);",
+          "  }",
+          "};",
+          "myObject.getValueRegular();",
+          "myObject.getValueArrow();"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Arrow function`'lar o'zining `this` kontekstiga ega emas. Ular `this` qiymatini o'zi yaratilgan tashqi (`lexical`) `scope`'dan meros qilib oladi. Bu `callback`'larda `this`'ni yo'qotmaslik uchun qulay. `call`/`apply`/`bind` unga ta'sir qilmaydi."
   },
   {
     "id": "js-q24",
     "question": "`arguments` obyekti nima va u `rest` parametri (`...`) bilan qanday farq qiladi?",
     "topic": "JS Functions",
-    "answer": {
-      "definition": "`arguments` — bu **oddiy funksiyalar** (`arrow function`'larda mavjud emas) ichida mavjud bo'lgan, funksiyaga uzatilgan barcha argumentlarni saqlaydigan massivsimon (`array-like`) obyekt.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U haqiqiy massiv emas (masalan, `.map()`, `.filter()` kabi metodlari yo'q), lekin `length` xususiyatiga ega va elementlariga `index` orqali murojaat qilish mumkin. `arguments` obyekti funksiya qancha argument bilan chaqirilganini bilish yoki noma'lum miqdordagi argumentlar bilan ishlash uchun ishlatilgan."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Rest` parametri (`...args`)** esa ES6 da kiritilgan va `arguments`'ning o'rnini bosuvchi zamonaviyroq yechimdir. U funksiya parametrlarining oxirida yoziladi va funksiyaga uzatilgan **qolgan** argumentlarni **haqiqiy massiv (`Array`)** sifatida yig'ib beradi. Bu unga barcha `Array` metodlarini qo'llash imkonini beradi. `Arrow function`'lar ham `rest` parametrini ishlata oladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`arguments`:",
-          "code": [
-            "function sumOld() {",
-            "  let total = 0;",
-            "  for (let i = 0; i < arguments.length; i++) {",
-            "    total += arguments[i];",
-            "  }",
-            "  return total;",
-            "}",
-            "console.log(sumOld(1, 2, 3)); // 6"
-          ]
-        },
-        {
-          "title": "`Rest` parametri:",
-          "code": [
-            "function sumNew(...numbers) { // 'numbers' - haqiqiy massiv",
-            "  return numbers.reduce((sum, num) => sum + num, 0);",
-            "}",
-            "console.log(sumNew(1, 2, 3)); // 6"
-          ]
-        }
-      ],
-      "interviewAnswer": "`arguments` oddiy funksiyalarda barcha argumentlarni saqlaydigan massivsimon obyekt (haqiqiy massiv emas, `arrow function`'da yo'q). `Rest` parametri (`...args`) ES6 da kiritilgan, oxirgi parametr sifatida yoziladi va qolgan argumentlarni haqiqiy massivga yig'adi (`arrow function`'da ham ishlaydi). `Rest` afzalroq."
-    }
+    "description": "`arguments` — bu **oddiy funksiyalar** (`arrow function`'larda mavjud emas) ichida mavjud bo'lgan, funksiyaga uzatilgan barcha argumentlarni saqlaydigan massivsimon (`array-like`) obyekt.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U haqiqiy massiv emas (masalan, `.map()`, `.filter()` kabi metodlari yo'q), lekin `length` xususiyatiga ega va elementlariga `index` orqali murojaat qilish mumkin. `arguments` obyekti funksiya qancha argument bilan chaqirilganini bilish yoki noma'lum miqdordagi argumentlar bilan ishlash uchun ishlatilgan."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Rest` parametri (`...args`)** esa ES6 da kiritilgan va `arguments`'ning o'rnini bosuvchi zamonaviyroq yechimdir. U funksiya parametrlarining oxirida yoziladi va funksiyaga uzatilgan **qolgan** argumentlarni **haqiqiy massiv (`Array`)** sifatida yig'ib beradi. Bu unga barcha `Array` metodlarini qo'llash imkonini beradi. `Arrow function`'lar ham `rest` parametrini ishlata oladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`arguments`:",
+        "code": [
+          "function sumOld() {",
+          "  let total = 0;",
+          "  for (let i = 0; i < arguments.length; i++) {",
+          "    total += arguments[i];",
+          "  }",
+          "  return total;",
+          "}",
+          "console.log(sumOld(1, 2, 3)); // 6"
+        ]
+      },
+      {
+        "title": "`Rest` parametri:",
+        "code": [
+          "function sumNew(...numbers) { // 'numbers' - haqiqiy massiv",
+          "  return numbers.reduce((sum, num) => sum + num, 0);",
+          "}",
+          "console.log(sumNew(1, 2, 3)); // 6"
+        ]
+      }
+    ],
+    "interviewAnswer": "`arguments` oddiy funksiyalarda barcha argumentlarni saqlaydigan massivsimon obyekt (haqiqiy massiv emas, `arrow function`'da yo'q). `Rest` parametri (`...args`) ES6 da kiritilgan, oxirgi parametr sifatida yoziladi va qolgan argumentlarni haqiqiy massivga yig'adi (`arrow function`'da ham ishlaydi). `Rest` afzalroq."
   },
   {
     "id": "js-q25",
     "question": "`IIFE` (Immediately Invoked Function Expression) nima va u qachon ishlatilgan?",
     "topic": "JS Functions & Scope",
-    "answer": {
-      "definition": "`IIFE` — bu e'lon qilinishi bilan **darhol ishga tushadigan** JavaScript funksiya ifodasidir (`function expression`).",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Uning sintaksisi odatda quyidagicha: funksiya ifodasi dumaloq qavslar `()` ichiga olinadi va undan keyin yana bir juft dumaloq qavs `()` qo'yiladi, bu esa funksiyani darhol chaqiradi: `(function() { ... })();` yoki `(function() { ... }());`. `IIFE`'larning asosiy maqsadi `ES6 Modules` paydo bo'lguncha **`scope` yaratish** edi. `IIFE` ichida `var` bilan e'lon qilingan o'zgaruvchilar tashqi (odatda global) `scope`'ni ifloslantirmagan. Bu `module pattern`'ni amalga oshirish va ma'lumotlarni maxfiylashtirish (`privacy`) uchun keng qo'llanilgan. Hozirda `ES6 Modules` va `block scope` (`let`/`const`) tufayli `IIFE`'larga bo'lgan ehtiyoj ancha kamaygan."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy IIFE:",
-          "code": [
-            "(function() {",
-            "  var message = 'Bu IIFE ichida!';",
-            "  console.log(message); // 'Bu IIFE ichida!'",
-            "})();",
-            "",
-            "// console.log(message); // Error: message is not defined (global scope'ni ifloslantirmadi)"
-          ]
-        },
-        {
-          "title": "Argument uzatish:",
-          "code": [
-            "(function(name) {",
-            "  console.log('Salom, ' + name + '!');",
-            "})('Ali'); // 'Salom, Ali!'"
-          ]
-        }
-      ],
-      "interviewAnswer": "`IIFE` e'lon qilinishi bilan darhol ishga tushadigan funksiya ifodasidir (`(function(){...})();`). U asosan `ES6 Modules`'dan oldin alohida `scope` yaratish va global `scope`'ni ifloslantirmaslik uchun ishlatilgan (`module pattern`)."
-    }
+    "description": "`IIFE` — bu e'lon qilinishi bilan **darhol ishga tushadigan** JavaScript funksiya ifodasidir (`function expression`).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uning sintaksisi odatda quyidagicha: funksiya ifodasi dumaloq qavslar `()` ichiga olinadi va undan keyin yana bir juft dumaloq qavs `()` qo'yiladi, bu esa funksiyani darhol chaqiradi: `(function() { ... })();` yoki `(function() { ... }());`. `IIFE`'larning asosiy maqsadi `ES6 Modules` paydo bo'lguncha **`scope` yaratish** edi. `IIFE` ichida `var` bilan e'lon qilingan o'zgaruvchilar tashqi (odatda global) `scope`'ni ifloslantirmagan. Bu `module pattern`'ni amalga oshirish va ma'lumotlarni maxfiylashtirish (`privacy`) uchun keng qo'llanilgan. Hozirda `ES6 Modules` va `block scope` (`let`/`const`) tufayli `IIFE`'larga bo'lgan ehtiyoj ancha kamaygan."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy IIFE:",
+        "code": [
+          "(function() {",
+          "  var message = 'Bu IIFE ichida!';",
+          "  console.log(message); // 'Bu IIFE ichida!'",
+          "})();",
+          "",
+          "// console.log(message); // Error: message is not defined (global scope'ni ifloslantirmadi)"
+        ]
+      },
+      {
+        "title": "Argument uzatish:",
+        "code": [
+          "(function(name) {",
+          "  console.log('Salom, ' + name + '!');",
+          "})('Ali'); // 'Salom, Ali!'"
+        ]
+      }
+    ],
+    "interviewAnswer": "`IIFE` e'lon qilinishi bilan darhol ishga tushadigan funksiya ifodasidir (`(function(){...})();`). U asosan `ES6 Modules`'dan oldin alohida `scope` yaratish va global `scope`'ni ifloslantirmaslik uchun ishlatilgan (`module pattern`)."
   },
   {
     "id": "js-q26",
     "question": "`bind()`, `call()`, `apply()` qanday qilib funksiya argumentlarini oldindan belgilash (`partial application`) uchun ishlatilishi mumkin?",
     "topic": "JS Functions & `this`",
-    "answer": {
-      "definition": "`Partial application` — bu funksiyaga uning ba'zi argumentlarini oldindan berib, kamroq argument qabul qiladigan yangi funksiya yaratish texnikasidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`.bind(thisArg, arg1, arg2, ...)`:** Bu metod nafaqat `this` qiymatini bog'laydi, balki `thisArg`'dan keyin berilgan argumentlarni (`arg1`, `arg2`, ...) yangi qaytarilgan funksiyaga **'qotirib qo'yadi'**. Yangi funksiya chaqirilganda, unga berilgan qo'shimcha argumentlar o'sha 'qotirilgan' argumentlardan keyin qo'shiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`.call()` va `.apply()`:** Ular to'g'ridan-to'g'ri `partial application` uchun mo'ljallanmagan, chunki ular funksiyani darhol chaqiradi. Ammo, ularni boshqa funksiya ichida ishlatib, shu effektga erishish mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`bind` bilan `partial application`:",
-          "code": [
-            "function multiply(a, b) {",
-            "  return a * b;",
-            "}",
-            "",
-            "// Birinchi argumentni (a) 2 ga qotiramiz, 'this' muhim emas (null)",
-            "const double = multiply.bind(null, 2); ",
-            "",
-            "console.log(double(5)); // 10 (chunki 2 * 5)",
-            "console.log(double(10)); // 20 (chunki 2 * 10)",
-            "",
-            "// Ikkinchi argumentni ham qotirish mumkin",
-            "const multiplyBy5AndAdd10 = function(b) {",
-            "   // multiply.call ga o'xshash, lekin darhol emas",
-            "   return multiply(5, b) + 10;",
-            "}.bind(null); // Misol uchun bind",
-            "console.log(multiplyBy5AndAdd10(3)); // 5 * 3 + 10 = 25"
-          ]
-        }
-      ],
-      "interviewAnswer": "`bind()` metodidan `this` qiymatidan keyin argumentlar berib, `partial application` qilish mumkin. U ba'zi argumentlari oldindan belgilangan yangi funksiya qaytaradi. Masalan, `multiply.bind(null, 2)` har doim birinchi argumenti 2 bo'lgan ko'paytirish funksiyasini qaytaradi."
-    }
+    "description": "`Partial application` — bu funksiyaga uning ba'zi argumentlarini oldindan berib, kamroq argument qabul qiladigan yangi funksiya yaratish texnikasidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`.bind(thisArg, arg1, arg2, ...)`:** Bu metod nafaqat `this` qiymatini bog'laydi, balki `thisArg`'dan keyin berilgan argumentlarni (`arg1`, `arg2`, ...) yangi qaytarilgan funksiyaga **'qotirib qo'yadi'**. Yangi funksiya chaqirilganda, unga berilgan qo'shimcha argumentlar o'sha 'qotirilgan' argumentlardan keyin qo'shiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`.call()` va `.apply()`:** Ular to'g'ridan-to'g'ri `partial application` uchun mo'ljallanmagan, chunki ular funksiyani darhol chaqiradi. Ammo, ularni boshqa funksiya ichida ishlatib, shu effektga erishish mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`bind` bilan `partial application`:",
+        "code": [
+          "function multiply(a, b) {",
+          "  return a * b;",
+          "}",
+          "",
+          "// Birinchi argumentni (a) 2 ga qotiramiz, 'this' muhim emas (null)",
+          "const double = multiply.bind(null, 2); ",
+          "",
+          "console.log(double(5)); // 10 (chunki 2 * 5)",
+          "console.log(double(10)); // 20 (chunki 2 * 10)",
+          "",
+          "// Ikkinchi argumentni ham qotirish mumkin",
+          "const multiplyBy5AndAdd10 = function(b) {",
+          "   // multiply.call ga o'xshash, lekin darhol emas",
+          "   return multiply(5, b) + 10;",
+          "}.bind(null); // Misol uchun bind",
+          "console.log(multiplyBy5AndAdd10(3)); // 5 * 3 + 10 = 25"
+        ]
+      }
+    ],
+    "interviewAnswer": "`bind()` metodidan `this` qiymatidan keyin argumentlar berib, `partial application` qilish mumkin. U ba'zi argumentlari oldindan belgilangan yangi funksiya qaytaradi. Masalan, `multiply.bind(null, 2)` har doim birinchi argumenti 2 bo'lgan ko'paytirish funksiyasini qaytaradi."
   },
   {
     "id": "js-q27",
     "question": "`Set` va `Map` (ES6) nima va ular qachon ishlatiladi?",
     "topic": "ES6 Data Structures",
-    "answer": {
-      "definition": "`Set` va `Map` ES6 da kiritilgan yangi ma'lumotlar strukturalari bo'lib, ular massivlar (`Array`) va oddiy obyektlar (`Object`) hal qila olmaydigan ba'zi vazifalarni osonlashtiradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Set`:** **Unikal qiymatlar** to'plamini saqlaydi. Unga bir xil qiymatni bir necha marta qo'shishga harakat qilinsa ham, u faqat bir marta saqlanadi. Elementlarning tartibi qo'shilish tartibiga mos keladi. `Set` asosan massivdan dublikatlarni olib tashlash yoki biror element to'plamda mavjudligini tez tekshirish (`.has()`) uchun ishlatiladi. U `size` xususiyatiga va `.add()`, `.delete()`, `.clear()` kabi metodlarga ega."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Map`:** **`Key-value` (kalit-qiymat) juftliklari** to'plamini saqlaydi. Oddiy obyektlardan farqli o'laroq, `Map`'da kalit sifatida **har qanday tipdagi qiymat** (shu jumladan obyektlar, funksiyalar) ishlatilishi mumkin. Elementlarning tartibi qo'shilish tartibiga mos keladi. `Map` kalit bo'yicha qiymatni olish (`.get()`), o'rnatish (`.set()`), o'chirish (`.delete()`) uchun metodlarga va `.size` xususiyatiga ega. U obyektlarni kalit sifatida ishlatish kerak bo'lganda yoki elementlar tartibini saqlash muhim bo'lganda qulay."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`Set` (Unikal qiymatlar):",
-          "code": [
-            "const mySet = new Set([1, 2, 2, 3, 1]);",
-            "console.log(mySet); // Set(3) { 1, 2, 3 }",
-            "mySet.add(4);",
-            "console.log(mySet.has(2)); // true",
-            "console.log(mySet.size); // 4"
-          ]
-        },
-        {
-          "title": "`Map` (Har qanday kalit):",
-          "code": [
-            "const myMap = new Map();",
-            "const objKey = { id: 1 };",
-            "myMap.set('a', 'string value');",
-            "myMap.set(objKey, 'object value');",
-            "myMap.set(true, 'boolean value');",
-            "console.log(myMap.get(objKey)); // 'object value'",
-            "console.log(myMap.size); // 3"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Set` unikal qiymatlar to'plamini saqlaydi (dublikatlarni olib tashlaydi). `Map` `key-value` juftliklarini saqlaydi, bunda `key` har qanday tipda bo'lishi mumkin (obyekt ham) va elementlar tartibi saqlanadi."
-    }
+    "description": "`Set` va `Map` ES6 da kiritilgan yangi ma'lumotlar strukturalari bo'lib, ular massivlar (`Array`) va oddiy obyektlar (`Object`) hal qila olmaydigan ba'zi vazifalarni osonlashtiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Set`:** **Unikal qiymatlar** to'plamini saqlaydi. Unga bir xil qiymatni bir necha marta qo'shishga harakat qilinsa ham, u faqat bir marta saqlanadi. Elementlarning tartibi qo'shilish tartibiga mos keladi. `Set` asosan massivdan dublikatlarni olib tashlash yoki biror element to'plamda mavjudligini tez tekshirish (`.has()`) uchun ishlatiladi. U `size` xususiyatiga va `.add()`, `.delete()`, `.clear()` kabi metodlarga ega."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Map`:** **`Key-value` (kalit-qiymat) juftliklari** to'plamini saqlaydi. Oddiy obyektlardan farqli o'laroq, `Map`'da kalit sifatida **har qanday tipdagi qiymat** (shu jumladan obyektlar, funksiyalar) ishlatilishi mumkin. Elementlarning tartibi qo'shilish tartibiga mos keladi. `Map` kalit bo'yicha qiymatni olish (`.get()`), o'rnatish (`.set()`), o'chirish (`.delete()`) uchun metodlarga va `.size` xususiyatiga ega. U obyektlarni kalit sifatida ishlatish kerak bo'lganda yoki elementlar tartibini saqlash muhim bo'lganda qulay."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`Set` (Unikal qiymatlar):",
+        "code": [
+          "const mySet = new Set([1, 2, 2, 3, 1]);",
+          "console.log(mySet); // Set(3) { 1, 2, 3 }",
+          "mySet.add(4);",
+          "console.log(mySet.has(2)); // true",
+          "console.log(mySet.size); // 4"
+        ]
+      },
+      {
+        "title": "`Map` (Har qanday kalit):",
+        "code": [
+          "const myMap = new Map();",
+          "const objKey = { id: 1 };",
+          "myMap.set('a', 'string value');",
+          "myMap.set(objKey, 'object value');",
+          "myMap.set(true, 'boolean value');",
+          "console.log(myMap.get(objKey)); // 'object value'",
+          "console.log(myMap.size); // 3"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Set` unikal qiymatlar to'plamini saqlaydi (dublikatlarni olib tashlaydi). `Map` `key-value` juftliklarini saqlaydi, bunda `key` har qanday tipda bo'lishi mumkin (obyekt ham) va elementlar tartibi saqlanadi."
   },
   {
     "id": "js-q28",
     "question": "`JSON` nima va JavaScript'da u bilan qanday ishlash mumkin?",
     "topic": "JS Data Formats",
-    "answer": {
-      "definition": "`JSON` (JavaScript Object Notation) — bu ma'lumotlarni almashish uchun ishlatiladigan yengil, matnga asoslangan format. Uning sintaksisi JavaScript obyekt literallariga juda o'xshash, lekin qat'iyroq qoidalarga ega.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`JSON` asosan `API`'lar orqali ma'lumot almashishda keng qo'llaniladi. Uning asosiy qoidalari: kalitlar (`keys`) har doim qo'shtirnoq (`\"`) ichida bo'lishi kerak, qiymatlar esa `string` (qo'shtirnoqda), `number`, `boolean`, `array` (`[]`), `object` (`{}`) yoki `null` bo'lishi mumkin. Funksiyalar, `undefined` yoki `Date` obyektlari `JSON`'da qo'llab-quvvatlanmaydi."
-        },
-        {
-          "type": "paragraph",
-          "content": "JavaScript'da `JSON` bilan ishlash uchun ikkita asosiy metod mavjud:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`JSON.stringify(object)`:** JavaScript obyektini (yoki qiymatini) `JSON` formatidagi **matnga (`string`)** o'giradi. Bu ma'lumotni serverga yuborishdan oldin ishlatiladi.",
-            "**`JSON.parse(string)`:** `JSON` formatidagi **matnni (`string`)** JavaScript obyektiga (yoki qiymatiga) o'giradi. Bu serverdan ma'lumot qabul qilingandan keyin ishlatiladi."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "const user = { name: 'Ali', age: 30, isAdmin: false };",
-            "",
-            "// Obyektdan JSON string'ga",
-            "const jsonString = JSON.stringify(user);",
-            "console.log(jsonString); // \"{\"name\":\"Ali\",\"age\":30,\"isAdmin\":false}\"",
-            "",
-            "// JSON string'dan obyektga",
-            "const parsedUser = JSON.parse(jsonString);",
-            "console.log(parsedUser.name); // 'Ali'"
-          ]
-        }
-      ],
-      "interviewAnswer": "`JSON` ma'lumot almashish uchun matnli format. Kalitlar va `string` qiymatlar qo'shtirnoqda bo'ladi. JavaScript'da `JSON.stringify()` obyektni `string`'ga, `JSON.parse()` `string`'ni obyektga o'giradi."
-    }
+    "description": "`JSON` (JavaScript Object Notation) — bu ma'lumotlarni almashish uchun ishlatiladigan yengil, matnga asoslangan format. Uning sintaksisi JavaScript obyekt literallariga juda o'xshash, lekin qat'iyroq qoidalarga ega.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`JSON` asosan `API`'lar orqali ma'lumot almashishda keng qo'llaniladi. Uning asosiy qoidalari: kalitlar (`keys`) har doim qo'shtirnoq (`\"`) ichida bo'lishi kerak, qiymatlar esa `string` (qo'shtirnoqda), `number`, `boolean`, `array` (`[]`), `object` (`{}`) yoki `null` bo'lishi mumkin. Funksiyalar, `undefined` yoki `Date` obyektlari `JSON`'da qo'llab-quvvatlanmaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "JavaScript'da `JSON` bilan ishlash uchun ikkita asosiy metod mavjud:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`JSON.stringify(object)`:** JavaScript obyektini (yoki qiymatini) `JSON` formatidagi **matnga (`string`)** o'giradi. Bu ma'lumotni serverga yuborishdan oldin ishlatiladi.",
+          "**`JSON.parse(string)`:** `JSON` formatidagi **matnni (`string`)** JavaScript obyektiga (yoki qiymatiga) o'giradi. Bu serverdan ma'lumot qabul qilingandan keyin ishlatiladi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "const user = { name: 'Ali', age: 30, isAdmin: false };",
+          "",
+          "// Obyektdan JSON string'ga",
+          "const jsonString = JSON.stringify(user);",
+          "console.log(jsonString); // \"{\"name\":\"Ali\",\"age\":30,\"isAdmin\":false}\"",
+          "",
+          "// JSON string'dan obyektga",
+          "const parsedUser = JSON.parse(jsonString);",
+          "console.log(parsedUser.name); // 'Ali'"
+        ]
+      }
+    ],
+    "interviewAnswer": "`JSON` ma'lumot almashish uchun matnli format. Kalitlar va `string` qiymatlar qo'shtirnoqda bo'ladi. JavaScript'da `JSON.stringify()` obyektni `string`'ga, `JSON.parse()` `string`'ni obyektga o'giradi."
   },
   {
     "id": "js-q29",
     "question": "JavaScript `event bubbling` va `event capturing` nima?",
     "topic": "JS DOM Events",
-    "answer": {
-      "definition": "`Bubbling` va `Capturing` — bu `DOM` ierarxiyasida hodisa (`event`) tarqalishining ikki xil fazasidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Capturing Phase` (Ushlab olish fazasi):** Hodisa eng yuqoridagi elementdan (`window`) boshlab, hodisa sodir bo'lgan elementgacha (`target`) `DOM` daraxti bo'ylab **pastga qarab** tarqaladi. Bu faza kamroq ishlatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Bubbling Phase` (Ko'tarilish fazasi):** Hodisa sodir bo'lgan elementdan (`target`) boshlab, `DOM` daraxti bo'ylab **yuqoriga qarab**, `parent` elementlar orqali `window`'gacha tarqaladi. Bu standart (`default`) faza va `event delegation` aynan shu mexanizmga asoslanadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "`addEventListener(type, listener, useCapture)` metodining uchinchi parametri (`useCapture` yoki `options` obyektidagi `capture` xususiyati) `listener` qaysi fazada ishga tushishini belgilaydi. Standart qiymati `false` (ya'ni `bubbling` fazasi)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Hodisa Tarqalishi:",
-          "code": ["[Image showing event capturing and bubbling phases]"]
-        }
-      ],
-      "interviewAnswer": "`Event Capturing` hodisaning `window`'dan `target` elementgacha pastga tarqalishi. `Event Bubbling` hodisaning `target`'dan `window`'gacha yuqoriga tarqalishi (standart). `addEventListener`'ning uchinchi parametri qaysi fazani tinglashni belgilaydi. `Event delegation` `bubbling`'ga asoslanadi."
-    }
+    "description": "`Bubbling` va `Capturing` — bu `DOM` ierarxiyasida hodisa (`event`) tarqalishining ikki xil fazasidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Capturing Phase` (Ushlab olish fazasi):** Hodisa eng yuqoridagi elementdan (`window`) boshlab, hodisa sodir bo'lgan elementgacha (`target`) `DOM` daraxti bo'ylab **pastga qarab** tarqaladi. Bu faza kamroq ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Bubbling Phase` (Ko'tarilish fazasi):** Hodisa sodir bo'lgan elementdan (`target`) boshlab, `DOM` daraxti bo'ylab **yuqoriga qarab**, `parent` elementlar orqali `window`'gacha tarqaladi. Bu standart (`default`) faza va `event delegation` aynan shu mexanizmga asoslanadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "`addEventListener(type, listener, useCapture)` metodining uchinchi parametri (`useCapture` yoki `options` obyektidagi `capture` xususiyati) `listener` qaysi fazada ishga tushishini belgilaydi. Standart qiymati `false` (ya'ni `bubbling` fazasi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Hodisa Tarqalishi:",
+        "code": [
+          "[Image showing event capturing and bubbling phases]"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Event Capturing` hodisaning `window`'dan `target` elementgacha pastga tarqalishi. `Event Bubbling` hodisaning `target`'dan `window`'gacha yuqoriga tarqalishi (standart). `addEventListener`'ning uchinchi parametri qaysi fazani tinglashni belgilaydi. `Event delegation` `bubbling`'ga asoslanadi."
   },
   {
     "id": "js-q30",
     "question": "`Shallow Copy` va `Deep Copy` (obyektlar/massivlar uchun) o'rtasida qanday farq bor?",
     "topic": "JS Objects & Arrays",
-    "answer": {
-      "definition": "Obyekt yoki massivni nusxalashda (`copy`) nusxaning qanchalik 'chuqur' bo'lishiga qarab ikki xil usul mavjud.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Shallow Copy` (Sayoz Nusxa):** Obyekt/massivning faqat **birinchi darajadagi** xususiyatlarini/elementlarini nusxalaydi. Agar bu xususiyatlar/elementlar o'zlari ham `reference` tip (`object`/`array`) bo'lsa, ularning **havolalari (`references`)** nusxalanadi, obyektlarning o'zi emas. Natijada, asl nusxa va sayoz nusxa ichki obyektlarga **bir xil havola** orqali bog'langan bo'ladi. Bir nusxadagi ichki obyektni o'zgartirish ikkinchisiga ham ta'sir qiladi. `Spread` operatori (`...`), `Object.assign()`, `Array.prototype.slice()`, `Array.from()` odatda sayoz nusxa yaratadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Deep Copy` (Chuqur Nusxa):** Obyekt/massivning **barcha darajalaridagi** xususiyatlarini/elementlarini rekursiv ravishda nusxalaydi. Ichki obyektlar/massivlar uchun ham yangi, mustaqil nusxalar yaratiladi. Natijada, asl nusxa va chuqur nusxa bir-biridan to'liq mustaqil bo'ladi. Bir nusxani o'zgartirish ikkinchisiga **ta'sir qilmaydi**. Chuqur nusxa yaratish uchun standart, oson usul yo'q. Eng keng tarqalgan (lekin ba'zi cheklovlari bor) usul — `JSON.stringify()` va `JSON.parse()`'dan foydalanish. Murakkabroq holatlar uchun `lodash` kutubxonasining `_.cloneDeep()` funksiyasi ishlatilishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Shallow Copy:",
-          "code": [
-            "const original = { a: 1, b: { c: 2 } };",
-            "const shallow = { ...original };",
-            "shallow.a = 10;",
-            "shallow.b.c = 20;",
-            "console.log(original.a); // 1 (primitive o'zgarmadi)",
-            "console.log(original.b.c); // 20 (ichki obyekt o'zgardi!)"
-          ]
-        },
-        {
-          "title": "Deep Copy (JSON usuli):",
-          "code": [
-            "const original = { a: 1, b: { c: 2 } };",
-            "const deep = JSON.parse(JSON.stringify(original));",
-            "deep.a = 10;",
-            "deep.b.c = 20;",
-            "console.log(original.a); // 1",
-            "console.log(original.b.c); // 2 (ichki obyekt o'zgarmadi!)"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Shallow copy` faqat birinchi darajani nusxalaydi, ichki obyektlarning havolalari nusxalanadi (birini o'zgartirish ikkinchisiga ta'sir qiladi). `Spread` (`...`), `Object.assign` sayoz nusxa qiladi. `Deep copy` hamma darajani to'liq nusxalaydi, nusxalar mustaqil bo'ladi. Eng oddiy usuli `JSON.parse(JSON.stringify(obj))` (funksiyalar/`undefined`'ni yo'qotadi) yoki `lodash.cloneDeep`."
-    }
+    "description": "Obyekt yoki massivni nusxalashda (`copy`) nusxaning qanchalik 'chuqur' bo'lishiga qarab ikki xil usul mavjud.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Shallow Copy` (Sayoz Nusxa):** Obyekt/massivning faqat **birinchi darajadagi** xususiyatlarini/elementlarini nusxalaydi. Agar bu xususiyatlar/elementlar o'zlari ham `reference` tip (`object`/`array`) bo'lsa, ularning **havolalari (`references`)** nusxalanadi, obyektlarning o'zi emas. Natijada, asl nusxa va sayoz nusxa ichki obyektlarga **bir xil havola** orqali bog'langan bo'ladi. Bir nusxadagi ichki obyektni o'zgartirish ikkinchisiga ham ta'sir qiladi. `Spread` operatori (`...`), `Object.assign()`, `Array.prototype.slice()`, `Array.from()` odatda sayoz nusxa yaratadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Deep Copy` (Chuqur Nusxa):** Obyekt/massivning **barcha darajalaridagi** xususiyatlarini/elementlarini rekursiv ravishda nusxalaydi. Ichki obyektlar/massivlar uchun ham yangi, mustaqil nusxalar yaratiladi. Natijada, asl nusxa va chuqur nusxa bir-biridan to'liq mustaqil bo'ladi. Bir nusxani o'zgartirish ikkinchisiga **ta'sir qilmaydi**. Chuqur nusxa yaratish uchun standart, oson usul yo'q. Eng keng tarqalgan (lekin ba'zi cheklovlari bor) usul — `JSON.stringify()` va `JSON.parse()`'dan foydalanish. Murakkabroq holatlar uchun `lodash` kutubxonasining `_.cloneDeep()` funksiyasi ishlatilishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Shallow Copy:",
+        "code": [
+          "const original = { a: 1, b: { c: 2 } };",
+          "const shallow = { ...original };",
+          "shallow.a = 10;",
+          "shallow.b.c = 20;",
+          "console.log(original.a); // 1 (primitive o'zgarmadi)",
+          "console.log(original.b.c); // 20 (ichki obyekt o'zgardi!)"
+        ]
+      },
+      {
+        "title": "Deep Copy (JSON usuli):",
+        "code": [
+          "const original = { a: 1, b: { c: 2 } };",
+          "const deep = JSON.parse(JSON.stringify(original));",
+          "deep.a = 10;",
+          "deep.b.c = 20;",
+          "console.log(original.a); // 1",
+          "console.log(original.b.c); // 2 (ichki obyekt o'zgarmadi!)"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Shallow copy` faqat birinchi darajani nusxalaydi, ichki obyektlarning havolalari nusxalanadi (birini o'zgartirish ikkinchisiga ta'sir qiladi). `Spread` (`...`), `Object.assign` sayoz nusxa qiladi. `Deep copy` hamma darajani to'liq nusxalaydi, nusxalar mustaqil bo'ladi. Eng oddiy usuli `JSON.parse(JSON.stringify(obj))` (funksiyalar/`undefined`'ni yo'qotadi) yoki `lodash.cloneDeep`."
   },
-
   {
     "id": "js-q31",
     "question": "`Promise.all()`, `Promise.race()`, `Promise.allSettled()`, `Promise.any()` metodlari nima qiladi?",
     "topic": "JS Asynchronous",
-    "answer": {
-      "definition": "Bular `Promise` obyektining bir nechta `Promise`'lar bilan birgalikda ishlash uchun mo'ljallangan statik metodlaridir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Promise.all(iterable)`:** Massivdagi **barcha** `Promise`'lar `fulfilled` bo'lishini kutadi. Agar hammasi `fulfilled` bo'lsa, natijalar massivi bilan `fulfilled` bo'lgan yangi `Promise` qaytaradi. Agar kamida bittasi `rejected` bo'lsa, darhol o'sha birinchi `rejected` `Promise`'ning xatosi bilan `rejected` bo'ladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Promise.race(iterable)`:** Massivdagi **birinchi** `settled` (ya'ni `fulfilled` yoki `rejected`) bo'lgan `Promise`'ning natijasi (yoki xatosi) bilan `settled` bo'lgan yangi `Promise` qaytaradi. Qolgan `Promise`'larning natijasi e'tiborga olinmaydi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Promise.allSettled(iterable)`:** Massivdagi **barcha** `Promise`'lar `settled` bo'lishini kutadi (ular `fulfilled` bo'ladimi yoki `rejected` bo'ladimi, farqi yo'q). Keyin har bir `Promise`'ning holati (`status: 'fulfilled'` yoki `'rejected'`) va natijasi (`value`) yoki sababi (`reason`) bilan obyektlar massivini qaytaradigan `fulfilled` `Promise` qaytaradi. Bu bir nechta asinxron operatsiyaning barchasining natijasini bilish kerak bo'lganda foydali."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Promise.any(iterable)`:** Massivdagi **birinchi `fulfilled`** bo'lgan `Promise`'ning qiymati bilan `fulfilled` bo'lgan yangi `Promise` qaytaradi. Agar massivdagi **barcha** `Promise`'lar `rejected` bo'lsa, u holda `AggregateError` xatosi bilan `rejected` bo'ladi."
-        }
-      ],
-      "interviewAnswer": "`Promise.all()` hammasi bajarilishini kutadi (bittasi `reject` bo'lsa, `reject` bo'ladi). `Promise.race()` birinchisi `settled` bo'lishini kutadi. `Promise.allSettled()` hammasi `settled` bo'lishini kutadi va har birining natijasini qaytaradi. `Promise.any()` birinchisi `fulfilled` bo'lishini kutadi (hammasi `reject` bo'lsa, `reject` bo'ladi)."
-    }
+    "description": "Bular `Promise` obyektining bir nechta `Promise`'lar bilan birgalikda ishlash uchun mo'ljallangan statik metodlaridir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Promise.all(iterable)`:** Massivdagi **barcha** `Promise`'lar `fulfilled` bo'lishini kutadi. Agar hammasi `fulfilled` bo'lsa, natijalar massivi bilan `fulfilled` bo'lgan yangi `Promise` qaytaradi. Agar kamida bittasi `rejected` bo'lsa, darhol o'sha birinchi `rejected` `Promise`'ning xatosi bilan `rejected` bo'ladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Promise.race(iterable)`:** Massivdagi **birinchi** `settled` (ya'ni `fulfilled` yoki `rejected`) bo'lgan `Promise`'ning natijasi (yoki xatosi) bilan `settled` bo'lgan yangi `Promise` qaytaradi. Qolgan `Promise`'larning natijasi e'tiborga olinmaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Promise.allSettled(iterable)`:** Massivdagi **barcha** `Promise`'lar `settled` bo'lishini kutadi (ular `fulfilled` bo'ladimi yoki `rejected` bo'ladimi, farqi yo'q). Keyin har bir `Promise`'ning holati (`status: 'fulfilled'` yoki `'rejected'`) va natijasi (`value`) yoki sababi (`reason`) bilan obyektlar massivini qaytaradigan `fulfilled` `Promise` qaytaradi. Bu bir nechta asinxron operatsiyaning barchasining natijasini bilish kerak bo'lganda foydali."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Promise.any(iterable)`:** Massivdagi **birinchi `fulfilled`** bo'lgan `Promise`'ning qiymati bilan `fulfilled` bo'lgan yangi `Promise` qaytaradi. Agar massivdagi **barcha** `Promise`'lar `rejected` bo'lsa, u holda `AggregateError` xatosi bilan `rejected` bo'ladi."
+      }
+    ],
+    "interviewAnswer": "`Promise.all()` hammasi bajarilishini kutadi (bittasi `reject` bo'lsa, `reject` bo'ladi). `Promise.race()` birinchisi `settled` bo'lishini kutadi. `Promise.allSettled()` hammasi `settled` bo'lishini kutadi va har birining natijasini qaytaradi. `Promise.any()` birinchisi `fulfilled` bo'lishini kutadi (hammasi `reject` bo'lsa, `reject` bo'ladi)."
   },
   {
     "id": "js-q32",
     "question": "JavaScript'da `class` sintaksisi (ES6) qanday ishlaydi va u `prototypal inheritance`'dan qanday farq qiladi?",
     "topic": "JS Classes & Prototypes",
-    "answer": {
-      "definition": "ES6 `class` sintaksisi JavaScript'da obyektga yo'naltirilgan dasturlash (`OOP`) uchun an'anaviy `class`-based tillarga (masalan, Java, C++) o'xshashroq, qulayroq sintaksisni taqdim etadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`class` kalit so'zi yangi `class` yaratadi. `constructor` metodi obyekt yaratilganda (`new` bilan) chaqiriladigan maxsus metoddir. `class` ichida yozilgan boshqa metodlar avtomatik ravishda `class`'ning `prototype`'iga qo'shiladi. `extends` kalit so'zi boshqa `class`'dan meros olish (`inheritance`) imkonini beradi. `super()` `parent` `class`'ning `constructor`'ini chaqirish uchun ishlatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Farqi:** `class` sintaksisi aslida orqa fonda hali ham **`prototypal inheritance`** mexanizmidan foydalanadi. U yangi meros olish modelini yaratmaydi, balki mavjud `prototype`-based model uchun shunchaki qulayroq sintaktik qobiq (`syntactic sugar`) hisoblanadi. U kodni boshqa `OOP` tillaridan kelgan dasturchilar uchun tushunarliroq qiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Class Misoli:",
-          "code": [
-            "class Animal {",
-            "  constructor(name) {",
-            "    this.name = name;",
-            "  }",
-            "  speak() {",
-            "    console.log(`${this.name} makes a noise.`);",
-            "  }",
-            "}",
-            "",
-            "class Dog extends Animal {",
-            "  speak() {",
-            "    super.speak(); // Parent metodini chaqirish",
-            "    console.log(`${this.name} barks.`);",
-            "  }",
-            "}",
-            "",
-            "const myDog = new Dog('Buddy');",
-            "myDog.speak(); // Buddy makes a noise. Buddy barks."
-          ]
-        }
-      ],
-      "interviewAnswer": "ES6 `class` sintaksisi `prototypal inheritance` uchun qulayroq sintaksis (`syntactic sugar`) beradi. U `constructor`, metodlar, `extends` (meros olish) va `super` (parent'ga murojaat) kabi kalit so'zlarni taqdim etadi, lekin orqa fonda hali ham `prototype`'lar ishlaydi."
-    }
+    "description": "ES6 `class` sintaksisi JavaScript'da obyektga yo'naltirilgan dasturlash (`OOP`) uchun an'anaviy `class`-based tillarga (masalan, Java, C++) o'xshashroq, qulayroq sintaksisni taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`class` kalit so'zi yangi `class` yaratadi. `constructor` metodi obyekt yaratilganda (`new` bilan) chaqiriladigan maxsus metoddir. `class` ichida yozilgan boshqa metodlar avtomatik ravishda `class`'ning `prototype`'iga qo'shiladi. `extends` kalit so'zi boshqa `class`'dan meros olish (`inheritance`) imkonini beradi. `super()` `parent` `class`'ning `constructor`'ini chaqirish uchun ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Farqi:** `class` sintaksisi aslida orqa fonda hali ham **`prototypal inheritance`** mexanizmidan foydalanadi. U yangi meros olish modelini yaratmaydi, balki mavjud `prototype`-based model uchun shunchaki qulayroq sintaktik qobiq (`syntactic sugar`) hisoblanadi. U kodni boshqa `OOP` tillaridan kelgan dasturchilar uchun tushunarliroq qiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Class Misoli:",
+        "code": [
+          "class Animal {",
+          "  constructor(name) {",
+          "    this.name = name;",
+          "  }",
+          "  speak() {",
+          "    console.log(`${this.name} makes a noise.`);",
+          "  }",
+          "}",
+          "",
+          "class Dog extends Animal {",
+          "  speak() {",
+          "    super.speak(); // Parent metodini chaqirish",
+          "    console.log(`${this.name} barks.`);",
+          "  }",
+          "}",
+          "",
+          "const myDog = new Dog('Buddy');",
+          "myDog.speak(); // Buddy makes a noise. Buddy barks."
+        ]
+      }
+    ],
+    "interviewAnswer": "ES6 `class` sintaksisi `prototypal inheritance` uchun qulayroq sintaksis (`syntactic sugar`) beradi. U `constructor`, metodlar, `extends` (meros olish) va `super` (parent'ga murojaat) kabi kalit so'zlarni taqdim etadi, lekin orqa fonda hali ham `prototype`'lar ishlaydi."
   },
   {
     "id": "js-q33",
     "question": "JavaScript'da `Symbol` tipi nima va u nima uchun ishlatiladi?",
     "topic": "JS Data Types",
-    "answer": {
-      "definition": "`Symbol` (ES6 da kiritilgan) — bu qiymati **unikal va o'zgarmas (`immutable`)** bo'lgan `primitive` ma'lumot tipidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Har bir `Symbol()` chaqiruvi mutlaqo yangi, boshqa hech qanday qiymatga teng bo'lmagan `symbol` qiymatini qaytaradi (`Symbol('foo') !== Symbol('foo')`). `Symbol`'lar asosan obyekt xususiyatlari (`property keys`) sifatida ishlatiladi. Ularning asosiy maqsadi — obyektga yangi xususiyat qo'shganda, obyektning mavjud xususiyatlari yoki boshqa kutubxonalar qo'shgan xususiyatlar bilan **nom to'qnashuvining (`naming collision`) oldini olish**. `Symbol` xususiyatlari `for...in` tsikli yoki `Object.keys()` metodida sanab o'tilmaydi, lekin `Object.getOwnPropertySymbols()` orqali olinishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "const mySymbol = Symbol('description'); // Tavsif ixtiyoriy",
-            "const anotherSymbol = Symbol('description');",
-            "console.log(mySymbol === anotherSymbol); // false",
-            "",
-            "const myObj = {};",
-            "myObj[mySymbol] = 'Bu maxfiy qiymat!';",
-            "console.log(myObj[mySymbol]); // 'Bu maxfiy qiymat!'",
-            "console.log(Object.keys(myObj)); // [] (Symbol ko'rinmaydi)",
-            "console.log(Object.getOwnPropertySymbols(myObj)); // [ Symbol(description) ]"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Symbol` unikal va o'zgarmas `primitive` tip. U asosan obyekt xususiyatlari (`property keys`) sifatida nom to'qnashuvlarining oldini olish uchun ishlatiladi. Ular `for...in` yoki `Object.keys()`'da ko'rinmaydi."
-    }
+    "description": "`Symbol` (ES6 da kiritilgan) — bu qiymati **unikal va o'zgarmas (`immutable`)** bo'lgan `primitive` ma'lumot tipidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Har bir `Symbol()` chaqiruvi mutlaqo yangi, boshqa hech qanday qiymatga teng bo'lmagan `symbol` qiymatini qaytaradi (`Symbol('foo') !== Symbol('foo')`). `Symbol`'lar asosan obyekt xususiyatlari (`property keys`) sifatida ishlatiladi. Ularning asosiy maqsadi — obyektga yangi xususiyat qo'shganda, obyektning mavjud xususiyatlari yoki boshqa kutubxonalar qo'shgan xususiyatlar bilan **nom to'qnashuvining (`naming collision`) oldini olish**. `Symbol` xususiyatlari `for...in` tsikli yoki `Object.keys()` metodida sanab o'tilmaydi, lekin `Object.getOwnPropertySymbols()` orqali olinishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "const mySymbol = Symbol('description'); // Tavsif ixtiyoriy",
+          "const anotherSymbol = Symbol('description');",
+          "console.log(mySymbol === anotherSymbol); // false",
+          "",
+          "const myObj = {};",
+          "myObj[mySymbol] = 'Bu maxfiy qiymat!';",
+          "console.log(myObj[mySymbol]); // 'Bu maxfiy qiymat!'",
+          "console.log(Object.keys(myObj)); // [] (Symbol ko'rinmaydi)",
+          "console.log(Object.getOwnPropertySymbols(myObj)); // [ Symbol(description) ]"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Symbol` unikal va o'zgarmas `primitive` tip. U asosan obyekt xususiyatlari (`property keys`) sifatida nom to'qnashuvlarining oldini olish uchun ishlatiladi. Ular `for...in` yoki `Object.keys()`'da ko'rinmaydi."
   },
   {
     "id": "js-q34",
     "question": "`Template literals` (ES6) nima va ular qanday afzalliklarga ega?",
     "topic": "ES6 Features",
-    "answer": {
-      "definition": "`Template literals` (yoki `template strings`) — bu `string`'larni yaratish uchun ES6 da kiritilgan yangi sintaksis bo'lib, ular teskari tirnoq (`` ` ``) belgilari ichiga olinadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ularning bir nechta muhim afzalliklari bor:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Interpolatsiya (`Interpolation`):** O'zgaruvchilar yoki ifodalarni `string` ichiga `${expression}` sintaksisi yordamida osonlik bilan joylashtirish imkoniyati. Bu `+` operatori bilan `string`'larni birlashtirishdan ancha qulayroq.",
-            "**Ko'p Qatorli `String`'lar (`Multiline Strings`):** `String`'ni bir nechta qatorga yozish uchun maxsus belgi (`\n`) ishlatish shart emas, shunchaki `Enter` bosish kifoya.",
-            "**`Tagged Templates`:** Maxsus funksiya yordamida `template literal`'ni qayta ishlash imkoniyati (kamroq ishlatiladi, lekin `styled-components` kabi kutubxonalarda muhim)."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "const name = 'Ali';",
-            "const age = 30;",
-            "",
-            "// Interpolatsiya",
-            "const message = `Salom, mening ismim ${name} va men ${age} yoshdaman.`;",
-            "console.log(message);",
-            "",
-            "// Ko'p qatorli string",
-            "const multiLine = `Bu birinchi qator.",
-            "Bu ikkinchi qator.`;",
-            "console.log(multiLine);"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Template literals` (`` ` `` belgisi bilan) `string` yaratishning ES6 usuli. Ular `${expression}` sintaksisi bilan o'zgaruvchilarni `string` ichiga oson joylashtirish (`interpolation`) va ko'p qatorli `string`'larni (`multiline strings`) oson yozish imkonini beradi."
-    }
+    "description": "`Template literals` (yoki `template strings`) — bu `string`'larni yaratish uchun ES6 da kiritilgan yangi sintaksis bo'lib, ular teskari tirnoq (`` ` ``) belgilari ichiga olinadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ularning bir nechta muhim afzalliklari bor:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Interpolatsiya (`Interpolation`):** O'zgaruvchilar yoki ifodalarni `string` ichiga `${expression}` sintaksisi yordamida osonlik bilan joylashtirish imkoniyati. Bu `+` operatori bilan `string`'larni birlashtirishdan ancha qulayroq.",
+          "**Ko'p Qatorli `String`'lar (`Multiline Strings`):** `String`'ni bir nechta qatorga yozish uchun maxsus belgi (`\n`) ishlatish shart emas, shunchaki `Enter` bosish kifoya.",
+          "**`Tagged Templates`:** Maxsus funksiya yordamida `template literal`'ni qayta ishlash imkoniyati (kamroq ishlatiladi, lekin `styled-components` kabi kutubxonalarda muhim)."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "const name = 'Ali';",
+          "const age = 30;",
+          "",
+          "// Interpolatsiya",
+          "const message = `Salom, mening ismim ${name} va men ${age} yoshdaman.`;",
+          "console.log(message);",
+          "",
+          "// Ko'p qatorli string",
+          "const multiLine = `Bu birinchi qator.",
+          "Bu ikkinchi qator.`;",
+          "console.log(multiLine);"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Template literals` (`` ` `` belgisi bilan) `string` yaratishning ES6 usuli. Ular `${expression}` sintaksisi bilan o'zgaruvchilarni `string` ichiga oson joylashtirish (`interpolation`) va ko'p qatorli `string`'larni (`multiline strings`) oson yozish imkonini beradi."
   },
   {
     "id": "js-q35",
     "question": "`Pure Function` nima va u nima uchun muhim?",
     "topic": "JS Functional Programming",
-    "answer": {
-      "definition": "`Pure function` (sof funksiya) — bu ikkita asosiy shartga javob beradigan funksiyadir: 1) Bir xil argumentlar uchun har doim bir xil natija qaytaradi (`deterministic`). 2) Hech qanday `side effect`'larga (`tashqi ta'sir`) ega emas.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**Deterministik (`Deterministic`):** Funksiyaning natijasi faqat uning kirish argumentlariga bog'liq bo'lishi kerak. U global o'zgaruvchilar, `API` so'rovlari, `random` sonlar yoki joriy vaqt kabi tashqi omillarga bog'liq bo'lmasligi kerak."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Side Effect`'siz:** Funksiya o'zining `scope`'idan tashqaridagi hech narsani o'zgartirmasligi kerak. Masalan, global o'zgaruvchini o'zgartirmasligi, `DOM`'ni manipulyatsiya qilmasligi, `console.log` qilmasligi (texnik jihatdan `side effect`), faylga yozmasligi kerak."
-        },
-        {
-          "type": "paragraph",
-          "content": "`Pure function`'larning afzalliklari: ularni test qilish oson (bir xil kirish - bir xil chiqish), kodni tushunish va `debug` qilish osonroq, ularni `memoization` kabi `performance` optimizatsiyalari uchun ishlatish mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Pure Function:",
-          "code": [
-            "function add(a, b) { return a + b; } // Bir xil a, b uchun har doim bir xil natija, side effect yo'q"
-          ]
-        },
-        {
-          "title": "Impure Function (Side Effect):",
-          "code": [
-            "let total = 0; function addToTotal(n) { total += n; return total; } // Global 'total'ni o'zgartiradi"
-          ]
-        },
-        {
-          "title": "Impure Function (Not Deterministic):",
-          "code": [
-            "function getRandom() { return Math.random(); } // Har safar har xil natija"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Pure Function` ikki shartga javob beradi: 1) Bir xil argumentlar uchun har doim bir xil natija qaytaradi (`deterministic`). 2) Hech qanday `side effect`'ga ega emas (tashqi dunyoni o'zgartirmaydi). Ularni test qilish va tushunish oson."
-    }
+    "description": "`Pure function` (sof funksiya) — bu ikkita asosiy shartga javob beradigan funksiyadir: 1) Bir xil argumentlar uchun har doim bir xil natija qaytaradi (`deterministic`). 2) Hech qanday `side effect`'larga (`tashqi ta'sir`) ega emas.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Deterministik (`Deterministic`):** Funksiyaning natijasi faqat uning kirish argumentlariga bog'liq bo'lishi kerak. U global o'zgaruvchilar, `API` so'rovlari, `random` sonlar yoki joriy vaqt kabi tashqi omillarga bog'liq bo'lmasligi kerak."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Side Effect`'siz:** Funksiya o'zining `scope`'idan tashqaridagi hech narsani o'zgartirmasligi kerak. Masalan, global o'zgaruvchini o'zgartirmasligi, `DOM`'ni manipulyatsiya qilmasligi, `console.log` qilmasligi (texnik jihatdan `side effect`), faylga yozmasligi kerak."
+      },
+      {
+        "type": "paragraph",
+        "content": "`Pure function`'larning afzalliklari: ularni test qilish oson (bir xil kirish - bir xil chiqish), kodni tushunish va `debug` qilish osonroq, ularni `memoization` kabi `performance` optimizatsiyalari uchun ishlatish mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Pure Function:",
+        "code": [
+          "function add(a, b) { return a + b; } // Bir xil a, b uchun har doim bir xil natija, side effect yo'q"
+        ]
+      },
+      {
+        "title": "Impure Function (Side Effect):",
+        "code": [
+          "let total = 0; function addToTotal(n) { total += n; return total; } // Global 'total'ni o'zgartiradi"
+        ]
+      },
+      {
+        "title": "Impure Function (Not Deterministic):",
+        "code": [
+          "function getRandom() { return Math.random(); } // Har safar har xil natija"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Pure Function` ikki shartga javob beradi: 1) Bir xil argumentlar uchun har doim bir xil natija qaytaradi (`deterministic`). 2) Hech qanday `side effect`'ga ega emas (tashqi dunyoni o'zgartirmaydi). Ularni test qilish va tushunish oson."
   },
   {
     "id": "js-q36",
     "question": "`shallow comparison` va `deep comparison` (obyektlar/massivlar uchun) nima?",
     "topic": "JS Objects & Arrays",
-    "answer": {
-      "definition": "Obyekt yoki massivlarni solishtirishda ularning qanchalik 'chuqur' tekshirilishiga qarab ikki xil yondashuv mavjud.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Shallow Comparison` (Sayoz Solishtirish):** Faqat obyekt/massivlarning **havolalarini (`references`)** solishtiradi. Agar ikkita o'zgaruvchi xotiradagi **aynan bitta obyekt/massivga** ishora qilsa, ular teng hisoblanadi. Agar ular ikkita alohida obyekt/massiv bo'lsa, hatto ichidagi qiymatlari bir xil bo'lsa ham, ular teng emas deb topiladi. JavaScript'dagi standart `===` operatori `reference` tiplar uchun sayoz solishtirishni amalga oshiradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Deep Comparison` (Chuqur Solishtirish):** Obyekt/massivlarning **ichidagi qiymatlarni** rekursiv ravishda solishtiradi. Agar ikkita obyekt/massivning barcha xususiyatlari/elementlari (va ichki obyekt/massivlari) qiymat jihatidan bir xil bo'lsa, ular teng hisoblanadi, hatto ular xotirada alohida joylashgan bo'lsa ham. JavaScript'da standart `deep comparison` operatori yo'q. Buni amalga oshirish uchun maxsus funksiya yozish yoki `lodash` kutubxonasining `_.isEqual()` funksiyasidan foydalanish kerak."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Shallow Comparison:",
-          "code": [
-            "const obj1 = { a: 1 };",
-            "const obj2 = { a: 1 };",
-            "const obj3 = obj1;",
-            "console.log(obj1 === obj2); // false (alohida obyektlar)",
-            "console.log(obj1 === obj3); // true (bitta obyektga havola)"
-          ]
-        },
-        {
-          "title": "Deep Comparison (Konseptual):",
-          "code": [
-            "// isEqual - bu o'zimiz yozadigan yoki kutubxonadan olinadigan funksiya",
-            "const obj1 = { a: 1, b: { c: 2 } };",
-            "const obj2 = { a: 1, b: { c: 2 } };",
-            "// console.log(isEqual(obj1, obj2)); // true (qiymatlari bir xil)"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Shallow comparison` (`===` yordamida) faqat obyekt/massivlarning xotiradagi manzillarini (havolalarini) solishtiradi. `Deep comparison` esa ularning ichidagi barcha qiymatlarni rekursiv ravishda solishtiradi. `React` `state` va `props` o'zgarishlarini tekshirishda odatda `shallow comparison` ishlatadi."
-    }
+    "description": "Obyekt yoki massivlarni solishtirishda ularning qanchalik 'chuqur' tekshirilishiga qarab ikki xil yondashuv mavjud.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Shallow Comparison` (Sayoz Solishtirish):** Faqat obyekt/massivlarning **havolalarini (`references`)** solishtiradi. Agar ikkita o'zgaruvchi xotiradagi **aynan bitta obyekt/massivga** ishora qilsa, ular teng hisoblanadi. Agar ular ikkita alohida obyekt/massiv bo'lsa, hatto ichidagi qiymatlari bir xil bo'lsa ham, ular teng emas deb topiladi. JavaScript'dagi standart `===` operatori `reference` tiplar uchun sayoz solishtirishni amalga oshiradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Deep Comparison` (Chuqur Solishtirish):** Obyekt/massivlarning **ichidagi qiymatlarni** rekursiv ravishda solishtiradi. Agar ikkita obyekt/massivning barcha xususiyatlari/elementlari (va ichki obyekt/massivlari) qiymat jihatidan bir xil bo'lsa, ular teng hisoblanadi, hatto ular xotirada alohida joylashgan bo'lsa ham. JavaScript'da standart `deep comparison` operatori yo'q. Buni amalga oshirish uchun maxsus funksiya yozish yoki `lodash` kutubxonasining `_.isEqual()` funksiyasidan foydalanish kerak."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Shallow Comparison:",
+        "code": [
+          "const obj1 = { a: 1 };",
+          "const obj2 = { a: 1 };",
+          "const obj3 = obj1;",
+          "console.log(obj1 === obj2); // false (alohida obyektlar)",
+          "console.log(obj1 === obj3); // true (bitta obyektga havola)"
+        ]
+      },
+      {
+        "title": "Deep Comparison (Konseptual):",
+        "code": [
+          "// isEqual - bu o'zimiz yozadigan yoki kutubxonadan olinadigan funksiya",
+          "const obj1 = { a: 1, b: { c: 2 } };",
+          "const obj2 = { a: 1, b: { c: 2 } };",
+          "// console.log(isEqual(obj1, obj2)); // true (qiymatlari bir xil)"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Shallow comparison` (`===` yordamida) faqat obyekt/massivlarning xotiradagi manzillarini (havolalarini) solishtiradi. `Deep comparison` esa ularning ichidagi barcha qiymatlarni rekursiv ravishda solishtiradi. `React` `state` va `props` o'zgarishlarini tekshirishda odatda `shallow comparison` ishlatadi."
   },
   {
     "id": "js-q37",
     "question": "JavaScript'da `Generator` funksiyalar nima (`function*` va `yield`)?",
     "topic": "ES6 Features",
-    "answer": {
-      "definition": "`Generator` funksiyalar (ES6 da kiritilgan, `function*` sintaksisi bilan e'lon qilinadi) — bu bajarilishini **to'xtatib turish (`pause`)** va keyinroq **davom ettirish (`resume`)** mumkin bo'lgan maxsus funksiyalardir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Oddiy funksiyadan farqli o'laroq, `generator` funksiya chaqirilganda darhol ishga tushmaydi. U **`Generator` obyektini** qaytaradi. Bu obyekt `.next()` metodiga ega. Har safar `.next()` chaqirilganda, `generator` funksiya ichidagi kod `yield` kalit so'ziga duch kelguncha bajariladi. `yield` funksiya bajarilishini to'xtatadi va `yield`'dan keyingi qiymatni (`value`) `.next()` metodining natijasi sifatida qaytaradi (`{ value: ..., done: false }`). Keyingi `.next()` chaqiruvi funksiyani o'sha to'xtagan joyidan davom ettiradi. Funksiya oxirigacha bajarilganda yoki `return` qilganda, `.next()` `{ value: ..., done: true }` qaytaradi. `Generator`'lar `iterator`'larni oson yaratish, asinxron kodni boshqarish (`async/await`'dan oldin) va katta hajmdagi ma'lumotlar ketma-ketligini xotirani to'ldirmasdan qayta ishlash uchun ishlatilishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Generator:",
-          "code": [
-            "function* countUpTo(max) {",
-            "  let count = 1;",
-            "  while (count <= max) {",
-            "    yield count; // To'xtaydi va 'count'ni qaytaradi",
-            "    count++;",
-            "  }",
-            "}",
-            "",
-            "const generator = countUpTo(3);",
-            "console.log(generator.next()); // { value: 1, done: false }",
-            "console.log(generator.next()); // { value: 2, done: false }",
-            "console.log(generator.next()); // { value: 3, done: false }",
-            "console.log(generator.next()); // { value: undefined, done: true }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Generator` funksiyalar (`function*`) bajarilishini `yield` kalit so'zi yordamida to'xtatib turish va keyin davom ettirish mumkin bo'lgan funksiyalardir. Ular `Generator` obyektini qaytaradi, `.next()` metodi esa `yield` qilingan keyingi qiymatni oladi. `Iterator` yaratishda va asinxronlikda ishlatiladi."
-    }
+    "description": "`Generator` funksiyalar (ES6 da kiritilgan, `function*` sintaksisi bilan e'lon qilinadi) — bu bajarilishini **to'xtatib turish (`pause`)** va keyinroq **davom ettirish (`resume`)** mumkin bo'lgan maxsus funksiyalardir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Oddiy funksiyadan farqli o'laroq, `generator` funksiya chaqirilganda darhol ishga tushmaydi. U **`Generator` obyektini** qaytaradi. Bu obyekt `.next()` metodiga ega. Har safar `.next()` chaqirilganda, `generator` funksiya ichidagi kod `yield` kalit so'ziga duch kelguncha bajariladi. `yield` funksiya bajarilishini to'xtatadi va `yield`'dan keyingi qiymatni (`value`) `.next()` metodining natijasi sifatida qaytaradi (`{ value: ..., done: false }`). Keyingi `.next()` chaqiruvi funksiyani o'sha to'xtagan joyidan davom ettiradi. Funksiya oxirigacha bajarilganda yoki `return` qilganda, `.next()` `{ value: ..., done: true }` qaytaradi. `Generator`'lar `iterator`'larni oson yaratish, asinxron kodni boshqarish (`async/await`'dan oldin) va katta hajmdagi ma'lumotlar ketma-ketligini xotirani to'ldirmasdan qayta ishlash uchun ishlatilishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Generator:",
+        "code": [
+          "function* countUpTo(max) {",
+          "  let count = 1;",
+          "  while (count <= max) {",
+          "    yield count; // To'xtaydi va 'count'ni qaytaradi",
+          "    count++;",
+          "  }",
+          "}",
+          "",
+          "const generator = countUpTo(3);",
+          "console.log(generator.next()); // { value: 1, done: false }",
+          "console.log(generator.next()); // { value: 2, done: false }",
+          "console.log(generator.next()); // { value: 3, done: false }",
+          "console.log(generator.next()); // { value: undefined, done: true }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Generator` funksiyalar (`function*`) bajarilishini `yield` kalit so'zi yordamida to'xtatib turish va keyin davom ettirish mumkin bo'lgan funksiyalardir. Ular `Generator` obyektini qaytaradi, `.next()` metodi esa `yield` qilingan keyingi qiymatni oladi. `Iterator` yaratishda va asinxronlikda ishlatiladi."
   },
   {
     "id": "js-q38",
     "question": "`WeakMap` va `WeakSet` nima va ular `Map` va `Set`'dan qanday farq qiladi?",
     "topic": "ES6 Data Structures",
-    "answer": {
-      "definition": "`WeakMap` va `WeakSet` — bu `Map` va `Set`'ga o'xshash kolleksiyalar, ammo ularning asosiy farqi ular saqlaydigan obyektlarga **'kuchsiz' (`weak`) havolalar** ushlab turishidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**Asosiy Farq (Garbage Collection):** Oddiy `Map` yoki `Set`'ga qo'shilgan obyektga boshqa hech qanday havola qolmasa ham, `Map`/`Set`'ning o'zi uni ushlab turgani uchun `garbage collector` (xotirani tozalovchi) uni xotiradan o'chira olmaydi. `WeakMap` va `WeakSet` esa obyektlarga 'kuchsiz' havola qiladi. Agar biror obyektga `WeakMap`/`WeakSet`'dan boshqa hech qanday havola qolmasa, `garbage collector` uni xotiradan **o'chirishi mumkin** va u avtomatik ravishda `WeakMap`/`WeakSet`'dan ham yo'qoladi. Bu xotira `leak`'larining oldini olishga yordam beradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Cheklovlar:** Shu 'kuchsizlik' tufayli `WeakMap` va `WeakSet`'ni iteratsiya qilib bo'lmaydi (`.keys()`, `.values()`, `.entries()`, `for...of` ishlamaydi) va ularning `.size` xususiyati yo'q, chunki elementlar soni istalgan paytda `garbage collector` tufayli o'zgarishi mumkin. `WeakMap`'da kalitlar faqat obyektlar bo'lishi mumkin (`primitive`'lar emas). `WeakSet`'ga faqat obyektlar qo'shish mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**Qo'llanilishi:** Ular odatda obyektlarga qo'shimcha `metadata`'ni bog'lashda (obyekt o'chirilganda `metadata` ham avtomatik o'chishi uchun) yoki `caching`'da ishlatiladi."
-        }
-      ],
-      "interviewAnswer": "`WeakMap` va `WeakSet` `Map` va `Set`'ga o'xshaydi, lekin ular obyektlarga 'kuchsiz' havola ushlab turadi. Bu shuni anglatadiki, agar obyektga boshqa havola qolmasa, `garbage collector` uni xotiradan o'chirishi mumkin va u `WeakMap`/`WeakSet`'dan ham avtomatik yo'qoladi (xotira `leak`'ining oldini oladi). Ularni iteratsiya qilib bo'lmaydi va `.size` yo'q."
-    }
+    "description": "`WeakMap` va `WeakSet` — bu `Map` va `Set`'ga o'xshash kolleksiyalar, ammo ularning asosiy farqi ular saqlaydigan obyektlarga **'kuchsiz' (`weak`) havolalar** ushlab turishidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Asosiy Farq (Garbage Collection):** Oddiy `Map` yoki `Set`'ga qo'shilgan obyektga boshqa hech qanday havola qolmasa ham, `Map`/`Set`'ning o'zi uni ushlab turgani uchun `garbage collector` (xotirani tozalovchi) uni xotiradan o'chira olmaydi. `WeakMap` va `WeakSet` esa obyektlarga 'kuchsiz' havola qiladi. Agar biror obyektga `WeakMap`/`WeakSet`'dan boshqa hech qanday havola qolmasa, `garbage collector` uni xotiradan **o'chirishi mumkin** va u avtomatik ravishda `WeakMap`/`WeakSet`'dan ham yo'qoladi. Bu xotira `leak`'larining oldini olishga yordam beradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Cheklovlar:** Shu 'kuchsizlik' tufayli `WeakMap` va `WeakSet`'ni iteratsiya qilib bo'lmaydi (`.keys()`, `.values()`, `.entries()`, `for...of` ishlamaydi) va ularning `.size` xususiyati yo'q, chunki elementlar soni istalgan paytda `garbage collector` tufayli o'zgarishi mumkin. `WeakMap`'da kalitlar faqat obyektlar bo'lishi mumkin (`primitive`'lar emas). `WeakSet`'ga faqat obyektlar qo'shish mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Qo'llanilishi:** Ular odatda obyektlarga qo'shimcha `metadata`'ni bog'lashda (obyekt o'chirilganda `metadata` ham avtomatik o'chishi uchun) yoki `caching`'da ishlatiladi."
+      }
+    ],
+    "interviewAnswer": "`WeakMap` va `WeakSet` `Map` va `Set`'ga o'xshaydi, lekin ular obyektlarga 'kuchsiz' havola ushlab turadi. Bu shuni anglatadiki, agar obyektga boshqa havola qolmasa, `garbage collector` uni xotiradan o'chirishi mumkin va u `WeakMap`/`WeakSet`'dan ham avtomatik yo'qoladi (xotira `leak`'ining oldini oladi). Ularni iteratsiya qilib bo'lmaydi va `.size` yo'q."
   },
   {
     "id": "js-q39",
     "question": "`Optional Chaining` (`?.`) va `Nullish Coalescing Operator` (`??`) (ES2020) nima?",
     "topic": "ESNext Features",
-    "answer": {
-      "definition": "Bu ikkala operator ham `null` yoki `undefined` qiymatlari bilan ishlashni xavfsizroq va qisqaroq qilish uchun ES2020 da kiritilgan.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Optional Chaining` (`?.`):** Ichma-ich joylashgan obyekt xususiyatlariga yoki metodlarga xavfsiz murojaat qilish imkonini beradi. Agar `?.`'dan oldingi qiymat `null` yoki `undefined` bo'lsa, zanjir darhol to'xtaydi va xatolik (`TypeError`) o'rniga `undefined` qaytaradi. Bu uzun `if (user && user.address && user.address.street)` kabi tekshiruvlarni qisqartiradi (`user?.address?.street`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Nullish Coalescing Operator` (`??`):** Chapdagi operand `null` yoki `undefined` bo'lgandagina o'ngdagi operandni qaytaradi. Aks holda (chapdagi operand boshqa har qanday qiymat, jumladan `0`, `false`, `''` bo'lsa), chapdagi operandning o'zini qaytaradi. Bu mantiqiy OR (`||`) operatoridan farq qiladi, chunki `||` chapdagi operand har qanday 'yolg'on' (`falsy`) qiymat (`0`, `false`, `''`, `null`, `undefined`, `NaN`) bo'lganda o'ngdagini qaytaradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Optional Chaining:",
-          "code": [
-            "const user = { address: { street: 'Amir Temur' } };",
-            "console.log(user?.address?.street); // 'Amir Temur'",
-            "console.log(user?.contact?.phone); // undefined (xatolik yo'q)"
-          ]
-        },
-        {
-          "title": "Nullish Coalescing vs OR:",
-          "code": [
-            "const count = 0;",
-            "const items = count ?? 10;  // items = 0 (chunki 0 null yoki undefined emas)",
-            "const itemsOr = count || 10; // itemsOr = 10 (chunki 0 falsy)",
-            "",
-            "const name = null;",
-            "const defaultName = name ?? 'Anonim'; // defaultName = 'Anonim'",
-            "const defaultNameOr = name || 'Anonim'; // defaultNameOr = 'Anonim'"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Optional Chaining` (`?.`) ichma-ich xususiyatlarga xavfsiz kirish imkonini beradi (`null`/`undefined` bo'lsa, `undefined` qaytaradi, xato emas). `Nullish Coalescing` (`??`) faqat chapdagi qiymat `null` yoki `undefined` bo'lganda o'ngdagini qaytaradi ( `||` dan farqli o'laroq, `0` yoki `false`'ni ham chapdan oladi)."
-    }
+    "description": "Bu ikkala operator ham `null` yoki `undefined` qiymatlari bilan ishlashni xavfsizroq va qisqaroq qilish uchun ES2020 da kiritilgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Optional Chaining` (`?.`):** Ichma-ich joylashgan obyekt xususiyatlariga yoki metodlarga xavfsiz murojaat qilish imkonini beradi. Agar `?.`'dan oldingi qiymat `null` yoki `undefined` bo'lsa, zanjir darhol to'xtaydi va xatolik (`TypeError`) o'rniga `undefined` qaytaradi. Bu uzun `if (user && user.address && user.address.street)` kabi tekshiruvlarni qisqartiradi (`user?.address?.street`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Nullish Coalescing Operator` (`??`):** Chapdagi operand `null` yoki `undefined` bo'lgandagina o'ngdagi operandni qaytaradi. Aks holda (chapdagi operand boshqa har qanday qiymat, jumladan `0`, `false`, `''` bo'lsa), chapdagi operandning o'zini qaytaradi. Bu mantiqiy OR (`||`) operatoridan farq qiladi, chunki `||` chapdagi operand har qanday 'yolg'on' (`falsy`) qiymat (`0`, `false`, `''`, `null`, `undefined`, `NaN`) bo'lganda o'ngdagini qaytaradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Optional Chaining:",
+        "code": [
+          "const user = { address: { street: 'Amir Temur' } };",
+          "console.log(user?.address?.street); // 'Amir Temur'",
+          "console.log(user?.contact?.phone); // undefined (xatolik yo'q)"
+        ]
+      },
+      {
+        "title": "Nullish Coalescing vs OR:",
+        "code": [
+          "const count = 0;",
+          "const items = count ?? 10;  // items = 0 (chunki 0 null yoki undefined emas)",
+          "const itemsOr = count || 10; // itemsOr = 10 (chunki 0 falsy)",
+          "",
+          "const name = null;",
+          "const defaultName = name ?? 'Anonim'; // defaultName = 'Anonim'",
+          "const defaultNameOr = name || 'Anonim'; // defaultNameOr = 'Anonim'"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Optional Chaining` (`?.`) ichma-ich xususiyatlarga xavfsiz kirish imkonini beradi (`null`/`undefined` bo'lsa, `undefined` qaytaradi, xato emas). `Nullish Coalescing` (`??`) faqat chapdagi qiymat `null` yoki `undefined` bo'lganda o'ngdagini qaytaradi ( `||` dan farqli o'laroq, `0` yoki `false`'ni ham chapdan oladi)."
   },
   {
     "id": "js-q40",
     "question": "JavaScript'da `Web Workers` nima va ular qachon ishlatiladi?",
     "topic": "JS Web APIs",
-    "answer": {
-      "definition": "`Web Workers` — bu asosiy `UI thread`'ni bloklamasdan, orqa fonda (`background thread`) skriptlarni ishga tushirish imkonini beruvchi brauzer `API`sidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "JavaScript odatda `single-threaded` bo'lgani uchun, uzoq davom etadigan, `CPU`'ni ko'p talab qiladigan vazifalar (murakkab hisob-kitoblar, katta hajmdagi ma'lumotlarni qayta ishlash) asosiy `thread`'ni bloklab qo'yishi va `UI`'ning 'qotib qolishi'ga (`freeze`) sabab bo'lishi mumkin. `Web Workers` bu muammoni hal qiladi. Siz yangi `Worker` yaratib (`new Worker('worker.js')`), unga alohida `JavaScript` faylini berasiz. Bu fayl alohida `thread`'da ishlaydi. Asosiy `thread` va `worker thread` bir-biri bilan `postMessage()` metodi orqali xabar almashadi (`onmessage` hodisasi orqali xabarlarni qabul qiladi). `Worker thread`'lar `DOM`'ga to'g'ridan-to'g'ri kira olmaydi, lekin ular `fetch`, `XMLHttpRequest`, `IndexedDB` kabi ko'plab `Web API`'lardan foydalana oladi."
-        }
-      ],
-      "interviewAnswer": "`Web Workers` JavaScript kodini asosiy `UI thread`'dan alohida, orqa fon `thread`'ida ishga tushirish imkonini beradi. Ular `CPU`'ni ko'p talab qiladigan vazifalarni bajarib, `UI`'ning 'qotib qolishi'ni oldini olish uchun ishlatiladi. Asosiy `thread` bilan `postMessage()` orqali xabar almashadi va `DOM`'ga kira olmaydi."
-    }
+    "description": "`Web Workers` — bu asosiy `UI thread`'ni bloklamasdan, orqa fonda (`background thread`) skriptlarni ishga tushirish imkonini beruvchi brauzer `API`sidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "JavaScript odatda `single-threaded` bo'lgani uchun, uzoq davom etadigan, `CPU`'ni ko'p talab qiladigan vazifalar (murakkab hisob-kitoblar, katta hajmdagi ma'lumotlarni qayta ishlash) asosiy `thread`'ni bloklab qo'yishi va `UI`'ning 'qotib qolishi'ga (`freeze`) sabab bo'lishi mumkin. `Web Workers` bu muammoni hal qiladi. Siz yangi `Worker` yaratib (`new Worker('worker.js')`), unga alohida `JavaScript` faylini berasiz. Bu fayl alohida `thread`'da ishlaydi. Asosiy `thread` va `worker thread` bir-biri bilan `postMessage()` metodi orqali xabar almashadi (`onmessage` hodisasi orqali xabarlarni qabul qiladi). `Worker thread`'lar `DOM`'ga to'g'ridan-to'g'ri kira olmaydi, lekin ular `fetch`, `XMLHttpRequest`, `IndexedDB` kabi ko'plab `Web API`'lardan foydalana oladi."
+      }
+    ],
+    "interviewAnswer": "`Web Workers` JavaScript kodini asosiy `UI thread`'dan alohida, orqa fon `thread`'ida ishga tushirish imkonini beradi. Ular `CPU`'ni ko'p talab qiladigan vazifalarni bajarib, `UI`'ning 'qotib qolishi'ni oldini olish uchun ishlatiladi. Asosiy `thread` bilan `postMessage()` orqali xabar almashadi va `DOM`'ga kira olmaydi."
   },
-
   {
     "id": "js-q41",
     "question": "`CORS` (Cross-Origin Resource Sharing) nima va u nima uchun kerak?",
     "topic": "JS Web APIs & Security",
-    "answer": {
-      "definition": "`CORS` — bu brauzer xavfsizlik mexanizmi bo'lib, u bir `origin`'dan (domen, protokol, port kombinatsiyasi) yuklangan veb-sahifaga boshqa `origin`'dagi resurslarga (masalan, `API`'lar, shriftlar, rasmlar) murojaat qilishga ruxsat berish yoki taqiqlash qoidalarini belgilaydi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Standart `Same-Origin Policy` (Bir xil `Origin` Siyosati) brauzerda ishlayotgan skriptlarga faqat o'zlari yuklangan `origin`'dagi resurslarga murojaat qilishga ruxsat beradi. Bu xavfsizlik uchun muhim (`CSRF` kabi hujumlarning oldini olishga yordam beradi). Biroq, zamonaviy veb-dasturlarda ko'pincha boshqa domendagi `API`'larga murojaat qilish kerak bo'ladi. `CORS` aynan shu muammoni hal qiladi. Server (`API`) maxsus `HTTP header`'lari (`Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` va hokazo) orqali qaysi boshqa `origin`'larga va qanday usullar bilan uning resurslariga murojaat qilishga ruxsat berishini ko'rsatadi. Brauzer `JavaScript`'dan (`fetch` yoki `XMLHttpRequest` orqali) boshqa `origin`'ga so'rov yuborishdan oldin (yoki javobni qaytarishdan oldin) ushbu `header`'larni tekshiradi va ruxsat bo'lsagina so'rovni bajaradi yoki javobni `JavaScript`'ga beradi."
-        }
-      ],
-      "interviewAnswer": "`CORS` brauzerning xavfsizlik mexanizmi bo'lib, bir `origin`'dagi veb-sahifaga boshqa `origin`'dagi resurslarga (masalan, `API`) murojaat qilishni boshqaradi. Server maxsus `HTTP header`'lar (`Access-Control-Allow-Origin`) orqali qaysi `origin`'larga ruxsat berishini aytadi. Agar ruxsat bo'lmasa, brauzer so'rovni bloklaydi."
-    }
+    "description": "`CORS` — bu brauzer xavfsizlik mexanizmi bo'lib, u bir `origin`'dan (domen, protokol, port kombinatsiyasi) yuklangan veb-sahifaga boshqa `origin`'dagi resurslarga (masalan, `API`'lar, shriftlar, rasmlar) murojaat qilishga ruxsat berish yoki taqiqlash qoidalarini belgilaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Standart `Same-Origin Policy` (Bir xil `Origin` Siyosati) brauzerda ishlayotgan skriptlarga faqat o'zlari yuklangan `origin`'dagi resurslarga murojaat qilishga ruxsat beradi. Bu xavfsizlik uchun muhim (`CSRF` kabi hujumlarning oldini olishga yordam beradi). Biroq, zamonaviy veb-dasturlarda ko'pincha boshqa domendagi `API`'larga murojaat qilish kerak bo'ladi. `CORS` aynan shu muammoni hal qiladi. Server (`API`) maxsus `HTTP header`'lari (`Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` va hokazo) orqali qaysi boshqa `origin`'larga va qanday usullar bilan uning resurslariga murojaat qilishga ruxsat berishini ko'rsatadi. Brauzer `JavaScript`'dan (`fetch` yoki `XMLHttpRequest` orqali) boshqa `origin`'ga so'rov yuborishdan oldin (yoki javobni qaytarishdan oldin) ushbu `header`'larni tekshiradi va ruxsat bo'lsagina so'rovni bajaradi yoki javobni `JavaScript`'ga beradi."
+      }
+    ],
+    "interviewAnswer": "`CORS` brauzerning xavfsizlik mexanizmi bo'lib, bir `origin`'dagi veb-sahifaga boshqa `origin`'dagi resurslarga (masalan, `API`) murojaat qilishni boshqaradi. Server maxsus `HTTP header`'lar (`Access-Control-Allow-Origin`) orqali qaysi `origin`'larga ruxsat berishini aytadi. Agar ruxsat bo'lmasa, brauzer so'rovni bloklaydi."
   },
   {
     "id": "js-q42",
     "question": "`fetch` API'si nima va u `XMLHttpRequest`'dan qanday farq qiladi?",
     "topic": "JS Web APIs & Asynchronous",
-    "answer": {
-      "definition": "`fetch` API'si tarmoq so'rovlarini (`HTTP request`) yuborish va javoblarni (`response`) olish uchun zamonaviy, `Promise`-based interfeysni taqdim etadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U eski `XMLHttpRequest` (XHR) obyektiga qaraganda ancha sodda, kuchliroq va moslashuvchanroq yechim hisoblanadi. Asosiy farqlari:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`Promise`-based:** `fetch()` har doim `Promise` qaytaradi, bu `async/await` bilan ishlashni juda osonlashtiradi. XHR esa `event`-based edi (`onreadystatechange`, `onload`, `onerror`).",
-            "**Sodda API:** `fetch`'ning asosiy sintaksisi (`fetch(url, options)`) XHR'ga qaraganda ancha qisqa va tushunarli.",
-            "**`Request`/`Response` Obyektlari:** `fetch` so'rov (`Request`) va javob (`Response`) ma'lumotlarini ifodalash uchun standart `HTTP` `header`'lari va `body`'si bilan ishlashga imkon beruvchi kuchli obyektlarni taqdim etadi.",
-            "**Xatoliklarni Boshqarish:** `fetch` `Promise`'i faqat tarmoq xatosi (`network error`) bo'lgandagina `rejected` bo'ladi. `HTTP` xatoliklari (`404 Not Found`, `500 Server Error`) `rejected` `Promise`'ga olib kelmaydi. Ularni qo'lda `response.ok` xususiyatini tekshirish orqali aniqlash kerak. XHR esa `onerror` hodisasi orqali xatoliklarni boshqarardi."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "`fetch` bilan `GET` so'rovi:",
-          "code": [
-            "fetch('https://api.example.com/data')",
-            "  .then(response => {",
-            "    if (!response.ok) throw new Error('Network response failed');",
-            "    return response.json(); // Javobni JSON'ga o'giradi",
-            "  })",
-            "  .then(data => console.log(data))",
-            "  .catch(error => console.error('Error:', error));"
-          ]
-        }
-      ],
-      "interviewAnswer": "`fetch` tarmoq so'rovlari uchun zamonaviy, `Promise`-based `API`. U `XMLHttpRequest`'ga qaraganda sodda sintaksisga, kuchliroq `Request`/`Response` obyektlariga ega va `async/await` bilan yaxshi ishlaydi. Asosiy farqi `Promise`'ga asoslanganligi va `HTTP` xatolarini avtomatik `reject` qilmasligi (`response.ok`'ni tekshirish kerak)."
-    }
+    "description": "`fetch` API'si tarmoq so'rovlarini (`HTTP request`) yuborish va javoblarni (`response`) olish uchun zamonaviy, `Promise`-based interfeysni taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U eski `XMLHttpRequest` (XHR) obyektiga qaraganda ancha sodda, kuchliroq va moslashuvchanroq yechim hisoblanadi. Asosiy farqlari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Promise`-based:** `fetch()` har doim `Promise` qaytaradi, bu `async/await` bilan ishlashni juda osonlashtiradi. XHR esa `event`-based edi (`onreadystatechange`, `onload`, `onerror`).",
+          "**Sodda API:** `fetch`'ning asosiy sintaksisi (`fetch(url, options)`) XHR'ga qaraganda ancha qisqa va tushunarli.",
+          "**`Request`/`Response` Obyektlari:** `fetch` so'rov (`Request`) va javob (`Response`) ma'lumotlarini ifodalash uchun standart `HTTP` `header`'lari va `body`'si bilan ishlashga imkon beruvchi kuchli obyektlarni taqdim etadi.",
+          "**Xatoliklarni Boshqarish:** `fetch` `Promise`'i faqat tarmoq xatosi (`network error`) bo'lgandagina `rejected` bo'ladi. `HTTP` xatoliklari (`404 Not Found`, `500 Server Error`) `rejected` `Promise`'ga olib kelmaydi. Ularni qo'lda `response.ok` xususiyatini tekshirish orqali aniqlash kerak. XHR esa `onerror` hodisasi orqali xatoliklarni boshqarardi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`fetch` bilan `GET` so'rovi:",
+        "code": [
+          "fetch('https://api.example.com/data')",
+          "  .then(response => {",
+          "    if (!response.ok) throw new Error('Network response failed');",
+          "    return response.json(); // Javobni JSON'ga o'giradi",
+          "  })",
+          "  .then(data => console.log(data))",
+          "  .catch(error => console.error('Error:', error));"
+        ]
+      }
+    ],
+    "interviewAnswer": "`fetch` tarmoq so'rovlari uchun zamonaviy, `Promise`-based `API`. U `XMLHttpRequest`'ga qaraganda sodda sintaksisga, kuchliroq `Request`/`Response` obyektlariga ega va `async/await` bilan yaxshi ishlaydi. Asosiy farqi `Promise`'ga asoslanganligi va `HTTP` xatolarini avtomatik `reject` qilmasligi (`response.ok`'ni tekshirish kerak)."
   },
   {
     "id": "js-q43",
     "question": "`Array.prototype.includes()` metodi nima qiladi?",
     "topic": "ES7 Features & Array Methods",
-    "answer": {
-      "definition": "`.includes()` metodi (ES7 da kiritilgan) massiv (`array`) ma'lum bir elementni o'z ichiga olganligini tekshiradi va natijani `boolean` (`true` yoki `false`) sifatida qaytaradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U eski `.indexOf(element) !== -1` tekshiruviga qaraganda ancha qisqa va o'qilishi osonroq alternativadir. Muhim jihati, `.includes()` `NaN` (Not a Number) qiymatini ham to'g'ri topa oladi, `.indexOf()` esa topa olmaydi. U ikkinchi, ixtiyoriy argument (`fromIndex`) ham qabul qiladi, bu qidiruvni qaysi `index`'dan boshlashni ko'rsatadi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "const arr = [1, 2, 3, NaN];",
-            "console.log(arr.includes(2));     // true",
-            "console.log(arr.includes(4));     // false",
-            "console.log(arr.includes(NaN));   // true",
-            "console.log(arr.indexOf(NaN));    // -1 (indexOf NaN'ni topa olmaydi)",
-            "console.log(arr.includes(3, 3)); // false (qidiruv 3-indexdan boshlanadi)"
-          ]
-        }
-      ],
-      "interviewAnswer": "`.includes()` massivda berilgan element bor yoki yo'qligini (`true`/`false`) tekshiradi. U `.indexOf() !== -1`'dan qulayroq va `NaN`'ni ham to'g'ri topadi."
-    }
+    "description": "`.includes()` metodi (ES7 da kiritilgan) massiv (`array`) ma'lum bir elementni o'z ichiga olganligini tekshiradi va natijani `boolean` (`true` yoki `false`) sifatida qaytaradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U eski `.indexOf(element) !== -1` tekshiruviga qaraganda ancha qisqa va o'qilishi osonroq alternativadir. Muhim jihati, `.includes()` `NaN` (Not a Number) qiymatini ham to'g'ri topa oladi, `.indexOf()` esa topa olmaydi. U ikkinchi, ixtiyoriy argument (`fromIndex`) ham qabul qiladi, bu qidiruvni qaysi `index`'dan boshlashni ko'rsatadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "const arr = [1, 2, 3, NaN];",
+          "console.log(arr.includes(2));     // true",
+          "console.log(arr.includes(4));     // false",
+          "console.log(arr.includes(NaN));   // true",
+          "console.log(arr.indexOf(NaN));    // -1 (indexOf NaN'ni topa olmaydi)",
+          "console.log(arr.includes(3, 3)); // false (qidiruv 3-indexdan boshlanadi)"
+        ]
+      }
+    ],
+    "interviewAnswer": "`.includes()` massivda berilgan element bor yoki yo'qligini (`true`/`false`) tekshiradi. U `.indexOf() !== -1`'dan qulayroq va `NaN`'ni ham to'g'ri topadi."
   },
   {
     "id": "js-q44",
     "question": "JavaScript'da `recursion` nima?",
     "topic": "JS Functions & Algorithms",
-    "answer": {
-      "definition": "`Recursion` (rekursiya) — bu funksiyaning o'zini-o'zi chaqirish (`call itself`) texnikasidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Rekursiv funksiya odatda ikkita qismdan iborat bo'ladi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Base Case (Asosiy Holat):** Rekursiyani to'xtatadigan shart. Bu shart bajarilganda, funksiya o'zini qayta chaqirmaydi va natijani qaytaradi. `Base case` bo'lmasa, cheksiz rekursiya (`infinite recursion`) yuz beradi va `stack overflow` xatoligiga olib keladi.",
-            "**Recursive Step (Rekursiv Qadam):** Funksiya o'zini kichikroq yoki oddiyroq argumentlar bilan qayta chaqiradigan qism. Bu qadam muammoni asta-sekin `base case`'ga yaqinlashtirishi kerak."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Rekursiya ba'zi muammolarni (masalan, daraxt (`tree`) strukturalarini aylanib chiqish, faktorialni hisoblash) `loop`'larga qaraganda ancha elegant va tushunarliroq yechish imkonini beradi. Ammo, har bir funksiya chaqiruvi `call stack`'da joy egallagani uchun, juda chuqur rekursiya `stack overflow`'ga olib kelishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Faktorialni Rekursiv Hisoblash:",
-          "code": [
-            "function factorial(n) {",
-            "  // Base case:",
-            "  if (n === 0 || n === 1) {",
-            "    return 1;",
-            "  }",
-            "  // Recursive step:",
-            "  return n * factorial(n - 1);",
-            "}",
-            "console.log(factorial(5)); // 120"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Recursion` funksiyaning o'zini-o'zi chaqirishidir. U `base case` (to'xtash sharti) va `recursive step`'dan (o'zini qayta chaqirish) iborat bo'ladi. Ba'zi muammolarni elegant yechishga yordam beradi, lekin chuqur rekursiya `stack overflow`'ga olib kelishi mumkin."
-    }
+    "description": "`Recursion` (rekursiya) — bu funksiyaning o'zini-o'zi chaqirish (`call itself`) texnikasidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Rekursiv funksiya odatda ikkita qismdan iborat bo'ladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Base Case (Asosiy Holat):** Rekursiyani to'xtatadigan shart. Bu shart bajarilganda, funksiya o'zini qayta chaqirmaydi va natijani qaytaradi. `Base case` bo'lmasa, cheksiz rekursiya (`infinite recursion`) yuz beradi va `stack overflow` xatoligiga olib keladi.",
+          "**Recursive Step (Rekursiv Qadam):** Funksiya o'zini kichikroq yoki oddiyroq argumentlar bilan qayta chaqiradigan qism. Bu qadam muammoni asta-sekin `base case`'ga yaqinlashtirishi kerak."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Rekursiya ba'zi muammolarni (masalan, daraxt (`tree`) strukturalarini aylanib chiqish, faktorialni hisoblash) `loop`'larga qaraganda ancha elegant va tushunarliroq yechish imkonini beradi. Ammo, har bir funksiya chaqiruvi `call stack`'da joy egallagani uchun, juda chuqur rekursiya `stack overflow`'ga olib kelishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Faktorialni Rekursiv Hisoblash:",
+        "code": [
+          "function factorial(n) {",
+          "  // Base case:",
+          "  if (n === 0 || n === 1) {",
+          "    return 1;",
+          "  }",
+          "  // Recursive step:",
+          "  return n * factorial(n - 1);",
+          "}",
+          "console.log(factorial(5)); // 120"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Recursion` funksiyaning o'zini-o'zi chaqirishidir. U `base case` (to'xtash sharti) va `recursive step`'dan (o'zini qayta chaqirish) iborat bo'ladi. Ba'zi muammolarni elegant yechishga yordam beradi, lekin chuqur rekursiya `stack overflow`'ga olib kelishi mumkin."
   },
   {
     "id": "js-q45",
     "question": "`Object`'ning `keys`, `values`, va `entries` metodlari nima qiladi?",
     "topic": "JS Objects",
-    "answer": {
-      "definition": "Bu uch metod (`Object.keys()`, `Object.values()`, `Object.entries()`) obyektning o'zining (`own`) sanaladigan (`enumerable`) xususiyatlarini massiv (`array`) ko'rinishida olish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Object.keys(obj)`:** Obyektning **kalitlari (`keys`)**'dan iborat massiv qaytaradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Object.values(obj)`:** Obyektning **qiymatlari (`values`)**'dan iborat massiv qaytaradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Object.entries(obj)`:** Obyektning har bir **`[key, value]` juftligidan** iborat massiv qaytaradi (massiv ichida massivlar)."
-        },
-        {
-          "type": "paragraph",
-          "content": "Bu metodlar `for...in` tsiklidan farqli o'laroq, `prototype` zanjiridagi xususiyatlarni emas, faqat obyektning o'ziga tegishli xususiyatlarni qaytaradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "const user = { name: 'Ali', age: 30 };",
-            "",
-            "console.log(Object.keys(user));   // ['name', 'age']",
-            "console.log(Object.values(user)); // ['Ali', 30]",
-            "console.log(Object.entries(user)); // [['name', 'Ali'], ['age', 30]]"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Object.keys(obj)` kalitlar massivini, `Object.values(obj)` qiymatlar massivini, `Object.entries(obj)` esa `[kalit, qiymat]` juftliklari massivini qaytaradi. Ular faqat obyektning o'z xususiyatlari uchun ishlaydi."
-    }
+    "description": "Bu uch metod (`Object.keys()`, `Object.values()`, `Object.entries()`) obyektning o'zining (`own`) sanaladigan (`enumerable`) xususiyatlarini massiv (`array`) ko'rinishida olish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Object.keys(obj)`:** Obyektning **kalitlari (`keys`)**'dan iborat massiv qaytaradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Object.values(obj)`:** Obyektning **qiymatlari (`values`)**'dan iborat massiv qaytaradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Object.entries(obj)`:** Obyektning har bir **`[key, value]` juftligidan** iborat massiv qaytaradi (massiv ichida massivlar)."
+      },
+      {
+        "type": "paragraph",
+        "content": "Bu metodlar `for...in` tsiklidan farqli o'laroq, `prototype` zanjiridagi xususiyatlarni emas, faqat obyektning o'ziga tegishli xususiyatlarni qaytaradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "const user = { name: 'Ali', age: 30 };",
+          "",
+          "console.log(Object.keys(user));   // ['name', 'age']",
+          "console.log(Object.values(user)); // ['Ali', 30]",
+          "console.log(Object.entries(user)); // [['name', 'Ali'], ['age', 30]]"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Object.keys(obj)` kalitlar massivini, `Object.values(obj)` qiymatlar massivini, `Object.entries(obj)` esa `[kalit, qiymat]` juftliklari massivini qaytaradi. Ular faqat obyektning o'z xususiyatlari uchun ishlaydi."
   },
   {
     "id": "js-q46",
     "question": "JavaScript'da `garbage collection` qanday ishlaydi?",
     "topic": "JS Memory Management",
-    "answer": {
-      "definition": "`Garbage Collection` (Axlat Yig'ish) — bu JavaScript dvigatelining avtomatik xotira boshqaruvining bir qismi bo'lib, u dastur tomonidan endi ishlatilmayotgan (erishib bo'lmaydigan) obyektlarni topadi va ular egallagan xotirani bo'shatadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Dasturchi xotirani qo'lda ajratish (`allocate`) yoki bo'shatish (`deallocate`) haqida qayg'urishi shart emas. `Garbage Collector` orqa fonda ishlaydi. Eng keng tarqalgan algoritm **`Mark-and-Sweep`** deb ataladi: 1) Dvigatel ildiz obyektlardan (`root` - global o'zgaruvchilar, joriy funksiya `call stack`'i) boshlab, erishish mumkin bo'lgan barcha obyektlarni belgilaydi (`mark`). 2) Keyin belgilanmagan (`unmarked`) barcha obyektlarni xotiradan o'chiradi (`sweep`). Bu jarayon qachon ishga tushishi dvigatel tomonidan aniqlanadi va ba'zan dasturning qisqa muddatga 'qotib qolishi'ga sabab bo'lishi mumkin. Xotira `leak`'lari (keraksiz havolalar tufayli obyektlarning o'chirilmay qolishi) hali ham yuz berishi mumkin."
-        }
-      ],
-      "interviewAnswer": "`Garbage Collection` JavaScript'da avtomatik xotira boshqaruvidir. U endi ishlatilmayotgan (erishib bo'lmaydigan) obyektlarni topib, xotirani bo'shatadi. Asosiy algoritm `Mark-and-Sweep`. Bu dasturchini xotirani qo'lda boshqarishdan ozod qiladi, lekin `memory leak`'lar bo'lishi mumkin."
-    }
+    "description": "`Garbage Collection` (Axlat Yig'ish) — bu JavaScript dvigatelining avtomatik xotira boshqaruvining bir qismi bo'lib, u dastur tomonidan endi ishlatilmayotgan (erishib bo'lmaydigan) obyektlarni topadi va ular egallagan xotirani bo'shatadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Dasturchi xotirani qo'lda ajratish (`allocate`) yoki bo'shatish (`deallocate`) haqida qayg'urishi shart emas. `Garbage Collector` orqa fonda ishlaydi. Eng keng tarqalgan algoritm **`Mark-and-Sweep`** deb ataladi: 1) Dvigatel ildiz obyektlardan (`root` - global o'zgaruvchilar, joriy funksiya `call stack`'i) boshlab, erishish mumkin bo'lgan barcha obyektlarni belgilaydi (`mark`). 2) Keyin belgilanmagan (`unmarked`) barcha obyektlarni xotiradan o'chiradi (`sweep`). Bu jarayon qachon ishga tushishi dvigatel tomonidan aniqlanadi va ba'zan dasturning qisqa muddatga 'qotib qolishi'ga sabab bo'lishi mumkin. Xotira `leak`'lari (keraksiz havolalar tufayli obyektlarning o'chirilmay qolishi) hali ham yuz berishi mumkin."
+      }
+    ],
+    "interviewAnswer": "`Garbage Collection` JavaScript'da avtomatik xotira boshqaruvidir. U endi ishlatilmayotgan (erishib bo'lmaydigan) obyektlarni topib, xotirani bo'shatadi. Asosiy algoritm `Mark-and-Sweep`. Bu dasturchini xotirani qo'lda boshqarishdan ozod qiladi, lekin `memory leak`'lar bo'lishi mumkin."
   },
   {
     "id": "js-q47",
     "question": "`mutation` nima va u `primitive` va `reference` tiplar bilan qanday bog'liq?",
     "topic": "JS Data Types & Immutability",
-    "answer": {
-      "definition": "`Mutation` — bu obyekt yoki massivning yaratilganidan keyin uning ichki holatini yoki qiymatini o'zgartirish jarayonidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Primitive` tiplar (`string`, `number`, `boolean` va hokazo) `immutable` (o'zgarmas) hisoblanadi.** Ularning qiymatini yaratilganidan keyin o'zgartirib bo'lmaydi. Masalan, `string`'ga o'zgartirish kiritishga harakat qilinsa (masalan, `.toUpperCase()`), asl `string` o'zgarmaydi, balki yangi, o'zgartirilgan `string` qaytariladi. O'zgaruvchiga yangi qiymat berish (`let x = 5; x = 10;`) bu `mutation` emas, bu o'zgaruvchini boshqa qiymatga qayta bog'lash (`reassignment`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Reference` tiplar (`object`, `array`) esa `mutable` (o'zgaruvchan) hisoblanadi.** Ularning xususiyatlari yoki elementlarini yaratilganidan keyin o'zgartirish mumkin. Masalan, `myArray.push(5)` yoki `myObject.name = 'Yangi Ism'` — bular `mutation`'ga misol."
-        },
-        {
-          "type": "paragraph",
-          "content": "Funksional dasturlashda va `React` kabi kutubxonalarda `immutability`'ni saqlash (ya'ni, obyektlar/massivlarni to'g'ridan-to'g'ri o'zgartirmasdan, ularning o'zgartirilgan nusxalarini yaratish) muhim `pattern` hisoblanadi. Bu holat (`state`) o'zgarishlarini kuzatishni osonlashtiradi va kutilmagan `side effect`'larning oldini oladi (`Spread` operatori (`...`) `immutability`'ni saqlashda ko'p ishlatiladi)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`Primitive` (Immutable):",
-          "code": [
-            "let str = 'salom'; str.toUpperCase(); console.log(str); // 'salom' (o'zgarmadi)"
-          ]
-        },
-        {
-          "title": "`Reference` (Mutable):",
-          "code": [
-            "let arr = [1, 2]; arr.push(3); console.log(arr); // [1, 2, 3] (o'zgardi)"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Mutation` obyekt yoki massivning ichki holatini o'zgartirishdir. `Primitive` tiplar (`string`, `number`) `immutable` (o'zgarmas), ularni `mutate` qilib bo'lmaydi. `Reference` tiplar (`object`, `array`) `mutable` (o'zgaruvchan), ularni `mutate` qilish mumkin. `React` kabi joylarda `immutability`'ni saqlash (nusxa yaratib o'zgartirish) tavsiya etiladi."
-    }
+    "description": "`Mutation` — bu obyekt yoki massivning yaratilganidan keyin uning ichki holatini yoki qiymatini o'zgartirish jarayonidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Primitive` tiplar (`string`, `number`, `boolean` va hokazo) `immutable` (o'zgarmas) hisoblanadi.** Ularning qiymatini yaratilganidan keyin o'zgartirib bo'lmaydi. Masalan, `string`'ga o'zgartirish kiritishga harakat qilinsa (masalan, `.toUpperCase()`), asl `string` o'zgarmaydi, balki yangi, o'zgartirilgan `string` qaytariladi. O'zgaruvchiga yangi qiymat berish (`let x = 5; x = 10;`) bu `mutation` emas, bu o'zgaruvchini boshqa qiymatga qayta bog'lash (`reassignment`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Reference` tiplar (`object`, `array`) esa `mutable` (o'zgaruvchan) hisoblanadi.** Ularning xususiyatlari yoki elementlarini yaratilganidan keyin o'zgartirish mumkin. Masalan, `myArray.push(5)` yoki `myObject.name = 'Yangi Ism'` — bular `mutation`'ga misol."
+      },
+      {
+        "type": "paragraph",
+        "content": "Funksional dasturlashda va `React` kabi kutubxonalarda `immutability`'ni saqlash (ya'ni, obyektlar/massivlarni to'g'ridan-to'g'ri o'zgartirmasdan, ularning o'zgartirilgan nusxalarini yaratish) muhim `pattern` hisoblanadi. Bu holat (`state`) o'zgarishlarini kuzatishni osonlashtiradi va kutilmagan `side effect`'larning oldini oladi (`Spread` operatori (`...`) `immutability`'ni saqlashda ko'p ishlatiladi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`Primitive` (Immutable):",
+        "code": [
+          "let str = 'salom'; str.toUpperCase(); console.log(str); // 'salom' (o'zgarmadi)"
+        ]
+      },
+      {
+        "title": "`Reference` (Mutable):",
+        "code": [
+          "let arr = [1, 2]; arr.push(3); console.log(arr); // [1, 2, 3] (o'zgardi)"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Mutation` obyekt yoki massivning ichki holatini o'zgartirishdir. `Primitive` tiplar (`string`, `number`) `immutable` (o'zgarmas), ularni `mutate` qilib bo'lmaydi. `Reference` tiplar (`object`, `array`) `mutable` (o'zgaruvchan), ularni `mutate` qilish mumkin. `React` kabi joylarda `immutability`'ni saqlash (nusxa yaratib o'zgartirish) tavsiya etiladi."
   },
   {
     "id": "js-q48",
     "question": "`npm` va `npx` o'rtasida qanday farq bor?",
     "topic": "Node.js & npm",
-    "answer": {
-      "definition": "Ikkalasi ham `npm` (Node Package Manager) bilan birga keladigan buyruqlar qatori (`command-line`) vositalari, ammo ular turli maqsadlarda ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`npm` (Node Package Manager):** Bu JavaScript uchun standart paket menejeri. Uning asosiy vazifalari: loyihaga bog'liqliklarni (`dependencies`) o'rnatish (`npm install <package>`), yangilash (`npm update`), o'chirish (`npm uninstall`) va `package.json` faylini boshqarish. Shuningdek, `package.json`'dagi `scripts` bo'limida belgilangan buyruqlarni ishga tushirish (`npm run <script-name>`)."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`npx` (Node Package Execute):** Bu vosita `npm` paketlarini **global yoki lokal o'rnatmasdan turib**, to'g'ridan-to'g'ri ishga tushirish (`execute`) uchun mo'ljallangan. U avval paketni `cache`'dan qidiradi, topilmasa, vaqtinchalik yuklab oladi, ishga tushiradi va keyin o'chirib yuboradi (odatda). Bu bir marta ishlatiladigan vositalar (masalan, `create-react-app`, `vite`) yoki paketning ma'lum bir versiyasini sinab ko'rish uchun juda qulay."
-        }
-      ],
-      "examples": [
-        { "title": "`npm` (Paket o'rnatish):", "code": ["npm install lodash"] },
-        {
-          "title": "`npm` (Skriptni ishga tushirish):",
-          "code": ["npm run dev"]
-        },
-        {
-          "title": "`npx` (O'rnatmasdan ishga tushirish):",
-          "code": ["npx create-react-app my-app"]
-        }
-      ],
-      "interviewAnswer": "`npm` paketlarni o'rnatish, yangilash va boshqarish uchun ishlatiladi. `npx` esa paketlarni o'rnatmasdan turib, to'g'ridan-to'g'ri ishga tushirish uchun ishlatiladi."
-    }
+    "description": "Ikkalasi ham `npm` (Node Package Manager) bilan birga keladigan buyruqlar qatori (`command-line`) vositalari, ammo ular turli maqsadlarda ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`npm` (Node Package Manager):** Bu JavaScript uchun standart paket menejeri. Uning asosiy vazifalari: loyihaga bog'liqliklarni (`dependencies`) o'rnatish (`npm install <package>`), yangilash (`npm update`), o'chirish (`npm uninstall`) va `package.json` faylini boshqarish. Shuningdek, `package.json`'dagi `scripts` bo'limida belgilangan buyruqlarni ishga tushirish (`npm run <script-name>`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`npx` (Node Package Execute):** Bu vosita `npm` paketlarini **global yoki lokal o'rnatmasdan turib**, to'g'ridan-to'g'ri ishga tushirish (`execute`) uchun mo'ljallangan. U avval paketni `cache`'dan qidiradi, topilmasa, vaqtinchalik yuklab oladi, ishga tushiradi va keyin o'chirib yuboradi (odatda). Bu bir marta ishlatiladigan vositalar (masalan, `create-react-app`, `vite`) yoki paketning ma'lum bir versiyasini sinab ko'rish uchun juda qulay."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`npm` (Paket o'rnatish):",
+        "code": [
+          "npm install lodash"
+        ]
+      },
+      {
+        "title": "`npm` (Skriptni ishga tushirish):",
+        "code": [
+          "npm run dev"
+        ]
+      },
+      {
+        "title": "`npx` (O'rnatmasdan ishga tushirish):",
+        "code": [
+          "npx create-react-app my-app"
+        ]
+      }
+    ],
+    "interviewAnswer": "`npm` paketlarni o'rnatish, yangilash va boshqarish uchun ishlatiladi. `npx` esa paketlarni o'rnatmasdan turib, to'g'ridan-to'g'ri ishga tushirish uchun ishlatiladi."
   },
   {
     "id": "js-q49",
     "question": "`package.json` va `package-lock.json` fayllari nima uchun kerak?",
     "topic": "Node.js & npm",
-    "answer": {
-      "definition": "Ikkala fayl ham `Node.js` loyihasining bog'liqliklarini (`dependencies`) boshqarish uchun `npm` (yoki `yarn`) tomonidan ishlatiladi, ammo ular turli ma'lumotlarni saqlaydi va turli maqsadlarga xizmat qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`package.json`:** Loyihaning asosiy manifest fayli. U loyiha haqida `metadata` (nomi, versiyasi, muallifi), `scripts` (buyruqlar) va eng muhimi — loyiha to'g'ridan-to'g'ri bog'liq bo'lgan paketlarning **ro'yxati va ularning talab qilinadigan versiya diapazonlarini** (`dependencies`, `devDependencies`) saqlaydi (masalan, `\"react\": \"^18.2.0\"`). Bu fayl odatda qo'lda tahrirlanadi va `Git`'ga `commit` qilinadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`package-lock.json` (yoki `yarn.lock`):** Bu fayl `npm install` (yoki `yarn`) buyrug'i birinchi marta ishga tushirilganda **avtomatik ravishda yaratiladi** va yangilanadi. U `node_modules` papkasiga o'rnatilgan **barcha paketlarning (shu jumladan, bog'liqliklarning bog'liqliklari — `transitive dependencies`) aniq versiyalarini** va ularning yuklab olingan manzillarini qayd qilib qo'yadi. Uning asosiy maqsadi — loyihani turli muhitlarda (masalan, boshqa dasturchining kompyuterida yoki `server`'da) qayta o'rnatganda, **har doim bir xil, aniq versiyadagi paketlar o'rnatilishini kafolatlash (`deterministic installs`)**. Bu 'mening kompyuterimda ishlagandi' degan muammoning oldini oladi. Bu fayl qo'lda tahrirlanmasligi va **`Git`'ga `commit` qilinishi kerak**."
-        }
-      ],
-      "interviewAnswer": "`package.json` loyihaning asosiy bog'liqliklarini va versiya diapazonlarini belgilaydi. `package-lock.json` esa `node_modules`'ga o'rnatilgan *barcha* paketlarning *aniq* versiyalarini qayd qiladi va turli muhitlarda bir xil o'rnatilishni (`deterministic installs`) kafolatlaydi. Ikkalasi ham `Git`'ga `commit` qilinishi kerak."
-    }
+    "description": "Ikkala fayl ham `Node.js` loyihasining bog'liqliklarini (`dependencies`) boshqarish uchun `npm` (yoki `yarn`) tomonidan ishlatiladi, ammo ular turli ma'lumotlarni saqlaydi va turli maqsadlarga xizmat qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`package.json`:** Loyihaning asosiy manifest fayli. U loyiha haqida `metadata` (nomi, versiyasi, muallifi), `scripts` (buyruqlar) va eng muhimi — loyiha to'g'ridan-to'g'ri bog'liq bo'lgan paketlarning **ro'yxati va ularning talab qilinadigan versiya diapazonlarini** (`dependencies`, `devDependencies`) saqlaydi (masalan, `\"react\": \"^18.2.0\"`). Bu fayl odatda qo'lda tahrirlanadi va `Git`'ga `commit` qilinadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`package-lock.json` (yoki `yarn.lock`):** Bu fayl `npm install` (yoki `yarn`) buyrug'i birinchi marta ishga tushirilganda **avtomatik ravishda yaratiladi** va yangilanadi. U `node_modules` papkasiga o'rnatilgan **barcha paketlarning (shu jumladan, bog'liqliklarning bog'liqliklari — `transitive dependencies`) aniq versiyalarini** va ularning yuklab olingan manzillarini qayd qilib qo'yadi. Uning asosiy maqsadi — loyihani turli muhitlarda (masalan, boshqa dasturchining kompyuterida yoki `server`'da) qayta o'rnatganda, **har doim bir xil, aniq versiyadagi paketlar o'rnatilishini kafolatlash (`deterministic installs`)**. Bu 'mening kompyuterimda ishlagandi' degan muammoning oldini oladi. Bu fayl qo'lda tahrirlanmasligi va **`Git`'ga `commit` qilinishi kerak**."
+      }
+    ],
+    "interviewAnswer": "`package.json` loyihaning asosiy bog'liqliklarini va versiya diapazonlarini belgilaydi. `package-lock.json` esa `node_modules`'ga o'rnatilgan *barcha* paketlarning *aniq* versiyalarini qayd qiladi va turli muhitlarda bir xil o'rnatilishni (`deterministic installs`) kafolatlaydi. Ikkalasi ham `Git`'ga `commit` qilinishi kerak."
   },
   {
     "id": "js-q50",
     "question": "JavaScript'da `polyfill` va `transpiler` nima?",
     "topic": "JS Build Tools & Compatibility",
-    "answer": {
-      "definition": "Ikkalasi ham zamonaviy JavaScript kodini eski brauzerlarda ham ishlashini ta'minlashga yordam beradigan vositalardir, ammo ular buni turli yo'llar bilan amalga oshiradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Transpiler` (masalan, Babel):** Zamonaviy JavaScript sintaksisini (masalan, ES6+ `arrow functions`, `class`, `async/await`) eski brauzerlar tushunadigan **sintaktik jihatdan ekvivalent bo'lgan eski JavaScript (odatda ES5) kodiga o'giradi (`transpiles`)**. U kodning **yozilishini** o'zgartiradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Polyfill`:** Zamonaviy JavaScript'da mavjud bo'lgan, lekin eski brauzerlarda **mavjud bo'lmagan yangi funksiyalarni, metodlarni yoki obyektlarni** (masalan, `Promise`, `fetch`, `Array.prototype.includes`) o'sha eski brauzerlarda ham ishlashi uchun **JavaScript kodida qayta yaratadi (`replicates`)**. U brauzerga yetishmayotgan **funksionallikni** qo'shadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "Odatda zamonaviy `frontend build process`'larda ham `transpiler` (Babel), ham kerakli `polyfill`'lar (`core-js` kabi kutubxonalar yordamida) birgalikda ishlatiladi."
-        }
-      ],
-      "interviewAnswer": "`Transpiler` (masalan, Babel) yangi JavaScript sintaksisini eski brauzerlar tushunadigan eski sintaksisga o'giradi (kodning yozilishini o'zgartiradi). `Polyfill` esa eski brauzerlarda mavjud bo'lmagan yangi funksiya yoki metodlarni JavaScript'da qayta yaratib beradi (funksionallik qo'shadi)."
-    }
+    "description": "Ikkalasi ham zamonaviy JavaScript kodini eski brauzerlarda ham ishlashini ta'minlashga yordam beradigan vositalardir, ammo ular buni turli yo'llar bilan amalga oshiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Transpiler` (masalan, Babel):** Zamonaviy JavaScript sintaksisini (masalan, ES6+ `arrow functions`, `class`, `async/await`) eski brauzerlar tushunadigan **sintaktik jihatdan ekvivalent bo'lgan eski JavaScript (odatda ES5) kodiga o'giradi (`transpiles`)**. U kodning **yozilishini** o'zgartiradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Polyfill`:** Zamonaviy JavaScript'da mavjud bo'lgan, lekin eski brauzerlarda **mavjud bo'lmagan yangi funksiyalarni, metodlarni yoki obyektlarni** (masalan, `Promise`, `fetch`, `Array.prototype.includes`) o'sha eski brauzerlarda ham ishlashi uchun **JavaScript kodida qayta yaratadi (`replicates`)**. U brauzerga yetishmayotgan **funksionallikni** qo'shadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Odatda zamonaviy `frontend build process`'larda ham `transpiler` (Babel), ham kerakli `polyfill`'lar (`core-js` kabi kutubxonalar yordamida) birgalikda ishlatiladi."
+      }
+    ],
+    "interviewAnswer": "`Transpiler` (masalan, Babel) yangi JavaScript sintaksisini eski brauzerlar tushunadigan eski sintaksisga o'giradi (kodning yozilishini o'zgartiradi). `Polyfill` esa eski brauzerlarda mavjud bo'lmagan yangi funksiya yoki metodlarni JavaScript'da qayta yaratib beradi (funksionallik qo'shadi)."
   }
 ]

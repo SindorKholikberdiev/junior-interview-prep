@@ -3,1033 +3,1007 @@
     "id": "nextjs-q1",
     "question": "Next.js nima va u React'dan qanday farq qiladi?",
     "topic": "Next.js Basics",
-    "answer": {
-      "definition": "Next.js — bu `React` asosida qurilgan, `production`-ga tayyor veb-dasturlar yaratish uchun mo'ljallangan ochiq kodli `framework`'dir. U `React` kutubxonasiga qo'shimcha funksionallik va optimallashtirishlarni taqdim etadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`React` — bu faqat `user interface` qurish uchun kutubxona (`library`). `Routing`, `data fetching`, `build` optimallashtirishlari kabi masalalarni hal qilish uchun qo'shimcha kutubxonalar va sozlamalar talab qiladi. `Next.js` esa bu narsalarning ko'pini (va undan ham ko'prog'ini) 'qutidan tashqarida' (`out-of-the-box`) taqdim etadigan to'liq `framework`'dir. U `React`'ni ishlatadi, lekin unga qo'shimcha ravishda quyidagilarni beradi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`Routing`:** Fayl tizimiga asoslangan `routing` (`pages` papkasi ichidagi fayllar avtomatik `route` bo'ladi).",
-            "**`Rendering` Usullari:** `Server-Side Rendering` (SSR), `Static Site Generation` (SSG), `Incremental Static Regeneration` (ISR), `Client-Side Rendering` (CSR) kabi turli xil `render` strategiyalarini qo'llab-quvvatlaydi.",
-            "**`Data Fetching`:** `getServerSideProps`, `getStaticProps`, `getStaticPaths` kabi maxsus funksiyalar yordamida ma'lumotlarni `server-side`'da olishni osonlashtiradi.",
-            "**`Image Optimization`:** Rasmlarni avtomatik optimallashtirish uchun `<Image>` komponenti.",
-            "**`API Routes`:** Loyihaning o'zida `backend` `endpoint`'larini (`/api/...`) yaratish imkoniyati.",
-            "**`Code Splitting` va `Prefetching`:** Avtomatik `code splitting` va `link`'lar uchun `prefetching` (`performance` uchun).",
-            "**`TypeScript Support`:** O'rnatilgan `TypeScript` qo'llab-quvvatlashi."
-          ]
-        }
-      ],
-      "interviewAnswer": "Next.js `React` asosidagi `framework`. `React` faqat `UI` kutubxonasi, `Next.js` esa `routing`, `SSR`/`SSG`, `API routes`, `image optimization` kabi `production`-ga tayyor funksiyalarni 'qutidan tashqarida' taqdim etadi."
-    }
+    "description": "Next.js — bu `React` asosida qurilgan, `production`-ga tayyor veb-dasturlar yaratish uchun mo'ljallangan ochiq kodli `framework`'dir. U `React` kutubxonasiga qo'shimcha funksionallik va optimallashtirishlarni taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`React` — bu faqat `user interface` qurish uchun kutubxona (`library`). `Routing`, `data fetching`, `build` optimallashtirishlari kabi masalalarni hal qilish uchun qo'shimcha kutubxonalar va sozlamalar talab qiladi. `Next.js` esa bu narsalarning ko'pini (va undan ham ko'prog'ini) 'qutidan tashqarida' (`out-of-the-box`) taqdim etadigan to'liq `framework`'dir. U `React`'ni ishlatadi, lekin unga qo'shimcha ravishda quyidagilarni beradi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Routing`:** Fayl tizimiga asoslangan `routing` (`pages` papkasi ichidagi fayllar avtomatik `route` bo'ladi).",
+          "**`Rendering` Usullari:** `Server-Side Rendering` (SSR), `Static Site Generation` (SSG), `Incremental Static Regeneration` (ISR), `Client-Side Rendering` (CSR) kabi turli xil `render` strategiyalarini qo'llab-quvvatlaydi.",
+          "**`Data Fetching`:** `getServerSideProps`, `getStaticProps`, `getStaticPaths` kabi maxsus funksiyalar yordamida ma'lumotlarni `server-side`'da olishni osonlashtiradi.",
+          "**`Image Optimization`:** Rasmlarni avtomatik optimallashtirish uchun `<Image>` komponenti.",
+          "**`API Routes`:** Loyihaning o'zida `backend` `endpoint`'larini (`/api/...`) yaratish imkoniyati.",
+          "**`Code Splitting` va `Prefetching`:** Avtomatik `code splitting` va `link`'lar uchun `prefetching` (`performance` uchun).",
+          "**`TypeScript Support`:** O'rnatilgan `TypeScript` qo'llab-quvvatlashi."
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js `React` asosidagi `framework`. `React` faqat `UI` kutubxonasi, `Next.js` esa `routing`, `SSR`/`SSG`, `API routes`, `image optimization` kabi `production`-ga tayyor funksiyalarni 'qutidan tashqarida' taqdim etadi."
   },
   {
     "id": "nextjs-q2",
     "question": "Next.js'da `Server-Side Rendering` (SSR) va `Static Site Generation` (SSG) o'rtasida qanday farq bor?",
     "topic": "Next.js Rendering",
-    "answer": {
-      "definition": "SSR va SSG — bu Next.js'da sahifalarni `pre-render` qilishning (HTML'ni serverda oldindan yaratish) ikkita asosiy usuli, ammo ular HTML qachon va qanday yaratilishi bilan farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Static Site Generation` (SSG):** HTML sahifasi **`build time`**'da (loyihani `build` qilayotganda) bir marta generatsiya qilinadi va `CDN`'ga joylashtirilishi mumkin. Har bir foydalanuvchi so'roviga javoban o'sha oldindan yaratilgan HTML qaytariladi. Bu juda tez `performance` beradi va `SEO` uchun yaxshi. Ma'lumotlari tez-tez o'zgarmaydigan sahifalar (blog postlar, marketing sahifalari, dokumentatsiya) uchun ideal. `getStaticProps` funksiyasi `build time`'da ma'lumotlarni olish uchun ishlatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Server-Side Rendering` (SSR):** HTML sahifasi **har bir so'rov (`request`) kelganda serverda** dinamik ravishda generatsiya qilinadi. Bu sahifa har bir foydalanuvchi yoki har bir so'rov uchun har xil bo'lishi kerak bo'lgan (masalan, shaxsiylashtirilgan `dashboard`, real vaqtdagi ma'lumotlar) holatlar uchun mos keladi. `getServerSideProps` funksiyasi har bir so'rovda serverda ma'lumotlarni olish uchun ishlatiladi. SSR SSG'ga qaraganda sekinroq bo'lishi mumkin, chunki HTML har safar qayta yaratiladi."
-        }
-      ],
-      "interviewAnswer": "SSG (`Static Site Generation`) HTML'ni `build time`'da yaratadi (tez, `CDN`-friendly, kam o'zgaradigan kontent uchun). SSR (`Server-Side Rendering`) HTML'ni har bir `request` kelganda serverda yaratadi (dinamik, shaxsiylashtirilgan kontent uchun). SSG uchun `getStaticProps`, SSR uchun `getServerSideProps` ishlatiladi."
-    }
+    "description": "SSR va SSG — bu Next.js'da sahifalarni `pre-render` qilishning (HTML'ni serverda oldindan yaratish) ikkita asosiy usuli, ammo ular HTML qachon va qanday yaratilishi bilan farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Static Site Generation` (SSG):** HTML sahifasi **`build time`**'da (loyihani `build` qilayotganda) bir marta generatsiya qilinadi va `CDN`'ga joylashtirilishi mumkin. Har bir foydalanuvchi so'roviga javoban o'sha oldindan yaratilgan HTML qaytariladi. Bu juda tez `performance` beradi va `SEO` uchun yaxshi. Ma'lumotlari tez-tez o'zgarmaydigan sahifalar (blog postlar, marketing sahifalari, dokumentatsiya) uchun ideal. `getStaticProps` funksiyasi `build time`'da ma'lumotlarni olish uchun ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Server-Side Rendering` (SSR):** HTML sahifasi **har bir so'rov (`request`) kelganda serverda** dinamik ravishda generatsiya qilinadi. Bu sahifa har bir foydalanuvchi yoki har bir so'rov uchun har xil bo'lishi kerak bo'lgan (masalan, shaxsiylashtirilgan `dashboard`, real vaqtdagi ma'lumotlar) holatlar uchun mos keladi. `getServerSideProps` funksiyasi har bir so'rovda serverda ma'lumotlarni olish uchun ishlatiladi. SSR SSG'ga qaraganda sekinroq bo'lishi mumkin, chunki HTML har safar qayta yaratiladi."
+      }
+    ],
+    "interviewAnswer": "SSG (`Static Site Generation`) HTML'ni `build time`'da yaratadi (tez, `CDN`-friendly, kam o'zgaradigan kontent uchun). SSR (`Server-Side Rendering`) HTML'ni har bir `request` kelganda serverda yaratadi (dinamik, shaxsiylashtirilgan kontent uchun). SSG uchun `getStaticProps`, SSR uchun `getServerSideProps` ishlatiladi."
   },
   {
     "id": "nextjs-q3",
     "question": "`getStaticProps` va `getServerSideProps` qanday ishlaydi?",
     "topic": "Next.js Data Fetching",
-    "answer": {
-      "definition": "Bu ikkala funksiya ham Next.js sahifa (`page`) komponentlarida `server-side`'da ma'lumotlarni olish (`fetch`) va uni sahifaga `props` sifatida uzatish uchun ishlatiladigan maxsus `async` funksiyalardir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`getStaticProps`:** Faqat **SSG (`Static Site Generation`)** uchun ishlatiladi. Bu funksiya **`build time`**'da serverda ishga tushadi. U `API`'ga so'rov yuborishi, fayl tizimidan o'qishi yoki ma'lumotlar bazasiga ulanishi mumkin. U qaytargan `props` obyekti sahifa komponentiga uzatiladi va sahifaning `HTML`'i shu `props` bilan oldindan `render` qilinadi. Bu funksiya faqat `pages` papkasidagi fayllardan `export` qilinishi mumkin."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`getServerSideProps`:** Faqat **SSR (`Server-Side Rendering`)** uchun ishlatiladi. Bu funksiya **har bir `request` kelganda serverda** ishga tushadi. U `getStaticProps` kabi ma'lumotlarni oladi, lekin `request`'ga xos ma'lumotlarga (`context.req`, `context.query`) ham kira oladi. U qaytargan `props` obyekti sahifa komponentiga uzatiladi va sahifaning `HTML`'i har bir `request` uchun dinamik ravishda shu `props` bilan `render` qilinadi. Bu funksiya ham faqat `pages` papkasidagi fayllardan `export` qilinishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`getStaticProps`:",
-          "code": [
-            "export async function getStaticProps(context) {",
-            "  const res = await fetch('...');",
-            "  const posts = await res.json();",
-            "  return { props: { posts } }; // 'posts' prop sifatida uzatiladi",
-            "}",
-            "function Blog({ posts }) { /* ... */ }"
-          ]
-        },
-        {
-          "title": "`getServerSideProps`:",
-          "code": [
-            "export async function getServerSideProps(context) {",
-            "  const { req, query } = context;",
-            "  const res = await fetch(`.../user/${query.id}`);",
-            "  const user = await res.json();",
-            "  return { props: { user } };",
-            "}",
-            "function Profile({ user }) { /* ... */ }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`getStaticProps` **SSG** uchun, **`build time`**'da ishlaydi, ma'lumot olib `props` qaytaradi. `getServerSideProps` **SSR** uchun, **har bir `request`**'da ishlaydi, ma'lumot olib `props` qaytaradi va `request` ma'lumotlariga kira oladi."
-    }
+    "description": "Bu ikkala funksiya ham Next.js sahifa (`page`) komponentlarida `server-side`'da ma'lumotlarni olish (`fetch`) va uni sahifaga `props` sifatida uzatish uchun ishlatiladigan maxsus `async` funksiyalardir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`getStaticProps`:** Faqat **SSG (`Static Site Generation`)** uchun ishlatiladi. Bu funksiya **`build time`**'da serverda ishga tushadi. U `API`'ga so'rov yuborishi, fayl tizimidan o'qishi yoki ma'lumotlar bazasiga ulanishi mumkin. U qaytargan `props` obyekti sahifa komponentiga uzatiladi va sahifaning `HTML`'i shu `props` bilan oldindan `render` qilinadi. Bu funksiya faqat `pages` papkasidagi fayllardan `export` qilinishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`getServerSideProps`:** Faqat **SSR (`Server-Side Rendering`)** uchun ishlatiladi. Bu funksiya **har bir `request` kelganda serverda** ishga tushadi. U `getStaticProps` kabi ma'lumotlarni oladi, lekin `request`'ga xos ma'lumotlarga (`context.req`, `context.query`) ham kira oladi. U qaytargan `props` obyekti sahifa komponentiga uzatiladi va sahifaning `HTML`'i har bir `request` uchun dinamik ravishda shu `props` bilan `render` qilinadi. Bu funksiya ham faqat `pages` papkasidagi fayllardan `export` qilinishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`getStaticProps`:",
+        "code": [
+          "export async function getStaticProps(context) {",
+          "  const res = await fetch('...');",
+          "  const posts = await res.json();",
+          "  return { props: { posts } }; // 'posts' prop sifatida uzatiladi",
+          "}",
+          "function Blog({ posts }) { /* ... */ }"
+        ]
+      },
+      {
+        "title": "`getServerSideProps`:",
+        "code": [
+          "export async function getServerSideProps(context) {",
+          "  const { req, query } = context;",
+          "  const res = await fetch(`.../user/${query.id}`);",
+          "  const user = await res.json();",
+          "  return { props: { user } };",
+          "}",
+          "function Profile({ user }) { /* ... */ }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`getStaticProps` **SSG** uchun, **`build time`**'da ishlaydi, ma'lumot olib `props` qaytaradi. `getServerSideProps` **SSR** uchun, **har bir `request`**'da ishlaydi, ma'lumot olib `props` qaytaradi va `request` ma'lumotlariga kira oladi."
   },
   {
     "id": "nextjs-q4",
     "question": "Next.js'da `Routing` qanday ishlaydi?",
     "topic": "Next.js Routing",
-    "answer": {
-      "definition": "Next.js **fayl tizimiga asoslangan (`file-system based`) `router`**'dan foydalanadi. `pages` papkasi ichidagi fayllar avtomatik ravishda `web application`'ning `route`'lariga aylanadi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Qoidalar:" },
-        {
-          "type": "list",
-          "items": [
-            "**Index Routes:** `pages/index.js` (yoki `.jsx`, `.ts`, `.tsx`) `/` yo'liga mos keladi.",
-            "**Nested Routes:** `pages/about.js` `/about` yo'liga, `pages/blog/index.js` `/blog` yo'liga, `pages/blog/first-post.js` `/blog/first-post` yo'liga mos keladi.",
-            "**Dynamic Routes:** Fayl nomini kvadrat qavslar `[]` ichiga olish orqali dinamik segmentlar yaratiladi. Masalan, `pages/posts/[id].js` `/posts/1`, `/posts/abc` kabi yo'llarga mos keladi. `id` qiymati `router.query` orqali yoki `getServerSideProps`/`getStaticProps`'ning `context`'idan olinishi mumkin.",
-            "**Catch-all Routes:** `pages/docs/[...slug].js` `/docs/a`, `/docs/a/b`, `/docs/a/b/c` kabi barcha ichki yo'llarga mos keladi.",
-            "**Optional Catch-all Routes:** `pages/items/[[...slug]].js` `/items`, `/items/a`, `/items/a/b` kabi yo'llarga mos keladi (asosiy `/items` ham ishlaydi)."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Sahifalararo navigatsiya uchun `next/link`'dan `<Link>` komponenti ishlatiladi. Dasturiy navigatsiya uchun `next/router`'dan `useRouter` `Hook`'i (`router.push('/path')`) ishlatiladi."
-        }
-      ],
-      "interviewAnswer": "Next.js fayl tizimiga asoslangan `routing` ishlatadi. `pages` papkasidagi fayllar avtomatik `route` bo'ladi (`pages/about.js` -> `/about`). Dinamik `route`'lar `[id].js` kabi fayllar bilan, `catch-all` `route`'lar `[...slug].js` bilan yaratiladi. Navigatsiya uchun `<Link>` komponenti ishlatiladi."
-    }
+    "description": "Next.js **fayl tizimiga asoslangan (`file-system based`) `router`**'dan foydalanadi. `pages` papkasi ichidagi fayllar avtomatik ravishda `web application`'ning `route`'lariga aylanadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Qoidalar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Index Routes:** `pages/index.js` (yoki `.jsx`, `.ts`, `.tsx`) `/` yo'liga mos keladi.",
+          "**Nested Routes:** `pages/about.js` `/about` yo'liga, `pages/blog/index.js` `/blog` yo'liga, `pages/blog/first-post.js` `/blog/first-post` yo'liga mos keladi.",
+          "**Dynamic Routes:** Fayl nomini kvadrat qavslar `[]` ichiga olish orqali dinamik segmentlar yaratiladi. Masalan, `pages/posts/[id].js` `/posts/1`, `/posts/abc` kabi yo'llarga mos keladi. `id` qiymati `router.query` orqali yoki `getServerSideProps`/`getStaticProps`'ning `context`'idan olinishi mumkin.",
+          "**Catch-all Routes:** `pages/docs/[...slug].js` `/docs/a`, `/docs/a/b`, `/docs/a/b/c` kabi barcha ichki yo'llarga mos keladi.",
+          "**Optional Catch-all Routes:** `pages/items/[[...slug]].js` `/items`, `/items/a`, `/items/a/b` kabi yo'llarga mos keladi (asosiy `/items` ham ishlaydi)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Sahifalararo navigatsiya uchun `next/link`'dan `<Link>` komponenti ishlatiladi. Dasturiy navigatsiya uchun `next/router`'dan `useRouter` `Hook`'i (`router.push('/path')`) ishlatiladi."
+      }
+    ],
+    "interviewAnswer": "Next.js fayl tizimiga asoslangan `routing` ishlatadi. `pages` papkasidagi fayllar avtomatik `route` bo'ladi (`pages/about.js` -> `/about`). Dinamik `route`'lar `[id].js` kabi fayllar bilan, `catch-all` `route`'lar `[...slug].js` bilan yaratiladi. Navigatsiya uchun `<Link>` komponenti ishlatiladi."
   },
   {
     "id": "nextjs-q5",
     "question": "Next.js'da `API Routes` nima?",
     "topic": "Next.js API Routes",
-    "answer": {
-      "definition": "`API Routes` Next.js dasturining o'zida **`backend API endpoint`**'larini yaratish imkonini beradi. Ular `pages/api` papkasi ichida joylashgan fayllar sifatida aniqlanadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Masalan, `pages/api/users.js` fayli `/api/users` `endpoint`'ini yaratadi. Bu fayl `Node.js` serverida ishlaydigan oddiy `request handler` funksiyasini (`export default function handler(req, res) { ... }`) `export` qilishi kerak. Bu funksiya `Node.js`'ning standart `http.IncomingMessage` (`req`) va `http.ServerResponse` (`res`) obyektlarini qabul qiladi. `API Routes` yordamida siz `database`'ga murojaat qilishingiz, tashqi `API`'larni chaqirishingiz, `authentication`'ni boshqarishingiz va `frontend`'ingiz uchun ma'lumotlarni tayyorlab berishingiz mumkin — bularning hammasi bitta loyiha ichida."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`pages/api/hello.js`:",
-          "code": [
-            "// Next.js API route support: https://nextjs.org/docs/api-routes/introduction",
-            "",
-            "export default function handler(req, res) {",
-            "  if (req.method === 'GET') {",
-            "    res.status(200).json({ name: 'John Doe' });",
-            "  } else {",
-            "    res.setHeader('Allow', ['GET']);",
-            "    res.status(405).end(`Method ${req.method} Not Allowed`);",
-            "  }",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`API Routes` Next.js loyihasi ichida (`pages/api` papkasida) `backend API endpoint`'larini yaratish imkonini beradi. Ular `Node.js` serverida ishlaydigan `request handler` funksiyalari bo'lib, `database` bilan ishlash yoki `frontend` uchun ma'lumot tayyorlashda ishlatiladi."
-    }
+    "description": "`API Routes` Next.js dasturining o'zida **`backend API endpoint`**'larini yaratish imkonini beradi. Ular `pages/api` papkasi ichida joylashgan fayllar sifatida aniqlanadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Masalan, `pages/api/users.js` fayli `/api/users` `endpoint`'ini yaratadi. Bu fayl `Node.js` serverida ishlaydigan oddiy `request handler` funksiyasini (`export default function handler(req, res) { ... }`) `export` qilishi kerak. Bu funksiya `Node.js`'ning standart `http.IncomingMessage` (`req`) va `http.ServerResponse` (`res`) obyektlarini qabul qiladi. `API Routes` yordamida siz `database`'ga murojaat qilishingiz, tashqi `API`'larni chaqirishingiz, `authentication`'ni boshqarishingiz va `frontend`'ingiz uchun ma'lumotlarni tayyorlab berishingiz mumkin — bularning hammasi bitta loyiha ichida."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`pages/api/hello.js`:",
+        "code": [
+          "// Next.js API route support: https://nextjs.org/docs/api-routes/introduction",
+          "",
+          "export default function handler(req, res) {",
+          "  if (req.method === 'GET') {",
+          "    res.status(200).json({ name: 'John Doe' });",
+          "  } else {",
+          "    res.setHeader('Allow', ['GET']);",
+          "    res.status(405).end(`Method ${req.method} Not Allowed`);",
+          "  }",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`API Routes` Next.js loyihasi ichida (`pages/api` papkasida) `backend API endpoint`'larini yaratish imkonini beradi. Ular `Node.js` serverida ishlaydigan `request handler` funksiyalari bo'lib, `database` bilan ishlash yoki `frontend` uchun ma'lumot tayyorlashda ishlatiladi."
   },
   {
     "id": "nextjs-q6",
     "question": "Next.js'da `Image` komponenti (`next/image`) nima uchun ishlatiladi va uning `<img>` `tag`idan qanday afzalliklari bor?",
     "topic": "Next.js Optimization",
-    "answer": {
-      "definition": "`next/image` komponenti standart `<img>` `tag`ining kengaytirilgan va optimallashtirilgan versiyasidir. U rasmlarni avtomatik optimallashtirish va zamonaviy veb standartlariga moslashtirish uchun mo'ljallangan.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy afzalliklari:" },
-        {
-          "type": "list",
-          "items": [
-            "**Avtomatik O'lchamni O'zgartirish (`Resizing`):** Qurilma ekraniga mos keladigan o'lchamdagi rasm versiyasini avtomatik tanlab beradi.",
-            "**Format Optimallashtirish (`Format Optimization`):** Brauzer qo'llab-quvvatlasa, rasmlarni avtomatik ravishda zamonaviy formatlarga (`WebP` kabi) o'giradi.",
-            "**`Lazy Loading` (Standart):** Rasmlar faqat ular `viewport`'ga yaqinlashganda yuklanadi, bu boshlang'ich yuklanishni tezlashtiradi.",
-            "**`Cumulative Layout Shift` (CLS)'ni Oldini Olish:** Rasm yuklanishidan oldin uning joyini egallab turish uchun `width` va `height` atributlarini talab qiladi (yoki `fill` `prop`'i bilan), bu esa `layout`'ning sakrashini oldini oladi.",
-            "**Tashqi Rasmlarni Optimallashtirish:** Tashqi `URL`'lardan keladigan rasmlarni ham optimallashtirish mumkin (konfiguratsiya talab qilinadi)."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Ishlatilishi:",
-          "code": [
-            "import Image from 'next/image';",
-            "import profilePic from '../public/me.png';",
-            "",
-            "function MyComponent() {",
-            "  return (",
-            "    <>",
-            "      <Image src={profilePic} alt=\"Picture\" width={500} height={500} />",
-            "      <Image src=\"/images/logo.svg\" alt=\"Logo\" layout=\"fill\" objectFit=\"contain\" />",
-            "      <Image src=\"https://example.com/image.jpg\" alt=\"External\" width={100} height={100} />",
-            "    </>",
-            "  );",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`next/image` komponenti standart `<img>`'ga qaraganda rasmlarni avtomatik optimallashtiradi: o'lchamini o'zgartiradi, zamonaviy formatlarga (`WebP`) o'giradi, `lazy loading` qiladi va `layout shift`'ni oldini oladi. U `width`/`height` yoki `fill` `prop`'ini talab qiladi."
-    }
+    "description": "`next/image` komponenti standart `<img>` `tag`ining kengaytirilgan va optimallashtirilgan versiyasidir. U rasmlarni avtomatik optimallashtirish va zamonaviy veb standartlariga moslashtirish uchun mo'ljallangan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy afzalliklari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Avtomatik O'lchamni O'zgartirish (`Resizing`):** Qurilma ekraniga mos keladigan o'lchamdagi rasm versiyasini avtomatik tanlab beradi.",
+          "**Format Optimallashtirish (`Format Optimization`):** Brauzer qo'llab-quvvatlasa, rasmlarni avtomatik ravishda zamonaviy formatlarga (`WebP` kabi) o'giradi.",
+          "**`Lazy Loading` (Standart):** Rasmlar faqat ular `viewport`'ga yaqinlashganda yuklanadi, bu boshlang'ich yuklanishni tezlashtiradi.",
+          "**`Cumulative Layout Shift` (CLS)'ni Oldini Olish:** Rasm yuklanishidan oldin uning joyini egallab turish uchun `width` va `height` atributlarini talab qiladi (yoki `fill` `prop`'i bilan), bu esa `layout`'ning sakrashini oldini oladi.",
+          "**Tashqi Rasmlarni Optimallashtirish:** Tashqi `URL`'lardan keladigan rasmlarni ham optimallashtirish mumkin (konfiguratsiya talab qilinadi)."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ishlatilishi:",
+        "code": [
+          "import Image from 'next/image';",
+          "import profilePic from '../public/me.png';",
+          "",
+          "function MyComponent() {",
+          "  return (",
+          "    <>",
+          "      <Image src={profilePic} alt=\"Picture\" width={500} height={500} />",
+          "      <Image src=\"/images/logo.svg\" alt=\"Logo\" layout=\"fill\" objectFit=\"contain\" />",
+          "      <Image src=\"https://example.com/image.jpg\" alt=\"External\" width={100} height={100} />",
+          "    </>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`next/image` komponenti standart `<img>`'ga qaraganda rasmlarni avtomatik optimallashtiradi: o'lchamini o'zgartiradi, zamonaviy formatlarga (`WebP`) o'giradi, `lazy loading` qiladi va `layout shift`'ni oldini oladi. U `width`/`height` yoki `fill` `prop`'ini talab qiladi."
   },
   {
     "id": "nextjs-q7",
     "question": "Next.js'da `Link` komponenti (`next/link`) qanday ishlaydi?",
     "topic": "Next.js Routing",
-    "answer": {
-      "definition": "`next/link` komponenti Next.js dasturi ichidagi sahifalar o'rtasida `client-side` navigatsiyani amalga oshirish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U standart `<a>` `tag`ini `render` qiladi, lekin unga qo'shimcha funksionallik qo'shadi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**`Client-Side` Navigatsiya:** Havolani bosganda sahifani to'liq qayta yuklash o'rniga, `JavaScript` yordamida faqat kerakli komponentlarni yangilaydi. Bu jarayon tezroq va silliqroq bo'ladi.",
-            "**`Prefetching` (Standart):** `Viewport`'ga kirgan `<Link>` komponentlariga tegishli sahifalarning kodini orqa fonda avtomatik yuklab olishni boshlaydi. Bu keyingi sahifaga o'tishni yanada tezlashtiradi."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "U `href` atributini (boriladigan yo'lni) va ichiga `<a>` `tag`i yoki boshqa elementlarni `child` sifatida qabul qiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Ishlatilishi:",
-          "code": [
-            "import Link from 'next/link';",
-            "",
-            "function Navigation() {",
-            "  return (",
-            "    <nav>",
-            "      <Link href=\"/\">Bosh Sahifa</Link>",
-            "      <Link href=\"/about\">Biz Haqimizda</Link>",
-            "      <Link href=\"/posts/123\">Post #123</Link>",
-            "    </nav>",
-            "  );",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`next/link` Next.js'da sahifalararo `client-side` navigatsiya uchun ishlatiladi (`<a>` o'rniga). U sahifani qayta yuklamaydi va orqa fonda keyingi sahifa kodini oldindan yuklashi (`prefetching`) mumkin, bu esa navigatsiyani tezlashtiradi."
-    }
+    "description": "`next/link` komponenti Next.js dasturi ichidagi sahifalar o'rtasida `client-side` navigatsiyani amalga oshirish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U standart `<a>` `tag`ini `render` qiladi, lekin unga qo'shimcha funksionallik qo'shadi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Client-Side` Navigatsiya:** Havolani bosganda sahifani to'liq qayta yuklash o'rniga, `JavaScript` yordamida faqat kerakli komponentlarni yangilaydi. Bu jarayon tezroq va silliqroq bo'ladi.",
+          "**`Prefetching` (Standart):** `Viewport`'ga kirgan `<Link>` komponentlariga tegishli sahifalarning kodini orqa fonda avtomatik yuklab olishni boshlaydi. Bu keyingi sahifaga o'tishni yanada tezlashtiradi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "U `href` atributini (boriladigan yo'lni) va ichiga `<a>` `tag`i yoki boshqa elementlarni `child` sifatida qabul qiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ishlatilishi:",
+        "code": [
+          "import Link from 'next/link';",
+          "",
+          "function Navigation() {",
+          "  return (",
+          "    <nav>",
+          "      <Link href=\"/\">Bosh Sahifa</Link>",
+          "      <Link href=\"/about\">Biz Haqimizda</Link>",
+          "      <Link href=\"/posts/123\">Post #123</Link>",
+          "    </nav>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`next/link` Next.js'da sahifalararo `client-side` navigatsiya uchun ishlatiladi (`<a>` o'rniga). U sahifani qayta yuklamaydi va orqa fonda keyingi sahifa kodini oldindan yuklashi (`prefetching`) mumkin, bu esa navigatsiyani tezlashtiradi."
   },
   {
     "id": "nextjs-q8",
     "question": "`getStaticPaths` nima va u qachon `getStaticProps` bilan birga ishlatiladi?",
     "topic": "Next.js Data Fetching",
-    "answer": {
-      "definition": "`getStaticPaths` funksiyasi **dinamik `route`'larga (`[id].js`, `[...slug].js`) ega bo'lgan sahifalarni `Static Site Generation` (SSG) qilishda** ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "SSG `build time`'da sodir bo'lgani uchun, Next.js qaysi dinamik yo'llar (`paths`) uchun `HTML` sahifalarini oldindan generatsiya qilish kerakligini bilishi kerak. `getStaticPaths` aynan shu yo'llar ro'yxatini (`paths` massivini) `build time`'da qaytaradi. Har bir yo'l uchun `params` obyekti (masalan, `{ params: { id: '1' } }`) bo'lishi kerak. `getStaticPaths` qaytargan har bir `path` uchun Next.js keyin `getStaticProps`'ni chaqiradi (unga `context.params` orqali `id`'ni beradi) va mos `HTML` faylini generatsiya qiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "U shuningdek `fallback` xususiyatini qaytaradi (`false`, `true`, yoki `'blocking'`). `fallback: false` faqat `paths`'da ko'rsatilgan yo'llar mavjudligini, boshqalari 404 bo'lishini bildiradi. `fallback: true` yoki `'blocking'` esa `build time`'da generatsiya qilinmagan yo'llar uchun dinamik `fallback` (`placeholder` ko'rsatish yoki serverda `render` qilish) imkonini beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`pages/posts/[id].js` uchun:",
-          "code": [
-            "// Build time'da qaysi postlar uchun sahifa yaratishni aytadi",
-            "export async function getStaticPaths() {",
-            "  const res = await fetch('.../posts');",
-            "  const posts = await res.json();",
-            "  const paths = posts.map(post => ({ params: { id: post.id.toString() } }));",
-            "  return { paths, fallback: false }; // Faqat shu ID'lar uchun generatsiya qil",
-            "}",
-            "",
-            "// Har bir ID uchun ma'lumotni olish",
-            "export async function getStaticProps({ params }) {",
-            "  const res = await fetch(`.../posts/${params.id}`);",
-            "  const post = await res.json();",
-            "  return { props: { post } };",
-            "}",
-            "",
-            "function Post({ post }) { /* ... */ }"
-          ]
-        }
-      ],
-      "interviewAnswer": "`getStaticPaths` dinamik `route`'lar (`[id].js`) bilan SSG ishlatilganda kerak bo'ladi. U `build time`'da qaysi `path`'lar (masalan, qaysi `id`'lar) uchun `HTML` generatsiya qilinishi kerakligini ro'yxat (`paths`) qilib qaytaradi. Keyin har bir `path` uchun `getStaticProps` chaqiriladi. `fallback` xususiyati esa `build time`'da bo'lmagan `path`'larni qanday boshqarishni belgilaydi."
-    }
+    "description": "`getStaticPaths` funksiyasi **dinamik `route`'larga (`[id].js`, `[...slug].js`) ega bo'lgan sahifalarni `Static Site Generation` (SSG) qilishda** ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "SSG `build time`'da sodir bo'lgani uchun, Next.js qaysi dinamik yo'llar (`paths`) uchun `HTML` sahifalarini oldindan generatsiya qilish kerakligini bilishi kerak. `getStaticPaths` aynan shu yo'llar ro'yxatini (`paths` massivini) `build time`'da qaytaradi. Har bir yo'l uchun `params` obyekti (masalan, `{ params: { id: '1' } }`) bo'lishi kerak. `getStaticPaths` qaytargan har bir `path` uchun Next.js keyin `getStaticProps`'ni chaqiradi (unga `context.params` orqali `id`'ni beradi) va mos `HTML` faylini generatsiya qiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "U shuningdek `fallback` xususiyatini qaytaradi (`false`, `true`, yoki `'blocking'`). `fallback: false` faqat `paths`'da ko'rsatilgan yo'llar mavjudligini, boshqalari 404 bo'lishini bildiradi. `fallback: true` yoki `'blocking'` esa `build time`'da generatsiya qilinmagan yo'llar uchun dinamik `fallback` (`placeholder` ko'rsatish yoki serverda `render` qilish) imkonini beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`pages/posts/[id].js` uchun:",
+        "code": [
+          "// Build time'da qaysi postlar uchun sahifa yaratishni aytadi",
+          "export async function getStaticPaths() {",
+          "  const res = await fetch('.../posts');",
+          "  const posts = await res.json();",
+          "  const paths = posts.map(post => ({ params: { id: post.id.toString() } }));",
+          "  return { paths, fallback: false }; // Faqat shu ID'lar uchun generatsiya qil",
+          "}",
+          "",
+          "// Har bir ID uchun ma'lumotni olish",
+          "export async function getStaticProps({ params }) {",
+          "  const res = await fetch(`.../posts/${params.id}`);",
+          "  const post = await res.json();",
+          "  return { props: { post } };",
+          "}",
+          "",
+          "function Post({ post }) { /* ... */ }"
+        ]
+      }
+    ],
+    "interviewAnswer": "`getStaticPaths` dinamik `route`'lar (`[id].js`) bilan SSG ishlatilganda kerak bo'ladi. U `build time`'da qaysi `path`'lar (masalan, qaysi `id`'lar) uchun `HTML` generatsiya qilinishi kerakligini ro'yxat (`paths`) qilib qaytaradi. Keyin har bir `path` uchun `getStaticProps` chaqiriladi. `fallback` xususiyati esa `build time`'da bo'lmagan `path`'larni qanday boshqarishni belgilaydi."
   },
   {
     "id": "nextjs-q9",
     "question": "Next.js'da `Incremental Static Regeneration` (ISR) nima?",
     "topic": "Next.js Rendering",
-    "answer": {
-      "definition": "ISR — bu `Static Site Generation` (SSG)'ning afzalliklarini (tezlik, `CDN caching`) saqlab qolgan holda, sahifalarni **`build time`'dan keyin ham orqa fonda avtomatik ravishda qayta generatsiya qilish** imkonini beruvchi Next.js xususiyatidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Oddiy SSG'da sahifa faqat `build` paytida yaratiladi va keyingi `build`'gacha o'zgarmaydi. ISR'ni yoqish uchun `getStaticProps` funksiyasidan `props` bilan birga `revalidate` nomli xususiyatni (soniyalar ichida) qaytarish kerak (`return { props: {...}, revalidate: 60 };`). Bu Next.js'ga aytadi: \"Bu sahifani `cache`'da saqla, lekin har 60 soniyadan keyin kelgan birinchi so'rovda orqa fonda sahifani yangi ma'lumotlar bilan qayta generatsiya qilishga harakat qil. Agar muvaffaqiyatli bo'lsa, keyingi so'rovlardan boshlab yangi versiyani ko'rsat.\" Bu ma'lumotlari vaqti-vaqti bilan o'zgarib turadigan (lekin har `request`'da emas) sahifalar uchun SSG'ning `performance`'ini SSR'ning yangilanish qobiliyati bilan birlashtirish imkonini beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`getStaticProps`'da `revalidate`:",
-          "code": [
-            "export async function getStaticProps() {",
-            "  const res = await fetch('...');",
-            "  const data = await res.json();",
-            "  return {",
-            "    props: { data },",
-            "    // Har 60 soniyada bir marta qayta generatsiya qilishga harakat qil",
-            "    revalidate: 60, ",
-            "  };",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "ISR (`Incremental Static Regeneration`) SSG sahifalarini `build time`'dan keyin ham avtomatik ravishda orqa fonda qayta generatsiya qilish imkonini beradi. `getStaticProps`'dan `revalidate: <seconds>` qaytarish orqali yoqiladi. U SSG'ning tezligini ma'lumotlarning yangilanishi bilan birlashtiradi."
-    }
+    "description": "ISR — bu `Static Site Generation` (SSG)'ning afzalliklarini (tezlik, `CDN caching`) saqlab qolgan holda, sahifalarni **`build time`'dan keyin ham orqa fonda avtomatik ravishda qayta generatsiya qilish** imkonini beruvchi Next.js xususiyatidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Oddiy SSG'da sahifa faqat `build` paytida yaratiladi va keyingi `build`'gacha o'zgarmaydi. ISR'ni yoqish uchun `getStaticProps` funksiyasidan `props` bilan birga `revalidate` nomli xususiyatni (soniyalar ichida) qaytarish kerak (`return { props: {...}, revalidate: 60 };`). Bu Next.js'ga aytadi: \"Bu sahifani `cache`'da saqla, lekin har 60 soniyadan keyin kelgan birinchi so'rovda orqa fonda sahifani yangi ma'lumotlar bilan qayta generatsiya qilishga harakat qil. Agar muvaffaqiyatli bo'lsa, keyingi so'rovlardan boshlab yangi versiyani ko'rsat.\" Bu ma'lumotlari vaqti-vaqti bilan o'zgarib turadigan (lekin har `request`'da emas) sahifalar uchun SSG'ning `performance`'ini SSR'ning yangilanish qobiliyati bilan birlashtirish imkonini beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`getStaticProps`'da `revalidate`:",
+        "code": [
+          "export async function getStaticProps() {",
+          "  const res = await fetch('...');",
+          "  const data = await res.json();",
+          "  return {",
+          "    props: { data },",
+          "    // Har 60 soniyada bir marta qayta generatsiya qilishga harakat qil",
+          "    revalidate: 60, ",
+          "  };",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "ISR (`Incremental Static Regeneration`) SSG sahifalarini `build time`'dan keyin ham avtomatik ravishda orqa fonda qayta generatsiya qilish imkonini beradi. `getStaticProps`'dan `revalidate: <seconds>` qaytarish orqali yoqiladi. U SSG'ning tezligini ma'lumotlarning yangilanishi bilan birlashtiradi."
   },
   {
     "id": "nextjs-q10",
     "question": "Next.js'da `_app.js` (yoki `_app.tsx`) fayli nima uchun ishlatiladi?",
     "topic": "Next.js App Structure",
-    "answer": {
-      "definition": "`pages/_app.js` fayli Next.js'da maxsus fayl bo'lib, u butun dasturingiz uchun **asosiy `shell` yoki `layout` komponenti** vazifasini bajaradi. U barcha sahifa komponentlarini ishga tushirishdan oldin chaqiriladi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Uning asosiy vazifalari:" },
-        {
-          "type": "list",
-          "items": [
-            "**Umumiy `Layout`:** Barcha sahifalar uchun umumiy bo'lgan `Navbar`, `Footer` kabi komponentlarni shu yerga joylashtirish.",
-            "**`State`'ni Sahifalar O'rtasida Saqlash:** Navigatsiya paytida yo'qolmasligi kerak bo'lgan `state`'ni shu komponentda saqlash.",
-            "**Global `CSS`'ni Import Qilish:** Global `CSS` fayllarini faqat shu yerda `import` qilish mumkin.",
-            "**`Context Provider`'larni Qo'shish:** Butun dastur uchun kerak bo'lgan `Context Provider`'larni shu yerda o'rash.",
-            "**Qo'shimcha Ma'lumotlarni Sahifalarga Uzatish:** `getInitialProps` (eski usul) yoki boshqa usullar bilan olingan ma'lumotlarni barcha sahifalarga uzatish."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "U `Component` (joriy sahifa komponenti) va `pageProps` (sahifaga tegishli `props`, masalan `getStaticProps`'dan kelgan) argumentlarini qabul qiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy `_app.js`:",
-          "code": [
-            "import '../styles/globals.css'; // Global CSS",
-            "import Layout from '../components/Layout'; // Umumiy Layout",
-            "",
-            "function MyApp({ Component, pageProps }) {",
-            "  return (",
-            "    <Layout>",
-            "      <Component {...pageProps} />",
-            "    </Layout>",
-            "  );",
-            "}",
-            "",
-            "export default MyApp;"
-          ]
-        }
-      ],
-      "interviewAnswer": "`_app.js` Next.js'da barcha sahifalar uchun asosiy `shell`/`layout` komponentidir. U umumiy `layout` (`Navbar`), global `CSS`, `context provider`'lar va sahifalar o'rtasida saqlanadigan `state`'ni joylashtirish uchun ishlatiladi. U `Component` (joriy sahifa) va `pageProps`'ni qabul qiladi."
-    }
+    "description": "`pages/_app.js` fayli Next.js'da maxsus fayl bo'lib, u butun dasturingiz uchun **asosiy `shell` yoki `layout` komponenti** vazifasini bajaradi. U barcha sahifa komponentlarini ishga tushirishdan oldin chaqiriladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uning asosiy vazifalari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Umumiy `Layout`:** Barcha sahifalar uchun umumiy bo'lgan `Navbar`, `Footer` kabi komponentlarni shu yerga joylashtirish.",
+          "**`State`'ni Sahifalar O'rtasida Saqlash:** Navigatsiya paytida yo'qolmasligi kerak bo'lgan `state`'ni shu komponentda saqlash.",
+          "**Global `CSS`'ni Import Qilish:** Global `CSS` fayllarini faqat shu yerda `import` qilish mumkin.",
+          "**`Context Provider`'larni Qo'shish:** Butun dastur uchun kerak bo'lgan `Context Provider`'larni shu yerda o'rash.",
+          "**Qo'shimcha Ma'lumotlarni Sahifalarga Uzatish:** `getInitialProps` (eski usul) yoki boshqa usullar bilan olingan ma'lumotlarni barcha sahifalarga uzatish."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "U `Component` (joriy sahifa komponenti) va `pageProps` (sahifaga tegishli `props`, masalan `getStaticProps`'dan kelgan) argumentlarini qabul qiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy `_app.js`:",
+        "code": [
+          "import '../styles/globals.css'; // Global CSS",
+          "import Layout from '../components/Layout'; // Umumiy Layout",
+          "",
+          "function MyApp({ Component, pageProps }) {",
+          "  return (",
+          "    <Layout>",
+          "      <Component {...pageProps} />",
+          "    </Layout>",
+          "  );",
+          "}",
+          "",
+          "export default MyApp;"
+        ]
+      }
+    ],
+    "interviewAnswer": "`_app.js` Next.js'da barcha sahifalar uchun asosiy `shell`/`layout` komponentidir. U umumiy `layout` (`Navbar`), global `CSS`, `context provider`'lar va sahifalar o'rtasida saqlanadigan `state`'ni joylashtirish uchun ishlatiladi. U `Component` (joriy sahifa) va `pageProps`'ni qabul qiladi."
   },
   {
     "id": "nextjs-q11",
     "question": "Next.js'da `_document.js` (yoki `_document.tsx`) fayli nima uchun ishlatiladi?",
     "topic": "Next.js App Structure",
-    "answer": {
-      "definition": "`pages/_document.js` fayli serverda `render` qilinadigan sahifaning atrofidagi asosiy **`HTML` strukturasini (`<html>`, `<head>`, `<body>`) moslashtirish** (`customize`) imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U `_app.js`'dan farqli o'laroq, **faqat serverda** `render` qilinadi va `React`'ning `lifecycle`'i yoki `event handler`'lari kabi `client-side` `JavaScript`'ni o'z ichiga olmasligi kerak. Uning asosiy vazifalari:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "`<html>` va `<body>` `tag`lariga atributlar (`lang`, `class`) qo'shish.",
-            "`<head>` ichiga maxsus `meta tag`'lar, `link tag`'lar (masalan, shriftlar uchun) qo'shish.",
-            "CSS-in-JS kutubxonalari uchun `server-side rendering` sozlamalarini integratsiya qilish."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Oddiy `React` logikasi (`state`, `useEffect`) bu yerda ishlatilmasligi kerak. U asosan statik `HTML` `markup`'ini sozlash uchun."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy `_document.js`:",
-          "code": [
-            "import { Html, Head, Main, NextScript } from 'next/document';",
-            "",
-            "function Document() {",
-            "  return (",
-            "    <Html lang=\"uz\"> {/* Til atributini qo'shish */} ",
-            "      <Head>",
-            "        {/* Google Fonts yoki boshqa linklarni shu yerga qo'shish */} ",
-            "        <link href=\"https://fonts.googleapis.com/...\" rel=\"stylesheet\" />",
-            "      </Head>",
-            "      <body>",
-            "        <Main /> {/* Sahifa kontenti shu yerga joylanadi */} ",
-            "        <NextScript /> {/* Next.js skriptlari */} ",
-            "      </body>",
-            "    </Html>",
-            "  );",
-            "}",
-            "",
-            "export default Document;"
-          ]
-        }
-      ],
-      "interviewAnswer": "`_document.js` faqat serverda ishlaydi va sahifaning asosiy `HTML` (`<html>`, `<head>`, `<body>`) strukturasini moslashtirish uchun ishlatiladi. Masalan, `lang` atributini qo'shish yoki `<head>`'ga maxsus `link`/`meta` `tag`'larini qo'shish uchun. U `client-side` `React` logikasini o'z ichiga olmasligi kerak."
-    }
+    "description": "`pages/_document.js` fayli serverda `render` qilinadigan sahifaning atrofidagi asosiy **`HTML` strukturasini (`<html>`, `<head>`, `<body>`) moslashtirish** (`customize`) imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U `_app.js`'dan farqli o'laroq, **faqat serverda** `render` qilinadi va `React`'ning `lifecycle`'i yoki `event handler`'lari kabi `client-side` `JavaScript`'ni o'z ichiga olmasligi kerak. Uning asosiy vazifalari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "`<html>` va `<body>` `tag`lariga atributlar (`lang`, `class`) qo'shish.",
+          "`<head>` ichiga maxsus `meta tag`'lar, `link tag`'lar (masalan, shriftlar uchun) qo'shish.",
+          "CSS-in-JS kutubxonalari uchun `server-side rendering` sozlamalarini integratsiya qilish."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Oddiy `React` logikasi (`state`, `useEffect`) bu yerda ishlatilmasligi kerak. U asosan statik `HTML` `markup`'ini sozlash uchun."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy `_document.js`:",
+        "code": [
+          "import { Html, Head, Main, NextScript } from 'next/document';",
+          "",
+          "function Document() {",
+          "  return (",
+          "    <Html lang=\"uz\"> {/* Til atributini qo'shish */} ",
+          "      <Head>",
+          "        {/* Google Fonts yoki boshqa linklarni shu yerga qo'shish */} ",
+          "        <link href=\"https://fonts.googleapis.com/...\" rel=\"stylesheet\" />",
+          "      </Head>",
+          "      <body>",
+          "        <Main /> {/* Sahifa kontenti shu yerga joylanadi */} ",
+          "        <NextScript /> {/* Next.js skriptlari */} ",
+          "      </body>",
+          "    </Html>",
+          "  );",
+          "}",
+          "",
+          "export default Document;"
+        ]
+      }
+    ],
+    "interviewAnswer": "`_document.js` faqat serverda ishlaydi va sahifaning asosiy `HTML` (`<html>`, `<head>`, `<body>`) strukturasini moslashtirish uchun ishlatiladi. Masalan, `lang` atributini qo'shish yoki `<head>`'ga maxsus `link`/`meta` `tag`'larini qo'shish uchun. U `client-side` `React` logikasini o'z ichiga olmasligi kerak."
   },
   {
     "id": "nextjs-q12",
     "question": "Next.js'da `Middleware` nima va u qachon ishlatiladi?",
     "topic": "Next.js Middleware",
-    "answer": {
-      "definition": "Next.js `Middleware` — bu so'rov (`request`) sahifaga (yoki `API route`'ga) yetib borishidan **oldin** ishga tushadigan kod bo'lib, u so'rovni o'zgartirish, qayta yo'naltirish (`redirect`), `header` qo'shish yoki javobni qaytarish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`Middleware` loyiha ildizida (`root`) `middleware.js` (yoki `.ts`) faylida aniqlanadi. U `Edge Function`'larda ishlaydi, bu esa uni juda tezkor qiladi. Umumiy qo'llanilish holatlari:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Autentifikatsiya/Avtorizatsiya:** Foydalanuvchi tizimga kirganligini tekshirish va kirilmagan bo'lsa `login` sahifasiga yo'naltirish.",
-            "**A/B Testing:** Foydalanuvchilarni turli sahifa versiyalariga yo'naltirish.",
-            "**Geolokatsiya:** Foydalanuvchi joylashuviga qarab kontentni moslashtirish yoki yo'naltirish.",
-            "**Botlarni Aniqlash:** Shubhali trafikni bloklash.",
-            "**`Header`'larni O'zgartirish:** So'rov yoki javob `header`'larini qo'shish/o'zgartirish."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy `middleware.js` (Autentifikatsiya tekshiruvi):",
-          "code": [
-            "import { NextResponse } from 'next/server';",
-            "",
-            "export function middleware(request) {",
-            "  const isAuthenticated = checkAuthCookie(request); // Faraziy funksiya",
-            "  const url = request.nextUrl.clone();",
-            "",
-            "  if (!isAuthenticated && url.pathname.startsWith('/dashboard')) {",
-            "    // Agar tizimga kirmagan bo'lsa va dashboard'ga kirmoqchi bo'lsa...",
-            "    url.pathname = '/login';",
-            "    return NextResponse.redirect(url); // Login'ga yo'naltiramiz",
-            "  }",
-            "",
-            "  return NextResponse.next(); // Qolgan hollarda so'rovni davom ettiramiz",
-            "}",
-            "",
-            "// Middleware qaysi yo'llarda ishlashini belgilash (optional)",
-            "export const config = {",
-            "  matcher: '/dashboard/:path*',",
-            "};"
-          ]
-        }
-      ],
-      "interviewAnswer": "Next.js `Middleware` so'rov sahifaga yetib borishidan oldin ishlaydigan kod (`Edge Function`). U `authentication` tekshiruvi, `redirect`'lar, `A/B testing`, `header`'larni o'zgartirish kabi vazifalar uchun ishlatiladi. `middleware.js` faylida aniqlanadi."
-    }
+    "description": "Next.js `Middleware` — bu so'rov (`request`) sahifaga (yoki `API route`'ga) yetib borishidan **oldin** ishga tushadigan kod bo'lib, u so'rovni o'zgartirish, qayta yo'naltirish (`redirect`), `header` qo'shish yoki javobni qaytarish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`Middleware` loyiha ildizida (`root`) `middleware.js` (yoki `.ts`) faylida aniqlanadi. U `Edge Function`'larda ishlaydi, bu esa uni juda tezkor qiladi. Umumiy qo'llanilish holatlari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Autentifikatsiya/Avtorizatsiya:** Foydalanuvchi tizimga kirganligini tekshirish va kirilmagan bo'lsa `login` sahifasiga yo'naltirish.",
+          "**A/B Testing:** Foydalanuvchilarni turli sahifa versiyalariga yo'naltirish.",
+          "**Geolokatsiya:** Foydalanuvchi joylashuviga qarab kontentni moslashtirish yoki yo'naltirish.",
+          "**Botlarni Aniqlash:** Shubhali trafikni bloklash.",
+          "**`Header`'larni O'zgartirish:** So'rov yoki javob `header`'larini qo'shish/o'zgartirish."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy `middleware.js` (Autentifikatsiya tekshiruvi):",
+        "code": [
+          "import { NextResponse } from 'next/server';",
+          "",
+          "export function middleware(request) {",
+          "  const isAuthenticated = checkAuthCookie(request); // Faraziy funksiya",
+          "  const url = request.nextUrl.clone();",
+          "",
+          "  if (!isAuthenticated && url.pathname.startsWith('/dashboard')) {",
+          "    // Agar tizimga kirmagan bo'lsa va dashboard'ga kirmoqchi bo'lsa...",
+          "    url.pathname = '/login';",
+          "    return NextResponse.redirect(url); // Login'ga yo'naltiramiz",
+          "  }",
+          "",
+          "  return NextResponse.next(); // Qolgan hollarda so'rovni davom ettiramiz",
+          "}",
+          "",
+          "// Middleware qaysi yo'llarda ishlashini belgilash (optional)",
+          "export const config = {",
+          "  matcher: '/dashboard/:path*',",
+          "};"
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js `Middleware` so'rov sahifaga yetib borishidan oldin ishlaydigan kod (`Edge Function`). U `authentication` tekshiruvi, `redirect`'lar, `A/B testing`, `header`'larni o'zgartirish kabi vazifalar uchun ishlatiladi. `middleware.js` faylida aniqlanadi."
   },
   {
     "id": "nextjs-q13",
     "question": "Next.js'da `Shallow Routing` nima?",
     "topic": "Next.js Routing",
-    "answer": {
-      "definition": "`Shallow Routing` — bu `URL` manzilini sahifani qayta yuklamasdan **va `data fetching` funksiyalarini (`getServerSideProps`, `getStaticProps`, `getStaticPaths`) qayta ishga tushirmasdan** o'zgartirish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu odatda `URL`'dagi `query` parametrlarini (`?sort=asc`) o'zgartirish uchun ishlatiladi, bunda sahifaning asosiy ma'lumotlari o'zgarmaydi, faqat `UI`'ning ba'zi qismlari (masalan, filtrlash yoki saralash holati) yangilanishi kerak. `Shallow routing` `router.push()` yoki `router.replace()` metodlarining `options` obyektida `shallow: true` qiymatini berish orqali yoqiladi. `URL` o'zgaradi, `React state`'i saqlanib qoladi va sahifa to'liq qayta `render` bo'lmaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "import { useRouter } from 'next/router';",
-            "",
-            "function MyComponent() {",
-            "  const router = useRouter();",
-            "",
-            "  const updateSort = (newSort) => {",
-            "    router.push(`/?sort=${newSort}`, undefined, { shallow: true });",
-            "    // Bu getServerSideProps/getStaticProps'ni qayta chaqirmaydi",
-            "  };",
-            "",
-            "  return <button onClick={() => updateSort('desc')}>Saralash</button>;",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Shallow Routing` `URL`'ni sahifani qayta yuklamasdan va `getServerSideProps`/`getStaticProps`'ni qayta ishga tushirmasdan o'zgartirish imkonini beradi (`router.push(url, undefined, { shallow: true })`). U asosan `URL query` parametrlarini (`?key=value`) `state`'ni yo'qotmasdan yangilash uchun ishlatiladi."
-    }
+    "description": "`Shallow Routing` — bu `URL` manzilini sahifani qayta yuklamasdan **va `data fetching` funksiyalarini (`getServerSideProps`, `getStaticProps`, `getStaticPaths`) qayta ishga tushirmasdan** o'zgartirish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu odatda `URL`'dagi `query` parametrlarini (`?sort=asc`) o'zgartirish uchun ishlatiladi, bunda sahifaning asosiy ma'lumotlari o'zgarmaydi, faqat `UI`'ning ba'zi qismlari (masalan, filtrlash yoki saralash holati) yangilanishi kerak. `Shallow routing` `router.push()` yoki `router.replace()` metodlarining `options` obyektida `shallow: true` qiymatini berish orqali yoqiladi. `URL` o'zgaradi, `React state`'i saqlanib qoladi va sahifa to'liq qayta `render` bo'lmaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "import { useRouter } from 'next/router';",
+          "",
+          "function MyComponent() {",
+          "  const router = useRouter();",
+          "",
+          "  const updateSort = (newSort) => {",
+          "    router.push(`/?sort=${newSort}`, undefined, { shallow: true });",
+          "    // Bu getServerSideProps/getStaticProps'ni qayta chaqirmaydi",
+          "  };",
+          "",
+          "  return <button onClick={() => updateSort('desc')}>Saralash</button>;",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Shallow Routing` `URL`'ni sahifani qayta yuklamasdan va `getServerSideProps`/`getStaticProps`'ni qayta ishga tushirmasdan o'zgartirish imkonini beradi (`router.push(url, undefined, { shallow: true })`). U asosan `URL query` parametrlarini (`?key=value`) `state`'ni yo'qotmasdan yangilash uchun ishlatiladi."
   },
   {
     "id": "nextjs-q14",
     "question": "Next.js'da Dinamik `import` (`next/dynamic`) nima uchun ishlatiladi?",
     "topic": "Next.js Optimization",
-    "answer": {
-      "definition": "`next/dynamic` — bu `React` komponentlarini yoki `JavaScript` modullarini **dinamik ravishda (`on-demand`) va faqat `client-side`'da** yuklash imkonini beradigan funksiyadir. Bu `React.lazy`'ga o'xshash, lekin `Next.js`'ga xos qo'shimcha imkoniyatlarga ega.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Uning asosiy maqsadi — **`code splitting`**'ni amalga oshirish va boshlang'ich `JavaScript bundle` hajmini kamaytirish. Qachon ishlatiladi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Katta Kutubxonalarni Kechiktirish:** Faqat ma'lum bir `user interaction`'dan keyin kerak bo'ladigan katta kutubxonalarni (`charting library`, `code editor`) yuklash.",
-            "**Faqat `Client-Side`'da Ishlaydigan Komponentlar:** `window` yoki boshqa brauzer `API`'lariga bog'liq bo'lgan va `server-side rendering` (SSR) paytida ishlamaydigan komponentlarni yuklash (`{ ssr: false }` opsiyasi bilan).",
-            "**Shartli Yuklash:** Ma'lum bir shart bajarilgandagina komponentni yuklash."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Dinamik Komponent:",
-          "code": [
-            "import dynamic from 'next/dynamic';",
-            "",
-            "// HeavyComponent faqat kerak bo'lganda yuklanadi",
-            "const HeavyComponent = dynamic(() => import('../components/HeavyComponent'), {",
-            "  loading: () => <p>Yuklanmoqda...</p>, // Yuklanish paytida ko'rsatiladigan UI",
-            "});",
-            "",
-            "function MyPage() {",
-            "  return (",
-            "    <div>",
-            "      <h1>Sahifa</h1>",
-            "      <HeavyComponent />",
-            "    </div>",
-            "  );",
-            "}"
-          ]
-        },
-        {
-          "title": "SSR'siz Yuklash:",
-          "code": [
-            "const NoSSRComponent = dynamic(() => import('../components/NoSSR'), { ssr: false });"
-          ]
-        }
-      ],
-      "interviewAnswer": "`next/dynamic` komponentlarni dinamik (`on-demand`) va/yoki faqat `client-side`'da (`{ ssr: false }`) yuklash imkonini beradi. U `code splitting` qilib, boshlang'ich `bundle` hajmini kamaytiradi. Katta kutubxonalar yoki faqat brauzerda ishlaydigan komponentlar uchun ishlatiladi."
-    }
+    "description": "`next/dynamic` — bu `React` komponentlarini yoki `JavaScript` modullarini **dinamik ravishda (`on-demand`) va faqat `client-side`'da** yuklash imkonini beradigan funksiyadir. Bu `React.lazy`'ga o'xshash, lekin `Next.js`'ga xos qo'shimcha imkoniyatlarga ega.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uning asosiy maqsadi — **`code splitting`**'ni amalga oshirish va boshlang'ich `JavaScript bundle` hajmini kamaytirish. Qachon ishlatiladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Katta Kutubxonalarni Kechiktirish:** Faqat ma'lum bir `user interaction`'dan keyin kerak bo'ladigan katta kutubxonalarni (`charting library`, `code editor`) yuklash.",
+          "**Faqat `Client-Side`'da Ishlaydigan Komponentlar:** `window` yoki boshqa brauzer `API`'lariga bog'liq bo'lgan va `server-side rendering` (SSR) paytida ishlamaydigan komponentlarni yuklash (`{ ssr: false }` opsiyasi bilan).",
+          "**Shartli Yuklash:** Ma'lum bir shart bajarilgandagina komponentni yuklash."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Dinamik Komponent:",
+        "code": [
+          "import dynamic from 'next/dynamic';",
+          "",
+          "// HeavyComponent faqat kerak bo'lganda yuklanadi",
+          "const HeavyComponent = dynamic(() => import('../components/HeavyComponent'), {",
+          "  loading: () => <p>Yuklanmoqda...</p>, // Yuklanish paytida ko'rsatiladigan UI",
+          "});",
+          "",
+          "function MyPage() {",
+          "  return (",
+          "    <div>",
+          "      <h1>Sahifa</h1>",
+          "      <HeavyComponent />",
+          "    </div>",
+          "  );",
+          "}"
+        ]
+      },
+      {
+        "title": "SSR'siz Yuklash:",
+        "code": [
+          "const NoSSRComponent = dynamic(() => import('../components/NoSSR'), { ssr: false });"
+        ]
+      }
+    ],
+    "interviewAnswer": "`next/dynamic` komponentlarni dinamik (`on-demand`) va/yoki faqat `client-side`'da (`{ ssr: false }`) yuklash imkonini beradi. U `code splitting` qilib, boshlang'ich `bundle` hajmini kamaytiradi. Katta kutubxonalar yoki faqat brauzerda ishlaydigan komponentlar uchun ishlatiladi."
   },
   {
     "id": "nextjs-q15",
     "question": "Next.js'da `<Script>` komponenti (`next/script`) nima uchun ishlatiladi?",
     "topic": "Next.js Optimization",
-    "answer": {
-      "definition": "`next/script` komponenti uchinchi tomon (`third-party`) `JavaScript` skriptlarini `Next.js` dasturiga qo'shish va ularning yuklanish strategiyasini optimallashtirish uchun mo'ljallangan.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Oddiy `<script>` `tag`i o'rniga `<Script>` komponentini ishlatish bir nechta afzalliklarni beradi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Yuklanish Strategiyasi (`strategy` prop):** Skript qachon yuklanishi va ishga tushishini aniq belgilash imkonini beradi:",
-            "  * `beforeInteractive`: Sahifa interaktiv bo'lishidan oldin yuklanadi (muhim, bloklovchi skriptlar uchun).",
-            "  * `afterInteractive` (Standart): Sahifa interaktiv bo'lganidan keyin yuklanadi (ko'pchilik skriptlar uchun, masalan, `analytics`).",
-            "  * `lazyOnload`: Brauzer bo'sh (`idle`) bo'lgandan keyin yuklanadi (past prioritetli skriptlar uchun).",
-            "  * `worker` (Experimental): Skriptni `web worker`'da ishga tushiradi.",
-            "**`onLoad` Callback:** Skript yuklanib bo'lganidan keyin biror amal bajarish uchun `callback` funksiya berish.",
-            "**Dublikatlarni Oldini Olish:** Bir xil skript bir nechta sahifada ishlatilsa ham, u faqat bir marta yuklanishini ta'minlashi mumkin."
-          ]
-        }
-      ],
-      "examples": [
-        {
-          "title": "Google Analytics Misoli:",
-          "code": [
-            "import Script from 'next/script';",
-            "",
-            "function MyApp({ Component, pageProps }) {",
-            "  return (",
-            "    <>",
-            "      {/* Global Layout */} ",
-            "      <Component {...pageProps} />",
-            "      <Script ",
-            "        src=\"https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID\"",
-            "        strategy=\"afterInteractive\" ",
-            "      />",
-            "      <Script id=\"google-analytics\" strategy=\"afterInteractive\">",
-            "        {`",
-            "          window.dataLayer = window.dataLayer || [];",
-            "          function gtag(){dataLayer.push(arguments);}",
-            "          gtag('js', new Date());",
-            "          gtag('config', 'GA_MEASUREMENT_ID');",
-            "        `}",
-            "      </Script>",
-            "    </>",
-            "  );",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`next/script` uchinchi tomon skriptlarini (`analytics`, `ads`) `Next.js`'ga qo'shishni optimallashtiradi. `strategy` `prop`'i (`beforeInteractive`, `afterInteractive`, `lazyOnload`) orqali skriptning qachon yuklanishini boshqarishga imkon beradi, bu esa sahifa `performance`'ini yaxshilaydi."
-    }
+    "description": "`next/script` komponenti uchinchi tomon (`third-party`) `JavaScript` skriptlarini `Next.js` dasturiga qo'shish va ularning yuklanish strategiyasini optimallashtirish uchun mo'ljallangan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Oddiy `<script>` `tag`i o'rniga `<Script>` komponentini ishlatish bir nechta afzalliklarni beradi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Yuklanish Strategiyasi (`strategy` prop):** Skript qachon yuklanishi va ishga tushishini aniq belgilash imkonini beradi:",
+          "  * `beforeInteractive`: Sahifa interaktiv bo'lishidan oldin yuklanadi (muhim, bloklovchi skriptlar uchun).",
+          "  * `afterInteractive` (Standart): Sahifa interaktiv bo'lganidan keyin yuklanadi (ko'pchilik skriptlar uchun, masalan, `analytics`).",
+          "  * `lazyOnload`: Brauzer bo'sh (`idle`) bo'lgandan keyin yuklanadi (past prioritetli skriptlar uchun).",
+          "  * `worker` (Experimental): Skriptni `web worker`'da ishga tushiradi.",
+          "**`onLoad` Callback:** Skript yuklanib bo'lganidan keyin biror amal bajarish uchun `callback` funksiya berish.",
+          "**Dublikatlarni Oldini Olish:** Bir xil skript bir nechta sahifada ishlatilsa ham, u faqat bir marta yuklanishini ta'minlashi mumkin."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Google Analytics Misoli:",
+        "code": [
+          "import Script from 'next/script';",
+          "",
+          "function MyApp({ Component, pageProps }) {",
+          "  return (",
+          "    <>",
+          "      {/* Global Layout */} ",
+          "      <Component {...pageProps} />",
+          "      <Script ",
+          "        src=\"https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID\"",
+          "        strategy=\"afterInteractive\" ",
+          "      />",
+          "      <Script id=\"google-analytics\" strategy=\"afterInteractive\">",
+          "        {`",
+          "          window.dataLayer = window.dataLayer || [];",
+          "          function gtag(){dataLayer.push(arguments);}",
+          "          gtag('js', new Date());",
+          "          gtag('config', 'GA_MEASUREMENT_ID');",
+          "        `}",
+          "      </Script>",
+          "    </>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`next/script` uchinchi tomon skriptlarini (`analytics`, `ads`) `Next.js`'ga qo'shishni optimallashtiradi. `strategy` `prop`'i (`beforeInteractive`, `afterInteractive`, `lazyOnload`) orqali skriptning qachon yuklanishini boshqarishga imkon beradi, bu esa sahifa `performance`'ini yaxshilaydi."
   },
   {
     "id": "nextjs-q16",
     "question": "Next.js'da Environment Variables (`.env`) qanday ishlatiladi?",
     "topic": "Next.js Configuration",
-    "answer": {
-      "definition": "`Environment variables` (`muhit o'zgaruvchilari`) dastur konfiguratsiyasini (masalan, `API keys`, `database` manzillari) koddan ajratib saqlash imkonini beradi. Next.js `.env` fayllari orqali ularni boshqarish uchun o'rnatilgan qo'llab-quvvatlashga ega.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Next.js loyiha ildizidagi quyidagi fayllarni avtomatik tan oladi:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "`.env` (Barcha muhitlar uchun standart)",
-            "`.env.local` (Lokal sozlamalar, `Git`'ga qo'shilmaydi)",
-            "`.env.development` / `.env.production` (Faqat `development` yoki `production` uchun)",
-            "`.env.development.local` / `.env.production.local` (Lokal `development`/`production` sozlamalari)"
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Fayllar yuqoridagi tartibda yuklanadi (keyingisi oldingisini `override` qiladi). O'zgaruvchilarga `process.env.VARIABLE_NAME` orqali `server-side` (`getServerSideProps`, `getStaticProps`, `API Routes`) kodida kirish mumkin. **Brauzerda (client-side) ko'rinishi kerak bo'lgan o'zgaruvchilar `NEXT_PUBLIC_` prefiksi bilan boshlanishi SHART** (`NEXT_PUBLIC_API_URL`). Ularga ham `process.env.NEXT_PUBLIC_VARIABLE_NAME` orqali kiriladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`.env.local`:",
-          "code": [
-            "DATABASE_URL=postgres://...",
-            "NEXT_PUBLIC_ANALYTICS_ID=UA-12345-Y"
-          ]
-        },
-        {
-          "title": "Server-side kodda (`getServerSideProps`):",
-          "code": ["const dbUrl = process.env.DATABASE_URL;"]
-        },
-        {
-          "title": "Client-side kodda:",
-          "code": ["const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID;"]
-        }
-      ],
-      "interviewAnswer": "Next.js `.env` fayllari (`.env`, `.env.local`) orqali `environment variables`'ni qo'llab-quvvatlaydi. Serverda `process.env.VAR_NAME` orqali kiriladi. Brauzerda ko'rinishi kerak bo'lgan `variables` `NEXT_PUBLIC_` prefiksi bilan boshlanishi shart (`process.env.NEXT_PUBLIC_VAR_NAME`)."
-    }
+    "description": "`Environment variables` (`muhit o'zgaruvchilari`) dastur konfiguratsiyasini (masalan, `API keys`, `database` manzillari) koddan ajratib saqlash imkonini beradi. Next.js `.env` fayllari orqali ularni boshqarish uchun o'rnatilgan qo'llab-quvvatlashga ega.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Next.js loyiha ildizidagi quyidagi fayllarni avtomatik tan oladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "`.env` (Barcha muhitlar uchun standart)",
+          "`.env.local` (Lokal sozlamalar, `Git`'ga qo'shilmaydi)",
+          "`.env.development` / `.env.production` (Faqat `development` yoki `production` uchun)",
+          "`.env.development.local` / `.env.production.local` (Lokal `development`/`production` sozlamalari)"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Fayllar yuqoridagi tartibda yuklanadi (keyingisi oldingisini `override` qiladi). O'zgaruvchilarga `process.env.VARIABLE_NAME` orqali `server-side` (`getServerSideProps`, `getStaticProps`, `API Routes`) kodida kirish mumkin. **Brauzerda (client-side) ko'rinishi kerak bo'lgan o'zgaruvchilar `NEXT_PUBLIC_` prefiksi bilan boshlanishi SHART** (`NEXT_PUBLIC_API_URL`). Ularga ham `process.env.NEXT_PUBLIC_VARIABLE_NAME` orqali kiriladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`.env.local`:",
+        "code": [
+          "DATABASE_URL=postgres://...",
+          "NEXT_PUBLIC_ANALYTICS_ID=UA-12345-Y"
+        ]
+      },
+      {
+        "title": "Server-side kodda (`getServerSideProps`):",
+        "code": [
+          "const dbUrl = process.env.DATABASE_URL;"
+        ]
+      },
+      {
+        "title": "Client-side kodda:",
+        "code": [
+          "const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID;"
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js `.env` fayllari (`.env`, `.env.local`) orqali `environment variables`'ni qo'llab-quvvatlaydi. Serverda `process.env.VAR_NAME` orqali kiriladi. Brauzerda ko'rinishi kerak bo'lgan `variables` `NEXT_PUBLIC_` prefiksi bilan boshlanishi shart (`process.env.NEXT_PUBLIC_VAR_NAME`)."
   },
   {
     "id": "nextjs-q17",
     "question": "Next.js `App Router` (app directory) nima va u eski `Pages Router`'dan qanday farq qiladi?",
     "topic": "Next.js App Router",
-    "answer": {
-      "definition": "`App Router` (Next.js 13'da `stable` bo'lgan) — bu `routing`, `layout` va `data fetching` uchun yangi paradigma bo'lib, u `React Server Components`'ga asoslangan va `pages` direktoriyasiga (`Pages Router`) alternativa sifatida taqdim etilgan.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy farqlar va yangiliklar:" },
-        {
-          "type": "list",
-          "items": [
-            "**Fayl Konvensiyalari:** `pages` papkasida har bir fayl `route` edi. `app` papkasida esa maxsus nomlangan fayllar (`page.js`, `layout.js`, `loading.js`, `error.js`) `UI`'ni belgilaydi.",
-            "**`Layouts`:** Ichma-ich joylashgan `layout`'lar (`nested layouts`) yaratish osonlashdi. Har bir `route segment` o'zining `layout.js` fayliga ega bo'lishi mumkin va bu `layout`'lar `state`'ni yo'qotmasdan sahifalar o'rtasida saqlanadi.",
-            "**`Server Components` (Standart):** `app` direktoriyasi ichidagi komponentlar standart holatda `React Server Components` hisoblanadi. Ular serverda `render` qilinadi, `JavaScript bundle`'iga qo'shilmaydi va `backend` resurslariga to'g'ridan-to'g'ri kira oladi. `Client-side` interaktivligi uchun `'use client'` direktivasi ishlatiladi.",
-            "**`Data Fetching`:** `fetch` funksiyasi maxsus imkoniyatlarga ega (`caching`, `revalidating`). `getServerSideProps` va `getStaticProps` o'rniga `Server Components` ichida to'g'ridan-to'g'ri `async/await` ishlatiladi.",
-            "**`Streaming`:** `UI`'ni serverdan qismlarga bo'lib yuborish imkoniyati (`loading.js` va `Suspense` bilan).",
-            "**`API Routes`:** `app` direktoriyasi ichida `route.js` fayllari bilan aniqlanadi."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "`App Router` ko'proq imkoniyatlar taqdim etadi, lekin `Pages Router`'dan farqli paradigmalarga ega. Ikkala `router` bir loyihada birga ishlatilishi ham mumkin (bosqichma-bosqich migratsiya uchun)."
-        }
-      ],
-      "interviewAnswer": "`App Router` (Next.js 13+) `React Server Components`'ga asoslangan yangi `routing` va `layout` tizimi (`app` papkasi). `Pages Router`'dan farqli o'laroq, u fayl konvensiyalari (`page.js`, `layout.js`), oson `nested layouts`, standart `Server Components`, soddalashgan `data fetching` (`async/await`) va `streaming` kabi imkoniyatlarni taqdim etadi. `Client` komponentlar uchun `'use client'` direktivasi ishlatiladi."
-    }
+    "description": "`App Router` (Next.js 13'da `stable` bo'lgan) — bu `routing`, `layout` va `data fetching` uchun yangi paradigma bo'lib, u `React Server Components`'ga asoslangan va `pages` direktoriyasiga (`Pages Router`) alternativa sifatida taqdim etilgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy farqlar va yangiliklar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Fayl Konvensiyalari:** `pages` papkasida har bir fayl `route` edi. `app` papkasida esa maxsus nomlangan fayllar (`page.js`, `layout.js`, `loading.js`, `error.js`) `UI`'ni belgilaydi.",
+          "**`Layouts`:** Ichma-ich joylashgan `layout`'lar (`nested layouts`) yaratish osonlashdi. Har bir `route segment` o'zining `layout.js` fayliga ega bo'lishi mumkin va bu `layout`'lar `state`'ni yo'qotmasdan sahifalar o'rtasida saqlanadi.",
+          "**`Server Components` (Standart):** `app` direktoriyasi ichidagi komponentlar standart holatda `React Server Components` hisoblanadi. Ular serverda `render` qilinadi, `JavaScript bundle`'iga qo'shilmaydi va `backend` resurslariga to'g'ridan-to'g'ri kira oladi. `Client-side` interaktivligi uchun `'use client'` direktivasi ishlatiladi.",
+          "**`Data Fetching`:** `fetch` funksiyasi maxsus imkoniyatlarga ega (`caching`, `revalidating`). `getServerSideProps` va `getStaticProps` o'rniga `Server Components` ichida to'g'ridan-to'g'ri `async/await` ishlatiladi.",
+          "**`Streaming`:** `UI`'ni serverdan qismlarga bo'lib yuborish imkoniyati (`loading.js` va `Suspense` bilan).",
+          "**`API Routes`:** `app` direktoriyasi ichida `route.js` fayllari bilan aniqlanadi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "`App Router` ko'proq imkoniyatlar taqdim etadi, lekin `Pages Router`'dan farqli paradigmalarga ega. Ikkala `router` bir loyihada birga ishlatilishi ham mumkin (bosqichma-bosqich migratsiya uchun)."
+      }
+    ],
+    "interviewAnswer": "`App Router` (Next.js 13+) `React Server Components`'ga asoslangan yangi `routing` va `layout` tizimi (`app` papkasi). `Pages Router`'dan farqli o'laroq, u fayl konvensiyalari (`page.js`, `layout.js`), oson `nested layouts`, standart `Server Components`, soddalashgan `data fetching` (`async/await`) va `streaming` kabi imkoniyatlarni taqdim etadi. `Client` komponentlar uchun `'use client'` direktivasi ishlatiladi."
   },
   {
     "id": "nextjs-q18",
     "question": "Next.js'da `React Server Components` nima?",
     "topic": "Next.js App Router",
-    "answer": {
-      "definition": "`React Server Components` (RSC) — bu `React` komponentlarining yangi turi bo'lib, ular **faqat serverda** `render` qilinadi va ularning `JavaScript` kodi **brauzerga yuborilmaydi**.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Next.js `App Router`'da `app` direktoriyasi ichidagi komponentlar standart holatda `Server Components` hisoblanadi. Ularning afzalliklari:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Nol `Client-Side JavaScript`:** Standart holatda brauzerga `JavaScript` yubormaydi, bu boshlang'ich yuklanishni tezlashtiradi.",
-            "**`Backend`'ga To'g'ridan-to'g'ri Kirish:** Serverda ishlagani uchun `database`'larga, fayl tizimiga yoki `internal API`'larga to'g'ridan-to'g'ri, qo'shimcha `API` chaqiruvisiz murojaat qila oladi.",
-            "**Avtomatik `Code Splitting`:** Faqat `Client Components`'ga `import` qilingan kodgina `client bundle`'iga qo'shiladi.",
-            "**Katta Bog'liqliklarni Serverda Saqlash:** Katta kutubxonalar (`date formatting`, `markdown parser`) serverda qolib, `client bundle`'iga qo'shilmaydi."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "`Server Components`'da `useState`, `useEffect` kabi `Hook`'lar yoki `event listener`'lar ishlatib bo'lmaydi. Interaktivlik (`state`, `effects`, `events`) kerak bo'lganda, siz **`Client Component`** yaratishingiz kerak (faylning eng yuqorisiga `'use client';` direktivasini qo'shish orqali)."
-        }
-      ],
-      "interviewAnswer": "`React Server Components` faqat serverda `render` qilinadi va ularning kodi brauzerga yuborilmaydi (nol `JS`). Ular `backend` resurslariga to'g'ridan-to'g'ri kira oladi va avtomatik `code splitting`'ga yordam beradi. Interaktivlik uchun (`useState`, `useEffect`) `'use client';` direktivasi bilan `Client Component` yaratish kerak. Next.js `App Router`'da standart komponent turidir."
-    }
+    "description": "`React Server Components` (RSC) — bu `React` komponentlarining yangi turi bo'lib, ular **faqat serverda** `render` qilinadi va ularning `JavaScript` kodi **brauzerga yuborilmaydi**.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Next.js `App Router`'da `app` direktoriyasi ichidagi komponentlar standart holatda `Server Components` hisoblanadi. Ularning afzalliklari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Nol `Client-Side JavaScript`:** Standart holatda brauzerga `JavaScript` yubormaydi, bu boshlang'ich yuklanishni tezlashtiradi.",
+          "**`Backend`'ga To'g'ridan-to'g'ri Kirish:** Serverda ishlagani uchun `database`'larga, fayl tizimiga yoki `internal API`'larga to'g'ridan-to'g'ri, qo'shimcha `API` chaqiruvisiz murojaat qila oladi.",
+          "**Avtomatik `Code Splitting`:** Faqat `Client Components`'ga `import` qilingan kodgina `client bundle`'iga qo'shiladi.",
+          "**Katta Bog'liqliklarni Serverda Saqlash:** Katta kutubxonalar (`date formatting`, `markdown parser`) serverda qolib, `client bundle`'iga qo'shilmaydi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "`Server Components`'da `useState`, `useEffect` kabi `Hook`'lar yoki `event listener`'lar ishlatib bo'lmaydi. Interaktivlik (`state`, `effects`, `events`) kerak bo'lganda, siz **`Client Component`** yaratishingiz kerak (faylning eng yuqorisiga `'use client';` direktivasini qo'shish orqali)."
+      }
+    ],
+    "interviewAnswer": "`React Server Components` faqat serverda `render` qilinadi va ularning kodi brauzerga yuborilmaydi (nol `JS`). Ular `backend` resurslariga to'g'ridan-to'g'ri kira oladi va avtomatik `code splitting`'ga yordam beradi. Interaktivlik uchun (`useState`, `useEffect`) `'use client';` direktivasi bilan `Client Component` yaratish kerak. Next.js `App Router`'da standart komponent turidir."
   },
   {
     "id": "nextjs-q19",
     "question": "Next.js'da `Static Exports` nima (`output: 'export'`)?",
     "topic": "Next.js Deployment",
-    "answer": {
-      "definition": "`Static Exports` (`next export`'ning yangi nomi) — bu Next.js dasturingizni hech qanday `Node.js` serverini talab qilmaydigan, to'liq **statik `HTML`, `CSS` va `JavaScript` fayllari** to'plamiga aylantirish (`export`) imkonini beruvchi xususiyatdir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu `build time`'da (`next build`'dan keyin) amalga oshiriladi va `next.config.js`'da `output: 'export'` sozlamasini talab qiladi. Natijaviy fayllar (`out` papkasida) har qanday statik `hosting` provayderiga (masalan, `GitHub Pages`, `Netlify`, `Vercel`) joylashtirilishi mumkin. Bu usul **faqat statik sahifalar** (SSG, `client-side` `fetching` bilan CSR) uchun ishlaydi. U `Server-Side Rendering` (`getServerSideProps`), `API Routes` yoki `Image Optimization`'ning ba'zi ilg'or xususiyatlarini **qo'llab-quvvatlamaydi**."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`next.config.js`:",
-          "code": [
-            "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  output: 'export',\n};\n\nmodule.exports = nextConfig;"
-          ]
-        },
-        {
-          "title": "Buyruqlar:",
-          "code": ["npm run build", "# Natija 'out' papkasida bo'ladi"]
-        }
-      ],
-      "interviewAnswer": "`Static Exports` (`output: 'export'`) Next.js dasturini `Node.js` serverisiz ishlaydigan to'liq statik fayllar (`HTML`, `CSS`, `JS`) to'plamiga aylantiradi. Bu SSG va CSR sahifalari uchun ishlaydi, lekin SSR (`getServerSideProps`) va `API Routes`'ni qo'llab-quvvatlamaydi. Statik `hosting` uchun qulay."
-    }
+    "description": "`Static Exports` (`next export`'ning yangi nomi) — bu Next.js dasturingizni hech qanday `Node.js` serverini talab qilmaydigan, to'liq **statik `HTML`, `CSS` va `JavaScript` fayllari** to'plamiga aylantirish (`export`) imkonini beruvchi xususiyatdir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `build time`'da (`next build`'dan keyin) amalga oshiriladi va `next.config.js`'da `output: 'export'` sozlamasini talab qiladi. Natijaviy fayllar (`out` papkasida) har qanday statik `hosting` provayderiga (masalan, `GitHub Pages`, `Netlify`, `Vercel`) joylashtirilishi mumkin. Bu usul **faqat statik sahifalar** (SSG, `client-side` `fetching` bilan CSR) uchun ishlaydi. U `Server-Side Rendering` (`getServerSideProps`), `API Routes` yoki `Image Optimization`'ning ba'zi ilg'or xususiyatlarini **qo'llab-quvvatlamaydi**."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`next.config.js`:",
+        "code": [
+          "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  output: 'export',\n};\n\nmodule.exports = nextConfig;"
+        ]
+      },
+      {
+        "title": "Buyruqlar:",
+        "code": [
+          "npm run build",
+          "# Natija 'out' papkasida bo'ladi"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Static Exports` (`output: 'export'`) Next.js dasturini `Node.js` serverisiz ishlaydigan to'liq statik fayllar (`HTML`, `CSS`, `JS`) to'plamiga aylantiradi. Bu SSG va CSR sahifalari uchun ishlaydi, lekin SSR (`getServerSideProps`) va `API Routes`'ni qo'llab-quvvatlamaydi. Statik `hosting` uchun qulay."
   },
   {
     "id": "nextjs-q20",
     "question": "Next.js'da `Metadata API` (`generateMetadata`) qanday ishlaydi?",
     "topic": "Next.js App Router & SEO",
-    "answer": {
-      "definition": "`Metadata API` (asosan `App Router` uchun) sahifalaringiz uchun `<head>` `tag`i ichidagi `metadata`'ni (masalan, `<title>`, `<meta name=\"description\">`) dinamik ravishda generatsiya qilish uchun standartlashtirilgan usulni taqdim etadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`App Router`'da har bir `layout.js` yoki `page.js` fayli `metadata` obyektini yoki `generateMetadata` nomli `async` funksiyani `export` qilishi mumkin. Agar funksiya `export` qilinsa, u `route` parametrlari (`params`) va `searchParams`'ni qabul qiladi va `metadata` obyektini dinamik ravishda (masalan, `fetch` qilingan ma'lumotlar asosida) qaytarishi mumkin. Next.js bu `metadata`'ni to'plab, serverda yakuniy `<head>` elementini generatsiya qiladi. Bu `SEO` va ijtimoiy tarmoqlarda `sharing` uchun juda muhim."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Statik `metadata` (`layout.js` yoki `page.js`):",
-          "code": [
-            "export const metadata = {",
-            "  title: 'Mening Ajoyib Saytim',",
-            "  description: 'Saytim haqida qisqacha tavsif',",
-            "};"
-          ]
-        },
-        {
-          "title": "Dinamik `metadata` (`page.js`):",
-          "code": [
-            "// Bu funksiya serverda ishlaydi",
-            "export async function generateMetadata({ params }) {",
-            "  const product = await fetch(`.../products/${params.productId}`).then(res => res.json());",
-            "  return {",
-            "    title: product.name,",
-            "    description: product.description,",
-            "  };",
-            "}",
-            "",
-            "// Sahifa komponenti...",
-            "export default function ProductPage({ params }) { /* ... */ }"
-          ]
-        }
-      ],
-      "interviewAnswer": "Next.js `Metadata API` (`App Router`'da `metadata` obyekti yoki `generateMetadata` funksiyasi) sahifalar uchun `<head>` `tag`idagi `metadata`'ni (`title`, `description`) statik yoki dinamik ravishda generatsiya qilishning standart usulidir. Bu `SEO` uchun muhim."
-    }
+    "description": "`Metadata API` (asosan `App Router` uchun) sahifalaringiz uchun `<head>` `tag`i ichidagi `metadata`'ni (masalan, `<title>`, `<meta name=\"description\">`) dinamik ravishda generatsiya qilish uchun standartlashtirilgan usulni taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`App Router`'da har bir `layout.js` yoki `page.js` fayli `metadata` obyektini yoki `generateMetadata` nomli `async` funksiyani `export` qilishi mumkin. Agar funksiya `export` qilinsa, u `route` parametrlari (`params`) va `searchParams`'ni qabul qiladi va `metadata` obyektini dinamik ravishda (masalan, `fetch` qilingan ma'lumotlar asosida) qaytarishi mumkin. Next.js bu `metadata`'ni to'plab, serverda yakuniy `<head>` elementini generatsiya qiladi. Bu `SEO` va ijtimoiy tarmoqlarda `sharing` uchun juda muhim."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Statik `metadata` (`layout.js` yoki `page.js`):",
+        "code": [
+          "export const metadata = {",
+          "  title: 'Mening Ajoyib Saytim',",
+          "  description: 'Saytim haqida qisqacha tavsif',",
+          "};"
+        ]
+      },
+      {
+        "title": "Dinamik `metadata` (`page.js`):",
+        "code": [
+          "// Bu funksiya serverda ishlaydi",
+          "export async function generateMetadata({ params }) {",
+          "  const product = await fetch(`.../products/${params.productId}`).then(res => res.json());",
+          "  return {",
+          "    title: product.name,",
+          "    description: product.description,",
+          "  };",
+          "}",
+          "",
+          "// Sahifa komponenti...",
+          "export default function ProductPage({ params }) { /* ... */ }"
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js `Metadata API` (`App Router`'da `metadata` obyekti yoki `generateMetadata` funksiyasi) sahifalar uchun `<head>` `tag`idagi `metadata`'ni (`title`, `description`) statik yoki dinamik ravishda generatsiya qilishning standart usulidir. Bu `SEO` uchun muhim."
   },
   {
     "id": "nextjs-q21",
     "question": "Next.js'da `Route Handlers` (`app` routerida `route.js`) nima?",
     "topic": "Next.js App Router",
-    "answer": {
-      "definition": "`Route Handlers` (`App Router`'da `route.js` yoki `route.ts` fayllari) `pages/api` (`Pages Router`) yo'llarining o'rnini bosadi va `Web Request` va `Response` API'laridan foydalanib `backend API endpoint`'larini yaratish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Har bir `route.js` fayli `HTTP` metodlariga (`GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`) mos keladigan nomlangan funksiyalarni (`export async function GET(request) { ... }`) `export` qilishi mumkin. Bu funksiyalar `Request` obyektini qabul qiladi va `Response` obyektini qaytarishi kerak. Ular serverda (`Node.js runtime` yoki `Edge runtime`) ishlaydi va `database` bilan ishlash, autentifikatsiyani tekshirish kabi `backend` vazifalari uchun ishlatiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`app/api/items/route.js`:",
-          "code": [
-            "import { NextResponse } from 'next/server';",
-            "",
-            "export async function GET(request) {",
-            "  const items = [{ id: 1, name: 'Item 1' }];",
-            "  return NextResponse.json({ items });",
-            "}",
-            "",
-            "export async function POST(request) {",
-            "  const newItem = await request.json();",
-            "  console.log('Yangi element:', newItem);",
-            "  return NextResponse.json({ message: 'Element qo`shildi' }, { status: 201 });",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`Route Handlers` (`App Router`'da `route.js` fayllari) `Web API` standartlariga (`Request`, `Response`) asoslangan `backend API endpoint`'larini yaratish uchun ishlatiladi. Ular `HTTP` metodlariga (`GET`, `POST`) mos keladigan funksiyalarni `export` qiladi."
-    }
+    "description": "`Route Handlers` (`App Router`'da `route.js` yoki `route.ts` fayllari) `pages/api` (`Pages Router`) yo'llarining o'rnini bosadi va `Web Request` va `Response` API'laridan foydalanib `backend API endpoint`'larini yaratish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Har bir `route.js` fayli `HTTP` metodlariga (`GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`) mos keladigan nomlangan funksiyalarni (`export async function GET(request) { ... }`) `export` qilishi mumkin. Bu funksiyalar `Request` obyektini qabul qiladi va `Response` obyektini qaytarishi kerak. Ular serverda (`Node.js runtime` yoki `Edge runtime`) ishlaydi va `database` bilan ishlash, autentifikatsiyani tekshirish kabi `backend` vazifalari uchun ishlatiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`app/api/items/route.js`:",
+        "code": [
+          "import { NextResponse } from 'next/server';",
+          "",
+          "export async function GET(request) {",
+          "  const items = [{ id: 1, name: 'Item 1' }];",
+          "  return NextResponse.json({ items });",
+          "}",
+          "",
+          "export async function POST(request) {",
+          "  const newItem = await request.json();",
+          "  console.log('Yangi element:', newItem);",
+          "  return NextResponse.json({ message: 'Element qo`shildi' }, { status: 201 });",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Route Handlers` (`App Router`'da `route.js` fayllari) `Web API` standartlariga (`Request`, `Response`) asoslangan `backend API endpoint`'larini yaratish uchun ishlatiladi. Ular `HTTP` metodlariga (`GET`, `POST`) mos keladigan funksiyalarni `export` qiladi."
   },
   {
     "id": "nextjs-q22",
     "question": "Next.js'da `Client Component` (`'use client'`) va `Server Component` o'rtasida qanday tanlov qilish kerak?",
     "topic": "Next.js App Router",
-    "answer": {
-      "definition": "Next.js `App Router`'da komponentlarni `Server Component` (standart) yoki `Client Component` (`'use client'` direktivasi bilan) sifatida belgilash mumkin. Tanlov komponentning vazifasiga bog'liq.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Qachon `Server Component` ishlatish kerak:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Ma'lumotlarni `fetch` qilish kerak bo'lganda.",
-            "`Backend` resurslariga to'g'ridan-to'g'ri kirish kerak bo'lganda.",
-            "Maxfiy ma'lumotlarni (`API keys`) serverda saqlash kerak bo'lganda.",
-            "Katta bog'liqliklarni (`dependencies`) `client-side bundle`'dan chiqarib tashlash kerak bo'lganda."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Qachon `Client Component` (`'use client'`) ishlatish kerak:"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Interaktivlik va `event listener`'lar (`onClick`, `onChange`) kerak bo'lganda.",
-            "`useState` va `useEffect` kabi `Hook`'lar kerak bo'lganda.",
-            "Brauzer `API`'laridan (`localStorage`, `window`) foydalanish kerak bo'lganda.",
-            "`Context`, `state management` kutubxonalari kabi faqat `client-side`'da ishlaydigan `API`'lardan foydalanish kerak bo'lganda.",
-            "`Class component`'lardan foydalanish kerak bo'lganda."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Yaxshi amaliyot — iloji boricha `Server Component`'lardan foydalanish va interaktivlik kerak bo'lgan qismlarnigina kichik `Client Component`'larga ajratish."
-        }
-      ],
-      "interviewAnswer": "`Server Component` (standart) `data fetching`, `backend`'ga kirish uchun va `client bundle`'ni kichik saqlash uchun. `Client Component` (`'use client'`) interaktivlik (`onClick`), `state`/`effects` (`useState`/`useEffect`) va brauzer `API`'lari uchun. Iloji boricha `Server Component` ishlatib, kerakli joylarda `Client Component`'ga ajratish kerak."
-    }
+    "description": "Next.js `App Router`'da komponentlarni `Server Component` (standart) yoki `Client Component` (`'use client'` direktivasi bilan) sifatida belgilash mumkin. Tanlov komponentning vazifasiga bog'liq.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Qachon `Server Component` ishlatish kerak:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Ma'lumotlarni `fetch` qilish kerak bo'lganda.",
+          "`Backend` resurslariga to'g'ridan-to'g'ri kirish kerak bo'lganda.",
+          "Maxfiy ma'lumotlarni (`API keys`) serverda saqlash kerak bo'lganda.",
+          "Katta bog'liqliklarni (`dependencies`) `client-side bundle`'dan chiqarib tashlash kerak bo'lganda."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Qachon `Client Component` (`'use client'`) ishlatish kerak:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Interaktivlik va `event listener`'lar (`onClick`, `onChange`) kerak bo'lganda.",
+          "`useState` va `useEffect` kabi `Hook`'lar kerak bo'lganda.",
+          "Brauzer `API`'laridan (`localStorage`, `window`) foydalanish kerak bo'lganda.",
+          "`Context`, `state management` kutubxonalari kabi faqat `client-side`'da ishlaydigan `API`'lardan foydalanish kerak bo'lganda.",
+          "`Class component`'lardan foydalanish kerak bo'lganda."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Yaxshi amaliyot — iloji boricha `Server Component`'lardan foydalanish va interaktivlik kerak bo'lgan qismlarnigina kichik `Client Component`'larga ajratish."
+      }
+    ],
+    "interviewAnswer": "`Server Component` (standart) `data fetching`, `backend`'ga kirish uchun va `client bundle`'ni kichik saqlash uchun. `Client Component` (`'use client'`) interaktivlik (`onClick`), `state`/`effects` (`useState`/`useEffect`) va brauzer `API`'lari uchun. Iloji boricha `Server Component` ishlatib, kerakli joylarda `Client Component`'ga ajratish kerak."
   },
   {
     "id": "nextjs-q23",
     "question": "Next.js'da `loading.js` va `error.js` fayllari (`App Router`) nima qiladi?",
     "topic": "Next.js App Router",
-    "answer": {
-      "definition": "`loading.js` va `error.js` — bu `App Router`'da `React Suspense` va `Error Boundaries`'ni avtomatik ravishda amalga oshirish uchun ishlatiladigan maxsus fayl konvensiyalaridir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`loading.js` (yoki `.tsx`):** Ma'lum bir `route segment` (papkadagi `page.js` yoki `layout.js`) ma'lumot yuklayotganda (`Server Component`'lar ichidagi `async/await`) ko'rsatiladigan `fallback UI`'ni (masalan, `spinner`) aniqlaydi. Next.js bu faylni avtomatik ravishda `<Suspense>` chegarasi bilan o'raydi. Bu `UI Streaming` imkonini beradi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`error.js` (yoki `.tsx`):** Ma'lum bir `route segment` va uning `child`'larida yuz bergan xatoliklarni ushlab oladigan `Error Boundary` komponentini aniqlaydi. U xatolik yuz berganda ko'rsatiladigan `fallback UI`'ni va xatolikdan 'qutulish' (`recover`) funksiyasini taqdim etishi kerak. Bu xatoliklarni alohida `segment`larda izolyatsiya qilishga yordam beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`app/dashboard/loading.js`:",
-          "code": [
-            "export default function Loading() { return <p>Dashboard yuklanmoqda...</p>; }"
-          ]
-        },
-        {
-          "title": "`app/dashboard/error.js`:",
-          "code": [
-            "'use client'; // Error components must be Client Components",
-            "import { useEffect } from 'react';",
-            "export default function Error({ error, reset }) {",
-            "  useEffect(() => { console.error(error); }, [error]);",
-            "  return (",
-            "    <div>",
-            "      <h2>Nimadir xato ketdi!</h2>",
-            "      <button onClick={() => reset()}>Qaytadan urinish</button>",
-            "    </div>",
-            "  );",
-            "}"
-          ]
-        }
-      ],
-      "interviewAnswer": "`loading.js` `Suspense boundary` yaratib, `route segment` yuklanayotganda `fallback UI` ko'rsatadi (`UI Streaming`). `error.js` `Error Boundary` yaratib, `segment`'dagi xatoliklarni ushlaydi, `fallback UI` ko'rsatadi va xatodan qutulish (`reset`) imkonini beradi."
-    }
+    "description": "`loading.js` va `error.js` — bu `App Router`'da `React Suspense` va `Error Boundaries`'ni avtomatik ravishda amalga oshirish uchun ishlatiladigan maxsus fayl konvensiyalaridir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`loading.js` (yoki `.tsx`):** Ma'lum bir `route segment` (papkadagi `page.js` yoki `layout.js`) ma'lumot yuklayotganda (`Server Component`'lar ichidagi `async/await`) ko'rsatiladigan `fallback UI`'ni (masalan, `spinner`) aniqlaydi. Next.js bu faylni avtomatik ravishda `<Suspense>` chegarasi bilan o'raydi. Bu `UI Streaming` imkonini beradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`error.js` (yoki `.tsx`):** Ma'lum bir `route segment` va uning `child`'larida yuz bergan xatoliklarni ushlab oladigan `Error Boundary` komponentini aniqlaydi. U xatolik yuz berganda ko'rsatiladigan `fallback UI`'ni va xatolikdan 'qutulish' (`recover`) funksiyasini taqdim etishi kerak. Bu xatoliklarni alohida `segment`larda izolyatsiya qilishga yordam beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`app/dashboard/loading.js`:",
+        "code": [
+          "export default function Loading() { return <p>Dashboard yuklanmoqda...</p>; }"
+        ]
+      },
+      {
+        "title": "`app/dashboard/error.js`:",
+        "code": [
+          "'use client'; // Error components must be Client Components",
+          "import { useEffect } from 'react';",
+          "export default function Error({ error, reset }) {",
+          "  useEffect(() => { console.error(error); }, [error]);",
+          "  return (",
+          "    <div>",
+          "      <h2>Nimadir xato ketdi!</h2>",
+          "      <button onClick={() => reset()}>Qaytadan urinish</button>",
+          "    </div>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`loading.js` `Suspense boundary` yaratib, `route segment` yuklanayotganda `fallback UI` ko'rsatadi (`UI Streaming`). `error.js` `Error Boundary` yaratib, `segment`'dagi xatoliklarni ushlaydi, `fallback UI` ko'rsatadi va xatodan qutulish (`reset`) imkonini beradi."
   },
   {
     "id": "nextjs-q24",
     "question": "Next.js'da `Parallel Routes` va `Intercepting Routes` nima?",
     "topic": "Next.js App Router",
-    "answer": {
-      "definition": "`Parallel Routes` va `Intercepting Routes` — bu `App Router`'da murakkab `UI` `pattern`'larini va `routing` mantiqini amalga oshirish uchun mo'ljallangan ilg'or `routing` xususiyatlaridir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Parallel Routes`:** Bir xil `layout` ichida bir vaqtning o'zida bir nechta mustaqil sahifani (`sub-navigation` bilan) `render` qilish imkonini beradi. Bu `@folder` sintaksisi (`app/@analytics/page.js`, `app/@team/page.js`) yordamida amalga oshiriladi va har bir 'slot' (`@analytics`, `@team`) o'z navigatsiyasiga ega bo'lishi mumkin. `Dashboard`'lar uchun qulay."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Intercepting Routes` (Tutib oluvchi Marshrutlar):** Joriy `layout`'dan chiqmasdan turib, boshqa bir `route`'ning kontentini ko'rsatish imkonini beradi. Bu odatda `modal`'larda ishlatiladi: masalan, rasmlar galereyasida rasmni bosganda, `URL` rasm sahifasiga o'zgaradi (`/photo/123`), lekin rasm sahifaning to'liq yuklanishi o'rniga, joriy galereya sahifasi ustida `modal`'da ochiladi. Bu `(.)`, `(..)`, `(...)` kabi maxsus papka nomlari bilan amalga oshiriladi."
-        }
-      ],
-      "interviewAnswer": "`Parallel Routes` (`@folder`) bir `layout`'da bir nechta mustaqil sahifani bir vaqtda `render` qilish imkonini beradi (`dashboard` kabi). `Intercepting Routes` (`(.)`, `(..)` papkalari) boshqa `route`'ni joriy `layout`'dan chiqmasdan (masalan, `modal`'da) ko'rsatish imkonini beradi."
-    }
+    "description": "`Parallel Routes` va `Intercepting Routes` — bu `App Router`'da murakkab `UI` `pattern`'larini va `routing` mantiqini amalga oshirish uchun mo'ljallangan ilg'or `routing` xususiyatlaridir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Parallel Routes`:** Bir xil `layout` ichida bir vaqtning o'zida bir nechta mustaqil sahifani (`sub-navigation` bilan) `render` qilish imkonini beradi. Bu `@folder` sintaksisi (`app/@analytics/page.js`, `app/@team/page.js`) yordamida amalga oshiriladi va har bir 'slot' (`@analytics`, `@team`) o'z navigatsiyasiga ega bo'lishi mumkin. `Dashboard`'lar uchun qulay."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Intercepting Routes` (Tutib oluvchi Marshrutlar):** Joriy `layout`'dan chiqmasdan turib, boshqa bir `route`'ning kontentini ko'rsatish imkonini beradi. Bu odatda `modal`'larda ishlatiladi: masalan, rasmlar galereyasida rasmni bosganda, `URL` rasm sahifasiga o'zgaradi (`/photo/123`), lekin rasm sahifaning to'liq yuklanishi o'rniga, joriy galereya sahifasi ustida `modal`'da ochiladi. Bu `(.)`, `(..)`, `(...)` kabi maxsus papka nomlari bilan amalga oshiriladi."
+      }
+    ],
+    "interviewAnswer": "`Parallel Routes` (`@folder`) bir `layout`'da bir nechta mustaqil sahifani bir vaqtda `render` qilish imkonini beradi (`dashboard` kabi). `Intercepting Routes` (`(.)`, `(..)` papkalari) boshqa `route`'ni joriy `layout`'dan chiqmasdan (masalan, `modal`'da) ko'rsatish imkonini beradi."
   },
   {
     "id": "nextjs-q25",
     "question": "Next.js'da `SEO` uchun qanday o'rnatilgan vositalar mavjud?",
     "topic": "Next.js SEO",
-    "answer": {
-      "definition": "Next.js qidiruv tizimlari (`search engines`) tomonidan oson `index`'lanadigan va yuqori `ranking`'ga ega bo'ladigan dasturlar yaratish uchun bir nechta o'rnatilgan `SEO` (`Search Engine Optimization`) vositalari va amaliyotlarini taqdim etadi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy vositalar:" },
-        {
-          "type": "list",
-          "items": [
-            "**`Pre-rendering` (SSR & SSG):** Sahifalarni serverda `HTML` sifatida oldindan `render` qilish qidiruv `bot`'lariga kontentni `JavaScript`'ni ishga tushirmasdan ham o'qish imkonini beradi.",
-            "**`Metadata API` (`App Router`'da `metadata` / `generateMetadata`; `Pages Router`'da `next/head`):** Har bir sahifa uchun `<title>`, `<meta name=\"description\">` kabi muhim `metadata` `tag`'larini osonlik bilan boshqarish imkonini beradi.",
-            "**Fayl Tizimiga Asoslangan `Routing`:** Aniq va tushunarli `URL` strukturasini yaratishga yordam beradi.",
-            "**`Image Optimization` (`next/image`):** Rasmlarni optimallashtirish sahifa yuklanish tezligini oshiradi, bu esa `SEO` uchun muhim omil.",
-            "**`Script Optimization` (`next/script`):** Uchinchi tomon skriptlarining yuklanishini boshqarish ham sahifa tezligiga ijobiy ta'sir qiladi.",
-            "**`Sitemap` va `robots.txt` Generatsiyasi:** (`next-sitemap` kabi kutubxonalar yoki `API routes` yordamida) `sitemap.xml` va `robots.txt` fayllarini dinamik generatsiya qilish imkoniyati."
-          ]
-        }
-      ],
-      "interviewAnswer": "Next.js `SEO` uchun yaxshi, chunki u: 1) `Pre-rendering` (SSR/SSG) qilib, `bot`'lar kontentni oson o'qishini ta'minlaydi. 2) `Metadata API` (`title`, `description`) orqali `metadata`'ni oson boshqaradi. 3) `next/image` va `next/script` bilan `performance`'ni optimallashtiradi. 4) Aniq `URL` strukturasi yaratadi."
-    }
+    "description": "Next.js qidiruv tizimlari (`search engines`) tomonidan oson `index`'lanadigan va yuqori `ranking`'ga ega bo'ladigan dasturlar yaratish uchun bir nechta o'rnatilgan `SEO` (`Search Engine Optimization`) vositalari va amaliyotlarini taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy vositalar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Pre-rendering` (SSR & SSG):** Sahifalarni serverda `HTML` sifatida oldindan `render` qilish qidiruv `bot`'lariga kontentni `JavaScript`'ni ishga tushirmasdan ham o'qish imkonini beradi.",
+          "**`Metadata API` (`App Router`'da `metadata` / `generateMetadata`; `Pages Router`'da `next/head`):** Har bir sahifa uchun `<title>`, `<meta name=\"description\">` kabi muhim `metadata` `tag`'larini osonlik bilan boshqarish imkonini beradi.",
+          "**Fayl Tizimiga Asoslangan `Routing`:** Aniq va tushunarli `URL` strukturasini yaratishga yordam beradi.",
+          "**`Image Optimization` (`next/image`):** Rasmlarni optimallashtirish sahifa yuklanish tezligini oshiradi, bu esa `SEO` uchun muhim omil.",
+          "**`Script Optimization` (`next/script`):** Uchinchi tomon skriptlarining yuklanishini boshqarish ham sahifa tezligiga ijobiy ta'sir qiladi.",
+          "**`Sitemap` va `robots.txt` Generatsiyasi:** (`next-sitemap` kabi kutubxonalar yoki `API routes` yordamida) `sitemap.xml` va `robots.txt` fayllarini dinamik generatsiya qilish imkoniyati."
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js `SEO` uchun yaxshi, chunki u: 1) `Pre-rendering` (SSR/SSG) qilib, `bot`'lar kontentni oson o'qishini ta'minlaydi. 2) `Metadata API` (`title`, `description`) orqali `metadata`'ni oson boshqaradi. 3) `next/image` va `next/script` bilan `performance`'ni optimallashtiradi. 4) Aniq `URL` strukturasi yaratadi."
   },
   {
     "id": "nextjs-q26",
     "question": "`Next.js` loyihasini qanday `deploy` qilish mumkin?",
     "topic": "Next.js Deployment",
-    "answer": {
-      "definition": "Next.js dasturini `deploy` qilish uchun bir nechta asosiy strategiya mavjud bo'lib, tanlov dasturning `rendering` usullariga (SSR, SSG, ISR, `API Routes`) bog'liq.",
-      "explanation": [
-        {
-          "type": "list",
-          "items": [
-            "**Vercel (Tavsiya etilgan):** Next.js'ni yaratgan kompaniya. U Next.js'ning barcha xususiyatlarini (SSR, SSG, ISR, `API Routes`, `Middleware`, `Image Optimization`) 'qutidan tashqarida' optimal tarzda qo'llab-quvvatlaydi. `Git` `repository`'ga ulanish va avtomatik `deploy` qilish juda oson.",
-            "**Boshqa `Serverless` Platformalar (`Netlify`, `AWS Amplify`, `Cloudflare Pages`):** Ko'pchilik zamonaviy platformalar Next.js'ni qo'llab-quvvatlaydi, ba'zilari SSR/ISR uchun qo'shimcha sozlamalar talab qilishi mumkin. `Netlify` yaxshi integratsiyaga ega.",
-            "**`Node.js` Serverida (`Self-hosting`):** Agar sizda o'zingizning `Node.js` serveringiz bo'lsa (`VPS`, `Docker container`), `npm run build` buyrug'i bilan `production build` yaratib, keyin `npm run start` bilan Next.js serverini ishga tushirishingiz mumkin. Bu ko'proq nazorat beradi, lekin infratuzilmani o'zingiz boshqarishingiz kerak bo'ladi.",
-            "**Statik `Hosting` (`Static Exports`):** Agar dasturingiz faqat SSG va CSR'dan foydalansa va SSR yoki `API Routes`'ga ehtiyoj bo'lmasa, `output: 'export'` bilan statik fayllarga `export` qilib, ularni har qanday statik `host`'ga (`GitHub Pages`, `Netlify`, `S3`) joylashtirishingiz mumkin."
-          ]
-        }
-      ],
-      "interviewAnswer": "Next.js'ni `deploy` qilish usullari: 1) **Vercel** (eng oson va tavsiya etilgan, barcha xususiyatlarni qo'llab-quvvatlaydi). 2) Boshqa `Serverless` platformalar (`Netlify`). 3) O'zingizning `Node.js` serveringiz (`npm run build && npm run start`). 4) Statik `Hosting` (agar faqat SSG/CSR ishlatilsa, `output: 'export'` bilan)."
-    }
+    "description": "Next.js dasturini `deploy` qilish uchun bir nechta asosiy strategiya mavjud bo'lib, tanlov dasturning `rendering` usullariga (SSR, SSG, ISR, `API Routes`) bog'liq.",
+    "detailedExplanation": [
+      {
+        "type": "list",
+        "items": [
+          "**Vercel (Tavsiya etilgan):** Next.js'ni yaratgan kompaniya. U Next.js'ning barcha xususiyatlarini (SSR, SSG, ISR, `API Routes`, `Middleware`, `Image Optimization`) 'qutidan tashqarida' optimal tarzda qo'llab-quvvatlaydi. `Git` `repository`'ga ulanish va avtomatik `deploy` qilish juda oson.",
+          "**Boshqa `Serverless` Platformalar (`Netlify`, `AWS Amplify`, `Cloudflare Pages`):** Ko'pchilik zamonaviy platformalar Next.js'ni qo'llab-quvvatlaydi, ba'zilari SSR/ISR uchun qo'shimcha sozlamalar talab qilishi mumkin. `Netlify` yaxshi integratsiyaga ega.",
+          "**`Node.js` Serverida (`Self-hosting`):** Agar sizda o'zingizning `Node.js` serveringiz bo'lsa (`VPS`, `Docker container`), `npm run build` buyrug'i bilan `production build` yaratib, keyin `npm run start` bilan Next.js serverini ishga tushirishingiz mumkin. Bu ko'proq nazorat beradi, lekin infratuzilmani o'zingiz boshqarishingiz kerak bo'ladi.",
+          "**Statik `Hosting` (`Static Exports`):** Agar dasturingiz faqat SSG va CSR'dan foydalansa va SSR yoki `API Routes`'ga ehtiyoj bo'lmasa, `output: 'export'` bilan statik fayllarga `export` qilib, ularni har qanday statik `host`'ga (`GitHub Pages`, `Netlify`, `S3`) joylashtirishingiz mumkin."
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js'ni `deploy` qilish usullari: 1) **Vercel** (eng oson va tavsiya etilgan, barcha xususiyatlarni qo'llab-quvvatlaydi). 2) Boshqa `Serverless` platformalar (`Netlify`). 3) O'zingizning `Node.js` serveringiz (`npm run build && npm run start`). 4) Statik `Hosting` (agar faqat SSG/CSR ishlatilsa, `output: 'export'` bilan)."
   },
   {
     "id": "nextjs-q27",
     "question": "Next.js'da `Styling` qilishning qanday usullari mavjud?",
     "topic": "Next.js Styling",
-    "answer": {
-      "definition": "Next.js `React`'dagi standart `styling` usullaridan tashqari, ba'zi o'ziga xos yoki o'rnatilgan yechimlarni ham qo'llab-quvvatlaydi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy usullar:" },
-        {
-          "type": "list",
-          "items": [
-            "**Global `CSS`:** Fayllarni (`styles/globals.css`) faqat `pages/_app.js` (yoki `app/layout.js`) faylida `import` qilish mumkin.",
-            "**`CSS Modules` (`.module.css`):** Komponent darajasida `scope`'langan stillar uchun o'rnatilgan qo'llab-quvvatlash (`import styles from './MyComponent.module.css'; <div className={styles.myClass}>`). Bu tavsiya etilgan usullardan biri.",
-            "**`Sass`/`SCSS` (`.scss`, `.sass`):** O'rnatilgan qo'llab-quvvatlash mavjud (`npm install sass` qilish kerak). Global yoki `CSS Modules` bilan birga ishlatilishi mumkin (`MyComponent.module.scss`).",
-            "**`Tailwind CSS`:** Juda mashhur `utility-first` `framework`. Next.js bilan integratsiyasi juda oson va rasmiy qo'llab-quvvatlash mavjud.",
-            "**`CSS-in-JS` Kutubxonalari (`Styled Components`, `Emotion`):** Server-side rendering bilan to'g'ri ishlashi uchun ba'zan qo'shimcha sozlamalar (`_document.js`'da) talab qilishi mumkin, ammo ko'plab kutubxonalar Next.js uchun maxsus ko'rsatmalarga ega."
-          ]
-        }
-      ],
-      "interviewAnswer": "Next.js'da `styling` usullari: Global `CSS` (`_app.js`'da `import` qilinadi), `CSS Modules` (`.module.css`, `scope`'langan, tavsiya etiladi), `Sass`/`SCSS` (o'rnatilgan qo'llab-quvvatlash), `Tailwind CSS` (juda mashhur va oson integratsiya), `CSS-in-JS` (`Styled Components`, `Emotion`, SSR uchun qo'shimcha sozlash kerak bo'lishi mumkin)."
-    }
+    "description": "Next.js `React`'dagi standart `styling` usullaridan tashqari, ba'zi o'ziga xos yoki o'rnatilgan yechimlarni ham qo'llab-quvvatlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy usullar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Global `CSS`:** Fayllarni (`styles/globals.css`) faqat `pages/_app.js` (yoki `app/layout.js`) faylida `import` qilish mumkin.",
+          "**`CSS Modules` (`.module.css`):** Komponent darajasida `scope`'langan stillar uchun o'rnatilgan qo'llab-quvvatlash (`import styles from './MyComponent.module.css'; <div className={styles.myClass}>`). Bu tavsiya etilgan usullardan biri.",
+          "**`Sass`/`SCSS` (`.scss`, `.sass`):** O'rnatilgan qo'llab-quvvatlash mavjud (`npm install sass` qilish kerak). Global yoki `CSS Modules` bilan birga ishlatilishi mumkin (`MyComponent.module.scss`).",
+          "**`Tailwind CSS`:** Juda mashhur `utility-first` `framework`. Next.js bilan integratsiyasi juda oson va rasmiy qo'llab-quvvatlash mavjud.",
+          "**`CSS-in-JS` Kutubxonalari (`Styled Components`, `Emotion`):** Server-side rendering bilan to'g'ri ishlashi uchun ba'zan qo'shimcha sozlamalar (`_document.js`'da) talab qilishi mumkin, ammo ko'plab kutubxonalar Next.js uchun maxsus ko'rsatmalarga ega."
+        ]
+      }
+    ],
+    "interviewAnswer": "Next.js'da `styling` usullari: Global `CSS` (`_app.js`'da `import` qilinadi), `CSS Modules` (`.module.css`, `scope`'langan, tavsiya etiladi), `Sass`/`SCSS` (o'rnatilgan qo'llab-quvvatlash), `Tailwind CSS` (juda mashhur va oson integratsiya), `CSS-in-JS` (`Styled Components`, `Emotion`, SSR uchun qo'shimcha sozlash kerak bo'lishi mumkin)."
   },
   {
     "id": "nextjs-q28",
     "question": "Next.js'da `TypeScript`'ni qanday ishlatish mumkin?",
     "topic": "Next.js with TypeScript",
-    "answer": {
-      "definition": "Next.js `TypeScript`'ni 'qutidan tashqarida' (`out-of-the-box`) to'liq qo'llab-quvvatlaydi va sozlash jarayoni juda oson.",
-      "explanation": [
-        { "type": "paragraph", "content": "Integratsiya qilish:" },
-        {
-          "type": "list",
-          "items": [
-            "**Yangi Loyihada:** `create-next-app`'ni `--ts` yoki `--typescript` `flag`'i bilan ishga tushirish (`npx create-next-app@latest --ts`). Bu avtomatik ravishda kerakli `tsconfig.json` va tip `declaration`'larini (`@types/react`, `@types/node`) o'rnatadi.",
-            "**Mavjud Loyihada:** Loyiha ildizida bo'sh `tsconfig.json` faylini yarating. `npm run dev`'ni ishga tushiring. Next.js avtomatik ravishda `tsconfig.json`'ni kerakli sozlamalar bilan to'ldiradi va kerakli `dev dependencies`'ni (`typescript`, `@types/react`, `@types/node`) o'rnatish bo'yicha ko'rsatma beradi (`npm install --save-dev typescript @types/react @types/node`). Shundan so'ng `.js` fayllaringizni `.ts` yoki `.tsx` (agar `JSX` bo'lsa) qilib o'zgartirishingiz mumkin."
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": "Next.js `getServerSideProps`, `getStaticProps`, `API Routes` kabi o'ziga xos funksiyalar uchun ham tayyor tiplarni (`GetServerSideProps`, `NextApiRequest`, `NextApiResponse`) taqdim etadi."
-        }
-      ],
-      "interviewAnswer": "Next.js `TypeScript`'ni to'liq qo'llab-quvvatlaydi. Yangi loyihani `--ts` `flag`'i bilan boshlash yoki mavjud loyihaga bo'sh `tsconfig.json` qo'shib, `npm run dev`'ni ishga tushirish orqali osonlik bilan sozlash mumkin. Next.js o'zining `API`'lari uchun ham tayyor tiplarni beradi."
-    }
+    "description": "Next.js `TypeScript`'ni 'qutidan tashqarida' (`out-of-the-box`) to'liq qo'llab-quvvatlaydi va sozlash jarayoni juda oson.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Integratsiya qilish:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Yangi Loyihada:** `create-next-app`'ni `--ts` yoki `--typescript` `flag`'i bilan ishga tushirish (`npx create-next-app@latest --ts`). Bu avtomatik ravishda kerakli `tsconfig.json` va tip `declaration`'larini (`@types/react`, `@types/node`) o'rnatadi.",
+          "**Mavjud Loyihada:** Loyiha ildizida bo'sh `tsconfig.json` faylini yarating. `npm run dev`'ni ishga tushiring. Next.js avtomatik ravishda `tsconfig.json`'ni kerakli sozlamalar bilan to'ldiradi va kerakli `dev dependencies`'ni (`typescript`, `@types/react`, `@types/node`) o'rnatish bo'yicha ko'rsatma beradi (`npm install --save-dev typescript @types/react @types/node`). Shundan so'ng `.js` fayllaringizni `.ts` yoki `.tsx` (agar `JSX` bo'lsa) qilib o'zgartirishingiz mumkin."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Next.js `getServerSideProps`, `getStaticProps`, `API Routes` kabi o'ziga xos funksiyalar uchun ham tayyor tiplarni (`GetServerSideProps`, `NextApiRequest`, `NextApiResponse`) taqdim etadi."
+      }
+    ],
+    "interviewAnswer": "Next.js `TypeScript`'ni to'liq qo'llab-quvvatlaydi. Yangi loyihani `--ts` `flag`'i bilan boshlash yoki mavjud loyihaga bo'sh `tsconfig.json` qo'shib, `npm run dev`'ni ishga tushirish orqali osonlik bilan sozlash mumkin. Next.js o'zining `API`'lari uchun ham tayyor tiplarni beradi."
   },
   {
     "id": "nextjs-q29",
     "question": "Next.js loyihasida xatoliklarni (`errors`) qanday boshqarish (`handle`) mumkin?",
     "topic": "Next.js Error Handling",
-    "answer": {
-      "definition": "Next.js'da xatoliklarni boshqarish ular qayerda yuz berishiga (client-side, server-side, build time) va qaysi `router` ishlatilishiga qarab farq qiladi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy yondashuvlar:" },
-        {
-          "type": "list",
-          "items": [
-            "**`Client-Side` Xatolar (Komponentlar ichida):** `React Error Boundaries` (`class component` bilan) ishlatiladi. `App Router`'da esa `error.js` fayli bu vazifani avtomatik bajaradi.",
-            "**`Server-Side` Xatolar (`getServerSideProps`, `getStaticProps`, `API Routes` / `Route Handlers`):** Standart `JavaScript` `try...catch` bloklari ishlatilishi kerak. Agar bu funksiyalarda xato yuz bersa, Next.js standart 500 xatolik sahifasini ko'rsatadi. Maxsus xatolik sahifalarini (`pages/500.js` yoki `app/error.js`) yaratish mumkin.",
-            "**Ma'lumot Yuklash Xatolari (`fetch`):** `fetch` `Promise`'ining `.catch()` bloki yoki `async/await` bilan `try...catch` ishlatiladi. Topilgan xatolikni `state`'ga saqlab, `UI`'da ko'rsatish kerak.",
-            "**`404 Not Found` Xatolari:** Next.js mavjud bo'lmagan `route` uchun avtomatik 404 sahifasini ko'rsatadi. Buni `pages/404.js` (yoki `app/not-found.js`) faylini yaratib moslashtirish mumkin. `getStaticProps`/`getServerSideProps`'dan `notFound: true` qaytarish ham 404 sahifasini ko'rsatadi."
-          ]
-        }
-      ],
-      "interviewAnswer": "Xatoliklarni boshqarish: `Client-side`'da `React Error Boundaries` (yoki `App Router`'da `error.js`). `Server-side`'da (`data fetching`, `API routes`) `try...catch` ishlatiladi. `404` xatolari uchun maxsus `404.js` (yoki `not-found.js`) sahifasi yaratilishi mumkin."
-    }
+    "description": "Next.js'da xatoliklarni boshqarish ular qayerda yuz berishiga (client-side, server-side, build time) va qaysi `router` ishlatilishiga qarab farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy yondashuvlar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Client-Side` Xatolar (Komponentlar ichida):** `React Error Boundaries` (`class component` bilan) ishlatiladi. `App Router`'da esa `error.js` fayli bu vazifani avtomatik bajaradi.",
+          "**`Server-Side` Xatolar (`getServerSideProps`, `getStaticProps`, `API Routes` / `Route Handlers`):** Standart `JavaScript` `try...catch` bloklari ishlatilishi kerak. Agar bu funksiyalarda xato yuz bersa, Next.js standart 500 xatolik sahifasini ko'rsatadi. Maxsus xatolik sahifalarini (`pages/500.js` yoki `app/error.js`) yaratish mumkin.",
+          "**Ma'lumot Yuklash Xatolari (`fetch`):** `fetch` `Promise`'ining `.catch()` bloki yoki `async/await` bilan `try...catch` ishlatiladi. Topilgan xatolikni `state`'ga saqlab, `UI`'da ko'rsatish kerak.",
+          "**`404 Not Found` Xatolari:** Next.js mavjud bo'lmagan `route` uchun avtomatik 404 sahifasini ko'rsatadi. Buni `pages/404.js` (yoki `app/not-found.js`) faylini yaratib moslashtirish mumkin. `getStaticProps`/`getServerSideProps`'dan `notFound: true` qaytarish ham 404 sahifasini ko'rsatadi."
+        ]
+      }
+    ],
+    "interviewAnswer": "Xatoliklarni boshqarish: `Client-side`'da `React Error Boundaries` (yoki `App Router`'da `error.js`). `Server-side`'da (`data fetching`, `API routes`) `try...catch` ishlatiladi. `404` xatolari uchun maxsus `404.js` (yoki `not-found.js`) sahifasi yaratilishi mumkin."
   },
   {
     "id": "nextjs-q30",
     "question": "Nima uchun `frontend` `developer` `Next.js` kabi `framework`'ni o'rganishi kerak?",
     "topic": "Next.js Importance",
-    "answer": {
-      "definition": "`Next.js` kabi `framework`'larni o'rganish zamonaviy `frontend` `developer` uchun bir nechta muhim afzalliklarni beradi.",
-      "explanation": [
-        { "type": "paragraph", "content": "Asosiy sabablar:" },
-        {
-          "type": "list",
-          "items": [
-            "**`Production`-ga Tayyor Yechimlar:** `Routing`, `SSR`/`SSG`, `image optimization`, `code splitting` kabi ko'plab murakkab muammolarni hal qiladigan tayyor, optimallashtirilgan yechimlarni taqdim etadi. Bu `developer`'ga g'ildirakni qayta ixtiro qilmasdan, asosiy biznes mantiqiga e'tibor qaratish imkonini beradi.",
-            "**Yaxshilangan `Performance` va `SEO`:** `Pre-rendering` (SSR/SSG) va boshqa optimallashtirishlar foydalanuvchi tajribasini (`UX`) va qidiruv tizimlaridagi `ranking`'ni yaxshilaydi.",
-            "**Standartlashgan Arxitektura:** Loyiha strukturasini va `workflow`'ni standartlashtiradi, bu esa jamoada ishlashni va kodni qo'llab-quvvatlashni osonlashtiradi.",
-            "**Bozor Talabi (`Market Demand`):** `Next.js` hozirgi kunda `React` ekosistemasidagi eng mashhur `framework`'lardan biri va ko'plab kompaniyalar tomonidan ishlatiladi. Uni bilish ish topish imkoniyatlarini sezilarli darajada oshiradi.",
-            "**Eng So'nggi Texnologiyalar:** `React Server Components` kabi eng yangi `React` xususiyatlari ko'pincha birinchi bo'lib `Next.js`'da integratsiya qilinadi."
-          ]
-        }
-      ],
-      "interviewAnswer": "`Next.js` `React`'ga qo'shimcha ravishda `routing`, `SSR`/`SSG`, `optimization` kabi `production`-ga tayyor yechimlarni beradi. Bu `developer` vaqtini tejaydi, dastur `performance`'ini va `SEO`'sini yaxshilaydi, standart arxitektura beradi va bozor talabi yuqori."
-    }
+    "description": "`Next.js` kabi `framework`'larni o'rganish zamonaviy `frontend` `developer` uchun bir nechta muhim afzalliklarni beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy sabablar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Production`-ga Tayyor Yechimlar:** `Routing`, `SSR`/`SSG`, `image optimization`, `code splitting` kabi ko'plab murakkab muammolarni hal qiladigan tayyor, optimallashtirilgan yechimlarni taqdim etadi. Bu `developer`'ga g'ildirakni qayta ixtiro qilmasdan, asosiy biznes mantiqiga e'tibor qaratish imkonini beradi.",
+          "**Yaxshilangan `Performance` va `SEO`:** `Pre-rendering` (SSR/SSG) va boshqa optimallashtirishlar foydalanuvchi tajribasini (`UX`) va qidiruv tizimlaridagi `ranking`'ni yaxshilaydi.",
+          "**Standartlashgan Arxitektura:** Loyiha strukturasini va `workflow`'ni standartlashtiradi, bu esa jamoada ishlashni va kodni qo'llab-quvvatlashni osonlashtiradi.",
+          "**Bozor Talabi (`Market Demand`):** `Next.js` hozirgi kunda `React` ekosistemasidagi eng mashhur `framework`'lardan biri va ko'plab kompaniyalar tomonidan ishlatiladi. Uni bilish ish topish imkoniyatlarini sezilarli darajada oshiradi.",
+          "**Eng So'nggi Texnologiyalar:** `React Server Components` kabi eng yangi `React` xususiyatlari ko'pincha birinchi bo'lib `Next.js`'da integratsiya qilinadi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Next.js` `React`'ga qo'shimcha ravishda `routing`, `SSR`/`SSG`, `optimization` kabi `production`-ga tayyor yechimlarni beradi. Bu `developer` vaqtini tejaydi, dastur `performance`'ini va `SEO`'sini yaxshilaydi, standart arxitektura beradi va bozor talabi yuqori."
   }
 ]

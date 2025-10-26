@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import { formatText } from "../../utils/formatText";
+import { topics, dataMap } from "../../data/topicConfig";
 
 // Helper function for custom smooth scrolling
 function customSmoothScroll(element, to, duration) {
@@ -28,33 +29,18 @@ function customSmoothScroll(element, to, duration) {
   requestAnimationFrame(animateScroll);
 }
 
-const topics = [
-  { name: "HTML", path: "/topic/html" },
-  { name: "CSS", path: "/topic/css" },
-  { name: "JavaScript", path: "/topic/javascript" },
-  { name: "React", path: "/topic/react" },
-  { name: "Next.js", path: "/topic/nextjs" },
-  { name: "Tailwind CSS", path: "/topic/tailwind" },
-  { name: "TypeScript", path: "/topic/typescript" },
-];
-
-// To dynamically import JSON data
-const dataMap = {
-  html: () => import("../../data/htmlQuestions.json"),
-  css: () => import("../../data/cssQuestions.json"),
-  javascript: () => import("../../data/javascriptQuestions.json"),
-  react: () => import("../../data/reactQuestions.json"),
-  nextjs: () => import("../../data/nextjsQuestions.json"),
-  tailwind: () => import("../../data/tailwindQuestions.json"),
-  typescript: () => import("../../data/typescriptQuestions.json"),
-};
-
-function Sidebar() {
+function Sidebar({
+  searchResults = [],
+  topicNameMap = {},
+  isSearchActive = false,
+  onSearchPanelHoverChange,
+}) {
   const { topicName } = useParams();
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const sidebarContainerRef = useRef(null);
   const questionsListRef = useRef(null);
+  const filteredQuestions = isSearchActive ? [] : questions;
 
   useEffect(() => {
     if (topicName && dataMap[topicName]) {
@@ -75,15 +61,18 @@ function Sidebar() {
 
   useEffect(() => {
     if (
+      !isSearchActive &&
       questions.length > 0 &&
       questionsListRef.current &&
       sidebarContainerRef.current
     ) {
       const offsetTop = questionsListRef.current.offsetTop;
       const targetScroll = offsetTop * 0.65;
-      customSmoothScroll(sidebarContainerRef.current, targetScroll, 200); // 200ms duration
+      customSmoothScroll(sidebarContainerRef.current, targetScroll, 200);
     }
-  }, [questions]);
+  }, [questions, isSearchActive]);
+
+  const shouldShowTopicQuestions = Boolean(topicName) && !isSearchActive;
 
   return (
     <div className={styles.sidebarContainer} ref={sidebarContainerRef}>
@@ -110,7 +99,7 @@ function Sidebar() {
           ))}
         </ul>
 
-        {topicName && (
+        {shouldShowTopicQuestions && (
           <>
             <hr className={styles.divider} />
             <h3 className={styles.questionsHeader} ref={questionsListRef}>
@@ -120,7 +109,7 @@ function Sidebar() {
               <p>Yuklanmoqda...</p>
             ) : (
               <ul className={styles.questionList}>
-                {questions.map((q) => (
+                {filteredQuestions.map((q) => (
                   <li key={q.id}>
                     <NavLink
                       to={`/topic/${topicName}/${q.id}`}
@@ -136,6 +125,44 @@ function Sidebar() {
                 ))}
               </ul>
             )}
+          </>
+        )}
+
+        {isSearchActive && (
+          <>
+            <hr className={styles.divider} />
+            <h3 className={styles.questionsHeader}>Qidiruv natijalari</h3>
+            <ul
+              className={styles.questionList}
+              onMouseEnter={() => onSearchPanelHoverChange?.(true)}
+              onMouseLeave={() => onSearchPanelHoverChange?.(false)}
+            >
+              {searchResults.length === 0 ? (
+                <li className={styles.emptyState}>
+                  <span>Natija topilmadi.</span>
+                </li>
+              ) : (
+                searchResults.map((result) => (
+                  <li key={`${result.topicKey}-${result.id}`}>
+                    <NavLink
+                      to={`/topic/${result.topicKey}/${result.id}`}
+                      className={({ isActive }) =>
+                        isActive
+                          ? `${styles.questionLink} ${styles.activeQuestion}`
+                          : styles.questionLink
+                      }
+                    >
+                      {formatText(result.question)}
+                      <span className={styles.topicBadge}>
+                        {topicNameMap[result.topicKey] ||
+                          result.topicName ||
+                          result.topicKey}
+                      </span>
+                    </NavLink>
+                  </li>
+                ))
+              )}
+            </ul>
           </>
         )}
       </nav>

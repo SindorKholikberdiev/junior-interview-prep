@@ -79,6 +79,23 @@
   color: var(--sidebar-link-active-color);
 }
 
+.emptyState {
+  padding: 0.5rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.topicBadge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--sidebar-link-hover-bg);
+  color: var(--sidebar-link);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
 .sidebarContainer {
   height: 100%;
   overflow-y: auto;

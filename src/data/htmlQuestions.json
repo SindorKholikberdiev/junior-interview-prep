@@ -97,25 +97,75 @@
     "detailedExplanation": [
       {
         "type": "paragraph",
-        "content": "Bu elementlar sahifa qismlarining ma'nosini (semantikasini) ham brauzerlarga, ham dasturchilarga tushuntirib beradi. Ularni `<div>` o'rniga ishlatish kodning o'qilishini yaxshilaydi, `accessibility`'ni (maxsus imkoniyatlarga ega foydalanuvchilar uchun qulaylik) oshiradi va qidiruv tizimlari (`SEO`) uchun sahifa mazmunini yaxshiroq tushunishga yordam beradi."
+        "content": "Tasavvur qiling, siz kitob o'qiyapsiz. Unda sarlavha, mundarija, asosiy matn, rasmlar va xulosa bor. HTML5 semantik elementlari ham xuddi shunday — ular veb-sahifangizning turli qismlariga aniq 'yorliq' (`label`) beradi. Bu 'yorliqlar' kodning ma'nosini bildiradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Ilgari, dasturchilar sahifaning barcha qismlarini (sarlavha, menyu, asosiy qism) `<div>` `tag`i bilan o'rab, ularga `id` yoki `class` (`<div class=\"header\">`) berishardi. HTML5 esa bu umumiy qismlar uchun maxsus `tag`larni taqdim etdi:"
+      },
+      {
+        "title": "Asosiy Semantik Elementlar va Ularning Vazifalari:",
+        "type": "list",
+        "items": [
+          "**`<header>`:** Odatda sahifaning yoki bo'limning eng yuqori qismi. Ko'pincha sayt logotipi, sarlavhasi va asosiy navigatsiyani o'z ichiga oladi.",
+          "**`<nav>`:** Asosiy navigatsiya menyusi uchun mo'ljallangan. Sahifalararo yoki sahifa ichidagi muhim `link`lar to'plami.",
+          "**`<main>`:** Sahifaning asosiy, markaziy kontenti. Har bir sahifada faqat **bitta** `<main>` elementi bo'lishi kerak.",
+          "**`<article>`:** Mustaqil, alohida tarqatilishi mumkin bo'lgan kontent bloki. Masalan, blog posti, yangilik maqolasi, forumdagi xabar.",
+          "**`<section>`:** Hujjatning mantiqiy guruhlangan bo'limi. Odatda o'zining sarlavhasiga (`<h1>`-`<h6>`) ega bo'ladi. Masalan, 'Biz haqimizda', 'Xizmatlarimiz', 'Aloqa' bo'limlari.",
+          "**`<aside>`:** Asosiy kontent bilan bilvosita bog'liq bo'lgan qo'shimcha ma'lumotlar uchun yon panel. Masalan, reklama bannerlari, bog'liq `link`lar, muallif haqida qisqacha ma'lumot.",
+          "**`<footer>`:** Sahifaning yoki bo'limning eng pastki qismi. Odatda mualliflik huquqi ma'lumotlari, aloqa `link`lari, sayt xaritasiga `link` kabilarni o'z ichiga oladi."
+        ]
+      },
+      {
+        "title": "Nima Uchun Ular Muhim (Faqat `<div>` Ishlatishdan Ko'ra)?",
+        "type": "list",
+        "items": [
+          "**Kod Tushunarliligi (`Readability`):** Boshqa dasturchi (yoki kelajakdagi o'zingiz) kodingizni o'qiganda, sahifa qismlarining vazifasini `tag` nomidan darhol tushunadi (`<nav>` menyu ekanligi aniq).",
+          "**`Accessibility` (Maxsus Imkoniyatlar):** `Screen reader` kabi yordamchi texnologiyalar bu `tag`larni taniydi va imkoniyati cheklangan foydalanuvchilarga sahifada osonroq harakatlanish (`Maps`) imkonini beradi (masalan, to'g'ridan-to'g'ri `<main>` kontentiga o'tish).",
+          "**`SEO` (Qidiruv Tizimi Optimizatsiyasi):** Qidiruv tizimlari (`Google` kabi) sahifangizning qaysi qismi muhimroq ekanligini (masalan, `<main>` ichidagi kontent) yaxshiroq tushunadi va bu `ranking`'ga ijobiy ta'sir qilishi mumkin."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "*Xulosa: Semantik elementlar kodga ma'no qo'shadi, uni hamma uchun (dasturchilar, brauzerlar, yordamchi texnologiyalar, qidiruv tizimlari) tushunarliroq qiladi.*"
       }
     ],
     "codeExamples": [
       {
-        "title": "Tipik Sahifa Strukturasi:",
+        "title": "Semantik Struktura Misoli:",
         "code": [
-          "<header>Sayt sarlavhasi va navigatsiyasi</header>",
-          "<nav>Asosiy menyu</nav>",
-          "<main>",
-          "  <article>Asosiy kontent (maqola)</article>",
-          "  <aside>Yon panel (reklama, qo'shimcha havolalar)</aside>",
-          "</main>",
-          "<footer>Saytning pastki qismi (mualliflik huquqi)</footer>"
+          "<body>",
+          "  <header>",
+          "    <h1>Sayt Nomi</h1>",
+          "    <nav>",
+          "      <ul>",
+          "        <li><a href=\"/\">Bosh Sahifa</a></li>",
+          "        <li><a href=\"/about\">Biz Haqimizda</a></li>",
+          "      </ul>",
+          "    </nav>",
+          "  </header>",
+          "",
+          "  <main>",
+          "    <article>",
+          "      <h2>Maqola Sarlavhasi</h2>",
+          "      <p>Maqola matni...</p>",
+          "    </article>",
+          "    <aside>",
+          "      <h3>Bog'liq Linklar</h3>",
+          "      <ul>...</ul>",
+          "    </aside>",
+          "  </main>",
+          "",
+          "  <footer>",
+          "    <p>&copy; 2025 Mening Sahifam</p>",
+          "  </footer>",
+          "</body>"
         ]
       }
     ],
-    "interviewAnswer": "Asosiy HTML5 semantik elementlari `<header>`, `<nav>`, `<main>`, `<footer>`, `<article>`, `<section>`, `<aside>` kabilardir. Ular sahifa strukturasiga ma'no beradi, bu esa kodni o'qishni osonlashtiradi, `accessibility` va `SEO` uchun muhimdir."
+    "interviewAnswer": "Asosiy HTML5 semantik elementlari `<header>`, `<nav>`, `<main>`, `<footer>`, `<article>`, `<section>`, `<aside>` kabilardir. Ular `<div>` o'rniga sahifa qismlariga aniq ma'no beradi. Bu kodni o'qishni osonlashtiradi, `accessibility`'ni (masalan, `screen reader`'lar uchun) va `SEO`'ni yaxshilaydi."
   },
+
   {
     "id": "html-q4",
     "question": "`<img>` `tag`ining `alt` atributi nima uchun kerak?",
@@ -139,7 +189,7 @@
   },
   {
     "id": "html-q5",
-    "question": "HTML `form` elementlari qanday ishlaydi va `GET` va `POST` metodlari o'rtasida qanday farq bor?",
+    "question": "HTML `form` elementlari qanday ishlaydi, `GET` va `POST` metodlari o'rtasida qanday farq bor?",
     "topic": "HTML Forms",
     "description": "HTML `<form>` elementlari foydalanuvchidan ma'lumot yig'ish va uni serverga `action` atributida ko'rsatilgan manzilga `method` atributida ko'rsatilgan usul (`GET` yoki `POST`) bilan yuborish uchun ishlatiladi.",
     "detailedExplanation": [

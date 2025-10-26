@@ -1,8 +1,37 @@
 import styles from "./TopNav.module.css";
 
-function TopNav({ theme, onToggleTheme, language, onLanguageChange }) {
+function TopNav({
+  theme,
+  onToggleTheme,
+  language,
+  onLanguageChange,
+  searchQuery,
+  onSearchChange,
+  onSearchFocus,
+  onSearchBlur,
+  onSearchSubmit,
+  searchHistory = [],
+  onHistorySelect,
+  isSearchFocused = false,
+}) {
   const handleLanguageSelect = (event) => {
     onLanguageChange(event.target.value);
+  };
+
+  const handleSearchInput = (event) => {
+    onSearchChange(event.target.value);
+  };
+
+  const handleSearchKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      onSearchSubmit?.();
+    }
+  };
+
+  const handleHistoryMouseDown = (value) => (event) => {
+    event.preventDefault();
+    onHistorySelect?.(value);
   };
 
   return (
@@ -12,6 +41,35 @@ function TopNav({ theme, onToggleTheme, language, onLanguageChange }) {
       </div>
 
       <div className={styles.controls}>
+        <label className={styles.searchWrapper}>
+          <span className={styles.srOnly}>Savollar bo'yicha qidiruv</span>
+          <input
+            type="search"
+            placeholder="Savol yoki mavzu qidiring..."
+            value={searchQuery}
+            onChange={handleSearchInput}
+            onFocus={onSearchFocus}
+            onBlur={onSearchBlur}
+            onKeyDown={handleSearchKeyDown}
+          />
+          {isSearchFocused && searchHistory.length > 0 && (
+            <ul className={styles.historyList}>
+              <li className={styles.historyHeading}>So‘nggi qidiruvlar</li>
+              {searchHistory.map((item) => (
+                <li key={item}>
+                  <button
+                    type="button"
+                    onMouseDown={handleHistoryMouseDown(item)}
+                    className={styles.historyItem}
+                  >
+                    {item}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </label>
+
         <button
           type="button"
           className={styles.themeToggle}

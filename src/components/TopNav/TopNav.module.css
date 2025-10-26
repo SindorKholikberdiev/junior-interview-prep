@@ -29,6 +29,77 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.searchWrapper {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  min-width: 220px;
+  position: relative;
+}
+
+.searchWrapper input {
+  border: none;
+  background: transparent;
+  color: var(--input-text);
+  width: 100%;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.historyList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: 12px;
+  box-shadow: var(--nav-shadow);
+  list-style: none;
+  padding: 0.4rem 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.historyHeading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 1rem;
+  color: var(--text-secondary);
+}
+
+.historyItem {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  padding: 0.35rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.historyItem:hover {
+  background: var(--sidebar-link-hover-bg);
+  color: var(--sidebar-link-hover-color);
 }
 
 .themeToggle {

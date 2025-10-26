@@ -1,9 +1,10 @@
 // src/App.jsx
 import { Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import TopNav from "./components/TopNav/TopNav";
 import styles from "./App.module.css";
+import { dataMap, topics } from "./data/topicConfig";
 
 const THEME_STORAGE_KEY = "junior-interview-prep-theme";
 const LANGUAGE_STORAGE_KEY = "junior-interview-prep-language";
@@ -27,6 +28,12 @@ const getInitialLanguage = () => {
 function App() {
   const [theme, setTheme] = useState(getInitialTheme);
   const [language, setLanguage] = useState(getInitialLanguage);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [allQuestionsByTopic, setAllQuestionsByTopic] = useState({});
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isSearchPanelHovered, setIsSearchPanelHovered] = useState(false);
+  const [searchHistory, setSearchHistory] = useState([]);
+  const searchBlurTimeoutRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -38,6 +45,66 @@ function App() {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   }, [language]);
 
+  useEffect(() => {
+    let isMounted = true;
+    const loadAllQuestions = async () => {
+      try {
+        const entries = await Promise.all(
+          Object.entries(dataMap).map(([topicKey, loader]) =>
+            loader().then((module) => [topicKey, module.default ?? []])
+          )
+        );
+        if (!isMounted) {
+          return;
+        }
+        const mapped = entries.reduce((acc, [key, list]) => {
+          acc[key] = list;
+          return acc;
+        }, {});
+        setAllQuestionsByTopic(mapped);
+      } catch (error) {
+        console.error("Savollarni yuklashda xatolik:", error);
+      }
+    };
+
+    loadAllQuestions();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const topicNameMap = useMemo(() => {
+    const map = {};
+    topics.forEach((topic) => {
+      const topicKey = topic.key ?? topic.path.split("/").pop();
+      map[topicKey] = topic.name;
+    });
+    return map;
+  }, []);
+
+  const normalizedSearch = searchQuery.trim().toLowerCase();
+  const isSearchActive =
+    (isSearchFocused || isSearchPanelHovered) && normalizedSearch.length > 0;
+  const globalSearchResults = useMemo(() => {
+    if (!normalizedSearch) {
+      return [];
+    }
+    const results = [];
+    Object.entries(allQuestionsByTopic).forEach(([topicKey, list]) => {
+      list.forEach((item) => {
+        if (item.question.toLowerCase().includes(normalizedSearch)) {
+          results.push({
+            ...item,
+            topicKey,
+            topicName: topicNameMap[topicKey] || topicKey,
+          });
+        }
+      });
+    });
+    return results;
+  }, [allQuestionsByTopic, normalizedSearch, topicNameMap]);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
@@ -46,10 +113,77 @@ function App() {
     setLanguage(nextLanguage);
   };
 
+  const handleSearchChange = (nextQuery) => {
+    setSearchQuery(nextQuery);
+  };
+
+  const handleSearchFocus = () => {
+    if (searchBlurTimeoutRef.current) {
+      clearTimeout(searchBlurTimeoutRef.current);
+      searchBlurTimeoutRef.current = null;
+    }
+    setIsSearchFocused(true);
+  };
+
+  const handleSearchBlur = () => {
+    if (searchBlurTimeoutRef.current) {
+      clearTimeout(searchBlurTimeoutRef.current);
+    }
+    searchBlurTimeoutRef.current = setTimeout(() => {
+      setIsSearchFocused(false);
+    }, 120);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (searchBlurTimeoutRef.current) {
+        clearTimeout(searchBlurTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const handleSearchSubmit = () => {
+    const trimmed = searchQuery.trim();
+    if (!trimmed) {
+      return;
+    }
+    setSearchHistory((prev) => {
+      const next = [trimmed, ...prev.filter((item) => item !== trimmed)];
+      return next.slice(0, 3);
+    });
+  };
+
+  const handleHistorySelect = (value) => {
+    setSearchQuery(value);
+    setIsSearchFocused(true);
+    setSearchHistory((prev) => {
+      const next = [value, ...prev.filter((item) => item !== value)];
+      return next.slice(0, 3);
+    });
+  };
+
+  const handleSearchResultsHoverChange = (hovering) => {
+    if (hovering) {
+      if (searchBlurTimeoutRef.current) {
+        clearTimeout(searchBlurTimeoutRef.current);
+        searchBlurTimeoutRef.current = null;
+      }
+      setIsSearchPanelHovered(true);
+    } else {
+      setIsSearchPanelHovered(false);
+    }
+  };
+
   return (
     <div className={styles.appContainer}>
       <aside className={styles.sidebar}>
-        <Sidebar />
+        <Sidebar
+          searchQuery={searchQuery}
+          searchResults={globalSearchResults}
+          topicNameMap={topicNameMap}
+          isSearchActive={isSearchActive}
+          onSearchPanelHoverChange={handleSearchResultsHoverChange}
+        />
       </aside>
       <main className={styles.mainContent}>
         <TopNav
@@ -57,6 +191,14 @@ function App() {
           onToggleTheme={toggleTheme}
           language={language}
           onLanguageChange={handleLanguageChange}
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+          onSearchFocus={handleSearchFocus}
+          onSearchBlur={handleSearchBlur}
+          onSearchSubmit={handleSearchSubmit}
+          searchHistory={searchHistory}
+          onHistorySelect={handleHistorySelect}
+          isSearchFocused={isSearchFocused}
         />
         <Outlet />
       </main>

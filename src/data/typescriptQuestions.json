@@ -1,0 +1,1666 @@
+[
+  {
+    "id": "ts-q1",
+    "question": "TypeScript nima va u JavaScript'dan qanday farq qiladi?",
+    "topic": "TypeScript Basics",
+    "answer": {
+      "definition": "TypeScript — bu Microsoft tomonidan ishlab chiqilgan, ochiq kodli dasturlash tili bo'lib, u JavaScript'ga **statik tiplar (`static types`)** va boshqa qo'shimcha imkoniyatlarni qo'shadi. U JavaScript'ning **`superset`**'i hisoblanadi, ya'ni har qanday to'g'ri JavaScript kodi — bu to'g'ri TypeScript kodidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Asosiy farq — **tiplar tizimi (`type system`)**. JavaScript dinamik tiplangan (`dynamically typed`) til, ya'ni o'zgaruvchilarning tiplari kod bajarilishi (`runtime`) paytida aniqlanadi va o'zgarishi mumkin. Bu moslashuvchanlik beradi, lekin katta loyihalarda xatoliklarga (`type errors`) olib kelishi mumkin. TypeScript esa statik tiplangan (`statically typed`) bo'lib, o'zgaruvchilar, funksiya parametrlari va qaytariladigan qiymatlar uchun tiplarni kod yozish (`compile time`) paytida belgilashga imkon beradi. TypeScript kompilyatori (`transpiler`) bu tiplarni tekshiradi va potensial xatoliklarni kod ishga tushirilmasdan oldin aniqlaydi. Yakunda TypeScript kodi oddiy JavaScript kodiga kompilyatsiya (`transpile`) qilinadi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "TypeScript Misoli (Tip Annotatsiyasi):",
+          "code": [
+            "function greet(name: string): string {",
+            "  // 'name' parametri 'string' bo'lishi kerak",
+            "  // Funksiya 'string' qaytarishi kerak",
+            "  return `Hello, ${name}!`;",
+            "}",
+            "",
+            "let user: string = \"Ali\";",
+            "// user = 123; // Xato: Type 'number' is not assignable to type 'string'."
+          ]
+        }
+      ],
+      "interviewAnswer": "TypeScript JavaScript'ning `superset`'i bo'lib, unga statik tiplarni qo'shadi. JavaScript dinamik tiplangan (xatolar `runtime`'da aniqlanadi), TypeScript statik tiplangan (xatolar `compile time`'da aniqlanadi). TypeScript kodi oxirida JavaScript'ga kompilyatsiya qilinadi. U katta loyihalarda xatoliklarni kamaytirishga yordam beradi."
+    }
+  },
+  {
+    "id": "ts-q2",
+    "question": "TypeScript'ning asosiy afzalliklari qanday?",
+    "topic": "TypeScript Basics",
+    "answer": {
+      "definition": "TypeScript JavaScript ustiga qurilgan bo'lib, bir qator muhim afzalliklarni taqdim etadi, ayniqsa katta va murakkab loyihalar uchun.",
+      "explanation": [
+        { "type": "paragraph", "content": "Asosiy afzalliklari:" },
+        {
+          "type": "list",
+          "items": [
+            "**Xatoliklarni Erta Aniqlash (`Early Error Detection`):** Statik tiplar tizimi `compile time`'da ko'plab `type error`'larni (masalan, `string` o'rniga `number` ishlatish) aniqlashga yordam beradi, bu esa `runtime`'dagi `bug`'larni kamaytiradi.",
+            "**Kod Sifati va Tushunarliligi (`Improved Code Quality & Readability`):** Tiplar kodning nima qilishi va qanday ma'lumotlar bilan ishlashini aniqroq hujjatlashtiradi. Bu kodni o'qish, tushunish va qo'llab-quvvatlashni osonlashtiradi.",
+            "**Yaxshilangan `Refactoring` va `IntelliSense`:** Tiplar mavjudligi kod muharrirlariga (`IDE`) ancha kuchliroq `autocompletion` (avtomatik to'ldirish), `refactoring` vositalari va xatoliklarni ko'rsatish imkoniyatini beradi.",
+            "**Zamonaviy JavaScript Xususiyatlari:** TypeScript har doim eng so'nggi `ECMAScript` standartlarini qo'llab-quvvatlaydi va ularni eski JavaScript versiyalariga kompilyatsiya qilish imkonini beradi.",
+            "**Katta Jamoalar Uchun Qulaylik (`Better Collaboration`):** Aniq tiplar jamoa a'zolari o'rtasida kodni tushunishni osonlashtiradi va integratsiya muammolarini kamaytiradi."
+          ]
+        }
+      ],
+      "interviewAnswer": "TypeScript'ning asosiy afzalliklari: xatoliklarni `compile time`'da aniqlash, kodning o'qilishini va sifatini oshirish, yaxshilangan `IDE support` (`IntelliSense`, `refactoring`), zamonaviy JavaScript'ni qo'llab-quvvatlash va katta jamoalarda ishlashni osonlashtirish."
+    }
+  },
+  {
+    "id": "ts-q3",
+    "question": "TypeScript'dagi asosiy sodda (`basic`) tiplar qaysilar?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "TypeScript JavaScript'ning barcha `primitive` tiplarini qo'llab-quvvatlaydi va ularga qo'shimcha tiplarni ham taqdim etadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Eng ko'p ishlatiladigan sodda tiplar:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`string`:** Matnli qiymatlar (`\"Salom\"`, `'Dunyo'`, `` `Template` ``).",
+            "**`number`:** Raqamli qiymatlar (butun sonlar va kasr sonlar, `10`, `3.14`).",
+            "**`boolean`:** Mantiqiy qiymatlar (`true`, `false`).",
+            "**`null`:** Qiymatning yo'qligini bildiradi (ataylab belgilangan).",
+            "**`undefined`:** Qiymat berilmaganligini bildiradi.",
+            "**`symbol` (ES6+):** Unikal identifikatorlar.",
+            "**`bigint` (ES2020+):** Juda katta butun sonlar.",
+            "**`any`:** Har qanday tipdagi qiymatni qabul qila oladi. Statik tip tekshiruvini o'chiradi. Iloji boricha kamroq ishlatish tavsiya etiladi.",
+            "**`unknown`:** `any`'ga o'xshash, lekin tip jihatidan xavfsizroq. `unknown` tipidagi o'zgaruvchini ishlatishdan oldin uning tipini aniq tekshirish (`type check` yoki `type assertion`) kerak.",
+            "**`void`:** Odatda funksiya hech narsa qaytarmasligini bildiradi.",
+            "**`never`:** Hech qachon qaytmaydigan (masalan, har doim xato `throw` qiladigan yoki cheksiz tsiklga tushadigan) funksiyaning qaytarish tipini bildiradi."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "code": [
+            "let name: string = \"Ali\";",
+            "let age: number = 30;",
+            "let isActive: boolean = true;",
+            "let data: any = 5; data = \"keyin matn\";",
+            "function logMessage(): void { console.log('Salom'); }"
+          ]
+        }
+      ],
+      "interviewAnswer": "Asosiy tiplar: `string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`. Qo'shimcha muhimlari: `any` (tip tekshiruvini o'chiradi), `unknown` (`any`'ning xavfsiz varianti), `void` (hech narsa qaytarmaydi), `never` (hech qachon qaytmaydi)."
+    }
+  },
+  {
+    "id": "ts-q4",
+    "question": "TypeScript'da `Array` va `Tuple` tiplari qanday aniqlanadi?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`Array` bir xil tipdagi elementlar ro'yxatini, `Tuple` esa belgilangan tartibda va belgilangan tiplarda keladigan, qat'iy uzunlikdagi massivni ifodalaydi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Array`:** Ikki xil sintaksis bilan aniqlash mumkin:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`type[]`: Masalan, `let numbers: number[] = [1, 2, 3];`",
+            "`Array<type>`: Masalan, `let names: Array<string> = [\"Ali\", \"Vali\"];`"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Tuple`:** Kvadrat qavslar `[]` ichida elementlarning tiplari ketma-ketligi ko'rsatiladi. Tartib va uzunlik muhim."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Array:",
+          "code": ["let list: number[] = [1, 2, 3];", "list.push(4); // OK"]
+        },
+        {
+          "title": "Tuple:",
+          "code": [
+            "let user: [string, number]; // Birinchi element string, ikkinchisi number bo'lishi shart",
+            "user = [\"Ali\", 30]; // OK",
+            "// user = [30, \"Ali\"]; // Xato: Tiplar mos emas",
+            "// user = [\"Vali\", 25, true]; // Xato: Uzunlik mos emas",
+            "console.log(user[0].substring(1)); // OK ('li')",
+            "// console.log(user[1].substring(1)); // Xato: 'number'da 'substring' yo'q"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Array` bir xil tipdagi elementlar ro'yxati (`number[]` yoki `Array<number>`). `Tuple` qat'iy uzunlikdagi va har bir o'rnida aniq tipi belgilangan massiv (`[string, number]`)."
+    }
+  },
+  {
+    "id": "ts-q5",
+    "question": "TypeScript'da `Interface` nima va u `Type Alias`'dan qanday farq qiladi?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "Ikkalasi ham obyektlarning shaklini (`shape`) yoki boshqa tiplarni nomlash uchun ishlatiladi, ammo ular o'rtasida ba'zi sintaktik va funksional farqlar mavjud.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Interface`:** Obyektlarning tuzilishini (`structure`) tavsiflash uchun maxsus TypeScript konstruksiyasidir. Ular `implements` kalit so'zi bilan `class`'lar uchun shartnoma (`contract`) sifatida ishlatilishi mumkin va bir xil nomdagi `interface`'lar avtomatik ravishda birlashadi (`declaration merging`)."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Type Alias` (`type` kalit so'zi bilan):** Har qanday tipga (shu jumladan `primitive`, `union`, `tuple`, obyekt tiplari) yangi nom berish imkonini beradi. Ular `interface`'larga qaraganda biroz moslashuvchanroq, chunki ular faqat obyekt shakllari bilan cheklanmagan. `Type alias`'lar birlashmaydi (`declaration merging` yo'q)."
+        },
+        {
+          "type": "paragraph",
+          "content": "Ko'p hollarda obyekt shakllarini tavsiflash uchun ikkalasini ham ishlatish mumkin. Tanlov ko'pincha shaxsiy yoki jamoaviy kelishuvga bog'liq. Umumiy qoida: agar `class` bilan `implement` qilish kerak bo'lsa yoki kelajakda kengaytirilishi (`extend`) mumkin bo'lgan obyekt shaklini tavsiflayotgan bo'lsangiz, `interface` ishlatgan ma'qul. Boshqa barcha holatlar uchun (ayniqsa `union` yoki `tuple` tiplariga nom berishda) `type alias` qulayroq bo'lishi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Interface:",
+          "code": [
+            "interface Point {",
+            "  x: number;",
+            "  y: number;",
+            "}",
+            "interface Point { z?: number; } // Declaration merging",
+            "const p: Point = { x: 10, y: 20 };"
+          ]
+        },
+        {
+          "title": "Type Alias:",
+          "code": [
+            "type Coordinate = {",
+            "  lat: number;",
+            "  lon: number;",
+            "};",
+            "type ID = string | number; // Union type",
+            "const userId: ID = 'abc-123';"
+          ]
+        }
+      ],
+      "interviewAnswer": "Ikkalasi ham obyekt shaklini (`shape`) yoki tiplarni nomlash uchun. `Interface` asosan obyektlar uchun, `class`'lar bilan `implement` qilinishi mumkin va `declaration merging`'ni qo'llab-quvvatlaydi. `Type Alias` (`type` kalit so'zi) har qanday tipga (shu jumladan `primitive`, `union`) nom berishi mumkin, `merging` yo'q. Obyektlar uchun ko'pincha bir-birini almashtirishi mumkin."
+    }
+  },
+  {
+    "id": "ts-q6",
+    "question": "TypeScript'da `Union` va `Intersection` tiplari nima?",
+    "topic": "TypeScript Advanced Types",
+    "answer": {
+      "definition": "`Union` va `Intersection` tiplari mavjud tiplarni birlashtirib, yangi, murakkabroq tiplarni yaratish usullaridir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Union` Tipi (`|` operatori):** Bir o'zgaruvchi yoki parametr bir nechta mumkin bo'lgan tiplardan **biriga** ega bo'lishi mumkinligini bildiradi. Masalan, `string | number` tipi qiymat `string` **yoki** `number` bo'lishi mumkinligini anglatadi. `Union` tipidagi o'zgaruvchi bilan ishlaganda, odatda uning aniq tipini tekshirish (`type guard`) kerak bo'ladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Intersection` Tipi (`&` operatori):** Bir nechta tipning **barcha xususiyatlarini** o'zida birlashtirgan yangi tip yaratadi. Masalan, `TypeA & TypeB` tipi `TypeA`'ning **va** `TypeB`'ning barcha xususiyatlariga ega bo'lishi kerak. Bu odatda obyekt tiplarini 'aralashtirish' (`mixins`) yoki kengaytirish uchun ishlatiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Union:",
+          "code": [
+            "function printId(id: string | number) {",
+            "  if (typeof id === 'string') {",
+            "    console.log(id.toUpperCase());",
+            "  } else {",
+            "    console.log(id);",
+            "  }",
+            "}",
+            "printId(101); // 101",
+            "printId('abc'); // ABC"
+          ]
+        },
+        {
+          "title": "Intersection:",
+          "code": [
+            "interface Colorful { color: string; }",
+            "interface Circle { radius: number; }",
+            "",
+            "type ColorfulCircle = Colorful & Circle;",
+            "",
+            "const myCircle: ColorfulCircle = {",
+            "  color: 'red',",
+            "  radius: 5",
+            "};"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Union` tipi (`|`) qiymat bir nechta tiplardan **biri** bo'lishi mumkinligini bildiradi (`string | number`). `Intersection` tipi (`&`) bir nechta tipning **barcha** xususiyatlarini birlashtiradi (`A & B`)."
+    }
+  },
+  {
+    "id": "ts-q7",
+    "question": "TypeScript'da `Generics` nima va ular nima uchun ishlatiladi?",
+    "topic": "TypeScript Generics",
+    "answer": {
+      "definition": "`Generics` — bu funksiyalar, `class`'lar yoki `interface`'larni ular ishlaydigan **tiplarni oldindan aniqlamasdan** yozish imkonini beruvchi vositadir. Bu tiplar komponent ishlatilayotganda (`call time` yoki `instantiation time`) aniqlanadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular kodni **qayta ishlatilishi mumkin (`reusable`)** va **tip jihatidan xavfsiz (`type-safe`)** qilishga yordam beradi. `Generics` bo'lmasa, biz yo har bir tip uchun alohida funksiya yozishimiz (`identityNumber(arg: number): number`, `identityString(arg: string): string`) yoki `any` tipidan foydalanishimiz kerak bo'lardi, bu esa tip xavfsizligini yo'qotadi. `Generics` yordamida biz bitta funksiya (`identity<T>(arg: T): T`) yozamiz, bu yerda `T` tip o'zgaruvchisi (`type variable`) bo'lib, funksiya chaqirilganda aniq tip (`number`, `string`) bilan almashtiriladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Generic Funksiya:",
+          "code": [
+            "// T - bu tip parametri",
+            "function identity<T>(arg: T): T {",
+            "  return arg;",
+            "}",
+            "",
+            "let output1 = identity<string>(\"myString\"); // T = string",
+            "let output2 = identity<number>(123);      // T = number",
+            "// Tipni avtomatik aniqlash ham mumkin:",
+            "let output3 = identity(true);             // T = boolean"
+          ]
+        },
+        {
+          "title": "Generic Interface:",
+          "code": [
+            "interface Box<T> {",
+            "  value: T;",
+            "}",
+            "",
+            "let numberBox: Box<number> = { value: 10 };",
+            "let stringBox: Box<string> = { value: \"hello\" };"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Generics` funksiya, `class` yoki `interface`'larni ular ishlaydigan tiplarni oldindan bilmasdan yozish imkonini beradi (`<T>`). Tip komponent ishlatilayotganda aniqlanadi. Bu kodni qayta ishlatiladigan va tip jihatidan xavfsiz qiladi."
+    }
+  },
+  {
+    "id": "ts-q8",
+    "question": "TypeScript'da `enum` nima va u qachon ishlatiladi?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`Enum` (enumeration) — bu bir-biriga bog'liq bo'lgan konstantalar (`constants`) to'plamiga nom berish (`named constants`) usulidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular kodni o'qilishini osonlashtiradi, chunki 'sehrli sonlar' (`magic numbers`) yoki `string`'lar o'rniga tushunarli nomlardan foydalanishga imkon beradi. Standart (`default`) holatda, `enum` a'zolari `0` dan boshlanadigan raqamli qiymatlarga ega bo'ladi, lekin ularga boshlang'ich raqam yoki `string` qiymatlarini qo'lda belgilash ham mumkin. TypeScript `enum`'larni ham tip (`type`) sifatida, ham qiymat (`value`) sifatida ishlatishga imkon beradi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Raqamli Enum:",
+          "code": [
+            "enum Direction {",
+            "  Up,    // 0",
+            "  Down,  // 1",
+            "  Left,  // 2",
+            "  Right  // 3",
+            "}",
+            "",
+            "let move: Direction = Direction.Up;",
+            "console.log(move); // 0"
+          ]
+        },
+        {
+          "title": "String Enum:",
+          "code": [
+            "enum LogLevel {",
+            "  Info = \"INFO\",",
+            "  Warning = \"WARN\",",
+            "  Error = \"ERROR\"",
+            "}",
+            "",
+            "console.log(LogLevel.Error); // \"ERROR\""
+          ]
+        }
+      ],
+      "interviewAnswer": "`Enum` bog'liq konstantalar to'plamiga nom berish usulidir (masalan, `Direction.Up`). U kodni o'qilishini yaxshilaydi ('sehrli' qiymatlar o'rniga nomlar ishlatiladi). Raqamli yoki `string` qiymatlarga ega bo'lishi mumkin."
+    }
+  },
+  {
+    "id": "js-q9",
+    "question": "TypeScript'da `Type Assertion` (yoki `Type Casting`) nima?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`Type Assertion` — bu TypeScript kompilyatoriga biror qiymatning tipini dasturchi undan ko'ra 'yaxshiroq' bilishini aytish usulidir. Bu tip tekshiruvini o'chirmaydi, faqat kompilyatorga yo'l ko'rsatadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu kompilyator biror qiymatning aniq tipini chiqara olmaydigan (`infer`) yoki noto'g'ri chiqaradigan holatlarda kerak bo'lishi mumkin. Ikki xil sintaksis mavjud:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Angle-bracket sintaksisi:** `<Type>value` (masalan, `<string>myValue`). `.tsx` (React) fayllarida ishlamaydi, chunki `JSX` `tag`lari bilan chalkashishi mumkin.",
+            "**`as` sintaksisi:** `value as Type` (masalan, `myValue as string`). Bu universalroq va `.tsx` fayllarida ham ishlaydi. Hozirda shu sintaksis tavsiya etiladi."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "`Type Assertion`'ni ehtiyotkorlik bilan ishlatish kerak. Agar siz kompilyatorga noto'g'ri tipni 'ayt sangiz', bu `runtime` xatoliklariga olib kelishi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`as` sintaksisi:",
+          "code": [
+            "let someValue: unknown = \"this is a string\";",
+            "// Kompilyator 'someValue' string ekanligini bilmaydi, shuning uchun .length xato beradi.",
+            "// Biz 'as string' orqali kompilyatorga bu string ekanligini 'aytamiz'.",
+            "let strLength: number = (someValue as string).length;",
+            "console.log(strLength);"
+          ]
+        },
+        {
+          "title": "Angle-bracket sintaksisi:",
+          "code": [
+            "let someValue: unknown = \"this is a string\";",
+            "let strLength: number = (<string>someValue).length;",
+            "console.log(strLength);"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Type Assertion` (`value as Type` yoki `<Type>value`) kompilyatorga biror qiymatning tipini dasturchi aniq bilishini aytish usulidir. U tipni o'zgartirmaydi, faqat kompilyatorning tip tekshiruviga yordam beradi. `.tsx` fayllarida `as` sintaksisi ishlatiladi."
+    }
+  },
+  {
+    "id": "js-q10",
+    "question": "TypeScript `compiler` (tsc) nima qiladi?",
+    "topic": "TypeScript Basics",
+    "answer": {
+      "definition": "TypeScript `compiler` (`tsc`) — bu TypeScript (`.ts`, `.tsx`) kodini standart JavaScript (`.js`) kodiga o'giradigan (`transpiles`) buyruqlar qatori (`command-line`) vositasidir.",
+      "explanation": [
+        { "type": "paragraph", "content": "Uning asosiy vazifalari:" },
+        {
+          "type": "list",
+          "items": [
+            "**Tip Tekshiruvi (`Type Checking`):** Kod yozish paytida (`compile time`) tiplar bo'yicha xatoliklarni topadi.",
+            "**Kompilyatsiya (`Transpilation`):** TypeScript sintaksisini (tiplar, `interface`'lar, `enum`'lar va hokazo) olib tashlab, brauzerlar yoki `Node.js` tushunadigan JavaScript kodini generatsiya qiladi. Qaysi JavaScript versiyasiga (`ES5`, `ES6`, `ESNext`) o'girishni `tsconfig.json` fayli orqali sozlash mumkin.",
+            "**Zamonaviy Xususiyatlarni O'girish:** TypeScript'dagi ES6+ xususiyatlarini eski JavaScript versiyalariga moslashtirishi mumkin."
+          ]
+        }
+      ],
+      "interviewAnswer": "TypeScript `compiler` (`tsc`) `.ts` kodini `.js` kodiga o'giradi (`transpiles`). Bu jarayonda u tiplarni tekshiradi (`type checking`) va TypeScript'ga xos sintaksisni olib tashlaydi. Qaysi JavaScript versiyasiga o'girishni `tsconfig.json` orqali sozlash mumkin."
+    }
+  },
+
+  {
+    "id": "ts-q11",
+    "question": "TypeScript'da `Utility Types` nima va bir nechta misol keltiring?",
+    "topic": "TypeScript Utility Types",
+    "answer": {
+      "definition": "`Utility Types` — bu TypeScript tomonidan taqdim etilgan, mavjud tiplarni transformatsiya qilish (`transform`) yoki ulardan yangi tiplar yaratish (`construct`) uchun mo'ljallangan maxsus `generic` tiplardir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular takrorlanuvchi tip manipulatsiyalari uchun qulay yechimlar beradi. Eng ko'p ishlatiladiganlari:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`Partial<T>`:** `T` tipidagi barcha xususiyatlarni (`properties`) ixtiyoriy (`optional`, `?` belgisi bilan) qilib qo'yadi.",
+            "**`Required<T>`:** `T` tipidagi barcha ixtiyoriy xususiyatlarni majburiy (`required`) qilib qo'yadi.",
+            "**`Readonly<T>`:** `T` tipidagi barcha xususiyatlarni faqat o'qish uchun (`readonly`) qilib qo'yadi.",
+            "**`Record<K, T>`:** Kalitlari (`keys`) `K` tipida va qiymatlari (`values`) `T` tipida bo'lgan obyekt tipini yaratadi.",
+            "**`Pick<T, K>`:** `T` tipidan faqat `K`'da ko'rsatilgan kalitlarga (`keys`) ega bo'lgan xususiyatlarni tanlab olib, yangi tip yaratadi.",
+            "**`Omit<T, K>`:** `T` tipidan `K`'da ko'rsatilgan kalitlarga ega bo'lgan xususiyatlarni olib tashlab, yangi tip yaratadi.",
+            "**`ReturnType<T>`:** `T` funksiya tipining qaytaradigan (`return`) qiymati tipini oladi.",
+            "**`Parameters<T>`:** `T` funksiya tipining parametrlarining tiplarini `tuple` sifatida oladi."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "`Partial` va `Readonly`:",
+          "code": [
+            "interface User { id: number; name?: string; }",
+            "type PartialUser = Partial<User>; // { id?: number; name?: string; }",
+            "type ReadonlyUser = Readonly<User>; // { readonly id: number; readonly name?: string; }"
+          ]
+        },
+        {
+          "title": "`Pick` va `Omit`:",
+          "code": [
+            "interface Todo { title: string; description: string; completed: boolean; }",
+            "type TodoPreview = Pick<Todo, 'title' | 'completed'>; // { title: string; completed: boolean; }",
+            "type TodoInfo = Omit<Todo, 'completed'>; // { title: string; description: string; }"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Utility Types` mavjud tiplarni o'zgartirish uchun TypeScript'ning maxsus `generic` tiplari. Masalan, `Partial<T>` barcha xususiyatlarni ixtiyoriy, `Readonly<T>` faqat o'qish uchun, `Pick<T, K>` ba'zi xususiyatlarni tanlab olish, `Omit<T, K>` ba'zi xususiyatlarni olib tashlash uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "ts-q12",
+    "question": "TypeScript'da `never` tipi qachon ishlatiladi?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`never` tipi hech qachon yuz bermaydigan (`never occur`) qiymatni ifodalaydi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U asosan ikki holatda ishlatiladi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Har doim xato `throw` qiladigan funksiyalarning qaytarish tipi sifatida:** Bunday funksiyalar hech qachon normal yakunlanmaydi.",
+            "**Cheksiz tsiklga (`infinite loop`) tushib qoladigan funksiyalarning qaytarish tipi sifatida:** Ular ham hech qachon qiymat qaytarmaydi.",
+            "**Tip himoyalarida (`Type Guards`):** `switch` yoki `if/else` zanjirida barcha mumkin bo'lgan holatlar qamrab olinganligini tekshirish uchun. Agar kutilmagan holat yuz bersa, `never` tipidagi o'zgaruvchiga qiymat berishga urinish `compile time` xatoligiga olib keladi."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Xato `throw` qiluvchi funksiya:",
+          "code": [
+            "function throwError(message: string): never {",
+            "  throw new Error(message);",
+            "}"
+          ]
+        },
+        {
+          "title": "Tip himoyasida:",
+          "code": [
+            "type Shape = Square | Circle;",
+            "function getArea(shape: Shape) {",
+            "  switch (shape.kind) {",
+            "    case \"square\": return shape.size * shape.size;",
+            "    case \"circle\": return Math.PI * shape.radius ** 2;",
+            "    default:",
+            "      const _exhaustiveCheck: never = shape; // Agar yangi shape qo'shilsa va bu yerda handle qilinmasa, xato bo'ladi",
+            "      return _exhaustiveCheck;",
+            "  }",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`never` tipi hech qachon yuz bermaydigan qiymatni bildiradi. U har doim xato `throw` qiladigan yoki cheksiz tsiklga tushadigan funksiyalar qaytarish tipi sifatida ishlatiladi. Shuningdek, `type guard`'larda barcha holatlar qamrab olinganini tekshirish uchun ham ishlatiladi."
+    }
+  },
+  {
+    "id": "ts-q13",
+    "question": "TypeScript'da `Type Guard` nima va ularning turlari qanday?",
+    "topic": "TypeScript Advanced Types",
+    "answer": {
+      "definition": "`Type Guard` — bu ma'lum bir `scope` ichida o'zgaruvchining tipini aniqroq (`narrow down`) qilish uchun ishlatiladigan `runtime` tekshiruvidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular ko'pincha `union` tiplari bilan ishlaganda kerak bo'ladi, chunki biz o'zgaruvchining aniq tipiga qarab harakat qilishimiz kerak bo'lishi mumkin. TypeScript bir nechta o'rnatilgan (`built-in`) `type guard`'larni taqdim etadi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`typeof` operatori:** `Primitive` tiplarni (`string`, `number`, `boolean`, `symbol`, `undefined`, `bigint`, `function`) tekshirish uchun. Masalan: `if (typeof value === 'string') { ... }`.",
+            "**`instanceof` operatori:** Obyekt ma'lum bir `class`'ning nusxasi (`instance`) ekanligini tekshirish uchun. Masalan: `if (value instanceof Date) { ... }`.",
+            "**`in` operatori:** Obyektda ma'lum bir xususiyat (`property`) mavjudligini tekshirish uchun. Masalan: `if ('swim' in pet) { ... }` (bu `pet`'da `swim` metodi borligini bildiradi).",
+            "**Literal Type Guards:** O'zgaruvchini aniq bir qiymatga (`string` yoki `number` literali) solishtirish (`===`, `==`, `!==`, `!=`). Masalan: `if (type === 'success') { ... }`.",
+            "**User-Defined Type Guards:** Maxsus funksiyalar yozish orqali o'zimizning `type guard`'larimizni yaratishimiz mumkin. Bu funksiyalar `boolean` qaytaradi va maxsus `parameterName is Type` qaytarish tipiga ega bo'ladi (`function isFish(pet: Fish | Bird): pet is Fish { ... }`)."
+          ]
+        }
+      ],
+      "interviewAnswer": "`Type Guard` `runtime`'da o'zgaruvchining tipini aniqroq qilish uchun ishlatiladigan tekshiruv. Turlari: `typeof` (`primitive`'lar uchun), `instanceof` (`class` nusxalari uchun), `in` (obyektda xususiyat borligini tekshirish), `literal type guard` (aniq qiymatga solishtirish) va `user-defined type guard` (maxsus funksiya)."
+    }
+  },
+  {
+    "id": "ts-q14",
+    "question": "TypeScript'da `Decorators` nima va ular qachon ishlatiladi?",
+    "topic": "TypeScript Decorators",
+    "answer": {
+      "definition": "`Decorators` — bu `class` deklaratsiyalari, metodlar, `accessor`'lar, `property`'lar yoki parametrlarga qo'shimcha funksionallik qo'shish yoki ularni o'zgartirish uchun ishlatiladigan maxsus turdagi deklaratsiyalardir. Ular `@expression` sintaksisi bilan belgilanadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`Decorators` ES (ECMAScript) taklifi bo'lib, TypeScript'da `experimental` (`tajribaviy`) xususiyat sifatida mavjud (`tsconfig.json`'da `experimentalDecorators`'ni yoqish kerak). Ular `metadata reflection` (`o'z-o'zini aks ettirish`) bilan birgalikda `Angular` kabi `framework`'larda `dependency injection`, `routing` va boshqa vazifalar uchun keng qo'llaniladi. `Decorator` aslida maxsus argumentlar bilan chaqiriladigan funksiyadir. U qanday elementga qo'llanilishiga qarab turli argumentlarni qabul qiladi va ba'zan o'sha elementni o'zgartirilgan holda qaytarishi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Class Decorator (Oddiy):",
+          "code": [
+            "// tsconfig.json: { \"experimentalDecorators\": true }",
+            "function sealed(constructor: Function) {",
+            "  Object.seal(constructor);",
+            "  Object.seal(constructor.prototype);",
+            "}",
+            "",
+            "@sealed // Decorator'ni qo'llash",
+            "class Greeter {",
+            "  greeting: string;",
+            "  constructor(message: string) {",
+            "    this.greeting = message;",
+            "  }",
+            "  greet() { return 'Hello, ' + this.greeting; }",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Decorators` (`@decorator`) `class`, metod, `property` yoki parametrlarga qo'shimcha funksionallik qo'shish uchun ishlatiladigan maxsus funksiyalardir. Ular TypeScript'da `experimental` xususiyat bo'lib, `Angular` kabi `framework`'larda `metadata` bilan ishlash uchun keng qo'llaniladi."
+    }
+  },
+  {
+    "id": "ts-q15",
+    "question": "`tsconfig.json` fayli nima uchun kerak?",
+    "topic": "TypeScript Configuration",
+    "answer": {
+      "definition": "`tsconfig.json` fayli TypeScript loyihasining ildiz papkasida joylashgan bo'lib, u TypeScript `compiler`'iga (`tsc`) loyihani qanday kompilyatsiya qilish kerakligini aytadigan sozlamalarni (`compiler options`) va loyihaga qaysi fayllar kirishini belgilaydi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu faylning mavjudligi papkani TypeScript loyihasi sifatida belgilaydi. Uning `compilerOptions` bo'limida ko'plab muhim sozlamalar mavjud, masalan:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`target`: Chiqish JavaScript versiyasini belgilaydi (masalan, `\"ES5\"`, `\"ES2016\"`, `\"ESNext\"`).",
+            "`module`: Modul tizimini belgilaydi (`\"CommonJS\"`, `\"ESNext\"`).",
+            "`outDir`: Kompilyatsiya qilingan `.js` fayllari qayerga saqlanishini belgilaydi.",
+            "`rootDir`: Manba `.ts` fayllari joylashgan papkani belgilaydi.",
+            "`strict`: Barcha qat'iy tip tekshiruvlarini yoqadi (tavsiya etiladi).",
+            "`jsx`: `.tsx` fayllaridagi `JSX` kodini qanday qayta ishlashni belgilaydi (`\"preserve\"`, `\"react-jsx\"`).",
+            "`esModuleInterop`: `CommonJS` modullari bilan `ES module`'lar o'rtasidagi moslikni yaxshilaydi.",
+            "`skipLibCheck`: Bog'liqlik (`node_modules`) fayllaridagi tip tekshiruvini o'tkazib yuboradi (kompilyatsiya tezligini oshiradi)."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "`include`, `exclude`, `files` kabi bo'limlar esa qaysi fayllarni kompilyatsiya qilish yoki e'tiborsiz qoldirishni belgilaydi."
+        }
+      ],
+      "interviewAnswer": "`tsconfig.json` TypeScript `compiler`'i (`tsc`) uchun konfiguratsiya fayli. U qaysi JavaScript versiyasiga (`target`), qaysi modul tizimiga (`module`) kompilyatsiya qilishni, qat'iy tekshiruvlarni (`strict`) yoqishni va loyihaga qaysi fayllar kirishini belgilaydi."
+    }
+  },
+  {
+    "id": "ts-q16",
+    "question": "TypeScript'da `Declaration Files` (`.d.ts`) nima uchun ishlatiladi?",
+    "topic": "TypeScript Declaration Files",
+    "answer": {
+      "definition": "`Declaration files` (`.d.ts` kengaytmasi bilan) — bu mavjud JavaScript kodining (masalan, tashqi kutubxona yoki brauzer `API`'lari) **tiplarini (`types`) tavsiflaydigan** fayllardir. Ularning ichida haqiqiy kod (`implementation`) bo'lmaydi, faqat tiplar haqida ma'lumot bo'ladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular TypeScript'ga oddiy JavaScript kutubxonalari bilan ishlash imkonini beradi. TypeScript `compiler`'i `.d.ts` fayllarini o'qib, JavaScript kodidagi funksiyalar, obyektlar va o'zgaruvchilarning tiplarini 'biladi' va ularni to'g'ri ishlatayotganingizni tekshira oladi. Ko'pgina mashhur JavaScript kutubxonalari uchun `.d.ts` fayllari `DefinitelyTyped` (`@types/` `npm` `scope`'i ostida) loyihasi orqali taqdim etiladi (masalan, `npm install @types/lodash`). Ba'zi kutubxonalar esa o'z `.d.ts` fayllarini o'zlari bilan birga tarqatadi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy `.d.ts` fayl namunasi (masalan, `my-js-lib.d.ts`):",
+          "code": [
+            "// Mavjud JavaScript funksiyasining tipini e'lon qiladi",
+            "declare function greet(name: string): void;",
+            "",
+            "// Mavjud JavaScript obyektining tipini e'lon qiladi",
+            "declare const myGlobalObject: {",
+            "  version: string;",
+            "  doSomething: (value: number) => boolean;",
+            "};"
+          ]
+        }
+      ],
+      "interviewAnswer": "`.d.ts` (`declaration`) fayllari mavjud JavaScript kodining tiplarini TypeScript'ga tushuntiradi. Ularda kodning o'zi emas, faqat tiplar tavsifi bo'ladi. Ular TypeScript'ga oddiy JavaScript kutubxonalari bilan tip-xavfsiz ishlash imkonini beradi. Ko'pincha `@types/` orqali o'rnatiladi."
+    }
+  },
+  {
+    "id": "ts-q17",
+    "question": "TypeScript'da `readonly` modifikatori nima qiladi?",
+    "topic": "TypeScript Modifiers",
+    "answer": {
+      "definition": "`readonly` modifikatori `class`, `interface` yoki `type alias` ichidagi xususiyatlarga (`properties`) qo'llaniladi va bu xususiyatlarga **faqat ular e'lon qilingan joyda yoki `constructor` ichida** qiymat berish mumkinligini, keyinchalik esa ularni o'zgartirib bo'lmasligini bildiradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U `JavaScript`'dagi `const`'ga o'xshaydi, lekin `const` o'zgaruvchilarga qo'llanilsa, `readonly` obyekt **xususiyatlariga** qo'llaniladi. Bu `immutability`'ni ta'minlashga yordam beradi va obyekt holatining (`state`) kutilmagan tarzda o'zgarib ketishining oldini oladi. `readonly` faqat `compile time` tekshiruvi hisoblanadi; u kompilyatsiya qilingan JavaScript kodida hech qanday ta'sirga ega emas."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "interface Point {",
+            "  readonly x: number;",
+            "  readonly y: number;",
+            "}",
+            "",
+            "const p1: Point = { x: 10, y: 20 };",
+            "// p1.x = 5; // Xato: Cannot assign to 'x' because it is a read-only property.",
+            "",
+            "class Animal {",
+            "  readonly name: string;",
+            "  constructor(theName: string) {",
+            "    this.name = theName; // Constructor'da qiymat berish mumkin",
+            "  }",
+            "}",
+            "let cat = new Animal(\"Mushuk\");",
+            "// cat.name = \"Tom\"; // Xato: 'name' readonly."
+          ]
+        }
+      ],
+      "interviewAnswer": "`readonly` modifikatori `class` yoki `interface` xususiyatiga qo'llaniladi va unga faqat e'lon qilinganda yoki `constructor`'da qiymat berish mumkinligini bildiradi. Keyinchalik uni o'zgartirib bo'lmaydi. Bu `immutability`'ni ta'minlashga yordam beradi (`compile time`'da)."
+    }
+  },
+  {
+    "id": "ts-q18",
+    "question": "TypeScript'da `namespace` nima va u `module`'lardan qanday farq qiladi?",
+    "topic": "TypeScript Namespaces vs Modules",
+    "answer": {
+      "definition": "`Namespace`'lar (ilgari `Internal Modules` deb atalgan) global `scope`'ni ifloslantirmasdan, bir-biriga bog'liq bo'lgan kodlarni guruhlashning eski TypeScript usulidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular `namespace MyNamespace { ... }` sintaksisi bilan yaratiladi va ichidagi elementlarni tashqariga chiqarish uchun `export` ishlatiladi. `Namespace`'lar bir nechta faylga bo'linishi va keyin bitta `JavaScript` fayliga kompilyatsiya qilinishi mumkin. Biroq, zamonaviy JavaScript ekotizimida **ES6 `Modules` (`import`/`export`)** standart va afzal ko'rilgan yondashuv hisoblanadi. `Modules` har bir faylni o'zining `scope`'iga ega deb hisoblaydi va bog'liqliklarni aniqroq boshqarish imkonini beradi. `Namespace`'larni endi faqat juda eski kod bazalari yoki global `script`'lar bilan ishlaganda ishlatish mumkin, lekin yangi loyihalar uchun **ES6 `Modules`'dan foydalanish qat'iy tavsiya etiladi**."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Namespace Misoli:",
+          "code": [
+            "// validation.ts",
+            "namespace Validation {",
+            "  export interface StringValidator { isAcceptable(s: string): boolean; }",
+            "  const lettersRegexp = /^[A-Za-z]+$/;",
+            "  export class LettersOnlyValidator implements StringValidator {",
+            "    isAcceptable(s: string) { return lettersRegexp.test(s); }",
+            "  }",
+            "}",
+            "",
+            "// app.ts",
+            "/// <reference path=\"validation.ts\" />",
+            "let validator = new Validation.LettersOnlyValidator();",
+            "console.log(validator.isAcceptable(\"Hello\")); // true"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Namespace` kodni guruhlashning eski TypeScript usuli (`namespace X { export ... }`). U global `scope`'ni ifloslantirmaydi. Hozirda standart va tavsiya etilgan usul bu ES6 `Modules` (`import`/`export`). `Modules` har bir faylni alohida `scope` deb hisoblaydi va bog'liqliklarni yaxshiroq boshqaradi."
+    }
+  },
+  {
+    "id": "ts-q19",
+    "question": "TypeScript'da `Literal Types` nima?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`Literal Types` o'zgaruvchiga faqat bitta, aniq qiymatni (ma'lum bir `string`, `number` yoki `boolean` literalini) qabul qilishiga ruxsat beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular odatda `Union` tiplari bilan birgalikda ishlatilib, o'zgaruvchi faqat ma'lum bir cheklangan qiymatlar to'plamidan birini qabul qila olishini ta'minlaydi. Bu kodni yanada aniqroq qiladi va kutilmagan qiymatlardan himoyalaydi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misollar:",
+          "code": [
+            "let status: \"success\";",
+            "// status = \"error\"; // Xato: Type '\"error\"' is not assignable to type '\"success\"'.",
+            "status = \"success\"; // OK",
+            "",
+            "type Alignment = \"left\" | \"center\" | \"right\";",
+            "let textAlign: Alignment;",
+            "textAlign = \"center\"; // OK",
+            "// textAlign = \"justify\"; // Xato",
+            "",
+            "function compare(a: string, b: string): -1 | 0 | 1 {",
+            "  return a === b ? 0 : a > b ? 1 : -1;",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Literal Types` o'zgaruvchiga faqat bitta aniq qiymatni (`'success'`, `10`, `true`) qabul qilishga ruxsat beradi. Ular ko'pincha `Union` tiplari (`'red' | 'blue'`) bilan birga ishlatilib, mumkin bo'lgan qiymatlar to'plamini cheklaydi."
+    }
+  },
+  {
+    "id": "ts-q20",
+    "question": "TypeScript `compiler`'ini sozlash uchun `tsconfig.json`'dagi `strict` opsiyasi nima qiladi?",
+    "topic": "TypeScript Configuration",
+    "answer": {
+      "definition": "`strict: true` opsiyasi `tsconfig.json`'da bir qator qat'iy tip tekshiruvi qoidalarini birgalikda yoqadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu sozlama odatda yangi loyihalar uchun **qat'iy tavsiya etiladi**, chunki u ko'plab potensial xatoliklarni `compile time`'da aniqlashga yordam beradi va kod sifatini oshiradi. `strict: true` quyidagi asosiy sozlamalarni o'z ichiga oladi (ularni alohida o'chirib qo'yish ham mumkin):"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`noImplicitAny`: Tip aniq ko'rsatilmagan va TypeScript tomonidan chiqarib bo'lmaydigan (`infer`) o'zgaruvchilarga avtomatik `any` tipini berishni taqiqlaydi.",
+            "`strictNullChecks`: `null` va `undefined` qiymatlarini har bir tipning mumkin bo'lgan qiymati sifatida qabul qilmaydi. Bu qiymatlar bilan ishlashdan oldin ularni aniq tekshirishni talab qiladi.",
+            "`strictFunctionTypes`: Funksiya parametrlarining tiplarini `bivariantly` emas, `contravariantly` solishtiradi (bu ko'pincha to'g'riroq).",
+            "`strictBindCallApply`: Funksiyalarning `bind`, `call`, `apply` metodlarini to'g'ri tiplar bilan chaqirishni tekshiradi.",
+            "`strictPropertyInitialization`: `Class` xususiyatlari `constructor`'da yoki e'lon qilinishida boshlang'ich qiymatga ega bo'lishini talab qiladi.",
+            "`noImplicitThis`: `this` qiymati `any` tipiga ega bo'lgan holatlarni xatolik deb hisoblaydi.",
+            "`alwaysStrict`: Har bir faylni `strict mode`'da `parse` qiladi va `'use strict';`'ni chiqish fayllariga qo'shadi."
+          ]
+        }
+      ],
+      "interviewAnswer": "`strict: true` `tsconfig.json`'da bir nechta qat'iy tip tekshiruvi qoidalarini (`noImplicitAny`, `strictNullChecks` va hokazo) yoqadi. Bu kodni xavfsizroq qiladi va potensial xatoliklarni `compile time`'da topishga yordam beradi. Yangi loyihalar uchun tavsiya etiladi."
+    }
+  },
+
+  {
+    "id": "ts-q21",
+    "question": "TypeScript'da `keyof` operatori nima qiladi?",
+    "topic": "TypeScript Advanced Types",
+    "answer": {
+      "definition": "`keyof` operatori obyekt tipini oladi va uning barcha `public` kalitlarining (`keys`) nomlaridan iborat `string` yoki `number` `literal union` tipini qaytaradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu `generic` funksiyalar yoki tiplar yaratishda juda foydali, chunki u bizga obyektning faqat mavjud bo'lgan kalitlari bilan ishlashga imkon beradi va tip xavfsizligini ta'minlaydi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "interface User {",
+            "  name: string;",
+            "  age: number;",
+            "}",
+            "",
+            "// UserKeys tipi endi \"name\" | \"age\" ga teng bo'ladi",
+            "type UserKeys = keyof User;",
+            "",
+            "function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {",
+            "  return obj[key];",
+            "}",
+            "",
+            "const user: User = { name: 'Ali', age: 30 };",
+            "const userName = getProperty(user, 'name'); // OK, userName string bo'ladi",
+            "const userAge = getProperty(user, 'age'); // OK, userAge number bo'ladi",
+            "// const userCity = getProperty(user, 'city'); // Xato: Argument of type '\"city\"' is not assignable to parameter of type 'keyof User'."
+          ]
+        }
+      ],
+      "interviewAnswer": "`keyof Type` berilgan `Type` obyektining barcha `public` kalitlarining nomlaridan iborat `string literal union` tipini qaytaradi (masalan, `keyof User` qaytaradi `'name' | 'age'`). U obyektning faqat mavjud kalitlari bilan ishlashni ta'minlash uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "ts-q22",
+    "question": "TypeScript'da `typeof` operatori (tip kontekstida) nima qiladi?",
+    "topic": "TypeScript Advanced Types",
+    "answer": {
+      "definition": "Tip kontekstida (qiymat kontekstidagi `JavaScript` `typeof`'dan farqli) `typeof` operatori mavjud o'zgaruvchi yoki xususiyatning **tipini olish** imkonini beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu mavjud JavaScript obyektlari yoki qiymatlaridan tiplarni avtomatik ravishda chiqarib olish (`infer`) kerak bo'lganda juda qulay. Masalan, biror obyektning tipini qayta yozmasdan, unga mos keladigan boshqa o'zgaruvchilarni e'lon qilish mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "const person = { name: 'Ali', age: 30 };",
+            "",
+            "// PersonType endi { name: string; age: number; } tipiga teng bo'ladi",
+            "type PersonType = typeof person;",
+            "",
+            "let anotherPerson: PersonType;",
+            "anotherPerson = { name: 'Vali', age: 25 }; // OK",
+            "// anotherPerson = { firstName: 'Soli' }; // Xato",
+            "",
+            "let username: typeof person.name; // username tipi 'string' bo'ladi",
+            "username = 'Sardor';"
+          ]
+        }
+      ],
+      "interviewAnswer": "Tip kontekstida `typeof variable` o'sha `variable`'ning tipini oladi. Bu mavjud qiymatlardan tiplarni qayta yozmasdan olish uchun qulay."
+    }
+  },
+  {
+    "id": "ts-q23",
+    "question": "TypeScript'da `Conditional Types` nima (`T extends U ? X : Y`)?",
+    "topic": "TypeScript Advanced Types",
+    "answer": {
+      "definition": "`Conditional Types` (`shartli tiplar`) berilgan shartga (`T extends U`) qarab, ikki mumkin bo'lgan tipdan (`X` yoki `Y`) birini tanlaydi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular `generic` tiplar bilan birgalikda ishlatilib, tiplarni kirish tipiga qarab dinamik ravishda o'zgartirish yoki tanlash imkonini beradi. Sintaksisi `JavaScript`'dagi `ternary operator`'iga (`condition ? valueIfTrue : valueIfFalse`) juda o'xshaydi, lekin bu tiplar darajasida ishlaydi. Ular `Utility Types` (`Exclude`, `Extract`, `NonNullable`, `ReturnType`) yaratishda keng qo'llaniladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy Misol:",
+          "code": [
+            "// Agar T 'string' yoki 'number' bo'lsa, 'string | number' qaytaradi, aks holda 'never'.",
+            "type StringOrNumberOnly<T> = T extends string | number ? T : never;",
+            "",
+            "let a: StringOrNumberOnly<string>;  // a tipi 'string'",
+            "let b: StringOrNumberOnly<number>;  // b tipi 'number'",
+            "let c: StringOrNumberOnly<boolean>; // c tipi 'never'"
+          ]
+        },
+        {
+          "title": "`NonNullable` Utility Type:",
+          "code": [
+            "// Agar T null yoki undefined bo'lsa, never qaytaradi, aks holda T ni qaytaradi",
+            "type NonNullable<T> = T extends null | undefined ? never : T;",
+            "",
+            "let x: NonNullable<string | null>; // x tipi 'string'",
+            "let y: NonNullable<number | undefined>; // y tipi 'number'"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Conditional Types` (`T extends U ? X : Y`) shartga qarab ikki tipdan birini tanlaydi. Ular `generic`'lar bilan birga tiplarni dinamik ravishda boshqarish uchun ishlatiladi. Ko'plab `Utility Types` ular asosida qurilgan."
+    }
+  },
+  {
+    "id": "ts-q24",
+    "question": "TypeScript'da `Mapped Types` nima?",
+    "topic": "TypeScript Advanced Types",
+    "answer": {
+      "definition": "`Mapped Types` mavjud obyekt tipining kalitlari (`keys`) asosida yangi obyekt tipini yaratish imkonini beradi. Bu transformatsiya jarayonida kalitlarni yoki qiymat tiplarini o'zgartirish mumkin.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ularning sintaksisi `JavaScript`'dagi `for...in` tsikliga o'xshaydi: `{ [P in K]: T }`. Bu yerda `K` odatda `keyof SomeType` yordamida olingan kalitlar `union` tipi, `P` har bir kalitni ifodalaydi va `T` esa yangi qiymat tipini belgilaydi. `Mapped types` yordamida mavjud tipning barcha xususiyatlarini `readonly` qilish (`Readonly<T>`), ixtiyoriy qilish (`Partial<T>`) yoki ularning tiplarini o'zgartirish mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`Readonly` Utility Type (Qayta Yaratish):",
+          "code": [
+            "type MyReadonly<T> = {",
+            "  readonly [P in keyof T]: T[P];",
+            "};",
+            "",
+            "interface Point { x: number; y: number; }",
+            "type ReadonlyPoint = MyReadonly<Point>; // { readonly x: number; readonly y: number; }"
+          ]
+        },
+        {
+          "title": "Barcha Xususiyatlarni `string`'ga O'girish:",
+          "code": [
+            "type StringifyProps<T> = {",
+            "  [P in keyof T]: string;",
+            "};",
+            "",
+            "interface User { id: number; name: string; }",
+            "type StringUser = StringifyProps<User>; // { id: string; name: string; }"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Mapped Types` (`{ [P in keyof T]: ... }`) mavjud obyekt tipining kalitlarini aylanib chiqib, yangi obyekt tipi yaratadi. Bu xususiyatlarni `readonly` qilish, ixtiyoriy qilish yoki ularning tiplarini o'zgartirish uchun ishlatiladi. `Partial`, `Readonly` kabi `Utility Types` ular asosida qurilgan."
+    }
+  },
+  {
+    "id": "ts-q25",
+    "question": "TypeScript'da `module augmentation` nima?",
+    "topic": "TypeScript Modules & Declaration Merging",
+    "answer": {
+      "definition": "`Module augmentation` (`modulni kengaytirish`) — bu mavjud JavaScript `module`'ining yoki tashqi kutubxonaning (`third-party library`) TypeScript `declaration`'ini (`.d.ts` faylini) o'zgartirmasdan, unga yangi xususiyatlar, funksiyalar yoki tiplar qo'shish usulidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu `declare module 'module-name' { ... }` sintaksisi yordamida amalga oshiriladi. Faylingiz `module` sifatida tan olinishi uchun unda kamida bitta `import` yoki `export` bo'lishi kerak. Bu usul bilan siz kutubxonaning asl tiplariga yangi metodlar qo'shishingiz yoki mavjud `interface`'larni kengaytirishingiz mumkin. Bu ayniqsa kutubxona muallifi qo'shmagan, lekin loyihangizda kerak bo'lgan tiplarni qo'shishda foydali."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Lodash'ga yangi metod qo'shish (namuna):",
+          "code": [
+            "// my-lodash-extensions.ts",
+            "import _ from 'lodash'; // Lodashni import qilish kerak",
+            "",
+            "// Lodash modulini kengaytirishni e'lon qilamiz",
+            "declare module 'lodash' {",
+            "  // Mavjud lodash interfeysiga yangi metod signaturasini qo'shamiz",
+            "  interface LoDashStatic {",
+            "    myCustomUtil(value: string): string;",
+            "  }",
+            "}",
+            "",
+            "// Yangi metodning implementatsiyasini qo'shamiz",
+            "_.myCustomUtil = (value: string) => {",
+            "  return `Custom: ${value.toUpperCase()}`;",
+            "};",
+            "",
+            "// Endi _.myCustomUtil() tip tekshiruvidan o'tadi"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Module augmentation` (`declare module '...'`) mavjud `module` yoki kutubxonaning tiplarini (`.d.ts`) o'zgartirmasdan, unga yangi xususiyatlar yoki tiplar qo'shish imkonini beradi. Bu kutubxonalarni o'z loyihangiz ehtiyojlariga moslashtirish uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "ts-q26",
+    "question": "TypeScript'da `abstract class` nima va u `interface`'dan qanday farq qiladi?",
+    "topic": "TypeScript Classes",
+    "answer": {
+      "definition": "`Abstract class` — bu to'g'ridan-to'g'ri nusxasini (`instance`) yaratib bo'lmaydigan, lekin boshqa `class`'lar tomonidan meros (`extend`) olinishi uchun mo'ljallangan asos (`base`) `class`'dir. U ham abstrakt (`abstract`), ham konkret (`concrete`) metodlarga ega bo'lishi mumkin.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**Abstrakt Metodlar:** Faqat signaturasi (`nomi`, `parametr tiplari`, `qaytarish tipi`) e'lon qilinadi, tanasi (`implementation`) bo'lmaydi (`abstract myMethod(): void;`). `Abstract class`'dan meros olgan `class` barcha abstrakt metodlarni **amalga oshirishi (`implement`) shart**."
+        },
+        {
+          "type": "paragraph",
+          "content": "**Konkret Metodlar:** To'liq tanasiga ega bo'lgan oddiy metodlar. Meros olgan `class`'lar ularni ishlatishi yoki qayta yozishi (`override`) mumkin."
+        },
+        { "type": "paragraph", "content": "**`Interface`'dan Farqi:**" },
+        {
+          "type": "list",
+          "items": [
+            "`Interface` faqat shaklni (`shape`) yoki shartnomani (`contract`) belgilaydi, u metodlarning **tanasini (`implementation`) saqlay olmaydi**. `Abstract class` esa ham shaklni (abstrakt metodlar orqali), ham ba'zi umumiy funksionallikni (konkret metodlar orqali) ta'minlashi mumkin.",
+            "`Class` faqat **bitta** `abstract class`'dan meros olishi mumkin, lekin **bir nechta** `interface`'ni `implement` qilishi mumkin."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "abstract class Logger {",
+            "  // Konkret metod",
+            "  log(message: string): void {",
+            "    console.log(`[${new Date().toISOString()}] ${message}`);",
+            "  }",
+            "  // Abstrakt metod - meros olgan class implement qilishi shart",
+            "  abstract save(message: string): void;",
+            "}",
+            "",
+            "class FileLogger extends Logger {",
+            "  save(message: string): void {",
+            "    console.log(`Faylga yozilmoqda: ${message}`);",
+            "    // Faylga yozish logikasi...",
+            "  }",
+            "}",
+            "",
+            "// const myLogger = new Logger(); // Xato: Cannot create an instance of an abstract class.",
+            "const fileLogger = new FileLogger();",
+            "fileLogger.log(\"Bu xabar\");",
+            "fileLogger.save(\"Bu xabar\");"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Abstract class` to'g'ridan-to'g'ri nusxasi yaratilmaydigan, meros olish uchun asos `class`. U ham abstrakt (tanasi yo'q, meros olgan `class` yozishi shart), ham konkret (tanasi bor) metodlarga ega bo'lishi mumkin. `Interface` esa faqat shaklni belgilaydi, metod tanasini saqlamaydi. `Class` faqat bitta `abstract class`'dan, lekin ko'p `interface`'dan meros olishi mumkin."
+    }
+  },
+  {
+    "id": "ts-q27",
+    "question": "TypeScript'da `access modifiers` (`public`, `private`, `protected`) nima?",
+    "topic": "TypeScript Classes",
+    "answer": {
+      "definition": "`Access modifiers` (`kirish modifikatorlari`) `class` a'zolarining (`properties` va `methods`) qayerdan turib kirish mumkinligini (`visibility`) nazorat qiladi.",
+      "explanation": [
+        {
+          "type": "list",
+          "items": [
+            "**`public` (Standart):** A'zoga `class` ichidan, uning `instance`'laridan (obyektlaridan) va undan meros olgan `class`'lardan — ya'ni **hamma joydan** kirish mumkin.",
+            "**`private`:** A'zoga **faqat o'sha `class`'ning o'z ichidan** kirish mumkin. Uning `instance`'laridan yoki meros olgan `class`'lardan kirib bo'lmaydi.",
+            "**`protected`:** A'zoga **o'sha `class`'ning o'z ichidan VA undan meros olgan `class`'lardan** kirish mumkin. Lekin `class`'ning `instance`'laridan (tashqaridan) kirib bo'lmaydi."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Bu modifikatorlar `encapsulation` (ma'lumotlarni yashirish) tamoyilini amalga oshirishga yordam beradi. Ular TypeScript'ga xos xususiyat bo'lib, kompilyatsiya qilingan JavaScript kodida mavjud bo'lmaydi (lekin ES'ning yangi versiyalarida `private fields` (`#`) mavjud)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "class Base {",
+            "  public pubVar = 1;",
+            "  protected protVar = 2;",
+            "  private privVar = 3;",
+            "  getPrivate() { return this.privVar; } // Ichkaridan private'ga kirish mumkin",
+            "}",
+            "class Derived extends Base {",
+            "  accessProtected() { console.log(this.protVar); } // Meros olgan class'dan protected'ga kirish mumkin",
+            "  // accessPrivate() { console.log(this.privVar); } // Xato!",
+            "}",
+            "const instance = new Derived();",
+            "console.log(instance.pubVar); // OK",
+            "// console.log(instance.protVar); // Xato!",
+            "// console.log(instance.privVar); // Xato!",
+            "instance.accessProtected(); // OK"
+          ]
+        }
+      ],
+      "interviewAnswer": "`public` (standart) hamma joydan kirish mumkin. `private` faqat o'sha `class` ichidan kirish mumkin. `protected` o'sha `class` ichidan va undan meros olgan `class`'lardan kirish mumkin. Ular `encapsulation` uchun ishlatiladi (TypeScript'da, `compile time`'da)."
+    }
+  },
+  {
+    "id": "ts-q28",
+    "question": "`Interface` yordamida funksiya tiplarini qanday aniqlash mumkin?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`Interface`'lar nafaqat obyekt shakllarini, balki funksiyalarning signaturalarini (parametr tiplari va qaytarish tipi) tavsiflash uchun ham ishlatilishi mumkin.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Buning uchun `interface` ichida obyekt xususiyati kabi emas, balki to'g'ridan-to'g'ri chaqiruv sintaksisi (`call signature`) yoziladi: `(parametr1: Tipi, parametr2: Tipi): QaytarishTipi;`."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "// Funksiya tipini interface bilan aniqlash",
+            "interface SearchFunc {",
+            "  (source: string, subString: string): boolean;",
+            "}",
+            "",
+            "// Bu interface'ga mos keladigan funksiya",
+            "let mySearch: SearchFunc;",
+            "mySearch = function(src, sub) {",
+            "  let result = src.search(sub);",
+            "  return result > -1;",
+            "};",
+            "",
+            "// Xato bo'ladi, chunki tip mos emas",
+            "// let wrongSearch: SearchFunc;",
+            "// wrongSearch = function(num: number) { return true; }; "
+          ]
+        }
+      ],
+      "interviewAnswer": "Funksiya tipini `interface` bilan aniqlash uchun `interface` ichida chaqiruv sintaksisi (`(param: Type): ReturnType;`) yoziladi. Bu funksiyaning qanday argumentlar qabul qilishi va nima qaytarishini belgilaydi."
+    }
+  },
+  {
+    "id": "ts-q29",
+    "question": "TypeScript'da `Type Inference` nima?",
+    "topic": "TypeScript Types",
+    "answer": {
+      "definition": "`Type Inference` (`tipni chiqarish`) — bu TypeScript `compiler`'ining o'zgaruvchi yoki ifodaning tipini unga aniq tip yozilmagan (`explicit type annotation`) holatlarda ham, uning boshlang'ich qiymati yoki kontekstidan kelib chiqib, **avtomatik ravishda aniqlash** qobiliyatidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Masalan, `let x = 5;` deb yozganingizda, TypeScript `x`'ning tipi `number` ekanligini o'zi chiqaradi. Funksiya `return` qiladigan qiymatning tipini ham ko'pincha o'zi aniqlay oladi. `Type inference` kodni qisqaroq qilishga yordam beradi, chunki har doim ham tiplarni aniq yozish shart bo'lmaydi. Biroq, murakkab holatlarda yoki kodning aniqligini oshirish uchun tiplarni aniq yozish (`explicit annotation`) tavsiya etiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misollar:",
+          "code": [
+            "let message = \"Hello\"; // TypeScript 'message' tipi 'string' deb chiqaradi",
+            "// message = 10; // Xato: Type 'number' is not assignable to type 'string'.",
+            "",
+            "function add(a: number, b: number) {",
+            "  return a + b; // TypeScript bu funksiya 'number' qaytarishini chiqaradi",
+            "}",
+            "let sum = add(1, 2); // TypeScript 'sum' tipi 'number' deb chiqaradi"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Type Inference` TypeScript `compiler`'ining o'zgaruvchi yoki ifodaning tipini unga aniq tip yozilmasdan ham (masalan, boshlang'ich qiymatidan) avtomatik aniqlashidir. Bu kodni qisqartiradi, lekin ba'zan aniqlik uchun tiplarni yozish kerak."
+    }
+  },
+  {
+    "id": "ts-q30",
+    "question": "TypeScript `React` bilan qanday ishlatiladi (`.tsx` fayllari, `Props` va `State` tiplari)?",
+    "topic": "TypeScript with React",
+    "answer": {
+      "definition": "TypeScript `React` komponentlarini yozishda tip xavfsizligini (`type safety`) ta'minlash uchun keng qo'llaniladi. `JSX` sintaksisini o'z ichiga olgan fayllar odatda `.tsx` kengaytmasiga ega bo'ladi.",
+      "explanation": [
+        { "type": "paragraph", "content": "Asosiy integratsiya nuqtalari:" },
+        {
+          "type": "list",
+          "items": [
+            "**`.tsx` Fayllari:** `JSX` kodini `TypeScript` fayllarida ishlatish uchun fayl kengaytmasi `.tsx` bo'lishi kerak va `tsconfig.json`'da `jsx` opsiyasi to'g'ri sozlanishi kerak (masalan, `\"react-jsx\"`).",
+            "**`Props` Tiplari:** Komponent qabul qiladigan `props`'larning shakli (`shape`) va tiplari odatda `interface` yoki `type alias` yordamida aniqlanadi. Funksional komponentlarda bu tip `props` parametriga qo'llaniladi.",
+            "**`State` Tiplari:** `useState` `Hook`'i `generic` bo'lgani uchun, unga `state`'ning tipini aniq ko'rsatish mumkin (`useState<number>(0)`) yoki TypeScript uni boshlang'ich qiymatdan o'zi chiqaradi (`useState(0)` avtomatik `number` deb chiqariladi).",
+            "**`Event` Tiplari:** Hodisa ishlovchi (`event handler`) funksiyalarida `event` obyektining tipini (`React.ChangeEvent<HTMLInputElement>`, `React.MouseEvent<HTMLButtonElement>`) aniq ko'rsatish mumkin, bu esa `event.target` kabi xususiyatlarga tip-xavfsiz kirish imkonini beradi."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Tip bilan `Props` va `State`:",
+          "code": [
+            "import React, { useState } from 'react';",
+            "",
+            "// Props uchun tipni aniqlash",
+            "interface GreetingProps {",
+            "  name: string;",
+            "  messageCount?: number; // Ixtiyoriy prop",
+            "}",
+            "",
+            "// Functional Component with TypeScript",
+            "const Greeting: React.FC<GreetingProps> = ({ name, messageCount = 0 }) => {",
+            "  // State tipi boshlang'ich qiymatdan chiqariladi (number)",
+            "  const [count, setCount] = useState(0);",
+            "",
+            "  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {",
+            "     console.log(event.target.value);",
+            "  };",
+            "",
+            "  return (",
+            "    <div>",
+            "      <h1>Salom, {name}!</h1>",
+            "      <p>Xabarlar soni: {messageCount}</p>",
+            "      <p>Kliklar: {count}</p>",
+            "      <button onClick={() => setCount(c => c + 1)}>Klik</button>",
+            "      <input type=\"text\" onChange={handleChange} />",
+            "    </div>",
+            "  );",
+            "};",
+            "",
+            "export default Greeting;"
+          ]
+        }
+      ],
+      "interviewAnswer": "TypeScript `React` bilan `.tsx` fayllari orqali ishlatiladi. `Props` tiplari `interface` yoki `type` bilan aniqlanadi. `State` tiplari `useState<Type>(initialValue)` bilan yoki avtomatik (`inference`) belgilanadi. Hodisa (`event`) tiplari ham (`React.ChangeEvent`) aniq ko'rsatilishi mumkin. Bu tip xavfsizligini ta'minlaydi."
+    }
+  },
+
+  {
+    "id": "js-q31",
+    "question": "`Promise.all()`, `Promise.race()`, `Promise.allSettled()`, `Promise.any()` metodlari nima qiladi?",
+    "topic": "JS Asynchronous",
+    "answer": {
+      "definition": "Bular `Promise` obyektining bir nechta `Promise`'lar bilan birgalikda ishlash uchun mo'ljallangan statik metodlaridir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Promise.all(iterable)`:** Massivdagi **barcha** `Promise`'lar `fulfilled` bo'lishini kutadi. Agar hammasi `fulfilled` bo'lsa, natijalar massivi bilan `fulfilled` bo'lgan yangi `Promise` qaytaradi. Agar kamida bittasi `rejected` bo'lsa, darhol o'sha birinchi `rejected` `Promise`'ning xatosi bilan `rejected` bo'ladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Promise.race(iterable)`:** Massivdagi **birinchi** `settled` (ya'ni `fulfilled` yoki `rejected`) bo'lgan `Promise`'ning natijasi (yoki xatosi) bilan `settled` bo'lgan yangi `Promise` qaytaradi. Qolgan `Promise`'larning natijasi e'tiborga olinmaydi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Promise.allSettled(iterable)`:** Massivdagi **barcha** `Promise`'lar `settled` bo'lishini kutadi (ular `fulfilled` bo'ladimi yoki `rejected` bo'ladimi, farqi yo'q). Keyin har bir `Promise`'ning holati (`status: 'fulfilled'` yoki `'rejected'`) va natijasi (`value`) yoki sababi (`reason`) bilan obyektlar massivini qaytaradigan `fulfilled` `Promise` qaytaradi. Bu bir nechta asinxron operatsiyaning barchasining natijasini bilish kerak bo'lganda foydali."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Promise.any(iterable)`:** Massivdagi **birinchi `fulfilled`** bo'lgan `Promise`'ning qiymati bilan `fulfilled` bo'lgan yangi `Promise` qaytaradi. Agar massivdagi **barcha** `Promise`'lar `rejected` bo'lsa, u holda `AggregateError` xatosi bilan `rejected` bo'ladi."
+        }
+      ],
+      "interviewAnswer": "`Promise.all()` hammasi bajarilishini kutadi (bittasi `reject` bo'lsa, `reject` bo'ladi). `Promise.race()` birinchisi `settled` bo'lishini kutadi. `Promise.allSettled()` hammasi `settled` bo'lishini kutadi va har birining natijasini qaytaradi. `Promise.any()` birinchisi `fulfilled` bo'lishini kutadi (hammasi `reject` bo'lsa, `reject` bo'ladi)."
+    }
+  },
+  {
+    "id": "js-q32",
+    "question": "JavaScript'da `class` sintaksisi (ES6) qanday ishlaydi va u `prototypal inheritance`'dan qanday farq qiladi?",
+    "topic": "JS Classes & Prototypes",
+    "answer": {
+      "definition": "ES6 `class` sintaksisi JavaScript'da obyektga yo'naltirilgan dasturlash (`OOP`) uchun an'anaviy `class`-based tillarga o'xshashroq, qulayroq sintaksisni taqdim etadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`class` kalit so'zi yangi `class` yaratadi. `constructor` metodi obyekt yaratilganda (`new` bilan) chaqiriladigan maxsus metoddir. `class` ichida yozilgan boshqa metodlar avtomatik ravishda `class`'ning `prototype`'iga qo'shiladi. `extends` kalit so'zi boshqa `class`'dan meros olish (`inheritance`) imkonini beradi. `super()` `parent` `class`'ning `constructor`'ini chaqirish uchun ishlatiladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**Farqi:** `class` sintaksisi aslida orqa fonda hali ham **`prototypal inheritance`** mexanizmidan foydalanadi. U yangi meros olish modelini yaratmaydi, balki mavjud `prototype`-based model uchun shunchaki qulayroq sintaktik qobiq (`syntactic sugar`) hisoblanadi. U kodni boshqa `OOP` tillaridan kelgan dasturchilar uchun tushunarliroq qiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Class Misoli:",
+          "code": [
+            "class Animal {",
+            "  constructor(name) {",
+            "    this.name = name;",
+            "  }",
+            "  speak() {",
+            "    console.log(`${this.name} makes a noise.`);",
+            "  }",
+            "}",
+            "",
+            "class Dog extends Animal {",
+            "  speak() {",
+            "    super.speak(); // Parent metodini chaqirish",
+            "    console.log(`${this.name} barks.`);",
+            "  }",
+            "}",
+            "",
+            "const myDog = new Dog('Buddy');",
+            "myDog.speak(); // Buddy makes a noise. Buddy barks."
+          ]
+        }
+      ],
+      "interviewAnswer": "ES6 `class` sintaksisi `prototypal inheritance` uchun qulayroq sintaksis (`syntactic sugar`) beradi. U `constructor`, metodlar, `extends` (meros olish) va `super` (parent'ga murojaat) kabi kalit so'zlarni taqdim etadi, lekin orqa fonda hali ham `prototype`'lar ishlaydi."
+    }
+  },
+  {
+    "id": "js-q33",
+    "question": "JavaScript'da `Symbol` tipi nima va u nima uchun ishlatiladi?",
+    "topic": "JS Data Types",
+    "answer": {
+      "definition": "`Symbol` (ES6 da kiritilgan) — bu qiymati **unikal va o'zgarmas (`immutable`)** bo'lgan `primitive` ma'lumot tipidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Har bir `Symbol()` chaqiruvi mutlaqo yangi, boshqa hech qanday qiymatga teng bo'lmagan `symbol` qiymatini qaytaradi (`Symbol('foo') !== Symbol('foo')`). `Symbol`'lar asosan obyekt xususiyatlari (`property keys`) sifatida ishlatiladi. Ularning asosiy maqsadi — obyektga yangi xususiyat qo'shganda, obyektning mavjud xususiyatlari yoki boshqa kutubxonalar qo'shgan xususiyatlar bilan **nom to'qnashuvining (`naming collision`) oldini olish**. `Symbol` xususiyatlari `for...in` tsikli yoki `Object.keys()` metodida sanab o'tilmaydi, lekin `Object.getOwnPropertySymbols()` orqali olinishi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "const mySymbol = Symbol('description'); // Tavsif ixtiyoriy",
+            "const anotherSymbol = Symbol('description');",
+            "console.log(mySymbol === anotherSymbol); // false",
+            "",
+            "const myObj = {};",
+            "myObj[mySymbol] = 'Bu maxfiy qiymat!';",
+            "console.log(myObj[mySymbol]); // 'Bu maxfiy qiymat!'",
+            "console.log(Object.keys(myObj)); // [] (Symbol ko'rinmaydi)",
+            "console.log(Object.getOwnPropertySymbols(myObj)); // [ Symbol(description) ]"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Symbol` unikal va o'zgarmas `primitive` tip. U asosan obyekt xususiyatlari (`property keys`) sifatida nom to'qnashuvlarining oldini olish uchun ishlatiladi. Ular `for...in` yoki `Object.keys()`'da ko'rinmaydi."
+    }
+  },
+  {
+    "id": "js-q34",
+    "question": "`Template literals` (ES6) nima va ular qanday afzalliklarga ega?",
+    "topic": "ES6 Features",
+    "answer": {
+      "definition": "`Template literals` (yoki `template strings`) — bu `string`'larni yaratish uchun ES6 da kiritilgan yangi sintaksis bo'lib, ular teskari tirnoq (`` ` ``) belgilari ichiga olinadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ularning bir nechta muhim afzalliklari bor:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Interpolatsiya (`Interpolation`):** O'zgaruvchilar yoki ifodalarni `string` ichiga `${expression}` sintaksisi yordamida osonlik bilan joylashtirish imkoniyati.",
+            "**Ko'p Qatorli `String`'lar (`Multiline Strings`):** `String`'ni bir nechta qatorga yozish uchun maxsus belgi ishlatish shart emas.",
+            "**`Tagged Templates`:** Maxsus funksiya yordamida `template literal`'ni qayta ishlash imkoniyati."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "const name = 'Ali';",
+            "const age = 30;",
+            "const message = `Salom, ismim ${name} va yoshim ${age}.`;",
+            "const multiLine = `Birinchi qator.",
+            "Ikkinchi qator.`;"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Template literals` (`` ` ``) `string` yaratishning ES6 usuli. Ular `${expression}` bilan o'zgaruvchilarni `string` ichiga joylashtirish (`interpolation`) va ko'p qatorli `string`'larni (`multiline`) oson yozish imkonini beradi."
+    }
+  },
+  {
+    "id": "js-q35",
+    "question": "`Pure Function` nima va u nima uchun muhim?",
+    "topic": "JS Functional Programming",
+    "answer": {
+      "definition": "`Pure function` (sof funksiya) — bu ikki shartga javob beradigan funksiyadir: 1) Bir xil argumentlar uchun har doim bir xil natija qaytaradi (`deterministic`). 2) Hech qanday `side effect`'larga (`tashqi ta'sir`) ega emas.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**Deterministik:** Natija faqat kirish argumentlariga bog'liq. **`Side Effect`'siz:** Tashqi dunyoni (global o'zgaruvchilar, `DOM`) o'zgartirmaydi."
+        },
+        {
+          "type": "paragraph",
+          "content": "Afzalliklari: Test qilish oson, tushunish va `debug` qilish osonroq, `memoization` uchun qulay."
+        }
+      ],
+      "examples": [
+        { "title": "Pure:", "code": ["function add(a, b) { return a + b; }"] },
+        {
+          "title": "Impure (Side Effect):",
+          "code": ["let total = 0; function addToTotal(n) { total += n; }"]
+        },
+        {
+          "title": "Impure (Not Deterministic):",
+          "code": ["function random() { return Math.random(); }"]
+        }
+      ],
+      "interviewAnswer": "`Pure Function` ikki shartga javob beradi: 1) Bir xil kirish uchun bir xil chiqish (`deterministic`). 2) `Side effect` yo'q (tashqi dunyoni o'zgartirmaydi). Test qilish va tushunish oson."
+    }
+  },
+  {
+    "id": "js-q36",
+    "question": "`shallow comparison` va `deep comparison` (obyektlar/massivlar uchun) nima?",
+    "topic": "JS Objects & Arrays",
+    "answer": {
+      "definition": "Obyekt/massivlarni solishtirishda ularning qanchalik 'chuqur' tekshirilishiga qarab ikki yondashuv mavjud.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Shallow Comparison`:** Faqat obyekt/massivlarning havolalarini (`references`) solishtiradi (`obj1 === obj2`). Agar havolalar bir xil bo'lsa `true`."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Deep Comparison`:** Obyekt/massivlarning ichidagi qiymatlarni rekursiv ravishda solishtiradi. Agar barcha qiymatlar bir xil bo'lsa `true`. JavaScript'da o'rnatilgan usuli yo'q (maxsus funksiya yoki kutubxona kerak)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Shallow:",
+          "code": [
+            "const a = {x:1}; const b = {x:1}; const c = a; a === b; // false; a === c; // true"
+          ]
+        },
+        {
+          "title": "Deep (Concept):",
+          "code": [
+            "const a = {x:1}; const b = {x:1}; isEqual(a, b); // true (using a library function)"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Shallow comparison` (`===`) faqat havolalarni solishtiradi. `Deep comparison` esa ichki qiymatlarni rekursiv tekshiradi. `React` `state`/`props`'ni tekshirishda `shallow comparison` ishlatadi."
+    }
+  },
+  {
+    "id": "js-q37",
+    "question": "JavaScript'da `Generator` funksiyalar nima (`function*` va `yield`)?",
+    "topic": "ES6 Features",
+    "answer": {
+      "definition": "`Generator` funksiyalar (`function*`) bajarilishini `yield` kalit so'zi yordamida to'xtatib turish (`pause`) va keyinroq `.next()` metodi orqali davom ettirish (`resume`) mumkin bo'lgan maxsus funksiyalardir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular chaqirilganda `Generator` obyektini qaytaradi. Har `.next()` chaqiruvi `yield`'gacha bo'lgan kodni bajaradi va `{ value: ..., done: ... }` obyektini qaytaradi. `Iterator`'larni oson yaratishda va asinxronlikda ishlatiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "function* myGen() { yield 1; yield 2; }",
+            "const gen = myGen();",
+            "gen.next(); // { value: 1, done: false }",
+            "gen.next(); // { value: 2, done: false }",
+            "gen.next(); // { value: undefined, done: true }"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Generator` funksiyalar (`function*`) `yield` bilan to'xtatilib, `.next()` bilan davom ettirilishi mumkin. Ular `Generator` obyektini qaytaradi. `Iterator` yaratishda foydali."
+    }
+  },
+  {
+    "id": "js-q38",
+    "question": "`WeakMap` va `WeakSet` nima va ular `Map` va `Set`'dan qanday farq qiladi?",
+    "topic": "ES6 Data Structures",
+    "answer": {
+      "definition": "`WeakMap` va `WeakSet` `Map` va `Set`'ga o'xshaydi, lekin obyektlarga 'kuchsiz' (`weak`) havolalar ushlab turadi, bu esa `garbage collection`'ga yordam beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Agar obyektga `WeakMap`/`WeakSet`'dan boshqa havola qolmasa, u xotiradan o'chirilishi mumkin. Shu sababli, ularni iteratsiya qilib bo'lmaydi va `.size` xususiyati yo'q. `WeakMap`'da kalitlar faqat obyekt bo'lishi mumkin."
+        }
+      ],
+      "interviewAnswer": "`WeakMap`/`WeakSet` obyektlarga 'kuchsiz' havola ushlaydi. Obyektga boshqa havola qolmasa, `garbage collector` uni o'chiradi (xotira `leak`'ini oldini oladi). Ularni iteratsiya qilib bo'lmaydi, `.size` yo'q."
+    }
+  },
+  {
+    "id": "js-q39",
+    "question": "`Optional Chaining` (`?.`) va `Nullish Coalescing Operator` (`??`) (ES2020) nima?",
+    "topic": "ESNext Features",
+    "answer": {
+      "definition": "Bu operatorlar `null` yoki `undefined` bilan ishlashni xavfsizroq va qisqaroq qiladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Optional Chaining` (`?.`):** Ichma-ich xususiyatlarga xavfsiz kirish. Agar `?.`'dan oldingi qiymat `null`/`undefined` bo'lsa, `undefined` qaytaradi, xato emas (`user?.address?.street`)."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Nullish Coalescing Operator` (`??`):** Faqat chapdagi operand `null` yoki `undefined` bo'lsa o'ngdagini qaytaradi. Aks holda chapdagini (`||` dan farqli: `0`, `false`, `''` ham chapdan olinadi)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Optional Chaining:",
+          "code": ["const street = user?.address?.street;"]
+        },
+        {
+          "title": "Nullish Coalescing:",
+          "code": [
+            "const name = data.name ?? 'Anonim'; // Agar data.name null/undefined bo'lsa"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Optional Chaining` (`?.`) xususiyatga xavfsiz kiradi (`null`/`undefined`'da `undefined` qaytaradi). `Nullish Coalescing` (`??`) faqat `null`/`undefined` bo'lsa o'ngdagini qaytaradi."
+    }
+  },
+  {
+    "id": "js-q40",
+    "question": "JavaScript'da `Web Workers` nima va ular qachon ishlatiladi?",
+    "topic": "JS Web APIs",
+    "answer": {
+      "definition": "`Web Workers` JavaScript kodini asosiy `UI thread`'ni bloklamasdan, orqa fon `thread`'ida ishga tushirish imkonini beruvchi brauzer `API`sidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular `CPU`'ni ko'p talab qiladigan vazifalarni bajarib, `UI`'ning 'qotib qolishi'ni oldini olish uchun ishlatiladi. Asosiy `thread` bilan `postMessage()` orqali xabar almashadi va `DOM`'ga to'g'ridan-to'g'ri kira olmaydi."
+        }
+      ],
+      "interviewAnswer": "`Web Workers` kodni orqa fon `thread`'ida ishlatadi. Ular `CPU`-og'ir vazifalar uchun `UI` bloklanishini oldini oladi. `postMessage` orqali aloqa qiladi, `DOM`'ga kira olmaydi."
+    }
+  },
+
+  {
+    "id": "js-q41",
+    "question": "`CORS` (Cross-Origin Resource Sharing) nima va u nima uchun kerak?",
+    "topic": "JS Web APIs & Security",
+    "answer": {
+      "definition": "`CORS` — bu brauzer xavfsizlik mexanizmi bo'lib, u bir `origin`'dan (domen, protokol, port) yuklangan sahifaga boshqa `origin`'dagi resurslarga (`API`, shriftlar) murojaat qilishni boshqaradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Standart `Same-Origin Policy` boshqa `origin`'larga `fetch` qilishni taqiqlaydi. `CORS` serverga maxsus `HTTP header`'lar (`Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`) orqali qaysi boshqa `origin`'larga ruxsat berishini ko'rsatish imkonini beradi. Brauzer bu `header`'larni tekshirib, ruxsat bo'lsagina so'rovni bajaradi yoki javobni `JavaScript`'ga beradi."
+        }
+      ],
+      "interviewAnswer": "`CORS` brauzer xavfsizlik mexanizmi bo'lib, bir `origin`'dagi sahifaga boshqa `origin`'dagi resurslarga (`API`) murojaat qilishni boshqaradi. Server `Access-Control-Allow-Origin` kabi `header`'lar orqali ruxsat beradi. Ruxsatsiz so'rov bloklanadi."
+    }
+  },
+  {
+    "id": "js-q42",
+    "question": "`fetch` API'si nima va u `XMLHttpRequest`'dan qanday farq qiladi?",
+    "topic": "JS Web APIs & Asynchronous",
+    "answer": {
+      "definition": "`fetch` API'si tarmoq so'rovlarini (`HTTP request`) yuborish va javoblarni (`response`) olish uchun zamonaviy, `Promise`-based interfeysdir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`XMLHttpRequest` (XHR)'ga qaraganda sodda, kuchliroq va moslashuvchan. Asosiy farqlari: `Promise`-based (XHR `event`-based edi), sodda sintaksis, kuchliroq `Request`/`Response` obyektlari. Muhim: `fetch` `Promise`'i faqat tarmoq xatolarida `reject` bo'ladi, `HTTP` xatolarida (`404`, `500`) `reject` bo'lmaydi (`response.ok`'ni tekshirish kerak)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`fetch` bilan:",
+          "code": [
+            "fetch('/api/data').then(res => res.json()).then(data => ...).catch(err => ...);"
+          ]
+        }
+      ],
+      "interviewAnswer": "`fetch` tarmoq so'rovlari uchun zamonaviy, `Promise`-based `API`. `XMLHttpRequest`'dan soddaroq, `async/await` bilan yaxshi ishlaydi. Faqat tarmoq xatosida `reject` bo'ladi, `HTTP` xatolarida (`404`) `response.ok`'ni tekshirish kerak."
+    }
+  },
+  {
+    "id": "js-q43",
+    "question": "`Array.prototype.includes()` metodi nima qiladi?",
+    "topic": "ES7 Features & Array Methods",
+    "answer": {
+      "definition": "`.includes()` metodi massiv ma'lum bir elementni o'z ichiga olganligini (`true`/`false`) tekshiradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U `.indexOf(el) !== -1` tekshiruvidan qulayroq va `NaN` qiymatini ham to'g'ri topa oladi (`indexOf` topa olmaydi). Ikkinchi argument (`fromIndex`) qidiruvni qaysi `index`'dan boshlashni ko'rsatadi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "[1, 2, NaN].includes(2); // true",
+            "[1, 2, NaN].includes(NaN); // true"
+          ]
+        }
+      ],
+      "interviewAnswer": "`.includes()` massivda element bor yoki yo'qligini (`true`/`false`) tekshiradi. `.indexOf() !== -1`'dan qulay va `NaN`'ni topadi."
+    }
+  },
+  {
+    "id": "js-q44",
+    "question": "JavaScript'da `recursion` nima?",
+    "topic": "JS Functions & Algorithms",
+    "answer": {
+      "definition": "`Recursion` (rekursiya) — bu funksiyaning o'zini-o'zi chaqirish texnikasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Rekursiv funksiya `base case` (to'xtash sharti) va `recursive step`'dan (o'zini kichikroq argument bilan chaqirish) iborat bo'ladi. `Base case` bo'lmasa, `stack overflow` xatoligi yuz beradi. Ba'zi muammolarni (daraxtlar, faktorial) elegant yechishga yordam beradi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Faktorial:",
+          "code": ["function fact(n) { return n <= 1 ? 1 : n * fact(n - 1); }"]
+        }
+      ],
+      "interviewAnswer": "`Recursion` funksiyaning o'zini-o'zi chaqirishidir. U `base case` (to'xtash sharti) va `recursive step`'dan iborat. Daraxtlar kabi strukturalar bilan ishlashda qulay."
+    }
+  },
+  {
+    "id": "js-q45",
+    "question": "`Object`'ning `keys`, `values`, va `entries` metodlari nima qiladi?",
+    "topic": "JS Objects",
+    "answer": {
+      "definition": "Bu metodlar obyektning o'zining (`own`) sanaladigan (`enumerable`) xususiyatlarini massiv ko'rinishida qaytaradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`Object.keys(obj)`: Kalitlar massivini qaytaradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "`Object.values(obj)`: Qiymatlar massivini qaytaradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "`Object.entries(obj)`: `[key, value]` juftliklari massivini qaytaradi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "const obj = {a: 1, b: 2};",
+            "Object.keys(obj);   // ['a', 'b']",
+            "Object.values(obj); // [1, 2]",
+            "Object.entries(obj); // [['a', 1], ['b', 2]]"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Object.keys()` kalitlarni, `Object.values()` qiymatlarni, `Object.entries()` `[kalit, qiymat]` juftliklarini massiv qilib qaytaradi."
+    }
+  },
+  {
+    "id": "js-q46",
+    "question": "JavaScript'da `garbage collection` qanday ishlaydi?",
+    "topic": "JS Memory Management",
+    "answer": {
+      "definition": "`Garbage Collection` (GC) JavaScript dvigatelining avtomatik xotira boshqaruvi bo'lib, u endi ishlatilmayotgan obyektlar egallagan xotirani bo'shatadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Dasturchi xotirani qo'lda boshqarmaydi. GC orqa fonda ishlaydi. Asosiy algoritm `Mark-and-Sweep`: ildizdan (`root`) boshlab erishish mumkin bo'lgan obyektlarni belgilaydi (`mark`), keyin belgilanmaganlarni o'chiradi (`sweep`). Bu `memory leak`'larni to'liq oldini olmasligi mumkin."
+        }
+      ],
+      "interviewAnswer": "`Garbage Collection` avtomatik xotira boshqaruvidir. U ishlatilmayotgan obyektlarni topib, xotirani bo'shatadi (`Mark-and-Sweep`). Dasturchini xotirani qo'lda boshqarishdan ozod qiladi."
+    }
+  },
+  {
+    "id": "js-q47",
+    "question": "`mutation` nima va u `primitive` va `reference` tiplar bilan qanday bog'liq?",
+    "topic": "JS Data Types & Immutability",
+    "answer": {
+      "definition": "`Mutation` — bu obyekt/massivning yaratilganidan keyin uning ichki holatini o'zgartirish.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Primitive` tiplar (`string`, `number`...):** `Immutable` (o'zgarmas). Ularni `mutate` qilib bo'lmaydi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Reference` tiplar (`object`, `array`):** `Mutable` (o'zgaruvchan). Ularni `mutate` qilish mumkin (`arr.push()`, `obj.prop = ...`)."
+        },
+        {
+          "type": "paragraph",
+          "content": "`React` kabi kutubxonalarda `immutability`'ni saqlash (nusxa yaratib o'zgartirish) tavsiya etiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Mutable:",
+          "code": ["let arr = [1]; arr.push(2); // arr = [1, 2]"]
+        },
+        {
+          "title": "Immutable approach:",
+          "code": [
+            "let arr = [1]; let newArr = [...arr, 2]; // arr = [1], newArr = [1, 2]"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Mutation` obyekt/massivni joyida o'zgartirish. `Primitive` tiplar `immutable` (o'zgarmas). `Reference` tiplar `mutable` (o'zgaruvchan). `React`'da `immutability` muhim."
+    }
+  },
+  {
+    "id": "js-q48",
+    "question": "`npm` va `npx` o'rtasida qanday farq bor?",
+    "topic": "Node.js & npm",
+    "answer": {
+      "definition": "Ikkalasi ham `npm` bilan keladigan vosita, ammo maqsadlari farqli.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`npm` (Node Package Manager):** Paketlarni o'rnatish (`install`), yangilash (`update`), o'chirish (`uninstall`) va `package.json`'dagi `scripts`'ni ishga tushirish (`run`) uchun."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`npx` (Node Package Execute):** Paketlarni **o'rnatmasdan turib**, to'g'ridan-to'g'ri ishga tushirish (`execute`) uchun. Bir martalik buyruqlar (`create-react-app`) uchun qulay."
+        }
+      ],
+      "examples": [
+        { "title": "`npm`:", "code": ["npm install react", "npm run build"] },
+        { "title": "`npx`:", "code": ["npx vite create my-app"] }
+      ],
+      "interviewAnswer": "`npm` paketlarni boshqaradi (o'rnatadi). `npx` paketlarni ishga tushiradi (o'rnatmasdan)."
+    }
+  },
+  {
+    "id": "js-q49",
+    "question": "`package.json` va `package-lock.json` fayllari nima uchun kerak?",
+    "topic": "Node.js & npm",
+    "answer": {
+      "definition": "Ikkala fayl ham loyiha bog'liqliklarini boshqaradi, ammo turlicha.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`package.json`:** Loyiha manifesti. `Metadata`, `scripts` va asosiy bog'liqliklarning **versiya diapazonlarini** (`dependencies`) saqlaydi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`package-lock.json`:** `npm install` natijasida o'rnatilgan **barcha paketlarning (shu jumladan ichki bog'liqliklar) aniq versiyalarini** qayd qiladi. Turli muhitlarda bir xil o'rnatilishni (`deterministic installs`) kafolatlaydi."
+        }
+      ],
+      "interviewAnswer": "`package.json` asosiy bog'liqliklar va versiya diapazonlarini belgilaydi. `package-lock.json` *barcha* o'rnatilgan paketlarning *aniq* versiyalarini qulflaydi va bir xil `build`'larni kafolatlaydi. Ikkalasi ham `Git`'ga `commit` qilinishi kerak."
+    }
+  },
+  {
+    "id": "js-q50",
+    "question": "JavaScript'da `polyfill` va `transpiler` nima?",
+    "topic": "JS Build Tools & Compatibility",
+    "answer": {
+      "definition": "Ikkalasi ham zamonaviy JavaScript kodini eski brauzerlarda ishlatishga yordam beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Transpiler` (masalan, Babel):** Yangi JavaScript **sintaksisini** (masalan, `arrow functions`, `class`) eski brauzerlar tushunadigan eski sintaksisga **o'giradi**."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Polyfill`:** Eski brauzerlarda **mavjud bo'lmagan yangi funksiyalarni, metodlarni yoki obyektlarni** (masalan, `Promise`, `fetch`, `Array.includes`) JavaScript kodida **qayta yaratib beradi** (funksionallik qo'shadi)."
+        }
+      ],
+      "interviewAnswer": "`Transpiler` (Babel) yangi sintaksisni eskiga o'giradi. `Polyfill` eski brauzerlarda yo'q bo'lgan yangi funksiyalarni qo'shadi."
+    }
+  }
+]

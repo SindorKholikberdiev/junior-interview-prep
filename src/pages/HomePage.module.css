@@ -1,0 +1,21 @@
+.homeContainer {
+  max-width: 800px;
+}
+
+.homeContainer h1 {
+  margin-bottom: 1.5rem;
+  color: #212529;
+}
+
+.homeContainer h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #343a40;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.homeContainer p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,19 @@
+/* src/App.module.css */
+
+/* .appContainer uchun maxsus stil kerak emas, chunki sidebar fixed */
+
+.sidebar {
+  width: 25%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  /* Padding va overflow Sidebar komponentining ichiga ko'chirildi */
+}
+
+.mainContent {
+  margin-left: 25%; /* Sidebar kengligiga mos margin */
+  padding: 2rem;
+}

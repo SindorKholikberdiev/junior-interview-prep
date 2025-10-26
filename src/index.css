@@ -1,0 +1,69 @@
+/* src/index.css */
+
+/* Basic Reset - Barcha elementlar uchun standart margin/paddingni olib tashlash */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding va border'ni element o'lchamiga qo'shish */
+}
+
+body {
+  /* Tizimning standart shriftlarini ishlatish (ko'rinishi OSga qarab farq qilishi mumkin) */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 1.6; /* Qatorlar orasidagi masofa */
+  background-color: #f8f9fa; /* Juda och kulrang fon */
+  color: #212529; /* Asosiy matn uchun to'q kulrang */
+  padding-top: 60px; /* Navbar tepada qotib qolishi uchun joy (agar keyinroq qotirsak) */
+}
+
+/* Havolalar (linklar) uchun standart stillar */
+a {
+  color: #007bff; /* Moviy rang */
+  text-decoration: none; /* Tagidagi chiziqni olib tashlash */
+  transition: color 0.15s ease-in-out; /* Rang o'zgarishini silliqlashtirish */
+}
+
+/* Havola ustiga sichqoncha kelganda */
+a:hover {
+  color: #0056b3; /* To'qroq moviy */
+  text-decoration: underline; /* Tagiga chiziq qo'shish */
+}
+
+/* Sarlavhalar uchun pastki margin */
+h1,
+h2,
+h3 {
+  margin-bottom: 0.75rem; /* rem - ildiz element shriftiga nisbatan */
+  line-height: 1.2;
+}
+
+/* Ro'yxat belgilarini olib tashlash */
+ul {
+  list-style: none;
+}
+
+/* Kod bloklari uchun stillar */
+pre {
+  background-color: #e9ecef; /* Och kulrang fon */
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto; /* Agar kod uzun bo'lsa, gorizontal scroll */
+  margin: 1rem 0;
+  font-size: 0.9em; /* Kod shriftini biroz kichikroq qilish */
+}
+
+code {
+  font-family: Consolas, "Courier New", Courier, monospace; /* Monospace shrift */
+  font-size: inherit; /* pre'dan shrift o'lchamini olish */
+}
+
+/* Oddiy tugmalar uchun bazaviy stil (ixtiyoriy) */
+button {
+  cursor: pointer;
+  padding: 8px 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.15s ease-in-out;
+}

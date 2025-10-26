@@ -1,0 +1,1659 @@
+[
+  {
+    "id": "react-q1",
+    "question": "React nima va uning asosiy xususiyatlari qanday?",
+    "topic": "React Basics",
+    "answer": {
+      "definition": "React — bu `user interface`'lar (`UI`) yaratish uchun mo'ljallangan, `Facebook` (hozirgi `Meta`) tomonidan ishlab chiqilgan va qo'llab-quvvatlanadigan ochiq kodli `JavaScript` kutubxonasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Uning asosiy maqsadi — `state` o'zgarganda `UI`'ni samarali yangilaydigan, qayta ishlatilishi mumkin bo'lgan `UI` komponentlarini yaratishni osonlashtirish. Asosiy xususiyatlari:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Komponentga Asoslangan Arxitektura (`Component-Based Architecture`):** `UI` kichik, mustaqil va qayta ishlatilishi mumkin bo'lgan qismlarga — komponentlarga ajratiladi.",
+            "**`Virtual DOM`:** Haqiqiy `DOM`'ni to'g'ridan-to'g'ri manipulyatsiya qilish o'rniga, `React` xotirada `DOM`'ning virtual nusxasini saqlaydi. `State` o'zgarganda, yangi `Virtual DOM` yaratiladi, eski va yangi `Virtual DOM`'lar solishtiriladi (`diffing`) va faqat o'zgargan qismlargina haqiqiy `DOM`'ga qo'llaniladi (`reconciliation`). Bu `performance`'ni oshiradi.",
+            "**`JSX` (JavaScript XML):** `JavaScript` ichida `HTML`'ga o'xshash sintaksis yozish imkonini beradi. Bu `UI` strukturasini kod ichida ko'rgazmali (`declarative`) tarzda ifodalashni osonlashtiradi.",
+            "**Bir Tomonlama Ma'lumotlar Oqimi (`One-Way Data Flow`):** Ma'lumotlar odatda `parent` komponentdan `child` komponentlarga `props` orqali pastga qarab oqadi. Bu dastur holatini (`state`) tushunish va `debug` qilishni osonlashtiradi.",
+            "**Deklarativ (`Declarative`):** Siz `UI` qanday ko'rinishi kerakligini aytasiz, `React` esa uni `DOM`'da qanday aks ettirishni o'zi hal qiladi (imperativ yondashuvdan farqli o'laroq)."
+          ]
+        }
+      ],
+      "interviewAnswer": "React `user interface`'lar yaratish uchun `JavaScript` kutubxonasidir. U komponentlarga asoslangan, `Virtual DOM` ishlatadi (`performance` uchun), `JSX` sintaksisiga ega (kodda `HTML` yozish), bir tomonlama ma'lumotlar oqimiga (`props`) amal qiladi va deklarativ yondashuvni qo'llaydi."
+    }
+  },
+  {
+    "id": "react-q2",
+    "question": "`Props` va `State` o'rtasida qanday farq bor?",
+    "topic": "React Basics",
+    "answer": {
+      "definition": "`Props` va `State` React komponentlarida ma'lumotlarni boshqarishning ikkita asosiy usulidir, ammo ular tubdan farq qiladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`Props` (Properties) komponentga tashqaridan, ya'ni uning ota-ona (`parent`) komponentidan ma'lumot uzatish uchun ishlatiladi. Ular komponent uchun 'read-only' (o'zgarmas) hisoblanadi."
+        },
+        {
+          "type": "paragraph",
+          "content": "`State` esa komponentning o'zining ichki, o'zgaruvchan ma'lumotlaridir. `useState` `Hook`'i orqali boshqariladi va uning o'zgarishi komponentni qayta `render` qiladi."
+        }
+      ],
+      "differences": [
+        "`Props`: O'zgarmas (`immutable`), `State`: O'zgaruvchan (`mutable`).",
+        "`Props`: Ota-onadan keladi, `State`: Komponent ichida boshqariladi.",
+        "`Props`: `Parent` -> `Child` oqimi, `State`: Komponentning ichki holati."
+      ],
+      "examples": [
+        {
+          "title": "Props:",
+          "code": [
+            "function Welcome(props) { return <h1>Salom, {props.name}</h1>; }",
+            "<Welcome name=\"Ali\" />"
+          ]
+        },
+        {
+          "title": "State:",
+          "code": [
+            "function Counter() { const [count, setCount] = useState(0); return <button onClick={() => setCount(count + 1)}>{count}</button>; }"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Props` ota-onadan bolaga ma'lumot uzatadi va o'zgarmasdir (`read-only`). `State` esa komponentning ichki, o'zgaruvchan xotirasi bo'lib, `useState` bilan boshqariladi va uning o'zgarishi qayta `render`'ga sabab bo'ladi."
+    }
+  },
+  {
+    "id": "react-q3",
+    "question": "`Virtual DOM` nima va u `React`'da qanday ishlaydi?",
+    "topic": "React Basics",
+    "answer": {
+      "definition": "`Virtual DOM` (VDOM) — bu haqiqiy `DOM`'ning xotiradagi yengil nusxasi (`in-memory representation`). Bu `React`'ga `UI` yangilanishlarini samarali amalga oshirishga yordam beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Komponentning `state` yoki `props`'lari o'zgarganda, `React` quyidagi amallarni bajaradi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "1. Yangi `Virtual DOM` daraxtini yaratadi.",
+            "2. Uni avvalgi (`snapshot`) `Virtual DOM` daraxti bilan solishtiradi (**`Diffing Algorithm`**).",
+            "3. Faqat o'zgargan qismlar ro'yxatini aniqlaydi.",
+            "4. O'sha o'zgarishlarning **minimal to'plamini** haqiqiy `DOM`'ga qo'llaydi (**`Reconciliation`**). Bu jarayon odatda `batching` (o'zgarishlarni to'plab qo'llash) orqali yanada optimallashtiriladi."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Bu yondashuv haqiqiy `DOM`'ga qilinadigan qimmat (`expensive`) murojaatlar sonini keskin kamaytiradi va dastur `performance`'ini oshiradi."
+        }
+      ],
+      "interviewAnswer": "`Virtual DOM` haqiqiy `DOM`'ning xotiradagi nusxasi. `State` o'zgarganda, `React` yangi `Virtual DOM` yaratadi, uni eskisi bilan solishtiradi (`diffing`) va faqat o'zgargan joylarni haqiqiy `DOM`'ga minimal darajada qo'llaydi (`reconciliation`). Bu `DOM` manipulyatsiyalarini kamaytirib, `performance`'ni oshiradi."
+    }
+  },
+  {
+    "id": "react-q4",
+    "question": "`JSX` nima va u brauzerda qanday ishlaydi?",
+    "topic": "React Basics",
+    "answer": {
+      "definition": "`JSX` (JavaScript XML) — bu `JavaScript` kodining sintaksis kengaytmasi bo'lib, u `JavaScript` ichida `HTML`'ga o'xshash `markup` yozish imkonini beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U `React` komponentlarining `UI` strukturasini deklarativ tarzda ifodalash uchun ishlatiladi. `JSX` brauzerlar tomonidan to'g'ridan-to'g'ri tushunilmaydi. `Build process` (qurilish jarayoni) paytida `Babel` kabi `transpiler`'lar `JSX` kodini oddiy `JavaScript` funksiya chaqiruvlariga (`React.createElement()`) o'giradi. Aynan shu `JavaScript` kodi brauzerda ishlaydi va `DOM` elementlarini yaratadi."
+        },
+        {
+          "type": "paragraph",
+          "content": "`JSX`'da `JavaScript` ifodalarini (`expressions`) jingalak qavslar `{}` ichida ishlatish mumkin. `HTML` atributlari o'rniga `camelCase` atributlar (`className`, `onClick`) ishlatiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "JSX:",
+          "code": [
+            "const element = <h1 className=\"greeting\">Salom, {name}!</h1>;"
+          ]
+        },
+        {
+          "title": "Transpiled JavaScript (taxminan):",
+          "code": [
+            "const element = React.createElement('h1', {className: 'greeting'}, 'Salom, ', name, '!');"
+          ]
+        }
+      ],
+      "interviewAnswer": "`JSX` JavaScript uchun sintaksis kengaytmasi bo'lib, `JavaScript` ichida `HTML`-simon kod yozishga imkon beradi. Brauzerlar uni tushunmaydi. `Babel` kabi `transpiler`'lar uni `React.createElement()` chaqiruvlariga o'giradi. U `UI`'ni deklarativ yozishni osonlashtiradi."
+    }
+  },
+  {
+    "id": "react-q5",
+    "question": "`React`'da `Component` nima va `Functional Component` va `Class Component` o'rtasida qanday farq bor?",
+    "topic": "React Components",
+    "answer": {
+      "definition": "`Component` — bu `UI`'ning mustaqil, qayta ishlatilishi mumkin bo'lgan qismi. Ular `JavaScript` funksiyalari yoki `class`'lari sifatida yozilishi mumkin.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Functional Component`:** Oddiy `JavaScript` funksiyasi bo'lib, u `props` obyektini qabul qiladi va `React` elementini (`JSX`) qaytaradi. `React 16.8`'dan boshlab `Hook`'lar (`useState`, `useEffect`) yordamida `state` va `lifecycle` xususiyatlariga ega bo'lishi mumkin. Hozirda `React`'da komponentlar yaratishning **tavsiya etilgan usuli** hisoblanadi, chunki ular odatda qisqaroq va tushunarliroq bo'ladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Class Component`:** `React.Component` `class`'idan meros olgan `JavaScript` `class`'idir. U `render()` metodiga ega bo'lishi shart, bu metod `JSX` qaytaradi. `State` `this.state` orqali boshqariladi (`this.setState()` bilan yangilanadi). Hayot sikli metodlari (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) mavjud. `Hook`'lar paydo bo'lguncha `state` yoki `lifecycle` kerak bo'lganda yagona yo'l edi. Hozirda kamroq ishlatiladi, lekin eski kod bazalarida yoki ba'zi maxsus holatlarda (`Error Boundaries`) hali ham uchraydi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Functional Component:",
+          "code": [
+            "function Welcome(props) { return <h1>Salom, {props.name}</h1>; }"
+          ]
+        },
+        {
+          "title": "Class Component:",
+          "code": [
+            "class Welcome extends React.Component {",
+            "  render() {",
+            "    return <h1>Salom, {this.props.name}</h1>;",
+            "  }",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Component` `UI`'ning qayta ishlatiladigan qismi. `Functional Component` oddiy funksiya (`props` oladi, `JSX` qaytaradi), `Hook`'lar bilan `state`/`lifecycle`'ga ega bo'lishi mumkin (tavsiya etilgan usul). `Class Component` `React.Component`'dan meros oladi, `render()` metodi bor, `state`'ni `this.state`/`this.setState` bilan, `lifecycle`'ni maxsus metodlar bilan boshqaradi (eskiroq usul)."
+    }
+  },
+  {
+    "id": "react-q6",
+    "question": "`useState` `Hook`'i nima va u qanday ishlatiladi?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`useState` — bu `functional component`'larga `state` (ichki holat yoki xotira) qo'shish imkonini beruvchi `React Hook`'idir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U bitta argument — boshlang'ich `state` qiymatini (`initialState`) qabul qiladi. U ikkita qiymatdan iborat massiv qaytaradi: `[currentState, setStateFunction]`. Birinchisi (`currentState`) `state`'ning joriy qiymati, ikkinchisi (`setStateFunction`) esa bu `state`'ni yangilash uchun ishlatiladigan funksiya. `setStateFunction` chaqirilganda, `React` komponentni yangi `state` qiymati bilan qayta `render` qilishni rejalashtiradi. `State` yangilanishlari asinxron bo'lishi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy Counter:",
+          "code": [
+            "import { useState } from 'react';",
+            "",
+            "function Counter() {",
+            "  // Boshlang'ich qiymat 0",
+            "  const [count, setCount] = useState(0);",
+            "",
+            "  return (",
+            "    <div>",
+            "      <p>Hisob: {count}</p>",
+            "      {/* setCount funksiyasini chaqirish */} ",
+            "      <button onClick={() => setCount(count + 1)}>+1</button>",
+            "      <button onClick={() => setCount(prevCount => prevCount - 1)}>-1</button> {/* Funksional yangilash */} ",
+            "    </div>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`useState` `functional component`'ga `state` qo'shadigan `Hook`. U `[stateValue, setStateFunction]` massivini qaytaradi. `stateValue` joriy qiymat, `setStateFunction` uni yangilash uchun ishlatiladi. `setState` chaqirilishi komponentni qayta `render` qiladi."
+    }
+  },
+  {
+    "id": "react-q7",
+    "question": "`useEffect` `Hook`'i nima va uning asosiy ishlatilish holatlari qanday?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`useEffect` — bu `functional component`'larda `side effect`'larni (komponentning asosiy `render` ishidan tashqaridagi amallar) bajarish uchun ishlatiladigan `React Hook`'idir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`Side effect`'larga misollar: `API`'ga so'rov yuborish, `DOM`'ni to'g'ridan-to'g'ri o'zgartirish, `timer`'lar o'rnatish, `event listener`'lar qo'shish/olib tashlash. `useEffect` ikkita argument qabul qiladi: `effect` funksiyasi va `dependency array`."
+        },
+        {
+          "type": "paragraph",
+          "content": "Asosiy ishlatilish holatlari (`dependency array`'ga qarab):"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Faqat `Mount`'da Ishga Tushirish (`[]`):** Bo'sh massiv berilsa, `effect` faqat komponent birinchi marta `render` bo'lgandan keyin bir marta ishlaydi (masalan, boshlang'ich ma'lumotlarni yuklash).",
+            "**Har Bir `Render`'da Ishga Tushirish (Massivsiz):** `Dependency array` umuman berilmasa, `effect` har bir `render`'dan keyin ishlaydi (ehtiyot bo'lish kerak, cheksiz `loop`'ga olib kelishi mumkin).",
+            "**Ma'lum Qiymatlar O'zgarganda Ishga Tushirish (`[dep1, dep2]`):** Massiv ichidagi qiymatlardan (`props` yoki `state`) biri o'zgarganda `effect` qayta ishga tushadi (masalan, `userId` o'zgarganda yangi ma'lumot yuklash).",
+            "**`Cleanup` Funksiyasi:** `useEffect` ichidan qaytarilgan funksiya komponent `unmount` bo'lishidan oldin yoki `effect` qayta ishga tushishidan oldin chaqiriladi (`timer`'larni tozalash, `listener`'larni olib tashlash uchun)."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "`Mount`'da Ma'lumot Yuklash:",
+          "code": ["useEffect(() => { fetchData(); }, []);"]
+        },
+        {
+          "title": "`prop` O'zgarganda Ishga Tushirish:",
+          "code": [
+            "useEffect(() => { processData(props.data); }, [props.data]);"
+          ]
+        },
+        {
+          "title": "`Cleanup` bilan `EventListener`:",
+          "code": [
+            "useEffect(() => {",
+            "  const handleScroll = () => console.log('Scrolled!');",
+            "  window.addEventListener('scroll', handleScroll);",
+            "  return () => window.removeEventListener('scroll', handleScroll); // Cleanup",
+            "}, []);"
+          ]
+        }
+      ],
+      "interviewAnswer": "`useEffect` `functional component`'larda `side effect`'larni (API so'rovlari, `timer`lar, `DOM` manipulyatsiyalari) bajarish uchun `Hook`. Uning ikkinchi argumenti - `dependency array` - effekt qachon ishlashini boshqaradi: `[]` faqat `mount`'da, `[dep]` `dep` o'zgarganda, massivsiz har `render`'da. `Cleanup` funksiyasini qaytarishi mumkin."
+    }
+  },
+  {
+    "id": "react-q8",
+    "question": "`React`'da `Conditional Rendering` qanday amalga oshiriladi?",
+    "topic": "React Rendering",
+    "answer": {
+      "definition": "`Conditional Rendering` — bu ma'lum shartlarga qarab `UI`'ning turli qismlarini yoki komponentlarni `render` qilish texnikasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "React'da buni amalga oshirishning bir necha standart JavaScript usullari mavjud:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`if`/`else` Ibora:** Komponentning `return` qismidan oldin `if/else` yordamida qaysi `JSX`'ni `render` qilishni aniqlab, uni o'zgaruvchiga saqlash mumkin.",
+            "**Element Variables:** Yuqoridagi kabi, `JSX`'ni `render`'dan oldin o'zgaruvchiga saqlab, keyin o'sha o'zgaruvchini `{}` ichida `render` qilish.",
+            "**Ternary Operator (`condition ? exprIfTrue : exprIfFalse`):** `JSX` ichida qisqa `if/else` mantiqini ifodalash uchun qulay.",
+            "**Logical `&&` Operator (`condition && expression`):** Agar shart `true` bo'lsa, `&&` dan keyingi ifodani `render` qiladi, aks holda hech narsa `render` qilmaydi. Faqat `if` kerak bo'lganda ( `else` bo'lmasa) qulay."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Ternary:",
+          "code": [
+            "<div>{isLoggedIn ? <LogoutButton /> : <LoginButton />}</div>"
+          ]
+        },
+        {
+          "title": "Logical &&:",
+          "code": ["<div>{unreadMessages > 0 && <h2>Xabarlar bor!</h2>}</div>"]
+        }
+      ],
+      "interviewAnswer": "`Conditional Rendering` shartga qarab turli `UI`'larni ko'rsatishdir. Usullari: `if/else` (`return`'dan oldin), `ternary operator` (`cond ? T : F`), va logical `&&` (`cond && T`)."
+    }
+  },
+  {
+    "id": "react-q9",
+    "question": "`React`'da ro'yxatlarni (`lists`) `render` qilayotganda `key` `prop`'i nima uchun kerak?",
+    "topic": "React Rendering",
+    "answer": {
+      "definition": "`key` — bu `React`'ga massivdagi qaysi elementlar o'zgarganini, qo'shilganini yoki o'chirilganini aniqlashga yordam beradigan maxsus `string` yoki `number` atributidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ro'yxat `.map()` yordamida `render` qilinganda, har bir qaytarilgan elementga **unikal va barqaror (`stable`)** `key` berilishi shart. `React` bu `key`'lardan `Virtual DOM` `diffing` algoritmini optimallashtirish uchun foydalanadi. Agar `key`'lar bo'lmasa yoki ular `index` kabi barqaror bo'lmasa, `React` ro'yxatdagi o'zgarishlarni to'g'ri aniqlay olmasligi, `performance` pasayishi va hatto komponent `state`'i bilan bog'liq `bug`'lar yuzaga kelishi mumkin. `key`'lar o'sha ro'yxat elementlari orasida unikal bo'lishi kifoya, butun dastur bo'ylab emas."
+        }
+      ],
+      "examples": [
+        {
+          "title": "To'g'ri ishlatilishi:",
+          "code": [
+            "<ul>",
+            "  {items.map(item => (",
+            "    <li key={item.id}>{item.text}</li>",
+            "  ))}",
+            "</ul>"
+          ]
+        },
+        {
+          "title": "Noto'g'ri ishlatilishi (index bilan - faqat boshqa iloj bo'lmasa):",
+          "code": [
+            "<ul>",
+            "  {items.map((item, index) => (",
+            "    <li key={index}>{item.text}</li>",
+            "  ))}",
+            "</ul>"
+          ]
+        }
+      ],
+      "interviewAnswer": "`key` `prop`'i ro'yxat elementlarini `.map()` qilganda har bir elementga berilishi shart bo'lgan unikal va barqaror identifikator. `React` u orqali qaysi element o'zgarganini, qo'shilganini yoki o'chirilganini samarali aniqlaydi (`reconciliation` uchun muhim). `key` sifatida massiv `index`'ini ishlatish odatda tavsiya etilmaydi."
+    }
+  },
+  {
+    "id": "react-q10",
+    "question": "`Lifting State Up` nima va u qachon ishlatiladi?",
+    "topic": "React Component Communication",
+    "answer": {
+      "definition": "`Lifting State Up` — bu bir nechta `child` komponentlar o'rtasida umumiy bo'lishi yoki ular tomonidan o'zgartirilishi kerak bo'lgan `state`'ni ularning eng yaqin umumiy `parent` komponentiga ko'tarish (`lift`) `pattern`'idir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "React'da ma'lumotlar oqimi bir tomonlama (`parent` -> `child`) bo'lgani uchun, agar bir nechta `child` bir xil `state`'ga bog'liq bo'lsa yoki bir `child` boshqa `child`'ning `state`'iga (yoki `parent`'ning `state`'iga) ta'sir qilishi kerak bo'lsa, bu `state`'ni `child`'larda alohida saqlash o'rniga, uni yuqoriga, umumiy `parent`'ga ko'tarish kerak. Keyin `parent` bu `state` qiymatini `props` orqali kerakli `child`'larga uzatadi va `state`'ni o'zgartiradigan funksiyalarni ham `callback` `props` sifatida uzatadi. Bu ma'lumotlar manbasini yagona (`single source of truth`) qiladi va komponentlar o'rtasidagi sinxronizatsiyani ta'minlaydi."
+        }
+      ],
+      "interviewAnswer": "`Lifting State Up` bir nechta `child` komponent ishlatishi kerak bo'lgan `state`'ni ularning umumiy `parent`'iga ko'tarishdir. `Parent` `state`'ni `props` orqali pastga uzatadi va `state`'ni o'zgartiradigan funksiyalarni ham `callback` `props` sifatida uzatadi. Bu ma'lumotni sinxronlash uchun ishlatiladi."
+    }
+  },
+
+  {
+    "id": "react-q11",
+    "question": "`React Fragment` nima (`<></>`) va u nima uchun ishlatiladi?",
+    "topic": "React JSX",
+    "answer": {
+      "definition": "`React Fragment` — bu `DOM`'ga qo'shimcha `node` (masalan, `<div>`) qo'shmasdan turib, bir nechta elementni guruhlash imkonini beradigan maxsus `React` komponentidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`JSX` qoidasiga ko'ra, har bir komponent faqat bitta ildiz (`root`) element qaytarishi mumkin. Agar siz bir nechta elementni yonma-yon qaytarmoqchi bo'lsangiz, ularni bitta `parent` element bilan o'rashingiz kerak. Odatda buning uchun `<div>` ishlatiladi, lekin bu ba'zan `DOM`'ga keraksiz qo'shimcha `node` qo'shadi. `Fragment` (<>...</> qisqa sintaksisi yoki `<React.Fragment>...</React.Fragment>` to'liq sintaksisi) aynan shu muammoni hal qiladi: u elementlarni guruhlaydi, lekin o'zi `DOM`'da hech qanday iz qoldirmaydi."
+        },
+        {
+          "type": "paragraph",
+          "content": "Qisqa sintaksis (`<>...</>`) `key` atributini qabul qilmaydi. Agar ro'yxatni `Fragment` bilan o'rash kerak bo'lsa va `key` kerak bo'lsa, to'liq `<React.Fragment key={item.id}>...</React.Fragment>` sintaksisidan foydalanish kerak."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Fragment bilan:",
+          "code": [
+            "function MyComponent() {",
+            "  return (",
+            "    <> {/* Qo'shimcha div yo'q */}",
+            "      <td>Qator 1</td>",
+            "      <td>Qator 2</td>",
+            "    </>",
+            "  );",
+            "}"
+          ]
+        },
+        {
+          "title": "Fragmentsiz (noto'g'ri yoki keraksiz div):",
+          "code": [
+            "function MyComponent() {",
+            "  // return ( <td>...</td><td>...</td> ); // Xato: Yonma-yon elementlar",
+            "  // yoki:",
+            "  return (",
+            "    <div> {/* Keraksiz div */} ",
+            "      <td>Qator 1</td>",
+            "      <td>Qator 2</td>",
+            "    </div>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Fragment` (`<>...</>` yoki `<React.Fragment>`) `DOM`'ga qo'shimcha `node` qo'shmasdan bir nechta `JSX` elementini guruhlash imkonini beradi. U `JSX`'ning 'bitta ildiz element' qoidasini bajarish uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q12",
+    "question": "`React`'da `Controlled` va `Uncontrolled Components` o'rtasida qanday farq bor?",
+    "topic": "React Forms",
+    "answer": {
+      "definition": "Bu atamalar asosan `form` elementlari (`<input>`, `<textarea>`, `<select>`) bilan ishlashning ikki xil yondashuvini bildiradi, ya'ni `form` elementining qiymati (`value`) qanday boshqarilishiga qarab farqlanadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Controlled Component` (Boshqariladigan Komponent):** `Form` elementining qiymati (`value`) `React` `state`'i tomonidan to'liq boshqariladi. Qiymat `state`'dan `prop` (`value={this.state.value}`) orqali `input`'ga beriladi va har bir o'zgarish (`onChange` hodisasi) `state`'ni yangilaydigan funksiya (`setState`) orqali qayta ishlanadi. Barcha ma'lumotlar `React` komponentida bo'lgani uchun, qiymatni `validate` qilish, formatlash yoki boshqa `UI` elementlarini unga bog'lash osonlashadi. Bu `React`'da **tavsiya etilgan** yondashuv."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Uncontrolled Component` (Boshqarilmaydigan Komponent):** `Form` elementining qiymati `React` `state`'i tomonidan emas, balki `DOM`'ning o'zi tomonidan boshqariladi (an'anaviy `HTML` `form`'lari kabi). Qiymatni olish uchun odatda `ref` (`useRef` `Hook`'i yoki `createRef`) yordamida `DOM` elementiga to'g'ridan-to'g'ri murojaat qilish kerak bo'ladi. Bu yondashuv kamroq kod talab qilishi mumkin (oddiy holatlarda), lekin qiymatni `React` mantiqi bilan bog'lash qiyinroq. Fayl yuklash (`<input type=\"file\">`) elementi har doim `uncontrolled` hisoblanadi."
+        }
+      ],
+      "interviewAnswer": "`Controlled Component`'da `form` elementining qiymati (`value`) `React` `state`'i bilan boshqariladi (`value={state}` va `onChange={handleStateChange}`). `Uncontrolled Component`'da qiymat `DOM`'da saqlanadi va unga `ref` orqali murojaat qilinadi. `Controlled Component` odatda tavsiya etiladi."
+    }
+  },
+  {
+    "id": "react-q13",
+    "question": "`useContext` `Hook`'i nima va u qanday muammoni hal qiladi?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`useContext` `Hook`'i `React Context API` yordamida yaratilgan `context`'dan joriy qiymatni o'qish imkonini beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U hal qiladigan asosiy muammo — **`prop drilling`**. Bu biror ma'lumotni (`state` yoki funksiya) komponentlar ierarxiyasida juda chuqur joylashgan `child` komponentga yetkazish uchun uni oraliqdagi barcha `parent` komponentlar orqali `prop` sifatida uzatib chiqish zaruratidir. `Context API` (`createContext` va `Provider`) yordamida ma'lumotni ierarxiyaning yuqorisida taqdim etish (`provide`) mumkin. Keyin, ixtiyoriy `child` komponent, qancha chuqurlikda bo'lishidan qat'iy nazar, `useContext(MyContext)` `Hook`'ini chaqirib, o'sha ma'lumotga to'g'ridan-to'g'ri kira oladi. Bu global `state`'ni (masalan, `theme`, `user authentication`) boshqarish uchun qulay."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Kontekst Yaratish:",
+          "code": ["const ThemeContext = React.createContext('light');"]
+        },
+        {
+          "title": "Kontekstni Taqdim Etish (App.js):",
+          "code": [
+            "function App() {",
+            "  const theme = 'dark';",
+            "  return <ThemeContext.Provider value={theme}><Toolbar /></ThemeContext.Provider>;",
+            "}"
+          ]
+        },
+        {
+          "title": "Kontekstdan Foydalanish (Button.js):",
+          "code": [
+            "import { useContext } from 'react';",
+            "import { ThemeContext } from './App.js';",
+            "",
+            "function Button() {",
+            "  const theme = useContext(ThemeContext); // Qiymatni o'qiydi",
+            "  return <button className={theme}>Click Me</button>;",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`useContext` `React Context`'dan qiymatni o'qish uchun `Hook`. U `prop drilling` muammosini hal qiladi, ya'ni ma'lumotni oraliq komponentlar orqali uzatmasdan, chuqurdagi `child` komponentga to'g'ridan-to'g'ri yetkazish imkonini beradi. Global `state` (masalan, `theme`, `user`) uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q14",
+    "question": "`useRef` `Hook`'i nima va uning asosiy ishlatilish holatlari qanday?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`useRef` `Hook`'i ikki asosiy maqsad uchun ishlatiladi: 1) `DOM` elementlariga to'g'ridan-to'g'ri murojaat qilish (`access`) uchun `ref` obyekti yaratish. 2) Komponentning hayoti davomida o'zgarmaydigan, lekin o'zgarishi qayta `render`'ga sabab bo'lmaydigan (`mutable`) qiymatlarni saqlash uchun.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**1. `DOM` Murojaati:** `const myRef = useRef(null)` chaqiruvi `.current` xususiyatiga ega bo'lgan obyekt qaytaradi. Bu `ref` obyekti `JSX` elementiga `ref={myRef}` atributi orqali bog'lanadi. Komponent `DOM`'ga `render` bo'lgandan so'ng, `myRef.current` o'sha `DOM` elementiga ishora qiladi. Bu `input`'ga `focus` qilish, media elementlarini boshqarish yoki `DOM` o'lchamlarini o'lchash kabi holatlarda kerak bo'ladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**2. `Mutable` Qiymatlarni Saqlash:** `useRef` bilan yaratilgan qiymat (`myRef.current = newValue`) komponent `re-render` bo'lganda ham o'z qiymatini saqlab qoladi. Eng muhimi, `.current` xususiyatini o'zgartirish komponentni qayta `render` **qilmaydi**. Bu `state` (`useState`)'dan asosiy farqi. U `timer ID`'lari, avvalgi `state` qiymatlari kabi `render`'ga ta'sir qilmasligi kerak bo'lgan ma'lumotlarni saqlash uchun ishlatiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`DOM`'ga `Focus`:",
+          "code": [
+            "import { useRef, useEffect } from 'react';",
+            "function MyInput() {",
+            "  const inputEl = useRef(null);",
+            "  useEffect(() => { inputEl.current.focus(); }, []);",
+            "  return <input ref={inputEl} type=\"text\" />;",
+            "}"
+          ]
+        },
+        {
+          "title": "`Render`'ga Sabab Bo'lmaydigan Qiymat:",
+          "code": [
+            "import { useRef, useEffect, useState } from 'react';",
+            "function Timer() {",
+            "  const intervalRef = useRef(null);",
+            "  const [count, setCount] = useState(0);",
+            "  useEffect(() => {",
+            "    intervalRef.current = setInterval(() => setCount(c => c + 1), 1000);",
+            "    return () => clearInterval(intervalRef.current);",
+            "  }, []);",
+            "  // intervalRef.current o'zgarishi re-render qilmaydi",
+            "  return <h1>{count}</h1>;",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`useRef` ikki narsa uchun ishlatiladi: 1) `DOM` elementiga to'g'ridan-to'g'ri havola (`ref.current`) olish (masalan, `focus` uchun). 2) Komponent `re-render` bo'lganda ham saqlanib qoladigan, lekin o'zgarishi `re-render`'ga sabab bo'lmaydigan qiymatlarni (`mutable value`) saqlash uchun (`timer ID` kabi)."
+    }
+  },
+  {
+    "id": "react-q15",
+    "question": "`Higher-Order Component` (HOC) nima va u qachon ishlatiladi?",
+    "topic": "React Patterns",
+    "answer": {
+      "definition": "`Higher-Order Component` (HOC) — bu komponentni (`wrapped component`) qabul qilib, yangi, kengaytirilgan komponentni qaytaradigan funksiyadir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "HOC `React`'da komponentlar o'rtasida **mantiqni qayta ishlatish (`reusing logic`)** uchun ishlatiladigan ilg'or `pattern`. U komponentga qo'shimcha `props` qo'shishi, `state`'ni boshqarishi, `UI`'ni o'rashi (`wrap`) yoki boshqa `side effect`'larni bajarishi mumkin. Masalan, `authentication` (foydalanuvchi tizimga kirganligini tekshirish), `logging`, ma'lumotlarni yuklash kabi umumiy funksionallikni bir nechta komponentga qo'llash uchun ishlatilishi mumkin."
+        },
+        {
+          "type": "paragraph",
+          "content": "`Hook`'lar (ayniqsa `custom Hooks`) paydo bo'lganidan keyin, HOC'larga bo'lgan ehtiyoj ancha kamaydi, chunki `Hook`'lar ko'pincha mantiqni qayta ishlatishning sodda va tushunarliroq yo'lini taqdim etadi. Ammo HOC'lar hali ham ba'zi holatlarda, ayniqsa `legacy` kod bazalarida yoki `props`'larni manipulyatsiya qilish kerak bo'lganda ishlatiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy HOC (props qo'shish):",
+          "code": [
+            "// Bu HOC komponentga 'extraProp' nomli prop qo'shadi",
+            "function withExtraProp(WrappedComponent) {",
+            "  return function(props) {",
+            "    return <WrappedComponent {...props} extraProp=\"Bu HOCdan!\" />;",
+            "  };",
+            "}",
+            "",
+            "function MyComponent(props) {",
+            "  return <p>{props.message} {props.extraProp}</p>;",
+            "}",
+            "",
+            "const EnhancedComponent = withExtraProp(MyComponent);",
+            "",
+            "// Ishlatilishi:",
+            "<EnhancedComponent message=\"Salom,\" /> // Natija: Salom, Bu HOCdan!"
+          ]
+        }
+      ],
+      "interviewAnswer": "HOC (Higher-Order Component) komponentni qabul qilib, yangi komponent qaytaradigan funksiyadir. U komponentlar o'rtasida mantiqni qayta ishlatish (`authentication`, `logging`) uchun ishlatiladi. Komponentga qo'shimcha `props` berishi yoki uni o'rashi mumkin. `Hook`'lar ko'pincha HOC'larga yaxshiroq alternativa hisoblanadi."
+    }
+  },
+  {
+    "id": "react-q16",
+    "question": "`React`'da `Error Boundaries` nima va ular nima uchun kerak?",
+    "topic": "React Error Handling",
+    "answer": {
+      "definition": "`Error Boundaries` — bu o'zlarining `child` komponent daraxtidagi (`component tree`) JavaScript xatoliklarini ushlab oladigan (`catch`), bu xatoliklarni `log` qiladigan va xatolik yuz berganda `fallback UI` (muqobil interfeys) ko'rsatadigan maxsus `React` komponentlaridir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`Error Boundary` bo'lmasa, `render` paytida yuz bergan JavaScript xatoligi butun `React` daraxtini ishdan chiqaradi va oq ekran paydo bo'ladi. `Error Boundary` bu xatolikni o'zining chegarasida ushlab qolib, butun dasturning ishdan chiqishini oldini oladi va foydalanuvchiga tushunarliroq xabar ko'rsatish imkonini beradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "`Error Boundary` bo'lishi uchun `class component` bo'lishi va kamida bitta `static getDerivedStateFromError()` yoki `componentDidCatch()` hayot sikli metodini implement qilishi kerak. **`Functional component`'lar `Error Boundary` bo'la olmaydi.** `Error Boundary` quyidagi xatoliklarni ushlamaydi: `event handler`'lar ichidagi xatolar (`try...catch` ishlatish kerak), asinxron kod (`setTimeout`, `Promise`), `server-side rendering` va `Error Boundary`'ning o'zida yuz bergan xatolar."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy Error Boundary:",
+          "code": [
+            "class ErrorBoundary extends React.Component {",
+            "  constructor(props) { super(props); this.state = { hasError: false }; }",
+            "",
+            "  static getDerivedStateFromError(error) {",
+            "    // State'ni yangilab, keyingi render'da fallback UI ko'rsatish",
+            "    return { hasError: true };",
+            "  }",
+            "",
+            "  componentDidCatch(error, errorInfo) {",
+            "    // Xatolikni log qilish (masalan, serverga yuborish)",
+            "    logErrorToMyService(error, errorInfo);",
+            "  }",
+            "",
+            "  render() {",
+            "    if (this.state.hasError) {",
+            "      // Fallback UI",
+            "      return <h1>Nimadir xato ketdi.</h1>;",
+            "    }",
+            "    // Xato bo'lmasa, child komponentlarni ko'rsatish",
+            "    return this.props.children;",
+            "  }",
+            "}",
+            "",
+            "// Ishlatilishi:",
+            "<ErrorBoundary>",
+            "  <MyPotentiallyBuggyComponent />",
+            "</ErrorBoundary>"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Error Boundaries` `child` komponent daraxtidagi `render` paytidagi JavaScript xatolarini ushlaydigan, `log` qiladigan va `fallback UI` ko'rsatadigan `class component`'lardir. Ular butun dasturning ishdan chiqishini oldini oladi. `getDerivedStateFromError()` yoki `componentDidCatch()` metodlarini ishlatadi. `Functional component`'lar `Error Boundary` bo'la olmaydi."
+    }
+  },
+  {
+    "id": "react-q17",
+    "question": "`React Portals` nima uchun ishlatiladi?",
+    "topic": "React Advanced",
+    "answer": {
+      "definition": "`Portals` `child` komponentni `DOM` ierarxiyasida o'zining `parent` komponentidan tashqarida, boshqa bir `DOM node`'iga `render` qilish imkonini beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Odatda, komponentning `JSX`'i `DOM`'da uning `parent`'i ichiga joylashtiriladi. Biroq, ba'zi holatlarda (masalan, `modal` dialoglar, `tooltips`, `dropdown` menyulari) elementni vizual jihatdan `DOM`'ning yuqoriroq qismiga (masalan, to'g'ridan-to'g'ri `<body>` ichiga) chiqarish kerak bo'ladi, aks holda u `parent`'ning `overflow: hidden` yoki `z-index` kabi stillari tufayli qirqilib qolishi yoki yopilib qolishi mumkin. `Portals` aynan shu muammoni hal qiladi. U `ReactDOM.createPortal(child, container)` metodi yordamida ishlatiladi. `child` — bu `render` qilinadigan `React` elementi, `container` — bu `child` joylashtirilishi kerak bo'lgan `DOM` elementi. Muhim jihati: `Portal` `DOM`'da boshqa joyda `render` qilinsa ham, u `React` komponent daraxtida o'zining asl joyida qoladi, ya'ni u hali ham `props` qabul qila oladi va `context`'ga kira oladi, hodisalar (`events`) esa hali ham `React` daraxti bo'ylab yuqoriga ko'tariladi (`bubble`)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Modal Misoli:",
+          "code": [
+            "// index.html'da:",
+            "<div id=\"root\"></div>",
+            "<div id=\"modal-root\"></div>",
+            "",
+            "// Modal.js",
+            "import ReactDOM from 'react-dom';",
+            "function Modal({ children }) {",
+            "  const modalRoot = document.getElementById('modal-root');",
+            "  return ReactDOM.createPortal(",
+            "    <div className=\"modal\">{children}</div>,",
+            "    modalRoot",
+            "  );",
+            "}",
+            "",
+            "// App.js",
+            "function App() {",
+            "  const [showModal, setShowModal] = useState(false);",
+            "  return (",
+            "    <div>",
+            "      <button onClick={() => setShowModal(true)}>Modalni Ochish</button>",
+            "      {showModal && <Modal>Modal Kontenti!</Modal>}",
+            "    </div>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Portals` `child` komponentni `DOM`'da o'z `parent`'idan tashqarida, boshqa bir `DOM node`'iga (masalan, `<body>`) `render` qilish imkonini beradi. Bu `modal`'lar, `tooltip`'lar kabi `UI` elementlarini `CSS` (`overflow`, `z-index`) muammolaridan xalos qilish uchun ishlatiladi. U `ReactDOM.createPortal(child, domNode)` bilan ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q18",
+    "question": "`React`'da `refs` nima va ular qachon ishlatilishi kerak (va kerak emas)?",
+    "topic": "React Refs",
+    "answer": {
+      "definition": "`Refs` (`references`) `DOM node`'lariga yoki `class component` `instance`'lariga to'g'ridan-to'g'ri murojaat qilish (`access`) imkonini beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ular `React`'ning odatiy 'deklarativ' (`declarative`) oqimidan chetga chiqish hisoblanadi va faqat boshqa iloji bo'lmagan holatlarda ishlatilishi kerak. `Functional component`'larda `useRef` `Hook`'i, `class component`'larda esa `React.createRef()` yordamida yaratiladi va `JSX` elementiga `ref={myRef}` atributi orqali bog'lanadi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**Qachon Ishlatilishi Kerak (`Use Cases`):**"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Imperativ animatsiyalarni boshqarish.",
+            "`Input` elementiga `focus` qilish, matnni tanlash yoki media (`video`/`audio`) ijrosini boshqarish.",
+            "Tashqi `DOM` kutubxonalari bilan integratsiya qilish.",
+            "`DOM node`'ining o'lchamlarini yoki joylashuvini o'lchash."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "**Qachon Ishlatilmasligi Kerak (`Avoid Using For`):**"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`React`'ning deklarativ yondashuvi bilan amalga oshirish mumkin bo'lgan har qanday narsa uchun (masalan, `state` va `props` yordamida `UI`'ni shartli `render` qilish).",
+            "Komponentlar o'rtasida ma'lumot uzatish uchun (`props` yoki `context` ishlatilishi kerak).",
+            "Komponentning `render` metodida `ref`'ga murojaat qilish (chunki `ref` faqat `render`'dan keyin `DOM node`'iga bog'lanadi)."
+          ]
+        }
+      ],
+      "interviewAnswer": "`Refs` `DOM node`'lariga yoki `class component` `instance`'lariga to'g'ridan-to'g'ri murojaat qilish imkonini beradi (`useRef` yoki `createRef` bilan). Ular faqat deklarativ yo'l bo'lmaganda ishlatilishi kerak, masalan, `input`'ga `focus` qilish, `DOM` o'lchamlarini olish yoki imperativ animatsiyalar uchun. `UI`'ni boshqarish yoki ma'lumot uzatish uchun ishlatilmasligi kerak."
+    }
+  },
+  {
+    "id": "react-q19",
+    "question": "`React`'da `forwardRef` nima uchun ishlatiladi?",
+    "topic": "React Refs",
+    "answer": {
+      "definition": "`React.forwardRef` — bu `parent` komponentdan `child` komponentga `ref`'ni 'o'tkazish' (`forward`) imkonini beradigan funksiyadir, bu esa `parent`'ga `child` ichidagi `DOM node`'iga to'g'ridan-to'g'ri murojaat qilishga ruxsat beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Standart holatda, `functional component`'larga `ref` atributini qo'ysangiz, u ishlamaydi (chunki funksiyalarning `instance`'i yo'q). Agar `parent` `child` ichidagi `input`'ga `focus` qilishi kerak bo'lsa, `child` komponentni `React.forwardRef` bilan o'rash kerak. Bu holda, `child` komponent `props`'dan tashqari ikkinchi argument sifatida `ref`'ni qabul qiladi va bu `ref`'ni o'zining ichidagi kerakli `DOM` elementiga (`input`) bog'lashi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "import React, { useRef, useEffect, forwardRef } from 'react';",
+            "",
+            "// Child komponent ref'ni qabul qiladi va input'ga bog'laydi",
+            "const FancyInput = forwardRef((props, ref) => {",
+            "  return <input ref={ref} {...props} />; ",
+            "});",
+            "",
+            "// Parent komponent ref yaratadi va uni Child'ga uzatadi",
+            "function App() {",
+            "  const inputRef = useRef(null);",
+            "",
+            "  useEffect(() => {",
+            "    // Endi parent input'ga focus qila oladi",
+            "    inputRef.current.focus();",
+            "  }, []);",
+            "",
+            "  return <FancyInput ref={inputRef} placeholder=\"Focus mendaman!\" />; ",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`forwardRef` `parent` komponentdan `child` `functional component`'ga `ref` uzatish imkonini beradi. Bu `parent`'ga `child` ichidagi `DOM node`'iga (masalan, `input`) to'g'ridan-to'g'ri murojaat qilish (`focus` qilish kabi) kerak bo'lganda ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q20",
+    "question": "`Custom Hook` nima va u qanday yaratiladi?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`Custom Hook` — bu nomi `use` bilan boshlanadigan va ichida boshqa `Hook`'larni (`useState`, `useEffect`, `useContext` va hokazo) chaqirishi mumkin bo'lgan oddiy `JavaScript` funksiyasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ularning asosiy maqsadi — komponentlar o'rtasida **`stateful` mantiqni qayta ishlatish (`reusing stateful logic`)**. Agar siz bir nechta komponentda bir xil `state` boshqaruvi yoki `side effect` mantiqini takrorlayotgan bo'lsangiz, bu mantiqni alohida `custom Hook`'ka chiqarishingiz mumkin. Bu kodni qisqaroq, toza va qo'llab-quvvatlashni oson qiladi. `Custom Hook`'lar oddiy funksiyalar bo'lgani uchun, ular `React`'ning barcha `Hook` qoidalariga rioya qilishi kerak (masalan, faqat komponentlarning yuqori darajasida yoki boshqa `Hook`'lar ichida chaqirilishi mumkin)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy `useFetch` Custom Hook:",
+          "code": [
+            "import { useState, useEffect } from 'react';",
+            "",
+            "function useFetch(url) {",
+            "  const [data, setData] = useState(null);",
+            "  const [loading, setLoading] = useState(true);",
+            "  const [error, setError] = useState(null);",
+            "",
+            "  useEffect(() => {",
+            "    setLoading(true);",
+            "    setError(null);",
+            "    setData(null);",
+            "    fetch(url)",
+            "      .then(res => { if (!res.ok) throw Error('Fetch failed'); return res.json(); })",
+            "      .then(data => setData(data))",
+            "      .catch(err => setError(err))",
+            "      .finally(() => setLoading(false));",
+            "  }, [url]); // URL o'zgarganda qayta fetch qiladi",
+            "",
+            "  return { data, loading, error };",
+            "}",
+            "",
+            "// Komponentda ishlatilishi:",
+            "function MyComponent() {",
+            "  const { data, loading, error } = useFetch('/api/users');",
+            "  if (loading) return <p>Loading...</p>;",
+            "  if (error) return <p>Error!</p>;",
+            "  return <ul>{data?.map(user => <li key={user.id}>{user.name}</li>)}</ul>;",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Custom Hook` nomi `use` bilan boshlanadigan `JavaScript` funksiyasi bo'lib, u boshqa `Hook`'larni chaqiradi. Uning maqsadi — komponentlar o'rtasida `stateful` mantiqni (masalan, ma'lumot yuklash, `form` boshqaruvi) qayta ishlatish. U kodni qisqaroq va toza qiladi."
+    }
+  },
+
+  {
+    "id": "react-q21",
+    "question": "`React`'da `performance`'ni optimallashtirishning ba'zi usullari qanday?",
+    "topic": "React Performance",
+    "answer": {
+      "definition": "`React` odatda juda tez ishlaydi, ammo katta va murakkab dasturlarda `performance` muammolari yuzaga kelishi mumkin. Ularni hal qilish uchun bir nechta asosiy usullar mavjud.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Asosiy optimallashtirish usullari:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Keraksiz `Re-render`'larni Kamaytirish:** Bu eng muhim optimallashtirish. Komponent faqat uning `props` yoki `state`'i haqiqatan o'zgargandagina qayta `render` bo'lishi kerak.",
+            "  * **`React.memo()`:** `Functional component`'larni o'rash uchun HOC. Agar komponentning `props`'lari o'zgarmagan bo'lsa, u oxirgi `render` natijasini qayta ishlatadi (`shallow comparison` orqali).",
+            "  * **`useMemo()`:** Qimmat hisob-kitoblarning natijasini `cache` qilish (`memoize`) uchun `Hook`. Hisob-kitob faqat uning `dependency`'lari o'zgargandagina qayta bajariladi.",
+            "  * **`useCallback()`:** Funksiya `instance`'larini `cache` qilish (`memoize`) uchun `Hook`. Bu funksiyalar `props` sifatida `child` komponentlarga uzatilganda (`React.memo` bilan birga ishlatilganda) keraksiz `re-render`'larning oldini olishga yordam beradi.",
+            "**Ro'yxatlarni Optimallashtirish (`List Virtualization`):** Juda katta ro'yxatlar uchun faqat ekranda ko'rinib turgan qisminigina `render` qilish (`react-window` yoki `react-virtualized` kabi kutubxonalar yordamida).",
+            "**`Bundle` Hajmini Kamaytirish (`Code Splitting`):** Kodni kichikroq qismlarga bo'lish va ularni faqat kerak bo'lganda yuklash (`React.lazy()` va `Suspense` yordamida).",
+            "**`Production Build`'dan Foydalanish:** `Development build`'ga qaraganda ancha kichikroq va tezroq bo'lgan `production build`'ni (`npm run build`) `deploy` qilish."
+          ]
+        }
+      ],
+      "interviewAnswer": "React `performance`'ini optimallashtirish uchun: 1) Keraksiz `re-render`'larni `React.memo`, `useMemo`, `useCallback` bilan kamaytirish. 2) Katta ro'yxatlar uchun `List Virtualization` ishlatish. 3) Kodni `Code Splitting` (`React.lazy`) bilan bo'lish. 4) `Production build`'dan foydalanish."
+    }
+  },
+  {
+    "id": "react-q22",
+    "question": "`useMemo` va `useCallback` `Hook`'lari o'rtasida qanday farq bor?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "Ikkala `Hook` ham qiymatlarni `memoization` (keshlash) uchun ishlatiladi, ammo ular turli turdagi qiymatlarni keshlashga mo'ljallangan.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`useMemo(() => computeExpensiveValue(a, b), [a, b])`:** Qimmat hisob-kitoblar (`computeExpensiveValue`) **natijasini** keshlash uchun ishlatiladi. `dependency` massividagi (`[a, b]`) qiymatlar o'zgarmaguncha, `useMemo` qayta hisoblamaydi va oxirgi hisoblangan qiymatni qaytaradi. U **qiymatni** `memoize` qiladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`useCallback(callbackFunction, [a, b])`:** Funksiya **`instance`'ini** keshlash uchun ishlatiladi. `dependency` massividagi (`[a, b]`) qiymatlar o'zgarmaguncha, `useCallback` har `render`'da yangi funksiya yaratish o'rniga, avvalgi `instance`'ni qaytaradi. Bu asosan `callback` funksiyalar `props` sifatida optimallashtirilgan `child` komponentlarga (`React.memo` bilan o'ralgan) uzatilganda foydali, chunki u `prop` o'zgarmaganligini ta'minlab, `child`'ning keraksiz `re-render` bo'lishini oldini oladi. U **funksiyani** `memoize` qiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`useMemo`:",
+          "code": [
+            "const expensiveResult = useMemo(() => calculate(a, b), [a, b]);"
+          ]
+        },
+        {
+          "title": "`useCallback`:",
+          "code": [
+            "const handleClick = useCallback(() => { doSomething(a); }, [a]);",
+            "<MyChild onClick={handleClick} />"
+          ]
+        }
+      ],
+      "interviewAnswer": "`useMemo` qimmat hisob-kitoblarning **natijasini** keshlash uchun. `useCallback` **funksiya `instance`'ini** keshlash uchun (odatda `React.memo` bilan optimallashtirilgan `child`'larga `callback` uzatishda keraksiz `re-render`'ni oldini olish uchun)."
+    }
+  },
+  {
+    "id": "react-q23",
+    "question": "`React`'da `children` `prop`'i nima?",
+    "topic": "React Props",
+    "answer": {
+      "definition": "`props.children` — bu `React` komponentiga ochiluvchi va yopiluvchi `tag`lar orasiga joylashtirilgan har qanday kontentni (matn, `JSX` elementlari, boshqa komponentlar) olish imkonini beradigan maxsus `prop`.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu umumiy 'qobiq' (`wrapper`) yoki `layout` komponentlarini yaratishda juda foydali. Masalan, `Card`, `Modal`, `Sidebar` kabi komponentlar o'zining ichki strukturasini belgilashi va `props.children` orqali o'ziga xos kontentni qabul qilishi mumkin."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`Card` Komponenti:",
+          "code": [
+            "// Card.jsx",
+            "function Card(props) {",
+            "  return <div className=\"card\">{props.children}</div>;",
+            "}",
+            "",
+            "// App.jsx",
+            "function App() {",
+            "  return (",
+            "    <Card>",
+            "      {/* Bu kontent Card komponentiga props.children sifatida boradi */}",
+            "      <h2>Maxsus Sarlavha</h2>",
+            "      <p>Bu card ichidagi matn.</p>",
+            "    </Card>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`props.children` komponentning ochiluvchi va yopiluvchi `tag`lari orasiga yozilgan kontentni (matn, `JSX`, boshqa komponentlar) ifodalaydi. U umumiy `layout` yoki `wrapper` komponentlarini yaratish uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q24",
+    "question": "`React Strict Mode` (`<React.StrictMode>`) nima va u nima uchun ishlatiladi?",
+    "topic": "React Development Tools",
+    "answer": {
+      "definition": "`React Strict Mode` — bu dasturingizdagi potensial muammolarni aniqlashga yordam beradigan vosita. U faqat `development mode`'da ishlaydi va `production build`'ga ta'sir qilmaydi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U dasturingizning biror qismini `<React.StrictMode>` komponenti bilan o'rash orqali yoqiladi. U quyidagi kabi muammolarni aniqlashga yordam beradi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Xavfli hayot sikli metodlari (`legacy lifecycle methods`) ishlatilayotganini aniqlash.",
+            "`Legacy string ref API` ishlatilayotganini aniqlash.",
+            "Kutilmagan `side effect`'larni topish uchun ba'zi funksiyalarni (masalan, `constructor`, `render`, `useState` `setter` funksiyalari) **ikki marta** chaqirish.",
+            "`Legacy context API` ishlatilayotganini aniqlash.",
+            "`Deprecated findDOMNode` ishlatilayotganini aniqlash."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "U hech qanday ko'rinadigan `UI` `render` qilmaydi, faqat `console`'da ogohlantirishlar chiqaradi va ba'zi funksiyalarni ikki marta chaqirib, `side effect`'larga sezgirlikni oshiradi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Ishlatilishi (`main.jsx`'da):",
+          "code": [
+            "ReactDOM.createRoot(document.getElementById('root')).render(",
+            "  <React.StrictMode>",
+            "    <App />",
+            "  </React.StrictMode>",
+            ");"
+          ]
+        }
+      ],
+      "interviewAnswer": "`React Strict Mode` (`<React.StrictMode>`) faqat `development`'da ishlaydigan vosita bo'lib, potensial muammolarni (eskirgan `API`'lar, kutilmagan `side effect`'lar) aniqlashga yordam beradi. U ba'zi funksiyalarni ikki marta chaqirishi va `console`'da ogohlantirishlar chiqarishi mumkin, `production`'ga ta'sir qilmaydi."
+    }
+  },
+  {
+    "id": "react-q25",
+    "question": "`React`'da `state`'ni qanday qilib `immutable` tarzda yangilash kerak?",
+    "topic": "React State Management",
+    "answer": {
+      "definition": "`React`'da `state`'ni to'g'ridan-to'g'ri o'zgartirish (`mutation`) tavsiya etilmaydi va kutilmagan `bug`'larga olib kelishi mumkin. Buning o'rniga, `state`'ni `immutable` (o'zgarmas) tarzda, ya'ni eski `state`'ning nusxasini yaratib va o'sha nusxaga o'zgartirish kiritib yangilash kerak.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu `React`'ga `state` haqiqatan o'zgarganligini aniqlashni osonlashtiradi (`shallow comparison` yordamida) va `performance` optimizatsiyalariga (`React.memo` kabi) yordam beradi. `Immutability`'ni saqlash usullari:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Massivlar (`Arrays`) uchun:** `concat()`, `slice()`, `filter()`, `map()` metodlari yoki `spread` operatori (`...`) ishlatiladi. `.push()`, `.pop()`, `.splice()` kabi `mutating` metodlardan qochish kerak.",
+            "**Obyektlar (`Objects`) uchun:** `Object.assign({}, oldObject, newProperties)` yoki `spread` operatori (`{...oldObject, ...newProperties}`) ishlatiladi."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Massivni `immutable` yangilash:",
+          "code": [
+            "// Yomon:",
+            "// const newTodos = todos;",
+            "// newTodos.push(newItem); // Asl 'todos' ham o'zgaradi!",
+            "// setTodos(newTodos);",
+            "",
+            "// Yaxshi (spread):",
+            "setTodos([...todos, newItem]); // Yangi massiv yaratadi",
+            "",
+            "// Yaxshi (concat):",
+            "// setTodos(todos.concat(newItem));"
+          ]
+        },
+        {
+          "title": "Obyektni `immutable` yangilash:",
+          "code": [
+            "// Yomon:",
+            "// const updatedUser = user;",
+            "// updatedUser.age = 31; // Asl 'user' ham o'zgaradi!",
+            "// setUser(updatedUser);",
+            "",
+            "// Yaxshi (spread):",
+            "setUser({ ...user, age: 31 }); // Yangi obyekt yaratadi"
+          ]
+        }
+      ],
+      "interviewAnswer": "`React`'da `state`'ni to'g'ridan-to'g'ri o'zgartirmaslik (`mutate`) kerak. Buning o'rniga `immutable` tarzda yangilash kerak: massivlar uchun `spread` (`...`), `concat`, `map`, `filter`; obyektlar uchun `spread` (`...`) yoki `Object.assign` yordamida yangi nusxa yaratib, o'shani o'zgartirish kerak. Bu `React`'ga o'zgarishlarni aniqlashga yordam beradi."
+    }
+  },
+  {
+    "id": "react-q26",
+    "question": "`React Router` nima va uning asosiy komponentlari qaysilar?",
+    "topic": "React Routing",
+    "answer": {
+      "definition": "`React Router` — bu `React` dasturlarida sahifalar orasida navigatsiyani (`routing`) boshqarish uchun eng mashhur kutubxona. U `URL` manziliga qarab qaysi komponentlarni `render` qilish kerakligini hal qiladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U `client-side routing`'ni amalga oshiradi, ya'ni sahifalar o'rtasida o'tish serverga yangi so'rov yubormasdan, brauzerning o'zida sodir bo'ladi, bu esa dasturni tezroq va silliqroq qiladi. Asosiy komponentlari (v6 versiyasida):"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`<BrowserRouter>` (yoki boshqa `router` komponentlari):** Butun dasturni yoki uning `routing`'dan foydalanadigan qismini o'rab turadi va `HTML5 History API`'dan foydalanadi.",
+            "**`<Routes>`:** Ichidagi bir nechta `<Route>`'lardan faqat `URL`'ga mos keladigan **birinchisini** `render` qiladi.",
+            "**`<Route>`:** Ma'lum bir `path` (`URL` yo'li) uchun qaysi `element` (komponent) `render` qilinishini belgilaydi. `path` dinamik parametrlar (`:userId`) o'z ichiga olishi mumkin.",
+            "**`<Link to=\"/path\">`:** Sahifalar o'rtasida navigatsiya qilish uchun `<a>` `tag`ining o'rniga ishlatiladi. Sahifani qayta yuklamaydi.",
+            "**`<Outlet />`:** `Parent route`'ning `element`i ichida `child route`'ning `element`i qayerda `render` qilinishini ko'rsatadi (`nested routing`).",
+            "**`useParams`, `useNavigate`, `useLocation` kabi `Hook`'lar:** `URL` parametrlari, dasturiy navigatsiya va joriy manzil haqida ma'lumot olish uchun."
+          ]
+        }
+      ],
+      "interviewAnswer": "`React Router` `React` dasturlarida `client-side routing` (sahifalar orasida serverga murojaat qilmasdan o'tish) uchun kutubxona. Asosiy komponentlari: `<BrowserRouter>` (dasturni o'raydi), `<Routes>` (ichidagi birinchi mos `<Route>`'ni tanlaydi), `<Route path=\"...\" element={<... />} />` (yo'lni komponentga bog'laydi), `<Link to=\"...\">` (navigatsiya uchun), `<Outlet />` (`nested routes` uchun)."
+    }
+  },
+  {
+    "id": "react-q27",
+    "question": "`React`'da `Lazy Loading` (`Code Splitting`) qanday amalga oshiriladi?",
+    "topic": "React Performance",
+    "answer": {
+      "definition": "`Code Splitting` (`kodni bo'lish`) — bu dastur kodini kichikroq qismlarga (`chunks`) bo'lish va ularni faqat kerak bo'lganda (masalan, foydalanuvchi ma'lum bir sahifaga o'tganda) yuklash (`lazy load`) texnikasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu dasturning boshlang'ich yuklanish vaqtini (`initial load time`) sezilarli darajada kamaytirishi mumkin, chunki foydalanuvchi darhol kerak bo'lmagan kodni yuklab o'tirmaydi. `React`'da `code splitting`'ni amalga oshirishning standart usuli `React.lazy()` funksiyasi va `<Suspense>` komponentidan foydalanishdir:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`React.lazy(() => import('./MyComponent'))`:** Dinamik `import()` sintaksisini qabul qiladi va komponentni yuklanishini kechiktiradigan maxsus komponent qaytaradi. `import()` funksiyasi `Promise` qaytaradi, bu `Promise` `resolve` bo'lganda `default export`'ga ega bo'lgan `module`'ni qaytarishi kerak.",
+            "**`<Suspense fallback={...}>`:** `lazy` komponent yuklanayotgan paytda foydalanuvchiga nima ko'rsatilishini (`fallback UI`, masalan, `loading spinner`) belgilaydi. `lazy` komponent `<Suspense>` komponentining ichida `render` qilinishi kerak."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Bu usul odatda `React Router` bilan birgalikda `route`-based `code splitting` uchun ishlatiladi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "import React, { Suspense, lazy } from 'react';",
+            "import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';",
+            "",
+            "// Komponentni lazy load qilamiz",
+            "const AboutPage = lazy(() => import('./pages/AboutPage'));",
+            "const Dashboard = lazy(() => import('./pages/Dashboard'));",
+            "",
+            "function App() {",
+            "  return (",
+            "    <Router>",
+            "      {/* Suspense butun dasturni yoki uning bir qismini o'rashi mumkin */} ",
+            "      <Suspense fallback={<div>Yuklanmoqda...</div>}>",
+            "        <Routes>",
+            "          <Route path=\"/about\" element={<AboutPage />} />",
+            "          <Route path=\"/dashboard\" element={<Dashboard />} />",
+            "          {/* Boshqa route'lar... */} ",
+            "        </Routes>",
+            "      </Suspense>",
+            "    </Router>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Code Splitting` (`Lazy Loading`) kodni kichik qismlarga bo'lib, faqat kerak bo'lganda yuklashdir (boshlang'ich yuklanishni tezlashtiradi). `React`'da bu `React.lazy(() => import('./Comp'))` funksiyasi (dinamik `import` bilan) va yuklanish paytida `fallback UI` ko'rsatadigan `<Suspense>` komponenti yordamida amalga oshiriladi. Ko'pincha `route`-based `code splitting` uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q28",
+    "question": "`React`'da `memoization` nima va u `React.memo`, `useMemo`, `useCallback` bilan qanday bog'liq?",
+    "topic": "React Performance",
+    "answer": {
+      "definition": "`Memoization` — bu qimmat hisob-kitoblarning natijasini `cache`'lab qo'yish va keyingi safar bir xil kirish parametrlari bilan chaqirilganda, qayta hisoblamasdan `cache`'dagi natijani qaytarish orqali `performance`'ni optimallashtirish texnikasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`React`'da `memoization` keraksiz `re-render`'larning yoki qimmat hisob-kitoblarning oldini olish uchun ishlatiladi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`React.memo(Component)`:** Bu `Higher-Order Component`. U komponentni o'raydi va uning `props`'lari o'zgarmagan bo'lsa (`shallow comparison` yordamida), komponentni qayta `render` qilish o'rniga oxirgi `render` natijasini qaytaradi. U **komponentning `render` natijasini** `memoize` qiladi.",
+            "**`useMemo(() => value, [deps])`:** Bu `Hook` `dependency` (`deps`) massividagi qiymatlar o'zgarmaguncha, funksiya (`() => value`) hisoblagan **qiymatni** `memoize` qiladi. U qimmat hisob-kitoblar natijasini qayta ishlatish uchun.",
+            "**`useCallback(fn, [deps])`:** Bu `Hook` `dependency` (`deps`) massividagi qiymatlar o'zgarmaguncha, `callback` **funksiyasining o'zini** (`instance`) `memoize` qiladi. Bu funksiyalar `props` sifatida optimallashtirilgan `child` komponentlarga (`React.memo`) uzatilganda foydali."
+          ]
+        }
+      ],
+      "interviewAnswer": "`Memoization` qimmat hisob-kitoblar yoki komponent `render`'lari natijasini keshlashdir. `React`'da: `React.memo` komponent `render`'ini `props` o'zgarmasa keshlash uchun HOC. `useMemo` qiymatni keshlash uchun `Hook`. `useCallback` funksiya `instance`'ini keshlash uchun `Hook`. Ular keraksiz `re-render`'larni kamaytirishga yordam beradi."
+    }
+  },
+  {
+    "id": "react-q29",
+    "question": "`useReducer` `Hook`'i nima va u `useState`'dan qachon afzalroq?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`useReducer` — bu `useState`'ga alternativa bo'lgan `Hook` bo'lib, u murakkab `state` mantiqini (`logic`) boshqarish uchun ishlatiladi. U `Redux` kabi `state management` kutubxonalarida ishlatiladigan `reducer` `pattern`'iga asoslangan.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Sintaksisi: `const [state, dispatch] = useReducer(reducer, initialState);`. U `reducer` funksiyasi va boshlang'ich `state`'ni qabul qiladi. `state` joriy holatni, `dispatch` esa `state`'ni o'zgartirish uchun `action` obyektlarini yuboradigan funksiyani qaytaradi. `reducer` funksiyasi `(currentState, action)` argumentlarini qabul qilib, yangi `state`'ni qaytaradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "`useReducer` quyidagi hollarda `useState`'dan afzalroq bo'lishi mumkin:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Murakkab `State` Logikasi:** Agar `state`'ning keyingi qiymati avvalgisiga murakkab tarzda bog'liq bo'lsa yoki bir nechta kichik `state`'lar bir-biriga bog'liq holda o'zgarsa.",
+            "**Ko'p Sonli `State` Yangilanishlari:** Agar bitta hodisaga javoban bir nechta `state` yangilanishini bajarish kerak bo'lsa.",
+            "**Mantiqni Komponentdan Ajratish:** `Reducer` funksiyasini komponentdan tashqariga chiqarish mumkin, bu esa komponentni toza saqlaydi va mantiqni test qilishni osonlashtiradi.",
+            "**`Performance` Optimizatsiyasi:** `dispatch` funksiyasi `render`'lar orasida o'zgarmasligi kafolatlanganligi uchun, uni `props` sifatida chuqur joylashgan `child` komponentlarga uzatishda `useCallback`'siz ham keraksiz `re-render`'larning oldini olish mumkin."
+          ]
+        }
+      ],
+      "interviewAnswer": "`useReducer` `useState`'ga alternativa bo'lib, murakkab `state` logikasini boshqarish uchun `Hook`. U `(state, action) => newState` shaklidagi `reducer` funksiyasini va `dispatch` funksiyasini ishlatadi. U `state` logikasi murakkab bo'lganda, bir nechta `state` bog'liq bo'lganda yoki `performance` uchun `useState`'dan afzalroq bo'lishi mumkin."
+    }
+  },
+  {
+    "id": "react-q30",
+    "question": "`React`'da komponentlarni `styling` qilishning qanday usullari mavjud?",
+    "topic": "React Styling",
+    "answer": {
+      "definition": "`React` komponentlariga stil berishning bir nechta keng tarqalgan usullari mavjud, har birining o'z afzalliklari va kamchiliklari bor.",
+      "explanation": [
+        { "type": "paragraph", "content": "Asosiy usullar:" },
+        {
+          "type": "list",
+          "items": [
+            "**Oddiy CSS Fayllari (`.css`) va `className`:** Eng an'anaviy usul. `CSS` faylini `import './styles.css'` qilib yuklash va `JSX`'da `className=\"my-class\"` atributidan foydalanish. Kamchiligi: Stillar global bo'ladi, `class` nomlari to'qnashishi (`collision`) mumkin.",
+            "**`Inline Styles`:** `style` atributiga `JavaScript` obyekti (`{{ color: 'red', fontSize: '16px' }}`) berish. Kamchiligi: `Pseudo-class`'lar (`:hover`), `media query`'lar kabi imkoniyatlar yo'q, `performance` muammolari bo'lishi mumkin, `CSS`'ni `JavaScript` ichida yozish chalkash bo'lishi mumkin.",
+            "**`CSS Modules` (`.module.css`):** Har bir `CSS` faylini o'z `scope`'iga ega qiladi. `import styles from './styles.module.css'` qilinadi va `className={styles.myClass}` ishlatiladi. `Build tool` `class` nomlarini avtomatik unikal qiladi. Bu `class` nomlari to'qnashuvini oldini oladi. `Vite` va `Create React App` tomonidan qo'llab-quvvatlanadi.",
+            "**CSS-in-JS Kutubxonalari (`Styled Components`, `Emotion`):** `CSS`'ni to'g'ridan-to'g'ri `JavaScript` (`Tagged Template Literals` yordamida) ichida yozish imkonini beradi. Ular komponent darajasida `scope`'langan stillar, dinamik stillar (`props`'ga bog'liq), `theming` kabi kuchli imkoniyatlarni taqdim etadi. Kamchiligi: Qo'shimcha kutubxona, `runtime overhead` bo'lishi mumkin.",
+            "**`Utility-First CSS Frameworks` (`Tailwind CSS`):** Oldindan belgilangan kichik `utility class`'lar (`.pt-4`, `.flex`, `.text-red-500`) to'plamini taqdim etadi. `HTML` (`JSX`) ichida shu `class`'larni birlashtirib `UI` quriladi. `CSS` faylini deyarli yozish kerak bo'lmaydi. Tez prototiplash va izchil dizayn uchun qulay."
+          ]
+        }
+      ],
+      "interviewAnswer": "`React`'da `styling` usullari: 1) Oddiy CSS (`import './file.css'`, global). 2) `Inline Styles` (`style={{...}}`, cheklangan). 3) `CSS Modules` (`import styles from './file.module.css'`, `scope`'langan, tavsiya etiladi). 4) `CSS-in-JS` (`Styled Components`, `Emotion`, `JavaScript` ichida `CSS`, kuchli). 5) `Utility-First` (`Tailwind CSS`, `HTML`'da `class`'lar bilan `styling`)."
+    }
+  },
+
+  {
+    "id": "react-q31",
+    "question": "`React`da `Context API` qanday ishlaydi va u qachon `Redux`'ga alternativa bo'lishi mumkin?",
+    "topic": "React State Management",
+    "answer": {
+      "definition": "`Context API` `React`'ning o'zida mavjud bo'lgan `state management` yechimi bo'lib, u ma'lumotlarni komponentlar daraxtida `prop drilling` qilmasdan chuqur joylashgan `child` komponentlarga uzatish imkonini beradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "U uchta asosiy qismdan iborat: 1) **`React.createContext()`:** Yangi `context` obyektini yaratadi. 2) **`<MyContext.Provider value={...}>`:** Bu komponent o'zining `child`'lariga `context` qiymatini taqdim etadi. `value` `prop`'i o'zgarganda, barcha `consumer`'lar qayta `render` bo'ladi. 3) **`useContext(MyContext)` Hook'i (yoki `<MyContext.Consumer>` render prop):** `Child` komponentlarga eng yaqin `Provider`'dan `context` qiymatini o'qish imkonini beradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Redux`'ga Alternativa?:** `Context API` kichik va o'rta darajadagi dasturlarda global `state`'ni (masalan, `theme`, `user session`, til sozlamalari) boshqarish uchun `Redux`'ga yaxshi va sodda alternativa bo'lishi mumkin. Ammo, juda katta dasturlarda, `state` yangilanishlari tez-tez va murakkab bo'lganda, `Redux` o'zining `middleware`, `DevTools` integratsiyasi va aniq `action`/`reducer` `pattern`'i bilan `performance` va `debug` qilishda afzalliklarga ega bo'lishi mumkin. `Context`'ning qiymati o'zgarganda, unga obuna bo'lgan **barcha** komponentlar qayta `render` bo'lishi mumkin, bu esa `performance` muammolariga olib kelishi mumkin (garchi `memoization` bilan optimallashtirish mumkin bo'lsa ham)."
+        }
+      ],
+      "interviewAnswer": "`Context API` (`createContext`, `Provider`, `useContext`) ma'lumotlarni `prop drilling`'siz chuqur komponentlarga uzatish uchun `React`'ning o'rnatilgan yechimi. U global `state` (masalan, `theme`) uchun `Redux`'ga sodda alternativa bo'lishi mumkin, ammo juda katta yoki tez-tez yangilanadigan `state` uchun `Redux`'ning `performance` va `debugging` vositalari afzalroq bo'lishi mumkin."
+    }
+  },
+  {
+    "id": "react-q32",
+    "question": "`React`da `SyntheticEvent` nima?",
+    "topic": "React Events",
+    "answer": {
+      "definition": "`SyntheticEvent` — bu `React`'ning brauzerning standart (`native`) `event` obyektlari uchun yaratgan kross-brauzer `wrapper` (o'ram) obyektidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Turli brauzerlar `event` obyektlarini biroz farqli implementatsiya qilishi mumkin. `React` bu farqlarni yashirish va barcha brauzerlarda bir xil, izchil (`consistent`) `event` interfeysini taqdim etish uchun `SyntheticEvent`'dan foydalanadi. U standart `event` obyektining ko'pgina xususiyatlari va metodlariga (`stopPropagation()`, `preventDefault()` kabi) ega. `Event handler` funksiyangizga argument sifatida aynan shu `SyntheticEvent` obyekti keladi. Agar biror sababga ko'ra asl brauzer `event`'iga ehtiyoj bo'lsa, unga `event.nativeEvent` orqali kirish mumkin. `SyntheticEvent` obyektlari `performance` uchun `pooled` (qayta ishlatiladi), shuning uchun `event handler` tugaganidan keyin uning xususiyatlariga asinxron ravishda murojaat qilib bo'lmaydi (agar `event.persist()` chaqirilmasa)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Event Handlerni Olish:",
+          "code": [
+            "function handleClick(event: React.MouseEvent<HTMLButtonElement>) {",
+            "  // 'event' - bu SyntheticEvent",
+            "  event.preventDefault(); // Standart xatti-harakatni to'xtatish",
+            "  console.log('Asl hodisa:', event.nativeEvent);",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`SyntheticEvent` `React`'ning brauzerning standart `event` obyektlari uchun yaratgan kross-brauzer `wrapper`'idir. U barcha brauzerlarda bir xil `event` interfeysini ta'minlaydi va `stopPropagation()`, `preventDefault()` kabi metodlarga ega. `event.nativeEvent` orqali asl `event`'ga kirish mumkin."
+    }
+  },
+  {
+    "id": "react-q33",
+    "question": "`React`da `children` `prop`'ini qanday qilib `map` qilish mumkin?",
+    "topic": "React Props & Children",
+    "answer": {
+      "definition": "Agar komponentga `children` sifatida bir nechta elementdan iborat massiv uzatilsa, ularni aylanib chiqish va manipulyatsiya qilish uchun `React.Children` `utility`'sidan foydalanish mumkin.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "`props.children` har doim ham massiv bo'lmaydi (u bitta element, `string`, `undefined` bo'lishi mumkin). Shuning uchun uning ustida to'g'ridan-to'g'ri `.map()` ishlatish xatolikka olib kelishi mumkin. **`React.Children.map(props.children, (child, index) => { ... })`** metodi `children`'ni xavfsiz tarzda aylanib chiqish va har bir `child` uchun (agar u haqiqiy `React` elementi bo'lsa) biror amal bajarish yoki uni o'zgartirish imkonini beradi. U `null` yoki `undefined` `children`'ni avtomatik ravishda e'tiborsiz qoldiradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "Boshqa `React.Children` `utility`'lari ham mavjud: `forEach`, `count`, `only`, `toArray`."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`React.Children.map` Misoli:",
+          "code": [
+            "import React from 'react';",
+            "",
+            "function RowList({ children }) {",
+            "  return (",
+            "    <div className=\"row-list\">",
+            "      {React.Children.map(children, (child, index) => (",
+            "        // Har bir child'ga qo'shimcha prop qo'shish yoki o'rash",
+            "        <div className=\"row-item\" key={index}>",
+            "          {React.cloneElement(child, { style: { color: 'blue' } })}",
+            "        </div>",
+            "      ))}",
+            "    </div>",
+            "  );",
+            "}",
+            "",
+            "// Ishlatilishi:",
+            "<RowList>",
+            "  <p>Element 1</p>",
+            "  <p>Element 2</p>",
+            "</RowList>"
+          ]
+        }
+      ],
+      "interviewAnswer": "`props.children` har doim massiv bo'lmasligi mumkin. Uni xavfsiz aylanib chiqish va manipulyatsiya qilish uchun `React.Children.map(children, callback)` `utility`'sidan foydalanish kerak. U `null`/`undefined`'larni o'tkazib yuboradi."
+    }
+  },
+  {
+    "id": "react-q34",
+    "question": "`React Reconciliation` nima?",
+    "topic": "React Internals",
+    "answer": {
+      "definition": "`Reconciliation` — bu `React`'ning `Virtual DOM`'dagi o'zgarishlarni aniqlab (`diffing`), ularni haqiqiy `DOM`'ga samarali tarzda qo'llash jarayonidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Komponent `state` yoki `props` o'zgarganda qayta `render` bo'lganda, `React` yangi `Virtual DOM` daraxtini yaratadi. Keyin u yangi daraxtni avvalgi daraxt bilan solishtirish uchun **`Diffing Algorithm`**'ni ishga tushiradi. Bu algoritm `performance` uchun optimallashtirilgan va bir nechta taxminlarga asoslanadi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Har xil tipdagi ikki element har xil daraxtlarni hosil qiladi (`div`'ni `span`'ga almashtirish butun ichki daraxtni qayta quradi).",
+            "Ro'yxatlar bilan ishlayotganda, dasturchi `key` `prop`'i orqali qaysi elementlar o'zgarmaganligini, qo'shilganligini yoki o'chirilganligini ko'rsatishi mumkin."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "`Diffing` natijasida `React` haqiqiy `DOM`'ni yangilash uchun zarur bo'lgan minimal operatsiyalar ro'yxatini oladi va keyin bu operatsiyalarni bajaradi. Bu jarayon `Virtual DOM` tufayli haqiqiy `DOM` bilan to'g'ridan-to'g'ri ishlashdan ancha tezroq bo'ladi."
+        }
+      ],
+      "interviewAnswer": "`Reconciliation` `React`'ning `Virtual DOM` o'zgarishlarini haqiqiy `DOM`'ga samarali qo'llash jarayoni. U ikki bosqichdan iborat: 1) Eski va yangi `Virtual DOM`'larni solishtirish (`Diffing Algorithm`). 2) Faqat o'zgargan qismlarni haqiqiy `DOM`'ga minimal operatsiyalar bilan qo'llash. `key` `prop`'i ro'yxatlarni `reconcile` qilishda muhim rol o'ynaydi."
+    }
+  },
+  {
+    "id": "react-q35",
+    "question": "`React`da `Server-Side Rendering` (SSR) nima va uning afzalliklari qanday?",
+    "topic": "React SSR & CSR",
+    "answer": {
+      "definition": "`Server-Side Rendering` (SSR) — bu `React` komponentlarini brauzerda emas, balki **serverda** `render` qilib, natijaviy `HTML`'ni brauzerga yuborish texnikasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Standart `Client-Side Rendering` (CSR)'da brauzer avval bo'sh `HTML` va katta `JavaScript bundle`'ini oladi, keyin `JavaScript` ishga tushib `UI`'ni `render` qiladi. SSR'da esa brauzer darhol tayyor `HTML`'ni oladi, bu esa sahifaning **tezroq ko'rinishiga (`First Contentful Paint` - FCP)** olib keladi. `JavaScript` yuklanib bo'lgach, `React` bu `HTML`'ni 'egallab oladi' (`hydration`) va interaktivlikni qo'shadi."
+        },
+        { "type": "paragraph", "content": "SSR'ning asosiy afzalliklari:" },
+        {
+          "type": "list",
+          "items": [
+            "**Yaxshilangan `Performance` (FCP):** Foydalanuvchi kontentni tezroq ko'radi.",
+            "**Yaxshilangan `SEO` (Search Engine Optimization):** Qidiruv tizimlari (`Googlebot` kabi) sahifa mazmunini `JavaScript`'ni ishga tushirmasdan ham osonroq `index`'lay oladi, chunki `HTML` serverdan tayyor keladi."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Kamchiligi: Serverga ko'proq yuk tushadi, sozlash murakkabroq bo'lishi mumkin. `Next.js` kabi `framework`'lar SSR'ni amalga oshirishni osonlashtiradi."
+        }
+      ],
+      "interviewAnswer": "SSR (`Server-Side Rendering`) `React` komponentlarini serverda `HTML`'ga `render` qilib, brauzerga yuborishdir. U `Client-Side Rendering`'ga qaraganda tezroq boshlang'ich yuklanish (`FCP`) va yaxshiroq `SEO`'ni ta'minlaydi. Brauzer `HTML`'ni olgach, `JavaScript` yuklanib, interaktivlikni qo'shadi (`hydration`). `Next.js` kabi `framework`'lar SSR'ni osonlashtiradi."
+    }
+  },
+  {
+    "id": "react-q36",
+    "question": "`React`'da `State Management` kutubxonalari (`Redux`, `Zustand`, `Jotai`) qachon kerak bo'ladi?",
+    "topic": "React State Management",
+    "answer": {
+      "definition": "Oddiy va o'rta darajadagi `React` dasturlari uchun ko'pincha `React`'ning o'zining `state management` vositalari (`useState`, `useReducer`, `useContext`) yetarli bo'ladi. Ammo dastur kattalashib, `state` murakkablashganda, maxsus `state management` kutubxonalari kerak bo'lishi mumkin.",
+      "explanation": [
+        { "type": "paragraph", "content": "Qachon kerak bo'lishi mumkin:" },
+        {
+          "type": "list",
+          "items": [
+            "**Katta Hajmdagi Global `State`:** Ko'plab komponentlar o'rtasida bo'lishiladigan (`shared`) va tez-tez yangilanadigan katta hajmdagi `state` mavjud bo'lganda.",
+            "**Murakkab `State` O'zgarishlari:** `State` yangilanishlari murakkab mantiqqa ega bo'lganda yoki bir nechta `state` qismlari birgalikda o'zgarishi kerak bo'lganda (`Redux`'ning `reducer`'lari bu uchun qulay).",
+            "**`Performance` Optimizatsiyasi:** `Context API`'ning 'hamma qayta `render` bo'ladi' muammosidan qochish kerak bo'lganda (ba'zi kutubxonalar (`Zustand`, `Jotai`) `selector`'lar yordamida optimallashtirilgan `re-render`'larni ta'minlaydi).",
+            "**`Middleware` Zarurati:** `API` so'rovlari, `logging` kabi `side effect`'larni `state` yangilanishlari bilan birga markazlashtirilgan holda boshqarish kerak bo'lganda (`Redux Thunk`, `Redux Saga`).",
+            "**`Debugging` Qulayligi:** `State` o'zgarishlarini kuzatish va vaqt bo'ylab orqaga qaytarish (`time-travel debugging`) kabi imkoniyatlar kerak bo'lganda (`Redux DevTools`)."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Tanlov loyihaning murakkabligiga bog'liq. Kichik loyihalar uchun `useState` + `useContext` yetarli. Kattaroq loyihalar uchun `Zustand` yoki `Jotai` kabi soddaroq kutubxonalar yoki `Redux` (ko'proq `boilerplate` bilan) ko'rib chiqilishi mumkin."
+        }
+      ],
+      "interviewAnswer": "Maxsus `state management` kutubxonalari (`Redux`, `Zustand`) katta dasturlarda murakkab global `state`'ni boshqarish, `performance`'ni optimallashtirish, `middleware` (`async` amallar uchun) ishlatish va `debugging`'ni (`Redux DevTools`) osonlashtirish uchun kerak bo'ladi. Kichik loyihalar uchun odatda `useState` va `useContext` yetarli."
+    }
+  },
+  {
+    "id": "react-q37",
+    "question": "`React`'da `Testing` (testlash) qanday amalga oshiriladi?",
+    "topic": "React Testing",
+    "answer": {
+      "definition": "`React` dasturlarini testlash odatda bir necha darajada amalga oshiriladi va buning uchun maxsus kutubxonalar va vositalar ishlatiladi.",
+      "explanation": [
+        { "type": "paragraph", "content": "Asosiy testlash turlari:" },
+        {
+          "type": "list",
+          "items": [
+            "**Unit Testing:** Alohida, izolyatsiya qilingan komponentlar yoki funksiyalarning logikasini tekshirish. Odatda `Jest` (`test runner`, `assertion library`) va `React Testing Library` (komponentlarni `render` qilish va ular bilan `user` kabi interaksiya qilish uchun `utility`'lar) yordamida amalga oshiriladi. Maqsad — komponentning berilgan `props` uchun to'g'ri `UI`'ni `render` qilishini va hodisalarga to'g'ri javob berishini tekshirish.",
+            "**Integration Testing:** Bir nechta komponentning birgalikda, integratsiyalashgan holda to'g'ri ishlashini tekshirish. Bu ham ko'pincha `Jest` va `React Testing Library` bilan qilinadi, lekin ko'proq `user flow`'larni (masalan, `form`'ni to'ldirib yuborish) simulyatsiya qiladi.",
+            "**End-to-End (E2E) Testing:** Butun dasturni haqiqiy brauzerda, foydalanuvchi nuqtai nazaridan to'liq sinovdan o'tkazish. Bu `login` qilish, sahifalararo o'tish, `API` so'rovlari kabi to'liq `user flow`'larni tekshiradi. `Cypress` yoki `Playwright` kabi vositalar ishlatiladi."
+          ]
+        }
+      ],
+      "interviewAnswer": "`React`'da testlash odatda uch darajada bo'ladi: 1) `Unit Testing` (alohida komponentlar, `Jest` + `React Testing Library`). 2) `Integration Testing` (komponentlarning birgalikda ishlashi, `Jest` + `React Testing Library`). 3) `End-to-End Testing` (butun dastur brauzerda, `Cypress`/`Playwright`)."
+    }
+  },
+  {
+    "id": "react-q38",
+    "question": "`React Fiber` nima?",
+    "topic": "React Internals",
+    "answer": {
+      "definition": "`React Fiber` — bu `React 16`'da kiritilgan yangi `reconciliation` algoritmining (`core algorithm`) ichki implementatsiyasidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Eski `reconciliation` algoritmi (`Stack Reconciler`) sinxron edi va `update` jarayonini to'xtatib bo'lmas edi. Bu katta `update`'lar paytida `UI`'ning 'qotib qolishi'ga olib kelishi mumkin edi. `Fiber` esa `reconciliation` jarayonini kichikroq ish birliklariga (`fibers`) bo'lish va ular o'rtasida **prioritetlash (`prioritization`)**, **to'xtatib turish (`pausing`)**, **bekor qilish (`aborting`)** yoki **qayta ishlatish (`reusing`)** imkonini beradi. Bu asinxron `render` qilishga yo'l ochdi va `React`'ning `animatsiya`lar, `layout` va `gesture`'lar kabi sohalarda `responsiveness`'ini (tezkor javob berishini) sezilarli darajada yaxshiladi. Oddiy `React` dasturchisi `Fiber` bilan to'g'ridan-to'g'ri ishlamaydi, lekin uning mavjudligi `React`'ning zamonaviy imkoniyatlari (masalan, `Concurrent Mode`'ga asos) uchun poydevor hisoblanadi."
+        }
+      ],
+      "interviewAnswer": "`React Fiber` `React 16`'dan boshlab ishlatiladigan yangi `reconciliation` algoritmining ichki implementatsiyasi. U `update` jarayonini kichik birliklarga bo'lib, uni asinxron qilish, prioritetlash va to'xtatib turish imkonini beradi. Bu `React`'ning `responsiveness`'ini yaxshilaydi. Oddiy dasturchi u bilan to'g'ridan-to'g'ri ishlamaydi."
+    }
+  },
+  {
+    "id": "react-q39",
+    "question": "`React`'da `render prop` patterni nima?",
+    "topic": "React Patterns",
+    "answer": {
+      "definition": "`Render prop` patterni — bu komponentlar o'rtasida kodni (ayniqsa `stateful` mantiqni) bo'lishish (`share`) uchun ishlatiladigan texnika bo'lib, unda komponent (`parent`) o'zining `child`'iga `render` qilish uchun nima kerakligini aytadigan **funksiyani `prop` sifatida** uzatadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ya'ni, `child` komponent qanday qilib `render` qilishni o'zi hal qilmaydi. U `parent`'dan kelgan `render` nomli (`yoki boshqa nomdagi`) `prop`'ni (bu `prop` funksiya bo'ladi) chaqiradi va o'zining ichki `state`'ini yoki boshqa ma'lumotlarni o'sha funksiyaga argument qilib beradi. O'sha `parent`'dan kelgan funksiya esa bu ma'lumotlarni ishlatib, kerakli `JSX`'ni qaytaradi. Bu `pattern` `Hook`'lar paydo bo'lguncha `stateful` mantiqni qayta ishlatish uchun `HOC`'larga alternativa sifatida keng qo'llanilgan. Hozirda `custom Hooks` ko'pincha soddaroq yechim hisoblanadi, ammo `render props` hali ham ba'zi kutubxonalarda (`React Router`'ning eski versiyalari, `Formik`) uchraydi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Oddiy `Mouse Tracker` Misoli:",
+          "code": [
+            "class Mouse extends React.Component {",
+            "  constructor(props) { super(props); this.state = { x: 0, y: 0 }; }",
+            "  handleMouseMove = (event) => { this.setState({ x: event.clientX, y: event.clientY }); }",
+            "  render() {",
+            "    return (",
+            "      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>",
+            "        {/* Render prop'ni (funksiyani) chaqirib, state'ni uzatamiz */} ",
+            "        {this.props.render(this.state)}",
+            "      </div>",
+            "    );",
+            "  }",
+            "}",
+            "",
+            "function App() {",
+            "  return (",
+            "    <Mouse render={({ x, y }) => ( // Funksiyani prop sifatida uzatamiz",
+            "      <h1>Sichqoncha pozitsiyasi: ({x}, {y})</h1>",
+            "    )} />",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`Render prop` komponentlar o'rtasida mantiqni bo'lishish uchun `pattern`. Bunda `parent` komponent `child`'ga `render` qilish uchun funksiyani `prop` sifatida (`<Child render={data => <JSX... />} />`) uzatadi. `Child` o'z `state`'ini o'sha funksiyaga beradi, funksiya esa `JSX` qaytaradi. `Hook`'lar paydo bo'lgach kamroq ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q40",
+    "question": "`React`'da `profiling` nima va u qanday amalga oshiriladi?",
+    "topic": "React Performance & Debugging",
+    "answer": {
+      "definition": "`Profiling` (`profil yaratish`) — bu `React` dasturining `performance`'ini tahlil qilish, ayniqsa komponentlarning qancha vaqt davomida `render` bo'layotganini va nima uchun qayta `render` bo'layotganini aniqlash jarayonidir.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bu `performance` muammolarining (`bottlenecks`) manbasini topish va optimallashtirish uchun juda muhim. `Profiling` odatda **`React DevTools`** brauzer kengaytmasi yordamida amalga oshiriladi:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**`Profiler` Tabi:** `React DevTools`'da maxsus `Profiler` `tab`i mavjud.",
+            "**Yozib Olish (`Record`):** Siz dastur bilan interaksiya qilishni boshlashdan oldin 'Record' tugmasini bosasiz, kerakli amallarni bajarasiz (masalan, sahifani `scroll` qilish, `state`'ni o'zgartirish) va keyin 'Stop' tugmasini bosasiz.",
+            "**Tahlil (`Analyze`):** `Profiler` sizga yozib olingan vaqt davomidagi har bir `commit` (DOM yangilanishi) haqida batafsil ma'lumotni ko'rsatadi. Eng ko'p vaqt olgan `render`'larni (`flamegraph` yoki `ranked chart` ko'rinishida) ko'rishingiz, har bir komponent nima uchun qayta `render` bo'lganini (masalan, `props` o'zgarganmi, `state` o'zgarganmi, `parent` qayta `render` bo'lganmi) bilib olishingiz mumkin.",
+            "**`Why did you render` Kutubxonasi:** Ba'zan keraksiz `re-render`'larning sababini aniqlash uchun `@welldone-software/why-did-you-render` kabi qo'shimcha kutubxonalardan foydalanish ham mumkin."
+          ]
+        }
+      ],
+      "interviewAnswer": "`Profiling` `React` dasturining `performance`'ini tahlil qilish, ayniqsa keraksiz `re-render`'larni va ularning sabablarini topish jarayonidir. U asosan `React DevTools` brauzer kengaytmasining `Profiler` `tab`i yordamida amalga oshiriladi. U qaysi komponentlar ko'p vaqt olayotganini va nima uchun qayta `render` bo'layotganini ko'rsatadi."
+    }
+  },
+
+  {
+    "id": "react-q41",
+    "question": "`React`'da `keys` qanday qilib `siblings` orasida unikal bo'lishi kerak, global emas?",
+    "topic": "React Rendering",
+    "answer": {
+      "definition": "`React` ro'yxat elementlarini `render` qilganda, `key` `prop`'i faqat **bir xil `parent`'ga ega bo'lgan qo'shni elementlar (`siblings`) orasida** unikal bo'lishi talab qilinadi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Ya'ni, butun dastur bo'ylab yoki hatto butun ro'yxat bo'ylab `key`'lar unikal bo'lishi shart emas. `React` `key`'lardan bir `parent` ichidagi `child` elementlarni solishtirish va ularning tartibini yoki mavjudligini aniqlash uchun foydalanadi. Ikki xil `parent`'ga ega bo'lgan yoki bir xil `parent`'da bo'lsa ham, bir-biriga qo'shni bo'lmagan elementlar bir xil `key`'ga ega bo'lishi mumkin va bu muammo tug'dirmaydi."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "function App() {",
+            "  const list1 = [{id: 1, text: 'A'}, {id: 2, text: 'B'}];",
+            "  const list2 = [{id: 1, text: 'X'}, {id: 2, text: 'Y'}];",
+            "  return (",
+            "    <div>",
+            "      <ul>{list1.map(item => <li key={item.id}>{item.text}</li>)}</ul>",
+            "      <hr />",
+            "      <ul>{list2.map(item => <li key={item.id}>{item.text}</li>)}</ul>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`key`'lar faqat bir `parent` ichidagi qo'shni (`sibling`) elementlar orasida unikal bo'lishi kerak. Ular butun dastur bo'ylab unikal bo'lishi shart emas. `React` `key`'ni faqat bir `parent`'ning `child`'larini solishtirish uchun ishlatadi."
+    }
+  },
+  {
+    "id": "react-q42",
+    "question": "`React`'da `synthetic events` qanday qilib `event pooling` qiladi?",
+    "topic": "React Events",
+    "answer": {
+      "definition": "`Event pooling` — bu `React`'ning `performance`'ni optimallashtirish uchun ishlatgan mexanizmi bo'lib, unda `SyntheticEvent` obyektlari qayta ishlatiladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Hodisa (`event`) yuz berganda, `React` `pool`'dan (hovuzdan) `SyntheticEvent` obyektini oladi, uni kerakli ma'lumotlar bilan to'ldiradi va `event handler`'ga uzatadi. `Event handler` tugashi bilan, `SyntheticEvent` obyekti 'tozalanadi' va keyingi hodisa uchun qayta ishlatish uchun `pool`'ga qaytariladi. Bu har bir hodisa uchun yangi obyekt yaratish xarajatlarini kamaytiradi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**Muhim:** Shu sababli, `event handler` tugaganidan keyin `SyntheticEvent` obyektining xususiyatlariga asinxron ravishda (masalan, `setTimeout` ichida) murojaat qilib bo'lmaydi, chunki u allaqachon tozalangan yoki boshqa hodisa uchun ishlatilayotgan bo'lishi mumkin. Agar `event` obyektiga keyinroq murojaat qilish kerak bo'lsa, `event.persist()` metodini chaqirish kerak (garchi bu `React 17`'dan keyin odatda shart bo'lmasa ham, chunki `event pooling` mexanizmi o'zgargan)."
+        }
+      ],
+      "interviewAnswer": "`Event pooling` `React`'ning `SyntheticEvent` obyektlarini qayta ishlatish usuli (`performance` uchun). `Event handler` tugashi bilan `event` obyekti tozalanib, `pool`'ga qaytariladi. Shu sababli unga asinxron murojaat qilish uchun (`React 17`'gacha) `event.persist()` kerak bo'lgan."
+    }
+  },
+  {
+    "id": "react-q43",
+    "question": "`React` komponenti qachon qayta `render` bo'ladi?",
+    "topic": "React Rendering",
+    "answer": {
+      "definition": "`React` komponenti bir nechta asosiy sabablarga ko'ra qayta `render` (`re-render`) bo'lishi mumkin.",
+      "explanation": [
+        { "type": "paragraph", "content": "Asosiy sabablar:" },
+        {
+          "type": "list",
+          "items": [
+            "**`State` O'zgarishi:** Komponentning o'zining `state`'i `setState` (yoki `useState`'dan qaytgan `setter` funksiya) yoki `forceUpdate` (tavsiya etilmaydi) orqali o'zgarganda.",
+            "**`Props` O'zgarishi:** Komponentga `parent` komponentdan keladigan `props`'lardan biri o'zgarganda (odatda `shallow comparison` bilan tekshiriladi).",
+            "**`Parent` Komponent Qayta `Render` Bo'lganda:** Agar `parent` komponent qayta `render` bo'lsa, uning **barcha `child` komponentlari** ham, hatto ularning `props`'lari o'zgarmagan bo'lsa ham, standart holatda qayta `render` bo'ladi (buning oldini olish uchun `React.memo` ishlatiladi).",
+            "**`Context` O'zgarishi:** Komponent `useContext` orqali obuna bo'lgan `Context`'ning qiymati o'zgarganda."
+          ]
+        }
+      ],
+      "interviewAnswer": "Komponent asosan uchta holatda qayta `render` bo'ladi: 1) O'zining `state`'i o'zgarganda. 2) Unga keladigan `props` o'zgarganda. 3) Uning `parent` komponenti qayta `render` bo'lganda (hatto `props` o'zgarmasa ham, `React.memo` bilan oldini olish mumkin). Shuningdek, `Context` o'zgarganda ham."
+    }
+  },
+  {
+    "id": "react-q44",
+    "question": "`React`'da `children`'ni `prop` sifatida uzatish (`passing children as props`) va oddiy `prop` uzatish o'rtasida qanday farq bor?",
+    "topic": "React Props & Composition",
+    "answer": {
+      "definition": "Ikkalasi ham `parent`'dan `child`'ga ma'lumot/komponent uzatish usuli, ammo sintaksisi va odatiy qo'llanilishi farq qiladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**Oddiy `prop`:** Ma'lumot aniq nomlangan atribut (`<Child myData={data} />`) orqali uzatiladi. `Child` komponent uni `props.myData` orqali oladi. Bu aniq, diskret qiymatlarni (son, `string`, obyekt, funksiya) uzatish uchun ishlatiladi."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`children` `prop`'i:** Kontent `child` komponentning ochiluvchi va yopiluvchi `tag`lari orasiga (`<Parent><ChildContent /></Parent>`) joylashtiriladi. `Parent` bu kontentni maxsus `props.children` orqali oladi. Bu asosan umumiy `layout`, `wrapper` yoki `container` komponentlarini yaratishda, `child` komponentning ichki tarkibini (`content`) `parent` tomonidan belgilash uchun ishlatiladi (`composition`)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Misol:",
+          "code": [
+            "function Dialog(props) {",
+            "  return (",
+            "    <div style={{ border: `1px solid ${props.color || 'blue'}` }}>",
+            "      <h1>{props.title}</h1> {/* Oddiy prop */} ",
+            "      <div>{props.children}</div> {/* Children prop */} ",
+            "    </div>",
+            "  );",
+            "}",
+            "",
+            "function WelcomeDialog() {",
+            "  return (",
+            "    <Dialog title=\"Xush kelibsiz!\" color=\"green\">",
+            "      {/* Bu qism 'props.children' bo'ladi */} ",
+            "      <p>Bizning saytimizga xush kelibsiz!</p>",
+            "      <button>OK</button>",
+            "    </Dialog>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "Oddiy `prop` aniq nom bilan (`propName={value}`) uzatiladi va diskret qiymatlar uchun. `children` `prop`'i komponent `tag`lari orasiga yozilgan kontentni (`<Comp>bu yerda</Comp>`) ifodalaydi va asosan `composition` (umumiy `wrapper`'lar yaratish) uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q45",
+    "question": "`React`'da `Fragments` qachon `key` `prop`'ini talab qiladi?",
+    "topic": "React JSX",
+    "answer": {
+      "definition": "Odatda `React Fragment`'ning qisqa sintaksisi (`<>...</>`) `key` `prop`'ini qabul qilmaydi. Ammo, agar siz massivni `.map()` qilayotganda har bir elementni `Fragment` bilan o'rayotgan bo'lsangiz, `React` bu `Fragment`'larni bir-biridan ajratishi uchun `key` kerak bo'ladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Bunday holda, siz `Fragment`'ning **to'liq sintaksisidan (`<React.Fragment>`)** foydalanishingiz va unga `key` atributini berishingiz kerak."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`key` bilan `Fragment`:",
+          "code": [
+            "function Glossary(props) {",
+            "  return (",
+            "    <dl>",
+            "      {props.items.map(item => (",
+            "        // Har bir 'item' uchun ikkita element qaytarish kerak,",
+            "        // shuning uchun Fragment ishlatamiz VA unga key beramiz.",
+            "        <React.Fragment key={item.id}>",
+            "          <dt>{item.term}</dt>",
+            "          <dd>{item.description}</dd>",
+            "        </React.Fragment>",
+            "      ))}",
+            "    </dl>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "Agar siz massivni `.map()` qilayotganda har bir element uchun `Fragment` qaytarayotgan bo'lsangiz, `React` bu `Fragment`'larni ajrata olishi uchun ularga `key` berishingiz kerak. Bu holda qisqa sintaksis (`<>`) emas, balki to'liq `<React.Fragment key={...}>` sintaksisi ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q46",
+    "question": "`React`'da `Hook`'larning qoidalari (`Rules of Hooks`) qanday?",
+    "topic": "React Hooks",
+    "answer": {
+      "definition": "`Hook`'lar `React`'ga qo'shilgan kuchli xususiyatlardir, ammo ular to'g'ri ishlashi uchun ikkita asosiy qoidaga rioya qilish kerak.",
+      "explanation": [
+        {
+          "type": "list",
+          "items": [
+            "**1. `Hook`'larni Faqat Eng Yuqori Darajada Chaqiring (`Only Call Hooks at the Top Level`):** `Hook`'larni `loop`'lar (`for`, `while`), shartli iboralar (`if`, `else`) yoki ichki funksiyalar (`nested functions`) ichida chaqirmang. Ularni har doim `React` funksional komponentingizning eng yuqori darajasida, har qanday `return`'dan oldin chaqiring. Bu `React`'ning har bir `render`'da `Hook`'larni bir xil tartibda chaqirilishini ta'minlaydi, bu esa `state`'ni to'g'ri bog'lash uchun muhim.",
+            "**2. `Hook`'larni Faqat `React` Funksiyalaridan Chaqiring (`Only Call Hooks from React Functions`):** `Hook`'larni faqat `React` `functional component`'lari ichidan yoki `custom Hook`'lar ichidan chaqiring. Ularni oddiy `JavaScript` funksiyalaridan chaqirmang."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Bu qoidalarga rioya qilmaslik kutilmagan `bug`'larga va dasturning noto'g'ri ishlashiga olib kelishi mumkin. `ESLint` uchun `eslint-plugin-react-hooks` `plugin`'i bu qoidalarni avtomatik tekshirishga yordam beradi."
+        }
+      ],
+      "interviewAnswer": "`Hook`'larning ikkita asosiy qoidasi bor: 1) Ularni faqat komponentning eng yuqori darajasida chaqirish kerak (`loop` yoki `if` ichida emas). 2) Ularni faqat `React` `functional component`'laridan yoki `custom Hook`'lardan chaqirish kerak. Bu qoidalar `Hook`'larning to'g'ri ishlashini ta'minlaydi."
+    }
+  },
+  {
+    "id": "react-q47",
+    "question": "`React`'da `Composition` vs `Inheritance` qanday?",
+    "topic": "React Design Patterns",
+    "answer": {
+      "definition": "`React` komponentlar o'rtasida kodni qayta ishlatish uchun `inheritance` (`class` merosi) o'rniga asosan `composition` (komponentlarni bir-birining ichiga joylashtirish) modelini afzal ko'radi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Inheritance` (Meros olish):** An'anaviy `OOP`'da keng qo'llaniladi, bunda bir `class` boshqasidan (`parent`) xususiyatlar va metodlarni meros oladi. `React`'da `class component`'lar bilan texnik jihatdan mumkin bo'lsa-da, bu `pattern` kamdan-kam tavsiya etiladi, chunki u komponentlarni bir-biriga qattiq bog'lab qo'yishi (`tight coupling`) va murakkab ierarxiyalarga olib kelishi mumkin."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Composition` (Kompozitsiya):** Bu yondashuvda komponentlar umumiy funksionallikni boshqa, ixtisoslashgan komponentlarni o'z ichiga olish (`containment`) yoki `props` (ayniqsa `children` `prop`'i) orqali qabul qilish yo'li bilan hosil qiladi. Komponentlar boshqa komponentlarga ular nima ekanligini bilmasdan ham murojaat qila oladi. Bu kodni ancha moslashuvchan (`flexible`), qayta ishlatilishi oson (`reusable`) va `decoupled` (bir-biriga bog'liq bo'lmagan) qiladi. `Hook`'lar ham `composition`'ning bir ko'rinishi sifatida qaralishi mumkin (mantiqni komponentdan ajratib olish)."
+        }
+      ],
+      "examples": [
+        {
+          "title": "`Composition` (Containment & Specialization):",
+          "code": [
+            "function FancyBorder(props) {",
+            "  return <div className={'FancyBorder FancyBorder-' + props.color}>{props.children}</div>;",
+            "}",
+            "function WelcomeDialog() {",
+            "  return (",
+            "    <FancyBorder color=\"blue\">",
+            "      <h1 className=\"Dialog-title\">Xush kelibsiz</h1>",
+            "      <p className=\"Dialog-message\">React o'rganish uchun rahmat!</p>",
+            "    </FancyBorder>",
+            "  );",
+            "}"
+          ]
+        }
+      ],
+      "interviewAnswer": "`React` `inheritance` (meros olish) o'rniga `composition`'ni afzal ko'radi. `Composition`'da komponentlar funksionallikni boshqa komponentlarni o'z ichiga olish (`containment`) yoki `props` (ayniqsa `children`) orqali qabul qilish yo'li bilan hosil qiladi. Bu kodni moslashuvchan va qayta ishlatilishi oson qiladi."
+    }
+  },
+  {
+    "id": "react-q48",
+    "question": "`React`'da `PureComponent` nima (yoki `React.memo`'ning ikkinchi argumenti)?",
+    "topic": "React Performance",
+    "answer": {
+      "definition": "`React.PureComponent` — bu `React.Component`'ga o'xshash `class component` bazasi, ammo u avtomatik ravishda `shouldComponentUpdate` metodini implement qiladi va `props` hamda `state`'ni **`shallow comparison`** (`sayoz solishtirish`) orqali tekshiradi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "Agar `shallow comparison` natijasida `props` va `state` o'zgarmagan deb topilsa, komponent qayta `render` bo'lmaydi. Bu `performance`'ni optimallashtirishga yordam beradi. `Functional component`'lar uchun xuddi shu funksionallikni **`React.memo(MyComponent, arePropsEqual?)`** HOC'si taqdim etadi. `React.memo` ham standart holatda `props`'ni `shallow comparison` qiladi. Agar `shallow comparison` yetarli bo'lmasa (masalan, `props` murakkab obyektlar bo'lsa), `React.memo`'ga ikkinchi argument sifatida maxsus solishtirish funksiyasini (`arePropsEqual(prevProps, nextProps)`) berish mumkin."
+        }
+      ],
+      "interviewAnswer": "`React.PureComponent` `props` va `state`'ni `shallow comparison` bilan tekshirib, keraksiz `re-render`'larning oldini oladigan `class component`'dir. `Functional component`'lar uchun xuddi shu vazifani `React.memo()` HOC'si bajaradi. Ular `performance` optimizatsiyasi uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q49",
+    "question": "`React`'da `uncontrolled components` bilan qachon `ref` ishlatish kerak?",
+    "topic": "React Forms & Refs",
+    "answer": {
+      "definition": "`Uncontrolled components`'da `form` elementining qiymati `DOM` tomonidan boshqarilgani uchun, bu qiymatni olish yoki elementni imperativ ravishda boshqarish kerak bo'lganda `ref`'lardan foydalaniladi.",
+      "explanation": [
+        { "type": "paragraph", "content": "Eng ko'p uchraydigan holatlar:" },
+        {
+          "type": "list",
+          "items": [
+            "**Qiymatni Faqat `Submit` Paytida Olish:** Agar `input`'ning har bir o'zgarishini `state`'da saqlash shart bo'lmasa va qiymat faqat `form` yuborilganda kerak bo'lsa, `ref` yordamida `onSubmit` funksiyasida `inputRef.current.value` orqali qiymatni olish mumkin.",
+            "**Fayl Yuklash (`<input type=\"file\">`):** Bu element har doim `uncontrolled` hisoblanadi. Yuklangan fayl(lar)ga kirish uchun `ref` ishlatish kerak (`fileInputRef.current.files`).",
+            "**Imperativ Boshqaruv:** `Input`'ga dasturiy ravishda `focus` qilish (`inputRef.current.focus()`) yoki matnni tanlash (`inputRef.current.select()`) kabi amallar uchun `ref` zarur."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "Garchi `controlled components` odatda tavsiya etilsa-da, `uncontrolled components` va `refs` oddiyroq `form`'lar yoki `DOM` bilan to'g'ridan-to'g'ri ishlash kerak bo'lgan holatlarda qulay bo'lishi mumkin."
+        }
+      ],
+      "interviewAnswer": "`Uncontrolled components`'da `ref` asosan `form` `submit` bo'lganda qiymatni olish (`ref.current.value`), fayl `input`'laridan (`ref.current.files`) fayllarni olish yoki `input`'ga imperativ ravishda (`ref.current.focus()`) murojaat qilish uchun ishlatiladi."
+    }
+  },
+  {
+    "id": "react-q50",
+    "question": "`Create React App` (CRA) va `Vite` o'rtasida qanday asosiy farqlar bor?",
+    "topic": "React Build Tools",
+    "answer": {
+      "definition": "Ikkalasi ham `React` loyihalarini tezda sozlash va ishga tushirish uchun mo'ljallangan mashhur `build tool`'lardir, ammo ular orqa fonda turli texnologiyalardan foydalanadi, bu esa `development server` tezligi va `build` jarayonida farqlarga olib keladi.",
+      "explanation": [
+        {
+          "type": "paragraph",
+          "content": "**`Create React App` (CRA):** `Webpack`'ka asoslangan. `Development` rejimida u butun dasturni `bundle` qiladi (`JavaScript`, `CSS` hammasini bitta yoki bir nechta faylga yig'adi) va keyin `dev server`'ni ishga tushiradi. Loyiha kattalashgan sari, `dev server`'ning ishga tushishi va `Hot Module Replacement` (HMR - o'zgarishlarni darhol ko'rsatish) sekinlashishi mumkin."
+        },
+        {
+          "type": "paragraph",
+          "content": "**`Vite`:** Zamonaviyroq yondashuvdan foydalanadi. `Development` rejimida u `native ES Modules` (`ESM`)'dan foydalanadi. Brauzer kerakli `module`'ni so'raganda, `Vite` faqat o'sha `module`'ni transformatsiya qiladi va uzatadi. Butun dasturni oldindan `bundle` qilmaydi. Bu `dev server`'ning **juda tez** ishga tushishini va **HMR'ning ham juda tez** ishlashini ta'minlaydi, loyiha hajmidan qat'iy nazar. `Production build` uchun esa optimallashtirilgan `bundle` yaratishda `Rollup`'dan foydalanadi."
+        },
+        {
+          "type": "paragraph",
+          "content": "Hozirgi kunda ko'pchilik yangi `React` loyihalari uchun `Vite` o'zining tezligi tufayli afzal ko'rilmoqda. CRA hali ham keng qo'llaniladi, ammo uning rivojlanishi sekinlashgan."
+        }
+      ],
+      "interviewAnswer": "Asosiy farq `development server` tezligida. CRA (`Webpack` asosida) butun dasturni `bundle` qiladi, bu sekinlashishi mumkin. `Vite` (`native ESM` asosida) esa `bundle` qilmaydi, brauzer so'ragan `module`'nigina uzatadi, bu juda tez ishga tushishni va tez HMR'ni ta'minlaydi. Yangi loyihalar uchun `Vite` odatda afzalroq."
+    }
+  }
+]

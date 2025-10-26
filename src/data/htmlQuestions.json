@@ -211,15 +211,11 @@
       },
       {
         "title": "Yomon `alt` matni:",
-        "code": [
-          "<img src=\"dog.jpg\" alt=\"rasm\">"
-        ]
+        "code": ["<img src=\"dog.jpg\" alt=\"rasm\">"]
       },
       {
         "title": "Dekorativ rasm:",
-        "code": [
-          "<img src=\"background-pattern.png\" alt=\"\">"
-        ]
+        "code": ["<img src=\"background-pattern.png\" alt=\"\">"]
       }
     ],
     "interviewAnswer": "`alt` atributi rasmning matnli tavsifini beradi. U rasm yuklanmasa ko'rsatiladi, `screen reader`'lar uchun `accessibility`'ni ta'minlaydi va `SEO` uchun muhimdir.",
@@ -361,7 +357,7 @@
         "definition": "Brauzer tabining yoki oynasining ochiq turgan vaqti."
       }
     ],
-    "videoUrl": "https://www.youtube.com/embed/a-yMpzx6-dY?si=o9jsA4kpwY0W5c4V"
+    "videoUrl": "https://www.youtube-nocookie.com/embed/a-yMpzx6-dY?si=HSKg1t6FvjInSE4e&rel=0"
   },
   {
     "id": "html-q7",
@@ -1246,9 +1242,7 @@
     "codeExamples": [
       {
         "title": "URL:",
-        "code": [
-          "/search?q=javascript&sort=popular"
-        ]
+        "code": ["/search?q=javascript&sort=popular"]
       },
       {
         "title": "Form:",
@@ -1522,15 +1516,11 @@
     "codeExamples": [
       {
         "title": "`for` bilan:",
-        "code": [
-          "<label for=\"name\">Ism:</label><input id=\"name\">"
-        ]
+        "code": ["<label for=\"name\">Ism:</label><input id=\"name\">"]
       },
       {
         "title": "Ichiga joylashtirish:",
-        "code": [
-          "<label>Email: <input type=\"email\"></label>"
-        ]
+        "code": ["<label>Email: <input type=\"email\"></label>"]
       }
     ],
     "interviewAnswer": "`label` `form` elementiga yorliq beradi. Uni bosish `input`'ni `focus` qiladi (`usability`) va `screen reader`'lar uchun ma'no beradi (`accessibility`). `for` atributi yoki ichiga joylashtirish bilan bog'lanadi.",

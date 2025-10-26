@@ -88,6 +88,15 @@ function QuestionPage() {
     }
   }, [topicName, questionId]);
 
+  useEffect(() => {
+    if (questionId) {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+  }, [questionId]);
+
   if (isLoading) {
     return <p>Yuklanmoqda...</p>;
   }

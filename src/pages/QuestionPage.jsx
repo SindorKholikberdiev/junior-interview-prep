@@ -2,20 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import AnswerDetails from '../components/AnswerDetails/AnswerDetails';
 import styles from './QuestionPage.module.css'; // Reuse styles from old TopicPage
-
-// Helper function to parse text and convert backticked parts to bold
-const formatText = (text) => {
-  if (!text) {
-    return null;
-  }
-  const parts = text.split(/`([^`]+)`/g);
-  return parts.map((part, index) => {
-    if (index % 2 === 1) {
-      return <strong key={index}>{part}</strong>;
-    }
-    return part;
-  });
-};
+import { formatText } from '../utils/formatText';
 
 // To dynamically import JSON data
 const dataMap = {
@@ -26,6 +13,44 @@ const dataMap = {
   nextjs: () => import('../data/nextjsQuestions.json'),
   tailwind: () => import('../data/tailwindQuestions.json'),
   typescript: () => import('../data/typescriptQuestions.json'),
+};
+
+const normalizeAnswerData = (question) => {
+  if (!question) {
+    return null;
+  }
+
+  if (question.answer) {
+    const {
+      definition,
+      explanation,
+      examples,
+      interviewAnswer,
+      differences,
+      whyUsed,
+      dependencyArray,
+    } = question.answer;
+
+    return {
+      description: definition,
+      detailedExplanation: explanation,
+      codeExamples: examples,
+      interviewAnswer,
+      differences,
+      whyUsed,
+      dependencyArray,
+    };
+  }
+
+  return {
+    description: question.description,
+    detailedExplanation: question.detailedExplanation,
+    codeExamples: question.codeExamples,
+    interviewAnswer: question.interviewAnswer,
+    differences: question.differences,
+    whyUsed: question.whyUsed,
+    dependencyArray: question.dependencyArray,
+  };
 };
 
 function QuestionPage() {
@@ -69,11 +94,13 @@ function QuestionPage() {
     return null; // or some other placeholder
   }
 
+  const normalizedAnswer = normalizeAnswerData(question);
+
   return (
     <>
       <h1 className={styles.questionTitleLg}>{formatText(question.question)}</h1>
-      
-      <AnswerDetails answer={question.answer} formatText={formatText} />
+
+      <AnswerDetails answer={normalizedAnswer} formatText={formatText} />
     </>
   );
 }

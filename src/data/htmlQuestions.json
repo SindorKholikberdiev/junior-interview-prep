@@ -3,871 +3,814 @@
     "id": "html-q1",
     "question": "HTML nima va u nima uchun ishlatiladi?",
     "topic": "HTML Basics",
-    "answer": {
-      "definition": "HTML (HyperText Markup Language) — bu veb-sahifalarning strukturasi va mazmunini belgilash uchun ishlatiladigan standart belgilash (`markup`) tili.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U veb-sahifadagi elementlarni (sarlavhalar, paragraflar, rasmlar, havolalar va hokazo) tavsiflash uchun `tag`lardan (`<h1>`, `<p>`, `<img>`, `<a>`) foydalanadi. Brauzerlar HTML kodini o'qib, foydalanuvchiga ko'rsatiladigan vizual sahifani yaratadi. HTML vebning asosiy qurilish bloki hisoblanadi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy HTML Sahifa Strukturasi:",
-          "code": [
-            "<!DOCTYPE html>",
-            "<html>",
-            "<head>",
-            "  <title>Sahifa Sarlavhasi</title>",
-            "</head>",
-            "<body>",
-            "  <h1>Asosiy Sarlavha</h1>",
-            "  <p>Bu birinchi paragraf.</p>",
-            "  <a href=\"https://www.google.com\">Google'ga Havola</a>",
-            "</body>",
-            "</html>"
-          ]
-        }
-      ],
-      "interviewAnswer": "HTML veb-sahifalarning strukturasi va mazmunini belgilaydigan standart belgilash tilidir. U `tag`lar yordamida elementlarni (sarlavha, matn, rasm) aniqlaydi va brauzerga sahifani qanday ko'rsatishni aytadi."
-    }
+    "description": "HTML (HyperText Markup Language) — bu veb-sahifalarning strukturasi va mazmunini belgilash uchun ishlatiladigan standart belgilash (`markup`) tili.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U veb-sahifadagi elementlarni (sarlavhalar, paragraflar, rasmlar, havolalar va hokazo) tavsiflash uchun `tag`lardan (`<h1>`, `<p>`, `<img>`, `<a>`) foydalanadi. Brauzerlar HTML kodini o'qib, foydalanuvchiga ko'rsatiladigan vizual sahifani yaratadi. HTML vebning asosiy qurilish bloki hisoblanadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy HTML Sahifa Strukturasi:",
+        "code": [
+          "<!DOCTYPE html>",
+          "<html>",
+          "<head>",
+          "  <title>Sahifa Sarlavhasi</title>",
+          "</head>",
+          "<body>",
+          "  <h1>Asosiy Sarlavha</h1>",
+          "  <p>Bu birinchi paragraf.</p>",
+          "  <a href=\"https://www.google.com\">Google'ga Havola</a>",
+          "</body>",
+          "</html>"
+        ]
+      }
+    ],
+    "interviewAnswer": "HTML veb-sahifalarning strukturasi va mazmunini belgilaydigan standart belgilash tilidir. U `tag`lar yordamida elementlarni (sarlavha, matn, rasm) aniqlaydi va brauzerga sahifani qanday ko'rsatishni aytadi."
   },
   {
     "id": "html-q2",
     "question": "`<div>` va `<span>` `tag`lari o'rtasida qanday farq bor?",
     "topic": "HTML Elements",
-    "answer": {
-      "definition": "Ikkalasi ham boshqa elementlarni guruhlash uchun ishlatiladigan umumiy konteynerlardir, ammo ularning asosiy farqi displey (`display`) turida: `div` blok-darajali (`block-level`), `span` esa ichki-darajali (`inline-level`) elementdir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`<div>` yangi qator boshlaydi va mavjud bo'lgan barcha kenglikni egallaydi. Odatda sahifaning katta qismlarini guruhlash uchun ishlatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "`<span>` yangi qator boshlamaydi va faqat o'z kontenti egallagan kenglikni oladi. Odatda matnning kichik qismlarini ajratish uchun ishlatiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "<div>Bu butun bir blok.</div>",
-            "<p>Bu paragraf ichidagi <span>ajratilgan</span> so'z.</p>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`div` blok-darajali element, yangi qator boshlaydi va to'liq kenglikni egallaydi; sahifa bo'limlari uchun ishlatiladi. `span` ichki-darajali element, qator ichida qoladi va faqat kerakli kenglikni egallaydi; matn qismlari uchun ishlatiladi."
-    }
+    "description": "Ikkalasi ham boshqa elementlarni guruhlash uchun ishlatiladigan umumiy konteynerlardir, ammo ularning asosiy farqi displey (`display`) turida: `div` blok-darajali (`block-level`), `span` esa ichki-darajali (`inline-level`) elementdir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`<div>` yangi qator boshlaydi va mavjud bo'lgan barcha kenglikni egallaydi. Odatda sahifaning katta qismlarini guruhlash uchun ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "`<span>` yangi qator boshlamaydi va faqat o'z kontenti egallagan kenglikni oladi. Odatda matnning kichik qismlarini ajratish uchun ishlatiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "<div>Bu butun bir blok.</div>",
+          "<p>Bu paragraf ichidagi <span>ajratilgan</span> so'z.</p>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`div` blok-darajali element, yangi qator boshlaydi va to'liq kenglikni egallaydi; sahifa bo'limlari uchun ishlatiladi. `span` ichki-darajali element, qator ichida qoladi va faqat kerakli kenglikni egallaydi; matn qismlari uchun ishlatiladi."
   },
   {
     "id": "html-q3",
     "question": "HTML5 ning asosiy semantik elementlari qaysilar va ular nima uchun muhim?",
     "topic": "HTML5 Semantics",
-    "answer": {
-      "definition": "HTML5 sahifa strukturasini yanada aniqroq qilish uchun `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>` kabi yangi semantik elementlarni kiritgan.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu elementlar sahifa qismlarining ma'nosini (semantikasini) ham brauzerlarga, ham dasturchilarga tushuntirib beradi. Ularni `<div>` o'rniga ishlatish kodning o'qilishini yaxshilaydi, `accessibility`'ni (maxsus imkoniyatlarga ega foydalanuvchilar uchun qulaylik) oshiradi va qidiruv tizimlari (`SEO`) uchun sahifa mazmunini yaxshiroq tushunishga yordam beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Tipik Sahifa Strukturasi:",
-          "code": [
-            "<header>Sayt sarlavhasi va navigatsiyasi</header>",
-            "<nav>Asosiy menyu</nav>",
-            "<main>",
-            "  <article>Asosiy kontent (maqola)</article>",
-            "  <aside>Yon panel (reklama, qo'shimcha havolalar)</aside>",
-            "</main>",
-            "<footer>Saytning pastki qismi (mualliflik huquqi)</footer>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Asosiy HTML5 semantik elementlari `<header>`, `<nav>`, `<main>`, `<footer>`, `<article>`, `<section>`, `<aside>` kabilardir. Ular sahifa strukturasiga ma'no beradi, bu esa kodni o'qishni osonlashtiradi, `accessibility` va `SEO` uchun muhimdir."
-    }
+    "description": "HTML5 sahifa strukturasini yanada aniqroq qilish uchun `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<aside>`, `<footer>` kabi yangi semantik elementlarni kiritgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu elementlar sahifa qismlarining ma'nosini (semantikasini) ham brauzerlarga, ham dasturchilarga tushuntirib beradi. Ularni `<div>` o'rniga ishlatish kodning o'qilishini yaxshilaydi, `accessibility`'ni (maxsus imkoniyatlarga ega foydalanuvchilar uchun qulaylik) oshiradi va qidiruv tizimlari (`SEO`) uchun sahifa mazmunini yaxshiroq tushunishga yordam beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Tipik Sahifa Strukturasi:",
+        "code": [
+          "<header>Sayt sarlavhasi va navigatsiyasi</header>",
+          "<nav>Asosiy menyu</nav>",
+          "<main>",
+          "  <article>Asosiy kontent (maqola)</article>",
+          "  <aside>Yon panel (reklama, qo'shimcha havolalar)</aside>",
+          "</main>",
+          "<footer>Saytning pastki qismi (mualliflik huquqi)</footer>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Asosiy HTML5 semantik elementlari `<header>`, `<nav>`, `<main>`, `<footer>`, `<article>`, `<section>`, `<aside>` kabilardir. Ular sahifa strukturasiga ma'no beradi, bu esa kodni o'qishni osonlashtiradi, `accessibility` va `SEO` uchun muhimdir."
   },
   {
     "id": "html-q4",
     "question": "`<img>` `tag`ining `alt` atributi nima uchun kerak?",
     "topic": "HTML Attributes",
-    "answer": {
-      "definition": "`alt` (alternative text) atributi rasmning matnli tavsifini beradi va uning bir nechta muhim vazifasi bor.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "1) Rasm yuklanmasa, `alt` matni ko'rsatiladi. 2) `Screen reader`'lar (`accessibility` uchun) rasm mazmunini tushuntirish uchun `alt` matnini o'qiydi. 3) Qidiruv tizimlari (`SEO`) rasm mazmunini tushunish uchun `alt` matnidan foydalanadi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "To'g'ri ishlatilishi:",
-          "code": [
-            "<img src=\"kuchuk.jpg\" alt=\"Qizil bo'yinbog'li oq kuchukcha o'tiribdi\">"
-          ]
-        }
-      ],
-      "interviewAnswer": "`alt` atributi rasmning matnli tavsifini beradi. U rasm yuklanmasa ko'rsatiladi, `screen reader`'lar uchun `accessibility`'ni ta'minlaydi va `SEO` uchun muhimdir."
-    }
+    "description": "`alt` (alternative text) atributi rasmning matnli tavsifini beradi va uning bir nechta muhim vazifasi bor.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "1) Rasm yuklanmasa, `alt` matni ko'rsatiladi. 2) `Screen reader`'lar (`accessibility` uchun) rasm mazmunini tushuntirish uchun `alt` matnini o'qiydi. 3) Qidiruv tizimlari (`SEO`) rasm mazmunini tushunish uchun `alt` matnidan foydalanadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "To'g'ri ishlatilishi:",
+        "code": [
+          "<img src=\"kuchuk.jpg\" alt=\"Qizil bo'yinbog'li oq kuchukcha o'tiribdi\">"
+        ]
+      }
+    ],
+    "interviewAnswer": "`alt` atributi rasmning matnli tavsifini beradi. U rasm yuklanmasa ko'rsatiladi, `screen reader`'lar uchun `accessibility`'ni ta'minlaydi va `SEO` uchun muhimdir."
   },
   {
     "id": "html-q5",
     "question": "HTML `form` elementlari qanday ishlaydi va `GET` va `POST` metodlari o'rtasida qanday farq bor?",
     "topic": "HTML Forms",
-    "answer": {
-      "definition": "HTML `<form>` elementlari foydalanuvchidan ma'lumot yig'ish va uni serverga `action` atributida ko'rsatilgan manzilga `method` atributida ko'rsatilgan usul (`GET` yoki `POST`) bilan yuborish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`GET` ma'lumotlarni `URL`'ning o'ziga qo'shib yuboradi (masalan, `?query=react`). Bu qidiruv uchun qulay, ammo `URL` uzunligi cheklangan va ma'lumotlar ochiq ko'rinadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "`POST` ma'lumotlarni `HTTP` so'rovining tanasi (`body`) ichida yuboradi. Maxfiy (parol) yoki katta hajmli ma'lumotlar uchun va serverda o'zgarish qiladigan amallar uchun ishlatiladi. `URL`'da ma'lumot ko'rinmaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Forma:",
-          "code": [
-            "<form action=\"/submit-data\" method=\"POST\">",
-            "  <label for=\"username\">Ism:</label>",
-            "  <input type=\"text\" id=\"username\" name=\"username\">",
-            "  <button type=\"submit\">Yuborish</button>",
-            "</form>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`GET` metodi ma'lumotni `URL`'ga qo'shadi, qidiruv va `bookmark` qilish uchun qulay, lekin xavfsiz emas va hajmi cheklangan. `POST` metodi ma'lumotni so'rov tanasida (`body`) yuboradi, maxfiy ma'lumotlar va serverni o'zgartirish uchun ishlatiladi, hajmi cheklanmagan."
-    }
+    "description": "HTML `<form>` elementlari foydalanuvchidan ma'lumot yig'ish va uni serverga `action` atributida ko'rsatilgan manzilga `method` atributida ko'rsatilgan usul (`GET` yoki `POST`) bilan yuborish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`GET` ma'lumotlarni `URL`'ning o'ziga qo'shib yuboradi (masalan, `?query=react`). Bu qidiruv uchun qulay, ammo `URL` uzunligi cheklangan va ma'lumotlar ochiq ko'rinadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "`POST` ma'lumotlarni `HTTP` so'rovining tanasi (`body`) ichida yuboradi. Maxfiy (parol) yoki katta hajmli ma'lumotlar uchun va serverda o'zgarish qiladigan amallar uchun ishlatiladi. `URL`'da ma'lumot ko'rinmaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Forma:",
+        "code": [
+          "<form action=\"/submit-data\" method=\"POST\">",
+          "  <label for=\"username\">Ism:</label>",
+          "  <input type=\"text\" id=\"username\" name=\"username\">",
+          "  <button type=\"submit\">Yuborish</button>",
+          "</form>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`GET` metodi ma'lumotni `URL`'ga qo'shadi, qidiruv va `bookmark` qilish uchun qulay, lekin xavfsiz emas va hajmi cheklangan. `POST` metodi ma'lumotni so'rov tanasida (`body`) yuboradi, maxfiy ma'lumotlar va serverni o'zgartirish uchun ishlatiladi, hajmi cheklanmagan."
   },
   {
     "id": "html-q6",
     "question": "`localStorage` va `sessionStorage` o'rtasida qanday farq bor?",
     "topic": "Web Storage",
-    "answer": {
-      "definition": "Ikkala `Web Storage API` ham brauzerda ma'lumotlarni saqlaydi, ammo saqlash muddati va `scope`'i bilan farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`localStorage` ma'lumotlarni **doimiy** saqlaydi (brauzer yopilsa ham). Ma'lumotlar faqat kod orqali yoki `cache` tozalanganda o'chiriladi. Bir `origin` uchun barcha `tab`larda umumiy."
-        },
-        {
-          "type": "paragraph",
-          "content": "`sessionStorage` ma'lumotlarni **faqat joriy `tab` yoki oyna yopilguncha** saqlaydi. Har bir `tab`ning o'z `sessionStorage`'i bor."
-        }
-      ],
-      "examples": [
-        {
-          "title": "localStorage:",
-          "code": ["localStorage.setItem('user', 'John');"]
-        },
-        {
-          "title": "sessionStorage:",
-          "code": ["sessionStorage.setItem('tempId', '123');"]
-        }
-      ],
-      "interviewAnswer": "Asosiy farq saqlash muddatida: `localStorage` doimiy (brauzer yopilsa ham qoladi), `sessionStorage` vaqtinchalik (faqat `tab` ochiq turganda). Shuningdek, `localStorage` bir domen uchun umumiy, `sessionStorage` har bir `tab` uchun alohida."
-    }
+    "description": "Ikkala `Web Storage API` ham brauzerda ma'lumotlarni saqlaydi, ammo saqlash muddati va `scope`'i bilan farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`localStorage` ma'lumotlarni **doimiy** saqlaydi (brauzer yopilsa ham). Ma'lumotlar faqat kod orqali yoki `cache` tozalanganda o'chiriladi. Bir `origin` uchun barcha `tab`larda umumiy."
+      },
+      {
+        "type": "paragraph",
+        "content": "`sessionStorage` ma'lumotlarni **faqat joriy `tab` yoki oyna yopilguncha** saqlaydi. Har bir `tab`ning o'z `sessionStorage`'i bor."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "localStorage:",
+        "code": [
+          "localStorage.setItem('user', 'John');"
+        ]
+      },
+      {
+        "title": "sessionStorage:",
+        "code": [
+          "sessionStorage.setItem('tempId', '123');"
+        ]
+      }
+    ],
+    "interviewAnswer": "Asosiy farq saqlash muddatida: `localStorage` doimiy (brauzer yopilsa ham qoladi), `sessionStorage` vaqtinchalik (faqat `tab` ochiq turganda). Shuningdek, `localStorage` bir domen uchun umumiy, `sessionStorage` har bir `tab` uchun alohida."
   },
   {
     "id": "html-q7",
     "question": "`<!DOCTYPE html>` deklaratsiyasi nima uchun kerak?",
     "topic": "HTML Basics",
-    "answer": {
-      "definition": "`<!DOCTYPE html>` — bu hujjat turi deklaratsiyasi bo'lib, `HTML` faylning eng boshida turadi va brauzerga bu hujjat HTML5 ekanligini bildiradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Bu deklaratsiya brauzerning sahifani to'g'ri `render mode` (`standards mode`)'da ko'rsatishini ta'minlaydi. U bo'lmasa, brauzer eski standartlarga mos kelmaydigan `quirks mode`'ga o'tib, sahifani noto'g'ri ko'rsatishi mumkin."
-        }
-      ],
-      "interviewAnswer": "Bu brauzerga hujjat HTML5 ekanligini aytadi va uni `standards mode`'da to'g'ri render qilishini ta'minlaydi, `quirks mode`'dan saqlaydi."
-    }
+    "description": "`<!DOCTYPE html>` — bu hujjat turi deklaratsiyasi bo'lib, `HTML` faylning eng boshida turadi va brauzerga bu hujjat HTML5 ekanligini bildiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu deklaratsiya brauzerning sahifani to'g'ri `render mode` (`standards mode`)'da ko'rsatishini ta'minlaydi. U bo'lmasa, brauzer eski standartlarga mos kelmaydigan `quirks mode`'ga o'tib, sahifani noto'g'ri ko'rsatishi mumkin."
+      }
+    ],
+    "interviewAnswer": "Bu brauzerga hujjat HTML5 ekanligini aytadi va uni `standards mode`'da to'g'ri render qilishini ta'minlaydi, `quirks mode`'dan saqlaydi."
   },
   {
     "id": "html-q8",
     "question": "HTML atributlari (`attributes`) nima va bir nechta misol keltiring?",
     "topic": "HTML Attributes",
-    "answer": {
-      "definition": "HTML atributlari `HTML` elementlariga qo'shimcha ma'lumot yoki sozlamalarni beradi va boshlang'ich `tag` ichida `nom=\"qiymat\"` ko'rinishida yoziladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular elementning xususiyatlarini (`src`, `href`), ko'rinishini (`style`, `class`) yoki xatti-harakatini (`onclick`, `disabled`) aniqlashi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "<a href=\"url\">Havola</a>",
-            "<img src=\"rasm.jpg\" alt=\"Tavsif\">",
-            "<div class=\"konteyner\">...</div>",
-            "<input type=\"text\" disabled>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Atributlar HTML elementlariga qo'shimcha ma'lumot beradi, masalan `href` link manzilini, `src` rasm manbasini, `class` CSS klassini, `disabled` elementni o'chirishni belgilaydi."
-    }
+    "description": "HTML atributlari `HTML` elementlariga qo'shimcha ma'lumot yoki sozlamalarni beradi va boshlang'ich `tag` ichida `nom=\"qiymat\"` ko'rinishida yoziladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular elementning xususiyatlarini (`src`, `href`), ko'rinishini (`style`, `class`) yoki xatti-harakatini (`onclick`, `disabled`) aniqlashi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "<a href=\"url\">Havola</a>",
+          "<img src=\"rasm.jpg\" alt=\"Tavsif\">",
+          "<div class=\"konteyner\">...</div>",
+          "<input type=\"text\" disabled>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Atributlar HTML elementlariga qo'shimcha ma'lumot beradi, masalan `href` link manzilini, `src` rasm manbasini, `class` CSS klassini, `disabled` elementni o'chirishni belgilaydi."
   },
   {
     "id": "html-q9",
     "question": "`script` `tag`ining `async` va `defer` atributlari o'rtasida qanday farq bor?",
     "topic": "HTML Scripting",
-    "answer": {
-      "definition": "`async` va `defer` tashqi `JavaScript` fayllarini `HTML` `parsing`'ini bloklamasdan yuklash imkonini beradi, ammo ularning ishga tushish vaqti va tartibi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`<script async>`:** Skript `HTML parsing` bilan parallel yuklanadi va yuklanishi bilan darhol ishga tushadi (`parsing`'ni to'xtatib). Ishga tushish tartibi kafolatlanmagan."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`<script defer>`:** Skript `HTML parsing` bilan parallel yuklanadi, lekin **butun `HTML` `parse` qilinib bo'lgandan keyin** va `DOMContentLoaded`'dan oldin ishga tushadi. Ishga tushish tartibi `HTML`'dagi tartibiga mos keladi."
-        }
-      ],
-      "interviewAnswer": "`async` skriptlar yuklanishi bilan tartibsiz ishga tushadi, `parsing`'ni to'xtatishi mumkin. `defer` skriptlar `parsing` tugagandan so'ng, tartib bilan ishga tushadi. `defer` odatda xavfsizroq hisoblanadi."
-    }
+    "description": "`async` va `defer` tashqi `JavaScript` fayllarini `HTML` `parsing`'ini bloklamasdan yuklash imkonini beradi, ammo ularning ishga tushish vaqti va tartibi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`<script async>`:** Skript `HTML parsing` bilan parallel yuklanadi va yuklanishi bilan darhol ishga tushadi (`parsing`'ni to'xtatib). Ishga tushish tartibi kafolatlanmagan."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`<script defer>`:** Skript `HTML parsing` bilan parallel yuklanadi, lekin **butun `HTML` `parse` qilinib bo'lgandan keyin** va `DOMContentLoaded`'dan oldin ishga tushadi. Ishga tushish tartibi `HTML`'dagi tartibiga mos keladi."
+      }
+    ],
+    "interviewAnswer": "`async` skriptlar yuklanishi bilan tartibsiz ishga tushadi, `parsing`'ni to'xtatishi mumkin. `defer` skriptlar `parsing` tugagandan so'ng, tartib bilan ishga tushadi. `defer` odatda xavfsizroq hisoblanadi."
   },
   {
     "id": "html-q10",
     "question": "HTML `Entity` nima va ular qachon ishlatiladi?",
     "topic": "HTML Basics",
-    "answer": {
-      "definition": "HTML `Entity`'lar — bu `HTML`'da maxsus ma'noga ega (`<`, `>`, `&`) yoki klaviaturada yo'q (`©`, `€`) belgilarni ko'rsatish uchun ishlatiladigan maxsus kodlardir (`&nom;` yoki `&#raqam;`).",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ular `HTML` kodining to'g'ri `parse` qilinishini ta'minlash (`<p>` `tag`ini matn sifatida ko'rsatish uchun `&lt;p&gt;`), bo'sh joylarni boshqarish (`&nbsp;`) yoki maxsus belgilarni qo'shish uchun kerak."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "&lt; (`<`)",
-            "&gt; (`>`)",
-            "&amp; (`&`)",
-            "&nbsp; (bo'sh joy)",
-            "&copy; (©)"
-          ]
-        }
-      ],
-      "interviewAnswer": "HTML `Entity`'lar maxsus belgilarni (`<`, `>`, `&`, `©`) `HTML` kodida to'g'ri ko'rsatish uchun ishlatiladigan kodlardir, masalan, `&lt;` bu `<` belgisini matn sifatida chiqaradi."
-    }
+    "description": "HTML `Entity`'lar — bu `HTML`'da maxsus ma'noga ega (`<`, `>`, `&`) yoki klaviaturada yo'q (`©`, `€`) belgilarni ko'rsatish uchun ishlatiladigan maxsus kodlardir (`&nom;` yoki `&#raqam;`).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ular `HTML` kodining to'g'ri `parse` qilinishini ta'minlash (`<p>` `tag`ini matn sifatida ko'rsatish uchun `&lt;p&gt;`), bo'sh joylarni boshqarish (`&nbsp;`) yoki maxsus belgilarni qo'shish uchun kerak."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "&lt; (`<`)",
+          "&gt; (`>`)",
+          "&amp; (`&`)",
+          "&nbsp; (bo'sh joy)",
+          "&copy; (©)"
+        ]
+      }
+    ],
+    "interviewAnswer": "HTML `Entity`'lar maxsus belgilarni (`<`, `>`, `&`, `©`) `HTML` kodida to'g'ri ko'rsatish uchun ishlatiladigan kodlardir, masalan, `&lt;` bu `<` belgisini matn sifatida chiqaradi."
   },
   {
     "id": "html-q11",
     "question": "`id` va `class` atributlari o'rtasida qanday farq bor?",
     "topic": "HTML Attributes",
-    "answer": {
-      "definition": "Ikkalasi ham `HTML` elementlariga identifikator berish uchun ishlatiladi, ammo ularning qo'llanilishi va unikaligi bo'yicha muhim farqlari bor.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`id` (Identifier):** Bir `HTML` hujjati ichida **mutlaqo unikal** bo'lishi kerak. Ya'ni, bir `id` qiymatini faqat bitta elementga berish mumkin. U odatda `JavaScript` bilan ma'lum bir elementni topish (`document.getElementById()`) yoki sahifa ichidagi `anchor` (`havola`) yaratish (`href=\"#section1\"`) uchun ishlatiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`class` (Classification):** Bir xil `class` nomini bir nechta elementga berish mumkin. Bir elementga bir nechta `class` nomini bo'sh joy bilan ajratib berish ham mumkin (`class=\"button primary\"`). `class` asosan `CSS` bilan bir xil turdagi elementlarga guruh bo'lib stil berish uchun ishlatiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "<div id=\"main-header\">...</div>",
-            "<p class=\"error-message\">Xatolik yuz berdi.</p>",
-            "<button class=\"button primary\">Tasdiqlash</button>",
-            "<button class=\"button secondary\">Bekor qilish</button>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`id` butun sahifada unikal bo'lishi kerak va odatda `JavaScript` yoki `anchor link`lar uchun ishlatiladi. `class` esa bir nechta elementga berilishi mumkin va asosan `CSS` bilan stil berish uchun ishlatiladi. Bir element bir nechta `class`ga ega bo'lishi mumkin."
-    }
+    "description": "Ikkalasi ham `HTML` elementlariga identifikator berish uchun ishlatiladi, ammo ularning qo'llanilishi va unikaligi bo'yicha muhim farqlari bor.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`id` (Identifier):** Bir `HTML` hujjati ichida **mutlaqo unikal** bo'lishi kerak. Ya'ni, bir `id` qiymatini faqat bitta elementga berish mumkin. U odatda `JavaScript` bilan ma'lum bir elementni topish (`document.getElementById()`) yoki sahifa ichidagi `anchor` (`havola`) yaratish (`href=\"#section1\"`) uchun ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`class` (Classification):** Bir xil `class` nomini bir nechta elementga berish mumkin. Bir elementga bir nechta `class` nomini bo'sh joy bilan ajratib berish ham mumkin (`class=\"button primary\"`). `class` asosan `CSS` bilan bir xil turdagi elementlarga guruh bo'lib stil berish uchun ishlatiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "<div id=\"main-header\">...</div>",
+          "<p class=\"error-message\">Xatolik yuz berdi.</p>",
+          "<button class=\"button primary\">Tasdiqlash</button>",
+          "<button class=\"button secondary\">Bekor qilish</button>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`id` butun sahifada unikal bo'lishi kerak va odatda `JavaScript` yoki `anchor link`lar uchun ishlatiladi. `class` esa bir nechta elementga berilishi mumkin va asosan `CSS` bilan stil berish uchun ishlatiladi. Bir element bir nechta `class`ga ega bo'lishi mumkin."
   },
   {
     "id": "html-q12",
     "question": "HTML5 `data-*` atributlari nima uchun ishlatiladi?",
     "topic": "HTML Attributes",
-    "answer": {
-      "definition": "`data-*` atributlari standart `HTML` atributlari bo'lmagan, lekin `JavaScript` uchun kerak bo'lishi mumkin bo'lgan maxsus ma'lumotlarni (`custom data`) `HTML` elementlarida saqlash imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Atribut nomi har doim `data-` bilan boshlanishi kerak, undan keyin esa kamida bitta harf kelishi va faqat kichik harflar, raqamlar, chiziqcha (`-`), nuqta (`.`), ikki nuqta (`:`) yoki pastki chiziq (`_`) ishlatilishi mumkin. `JavaScript`'da bu atributlarga `element.dataset` obyekti orqali kirish mumkin (atribut nomidagi chiziqchalar `camelCase`'ga o'zgaradi)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "HTML:",
-          "code": [
-            "<div id=\"user-card\" data-user-id=\"123\" data-user-role=\"admin\">Ali</div>"
-          ]
-        },
-        {
-          "title": "JavaScript:",
-          "code": [
-            "const card = document.getElementById('user-card');",
-            "console.log(card.dataset.userId); // '123'",
-            "console.log(card.dataset.userRole); // 'admin'",
-            "// Qiymatni o'zgartirish:",
-            "card.dataset.userRole = 'editor';"
-          ]
-        }
-      ],
-      "interviewAnswer": "`data-*` atributlari `JavaScript` uchun kerak bo'lgan maxsus ma'lumotlarni `HTML` elementlarida saqlash imkonini beradi. Masalan, `data-user-id=\"123\"` atributiga `JavaScript`'da `element.dataset.userId` orqali kirish mumkin."
-    }
+    "description": "`data-*` atributlari standart `HTML` atributlari bo'lmagan, lekin `JavaScript` uchun kerak bo'lishi mumkin bo'lgan maxsus ma'lumotlarni (`custom data`) `HTML` elementlarida saqlash imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Atribut nomi har doim `data-` bilan boshlanishi kerak, undan keyin esa kamida bitta harf kelishi va faqat kichik harflar, raqamlar, chiziqcha (`-`), nuqta (`.`), ikki nuqta (`:`) yoki pastki chiziq (`_`) ishlatilishi mumkin. `JavaScript`'da bu atributlarga `element.dataset` obyekti orqali kirish mumkin (atribut nomidagi chiziqchalar `camelCase`'ga o'zgaradi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "HTML:",
+        "code": [
+          "<div id=\"user-card\" data-user-id=\"123\" data-user-role=\"admin\">Ali</div>"
+        ]
+      },
+      {
+        "title": "JavaScript:",
+        "code": [
+          "const card = document.getElementById('user-card');",
+          "console.log(card.dataset.userId); // '123'",
+          "console.log(card.dataset.userRole); // 'admin'",
+          "// Qiymatni o'zgartirish:",
+          "card.dataset.userRole = 'editor';"
+        ]
+      }
+    ],
+    "interviewAnswer": "`data-*` atributlari `JavaScript` uchun kerak bo'lgan maxsus ma'lumotlarni `HTML` elementlarida saqlash imkonini beradi. Masalan, `data-user-id=\"123\"` atributiga `JavaScript`'da `element.dataset.userId` orqali kirish mumkin."
   },
   {
     "id": "html-q13",
     "question": "HTML `head` `tag`i ichiga qanday elementlar joylashtiriladi?",
     "topic": "HTML Structure",
-    "answer": {
-      "definition": "`<head>` bo'limi `HTML` hujjati haqida `metadata` (ma'lumotlar haqida ma'lumot) saqlaydi va brauzerga ko'rsatilmaydigan, lekin sahifaning ishlashi uchun muhim bo'lgan elementlarni o'z ichiga oladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Eng ko'p ishlatiladigan elementlar: `<title>` (sahifa sarlavhasi, brauzer `tab`ida ko'rinadi), `<meta>` (`charset`, `viewport`, `description` kabi ma'lumotlar), `<link>` (tashqi resurslarni, asosan `CSS` fayllarini ulash uchun), `<style>` (`inline CSS` yozish uchun), `<script>` (`JavaScript` kodini ulash yoki yozish uchun)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy `<head>` Bo'limi:",
-          "code": [
-            "<head>",
-            "  <meta charset=\"UTF-8\">",
-            "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-            "  <title>Mening Sahifam</title>",
-            "  <link rel=\"stylesheet\" href=\"styles.css\">",
-            "  <script src=\"app.js\" defer></script>",
-            "</head>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`<head>` bo'limi sahifa haqida `metadata` saqlaydi. Unga `<title>`, `<meta>` (`charset`, `viewport`), `<link>` (`CSS` uchun), `<style>` va `<script>` kabi elementlar joylashtiriladi. Uning mazmuni to'g'ridan-to'g'ri sahifada ko'rsatilmaydi."
-    }
+    "description": "`<head>` bo'limi `HTML` hujjati haqida `metadata` (ma'lumotlar haqida ma'lumot) saqlaydi va brauzerga ko'rsatilmaydigan, lekin sahifaning ishlashi uchun muhim bo'lgan elementlarni o'z ichiga oladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eng ko'p ishlatiladigan elementlar: `<title>` (sahifa sarlavhasi, brauzer `tab`ida ko'rinadi), `<meta>` (`charset`, `viewport`, `description` kabi ma'lumotlar), `<link>` (tashqi resurslarni, asosan `CSS` fayllarini ulash uchun), `<style>` (`inline CSS` yozish uchun), `<script>` (`JavaScript` kodini ulash yoki yozish uchun)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy `<head>` Bo'limi:",
+        "code": [
+          "<head>",
+          "  <meta charset=\"UTF-8\">",
+          "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+          "  <title>Mening Sahifam</title>",
+          "  <link rel=\"stylesheet\" href=\"styles.css\">",
+          "  <script src=\"app.js\" defer></script>",
+          "</head>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`<head>` bo'limi sahifa haqida `metadata` saqlaydi. Unga `<title>`, `<meta>` (`charset`, `viewport`), `<link>` (`CSS` uchun), `<style>` va `<script>` kabi elementlar joylashtiriladi. Uning mazmuni to'g'ridan-to'g'ri sahifada ko'rsatilmaydi."
   },
   {
     "id": "html-q14",
     "question": "`iframe` nima va u qachon ishlatiladi?",
     "topic": "HTML Elements",
-    "answer": {
-      "definition": "`<iframe>` (Inline Frame) `tag`i joriy `HTML` hujjati ichiga boshqa bir `HTML` hujjatini joylashtirish (qo'shish) imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "U odatda tashqi kontentni (masalan, `YouTube` videosi, `Google Maps` xaritasi, reklama banneri) o'z saytingizga joylashtirish uchun ishlatiladi. `src` atributi ichki hujjatning `URL`'ini ko'rsatadi. Xavfsizlik nuqtai nazaridan (`clickjacking` kabi hujumlarning oldini olish uchun) `iframe`'lardan ehtiyotkorlik bilan foydalanish va `sandbox`, `allow` kabi atributlar bilan uning imkoniyatlarini cheklash tavsiya etiladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "YouTube Videosini Joylashtirish:",
-          "code": [
-            "<iframe width=\"560\" height=\"315\" ",
-            "  src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" ",
-            "  title=\"YouTube video player\" ",
-            "  frameborder=\"0\" ",
-            "  allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" ",
-            "  allowfullscreen>",
-            "</iframe>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`iframe` bir `HTML` sahifasi ichiga boshqa bir `HTML` sahifasini joylashtirish uchun ishlatiladi. Masalan, `YouTube` videosi yoki `Google Maps`'ni saytga qo'shish uchun. `src` atributi ichki sahifaning manzilini ko'rsatadi."
-    }
+    "description": "`<iframe>` (Inline Frame) `tag`i joriy `HTML` hujjati ichiga boshqa bir `HTML` hujjatini joylashtirish (qo'shish) imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U odatda tashqi kontentni (masalan, `YouTube` videosi, `Google Maps` xaritasi, reklama banneri) o'z saytingizga joylashtirish uchun ishlatiladi. `src` atributi ichki hujjatning `URL`'ini ko'rsatadi. Xavfsizlik nuqtai nazaridan (`clickjacking` kabi hujumlarning oldini olish uchun) `iframe`'lardan ehtiyotkorlik bilan foydalanish va `sandbox`, `allow` kabi atributlar bilan uning imkoniyatlarini cheklash tavsiya etiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "YouTube Videosini Joylashtirish:",
+        "code": [
+          "<iframe width=\"560\" height=\"315\" ",
+          "  src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" ",
+          "  title=\"YouTube video player\" ",
+          "  frameborder=\"0\" ",
+          "  allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" ",
+          "  allowfullscreen>",
+          "</iframe>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`iframe` bir `HTML` sahifasi ichiga boshqa bir `HTML` sahifasini joylashtirish uchun ishlatiladi. Masalan, `YouTube` videosi yoki `Google Maps`'ni saytga qo'shish uchun. `src` atributi ichki sahifaning manzilini ko'rsatadi."
   },
   {
     "id": "html-q15",
     "question": "HTML5 da qanday yangi `input` turlari (`types`) qo'shilgan?",
     "topic": "HTML Forms",
-    "answer": {
-      "definition": "HTML5 foydalanuvchidan ma'lumot yig'ishni osonlashtirish va ma'lumotlar validatsiyasini (`validation`) yaxshilash uchun ko'plab yangi `<input>` turlarini kiritgan.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Eng muhimlari: `email` (email formatini tekshiradi), `url` (URL formatini tekshiradi), `number` (faqat raqam kiritishga ruxsat beradi, +/- tugmalari bo'lishi mumkin), `date`, `time`, `datetime-local` (sana va vaqtni tanlash uchun kalendar interfeysini chiqaradi), `color` (rang tanlash vositasini chiqaradi), `range` (suriluvchi `slider`), `search` (qidiruv maydoni). Bu yangi turlar mobil qurilmalarda maxsus klaviaturalarni chiqarishga ham yordam beradi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Yangi Input Turlari:",
-          "code": [
-            "<input type=\"email\" name=\"user_email\">",
-            "<input type=\"number\" name=\"quantity\" min=\"1\" max=\"10\">",
-            "<input type=\"date\" name=\"birthdate\">",
-            "<input type=\"color\" name=\"favcolor\">",
-            "<input type=\"range\" name=\"volume\" min=\"0\" max=\"100\">"
-          ]
-        }
-      ],
-      "interviewAnswer": "HTML5 `email`, `url`, `number`, `date`, `time`, `color`, `range`, `search` kabi ko'plab yangi `input` turlarini qo'shgan. Ular brauzer tomonidan o'rnatilgan validatsiyani ta'minlaydi va mobil qurilmalarda mos klaviaturalarni chiqarishga yordam beradi."
-    }
+    "description": "HTML5 foydalanuvchidan ma'lumot yig'ishni osonlashtirish va ma'lumotlar validatsiyasini (`validation`) yaxshilash uchun ko'plab yangi `<input>` turlarini kiritgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eng muhimlari: `email` (email formatini tekshiradi), `url` (URL formatini tekshiradi), `number` (faqat raqam kiritishga ruxsat beradi, +/- tugmalari bo'lishi mumkin), `date`, `time`, `datetime-local` (sana va vaqtni tanlash uchun kalendar interfeysini chiqaradi), `color` (rang tanlash vositasini chiqaradi), `range` (suriluvchi `slider`), `search` (qidiruv maydoni). Bu yangi turlar mobil qurilmalarda maxsus klaviaturalarni chiqarishga ham yordam beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Yangi Input Turlari:",
+        "code": [
+          "<input type=\"email\" name=\"user_email\">",
+          "<input type=\"number\" name=\"quantity\" min=\"1\" max=\"10\">",
+          "<input type=\"date\" name=\"birthdate\">",
+          "<input type=\"color\" name=\"favcolor\">",
+          "<input type=\"range\" name=\"volume\" min=\"0\" max=\"100\">"
+        ]
+      }
+    ],
+    "interviewAnswer": "HTML5 `email`, `url`, `number`, `date`, `time`, `color`, `range`, `search` kabi ko'plab yangi `input` turlarini qo'shgan. Ular brauzer tomonidan o'rnatilgan validatsiyani ta'minlaydi va mobil qurilmalarda mos klaviaturalarni chiqarishga yordam beradi."
   },
   {
     "id": "html-q16",
     "question": "HTML da `block` va `inline` elementlar o'rtasida qanday farq bor?",
     "topic": "HTML Display",
-    "answer": {
-      "definition": "HTML elementlari odatda ikki asosiy displey (`display`) turiga bo'linadi: `block-level` va `inline-level`. Ularning sahifadagi joylashuvi va o'lchamlarni qabul qilishi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Block-level` elementlar:** Har doim yangi qatordan boshlanadi va odatda o'z `parent` elementining to'liq kengligini egallaydi. Ularga balandlik (`height`) va kenglik (`width`) berish mumkin. Misollar: `<div>`, `<h1>`-`<h6>`, `<p>`, `<ul>`, `<ol>`, `<li>`, `<form>`, `<header>`, `<footer>`, `<section>`."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Inline-level` elementlar:** Yangi qatordan boshlanmaydi va faqat o'z kontenti egallagan kenglikni oladi. Ularga to'g'ridan-to'g'ri balandlik (`height`) yoki kenglik (`width`) berish odatda ta'sir qilmaydi (yoki kutilgandek ishlamaydi). Misollar: `<span>`, `<a>`, `<img>`, `<strong>`, `<em>`, `<input>`, `<button>`, `<label>`."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "<div style=\"border: 1px solid red;\">Men blok elementman.</div>",
-            "<p style=\"border: 1px solid blue;\">",
-            "  Men paragrafman (blok), va ichimda ",
-            "  <span style=\"border: 1px solid green;\">inline element</span> bor.",
-            "</p>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`block` elementlar yangi qatordan boshlanadi va to'liq kenglikni egallaydi (`div`, `p`, `h1`). `inline` elementlar qator ichida qoladi va faqat o'z kontenti kengligini egallaydi (`span`, `a`, `img`). `block` elementlarga `width`/`height` berish mumkin, `inline` elementlarga odatda yo'q."
-    }
+    "description": "HTML elementlari odatda ikki asosiy displey (`display`) turiga bo'linadi: `block-level` va `inline-level`. Ularning sahifadagi joylashuvi va o'lchamlarni qabul qilishi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Block-level` elementlar:** Har doim yangi qatordan boshlanadi va odatda o'z `parent` elementining to'liq kengligini egallaydi. Ularga balandlik (`height`) va kenglik (`width`) berish mumkin. Misollar: `<div>`, `<h1>`-`<h6>`, `<p>`, `<ul>`, `<ol>`, `<li>`, `<form>`, `<header>`, `<footer>`, `<section>`."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Inline-level` elementlar:** Yangi qatordan boshlanmaydi va faqat o'z kontenti egallagan kenglikni oladi. Ularga to'g'ridan-to'g'ri balandlik (`height`) yoki kenglik (`width`) berish odatda ta'sir qilmaydi (yoki kutilgandek ishlamaydi). Misollar: `<span>`, `<a>`, `<img>`, `<strong>`, `<em>`, `<input>`, `<button>`, `<label>`."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "<div style=\"border: 1px solid red;\">Men blok elementman.</div>",
+          "<p style=\"border: 1px solid blue;\">",
+          "  Men paragrafman (blok), va ichimda ",
+          "  <span style=\"border: 1px solid green;\">inline element</span> bor.",
+          "</p>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`block` elementlar yangi qatordan boshlanadi va to'liq kenglikni egallaydi (`div`, `p`, `h1`). `inline` elementlar qator ichida qoladi va faqat o'z kontenti kengligini egallaydi (`span`, `a`, `img`). `block` elementlarga `width`/`height` berish mumkin, `inline` elementlarga odatda yo'q."
   },
   {
     "id": "html-q17",
     "question": "`figure` va `figcaption` elementlari nima uchun ishlatiladi?",
     "topic": "HTML5 Semantics",
-    "answer": {
-      "definition": "`<figure>` va `<figcaption>` elementlari `HTML5`'da rasm, diagramma, kod parchasi kabi o'z-o'zidan mustaqil kontentni va uning sarlavhasini (izohini) semantik jihatdan to'g'ri belgilash uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`<figure>` o'sha mustaqil kontentni (odatda `<img>`, lekin `<pre>`, `<blockquote>` va boshqalar ham bo'lishi mumkin) o'rab turadi. `<figcaption>` (ixtiyoriy) esa `<figure>` ichiga joylashtiriladi va o'sha kontent uchun sarlavha yoki izoh beradi. Bu elementlardan foydalanish kontentning strukturasini aniqroq qiladi va `accessibility` uchun foydalidir."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Rasm va uning izohi:",
-          "code": [
-            "<figure>",
-            "  <img src=\"diagram.png\" alt=\"Ish jarayoni diagrammasi\">",
-            "  <figcaption>1-rasm: Loyihaning umumiy ish jarayoni.</figcaption>",
-            "</figure>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`<figure>` rasm, diagramma yoki kod kabi mustaqil kontentni o'rash uchun ishlatiladi. `<figcaption>` esa `<figure>` ichida joylashib, o'sha kontentga sarlavha yoki izoh beradi. Bu semantika va `accessibility` uchun muhim."
-    }
+    "description": "`<figure>` va `<figcaption>` elementlari `HTML5`'da rasm, diagramma, kod parchasi kabi o'z-o'zidan mustaqil kontentni va uning sarlavhasini (izohini) semantik jihatdan to'g'ri belgilash uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`<figure>` o'sha mustaqil kontentni (odatda `<img>`, lekin `<pre>`, `<blockquote>` va boshqalar ham bo'lishi mumkin) o'rab turadi. `<figcaption>` (ixtiyoriy) esa `<figure>` ichiga joylashtiriladi va o'sha kontent uchun sarlavha yoki izoh beradi. Bu elementlardan foydalanish kontentning strukturasini aniqroq qiladi va `accessibility` uchun foydalidir."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Rasm va uning izohi:",
+        "code": [
+          "<figure>",
+          "  <img src=\"diagram.png\" alt=\"Ish jarayoni diagrammasi\">",
+          "  <figcaption>1-rasm: Loyihaning umumiy ish jarayoni.</figcaption>",
+          "</figure>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`<figure>` rasm, diagramma yoki kod kabi mustaqil kontentni o'rash uchun ishlatiladi. `<figcaption>` esa `<figure>` ichida joylashib, o'sha kontentga sarlavha yoki izoh beradi. Bu semantika va `accessibility` uchun muhim."
   },
   {
     "id": "html-q18",
     "question": "HTML `meta` `tag`lari nima va ularning ba'zi muhim qo'llanilishlari qanday?",
     "topic": "HTML Head",
-    "answer": {
-      "definition": "`<meta>` `tag`lari `<head>` bo'limi ichida joylashadi va `HTML` hujjati haqida brauzer yoki qidiruv tizimlari uchun `metadata` (qo'shimcha ma'lumot) beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ularning ko'plab qo'llanilishlari bor: belgilar kodirovkasini (`charset`) aniqlash (`<meta charset=\"UTF-8\">`), mobil qurilmalar uchun `viewport`'ni sozlash (`<meta name=\"viewport\" ...>`), sahifa tavsifini (`description`) va kalit so'zlarini (`keywords`) qidiruv tizimlari uchun berish, sahifani avtomatik yangilash yoki boshqa `URL`'ga yo'naltirish."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Muhim Meta Taglar:",
-          "code": [
-            "",
-            "<meta charset=\"UTF-8\">",
-            "",
-            "",
-            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-            "",
-            "",
-            "<meta name=\"description\" content=\"React bo'yicha eng yaxshi intervyu savollari.\">",
-            "",
-            "",
-            "<meta name=\"keywords\" content=\"React, JavaScript, Interview\">",
-            "",
-            "",
-            "<meta name=\"author\" content=\"Ali Valiyev\">"
-          ]
-        }
-      ],
-      "interviewAnswer": "`<meta>` `tag`lari `<head>` ichida sahifa haqida qo'shimcha ma'lumot beradi. Eng muhimlari: `charset=\"UTF-8\"` (kodirovka), `name=\"viewport\"` (mobil moslashuv), `name=\"description\"` (SEO uchun tavsif)."
-    }
+    "description": "`<meta>` `tag`lari `<head>` bo'limi ichida joylashadi va `HTML` hujjati haqida brauzer yoki qidiruv tizimlari uchun `metadata` (qo'shimcha ma'lumot) beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ularning ko'plab qo'llanilishlari bor: belgilar kodirovkasini (`charset`) aniqlash (`<meta charset=\"UTF-8\">`), mobil qurilmalar uchun `viewport`'ni sozlash (`<meta name=\"viewport\" ...>`), sahifa tavsifini (`description`) va kalit so'zlarini (`keywords`) qidiruv tizimlari uchun berish, sahifani avtomatik yangilash yoki boshqa `URL`'ga yo'naltirish."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Muhim Meta Taglar:",
+        "code": [
+          "",
+          "<meta charset=\"UTF-8\">",
+          "",
+          "",
+          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+          "",
+          "",
+          "<meta name=\"description\" content=\"React bo'yicha eng yaxshi intervyu savollari.\">",
+          "",
+          "",
+          "<meta name=\"keywords\" content=\"React, JavaScript, Interview\">",
+          "",
+          "",
+          "<meta name=\"author\" content=\"Ali Valiyev\">"
+        ]
+      }
+    ],
+    "interviewAnswer": "`<meta>` `tag`lari `<head>` ichida sahifa haqida qo'shimcha ma'lumot beradi. Eng muhimlari: `charset=\"UTF-8\"` (kodirovka), `name=\"viewport\"` (mobil moslashuv), `name=\"description\"` (SEO uchun tavsif)."
   },
   {
     "id": "html-q19",
     "question": "`canvas` va `svg` o'rtasida qanday farq bor?",
     "topic": "HTML Graphics",
-    "answer": {
-      "definition": "Ikkalasi ham veb-sahifada grafikalar chizish uchun ishlatiladi, ammo ular turli texnologiyalarga asoslangan va turli maqsadlar uchun mos keladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`<canvas>`:** Bu `JavaScript` yordamida **piksellar (`bitmap`)** chizish uchun mo'ljallangan `HTML` elementi. U bo'sh to'rtburchak maydon yaratadi va barcha chizish amallari `JavaScript API` orqali amalga oshiriladi. Chizilgan shakllar `DOM`'ning bir qismi emas, shuning uchun ularga alohida `event listener` qo'shib bo'lmaydi. `Canvas` dinamik animatsiyalar, o'yinlar yoki piksellar darajasida ishlash kerak bo'lgan holatlar uchun yaxshi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`SVG` (Scalable Vector Graphics):** Bu grafikani tavsiflash uchun `XML`'ga asoslangan **vektorli** format. `SVG` elementlari (`<circle>`, `<rect>`, `<path>`) `DOM`'ning bir qismi hisoblanadi, shuning uchun ularga `CSS` bilan stil berish va `JavaScript` bilan `event listener`'lar qo'shish mumkin. `SVG` logotiplar, ikonlar, diagrammalar kabi o'lchami o'zgarganda sifatini yo'qotmasligi kerak bo'lgan grafikalar uchun ideal. Ular `canvas`'ga qaraganda kamroq interaktiv yoki murakkab animatsiyalar uchun mos kelmasligi mumkin."
-        }
-      ],
-      "interviewTips": "Asosiy farqlarni ayting: '`Canvas` `JavaScript` bilan piksellar (`bitmap`) chizadi, dinamik grafikalar/o'yinlar uchun yaxshi, `DOM`'ga bog'liq emas. `SVG` `XML`'ga asoslangan vektorli format, `DOM`'ning bir qismi, o'lchami o'zgarganda sifatini yo'qotmaydi, logotip/ikonlar uchun yaxshi.'"
-    }
+    "description": "Ikkalasi ham veb-sahifada grafikalar chizish uchun ishlatiladi, ammo ular turli texnologiyalarga asoslangan va turli maqsadlar uchun mos keladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`<canvas>`:** Bu `JavaScript` yordamida **piksellar (`bitmap`)** chizish uchun mo'ljallangan `HTML` elementi. U bo'sh to'rtburchak maydon yaratadi va barcha chizish amallari `JavaScript API` orqali amalga oshiriladi. Chizilgan shakllar `DOM`'ning bir qismi emas, shuning uchun ularga alohida `event listener` qo'shib bo'lmaydi. `Canvas` dinamik animatsiyalar, o'yinlar yoki piksellar darajasida ishlash kerak bo'lgan holatlar uchun yaxshi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`SVG` (Scalable Vector Graphics):** Bu grafikani tavsiflash uchun `XML`'ga asoslangan **vektorli** format. `SVG` elementlari (`<circle>`, `<rect>`, `<path>`) `DOM`'ning bir qismi hisoblanadi, shuning uchun ularga `CSS` bilan stil berish va `JavaScript` bilan `event listener`'lar qo'shish mumkin. `SVG` logotiplar, ikonlar, diagrammalar kabi o'lchami o'zgarganda sifatini yo'qotmasligi kerak bo'lgan grafikalar uchun ideal. Ular `canvas`'ga qaraganda kamroq interaktiv yoki murakkab animatsiyalar uchun mos kelmasligi mumkin."
+      }
+    ]
   },
   {
     "id": "html-q20",
     "question": "HTML `accessibility` (A11y) nima va u nima uchun muhim?",
     "topic": "HTML Accessibility",
-    "answer": {
-      "definition": "`Accessibility` (qisqartmasi `a11y`) — bu veb-kontent va dasturlarni imkoniyati cheklangan (masalan, ko'zi ojiz, eshitishida nuqsoni bor, harakatlanishida cheklovi bor) odamlar ham to'liq ishlata olishini ta'minlash amaliyotidir.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "HTML bu jarayonda muhim rol o'ynaydi. Semantik elementlarni (`<nav>`, `<main>`, `<footer>`) to'g'ri ishlatish, rasmlarga mazmunli `alt` atributlarini qo'shish, `form` elementlari uchun `<label>`'lardan foydalanish, klaviatura orqali navigatsiya qilish imkoniyatini ta'minlash kabi amallar yordamchi texnologiyalarga (masalan, `screen reader`'larga) sahifa mazmunini to'g'ri tushunishga va foydalanuvchiga yetkazishga yordam beradi. `Accessibility` nafaqat axloqiy jihatdan muhim, balki ko'plab mamlakatlarda qonuniy talab ham hisoblanadi va `SEO`'ga ham ijobiy ta'sir ko'rsatishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Accessibility Amaliyotlari:",
-          "code": [
-            "",
-            "<nav aria-label=\"Asosiy navigatsiya\">...</nav>",
-            "",
-            "",
-            "<img src=\"logo.png\" alt=\"Kompaniya Logosi\">",
-            "",
-            "",
-            "<label for=\"email\">Email:</label>",
-            "<input type=\"email\" id=\"email\">",
-            "",
-            "",
-            "<button>Profilni Saqlash</button>"
-          ]
-        }
-      ],
-      "interviewTips": "Ta'rifini ayting ('vebni hamma, jumladan imkoniyati cheklangan odamlar ham ishlata olishini ta'minlash'). Muhimligini (axloqiy, qonuniy, `SEO`) va HTML'dagi asosiy amaliyotlarni (semantika, `alt` matni, `label`lar) sanab o'ting."
-    }
+    "description": "`Accessibility` (qisqartmasi `a11y`) — bu veb-kontent va dasturlarni imkoniyati cheklangan (masalan, ko'zi ojiz, eshitishida nuqsoni bor, harakatlanishida cheklovi bor) odamlar ham to'liq ishlata olishini ta'minlash amaliyotidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "HTML bu jarayonda muhim rol o'ynaydi. Semantik elementlarni (`<nav>`, `<main>`, `<footer>`) to'g'ri ishlatish, rasmlarga mazmunli `alt` atributlarini qo'shish, `form` elementlari uchun `<label>`'lardan foydalanish, klaviatura orqali navigatsiya qilish imkoniyatini ta'minlash kabi amallar yordamchi texnologiyalarga (masalan, `screen reader`'larga) sahifa mazmunini to'g'ri tushunishga va foydalanuvchiga yetkazishga yordam beradi. `Accessibility` nafaqat axloqiy jihatdan muhim, balki ko'plab mamlakatlarda qonuniy talab ham hisoblanadi va `SEO`'ga ham ijobiy ta'sir ko'rsatishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Accessibility Amaliyotlari:",
+        "code": [
+          "",
+          "<nav aria-label=\"Asosiy navigatsiya\">...</nav>",
+          "",
+          "",
+          "<img src=\"logo.png\" alt=\"Kompaniya Logosi\">",
+          "",
+          "",
+          "<label for=\"email\">Email:</label>",
+          "<input type=\"email\" id=\"email\">",
+          "",
+          "",
+          "<button>Profilni Saqlash</button>"
+        ]
+      }
+    ]
   },
-
   {
     "id": "html-q21",
     "question": "HTML jadval (`<table>`) elementlarining asosiy `tag`lari qaysilar?",
     "topic": "HTML Tables",
-    "answer": {
-      "definition": "HTML jadvallari ma'lumotlarni qatorlar va ustunlar ko'rinishida taqdim etish uchun ishlatiladi va bir nechta asosiy `tag`lardan tashkil topadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Asosiy `tag`lar: `<table>` (butun jadvalni o'raydi), `<thead>` (jadval sarlavhasi qatorlarini guruhlaydi), `<tbody>` (jadvalning asosiy ma'lumot qatorlarini guruhlaydi), `<tfoot>` (jadval yakuni qatorlarini guruhlaydi - ixtiyoriy), `<tr>` (jadval qatorini (`table row`) belgilaydi), `<th>` (jadval sarlavhasi katakchasini (`table header cell`) belgilaydi, odatda `<thead>` ichida), `<td>` (jadval ma'lumot katakchasini (`table data cell`) belgilaydi, odatda `<tbody>` ichida)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Jadval Strukturasi:",
-          "code": [
-            "<table>",
-            "  <thead>",
-            "    <tr>",
-            "      <th>Ism</th>",
-            "      <th>Yosh</th>",
-            "    </tr>",
-            "  </thead>",
-            "  <tbody>",
-            "    <tr>",
-            "      <td>Ali</td>",
-            "      <td>30</td>",
-            "    </tr>",
-            "    <tr>",
-            "      <td>Vali</td>",
-            "      <td>25</td>",
-            "    </tr>",
-            "  </tbody>",
-            "</table>"
-          ]
-        }
-      ],
-      "interviewAnswer": "Asosiy jadval `tag`lari: `<table>` (asosiy konteyner), `<thead>` (sarlavha), `<tbody>` (asosiy qism), `<tr>` (qator), `<th>` (sarlavha katakchasi), `<td>` (ma'lumot katakchasi)."
-    }
+    "description": "HTML jadvallari ma'lumotlarni qatorlar va ustunlar ko'rinishida taqdim etish uchun ishlatiladi va bir nechta asosiy `tag`lardan tashkil topadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Asosiy `tag`lar: `<table>` (butun jadvalni o'raydi), `<thead>` (jadval sarlavhasi qatorlarini guruhlaydi), `<tbody>` (jadvalning asosiy ma'lumot qatorlarini guruhlaydi), `<tfoot>` (jadval yakuni qatorlarini guruhlaydi - ixtiyoriy), `<tr>` (jadval qatorini (`table row`) belgilaydi), `<th>` (jadval sarlavhasi katakchasini (`table header cell`) belgilaydi, odatda `<thead>` ichida), `<td>` (jadval ma'lumot katakchasini (`table data cell`) belgilaydi, odatda `<tbody>` ichida)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Jadval Strukturasi:",
+        "code": [
+          "<table>",
+          "  <thead>",
+          "    <tr>",
+          "      <th>Ism</th>",
+          "      <th>Yosh</th>",
+          "    </tr>",
+          "  </thead>",
+          "  <tbody>",
+          "    <tr>",
+          "      <td>Ali</td>",
+          "      <td>30</td>",
+          "    </tr>",
+          "    <tr>",
+          "      <td>Vali</td>",
+          "      <td>25</td>",
+          "    </tr>",
+          "  </tbody>",
+          "</table>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Asosiy jadval `tag`lari: `<table>` (asosiy konteyner), `<thead>` (sarlavha), `<tbody>` (asosiy qism), `<tr>` (qator), `<th>` (sarlavha katakchasi), `<td>` (ma'lumot katakchasi)."
   },
   {
     "id": "html-q22",
     "question": "`colspan` va `rowspan` atributlari nima uchun ishlatiladi?",
     "topic": "HTML Tables",
-    "answer": {
-      "definition": "`colspan` va `rowspan` atributlari `<th>` yoki `<td>` elementlariga qo'shiladi va ularga bir nechta ustun yoki qatorni egallash imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`colspan=\"raqam\"`:** Katakchaga `raqam` miqdoricha **ustunni** birlashtirishni aytadi. Masalan, `colspan=\"2\"` katakcha ikkita ustun kengligini egallaydi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`rowspan=\"raqam\"`:** Katakchaga `raqam` miqdoricha **qatorni** birlashtirishni aytadi. Masalan, `rowspan=\"3\"` katakcha uchta qator balandligini egallaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misol:",
-          "code": [
-            "<table>",
-            "  <tr>",
-            "    <th>Meva</th>",
-            "    <th>Narx</th>",
-            "  </tr>",
-            "  <tr>",
-            "    <td>Olma</td>",
-            "    <td rowspan=\"2\">1000 so'm</td> ",
-            "  </tr>",
-            "  <tr>",
-            "    <td>Nok</td>",
-            "    ",
-            "  </tr>",
-            "  <tr>",
-            "    <td colspan=\"2\">Hammasi yangi</td> ",
-            "  </tr>",
-            "</table>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`colspan` katakchaga bir nechta ustunni birlashtirishga, `rowspan` esa bir nechta qatorni birlashtirishga imkon beradi. Ular murakkab jadval tuzilmalarini yaratishda ishlatiladi."
-    }
+    "description": "`colspan` va `rowspan` atributlari `<th>` yoki `<td>` elementlariga qo'shiladi va ularga bir nechta ustun yoki qatorni egallash imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`colspan=\"raqam\"`:** Katakchaga `raqam` miqdoricha **ustunni** birlashtirishni aytadi. Masalan, `colspan=\"2\"` katakcha ikkita ustun kengligini egallaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`rowspan=\"raqam\"`:** Katakchaga `raqam` miqdoricha **qatorni** birlashtirishni aytadi. Masalan, `rowspan=\"3\"` katakcha uchta qator balandligini egallaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "<table>",
+          "  <tr>",
+          "    <th>Meva</th>",
+          "    <th>Narx</th>",
+          "  </tr>",
+          "  <tr>",
+          "    <td>Olma</td>",
+          "    <td rowspan=\"2\">1000 so'm</td> ",
+          "  </tr>",
+          "  <tr>",
+          "    <td>Nok</td>",
+          "    ",
+          "  </tr>",
+          "  <tr>",
+          "    <td colspan=\"2\">Hammasi yangi</td> ",
+          "  </tr>",
+          "</table>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`colspan` katakchaga bir nechta ustunni birlashtirishga, `rowspan` esa bir nechta qatorni birlashtirishga imkon beradi. Ular murakkab jadval tuzilmalarini yaratishda ishlatiladi."
   },
   {
     "id": "html-q23",
     "question": "`GET` so'rovida `URL` parametrlarini qanday yuborish mumkin?",
     "topic": "HTML Forms & URLs",
-    "answer": {
-      "definition": "`GET` so'rovida parametrlar (`key=value` juftliklari) `URL`'ning oxiriga `query string` (so'rov satri) sifatida qo'shib yuboriladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "`Query string` asosiy `URL`'dan keyin `?` belgisi bilan boshlanadi. Bir nechta parametrlar `&` belgisi bilan ajratiladi. Maxsus belgilar (`space`, `/` kabi) odatda `URL encoding` (`percent encoding`) qilinadi (masalan, bo'sh joy `%20` ga aylanadi). Bu usul `form`'larda `method=\"GET\"` ishlatilganda avtomatik tarzda amalga oshiriladi yoki `JavaScript` (`fetch`) yordamida qo'lda yaratilishi mumkin."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy `GET` so'rovi `URL`'i:",
-          "code": ["https://example.com/search?q=javascript&sort=popular"]
-        },
-        {
-          "title": "Forma orqali:",
-          "code": [
-            "<form action=\"/search\" method=\"GET\">",
-            "  <input type=\"text\" name=\"q\">",
-            "  <input type=\"submit\" value=\"Qidirish\">",
-            "</form>",
-            ""
-          ]
-        }
-      ],
-      "interviewAnswer": "`GET` so'rovida parametrlar `URL`'ning oxiriga `?` belgisidan keyin `key=value` ko'rinishida qo'shiladi. Bir nechta parametrlar `&` belgisi bilan ajratiladi. Masalan: `search?q=test&page=2`."
-    }
+    "description": "`GET` so'rovida parametrlar (`key=value` juftliklari) `URL`'ning oxiriga `query string` (so'rov satri) sifatida qo'shib yuboriladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`Query string` asosiy `URL`'dan keyin `?` belgisi bilan boshlanadi. Bir nechta parametrlar `&` belgisi bilan ajratiladi. Maxsus belgilar (`space`, `/` kabi) odatda `URL encoding` (`percent encoding`) qilinadi (masalan, bo'sh joy `%20` ga aylanadi). Bu usul `form`'larda `method=\"GET\"` ishlatilganda avtomatik tarzda amalga oshiriladi yoki `JavaScript` (`fetch`) yordamida qo'lda yaratilishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy `GET` so'rovi `URL`'i:",
+        "code": [
+          "https://example.com/search?q=javascript&sort=popular"
+        ]
+      },
+      {
+        "title": "Forma orqali:",
+        "code": [
+          "<form action=\"/search\" method=\"GET\">",
+          "  <input type=\"text\" name=\"q\">",
+          "  <input type=\"submit\" value=\"Qidirish\">",
+          "</form>",
+          ""
+        ]
+      }
+    ],
+    "interviewAnswer": "`GET` so'rovida parametrlar `URL`'ning oxiriga `?` belgisidan keyin `key=value` ko'rinishida qo'shiladi. Bir nechta parametrlar `&` belgisi bilan ajratiladi. Masalan: `search?q=test&page=2`."
   },
   {
     "id": "html-q24",
     "question": "`viewport` `meta` `tag`i nima uchun kerak?",
     "topic": "HTML Head & Responsive Design",
-    "answer": {
-      "definition": "`<meta name=\"viewport\" ...>` `tag`i brauzerga veb-sahifani turli qurilmalar (ayniqsa mobil qurilmalar) ekranlariga qanday moslashtirish (`responsive design`) kerakligini aytadi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Eng keng tarqalgan qiymati `content=\"width=device-width, initial-scale=1.0\"` hisoblanadi. `width=device-width` brauzerga sahifa kengligini qurilma ekranining kengligiga tenglashni buyuradi. `initial-scale=1.0` esa sahifa birinchi marta yuklanganda qanday masshtabda (`zoom level`) ko'rsatilishini belgilaydi (1.0 - 100% degani). Bu `tag` `responsive` dizaynning asosiy poydevorlaridan biri hisoblanadi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Standart `viewport` sozlamasi:",
-          "code": [
-            "<head>",
-            "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-            "  ...",
-            "</head>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`viewport` `meta` `tag`i, ayniqsa `width=device-width, initial-scale=1.0` qiymati bilan, brauzerga sahifani mobil qurilma ekranining kengligiga moslashtirishni va boshlang'ich masshtabni 100% qilishni aytadi. Bu `responsive design` uchun juda muhim."
-    }
+    "description": "`<meta name=\"viewport\" ...>` `tag`i brauzerga veb-sahifani turli qurilmalar (ayniqsa mobil qurilmalar) ekranlariga qanday moslashtirish (`responsive design`) kerakligini aytadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eng keng tarqalgan qiymati `content=\"width=device-width, initial-scale=1.0\"` hisoblanadi. `width=device-width` brauzerga sahifa kengligini qurilma ekranining kengligiga tenglashni buyuradi. `initial-scale=1.0` esa sahifa birinchi marta yuklanganda qanday masshtabda (`zoom level`) ko'rsatilishini belgilaydi (1.0 - 100% degani). Bu `tag` `responsive` dizaynning asosiy poydevorlaridan biri hisoblanadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Standart `viewport` sozlamasi:",
+        "code": [
+          "<head>",
+          "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+          "  ...",
+          "</head>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`viewport` `meta` `tag`i, ayniqsa `width=device-width, initial-scale=1.0` qiymati bilan, brauzerga sahifani mobil qurilma ekranining kengligiga moslashtirishni va boshlang'ich masshtabni 100% qilishni aytadi. Bu `responsive design` uchun juda muhim."
   },
   {
     "id": "html-q25",
     "question": "HTML5 `audio` va `video` elementlari qanday ishlatiladi?",
     "topic": "HTML Media",
-    "answer": {
-      "definition": "HTML5 `<audio>` va `<video>` `tag`lari veb-sahifalarga tashqi `plugin`'larsiz (masalan, Flash) audio va video kontentini joylashtirish va boshqarish imkonini beradi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Ikkala `tag` ham `src` atributi orqali media faylning manbasini qabul qiladi. Ular `controls` atributi yordamida standart boshqaruv elementlarini (play/pause, ovoz balandligi) ko'rsatishi mumkin. `autoplay` (avtomatik boshlash), `loop` (takrorlash), `muted` (ovozsiz) kabi qo'shimcha atributlari ham bor. Bir nechta `<source>` `tag`ini ichma-ich joylashtirib, turli formatdagi fayllarni (masalan, `.mp4`, `.webm`, `.ogg`) ko'rsatish mumkin, shunda brauzer o'zi qo'llab-quvvatlaydigan birinchisini tanlaydi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Oddiy Video Pleyer:",
-          "code": [
-            "<video controls width=\"400\">",
-            "  <source src=\"movie.mp4\" type=\"video/mp4\">",
-            "  <source src=\"movie.webm\" type=\"video/webm\">",
-            "  Brauzeringiz video tagini qo'llab-quvvatlamaydi.",
-            "</video>"
-          ]
-        },
-        {
-          "title": "Oddiy Audio Pleyer:",
-          "code": [
-            "<audio controls>",
-            "  <source src=\"track.mp3\" type=\"audio/mpeg\">",
-            "  <source src=\"track.ogg\" type=\"audio/ogg\">",
-            "  Brauzeringiz audio elementini qo'llab-quvvatlamaydi.",
-            "</audio>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`<audio>` va `<video>` `tag`lari `plugin`'larsiz audio/video joylashtirish imkonini beradi. `src` atributi faylni ko'rsatadi, `controls` boshqaruv elementlarini qo'shadi. Bir nechta `<source>` bilan turli formatlarni qo'llab-quvvatlash mumkin."
-    }
+    "description": "HTML5 `<audio>` va `<video>` `tag`lari veb-sahifalarga tashqi `plugin`'larsiz (masalan, Flash) audio va video kontentini joylashtirish va boshqarish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ikkala `tag` ham `src` atributi orqali media faylning manbasini qabul qiladi. Ular `controls` atributi yordamida standart boshqaruv elementlarini (play/pause, ovoz balandligi) ko'rsatishi mumkin. `autoplay` (avtomatik boshlash), `loop` (takrorlash), `muted` (ovozsiz) kabi qo'shimcha atributlari ham bor. Bir nechta `<source>` `tag`ini ichma-ich joylashtirib, turli formatdagi fayllarni (masalan, `.mp4`, `.webm`, `.ogg`) ko'rsatish mumkin, shunda brauzer o'zi qo'llab-quvvatlaydigan birinchisini tanlaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Video Pleyer:",
+        "code": [
+          "<video controls width=\"400\">",
+          "  <source src=\"movie.mp4\" type=\"video/mp4\">",
+          "  <source src=\"movie.webm\" type=\"video/webm\">",
+          "  Brauzeringiz video tagini qo'llab-quvvatlamaydi.",
+          "</video>"
+        ]
+      },
+      {
+        "title": "Oddiy Audio Pleyer:",
+        "code": [
+          "<audio controls>",
+          "  <source src=\"track.mp3\" type=\"audio/mpeg\">",
+          "  <source src=\"track.ogg\" type=\"audio/ogg\">",
+          "  Brauzeringiz audio elementini qo'llab-quvvatlamaydi.",
+          "</audio>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`<audio>` va `<video>` `tag`lari `plugin`'larsiz audio/video joylashtirish imkonini beradi. `src` atributi faylni ko'rsatadi, `controls` boshqaruv elementlarini qo'shadi. Bir nechta `<source>` bilan turli formatlarni qo'llab-quvvatlash mumkin."
   },
   {
     "id": "html-q26",
     "question": "`href` va `src` atributlari o'rtasida qanday farq bor?",
     "topic": "HTML Attributes",
-    "answer": {
-      "definition": "Ikkalasi ham tashqi resursga yo'l (`URL`) ko'rsatish uchun ishlatiladi, lekin ularning maqsadi va qaysi elementlarda ishlatilishi farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`href` (Hypertext Reference):** Asosan `<a>` (havola) va `<link>` (`CSS` yoki `favicon` ulash uchun) `tag`larida ishlatiladi. U joriy hujjat va ulanayotgan resurs o'rtasida **aloqa** o'rnatadi. Brauzer `href`'dagi resursni sahifaga joylashtirmaydi, balki unga **havola** qiladi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`src` (Source):** Asosan `<img>`, `<script>`, `<audio>`, `<video>`, `<iframe>` kabi `tag`larda ishlatiladi. U ko'rsatilgan resursni joriy hujjatga **joylashtirish (`embed` yoki `insert`)** uchun ishlatiladi. Brauzer `src`'dagi resursni yuklab oladi va uni `HTML` `parsing` jarayonining bir qismi sifatida sahifaga qo'shadi."
-        }
-      ],
-      "interviewAnswer": "`href` resursga havola yaratadi (`<a>`, `<link>`) va uni sahifaga joylashtirmaydi. `src` esa resursni (`<img>`, `<script>`, `<video>`) yuklab oladi va sahifaga joylashtiradi."
-    }
+    "description": "Ikkalasi ham tashqi resursga yo'l (`URL`) ko'rsatish uchun ishlatiladi, lekin ularning maqsadi va qaysi elementlarda ishlatilishi farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`href` (Hypertext Reference):** Asosan `<a>` (havola) va `<link>` (`CSS` yoki `favicon` ulash uchun) `tag`larida ishlatiladi. U joriy hujjat va ulanayotgan resurs o'rtasida **aloqa** o'rnatadi. Brauzer `href`'dagi resursni sahifaga joylashtirmaydi, balki unga **havola** qiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`src` (Source):** Asosan `<img>`, `<script>`, `<audio>`, `<video>`, `<iframe>` kabi `tag`larda ishlatiladi. U ko'rsatilgan resursni joriy hujjatga **joylashtirish (`embed` yoki `insert`)** uchun ishlatiladi. Brauzer `src`'dagi resursni yuklab oladi va uni `HTML` `parsing` jarayonining bir qismi sifatida sahifaga qo'shadi."
+      }
+    ],
+    "interviewAnswer": "`href` resursga havola yaratadi (`<a>`, `<link>`) va uni sahifaga joylashtirmaydi. `src` esa resursni (`<img>`, `<script>`, `<video>`) yuklab oladi va sahifaga joylashtiradi."
   },
   {
     "id": "html-q27",
     "question": "`ul`, `ol`, va `dl` ro'yxat turlari o'rtasida qanday farq bor?",
     "topic": "HTML Lists",
-    "answer": {
-      "definition": "HTML uch xil asosiy ro'yxat turini taqdim etadi, har biri o'zining semantik ma'nosi va odatiy ko'rinishiga ega.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`<ul>` (Unordered List):** Tartiblanmagan ro'yxat. Elementlarining tartibi muhim emasligini bildiradi. Odatda `bullet` (`•`, `▪` kabi belgilar) bilan ko'rsatiladi. Ichidagi elementlar `<li>` (`list item`) `tag`i bilan belgilanadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`<ol>` (Ordered List):** Tartiblangan ro'yxat. Elementlarining tartibi muhim ekanligini bildiradi. Odatda raqamlar (1, 2, 3...) yoki harflar (A, B, C...) bilan ko'rsatiladi. Ichidagi elementlar ham `<li>` `tag`i bilan belgilanadi."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`<dl>` (Description List):** Ta'riflar ro'yxati. `Termin-ta'rif` juftliklarini belgilash uchun ishlatiladi. U ikkita ichki `tag`dan foydalanadi: `<dt>` (`description term` - termin) va `<dd>` (`description details` - ta'rif)."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "<ul><li>Olma</li><li>Nok</li></ul>",
-            "<ol><li>Birinchi qadam</li><li>Ikkinchi qadam</li></ol>",
-            "<dl><dt>HTML</dt><dd>Belgilash tili</dd><dt>CSS</dt><dd>Stil tili</dd></dl>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`<ul>` tartiblanmagan ro'yxat (nuqtalar bilan). `<ol>` tartiblangan ro'yxat (raqamlar bilan). `<dl>` termin-ta'rif juftliklari ro'yxati (`<dt>` va `<dd>` bilan)."
-    }
+    "description": "HTML uch xil asosiy ro'yxat turini taqdim etadi, har biri o'zining semantik ma'nosi va odatiy ko'rinishiga ega.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`<ul>` (Unordered List):** Tartiblanmagan ro'yxat. Elementlarining tartibi muhim emasligini bildiradi. Odatda `bullet` (`•`, `▪` kabi belgilar) bilan ko'rsatiladi. Ichidagi elementlar `<li>` (`list item`) `tag`i bilan belgilanadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`<ol>` (Ordered List):** Tartiblangan ro'yxat. Elementlarining tartibi muhim ekanligini bildiradi. Odatda raqamlar (1, 2, 3...) yoki harflar (A, B, C...) bilan ko'rsatiladi. Ichidagi elementlar ham `<li>` `tag`i bilan belgilanadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`<dl>` (Description List):** Ta'riflar ro'yxati. `Termin-ta'rif` juftliklarini belgilash uchun ishlatiladi. U ikkita ichki `tag`dan foydalanadi: `<dt>` (`description term` - termin) va `<dd>` (`description details` - ta'rif)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "<ul><li>Olma</li><li>Nok</li></ul>",
+          "<ol><li>Birinchi qadam</li><li>Ikkinchi qadam</li></ol>",
+          "<dl><dt>HTML</dt><dd>Belgilash tili</dd><dt>CSS</dt><dd>Stil tili</dd></dl>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`<ul>` tartiblanmagan ro'yxat (nuqtalar bilan). `<ol>` tartiblangan ro'yxat (raqamlar bilan). `<dl>` termin-ta'rif juftliklari ro'yxati (`<dt>` va `<dd>` bilan)."
   },
   {
     "id": "html-q28",
     "question": "`button` va `input type=\"submit\"` o'rtasida qanday farq bor?",
     "topic": "HTML Forms",
-    "answer": {
-      "definition": "Ikkalasi ham odatda `form`'ni yuborish (`submit`) uchun ishlatilishi mumkin bo'lgan tugmalarni yaratadi, ammo ularning imkoniyatlari va odatiy xatti-harakati biroz farq qiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`<input type=\"submit\">`:** Bu oddiy tugma yaratadi, uning matni `value` atributi orqali belgilanadi. Uning asosiy vazifasi `form`'ni yuborishdir."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`<button>`:** Bu ancha moslashuvchan element. Uning ichiga matndan tashqari boshqa `HTML` elementlarini (masalan, `<img>`, `<span>`) joylashtirish mumkin. `type` atributi uning xatti-harakatini belgilaydi: `type=\"submit\"` (standart, `form`'ni yuboradi), `type=\"reset\"` (`form` maydonlarini tozalaydi), `type=\"button\"` (hech qanday standart xatti-harakatga ega emas, `JavaScript` bilan boshqarish uchun). `<button>` odatda `styling` va kontentni boshqarishda ko'proq imkoniyat bergani uchun afzal ko'riladi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Misollar:",
-          "code": [
-            "<input type=\"submit\" value=\"Yuborish\">",
-            "",
-            "<button type=\"submit\">",
-            "  <img src=\"icon.png\" alt=\"\"> Yuborish",
-            "</button>",
-            "",
-            "<button type=\"button\" onclick=\"doSomething()\">",
-            "  Maxsus Amal",
-            "</button>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`input type=\"submit\"` faqat matnli tugma bo'lib, `form` yuboradi. `<button>` esa ichiga boshqa `HTML` elementlarini olishi mumkin va `type` atributi (`submit`, `reset`, `button`) orqali turli xil xatti-harakatlarga ega bo'lishi mumkin. `<button>` ko'proq moslashuvchan."
-    }
+    "description": "Ikkalasi ham odatda `form`'ni yuborish (`submit`) uchun ishlatilishi mumkin bo'lgan tugmalarni yaratadi, ammo ularning imkoniyatlari va odatiy xatti-harakati biroz farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`<input type=\"submit\">`:** Bu oddiy tugma yaratadi, uning matni `value` atributi orqali belgilanadi. Uning asosiy vazifasi `form`'ni yuborishdir."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`<button>`:** Bu ancha moslashuvchan element. Uning ichiga matndan tashqari boshqa `HTML` elementlarini (masalan, `<img>`, `<span>`) joylashtirish mumkin. `type` atributi uning xatti-harakatini belgilaydi: `type=\"submit\"` (standart, `form`'ni yuboradi), `type=\"reset\"` (`form` maydonlarini tozalaydi), `type=\"button\"` (hech qanday standart xatti-harakatga ega emas, `JavaScript` bilan boshqarish uchun). `<button>` odatda `styling` va kontentni boshqarishda ko'proq imkoniyat bergani uchun afzal ko'riladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misollar:",
+        "code": [
+          "<input type=\"submit\" value=\"Yuborish\">",
+          "",
+          "<button type=\"submit\">",
+          "  <img src=\"icon.png\" alt=\"\"> Yuborish",
+          "</button>",
+          "",
+          "<button type=\"button\" onclick=\"doSomething()\">",
+          "  Maxsus Amal",
+          "</button>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`input type=\"submit\"` faqat matnli tugma bo'lib, `form` yuboradi. `<button>` esa ichiga boshqa `HTML` elementlarini olishi mumkin va `type` atributi (`submit`, `reset`, `button`) orqali turli xil xatti-harakatlarga ega bo'lishi mumkin. `<button>` ko'proq moslashuvchan."
   },
   {
     "id": "html-q29",
     "question": "`Progressive Enhancement` va `Graceful Degradation` nima?",
     "topic": "Web Development Concepts",
-    "answer": {
-      "definition": "Ikkalasi ham turli brauzerlar va qurilmalarda veb-saytning ishlashini ta'minlashga qaratilgan strategiyalardir, ammo ular qarama-qarshi yondashuvlarga ega.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "**`Progressive Enhancement` (Progressiv Yaxshilash):** Bu strategiya eng asosiy, barcha brauzerlar tushunadigan funksionallikdan (odatda oddiy `HTML`) boshlaydi. Keyin `CSS` qo'shib, ko'rinishni yaxshilaydi. So'ngra `JavaScript` qo'shib, interaktivlik va qo'shimcha imkoniyatlarni qo'shadi. Agar foydalanuvchining brauzeri zamonaviy `JavaScript`'ni qo'llab-quvvatlamasa ham, u baribir saytning asosiy mazmuni va funksionalligidan foydalana oladi. Bu hozirda tavsiya etilgan yondashuv."
-        },
-        {
-          "type": "paragraph",
-          "content": "**`Graceful Degradation` (Nafis Pasayish):** Bu strategiya avval eng zamonaviy, barcha xususiyatlarga ega versiyani qurishdan boshlaydi. Keyin esa eski brauzerlar uchun funksionallikni kamaytirish yoki muqobil yechimlarni taqdim etishga harakat qiladi. Bu yondashuvda eski brauzerlardagi tajriba (`user experience`) optimal bo'lmasligi mumkin."
-        }
-      ],
-      "interviewAnswer": "`Progressive Enhancement` asosiy `HTML`'dan boshlab, `CSS` va `JavaScript`'ni qatlam-qatlam qo'shib boradi, shunda eski brauzerlarda ham asosiy funksiya ishlaydi. `Graceful Degradation` esa avval to'liq versiyani qurib, keyin eski brauzerlar uchun funksionallikni kamaytirishga harakat qiladi. `Progressive Enhancement` afzalroq hisoblanadi."
-    }
+    "description": "Ikkalasi ham turli brauzerlar va qurilmalarda veb-saytning ishlashini ta'minlashga qaratilgan strategiyalardir, ammo ular qarama-qarshi yondashuvlarga ega.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Progressive Enhancement` (Progressiv Yaxshilash):** Bu strategiya eng asosiy, barcha brauzerlar tushunadigan funksionallikdan (odatda oddiy `HTML`) boshlaydi. Keyin `CSS` qo'shib, ko'rinishni yaxshilaydi. So'ngra `JavaScript` qo'shib, interaktivlik va qo'shimcha imkoniyatlarni qo'shadi. Agar foydalanuvchining brauzeri zamonaviy `JavaScript`'ni qo'llab-quvvatlamasa ham, u baribir saytning asosiy mazmuni va funksionalligidan foydalana oladi. Bu hozirda tavsiya etilgan yondashuv."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Graceful Degradation` (Nafis Pasayish):** Bu strategiya avval eng zamonaviy, barcha xususiyatlarga ega versiyani qurishdan boshlaydi. Keyin esa eski brauzerlar uchun funksionallikni kamaytirish yoki muqobil yechimlarni taqdim etishga harakat qiladi. Bu yondashuvda eski brauzerlardagi tajriba (`user experience`) optimal bo'lmasligi mumkin."
+      }
+    ],
+    "interviewAnswer": "`Progressive Enhancement` asosiy `HTML`'dan boshlab, `CSS` va `JavaScript`'ni qatlam-qatlam qo'shib boradi, shunda eski brauzerlarda ham asosiy funksiya ishlaydi. `Graceful Degradation` esa avval to'liq versiyani qurib, keyin eski brauzerlar uchun funksionallikni kamaytirishga harakat qiladi. `Progressive Enhancement` afzalroq hisoblanadi."
   },
   {
     "id": "html-q30",
     "question": "`label` `tag`i nima uchun ishlatiladi?",
     "topic": "HTML Forms & Accessibility",
-    "answer": {
-      "definition": "`<label>` `tag`i `HTML` `form`'larida `input` elementlari (`<input>`, `<textarea>`, `<select>`) uchun yorliq (nom) berish uchun ishlatiladi.",
-      "explanation": [
-        {
-          "type": "paragraph",
-          "content": "Uning ikkita asosiy foydasi bor: 1) **Foydalanuvchi Qulayligi (`Usability`):** `label` matnini bosish bilan unga bog'langan `input` maydoni avtomatik ravishda `focus` holatiga o'tadi (ayniqsa `radio button` va `checkbox`'lar uchun qulay). 2) **`Accessibility`:** `Screen reader`'lar `label` matnini o'qib, foydalanuvchiga qaysi `input` maydoni nima uchun mo'ljallanganligini tushuntiradi. `label`'ni `input` bilan bog'lashning ikki yo'li bor: a) `input`'ga `id` berib, `label`'ga `for` atributi orqali o'sha `id`'ni ko'rsatish (`<label for=\"name\">Ism:</label> <input id=\"name\">`); b) `input`'ni `label` `tag`ining ichiga joylashtirish (`<label>Ism: <input></label>`). Birinchi usul afzalroq hisoblanadi."
-        }
-      ],
-      "examples": [
-        {
-          "title": "`for` atributi bilan bog'lash:",
-          "code": [
-            "<label for=\"user_email\">Email manzilingiz:</label>",
-            "<input type=\"email\" id=\"user_email\" name=\"email\">"
-          ]
-        },
-        {
-          "title": "Ichiga joylashtirish:",
-          "code": [
-            "<label>",
-            "  Roziman ",
-            "  <input type=\"checkbox\" name=\"agree\">",
-            "</label>"
-          ]
-        }
-      ],
-      "interviewAnswer": "`label` `form` elementlari (`input`, `select`) uchun yorliq beradi. Uning matnini bosganda `input` `focus` bo'ladi (`usability`) va `screen reader`'lar uchun `input`'ning ma'nosini tushuntiradi (`accessibility`). U `input`'ga `for` atributi orqali bog'lanishi yoki `input`'ni o'z ichiga olishi mumkin."
-    }
+    "description": "`<label>` `tag`i `HTML` `form`'larida `input` elementlari (`<input>`, `<textarea>`, `<select>`) uchun yorliq (nom) berish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uning ikkita asosiy foydasi bor: 1) **Foydalanuvchi Qulayligi (`Usability`):** `label` matnini bosish bilan unga bog'langan `input` maydoni avtomatik ravishda `focus` holatiga o'tadi (ayniqsa `radio button` va `checkbox`'lar uchun qulay). 2) **`Accessibility`:** `Screen reader`'lar `label` matnini o'qib, foydalanuvchiga qaysi `input` maydoni nima uchun mo'ljallanganligini tushuntiradi. `label`'ni `input` bilan bog'lashning ikki yo'li bor: a) `input`'ga `id` berib, `label`'ga `for` atributi orqali o'sha `id`'ni ko'rsatish (`<label for=\"name\">Ism:</label> <input id=\"name\">`); b) `input`'ni `label` `tag`ining ichiga joylashtirish (`<label>Ism: <input></label>`). Birinchi usul afzalroq hisoblanadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`for` atributi bilan bog'lash:",
+        "code": [
+          "<label for=\"user_email\">Email manzilingiz:</label>",
+          "<input type=\"email\" id=\"user_email\" name=\"email\">"
+        ]
+      },
+      {
+        "title": "Ichiga joylashtirish:",
+        "code": [
+          "<label>",
+          "  Roziman ",
+          "  <input type=\"checkbox\" name=\"agree\">",
+          "</label>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`label` `form` elementlari (`input`, `select`) uchun yorliq beradi. Uning matnini bosganda `input` `focus` bo'ladi (`usability`) va `screen reader`'lar uchun `input`'ning ma'nosini tushuntiradi (`accessibility`). U `input`'ga `for` atributi orqali bog'lanishi yoki `input`'ni o'z ichiga olishi mumkin."
   }
 ]

@@ -2,88 +2,104 @@
 import React from 'react';
 import styles from './AnswerDetails.module.css';
 
-// This component receives the `answer` object and a `formatText` function as props.
+/**
+ * Detailed explanation qaydlarini mos ravishda render qiladi.
+ * Har bir element string yoki `title/content/items` shaklidagi obyekt bo'lishi mumkin.
+ */
+const renderExplanationItem = (item, key, formatText) => {
+  if (!item) {
+    return null;
+  }
+
+  if (typeof item === 'string') {
+    return <p key={key}>{formatText(item)}</p>;
+  }
+
+  const { title, type, content, items } = item;
+
+  if (Array.isArray(items) && items.length > 0) {
+    return (
+      <div key={key}>
+        {title && <h4>{formatText(title)}</h4>}
+        <ul>
+          {items.map((listItem, listIndex) => (
+            <li key={`${key}-${listIndex}`}>{formatText(listItem)}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  if (Array.isArray(content) && content.length > 0) {
+    return (
+      <div key={key}>
+        {title && <h4>{formatText(title)}</h4>}
+        {content.map((nested, nestedIndex) =>
+          renderExplanationItem(nested, `${key}-${nestedIndex}`, formatText)
+        )}
+      </div>
+    );
+  }
+
+  if (type === 'paragraph' || typeof content === 'string') {
+    return <p key={key}>{formatText(content || '')}</p>;
+  }
+
+  return null;
+};
+
 const AnswerDetails = ({ answer, formatText }) => {
   if (!answer) {
     return null;
   }
 
+  const { description, detailedExplanation, codeExamples, interviewAnswer } =
+    answer;
+
   return (
     <div className={styles.answerDetail}>
-      {/* Render Definition */}
-      {answer.definition && (
+      {description && (
         <>
-          <h2 className={styles.sectionTitle}>Ta'rif:</h2>
-          <p>{formatText(answer.definition)}</p>
+          <h2 className={styles.sectionTitle}>Aniq va tushunarli ta'rif:</h2>
+          <p>{formatText(description)}</p>
         </>
       )}
 
-      {/* Render Explanation Paragraphs */}
-      {answer.explanation && (
+      {Array.isArray(detailedExplanation) && detailedExplanation.length > 0 && (
         <>
-          <h2 className={styles.sectionTitle}>Batafsil Tushuntirish:</h2>
-          {answer.explanation.map((item, index) => (
-            <p key={index}>{formatText(item.content)}</p>
-          ))}
+          <h2 className={styles.sectionTitle}>Batafsil tushuntirish:</h2>
+          {detailedExplanation.map((item, index) =>
+            renderExplanationItem(item, index, formatText)
+          )}
         </>
       )}
 
-      {/* Render Code Examples */}
-      {answer.examples && (
+      {Array.isArray(codeExamples) && codeExamples.length > 0 && (
         <>
-          <h2 className={styles.sectionTitle}>Kod Misollari:</h2>
-          {answer.examples.map((example, index) => (
+          <h2 className={styles.sectionTitle}>Kod misollari:</h2>
+          {codeExamples.map((example, index) => (
             <div key={index} className={styles.example}>
               {example.title && <h3>{formatText(example.title)}</h3>}
               {example.description && (
-                <p><em>{formatText(example.description)}</em></p>
+                <p>
+                  <em>{formatText(example.description)}</em>
+                </p>
               )}
-              {example.code && (
-                <pre><code>{example.code.join("\n")}</code></pre>
+              {Array.isArray(example.code) && (
+                <pre>
+                  <code>{example.code.join('\n')}</code>
+                </pre>
               )}
             </div>
           ))}
         </>
       )}
 
-      {/* Render Differences (as list) */}
-      {answer.differences && (
+      {interviewAnswer && (
         <>
-          <h2 className={styles.sectionTitle}>Asosiy Farqlar:</h2>
-          <ul>
-            {answer.differences.map((diff, index) => (
-              <li key={index}>{formatText(diff)}</li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      {/* Render Why Used */}
-      {answer.whyUsed && (
-        <>
-          <h2 className={styles.sectionTitle}>Nima uchun ishlatiladi:</h2>
-          <p>{formatText(answer.whyUsed)}</p>
-        </>
-      )}
-
-      {/* Render Dependency Array (as list) */}
-      {answer.dependencyArray && (
-        <>
-          <h2 className={styles.sectionTitle}>Dependency Array Holatlari:</h2>
-          <ul>
-            {answer.dependencyArray.map((item, index) => (
-              <li key={index}>{formatText(item)}</li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      {/* Render Interview Answer */}
-      {answer.interviewAnswer && (
-        <>
-          <h2 className={styles.sectionTitle}>Intervyu Javobi:</h2>
+          <h2 className={styles.sectionTitle}>Intervyu javobi:</h2>
           <p className={styles.interviewAnswer}>
-            {formatText(answer.interviewAnswer)}
+            {formatText(interviewAnswer)}
           </p>
         </>
       )}

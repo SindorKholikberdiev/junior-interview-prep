@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
 import styles from "./Sidebar.module.css";
+import { formatText } from "../../utils/formatText";
 
 // Helper function for custom smooth scrolling
 function customSmoothScroll(element, to, duration) {
@@ -129,7 +130,7 @@ function Sidebar() {
                           : styles.questionLink
                       }
                     >
-                      {q.question}
+                      {formatText(q.question)}
                     </NavLink>
                   </li>
                 ))}

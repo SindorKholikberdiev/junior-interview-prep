@@ -38,72 +38,57 @@
     "detailedExplanation": [
       {
         "type": "paragraph",
-        "content": "`Blok element (div)`ni kartonka qutiga o‘xshating: u sahifada paydo bo‘lishi bilan yangi qator ochadi va mavjud barcha kenglikni egallaydi. Layoutdagi bo‘limlar, kartalar, formalar kabi yirik bloklarni o‘rash uchun ishlatiladi."
+        "content": "`div` (blok element)ni karton qutiga o‘xshating: u sahifada paydo bo‘lishi bilan yangi qator ochadi va mavjud barcha gorizontal bo'shliqni egallaydi. Qancha joy bo'lsa, hammasini band qiladi. U odatda sahifaning katta qismlarini, masalan, butun bir bo'limni (`section`), `header`ni, `footer`ni yoki `form` elementlarini guruhlash uchun ishlatiladi."
       },
       {
         "type": "paragraph",
-        "content": "`Inline element (span)` esa markerga o‘xshaydi: matnning o‘rtasida joylashadi va faqat o‘zi egallagan kichik bo‘shliqni oladi. Qatorni uzmaydi va qolgan matn shu qatorda davom etadi. Matn ichidagi so‘zga rang berish, ikon/badge qo‘shish kabi vaziyatlar uchun idealdir."
+        "content": "`span` (inline element) esa matn markeriga o‘xshaydi: u matnning ichida, qatorni buzmasdan joylashadi va faqat o‘zining ichidagi kontent (masalan, bir-ikki so‘z) egallagan kichik bo‘shliqni oladi. Qolgan matn shu qatorda davom etaveradi. U odatda matn ichidagi biror so‘zga alohida rang berish, `icon` qo‘shish yoki kichik bir qismni `JavaScript` bilan boshqarish uchun ajratib olishga kerak bo‘ladi."
       },
       {
-        "title": "Xatti-harakatni yodda saqlash",
+        "title": "Asosiy Xatti-harakat:",
+        "type": "list",
         "items": [
-          "`div` => display: block; ustma-ust joylashadi va kenglikni to‘liq egallaydi.",
-          "`span` => display: inline; matn oqimida qatorni buzmay qoladi.",
-          "CSS orqali ikkala elementning display turini o‘zgartirish mumkin, lekin default farq mana shu."
+          "`<div>` standart (`default`) holatda `display: block;` xususiyatiga ega. Blok elementlar har doim yangi qatordan boshlanadi va ularga `width` va `height` berish mumkin.",
+          "`<span>` standart (`default`) holatda `display: inline;` xususiyatiga ega. Inline elementlar qator ichida qoladi va ularga `width`, `height`, `margin-top`, `margin-bottom` odatda to'g'ridan-to'g'ri ta'sir qilmaydi.",
+          "Muhim: CSS yordamida har qanday elementning `display` xususiyatini (`block`, `inline`, `inline-block`, `flex`, `grid` va hokazo) o'zgartirish mumkin. Lekin HTML yozayotganda, elementning semantik ma'nosiga qarab to'g'ri `tag`ni tanlash muhim."
         ]
       },
       {
-        "title": "Qachon qaysi biri kerak?",
+        "title": "Qachon Qaysi Birini Ishlatish Kerak?",
+        "type": "list",
         "items": [
-          "`<div>`: layout bo‘limlari (header/footer/card), grid ustunlari, form gruppalari.",
-          "`<span>`: matn ichidagi bir-ikki so‘zni ajratish, ikon/emoji qo‘shish, inline badge."
+          "**`<div>`:** Sahifa `layout`'ining katta qismlari (masalan, `wrapper`, `container`, `row`, `column`), `header`, `footer`, `sidebar`, `main content` bo'limlari, `card` komponentlari, `modal` oynalari.",
+          "**`<span>`:** Paragraf ichidagi alohida so'z yoki iborani ajratib olish (masalan, rangini o'zgartirish uchun), `icon` yoki `emoji` qo'shish, kichik matn bo'laklariga (`badge`, `label`) stil berish."
         ]
       },
       {
         "type": "paragraph",
-        "content": "*Qoida: butun bo‘limni o‘rash kerak bo‘lsa `div`, matn ichida kichik bo‘lakni belgilash kerak bo‘lsa `span`.*"
+        "content": "*Asosiy qoida: Agar siz sahifaning strukturasini bo'limlarga ajratayotgan bo'lsangiz, `<div>` (yoki HTML5 semantik `tag`lari) ishlating. Agar siz matn oqimi ichidagi kichik bir qismni belgilamoqchi bo'lsangiz, `<span>` ishlating.*"
       }
     ],
     "codeExamples": [
       {
-        "title": "Qiyosiy misol (vizual chegaralar bilan)",
-        "description": "`div` kartani bo‘lib turadi, `span` esa faqat bir so‘zni ajratadi va qatorni buzmaydi.",
+        "title": "Vizual Farq Misoli",
+        "description": "Bu misolda `div` elementlari (ko'k chegara) yangi qatorlardan boshlanadi va to'liq kenglikni egallaydi. `span` elementi (yashil fon) esa paragraf ichida qoladi va qatorni buzmaydi.",
         "code": [
           "<style>",
-          "  .card {",
-          "    border: 1px solid #cbd5f5;",
-          "    padding: 16px;",
-          "    background: #f8fafc;",
-          "    font-family: sans-serif;",
-          "    max-width: 320px;",
-          "  }",
-          "  .section {",
-          "    border: 1px dashed #2563eb;",
-          "    margin-bottom: 12px;",
-          "    padding: 8px;",
-          "    background: #e3f2ff;",
-          "  }",
-          "  .highlight {",
-          "    background: #fde68a;",
-          "    color: #92400e;",
-          "    padding: 0 4px;",
-          "  }",
+          "  .block-example { border: 2px solid blue; margin-bottom: 10px; padding: 5px; }",
+          "  .inline-example { background-color: lightgreen; padding: 2px; }",
           "</style>",
           "",
-          "<div class=\"card\">",
-          "  <div class=\"section\">",
-          "    Bu `div` kartaning ichidagi butun qatorni egalladi va bloklarni ajratdi.",
-          "  </div>",
-          "  <p>",
-          "    Paragraf matnida <span class=\"highlight\">faqat bitta so'z</span> ajratildi.",
-          "    Qator buzilmadi, faqat shu bo‘lakning foni o‘zgardi.",
-          "  </p>",
-          "</div>"
+          "<div class=\"block-example\">Bu birinchi DIV bloki.</div>",
+          "<div class=\"block-example\">Bu ikkinchi DIV bloki.</div>",
+          "<p>",
+          "  Bu oddiy paragraf matni va uning ichida ",
+          "  <span class=\"inline-example\">mana bu qism SPAN</span> ",
+          "  bilan ajratilgan.",
+          "</p>"
         ]
       }
     ],
-    "interviewAnswer": "`div` blok element: yangi qator ochadi va layout bo‘limlarini o‘rash uchun ishlatiladi. `span` inline element: matn ichida qoladi va faqat kichik bo‘lakni belgilaydi. Zarurat bo‘lsa CSS bilan display turini o‘zgartirish mumkin, lekin default farq mana shunda."
+    "interviewAnswer": "`div` blok-darajali elementdir, u yangi qator boshlaydi va mavjud kenglikni to'liq egallaydi, odatda `layout` bo'limlari uchun ishlatiladi. `span` esa inline-darajali element, u matn oqimi ichida qoladi va faqat o'z kontenti kengligini egallaydi, odatda matnning kichik qismlarini belgilash uchun ishlatiladi."
   },
+
   {
     "id": "html-q3",
     "question": "HTML5 ning asosiy semantik elementlari qaysilar va ular nima uchun muhim?",
@@ -199,15 +184,11 @@
     "codeExamples": [
       {
         "title": "localStorage:",
-        "code": [
-          "localStorage.setItem('user', 'John');"
-        ]
+        "code": ["localStorage.setItem('user', 'John');"]
       },
       {
         "title": "sessionStorage:",
-        "code": [
-          "sessionStorage.setItem('tempId', '123');"
-        ]
+        "code": ["sessionStorage.setItem('tempId', '123');"]
       }
     ],
     "interviewAnswer": "Asosiy farq saqlash muddatida: `localStorage` doimiy (brauzer yopilsa ham qoladi), `sessionStorage` vaqtinchalik (faqat `tab` ochiq turganda). Shuningdek, `localStorage` bir domen uchun umumiy, `sessionStorage` har bir `tab` uchun alohida."
@@ -656,9 +637,7 @@
     "codeExamples": [
       {
         "title": "Oddiy `GET` so'rovi `URL`'i:",
-        "code": [
-          "https://example.com/search?q=javascript&sort=popular"
-        ]
+        "code": ["https://example.com/search?q=javascript&sort=popular"]
       },
       {
         "title": "Forma orqali:",

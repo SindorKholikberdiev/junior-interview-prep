@@ -7,6 +7,7 @@
   --bg-body: #f4f6fb;
   --text-primary: #1f2933;
   --text-secondary: #4b5563;
+  --text-strong: #3a4252;
   --link-color: #2563eb;
   --link-hover: #1d4ed8;
 
@@ -60,9 +61,10 @@
 }
 
 :root[data-theme="dark"] {
-  --bg-body: #0b1120;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5f5;
+  --bg-body: #131a2a;
+  --text-primary: #e5ebf7;
+  --text-secondary: #b1bdd8;
+  --text-strong: #d3dbf3;
   --link-color: #93c5fd;
   --link-hover: #bfdbfe;
 
@@ -260,6 +262,12 @@ pre code.hljs {
 .hljs-variable,
 .hljs-template-variable {
   color: var(--code-muted);
+}
+
+strong,
+b {
+  font-weight: 700;
+  color: var(--text-strong);
 }
 
 button {

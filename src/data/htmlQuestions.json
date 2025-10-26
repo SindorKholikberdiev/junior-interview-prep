@@ -211,11 +211,15 @@
       },
       {
         "title": "Yomon `alt` matni:",
-        "code": ["<img src=\"dog.jpg\" alt=\"rasm\">"]
+        "code": [
+          "<img src=\"dog.jpg\" alt=\"rasm\">"
+        ]
       },
       {
         "title": "Dekorativ rasm:",
-        "code": ["<img src=\"background-pattern.png\" alt=\"\">"]
+        "code": [
+          "<img src=\"background-pattern.png\" alt=\"\">"
+        ]
       }
     ],
     "interviewAnswer": "`alt` atributi rasmning matnli tavsifini beradi. U rasm yuklanmasa ko'rsatiladi, `screen reader`'lar uchun `accessibility`'ni ta'minlaydi va `SEO` uchun muhimdir.",
@@ -285,7 +289,10 @@
         "term": "POST Method",
         "definition": "Forma ma'lumotlarini HTTP so'rovining tanasi (`body`) ichida yuborish usuli."
       },
-      { "term": "URL", "definition": "Vebdagi resursning manzili." },
+      {
+        "term": "URL",
+        "definition": "Vebdagi resursning manzili."
+      },
       {
         "term": "Query String",
         "definition": "URL'ning `?` belgisidan keyingi qismi (`kalit=qiymat&...`), GET parametrlarini saqlaydi."
@@ -353,7 +360,8 @@
         "term": "Session",
         "definition": "Brauzer tabining yoki oynasining ochiq turgan vaqti."
       }
-    ]
+    ],
+    "videoUrl": "https://www.youtube.com/embed/a-yMpzx6-dY?si=o9jsA4kpwY0W5c4V"
   },
   {
     "id": "html-q7",
@@ -498,7 +506,10 @@
         "type": "paragraph",
         "content": "Ba'zi belgilar HTML sintaksisida maxsus ma'noga ega (masalan, `<` `tag`ni boshlaydi). Agar siz bu belgilarni matn sifatida ko'rsatmoqchi bo'lsangiz, ularni `entity` kodlari bilan almashtirishingiz kerak, aks holda brauzer ularni noto'g'ri interpretatsiya qilishi mumkin. Shuningdek, klaviaturada mavjud bo'lmagan belgilarni (©, €, ™) ham `entity`'lar yordamida qo'shish mumkin."
       },
-      { "type": "paragraph", "content": "`Entity`'lar ikki xil bo'ladi:" },
+      {
+        "type": "paragraph",
+        "content": "`Entity`'lar ikki xil bo'ladi:"
+      },
       {
         "type": "list",
         "items": [
@@ -593,7 +604,10 @@
         "term": "class attribute",
         "definition": "Elementga bir yoki bir nechta CSS klass nomini beruvchi atribut."
       },
-      { "term": "Unique", "definition": "Yagona, takrorlanmas." },
+      {
+        "term": "Unique",
+        "definition": "Yagona, takrorlanmas."
+      },
       {
         "term": "Specificity",
         "definition": "CSS qoidasining qanchalik aniq ekanligini va boshqa qoidalardan ustunligini belgilovchi qiymat."
@@ -610,7 +624,10 @@
         "type": "paragraph",
         "content": "Ba'zan biz `HTML` elementiga standart atributlar bilan ifodalab bo'lmaydigan qo'shimcha ma'lumotni bog'lashimiz kerak bo'ladi, bu ma'lumot keyinchalik `JavaScript` kodimizda ishlatilishi mumkin (masalan, elementga bog'liq `ID`, holat yoki sozlama). `data-*` atributlari aynan shu maqsadda yaratilgan."
       },
-      { "type": "paragraph", "content": "Qoidalar:" },
+      {
+        "type": "paragraph",
+        "content": "Qoidalar:"
+      },
       {
         "type": "list",
         "items": [
@@ -1227,7 +1244,12 @@
       }
     ],
     "codeExamples": [
-      { "title": "URL:", "code": ["/search?q=javascript&sort=popular"] },
+      {
+        "title": "URL:",
+        "code": [
+          "/search?q=javascript&sort=popular"
+        ]
+      },
       {
         "title": "Form:",
         "code": [
@@ -1280,7 +1302,10 @@
         "term": "Responsive Design",
         "definition": "Sayt dizaynini turli ekran o'lchamlariga moslashtirish."
       },
-      { "term": "device-width", "definition": "Qurilma ekranining kengligi." },
+      {
+        "term": "device-width",
+        "definition": "Qurilma ekranining kengligi."
+      },
       {
         "term": "initial-scale",
         "definition": "Sahifaning boshlang'ich masshtabi."
@@ -1390,12 +1415,30 @@
     ],
     "interviewAnswer": "`<ul>` tartiblanmagan ro'yxat (nuqtalar). `<ol>` tartiblangan ro'yxat (raqamlar). `<dl>` termin (`<dt>`) va ta'rif (`<dd>`) juftliklari ro'yxati.",
     "keyTerms": [
-      { "term": "<ul>", "definition": "Tartiblanmagan ro'yxat." },
-      { "term": "<ol>", "definition": "Tartiblangan ro'yxat." },
-      { "term": "<dl>", "definition": "Ta'riflar ro'yxati." },
-      { "term": "<li>", "definition": "`ul`/`ol` ichidagi ro'yxat elementi." },
-      { "term": "<dt>", "definition": "`dl` ichidagi termin." },
-      { "term": "<dd>", "definition": "`dl` ichidagi ta'rif." }
+      {
+        "term": "<ul>",
+        "definition": "Tartiblanmagan ro'yxat."
+      },
+      {
+        "term": "<ol>",
+        "definition": "Tartiblangan ro'yxat."
+      },
+      {
+        "term": "<dl>",
+        "definition": "Ta'riflar ro'yxati."
+      },
+      {
+        "term": "<li>",
+        "definition": "`ul`/`ol` ichidagi ro'yxat elementi."
+      },
+      {
+        "term": "<dt>",
+        "definition": "`dl` ichidagi termin."
+      },
+      {
+        "term": "<dd>",
+        "definition": "`dl` ichidagi ta'rif."
+      }
     ]
   },
   {
@@ -1479,11 +1522,15 @@
     "codeExamples": [
       {
         "title": "`for` bilan:",
-        "code": ["<label for=\"name\">Ism:</label><input id=\"name\">"]
+        "code": [
+          "<label for=\"name\">Ism:</label><input id=\"name\">"
+        ]
       },
       {
         "title": "Ichiga joylashtirish:",
-        "code": ["<label>Email: <input type=\"email\"></label>"]
+        "code": [
+          "<label>Email: <input type=\"email\"></label>"
+        ]
       }
     ],
     "interviewAnswer": "`label` `form` elementiga yorliq beradi. Uni bosish `input`'ni `focus` qiladi (`usability`) va `screen reader`'lar uchun ma'no beradi (`accessibility`). `for` atributi yoki ichiga joylashtirish bilan bog'lanadi.",

@@ -1,6 +1,7 @@
 // src/components/AnswerDetails/AnswerDetails.jsx
 import React from 'react';
 import styles from './AnswerDetails.module.css';
+import { highlightCode } from '../../utils/highlightCode';
 
 /**
  * Detailed explanation qaydlarini mos ravishda render qiladi.
@@ -87,7 +88,12 @@ const AnswerDetails = ({ answer, formatText }) => {
               )}
               {Array.isArray(example.code) && (
                 <pre>
-                  <code>{example.code.join('\n')}</code>
+                  <code
+                    className="hljs"
+                    dangerouslySetInnerHTML={{
+                      __html: highlightCode(example.code.join('\n')),
+                    }}
+                  />
                 </pre>
               )}
             </div>

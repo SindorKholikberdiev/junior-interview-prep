@@ -1,6 +1,25 @@
 /* src/index.css */
 
 /* Basic Reset - Barcha elementlar uchun standart margin/paddingni olib tashlash */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --code-bg: #eef1f7;
+  --code-header-bg: rgba(250, 251, 252, 0.96);
+  --code-border: rgba(15, 23, 42, 0.06);
+  --code-text: #0b1120;
+  --code-muted: #3f4c5d;
+  --code-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
+  --code-font: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+  --token-keyword: #5b21b6;
+  --token-function: #2563eb;
+  --token-string: #047857;
+  --token-number: #b45309;
+  --token-comment: #94a3b8;
+  --token-tag: #c2410c;
+  --token-attr: #9333ea;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -43,19 +62,113 @@ ul {
   list-style: none;
 }
 
-/* Kod bloklari uchun stillar */
+/* Kod bloklari uchun minimalistik editor uslubi */
 pre {
-  background-color: #e9ecef; /* Och kulrang fon */
-  padding: 1rem;
-  border-radius: 5px;
-  overflow-x: auto; /* Agar kod uzun bo'lsa, gorizontal scroll */
-  margin: 1rem 0;
-  font-size: 0.9em; /* Kod shriftini biroz kichikroq qilish */
+  position: relative;
+  background: var(--code-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  padding-top: 2.75rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--code-border);
+  box-shadow: var(--code-shadow);
+  font-size: 0.95em;
+  overflow-x: auto; /* Uzun qatorda scroll */
+}
+
+pre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 1.6rem;
+  border-radius: 12px 12px 0 0;
+  background: var(--code-header-bg);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+pre::after {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  left: 1.2rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #fca5a5;
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.05),
+    1rem 0 0 #fde68a,
+    2rem 0 0 #bbf7d0;
+}
+
+pre code {
+  color: var(--code-text);
+  font-family: var(--code-font);
+  font-weight: 500;
+  line-height: 1.7;
+  display: block;
+}
+
+pre code span,
+pre code strong {
+  color: inherit;
 }
 
 code {
-  font-family: Consolas, "Courier New", Courier, monospace; /* Monospace shrift */
-  font-size: inherit; /* pre'dan shrift o'lchamini olish */
+  font-family: var(--code-font);
+  color: var(--code-muted);
+}
+
+/* Highlight.js token ranglari */
+pre code.hljs {
+  padding: 0;
+  background: transparent;
+  color: var(--code-text);
+}
+
+.hljs {
+  color: var(--code-text);
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-built_in {
+  color: var(--token-keyword);
+}
+
+.hljs-function,
+.hljs-title,
+.hljs-attr {
+  color: var(--token-function);
+}
+
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: var(--token-string);
+}
+
+.hljs-number {
+  color: var(--token-number);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--token-comment);
+  font-style: italic;
+}
+
+.hljs-tag,
+.hljs-name {
+  color: var(--token-tag);
+}
+
+.hljs-attribute {
+  color: var(--token-attr);
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: var(--code-muted);
 }
 
 /* Oddiy tugmalar uchun bazaviy stil (ixtiyoriy) */

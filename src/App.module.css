@@ -8,12 +8,14 @@
   top: 0;
   left: 0;
   height: 100vh;
-  background-color: #f8f9fa;
-  border-right: 1px solid #dee2e6;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
   /* Padding va overflow Sidebar komponentining ichiga ko'chirildi */
 }
 
 .mainContent {
   margin-left: 25%; /* Sidebar kengligiga mos margin */
   padding: 2rem;
+  background-color: var(--bg-body);
+  min-height: 100vh;
 }

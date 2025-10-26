@@ -1,7 +1,7 @@
 .questionTitleLg {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #343a40;
+  color: var(--heading-color);
   line-height: 1.3;
 }
 
@@ -13,7 +13,7 @@
 
 .questionItem {
   margin-bottom: 1.5rem; /* Savollar orasidagi masofa */
-  border-bottom: 1px solid #eee; /* Ajratuvchi chiziq */
+  border-bottom: 1px solid var(--question-border); /* Ajratuvchi chiziq */
   padding-bottom: 1rem;
 }
 
@@ -26,7 +26,7 @@
 .questionTitle {
   cursor: pointer; /* Bosish mumkinligini ko'rsatish */
   font-size: 1.15rem; /* Sarlavha shriftini kattaroq qilish */
-  color: #343a40; /* To'qroq rang */
+  color: var(--heading-color); /* To'qroq rang */
   display: flex; /* Sarlavha va ikonkani yonma-yon qo'yish */
   justify-content: space-between; /* Ikonkani o'ngga surish */
   align-items: center; /* Vertikal tekislash */
@@ -35,23 +35,23 @@
 }
 
 .questionTitle:hover {
-  color: #0056b3; /* Sichqoncha kelganda rangni o'zgartirish */
+  color: var(--link-hover); /* Sichqoncha kelganda rangni o'zgartirish */
 }
 
 .toggleIcon {
   font-size: 0.8em; /* Ikonkani kichikroq qilish */
   margin-left: 10px;
-  color: #6c757d; /* Kulrang ikonka */
+  color: var(--text-secondary); /* Kulrang ikonka */
 }
 
 /* Javob bloki (ochilganda ko'rinadigan qism) */
 .answerDetail {
   margin-top: 1rem;
   padding-left: 1rem;
-  border-left: 3px solid #007bff; /* Moviy chap chegara */
-  background-color: #f8f9fa; /* Fonni biroz o'zgartirish */
+  border-left: 3px solid var(--answer-border);
+  background-color: var(--answer-bg); /* Fonni biroz o'zgartirish */
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 /* Javob bloki ichidagi bo'lim sarlavhalari */
@@ -60,7 +60,7 @@
   font-weight: bold;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: #495057;
+  color: var(--text-primary);
 }
 
 .sectionTitle:first-child {
@@ -76,15 +76,15 @@
 .example h3 {
   font-size: 1em;
   margin-bottom: 0.3rem;
-  color: #343a40;
+  color: var(--heading-color);
 }
 
 /* Intervyu javobi uchun alohida stil */
 .interviewAnswer {
   font-style: italic;
-  background-color: #e9ecef; /* Boshqacha fon */
+  background-color: var(--interview-bg);
   padding: 0.8rem;
   border-radius: 4px;
   margin-top: 1rem;
-  color: #495057;
+  color: var(--interview-text);
 }

@@ -1,0 +1,94 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.3rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--nav-border);
+  border-radius: 14px;
+  background-color: var(--nav-bg);
+  box-shadow: var(--nav-shadow);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.brand {
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+.brandAccent {
+  color: var(--link-color);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.95rem;
+  border: 1px solid var(--button-border);
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.themeLabel {
+  font-weight: 600;
+}
+
+.themeToggle:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-1px);
+}
+
+.languageSwitcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.languageLabel {
+  font-weight: 500;
+}
+
+.languageSwitcher select {
+  border-radius: 999px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  padding: 0.3rem 0.9rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  appearance: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .languageSwitcher {
+    margin-left: auto;
+  }
+}

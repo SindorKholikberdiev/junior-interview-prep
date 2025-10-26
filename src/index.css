@@ -4,6 +4,41 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
+  --bg-body: #f4f6fb;
+  --text-primary: #1f2933;
+  --text-secondary: #4b5563;
+  --link-color: #2563eb;
+  --link-hover: #1d4ed8;
+
+  --sidebar-bg: #f8f9fa;
+  --sidebar-border: #dee2e6;
+  --sidebar-link: #495057;
+  --sidebar-link-hover-color: #1d4ed8;
+  --sidebar-link-hover-bg: #e9ecef;
+  --sidebar-link-active-bg: #e3eaf6;
+  --sidebar-link-active-color: #0b1120;
+  --sidebar-divider: #dee2e6;
+
+  --answer-border: #d9e2ec;
+  --answer-bg: #f8f9fa;
+  --heading-color: #343a40;
+  --interview-bg: #e9ecef;
+  --interview-text: #495057;
+  --question-border: #e2e8f0;
+
+  --nav-bg: #ffffff;
+  --nav-border: rgba(15, 23, 42, 0.08);
+  --nav-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+  --button-bg: #edf2ff;
+  --button-border: rgba(99, 102, 241, 0.3);
+  --button-text: #1e1b4b;
+  --button-hover-bg: #dbeafe;
+
+  --input-bg: #ffffff;
+  --input-border: rgba(15, 23, 42, 0.1);
+  --input-text: #1f2933;
+
   --code-bg: #eef1f7;
   --code-header-bg: rgba(250, 251, 252, 0.96);
   --code-border: rgba(15, 23, 42, 0.06);
@@ -11,6 +46,10 @@
   --code-muted: #3f4c5d;
   --code-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
   --code-font: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+  --code-traffic-red: #fca5a5;
+  --code-traffic-yellow: #fde68a;
+  --code-traffic-green: #bbf7d0;
+
   --token-keyword: #5b21b6;
   --token-function: #2563eb;
   --token-string: #047857;
@@ -20,6 +59,61 @@
   --token-attr: #9333ea;
 }
 
+:root[data-theme="dark"] {
+  --bg-body: #0b1120;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5f5;
+  --link-color: #93c5fd;
+  --link-hover: #bfdbfe;
+
+  --sidebar-bg: #111a2c;
+  --sidebar-border: rgba(148, 163, 184, 0.2);
+  --sidebar-link: #cbd5f5;
+  --sidebar-link-hover-color: #f8fafc;
+  --sidebar-link-hover-bg: rgba(148, 163, 184, 0.15);
+  --sidebar-link-active-bg: rgba(59, 130, 246, 0.25);
+  --sidebar-link-active-color: #f8fafc;
+  --sidebar-divider: rgba(148, 163, 184, 0.2);
+
+  --answer-border: rgba(148, 163, 184, 0.4);
+  --answer-bg: rgba(15, 23, 42, 0.75);
+  --heading-color: #f8fafc;
+  --interview-bg: rgba(148, 163, 184, 0.2);
+  --interview-text: #e2e8f0;
+  --question-border: rgba(148, 163, 184, 0.2);
+
+  --nav-bg: rgba(15, 23, 42, 0.9);
+  --nav-border: rgba(148, 163, 184, 0.3);
+  --nav-shadow: 0 25px 40px rgba(2, 6, 23, 0.6);
+
+  --button-bg: rgba(99, 102, 241, 0.25);
+  --button-border: rgba(129, 140, 248, 0.5);
+  --button-text: #e0e7ff;
+  --button-hover-bg: rgba(99, 102, 241, 0.4);
+
+  --input-bg: rgba(15, 23, 42, 0.7);
+  --input-border: rgba(148, 163, 184, 0.4);
+  --input-text: #f8fafc;
+
+  --code-bg: #0f172a;
+  --code-header-bg: rgba(15, 23, 42, 0.9);
+  --code-border: rgba(148, 163, 184, 0.2);
+  --code-text: #e2e8f0;
+  --code-muted: #94a3b8;
+  --code-shadow: 0 18px 35px rgba(2, 6, 23, 0.7);
+  --code-traffic-red: #f87171;
+  --code-traffic-yellow: #fbbf24;
+  --code-traffic-green: #34d399;
+
+  --token-keyword: #c4b5fd;
+  --token-function: #93c5fd;
+  --token-string: #6ee7b7;
+  --token-number: #fbbf24;
+  --token-comment: #94a3b8;
+  --token-tag: #fca5a5;
+  --token-attr: #f0abfc;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,37 +121,34 @@
 }
 
 body {
-  /* Tizimning standart shriftlarini ishlatish (ko'rinishi OSga qarab farq qilishi mumkin) */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   line-height: 1.6; /* Qatorlar orasidagi masofa */
-  background-color: #f8f9fa; /* Juda och kulrang fon */
-  color: #212529; /* Asosiy matn uchun to'q kulrang */
-  padding-top: 60px; /* Navbar tepada qotib qolishi uchun joy (agar keyinroq qotirsak) */
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  padding-top: 0;
 }
 
 /* Havolalar (linklar) uchun standart stillar */
 a {
-  color: #007bff; /* Moviy rang */
-  text-decoration: none; /* Tagidagi chiziqni olib tashlash */
-  transition: color 0.15s ease-in-out; /* Rang o'zgarishini silliqlashtirish */
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
 }
 
-/* Havola ustiga sichqoncha kelganda */
 a:hover {
-  color: #0056b3; /* To'qroq moviy */
-  text-decoration: underline; /* Tagiga chiziq qo'shish */
+  color: var(--link-hover);
+  text-decoration: underline;
 }
 
-/* Sarlavhalar uchun pastki margin */
 h1,
 h2,
 h3 {
-  margin-bottom: 0.75rem; /* rem - ildiz element shriftiga nisbatan */
+  margin-bottom: 0.75rem;
   line-height: 1.2;
+  color: var(--heading-color);
 }
 
-/* Ro'yxat belgilarini olib tashlash */
 ul {
   list-style: none;
 }
@@ -73,7 +164,7 @@ pre {
   border: 1px solid var(--code-border);
   box-shadow: var(--code-shadow);
   font-size: 0.95em;
-  overflow-x: auto; /* Uzun qatorda scroll */
+  overflow-x: auto;
 }
 
 pre::before {
@@ -83,7 +174,7 @@ pre::before {
   height: 1.6rem;
   border-radius: 12px 12px 0 0;
   background: var(--code-header-bg);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  border-bottom: 1px solid var(--code-border);
 }
 
 pre::after {
@@ -94,11 +185,11 @@ pre::after {
   width: 0.55rem;
   height: 0.55rem;
   border-radius: 50%;
-  background: #fca5a5;
+  background: var(--code-traffic-red);
   box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.05),
-    1rem 0 0 #fde68a,
-    2rem 0 0 #bbf7d0;
+    0 0 0 1px var(--code-border),
+    1rem 0 0 var(--code-traffic-yellow),
+    2rem 0 0 var(--code-traffic-green);
 }
 
 pre code {
@@ -171,7 +262,6 @@ pre code.hljs {
   color: var(--code-muted);
 }
 
-/* Oddiy tugmalar uchun bazaviy stil (ixtiyoriy) */
 button {
   cursor: pointer;
   padding: 8px 15px;

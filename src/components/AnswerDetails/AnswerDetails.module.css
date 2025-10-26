@@ -2,10 +2,10 @@
 .answerDetail {
   margin-top: 1rem;
   padding-left: 1rem;
-  border-left: 3px solid #007bff; /* Moviy chap chegara */
-  background-color: #f8f9fa; /* Fonni biroz o'zgartirish */
+  border-left: 3px solid var(--answer-border);
+  background-color: var(--answer-bg);
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 /* Javob bloki ichidagi bo'lim sarlavhalari */
@@ -14,7 +14,7 @@
   font-weight: bold;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: #495057;
+  color: var(--text-primary);
 }
 
 .sectionTitle:first-child {
@@ -30,15 +30,15 @@
 .example h3 {
   font-size: 1em;
   margin-bottom: 0.3rem;
-  color: #343a40;
+  color: var(--heading-color);
 }
 
 /* Intervyu javobi uchun alohida stil */
 .interviewAnswer {
   font-style: italic;
-  background-color: #e9ecef; /* Boshqacha fon */
+  background-color: var(--interview-bg);
   padding: 0.8rem;
   border-radius: 4px;
   margin-top: 1rem;
-  color: #495057;
+  color: var(--interview-text);
 }

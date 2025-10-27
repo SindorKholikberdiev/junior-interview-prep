@@ -126,6 +126,50 @@
   background: var(--button-hover-bg);
 }
 
+.menuIcon {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 999px;
+  transition: background-color 0.25s ease;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 999px;
+  transition: transform 0.25s ease;
+}
+
+.menuIcon::before {
+  top: -6px;
+}
+
+.menuIcon::after {
+  top: 6px;
+}
+
+.menuIconClose {
+  background-color: transparent;
+}
+
+.menuIconClose::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menuIconClose::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
 .themeToggle {
   display: inline-flex;
   align-items: center;

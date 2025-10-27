@@ -21,6 +21,20 @@
   --sidebar-link-active-bg: #e3eaf6;
   --sidebar-link-active-color: #0b1120;
   --sidebar-divider: #dee2e6;
+  --sidebar-icon-bg: rgba(148, 163, 184, 0.16);
+  --sidebar-icon-border: rgba(148, 163, 184, 0.28);
+  --sidebar-icon-border-soft: rgba(148, 163, 184, 0.18);
+  --sidebar-icon-shadow: rgba(15, 23, 42, 0.2);
+  --sidebar-icon-hover-shadow: rgba(37, 99, 235, 0.25);
+  --sidebar-pill-bg: #ffffff;
+  --sidebar-pill-border: rgba(148, 163, 184, 0.35);
+  --sidebar-pill-text: #475569;
+  --sidebar-pill-icon-muted: rgba(71, 85, 105, 0.7);
+  --sidebar-pill-hover-bg: rgba(59, 130, 246, 0.08);
+  --sidebar-pill-hover-color: #2563eb;
+  --sidebar-pill-active-bg: rgba(59, 130, 246, 0.12);
+  --sidebar-pill-active-color: #1d4ed8;
+  --sidebar-pill-active-shadow: 0 18px 32px rgba(37, 99, 235, 0.16);
 
   --answer-border: #d9e2ec;
   --answer-bg: #f8f9fa;
@@ -81,6 +95,20 @@
   --sidebar-link-active-bg: rgba(59, 130, 246, 0.25);
   --sidebar-link-active-color: #f8fafc;
   --sidebar-divider: rgba(148, 163, 184, 0.2);
+  --sidebar-icon-bg: rgba(148, 163, 184, 0.12);
+  --sidebar-icon-border: rgba(59, 130, 246, 0.28);
+  --sidebar-icon-border-soft: rgba(148, 163, 184, 0.24);
+  --sidebar-icon-shadow: rgba(2, 6, 23, 0.45);
+  --sidebar-icon-hover-shadow: rgba(59, 130, 246, 0.35);
+  --sidebar-pill-bg: rgba(15, 23, 42, 0.68);
+  --sidebar-pill-border: rgba(148, 163, 184, 0.28);
+  --sidebar-pill-text: #dbe4ff;
+  --sidebar-pill-icon-muted: rgba(203, 213, 225, 0.7);
+  --sidebar-pill-hover-bg: rgba(37, 99, 235, 0.25);
+  --sidebar-pill-hover-color: #bfdbfe;
+  --sidebar-pill-active-bg: rgba(37, 99, 235, 0.35);
+  --sidebar-pill-active-color: #e2e8f0;
+  --sidebar-pill-active-shadow: 0 20px 40px rgba(2, 6, 23, 0.6);
 
   --answer-border: rgba(148, 163, 184, 0.4);
   --answer-bg: rgba(15, 23, 42, 0.75);

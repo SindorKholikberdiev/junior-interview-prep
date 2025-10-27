@@ -13,34 +13,95 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.navList li {
+  margin: 0;
 }
 
 .navLink {
-  display: block;
-  color: var(--sidebar-link);
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.05rem;
   text-decoration: none;
-  padding: 0.5rem 0.85rem;
-  border-radius: 5px;
+  border-radius: 14px;
+  border: 1px solid var(--sidebar-pill-border);
+  background-color: var(--sidebar-pill-bg);
+  color: var(--sidebar-pill-text);
+  box-shadow: 0 6px 18px -16px var(--sidebar-icon-shadow);
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-  margin-bottom: 0.25rem;
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .navLink:hover {
-  color: var(--sidebar-link-hover-color);
-  background-color: var(--sidebar-link-hover-bg);
+  background-color: var(--sidebar-pill-hover-bg);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: var(--sidebar-pill-hover-color);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -18px var(--sidebar-pill-active-shadow);
+}
+
+.navLink:hover .navIconWrapper,
+.navLink:hover .navLabel {
+  color: var(--sidebar-pill-hover-color);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+}
+
+.navLabel {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  color: inherit;
+}
+
+.navIconWrapper {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sidebar-pill-icon-muted);
+  transition: color 0.15s ease;
+}
+
+.navIconSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.navIconFallback {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .activeTopic {
-  background-color: var(--sidebar-link-active-bg);
-  color: var(--sidebar-link-active-color);
+  background-color: var(--sidebar-pill-active-bg);
+  border-color: rgba(37, 99, 235, 0.45);
+  color: var(--sidebar-pill-active-color);
+  box-shadow: var(--sidebar-pill-active-shadow);
 }
 
 .activeTopic:hover {
-  background-color: var(--sidebar-link-active-bg);
-  color: var(--sidebar-link-active-color);
+  background-color: var(--sidebar-pill-active-bg);
+  color: var(--sidebar-pill-active-color);
+}
+
+.activeTopic .navIconWrapper,
+.activeTopic .navLabel {
+  color: var(--sidebar-pill-active-color);
 }
 
 .divider {
@@ -205,8 +266,21 @@
   }
 
   .navLink {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.4rem;
+    padding: 0.5rem 0.85rem;
+    gap: 0.45rem;
+  }
+
+  .topicIconWrapper {
+    width: 22px;
+    height: 22px;
+  }
+
+  .navList {
+    gap: 0.5rem 0.4rem;
+  }
+
+  .navLabel {
+    font-size: 0.85rem;
   }
 
   .questionsHeader {

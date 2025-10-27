@@ -1,0 +1,1229 @@
+[
+  {
+    "id": "git-q1",
+    "question": "Git nima va u nima uchun ishlatiladi?",
+    "topic": "Git Basics",
+    "description": "Git - bu sizning kodingiz uchun 'vaqt mashinasi'. U loyihadagi barcha o'zgarishlarni eslab qoladi va jamoa bo'lib ishlashni osonlashtiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eng oddiy tushuntirish: Git - bu kompyuter o'yinidagi 'saqlash nuqtasi' (save point)ga o'xshaydi. Siz kod yozasiz va ma'lum bir nuqtaga kelganda, `commit` (ya'ni 'saqlash') qilasiz. Agar keyinroq nimadir noto'g'ri ketsa yoki kodni 'buzib' qo'ysangiz, siz har doim o'sha oxirgi saqlangan nuqtaga bexato qaytib ola olasiz."
+      },
+      {
+        "type": "paragraph",
+        "content": "Git ikkita asosiy muammoni hal qiladi:\n1. **Tarixni saqlash:** U sizning loyihangizda kim, qachon va qanday o'zgarish qilganini to'liq eslab qoladi. Siz istalgan vaqtda eski versiyani ko'rishingiz mumkin.\n2. **Jamoaviy ishlash:** Bir nechta dasturchi bitta loyiha ustida bir-biriga xalaqit bermasdan ishlashi mumkin. Har kim o'z vazifasini **'branch' (shox)** deb ataladigan alohida nusxada bajaradi. Bu xuddi asosiy daraxtning bitta shoxida ishlagandek. Ishingiz bitgach, o'z shoxingizni asosiy daraxtga 'birlashtirasiz' (merge)."
+      },
+      {
+        "type": "paragraph",
+        "content": "Texnik jihatdan, Git - bu **'taqsimlangan' (distributed)** tizim. Bu shuni anglatadiki, server (masalan, GitHub) ishdan chiqsa ham, har bir dasturchining kompyuterida loyihaning to'liq nusxasi va tarixi saqlanib qoladi. Shuningdek, u ma'lumotlarni **'snapshot' (lahzali tasvir)** ko'rinishida saqlaydi, ya'ni har bir commitda loyihaning o'sha paytdagi butun holatini 'rasmga oladi'. Bu uni juda tez va samarali qiladi."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "Eng sodda javob: Git - bu kod uchun 'vaqt mashinasi'. U bizga xatolardan qo'rqmasdan ishlash, eski versiyalarga qaytish va jamoa bilan birga ishlash imkonini beradi. Professionalroq aytganda, bu har bir dasturchida loyihaning to'liq nusxasi bo'lishini ta'minlaydigan 'taqsimlangan' tizim bo'lib, 'snapshot'lar yordamida tez ishlaydi.",
+    "keyTerms": [
+      {
+        "term": "VCS (Version Control System)",
+        "definition": "Fayllardagi o'zgarishlarni vaqt bo'yicha yozib boruvchi va boshqaruvchi tizim."
+      },
+      {
+        "term": "Repository (Ombor)",
+        "definition": "Loyihaning barcha fayllari va uning to'liq tarixini saqlovchi joy (ko'pincha papka)."
+      },
+      {
+        "term": "Commit (Saqlash nuqtasi)",
+        "definition": "Loyihaning ma'lum bir vaqtdagi holatini ('snapshot'ini) tarixga saqlash amali."
+      },
+      {
+        "term": "Branch (Shox)",
+        "definition": "Asosiy kodga tegmasdan, yangi funksiya yoki tuzatish ustida ishlash uchun yaratilgan loyihaning parallel nusxasi."
+      },
+      {
+        "term": "Merge (Birlashtirish)",
+        "definition": "Bir 'branch'dagi (shoxdagi) o'zgarishlarni boshqa 'branch'ga (masalan, asosiy shoxga) qo'shish jarayoni."
+      },
+      {
+        "term": "Distributed (Taqsimlangan)",
+        "definition": "Markaziy serverga bog'lanib qolmagan, har bir foydalanuvchida loyihaning to'liq nusxasi mavjud bo'lgan tizim."
+      },
+      {
+        "term": "Snapshot (Lahzali tasvir)",
+        "definition": "Gitning ma'lumot saqlash usuli. Har bir 'commit'da loyihaning o'sha paytdagi barcha fayllarining holatini 'rasmga oladi'."
+      }
+    ]
+  },
+
+  {
+    "id": "git-q2",
+    "question": "Git va GitHub o'rtasidagi farq nima?",
+    "topic": "Git Basics",
+    "description": "Git - bu versiyalarni boshqarish vositasi (dastur), GitHub esa Git omborlarini joylashtirish (hosting) uchun xizmat ko'rsatuvchi veb-platforma.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ko'pchilik bu ikki tushunchani adashtiradi. Farqni oddiy tushunish: Git bu sizning kompyuteringizda ishlaydigan dastur (instrument), GitHub esa shu dastur orqali yaratilgan omborlarni (repository) bulutda saqlash va ularni boshqalar bilan bo'lishish uchun mo'ljallangan veb-sayt (xizmat). Siz Git-dan GitHub-siz foydalanishingiz mumkin, ammo GitHub-dan Git-siz foydalana olmaysiz. GitHub shuningdek, Pull Request, kodni ko'rib chiqish (code review), muammolarni kuzatish (issue tracking) kabi qo'shimcha hamkorlik vositalarini taqdim etadi."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "Git - bu sizning kodingiz tarixini lokal kompyuteringizda kuzatib boruvchi buyruqlar satri vositasi (instrument). GitHub esa Git omborlaringizni onlayn joylashtirish (hosting) uchun xizmat ko'rsatuvchi platforma. GitHub jamoaviy ishlashni osonlashtirish uchun Pull Request, issue tracking kabi qo'shimcha funksiyalarni taqdim etadi. Boshqacha aytganda, Git - bu vosita, GitHub - bu xizmat.",
+    "keyTerms": [
+      {
+        "term": "Git",
+        "definition": "Versiyalarni boshqarish uchun lokal dasturiy ta'minot."
+      },
+      {
+        "term": "GitHub",
+        "definition": "Git omborlari uchun bulutli hosting xizmati (GitLab, Bitbucket kabi)."
+      },
+      {
+        "term": "Hosting",
+        "definition": "Omborlarni serverda saqlash va ularga internet orqali kirishni ta'minlash."
+      }
+    ]
+  },
+  {
+    "id": "git-q3",
+    "question": "Markazlashgan (Centralized) va Taqsimlangan (Distributed) VCS o'rtasidagi farq nima?",
+    "topic": "Git Basics",
+    "description": "Markazlashgan VCS (CVCS)da bitta markaziy server mavjud, Taqsimlangan VCS (DVCS)da esa har bir foydalanuvchida omborning to'liq nusxasi bo'ladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Markazlashgan VCS (masalan, SVN, Subversion)da bitta markaziy 'master' ombori mavjud. Dasturchilar o'zgarishlarni shu markaziy serverdan oladi (checkout) va o'z o'zgarishlarini unga yuboradi (commit). Muammo: agar markaziy server ishdan chiqsa, hech kim ishlay olmaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Taqsimlangan VCS (masalan, Git, Mercurial)da har bir dasturchi o'zining kompyuteriga omborning to'liq nusxasini (tarixi bilan birga) 'clone' qiladi. Ular lokal commit'larni amalga oshirishi mumkin va faqat kerak bo'lganda markaziy (yoki boshqa) ombor bilan sinxronlashadi (push/pull). Bu oflayn ishlash imkonini beradi va markaziy server ishdan chiqqan taqdirda ham har bir foydalanuvchida to'liq zaxira nusxasi bo'ladi."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "Markazlashgan VCS, masalan Subversion, bitta markaziy serverga tayanadi. Barcha o'zgarishlar shu serverga commit qilinadi. Taqsimlangan VCS, ya'ni Git, har bir dasturchiga omborning to'liq nusxasini beradi. Har kim o'zining lokal omboriga commit qilishi mumkin va keyinroq markaziy ombor bilan sinxronlashishi mumkin. Bu Git-ni tezroq, moslashuvchan va oflayn ishlashga qodir qiladi.",
+    "keyTerms": [
+      {
+        "term": "CVCS (Centralized VCS)",
+        "definition": "Bitta markaziy omborga ega VCS (masalan, SVN)."
+      },
+      {
+        "term": "DVCS (Distributed VCS)",
+        "definition": "Har bir foydalanuvchida omborning to'liq nusxasi bo'ladigan VCS (masalan, Git)."
+      }
+    ]
+  },
+  {
+    "id": "git-q4",
+    "question": "`git config` nima uchun ishlatiladi?",
+    "topic": "Git Basics",
+    "description": "`git config` buyrug'i Git sozlamalarini, masalan, foydalanuvchi nomi, elektron pochta manzili va boshqa preferensiyalarni o'rnatish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Git-ni birinchi marta ishlatishdan oldin, o'zingizning shaxsingizni (ismingiz va email manzilingizni) sozlab olishingiz kerak. Bu ma'lumotlar siz qilgan har bir commit bilan birga saqlanadi. `git config` buyrug'i yordamida bu va boshqa ko'plab Git sozlamalarini boshqarishingiz mumkin. Sozlamalar uchta darajada bo'lishi mumkin: `--local` (faqat joriy ombor uchun), `--global` (joriy foydalanuvchi uchun) va `--system` (tizimdagi barcha foydalanuvchilar uchun)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Global foydalanuvchi nomini o'rnatish:",
+        "code": ["git config --global user.name \"Ismingiz Familiyangiz\""]
+      },
+      {
+        "title": "Global email manzilini o'rnatish:",
+        "code": ["git config --global user.email \"sizning-email@example.com\""]
+      },
+      {
+        "title": "Barcha sozlamalarni ko'rish:",
+        "code": ["git config --list"]
+      }
+    ],
+    "interviewAnswer": "`git config` - bu Git-ning konfiguratsiya sozlamalarini o'rnatish va ko'rish uchun ishlatiladigan buyruq. Eng ko'p ishlatiladigan holat - bu birinchi marta Git-ni sozlashda `--global` flugi bilan `user.name` va `user.email`ni o'rnatish. Bu ma'lumotlar keyinchalik barcha commit'laringizga 'muallif' sifatida yoziladi.",
+    "keyTerms": [
+      {
+        "term": "--global",
+        "definition": "Sozlamani joriy foydalanuvchining barcha Git omborlari uchun qo'llash."
+      },
+      {
+        "term": "--local",
+        "definition": "Sozlamani faqat joriy, bitta ombor uchun qo'llash."
+      }
+    ]
+  },
+  {
+    "id": "git-q5",
+    "question": "Git omborini (repository) qanday yaratish mumkin?",
+    "topic": "Git Basics",
+    "description": "Yangi Git omborini yaratishning ikki yo'li bor: yangi loyiha uchun `git init` qilish yoki mavjud loyihani `git clone` qilish.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "1. **Yangi ombor yaratish (initsializatsiya):** Agar sizda mavjud, lekin hali Git bilan kuzatilmayotgan loyiha papkasi bo'lsa, siz u yerda Git omborini yaratishingiz mumkin. Buning uchun shu papkaga kirib, `git init` buyrug'ini ishlatasiz. Bu joriy papkada `.git` nomli yashirin papka yaratadi, u yerda Git barcha tarix va metama'lumotlarni saqlaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "2. **Mavjud omborni klonlash:** Agar siz GitHub kabi masofaviy serverda joylashgan loyiha ustida ishlamoqchi bo'lsangiz, siz `git clone` buyrug'idan foydalanasiz. Bu buyruq masofaviy omborning to'liq nusxasini (barcha fayllar, branchlar va tarix bilan birga) sizning kompyuteringizga yuklab oladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Mavjud papkada yangi ombor yaratish:",
+        "code": ["cd mening-loyiha-papkam", "git init"]
+      },
+      {
+        "title": "Masofaviy omborni klonlash:",
+        "code": ["git clone https://github.com/foydalanuvchi/ombor-nomi.git"]
+      }
+    ],
+    "interviewAnswer": "Yangi Git omborini boshlashning ikki yo'li bor. Agar loyiha noldan boshlanayotgan bo'lsa, loyiha papkasida `git init` buyrug'ini ishlataman, bu `.git` papkasini yaratadi. Agar men mavjud loyihaga qo'shilayotgan bo'lsam, odatda GitHub'dan `git clone` buyrug'i va ombor URL manzili yordamida loyihani klonlab olaman.",
+    "keyTerms": [
+      {
+        "term": "git init",
+        "definition": "Joriy papkada yangi, bo'sh Git omborini yaratish buyrug'i."
+      },
+      {
+        "term": "git clone",
+        "definition": "Masofaviy omborning to'liq nusxasini lokal kompyuterga ko'chirib olish buyrug'i."
+      }
+    ]
+  },
+  {
+    "id": "git-q6",
+    "question": "Ishchi katalog (Working Directory), Staging Area (Index) va Repository (.git) o'rtasidagi farq nima?",
+    "topic": "Commits & Staging",
+    "description": "Bu Git-dagi uchta asosiy holat: Working Directory - siz ishlayotgan fayllar, Staging Area - commit qilishga tayyorlangan o'zgarishlar, Repository - loyihaning saqlangan tarixi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Git-da fayllar uchta asosiy 'hudud'da bo'lishi mumkin:"
+      },
+      {
+        "type": "paragraph",
+        "content": "1. **Working Directory (Ishchi katalog):** Bu sizning loyiha fayllaringiz joylashgan oddiy papka. Siz fayllarni o'zgartiradigan, yaratadigan va o'chiradigan joy shu yerda. Bu fayllar Git tomonidan kuzatilayotgan (tracked) yoki kuzatilmayotgan (untracked) bo'lishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "2. **Staging Area (Indeks):** Bu sizning navbatdagi commit'ingizga kiritiladigan o'zgarishlar ro'yxatini saqlaydigan maxsus fayl. Siz `git add` buyrug'i yordamida o'zgarishlarni Working Directory'dan Staging Area'ga 'tayyorlaysiz'."
+      },
+      {
+        "type": "paragraph",
+        "content": "3. **Repository (.git katalogi):** Bu Git sizning loyihangiz tarixini va metadata'ni saqlaydigan joy. `git commit` buyrug'i Staging Area'dagi o'zgarishlarni olib, ularni Repository'ga doimiy 'snapshot' (lahzali rasm) sifatida saqlaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Faylni Staging Area'ga qo'shish:",
+        "code": ["git add fayl_nomi.txt"]
+      },
+      {
+        "title": "Staging Area'dagi o'zgarishlarni Repository'ga commit qilish:",
+        "code": ["git commit -m \"Mening birinchi commitim\""]
+      },
+      {
+        "title": "Hozirgi holatni ko'rish:",
+        "code": [
+          "git status",
+          "# Bu buyruq qaysi fayllar Working Directory'da, qaysilari Staging Area'da ekanligini ko'rsatadi"
+        ]
+      }
+    ],
+    "interviewAnswer": "Working Directory - bu mening loyiha fayllarim joylashgan papka. Staging Area (yoki Indeks) - bu men navbatdagi commit'ga kiritmoqchi bo'lgan o'zgarishlarni tayyorlab qo'yadigan oraliq 'sahna'. Repository esa `.git` papkasida joylashgan bo'lib, loyihaning barcha commit'laridan iborat tarixni saqlaydi. Jarayon: 1) Fayllarni Working Directory'da o'zgartiraman, 2) `git add` bilan ularni Staging Area'ga qo'shaman, 3) `git commit` bilan Staging Area'dagilarni Repository'ga saqlayman.",
+    "keyTerms": [
+      {
+        "term": "Working Directory",
+        "definition": "Foydalanuvchi bevosita ishlaydigan loyiha fayllari."
+      },
+      {
+        "term": "Staging Area (Index)",
+        "definition": "Navbatdagi commit uchun tayyorlangan o'zgarishlar ro'yxati."
+      },
+      {
+        "term": "Repository (.git)",
+        "definition": "Loyihaning barcha tarixi va metadata'sini saqlaydigan ma'lumotlar bazasi."
+      }
+    ]
+  },
+  {
+    "id": "git-q7",
+    "question": "`git add` nima qiladi?",
+    "topic": "Commits & Staging",
+    "description": "`git add` buyrug'i o'zgarishlarni Ishchi katalogdan (Working Directory) Staging Area'ga o'tkazadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`git add` buyrug'i Git'ga qaysi o'zgarishlarni navbatdagi commit'ga kiritmoqchi ekanligingizni bildiradi. U faylning joriy holatining 'snapshot'ini oladi va uni Staging Area'ga (Indeksga) qo'shadi. Muhim jihati shundaki, `git add` buyrug'ini ishlatganingizdan keyin faylga yana o'zgarish kiritilsa, bu yangi o'zgarish avtomatik ravishda Staging Area'ga tushmaydi. Uni ham commit qilish uchun faylni qaytadan `git add` qilishingiz kerak bo'ladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Bitta faylni 'stage' qilish:",
+        "code": ["git add index.html"]
+      },
+      {
+        "title": "Joriy papkadagi barcha o'zgarishlarni 'stage' qilish:",
+        "code": ["git add ."]
+      },
+      {
+        "title": "Barcha kuzatilayotgan fayllardagi o'zgarishlarni 'stage' qilish:",
+        "code": ["git add -A"]
+      }
+    ],
+    "interviewAnswer": "`git add` buyrug'i o'zgartirilgan yoki yangi yaratilgan fayllarni Ishchi katalogdan olib, ularni Staging Area'ga qo'shadi. Bu bizga qaysi o'zgarishlar navbatdagi commit'ga kirishini aniq tanlash imkonini beradi. `git add .` esa joriy katalogdagi barcha o'zgarishlarni stage qiladi.",
+    "keyTerms": [
+      {
+        "term": "Staging",
+        "definition": "O'zgarishlarni navbatdagi commitga tayyorlash jarayoni."
+      },
+      {
+        "term": "Tracked Files",
+        "definition": "Git tomonidan o'zgarishlari kuzatib borilayotgan fayllar."
+      },
+      {
+        "term": "Untracked Files",
+        "definition": "Yangi yaratilgan va hali `git add` qilinmagan, Git tomonidan kuzatilmayotgan fayllar."
+      }
+    ]
+  },
+  {
+    "id": "git-q8",
+    "question": "`git commit` nima qiladi?",
+    "topic": "Commits & Staging",
+    "description": "`git commit` buyrug'i Staging Area'dagi barcha o'zgarishlarni olib, ularni loyiha tarixiga (lokal repository) doimiy ravishda saqlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Commit - bu Git omboridagi loyiha holatining 'snapshot'i (lahzali tasviri). `git commit` buyrug'ini ishlatganingizda, Git Staging Area'da nima bo'lsa, o'shani oladi, unga siz yozgan izoh (commit message) va noyob ID (hash) bilan birga lokal omboringizga saqlaydi. Har bir commit oldingi commit bilan bog'langan bo'ladi (birinchisidan tashqari), shu tariqa loyiha tarixi zanjiri hosil bo'ladi. `-m` flagi commit xabarini to'g'ridan-to'g'ri terminalda yozish imkonini beradi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Izoh bilan commit qilish:",
+        "code": ["git commit -m \"Foydalanuvchi registratsiyasi qo'shildi\""]
+      },
+      {
+        "title": "Barcha o'zgartirilgan va kuzatilayotgan fayllarni avtomatik 'stage' qilib commit qilish (yangi fayllarni qo'shmaydi):",
+        "code": ["git commit -a -m \"Kichik tuzatishlar kiritildi\""]
+      },
+      {
+        "title": "Oxirgi commitni o'zgartirish (masalan, xabarni tuzatish yoki fayl qo'shish):",
+        "code": [
+          "# Yana o'zgarish kiritib, 'add' qiling",
+          "git add esdan_chiqqan_fayl.txt",
+          "git commit --amend"
+        ]
+      }
+    ],
+    "interviewAnswer": "`git commit` buyrug'i Staging Area'ga `git add` yordamida qo'shilgan barcha o'zgarishlarni oladi va ularni lokal omborimizga doimiy 'snapshot' sifatida saqlaydi. Har bir commit'da loyihaning o'sha paytdagi holati va nima uchun o'zgarish qilinganini tushuntiruvchi izoh (commit message) bo'lishi kerak.",
+    "keyTerms": [
+      {
+        "term": "Commit",
+        "definition": "Loyihaning ma'lum bir vaqtdagi holatining 'snapshot'i, loyiha tarixidagi bir nuqta."
+      },
+      {
+        "term": "Commit Message",
+        "definition": "Commit'ga nima o'zgarish kiritilganini tushuntiruvchi izoh."
+      },
+      {
+        "term": "Hash (SHA-1)",
+        "definition": "Har bir commitni aniqlash uchun ishlatiladigan noyob 40 belgili identifikator."
+      }
+    ]
+  },
+  {
+    "id": "git-q9",
+    "question": "`git status` buyrug'i nima vazifani bajaradi?",
+    "topic": "Commits & Staging",
+    "description": "`git status` Ishchi katalog (Working Directory) va Staging Area holatini ko'rsatadi, qaysi fayllar o'zgarganini, 'stage' qilinganini yoki kuzatilmayotganini bildiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu Git-dagi eng ko'p ishlatiladigan buyruqlardan biri. U sizga loyihangizning joriy holati haqida to'liq ma'lumot beradi. U quyidagilarni ko'rsatadi:\n- Siz qaysi branchda ekanligingiz.\n- Working Directory'da o'zgartirilgan, ammo hali Staging Area'ga qo'shilmagan fayllar ('Changes not staged for commit').\n- Staging Area'da turgan va commit qilinishga tayyor fayllar ('Changes to be committed').\n- Git tomonidan kuzatilmayotgan yangi fayllar ('Untracked files')."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Joriy holatni ko'rish:",
+        "code": ["git status"]
+      },
+      {
+        "title": "Qisqa (short) formatda ko'rish:",
+        "code": ["git status -s"]
+      }
+    ],
+    "interviewAnswer": "`git status` buyrug'i loyihamning hozirgi holatini ko'rsatadi. U menga qaysi fayllar o'zgartirilganini, qaysi fayllar Staging Area'ga qo'shilganini (commitga tayyorligini) va qaysi yangi fayllar Git tomonidan hali kuzatilmayotganini aytadi. Bu `add` va `commit` qilishdan oldin nima bo'layotganini tekshirish uchun juda muhim buyruq.",
+    "keyTerms": [
+      {
+        "term": "Staged",
+        "definition": "Fayl o'zgarishlari Staging Area'ga qo'shilgan va commitga tayyor holatda."
+      },
+      {
+        "term": "Modified",
+        "definition": "Fayl o'zgartirilgan, lekin hali Staging Area'ga qo'shilmagan."
+      }
+    ]
+  },
+  {
+    "id": "git-q10",
+    "question": "`git log` nima uchun ishlatiladi?",
+    "topic": "History & Undoing",
+    "description": "`git log` buyrug'i loyiha tarixidagi commit'lar ro'yxatini xronologik tartibda (eng yangisidan boshlab) ko'rsatadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu buyruq ombordagi commitlar tarixini ko'rish uchun ishlatiladi. Standart holatda, u har bir commit uchun SHA-1 hashini, muallifini, sanasini va commit xabarini ko'rsatadi. Bu loyihada nima o'zgarishlar bo'lganini, kim tomonidan va qachon qilinganini tahlil qilish uchun juda foydali. `git log` buyrug'ining ma'lumotni filtrlash va formatlash uchun juda ko'p variantlari mavjud."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy commit tarixini ko'rish:",
+        "code": ["git log"]
+      },
+      {
+        "title": "Har bir commitni bir qatorda ko'rsatish:",
+        "code": ["git log --oneline"]
+      },
+      {
+        "title": "Grafik ko'rinishda (branchlar bilan) ko'rsatish:",
+        "code": ["git log --graph --oneline --decorate --all"]
+      },
+      {
+        "title": "Muayyan fayl bo'yicha tarixni ko'rish:",
+        "code": ["git log -- index.html"]
+      }
+    ],
+    "interviewAnswer": "`git log` buyrug'i loyihaning commit tarixini ko'rsatadi. U har bir commitning ID'si (hash), muallifi, sanasi va commit xabarini ko'rsatadi. Men uni ko'pincha `--oneline` va `--graph` flaglari bilan ishlataman, bu esa tarixni ixcham va branchlar birlashuvini aniq ko'rsatadigan qilib chiqaradi.",
+    "keyTerms": [
+      {
+        "term": "Commit History",
+        "definition": "Loyihadagi barcha commitlar zanjiri."
+      },
+      {
+        "term": "--oneline",
+        "definition": "`git log` flagi, har bir commitni bitta qatorda ixcham ko'rsatadi."
+      },
+      {
+        "term": "--graph",
+        "definition": "`git log` flagi, branchlar va merge'larning ASCII grafikini chizadi."
+      }
+    ]
+  },
+  {
+    "id": "git-q11",
+    "question": "Git branch (shox) nima?",
+    "topic": "Branching & Merging",
+    "description": "Branch (shox) - bu loyiha rivojlanishining mustaqil yo'nalishi. U yangi xususiyat (feature) yoki tuzatish (bugfix) ustida asosiy kod bazasiga (masalan, `main`) ta'sir qilmasdan ishlash imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Branch bu shunchaki muayyan bir commit'ga ishora qiluvchi yengil 'ko'rsatkich'. Standart branch odatda `main` (yoki `master`) deb nomlanadi. Siz yangi branch yaratganingizda (masalan, `git branch new-feature`), Git yangi ko'rsatkich yaratadi, lekin siz hali ham joriy branchda qolasiz. Yangi branchga o'tish uchun `git checkout new-feature` (yoki `git switch new-feature`) buyrug'ini ishlatasiz. Shundan so'ng, siz qilgan yangi commitlar `main`ga emas, balki `new-feature` branchiga qo'shilib boradi. Ishingiz tugagach, bu o'zgarishlarni `main` branchiga qaytarib 'merge' (birlashtirish) mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Yangi branch yaratish:",
+        "code": ["git branch login-feature"]
+      },
+      {
+        "title": "Yangi branchga o'tish:",
+        "code": [
+          "git checkout login-feature",
+          "# yoki zamonaviyroq usul:",
+          "git switch login-feature"
+        ]
+      },
+      {
+        "title": "Yangi branch yaratish va darhol unga o'tish (eng ko'p ishlatiladigan):",
+        "code": [
+          "git checkout -b login-feature",
+          "# yoki:",
+          "git switch -c login-feature"
+        ]
+      },
+      {
+        "title": "Barcha lokal branchlarni ko'rish:",
+        "code": ["git branch"]
+      }
+    ],
+    "interviewAnswer": "Branch - bu loyiha tarixida asosiy koddan ajralib chiqadigan mustaqil rivojlanish yo'nalishi. Biz har bir yangi vazifa (feature) yoki xatolikni tuzatish (bugfix) uchun alohida branch ochamiz. Bu bizga asosiy `main` branchiga ta'sir qilmasdan, bemalol ishlash va eksperiment qilish imkonini beradi. Ishimiz tugagach va testdan o'tgach, biz bu branch'ni `main` branchiga 'merge' qilamiz.",
+    "keyTerms": [
+      {
+        "term": "Branch (Shox)",
+        "definition": "Commitlar tarixining mustaqil yo'nalishi."
+      },
+      {
+        "term": "main / master",
+        "definition": "Odatda loyihaning asosiy, barqaror versiyasini saqlaydigan standart branch."
+      },
+      {
+        "term": "Feature Branch",
+        "definition": "Muayyan bir yangi funksiyani ishlab chiqish uchun yaratilgan vaqtinchalik branch."
+      }
+    ]
+  },
+  {
+    "id": "git-q12",
+    "question": "`git merge` nima qiladi?",
+    "topic": "Branching & Merging",
+    "description": "`git merge` buyrug'i bir branchdagi (masalan, `feature`) o'zgarishlarni boshqa branchga (masalan, `main`) birlashtiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Birlashtirish (merging) - bu ikkita branch tarixini birlashtirish jarayoni. Aytaylik, siz `main` branchida turibsiz va `login-feature` branchidagi o'zgarishlarni `main`ga qo'shmoqchisiz. Siz `git merge login-feature` buyrug'ini ishlatasiz. Git ikki branchdagi commitlarni solishtiradi va ularni birlashtirishga harakat qiladi. Agar ikkala branchda ham bir faylning bir xil qatori o'zgartirilgan bo'lsa, 'merge konflikti' yuzaga keladi, uni siz qo'lda hal qilishingiz kerak bo'ladi. Agar konflikt bo'lmasa, Git yangi 'merge commit' yaratadi (yoki 'fast-forward' qiladi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Feature branchini main branchiga birlashtirish:",
+        "code": [
+          "# 1. Avval main branchiga o'tamiz:",
+          "git switch main",
+          "",
+          "# 2. Main branchini so'nggi holatga keltiramiz (agar remote bilan ishlayotgan bo'lsak):",
+          "git pull origin main",
+          "",
+          "# 3. Feature branchini merge qilamiz:",
+          "git merge login-feature"
+        ]
+      }
+    ],
+    "interviewAnswer": "`git merge` bir branchdagi o'zgarishlarni joriy branchga qo'shib qo'yadi. Masalan, men `feature` branchdagi ishimni tugatsam, `main` branchiga o'tib, `git merge feature` buyrug'ini ishlataman. Bu `feature` branchidagi barcha commitlarni `main` branchi tarixiga birlashtiradi. Agar konfliktlar bo'lsa, ularni qo'lda hal qilishim kerak bo'ladi.",
+    "keyTerms": [
+      {
+        "term": "Merge",
+        "definition": "Ikki yoki undan ortiq branch tarixini birlashtirish jarayoni."
+      },
+      {
+        "term": "Merge Commit",
+        "definition": "Ikki branch tarixi birlashganligini bildiruvchi, ikkita 'ota-ona' commitga ega bo'lgan maxsus commit."
+      },
+      {
+        "term": "Fast-Forward",
+        "definition": "Agar `main` branchda `feature` ajralgandan beri yangi commit bo'lmasa, Git shunchaki `main` ko'rsatkichini `feature`ning oxirgi commitiga 'tez oldinga surib' qo'yadi. Yangi merge commit yaratilmaydi."
+      }
+    ]
+  },
+  {
+    "id": "git-q13",
+    "question": "Merge konflikti (merge conflict) nima va uni qanday hal qilish kerak?",
+    "topic": "Branching & Merging",
+    "description": "Merge konflikti - bu Git ikkita branchdagi o'zgarishlarni avtomatik birlashtira olmagan holat, chunki ikkala branchda ham bir faylning bir xil qismi o'zgartirilgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Konfliktlar `git merge` (yoki `git pull`, `git rebase`) paytida yuzaga keladi. Git o'zgartirilgan fayllarni ko'rsatadi va konfliktli joylarni maxsus belgilar (`<<<<<<< HEAD`, `=======`, `>>>>>>> branch-nomi`) bilan belgilab qo'yadi. Sizning vazifangiz - bu fayllarni ochib, qaysi kod qismi to'g'ri ekanligini tanlash (yoki ikkalasini birlashtirib, yangi kod yozish), maxsus belgilarni olib tashlash va faylni saqlash. Shundan so'ng, siz hal qilingan faylni `git add` qilib, Staging Area'ga qo'shasiz va keyin `git commit` (yoki `git rebase --continue`) buyrug'i bilan jarayonni yakunlaysiz."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Konfliktni hal qilish jarayoni:",
+        "code": [
+          "# 1. Merge paytida konflikt yuz beradi",
+          "git merge feature_branch",
+          "# Terminalda 'Automatic merge failed; fix conflicts...' degan yozuv chiqadi",
+          "",
+          "# 2. Konfliktli faylni (masalan, index.html) oching va tuzating:",
+          "# <<<<<<< HEAD",
+          "# Bu main branchdagi kod",
+          "# =======",
+          "# Bu feature_branchdagi kod",
+          "# >>>>>>> feature_branch",
+          "",
+          "# 3. Tuzatilgan faylni 'stage' qiling:",
+          "git add index.html",
+          "",
+          "# 4. Merge jarayonini yakunlang (yangi izoh yozish shart emas):",
+          "git commit"
+        ]
+      }
+    ],
+    "interviewAnswer": "Merge konflikti - bu ikki dasturchi bir faylning bir xil satrlarini o'zgartirganda va Git qaysi versiyani saqlashni bilmay qolganda yuz beradi. Buni hal qilish uchun men konfliktli faylni ochaman, Git qo'shgan maxsus belgilarni (`<<<<<`, `=====`, `>>>>>`) topaman, kerakli kodni qoldirib, keraksizini o'chiraman, belgilarni tozalayman, faylni saqlayman, keyin `git add` va `git commit` qilib, merge jarayonini yakunlayman.",
+    "keyTerms": [
+      {
+        "term": "Conflict Markers",
+        "definition": "Git tomonidan konfliktli joylarni ko'rsatish uchun faylga qo'shiladigan maxsus belgilar (`<<<<<<<`, `=======`, `>>>>>>>`)."
+      }
+    ]
+  },
+  {
+    "id": "git-q14",
+    "question": "`git rebase` nima?",
+    "topic": "Branching & Merging",
+    "description": "`git rebase` - bu bir branchdagi commitlar ketma-ketligini olib, ularni boshqa (yangi) boshlang'ich commit ustiga 'ko'chirib o'tkazish' orqali loyiha tarixini qayta yozish usuli.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Tasavvur qiling, siz `feature` branchida ishlayapsiz va shu vaqt ichida `main` branchiga yangi commitlar qo'shildi. Sizning `feature` branchingiz `main`ning eski holatidan boshlangan. `main`dagi yangilanishlarni `feature`ga olish uchun `git merge main` qilishingiz mumkin (bu merge commit yaratadi) yoki `git rebase main` qilishingiz mumkin. `rebase` sizning `feature` branchdagi commitlaringizni vaqtincha chetga olib qo'yadi, `feature`ni `main`ning so'nggi holatiga 'ko'chiradi' va keyin sizning commitlaringizni `main`ning yangi holati ustiga birma-bir qo'llab chiqadi. Bu toza, chiziqli (linear) tarix yaratadi. **Ogohlantirish:** Hech qachon jamoaviy (public) branchga (masalan, `main`ga) `rebase` qilmang, chunki u tarixni qayta yozadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Feature branchini main ustiga rebase qilish (feature branchda turib):",
+        "code": [
+          "# 1. Maindagi o'zgarishlarni tortib olamiz (lekin merge qilmaymiz)",
+          "git fetch origin main",
+          "",
+          "# 2. Feature branchimizni yangilangan main ustiga 'ko'chiramiz'",
+          "git rebase origin/main"
+        ]
+      },
+      {
+        "title": "Interaktiv rebase (commitlarni o'zgartirish/birlashtirish):",
+        "code": [
+          "git rebase -i HEAD~3",
+          "# Bu oxirgi 3 ta commitni tahrirlash uchun matn muharririni ochadi"
+        ]
+      }
+    ],
+    "interviewAnswer": "`git rebase` bu o'zgarishlarni integratsiya qilishning `merge`ga alternativa usuli. U mening `feature` branchimni olib, uni `main` branchining eng so'nggi holati ustiga 'ko'chiradi'. Bu `merge`ga o'xshab qo'shimcha 'merge commit' yaratmaydi, balki toza va chiziqli tarix hosil qiladi. Men uni odatda o'zimning lokal feature branchimni `main`dagi yangilanishlar bilan sinxronlashtirish uchun ishlataman.",
+    "keyTerms": [
+      {
+        "term": "Rebase",
+        "definition": "Commitlar ketma-ketligini yangi boshlang'ich commit ustiga ko'chirish orqali tarixni qayta yozish."
+      },
+      {
+        "term": "Linear History",
+        "definition": "Merge commitlarsiz, to'g'ri chiziq ko'rinishidagi commitlar tarixi."
+      },
+      {
+        "term": "Interactive Rebase (`-i`)",
+        "definition": "Commitlarni qayta tartiblash, o'zgartirish (reword), birlashtirish (squash) yoki o'chirish (drop) imkonini beruvchi rebase rejimi."
+      }
+    ]
+  },
+  {
+    "id": "git-q15",
+    "question": "`git merge` va `git rebase` o'rtasidagi asosiy farqlar?",
+    "topic": "Branching & Merging",
+    "description": "Asosiy farq loyiha tarixida: `merge` parallel tarixni 'merge commit' orqali saqlaydi, `rebase` esa tarixni qayta yozib, chiziqli (linear) tarix yaratadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Git Merge:**\n- **Tarixni saqlaydi:** Loyihada nima bo'lgan bo'lsa, shuni aniq ko'rsatadi (parallel rivojlanishni).\n- **Birlashtiruvchi commit:** Ko'pincha 'merge commit' deb nomlangan yangi commit yaratadi.\n- **Xavfsiz:** Jamoaviy (public) branchlar uchun xavfsiz, chunki mavjud tarixni o'zgartirmaydi.\n- **Tarix ko'rinishi:** Tarixni chigallashtirishi mumkin (`git log --graph`)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Git Rebase:**\n- **Tarixni qayta yozadi:** Commitlarni yangi joyga ko'chiradi, bu esa commit hash'larini o'zgartiradi.\n- **Birlashtiruvchi commit yo'q:** Natijada toza, chiziqli (linear) tarix paydo bo'ladi.\n- **Xavfli (agar noto'g'ri ishlatilsa):** Hech qachon boshqalar foydalanayotgan (masalan, `main`) branchga `rebase` qilinmasligi kerak.\n- **Tarix ko'rinishi:** Tarixni o'qish osonroq bo'ladi."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "`merge` va `rebase` ikkalasi ham bir branchdagi o'zgarishlarni boshqasiga olib o'tadi. Asosiy farq tarixda: `merge` ikki branchni birlashtiruvchi yangi 'merge commit' yaratib, parallel tarixni saqlab qoladi. `rebase` esa sizning branchdagi commitlaringizni olib, ularni maqsadli branchning so'nggi holati ustiga 'ko'chiradi' va toza, chiziqli tarix yaratadi. Qoida tariqasida, shaxsiy feature branchlarni yangilash uchun `rebase` ishlatiladi, lekin tayyor ishni asosiy branchga (`main`ga) qo'shish uchun `merge` (ko'pincha Pull Request orqali) ishlatiladi.",
+    "keyTerms": [
+      {
+        "term": "Non-destructive",
+        "definition": "Mavjud tarixni o'zgartirmaydigan operatsiya (masalan, `merge`)."
+      },
+      {
+        "term": "Destructive (qayta yozuvchi)",
+        "definition": "Mavjud tarixni o'zgartiradigan operatsiya (masalan, `rebase`, `reset --hard`)."
+      }
+    ]
+  },
+  {
+    "id": "git-q16",
+    "question": "`HEAD` nima? 'Detached HEAD' holati nima?",
+    "topic": "Branching & Merging",
+    "description": "`HEAD` - bu siz hozirda ishlab turgan joriy commitga (odatda branchning uchiga) ishora qiluvchi ko'rsatkich. 'Detached HEAD' - bu `HEAD`ning branchga emas, balki to'g'ridan-to'g'ri commitga ishora qilgan holati.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`HEAD` - bu Git omboringizdagi maxsus ko'rsatkich (pointer). Odatda, `HEAD` qaysidir branch nomiga (masalan, `main`ga) ishora qiladi, va bu branch o'z navbatida oxirgi commitga ishora qiladi. Bu 'siz hozir `main` branchidasiz' degan ma'noni anglatadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**'Detached HEAD' (Ajratilgan HEAD):** Bu holat siz branch nomini emas, balki aniq bir commit hashini (yoki tagni) `checkout` qilganingizda yuz beradi. Masalan, `git checkout <commit-hash>`. Bu holatda `HEAD` endi branchga emas, to'g'ridan-to'g'ri o'sha commitga ishora qiladi. Bu eski kodni ko'rish uchun foydali, ammo agar siz bu holatda turib yangi commit qilsangiz, bu commit hech qaysi branchga tegishli bo'lmaydi va siz boshqa branchga o'tishingiz bilan 'yetim' bo'lib qoladi (va keyinchalik Git tomonidan 'axlat yig'ish' jarayonida o'chirilishi mumkin). Agar bu holatda qilgan o'zgarishlaringizni saqlab qolmoqchi bo'lsangiz, ulardan yangi branch yaratishingiz kerak (`git switch -c new-branch-name`)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Detached HEAD holatiga o'tish (eski commitni ko'rish):",
+        "code": [
+          "git log --oneline",
+          "# 1a2b3c4 Eski commit",
+          "git checkout 1a2b3c4",
+          "# Siz hozir 'detached HEAD' holatidasiz"
+        ]
+      },
+      {
+        "title": "Detached HEAD holatidan yangi branch yaratish:",
+        "code": [
+          "# (Detached HEAD holatida turib)",
+          "git switch -c yangi-branch-nomi",
+          "# Endi sizning yangi commitlaringiz shu branchda saqlanadi"
+        ]
+      }
+    ],
+    "interviewAnswer": "`HEAD` - bu Git-dagi ko'rsatkich bo'lib, u men hozirda qaysi commit ustida ishlayotganimni bildiradi. Odatda, `HEAD` qaysidir branch nomiga (masalan, `feature`) ishora qiladi. 'Detached HEAD' holati esa `HEAD`ning branchga emas, balki to'g'ridan-to'g'ri biror commit hash'iga ishora qilishidir. Bu odatda eski commitni `checkout` qilganda sodir bo'ladi. Bu holatda yangi commit qilsam, u hech qaysi branchga tegishli bo'lmaydi, shuning uchun o'zgarishlarni saqlab qolish uchun yangi branch yaratishim kerak bo'ladi.",
+    "keyTerms": [
+      {
+        "term": "HEAD",
+        "definition": "Joriy ish holatiga (odatda joriy branchga) ishora qiluvchi ko'rsatkich."
+      },
+      {
+        "term": "Pointer (Ko'rsatkich)",
+        "definition": "Boshqa bir obyektga (masalan, commitga yoki boshqa ko'rsatkichga) ishora qiluvchi havola."
+      }
+    ]
+  },
+  {
+    "id": "git-q17",
+    "question": "`git cherry-pick` nima?",
+    "topic": "Branching & Merging",
+    "description": "`git cherry-pick` - bu boshqa branchdagi bitta yoki bir nechta aniq commitlarni tanlab olib, ularni joriy branchga qo'llash buyrug'i.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ba'zan sizga boshqa branchdagi butun o'zgarishlar emas, balki faqat bitta yoki ikkita aniq commit kerak bo'ladi. Masalan, `feature-B` branchida topilgan xatolikni tuzatuvchi commit bor va bu tuzatish `feature-A` branchiga ham zudlik bilan kerak. Butun `feature-B` ni `feature-A` ga 'merge' qilish o'rniga, siz `feature-A` branchiga o'tib, `git cherry-pick <commit-hash>` buyrug'i yordamida o'sha bitta tuzatish commitini 'uzib' olishingiz mumkin. Bu joriy branchda o'sha o'zgarishlarni qayta qo'llaydigan yangi commit (yangi hash bilan) yaratadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Boshqa branchdan bitta commitni 'uzib olish':",
+        "code": [
+          "# 1. Kerakli commit hashini topamiz (masalan, 'feature-B' da):",
+          "git log feature-B --oneline",
+          "# 7654321 Muhim xatolik tuzatildi",
+          "",
+          "# 2. O'zimizning branchga o'tamiz:",
+          "git switch feature-A",
+          "",
+          "# 3. O'sha commitni 'cherry-pick' qilamiz:",
+          "git cherry-pick 7654321"
+        ]
+      }
+    ],
+    "interviewAnswer": "`git cherry-pick` - bu boshqa branchdagi aniq bir commitni olib, uni joriy branchimga qo'llash imkonini beradigan buyruq. Bu butun branch'ni 'merge' qilishni xohlamaganimda, lekin o'sha branchdagi aynan bir o'zgarish (masalan, muhim bugfix) menga kerak bo'lganda juda foydali. U o'sha o'zgarishlar bilan joriy branchimda yangi commit yaratadi.",
+    "keyTerms": [
+      {
+        "term": "Cherry-picking",
+        "definition": "Boshqa joydagi commit(lar)ni tanlab olib, joriy ishchi branchga qo'llash."
+      }
+    ]
+  },
+  {
+    "id": "git-q18",
+    "question": "`git remote` nima?",
+    "topic": "Remote Repositories",
+    "description": "`git remote` buyrug'i sizning lokal omboringiz bog'langan masofaviy (remote) omborlarni boshqarish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Lokal omboringiz (sizning kompyuteringizda) odatda GitHub yoki GitLab kabi serverda joylashgan masofaviy ombor bilan bog'langan bo'ladi. Bu masofaviy omborlar sizning kodingizning 'markaziy' nusxasi va jamoa bilan hamkorlik qilish joyi hisoblanadi. `git remote` buyrug'i yordamida siz bu bog'lanishlarni ko'rishingiz (`git remote -v`), yangi bog'lanish qo'shishingiz (`git remote add ...`) yoki mavjudini o'chirishingiz mumkin. Standart bo'yicha, `git clone` qilganingizda, Git avtomatik ravishda o'sha asl omborni `origin` deb nomlangan remote sifatida qo'shadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Barcha masofaviy bog'lanishlarni (URL bilan) ko'rish:",
+        "code": ["git remote -v"]
+      },
+      {
+        "title": "Yangi masofaviy ombor qo'shish:",
+        "code": [
+          "git remote add upstream https://github.com/asl-loyiha/repo.git"
+        ]
+      },
+      {
+        "title": "Masofaviy ombor nomini o'zgartirish:",
+        "code": ["git remote rename origin old-origin"]
+      }
+    ],
+    "interviewAnswer": "`git remote` - bu mening lokal omborim qaysi masofaviy serverlar (masalan, GitHub'dagi omborlar) bilan bog'langanligini boshqarish uchun buyruq. `git remote -v` yordamida men barcha bog'lanishlarni va ularning URL'larini ko'rishim mumkin. `git clone` qilganda avtomatik yaratiladigan standart remote nomi `origin` deb ataladi.",
+    "keyTerms": [
+      {
+        "term": "Remote",
+        "definition": "Sizning lokal omboringiz bilan bog'langan, odatda serverda joylashgan boshqa ombor."
+      },
+      {
+        "term": "origin",
+        "definition": "Siz `clone` qilgan masofaviy ombor uchun standart, avtomatik nom."
+      },
+      {
+        "term": "upstream",
+        "definition": "Ko'pincha siz 'fork' qilgan asl loyiha omboriga ishora qilish uchun ishlatiladigan an'anaviy nom."
+      }
+    ]
+  },
+  {
+    "id": "git-q19",
+    "question": "`git push` nima qiladi?",
+    "topic": "Remote Repositories",
+    "description": "`git push` buyrug'i sizning lokal commitlaringizni va branchlaringizni masofaviy omborga (masalan, GitHub'dagi `origin`ga) yuklaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Siz `git commit` qilganingizda, o'zgarishlar faqat sizning lokal omboringizga saqlanadi. Ular jamoaning qolgan a'zolari uchun ko'rinmaydi. O'zgarishlaringizni baham ko'rish uchun ularni masofaviy omborga 'itarishingiz' (push) kerak. `git push <remote-nomi> <branch-nomi>` (masalan, `git push origin main`) buyrug'i sizning lokal `main` branchingizdagi yangi commitlarni olib, ularni `origin` deb nomlangan remote'dagi `main` branchiga yuklaydi. Agar masofaviy branchda sizda yo'q o'zgarishlar bo'lsa, Git `push` qilishdan oldin `pull` qilishingizni talab qilishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Joriy branchdagi o'zgarishlarni 'origin'ga yuborish:",
+        "code": ["git push origin main"]
+      },
+      {
+        "title": "Yangi yaratilgan lokal branch'ni 'origin'ga yuborish va uni kuzatib borishni sozlash:",
+        "code": ["git push -u origin feature-branch"]
+      },
+      {
+        "title": "Masofaviy branchni o'chirish:",
+        "code": ["git push origin --delete feature-branch"]
+      }
+    ],
+    "interviewAnswer": "`git push` buyrug'i mening lokal omborimdagi commitlarni olib, ularni masofaviy omborga, masalan, GitHub'ga yuklaydi. Bu mening o'zgarishlarimni jamoa bilan bo'lishishning asosiy usuli. Odatda men `git push origin <branch-nomi>` buyrug'ini ishlataman.",
+    "keyTerms": [
+      {
+        "term": "Push",
+        "definition": "Lokal o'zgarishlarni (commitlarni) masofaviy omborga yuborish."
+      },
+      {
+        "term": "-u (yoki --set-upstream)",
+        "definition": "Lokal branch'ni masofaviy branch bilan bog'laydigan flag. Shundan so'ng, shu branchda turib faqat `git push` deb yozish kifoya qiladi."
+      }
+    ]
+  },
+  {
+    "id": "git-q20",
+    "question": "`git pull` nima qiladi?",
+    "topic": "Remote Repositories",
+    "description": "`git pull` buyrug'i masofaviy ombordagi o'zgarishlarni oladi (`fetch`) va ularni avtomatik ravishda joriy lokal branch bilan birlashtiradi (`merge`).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`git pull` aslida ikkita buyruqning birlashmasidir: `git fetch` va `git merge`. \n1. **`git fetch`:** Bu masofaviy ombordan (masalan, `origin`) barcha yangi ma'lumotlarni (yangi commitlar, branchlar) yuklab oladi, lekin ularni sizning ishchi kodingiz bilan birlashtirmaydi. U shunchaki sizning lokal `.git` papkangizdagi 'masofaviy' branchlarni (masalan, `origin/main`) yangilaydi.\n2. **`git merge`:** `fetch`dan so'ng, `git pull` avtomatik ravishda yuklab olingan o'zgarishlarni (masalan, `origin/main`dagi) sizning joriy lokal branchingizga (masalan, `main`ga) 'merge' qiladi. Agar konfliktlar bo'lsa, siz ularni hal qilishingiz kerak bo'ladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Masofaviy ombordagi o'zgarishlarni olib, joriy branchga merge qilish:",
+        "code": ["git pull origin main"]
+      },
+      {
+        "title": "Merge o'rniga rebase ishlatish (tarixni toza saqlash uchun):",
+        "code": ["git pull --rebase"]
+      }
+    ],
+    "interviewAnswer": "`git pull` - bu masofaviy ombordagi (masalan, `origin`) yangilanishlarni mening lokal omborimga olib kelish uchun ishlatiladigan buyruq. Bu aslida ikki ishni qiladi: birinchidan, `git fetch` yordamida barcha yangi o'zgarishlarni yuklab oladi, ikkinchidan, `git merge` yordamida o'sha o'zgarishlarni mening joriy lokal branchim bilan birlashtiradi.",
+    "keyTerms": [
+      {
+        "term": "Pull",
+        "definition": "Masofaviy o'zgarishlarni lokal omborga olib kelish va birlashtirish."
+      },
+      {
+        "term": "git pull --rebase",
+        "definition": "O'zgarishlarni 'merge' qilish o'rniga, lokal commitlarni masofaviy o'zgarishlar ustiga 'rebase' qiladi, bu toza tarixni saqlaydi."
+      }
+    ]
+  },
+  {
+    "id": "git-q21",
+    "question": "`git fetch` va `git pull` o'rtasidagi farq nima?",
+    "topic": "Remote Repositories",
+    "description": "`git fetch` masofaviy o'zgarishlarni shunchaki yuklab oladi (lekin ishchi kodingizga qo'llamaydi), `git pull` esa ularni yuklab oladi (`fetch`) VA joriy branch bilan birlashtiradi (`merge`).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`git fetch`:** Bu 'xavfsiz' buyruq. U masofaviy omborga ulanadi va sizda hali mavjud bo'lmagan barcha ma'lumotlarni (yangi commitlar, branchlar, taglar) tortib oladi. Bu o'zgarishlar sizning lokal `.git` omboringizda `origin/main` kabi masofaviy kuzatuv branchlarida saqlanadi. Ammo u sizning lokal `main` branchingizga yoki Ishchi katalogingizga hech qanday o'zgartirish kiritmaydi. Bu sizga avval o'zgarishlarni ko'rib chiqish, keyin ularni `merge` yoki `rebase` qilish imkonini beradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`git pull`:** Bu `git fetch` + `git merge` (yoki `rebase`) degani. U o'zgarishlarni tortib oladi va darhol ularni sizning joriy ishingiz bilan birlashtirishga harakat qiladi. Bu qulay, ammo agar siz avval nima o'zgarganini ko'rmoqchi bo'lsangiz, xavfli bo'lishi mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Avval ko'rib, keyin birlashtirish (tavsiya etiladi):",
+        "code": [
+          "# 1. Yangilanishlarni tortib olish:",
+          "git fetch origin",
+          "",
+          "# 2. Lokal main va origin/main o'rtasidagi farqni ko'rish:",
+          "git log main..origin/main",
+          "",
+          "# 3. O'zgarishlarni birlashtirish:",
+          "git merge origin/main"
+        ]
+      },
+      {
+        "title": "Avtomatik tortib olish va birlashtirish:",
+        "code": ["git pull origin main"]
+      }
+    ],
+    "interviewAnswer": "Asosiy farq shundaki, `git fetch` masofaviy ombordagi o'zgarishlarni shunchaki yuklab oladi va `origin/main` kabi masofaviy branchlarni yangilaydi, lekin mening lokal `main` branchimga tegmaydi. Bu menga o'zgarishlarni ko'rib chiqish imkonini beradi. `git pull` esa `git fetch` qiladi va shundan so'ng darhol o'sha o'zgarishlarni mening joriy lokal branchimga `merge` qiladi. Men ko'pincha `fetch`ni afzal ko'raman, shunda nima bo'layotganini to'liq nazorat qila olaman.",
+    "keyTerms": [
+      {
+        "term": "Fetch",
+        "definition": "Masofaviy ombordan yangi ma'lumotlarni lokal `.git` papkaga yuklab olish (birlashtirmasdan)."
+      },
+      {
+        "term": "Remote-tracking branch",
+        "definition": "Masofaviy branchning holatini kuzatib boruvchi lokal ko'rsatkich (masalan, `origin/main`)."
+      }
+    ]
+  },
+  {
+    "id": "git-q22",
+    "question": "`git stash` nima uchun ishlatiladi?",
+    "topic": "History & Undoing",
+    "description": "`git stash` buyrug'i Ishchi katalog (Working Directory) va Staging Area'dagi tugallanmagan o'zgarishlarni vaqtincha saqlab qo'yadi, loyihani esa toza (`HEAD` holatiga) qaytaradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Tasavvur qiling, siz bir `feature` ustida ishlayapsiz, fayllarga ko'p o'zgarishlar kiritdingiz, lekin ish hali tugamagan va commit qilishga tayyor emas. Shu paytda sizga shoshilinch boshqa branchga (masalan, `main`ga) o'tib, u yerda tezda bir xatoni tuzatish kerak bo'ladi. Siz commit qilolmaydigan bu tugallanmagan o'zgarishlar bilan branch almashtira olmaysiz. `git stash` aynan shu holat uchun: u barcha o'zgartirilgan fayllaringizni 'stek'ga vaqtincha saqlab qo'yadi va loyihangizni oxirgi commit holatiga qaytaradi. Endi siz bemalol branch almashtirib, boshqa ishni qilishingiz mumkin. Ishingiz bitgach, `feature` branchga qaytib, `git stash pop` buyrug'i bilan o'sha o'zgarishlarni qaytarib olasiz."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Joriy o'zgarishlarni 'stash'ga saqlash:",
+        "code": [
+          "git stash",
+          "# yoki izoh bilan:",
+          "git stash save \"Yarim qolgan forma ishi\""
+        ]
+      },
+      {
+        "title": "Stash'dagi o'zgarishlarni qaytarib olish (va stekdan o'chirish):",
+        "code": ["git stash pop"]
+      },
+      {
+        "title": "Stash'dagi o'zgarishlarni qaytarib olish (lekin stekda qoldirish):",
+        "code": ["git stash apply"]
+      },
+      {
+        "title": "Barcha stash'lar ro'yxatini ko'rish:",
+        "code": ["git stash list"]
+      },
+      {
+        "title": "Oxirgi stash'ni o'chirish:",
+        "code": ["git stash drop"]
+      }
+    ],
+    "interviewAnswer": "`git stash` - bu mening tugallanmagan o'zgarishlarimni vaqtincha saqlab qo'yish uchun ishlatiladigan vosita. Agar men biron bir `feature` ustida ishlayotgan bo'lsam, lekin commit qilishga tayyor bo'lmasam va zudlik bilan boshqa branchga o'tishim kerak bo'lsa, men `git stash` qilaman. Bu mening barcha o'zgarishlarimni 'stek'ga saqlaydi va loyihani toza holatga keltiradi. Boshqa branchdagi ishimni bitirib qaytgach, `git stash pop` buyrug'i bilan o'zgarishlarimni qaytarib olaman.",
+    "keyTerms": [
+      {
+        "term": "Stash",
+        "definition": "Commit qilinmagan o'zgarishlarning vaqtinchalik saqlanadigan joyi (stek)."
+      },
+      {
+        "term": "git stash pop",
+        "definition": "Oxirgi stash'dagi o'zgarishlarni qayta qo'llaydi va uni stekdan o'chiradi."
+      },
+      {
+        "term": "git stash apply",
+        "definition": "Oxirgi stash'dagi o'zgarishlarni qayta qo'llaydi, lekin uni stekda qoldiradi."
+      }
+    ]
+  },
+  {
+    "id": "git-q23",
+    "question": "`git reset` nima qiladi va uning turlari (soft, mixed, hard) qanday?",
+    "topic": "History & Undoing",
+    "description": "`git reset` - bu joriy `HEAD`ni (va ixtiyoriy ravishda Staging Area va Working Directory'ni) ma'lum bir oldingi commit holatiga qaytarish uchun ishlatiladigan kuchli buyruq.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`git reset` loyiha tarixini qayta yozishi mumkin va shuning uchun ehtiyotkorlik bilan ishlatilishi kerak (ayniqsa `push` qilingan commitlarda). Uning uchta asosiy rejimi bor. Aytaylik, siz `HEAD~1` (oxirgi commitdan bitta oldingi holat)ga qaytmoqchisiz:"
+      },
+      {
+        "type": "paragraph",
+        "content": "**1. `git reset --soft HEAD~1`:** \n- **Repository:** `HEAD` ko'rsatkichini bitta commit orqaga suradi (oxirgi commitni 'bekor qiladi').\n- **Staging Area:** Tegmaydi. Bekor qilingan commitdagi o'zgarishlar Staging Area'da qoladi.\n- **Working Directory:** Tegmaydi. Fayllaringiz o'zgarmaydi. \n- **Foydalanish:** Oxirgi commitni qayta qilish kerak bo'lganda (masalan, commit xabarini o'zgartirish yoki bir-ikkita fayl qo'shish uchun)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**2. `git reset --mixed HEAD~1` (Bu standart rejim):**\n- **Repository:** `HEAD`ni orqaga suradi.\n- **Staging Area:** Tozalanadi. Bekor qilingan commitdagi o'zgarishlar Staging Area'dan olib tashlanadi.\n- **Working Directory:** Tegmaydi. O'zgarishlar fayllaringizda saqlanib qoladi (lekin 'stage' qilinmagan holatda). \n- **Foydalanish:** Oxirgi commitdagi o'zgarishlarni saqlab qolish, lekin ularni qayta ko'rib chiqib, qayta `add` qilish kerak bo'lganda."
+      },
+      {
+        "type": "paragraph",
+        "content": "**3. `git reset --hard HEAD~1`:**\n- **Repository:** `HEAD`ni orqaga suradi.\n- **Staging Area:** Tozalanadi.\n- **Working Directory:** Tozalanadi. Bekor qilingan commitdagi BARCHA o'zgarishlar fayllaringizdan butunlay o'chiriladi. Bu **qaytarib bo'lmaydigan**, xavfli operatsiya.\n- **Foydalanish:** Oxirgi commit(lar)ni va ular bilan bog'liq barcha o'zgarishlarni butunlay yo'q qilish kerak bo'lganda."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oxirgi commitni bekor qilish, lekin o'zgarishlarni 'stage'da qoldirish:",
+        "code": ["git reset --soft HEAD~1"]
+      },
+      {
+        "title": "Oxirgi commitni bekor qilish, o'zgarishlarni Ishchi katalogda qoldirish (standart):",
+        "code": ["git reset HEAD~1"]
+      },
+      {
+        "title": "Oxirgi commitni va u bilan bog'liq barcha o'zgarishlarni butunlay o'chirish (XAVFLI):",
+        "code": ["git reset --hard HEAD~1"]
+      }
+    ],
+    "interviewAnswer": "`git reset` buyrug'i loyihani oldingi commit holatiga qaytaradi. Uning uchta asosiy turi bor: `--soft`, `--mixed` va `--hard`. `--soft` faqat `HEAD`ni (commit tarixini) orqaga suradi, lekin o'zgarishlarni Staging Area'da qoldiradi. `--mixed` (standart rejim) `HEAD`ni va Staging Area'ni tozalaydi, lekin o'zgarishlarni Ishchi katalogda saqlab qoladi. `--hard` esa `HEAD`, Staging Area va Ishchi katalogdagi barcha o'zgarishlarni o'chirib, loyihani o'sha eski commit holatiga to'liq qaytaradi. Men `--hard`ni juda ehtiyotkorlik bilan ishlataman, chunki u ishni butunlay yo'qotishi mumkin.",
+    "keyTerms": [
+      {
+        "term": "git reset --soft",
+        "definition": "Faqat commit tarixini (`HEAD`) qaytaradi."
+      },
+      {
+        "term": "git reset --mixed",
+        "definition": "Commit tarixi va Staging Area'ni qaytaradi."
+      },
+      {
+        "term": "git reset --hard",
+        "definition": "Commit tarixi, Staging Area va Ishchi katalogni qaytaradi (o'zgarishlarni o'chiradi)."
+      }
+    ]
+  },
+  {
+    "id": "git-q24",
+    "question": "`git revert` nima va u `git reset`dan qanday farq qiladi?",
+    "topic": "History & Undoing",
+    "description": "`git revert` - bu muayyan bir commit kiritgan o'zgarishlarni 'teskari' qiladigan yangi commit yaratadi. `git reset` esa tarixni o'chiradi (qayta yozadi).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`git revert`:** Bu tarixni qayta yozmaydigan, 'xavfsiz' bekor qilish usuli. Aytaylik, siz bir nechta commit oldin xato kod qo'shgansiz. O'sha xato commitni `revert` qilganingizda (`git revert <xato-commit-hash>`), Git o'sha commit nima o'zgarish qilgan bo'lsa, xuddi o'shaning teskarisini bajaradigan YANGI commit yaratadi. Masalan, agar eski commit bir qator qo'shgan bo'lsa, `revert` commiti o'sha qatorni o'chiradi. Bu usul jamoaviy (public) branchlar uchun juda mos keladi, chunki u tarixni o'chirmaydi, balki tarixga yangi 'tuzatish' commiti qo'shadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`git reset` vs `git revert`:**\n- **Tarix:** `reset` tarixni o'zgartiradi (o'chiradi). `revert` tarixga yangi commit qo'shadi.\n- **Qo'llanilishi:** `reset`ni faqat `push` qilinmagan lokal o'zgarishlar uchun ishlating. `revert`ni `push` qilingan va jamoa foydalanayotgan o'zgarishlarni bekor qilish uchun ishlating.\n- **Natija:** `reset --hard`dan keyin o'sha commit tarixda ko'rinmaydi. `revert`dan keyin esa ham asl (xato) commit, ham uni bekor qiluvchi (revert) commit tarixda ko'rinib turadi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Muayyan bir commitni 'revert' qilish (yangi commit yaratish):",
+        "code": ["git revert 1a2b3c4d"]
+      },
+      {
+        "title": "Oxirgi commitni 'revert' qilish:",
+        "code": ["git revert HEAD"]
+      }
+    ],
+    "interviewAnswer": "Asosiy farq tarixga ta'sirida. `git reset` (ayniqsa `--hard`) tarixni qayta yozadi, ya'ni commitlarni o'chirib tashlaydi. Bu faqat lokal, 'push' qilinmagan o'zgarishlar uchun yaxshi. `git revert` esa tarixni o'chirmaydi. U ma'lum bir commit kiritgan o'zgarishlarning teskarisini bajaradigan yangi commit yaratadi. Bu `push` qilingan va jamoa bilan bo'lishilgan xato commitlarni xavfsiz tarzda bekor qilishning to'g'ri yo'li.",
+    "keyTerms": [
+      {
+        "term": "Revert",
+        "definition": "Mavjud commitning o'zgarishlarini teskari bajaradigan yangi commit yaratish."
+      },
+      {
+        "term": "Non-destructive History",
+        "definition": "Loyihaning mavjud tarixini o'chirmaydigan yoki o'zgartirmaydigan operatsiya (`revert` shunday)."
+      }
+    ]
+  },
+  {
+    "id": "git-q25",
+    "question": "`.gitignore` fayli nima uchun ishlatiladi?",
+    "topic": "Git Basics",
+    "description": "`.gitignore` - bu Git e'tibor bermasligi kerak bo'lgan fayl va papkalar ro'yxatini saqlaydigan maxsus konfiguratsiya fayli.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Loyihangizda har doim Git omboriga qo'shilmasligi kerak bo'lgan fayllar bo'ladi. Masalan, `node_modules` papkasi (u juda katta va `npm install` bilan qayta tiklanadi), log fayllar (`.log`), operatsion tizim fayllari (`.DS_Store`, `Thumbs.db`) yoki shaxsiy sozlamalar fayllari (`.env`). `.gitignore` fayli loyihaning ildiz papkasida yaratiladi va uning ichiga Git tomonidan 'kuzatilmasligi' (untracked) kerak bo'lgan fayl nomlari yoki shablonlari (masalan, `*.log` yoki `/node_modules`) yoziladi. Git bu fayllarni `git add .` qilganda yoki `git status`da ko'rsatmaydi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy .gitignore fayli misoli:",
+        "code": [
+          "# Bog'liqliklar papkasi",
+          "node_modules/",
+          "",
+          "# Log fayllar",
+          "*.log",
+          "npm-debug.log*",
+          "",
+          "# Maxfiy ma'lumotlar",
+          ".env",
+          ".env.local",
+          "",
+          "# OS tomonidan yaratiladigan fayllar",
+          ".DS_Store",
+          "Thumbs.db"
+        ]
+      }
+    ],
+    "interviewAnswer": "`.gitignore` fayli - bu biz Git'ga qaysi fayl va papkalarni kuzatmaslik kerakligini aytadigan matnli fayl. Biz unga odatda `node_modules` papkasi, `.env` fayllari (maxfiy ma'lumotlar saqlanadi), log fayllar va OS tomonidan yaratiladigan yordamchi fayllar kabi narsalarni kiritamiz. Bu omborimizni (repository) toza saqlashga va keraksiz fayllarni qo'shib yuborishdan saqlanishga yordam beradi.",
+    "keyTerms": [
+      {
+        "term": "Untracked",
+        "definition": "Git tomonidan kuzatilmayotgan va omborga kiritilmaydigan fayllar."
+      },
+      {
+        "term": "Pattern (Shablon)",
+        "definition": "`.gitignore` ichida bir nechta faylga mos keluvchi qoida (masalan, `*.log`)."
+      }
+    ]
+  },
+  {
+    "id": "git-q26",
+    "question": "Git-da 'tag' nima?",
+    "topic": "Git Basics",
+    "description": "Tag (yorliq) - bu loyiha tarixidagi muayyan bir muhim nuqtani (odatda reliz versiyasini) belgilash uchun ishlatiladigan doimiy ko'rsatkich.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Branchlar siljishi mumkin (yangi commitlar qo'shilgan sari), lekin tag'lar odatda bir commitga doimiy ravishda biriktiriladi. Ularning asosiy maqsadi loyihaning muhim versiyalarini belgilashdir, masalan, `v1.0`, `v1.1`, `v2.0-beta`. Taglarning ikki turi mavjud: 'lightweight' (yengil) va 'annotated' (izohli). 'Annotated' taglar (tavsiya etiladi) o'zida qo'shimcha ma'lumotlarni (tag muallifi, sana, izoh) saqlaydi va Git obyekti sifatida yaratiladi. 'Lightweight' taglar esa shunchaki bir commitga ishora qiluvchi oddiy ko'rsatkichdir."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Annotated (izohli) tag yaratish:",
+        "code": ["git tag -a v1.0 -m \"Birinchi barqaror reliz\""]
+      },
+      {
+        "title": "Lightweight (yengil) tag yaratish:",
+        "code": ["git tag v1.0-beta"]
+      },
+      {
+        "title": "Barcha taglarni ko'rish:",
+        "code": ["git tag"]
+      },
+      {
+        "title": "Taglarni masofaviy omborga yuborish (ular avtomatik yuborilmaydi):",
+        "code": [
+          "git push origin v1.0",
+          "# yoki barcha taglarni yuborish:",
+          "git push origin --tags"
+        ]
+      }
+    ],
+    "interviewAnswer": "Tag - bu loyiha tarixidagi muhim bir nuqtani, masalan, `v1.0` kabi reliz versiyasini belgilash uchun ishlatiladigan doimiy yorliq. Branchlardan farqli o'laroq, taglar odatda siljimaydi. Men uni `git tag -a v1.0 -m \"Reliz izohi\"` kabi 'annotated' (izohli) tag yaratish uchun ishlataman va keyin `git push --tags` bilan masofaviy omborga yuboraman.",
+    "keyTerms": [
+      {
+        "term": "Tag",
+        "definition": "Tarixdagi muayyan bir commitga ishora qiluvchi doimiy yorliq."
+      },
+      {
+        "term": "Annotated Tag",
+        "definition": "O'zida muallif, sana va izoh kabi qo'shimcha ma'lumotlarni saqlaydigan tag turi."
+      },
+      {
+        "term": "Lightweight Tag",
+        "definition": "Shunchaki bir commitga ishora qiluvchi oddiy ko'rsatkich."
+      }
+    ]
+  },
+  {
+    "id": "git-q27",
+    "question": "Git `fork` nima va u `clone`dan qanday farq qiladi?",
+    "topic": "GitHub",
+    "description": "`fork` - bu boshqa birovning omborining to'liq nusxasini o'zingizning GitHub (yoki GitLab) akkauntingizga ko'chirish (server tarafida), `clone` esa omborni serverdan o'zingizning lokal kompyuteringizga ko'chirish (yuklab olish).",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Fork (Vilka):** Bu GitHub/GitLab'ga xos tushuncha (Git buyrug'i emas). `fork` qilganingizda, siz boshqa bir foydalanuvchining loyiha omboridan o'zingizning shaxsiy akkauntingizda mustaqil nusxa yaratasiz. Bu nusxa endi to'liq sizning nazoratingiz ostida bo'ladi. Bu ochiq kodli (open-source) loyihalarga hissa qo'shishning asosiy usuli. Siz asl loyihaga bevosita `push` qila olmaysiz, shuning uchun siz avval uni `fork` qilasiz, keyin o'zingizning `fork` qilingan nusxangizga `push` qilasiz va nihoyat asl loyihaga 'Pull Request' yuborasiz."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Clone:** Bu Git buyrug'i (`git clone`). U masofaviy omborni (bu sizning shaxsiy omboringiz, `fork` qilingan omboringiz yoki istalgan ochiq ombor bo'lishi mumkin) olib, uning to'liq nusxasini sizning lokal kompyuteringizga yuklab oladi. Siz o'zgarishlarni lokal kompyuteringizda qilasiz."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Jarayon:** Odatda, ochiq kodli loyihaga hissa qo'shish uchun siz: 1) Avval asl loyihani GitHub'da `fork` qilasiz. 2) Keyin o'zingizning `fork` qilingan omboringizni kompyuteringizga `clone` qilasiz. 3) O'zgarish kiritasiz va o'zingizning `fork`ingizga `push` qilasiz. 4) O'zingizning `fork`ingizdan asl loyihaga 'Pull Request' ochasiz."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "`fork` - bu GitHub (yoki GitLab) platformasidagi operatsiya. U boshqa birovning omboridan mening akkauntimda shaxsiy nusxa yaratadi. Bu menga asl loyihaga yozish huquqim bo'lmaganda o'zgarish kiritish imkonini beradi. `clone` esa Git buyrug'i bo'lib, u masofaviy omborni (bu mening `fork` qilingan omborim bo'lishi mumkin) mening lokal kompyuterimga yuklab oladi. Odatda, men avval `fork` qilaman, keyin o'z `fork`imni `clone` qilaman.",
+    "keyTerms": [
+      {
+        "term": "Fork",
+        "definition": "Masofaviy omborning server tarafida (masalan, GitHubda) shaxsiy nusxasini yaratish."
+      },
+      {
+        "term": "Clone",
+        "definition": "Masofaviy omborning nusxasini lokal kompyuterga yuklab olish."
+      }
+    ]
+  },
+  {
+    "id": "git-q28",
+    "question": "Pull Request (PR) nima?",
+    "topic": "GitHub",
+    "description": "Pull Request (PR) - bu o'zgarishlaringizni (bir branchdan) boshqa branchga (masalan, `main`ga) qo'shishni so'rash va muhokama qilish uchun GitHub/GitLab'dagi mexanizm.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Pull Request (PR) - bu GitHub, GitLab (u yerda 'Merge Request' deyiladi), Bitbucket kabi hosting platformalari taqdim etadigan xususiyat (Gitning o'zida 'pull request' buyrug'i yo'q). Bu jarayon sizning `feature` branch'ingizdagi o'zgarishlarni jamoaga taqdim etish va ularni asosiy (masalan, `main` yoki `develop`) branchga 'merge' qilishni rasman so'rash usulidir. PR code review (kodni ko'rib chiqish), muhokamalar, avtomatik testlarni ishga tushirish (CI/CD) va o'zgarishlar tasdiqlangandan keyingina ularni birlashtirish imkonini beradi. Bu jamoaviy ishlash va kod sifatini nazorat qilishning asosiy vositasidir."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "Pull Request, yoki PR, bu GitHub kabi platformalardagi jamoaviy ishlash vositasi. Men o'z ishimni alohida 'feature' branchda tugatgandan so'ng, PR ochaman. Bu 'Iltimos, mening o'zgarishlarimni ko'rib chiqing va ularni `main` branchga qo'shing (pull qiling)' degan so'rov. Bu jamoa a'zolariga mening kodimni ko'rib chiqish (code review), fikr bildirish va o'zgarishlar asosiy kod bazasiga qo'shilishidan oldin ularni tasdiqlash imkonini beradi.",
+    "keyTerms": [
+      {
+        "term": "Pull Request (PR)",
+        "definition": "O'zgarishlarni bir branchdan boshqasiga kiritish uchun rasmiy so'rov va muhokama maydoni."
+      },
+      {
+        "term": "Code Review",
+        "definition": "Boshqa dasturchilar tomonidan kodni sifat, xatoliklar va standartlarga muvofiqligini tekshirish jarayoni."
+      },
+      {
+        "term": "Merge Request (MR)",
+        "definition": "GitLab'da Pull Request'ning analogi."
+      }
+    ]
+  },
+  {
+    "id": "git-q29",
+    "question": "`git switch` va `git restore` nima uchun qo'shilgan? Ular `git checkout`dan qanday farq qiladi?",
+    "topic": "Branching & Undoing",
+    "description": "`git checkout` bir vaqtning o'zida ko'p vazifani (branch almashtirish, fayllarni tiklash) bajargani uchun chalkash edi. `git switch` faqat branch almashtirish uchun, `git restore` esa faqat fayllarni tiklash uchun yaratilgan aniqroq buyruqlardir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Eski `git checkout` buyrug'i ikkita butunlay boshqa narsani qilardi: \n1. Branchlarni almashtirish (masalan, `git checkout feature-branch`).\n2. Fayllarni Ishchi katalogda tiklash (masalan, `git checkout -- index.html`).\nBu chalkashliklarga olib kelardi. Shu sababli, Git 2.23 versiyasida bu vazifalarni ajratish uchun ikkita yangi buyruq qo'shildi:"
+      },
+      {
+        "type": "paragraph",
+        "content": "**`git switch <branch-nomi>`:** Faqat branchlarni almashtirish va yaratish (`-c` flagi bilan) uchun ishlatiladi. Bu `git checkout <branch-nomi>`ning yangi, aniqroq ko'rinishi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`git restore <fayl-nomi>`:** Faqat fayllarni Ishchi katalogda yoki Staging Area'da tiklash uchun ishlatiladi. Masalan, `git restore index.html` fayldagi o'zgarishlarni bekor qiladi (oxirgi commit holatiga qaytaradi). `git restore --staged index.html` esa faylni Staging Area'dan qaytarib oladi (unstage qiladi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Branch almashtirish (yangi usul):",
+        "code": ["git switch main"]
+      },
+      {
+        "title": "Yangi branch yaratib, unga o'tish (yangi usul):",
+        "code": ["git switch -c new-feature"]
+      },
+      {
+        "title": "Ishchi katalogdagi fayl o'zgarishlarini bekor qilish (yangi usul):",
+        "code": ["git restore index.html"]
+      },
+      {
+        "title": "Faylni 'unstage' qilish (Staging Area'dan qaytarish):",
+        "code": ["git restore --staged index.html"]
+      }
+    ],
+    "interviewAnswer": "Eski `git checkout` buyrug'i ikkita ishni bajarardi: branch almashtirish va fayl o'zgarishlarini bekor qilish. Bu chalkash edi. Yangi `git switch` buyrug'i faqat branch almashtirish uchun, `git restore` buyrug'i esa faqat fayllarni Ishchi katalogda yoki Staging Area'da tiklash uchun mo'ljallangan. Bu yangi buyruqlar Git bilan ishlashni aniqroq va tushunarliroq qiladi.",
+    "keyTerms": [
+      {
+        "term": "git switch",
+        "definition": "Branchlarni almashtirish va yaratish uchun mo'ljallangan zamonaviy buyruq."
+      },
+      {
+        "term": "git restore",
+        "definition": "Fayllarni Ishchi katalogda yoki Staging Area'da tiklash (bekor qilish) uchun mo'ljallangan zamonaviy buyruq."
+      }
+    ]
+  },
+  {
+    "id": "git-q30",
+    "question": "Git Flow nima?",
+    "topic": "Branching Strategy",
+    "description": "Git Flow - bu Git yordamida loyihani boshqarish uchun mo'ljallangan qat'iy branchlash modeli (strategiyasi). U relizlar va parallel rivojlanishni boshqarish uchun maxsus branch turlaridan foydalanadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Git Flow - bu Vincent Driessen tomonidan taklif qilingan mashhur branching strategiyasi. U loyiha tarixini toza va boshqariladigan saqlashga yordam beradi. Uning asosiy g'oyasi quyidagi branchlardan foydalanish:\n- **`master` (yoki `main`):** Faqat barqaror, ishlab chiqarishga (production) tayyor kod saqlanadi. Bunga faqat `release` yoki `hotfix` branchlaridan merge qilinadi. Har bir commit bu yerda yangi reliz (masalan, `v1.0`) deb hisoblanadi.\n- **`develop`:** Bu asosiy ishlab chiqish (development) branchi. Barcha `feature` branchlar shu yerdan boshlanadi va shu yerga qaytib merge qilinadi. Loyihaning keyingi reliz uchun kutilayotgan eng so'nggi holati shu yerda bo'ladi.\n- **`feature/*`:** Yangi funksiyalarni ishlab chiqish uchun `develop`dan yaratiladi. Tugagach, `develop`ga qaytarib merge qilinadi (masalan, `feature/user-login`).\n- **`release/*`:** Yangi relizni tayyorlash uchun `develop`dan yaratiladi (masalan, `release/v1.1`). Bu yerda faqat kichik xatoliklarni tuzatish va relizga tayyorgarlik (dokumentatsiya) ishlari amalga oshiriladi. Tayyor bo'lgach, bu branch ham `main`ga (reliz sifatida), ham `develop`ga (tuzatishlar kiritilgan bo'lsa) merge qilinadi.\n- **`hotfix/*`:** Production'dagi (`main` branchdagi) shoshilinch xatoliklarni tuzatish uchun `main`dan yaratiladi. Tuzatilgandan so'ng, ham `main`ga, ham `develop`ga merge qilinadi."
+      }
+    ],
+    "codeExamples": [],
+    "interviewAnswer": "Git Flow - bu loyihani boshqarish uchun keng tarqalgan branching strategiyasi. U ikkita asosiy doimiy branchga ega: `main` (faqat production-ready kod uchun) va `develop` (ishlab chiqish jarayoni uchun). Yangi funksiyalar `feature` branchlarda (`develop`dan olinib, `develop`ga qaytariladi) amalga oshiriladi. Reliz tayyorlash uchun `release` branchlari, shoshilinch tuzatishlar uchun esa `hotfix` branchlari ishlatiladi. Bu reliz sikllarini boshqarishni ancha osonlashtiradi.",
+    "keyTerms": [
+      {
+        "term": "Branching Strategy",
+        "definition": "Jamoa loyihada branchlarni qanday yaratishi va boshqarishi haqidagi kelishilgan qoidalar to'plami."
+      },
+      {
+        "term": "Git Flow",
+        "definition": "`main`, `develop`, `feature`, `release`, `hotfix` branchlaridan foydalanadigan qat'iy branching modeli."
+      },
+      {
+        "term": "GitHub Flow",
+        "definition": "Git Flow'ga qaraganda soddaroq model, odatda faqat `main` va `feature` branchlaridan foydalanadi va PR'larga tayanadi."
+      }
+    ]
+  }
+]

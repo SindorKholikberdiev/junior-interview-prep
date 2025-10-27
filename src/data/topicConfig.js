@@ -6,6 +6,7 @@ export const topics = [
   { name: "Next.js", path: "/topic/nextjs", key: "nextjs" },
   { name: "Tailwind CSS", path: "/topic/tailwind", key: "tailwind" },
   { name: "TypeScript", path: "/topic/typescript", key: "typescript" },
+  { name: "Git", path: "/topic/git", key: "git" },
 ];
 
 export const dataMap = {
@@ -16,4 +17,5 @@ export const dataMap = {
   nextjs: () => import("./nextjsQuestions.json"),
   tailwind: () => import("./tailwindQuestions.json"),
   typescript: () => import("./typescriptQuestions.json"),
+  git: () => import("./gitQuestions.json"),
 };

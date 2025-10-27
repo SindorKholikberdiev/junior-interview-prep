@@ -48,7 +48,10 @@ function TopNav({
             onClick={onSidebarToggle}
             aria-label={isSidebarOpen ? "Menyuni yopish" : "Menyuni ochish"}
           >
-            <span aria-hidden="true">{isSidebarOpen ? "âœ•" : "â˜°"}</span>
+            <span
+              aria-hidden="true"
+              className={`${styles.menuIcon} ${isSidebarOpen ? styles.menuIconClose : ""}`}
+            />
           </button>
         )}
         <div className={styles.brand}>

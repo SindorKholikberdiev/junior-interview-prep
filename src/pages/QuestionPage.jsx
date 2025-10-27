@@ -13,6 +13,7 @@ const dataMap = {
   nextjs: () => import('../data/nextjsQuestions.json'),
   tailwind: () => import('../data/tailwindQuestions.json'),
   typescript: () => import('../data/typescriptQuestions.json'),
+  git: () => import('../data/gitQuestions.json'),
 };
 
 const normalizeAnswerData = (question) => {

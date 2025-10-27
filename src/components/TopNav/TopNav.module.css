@@ -3,10 +3,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.3rem 1.5rem;
+  padding: 0.25rem 1rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--nav-border);
-  border-radius: 14px;
+  border-radius: 5px;
   background-color: var(--nav-bg);
   box-shadow: var(--nav-shadow);
   backdrop-filter: blur(12px);

@@ -29,7 +29,7 @@
   gap: 0.55rem;
   padding: 0.6rem 1.05rem;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1px solid var(--sidebar-pill-border);
   background-color: var(--sidebar-pill-bg);
   color: var(--sidebar-pill-text);
@@ -129,12 +129,10 @@
   font-size: 0.85rem;
   color: var(--sidebar-link);
   text-decoration: none;
-  border-radius: 4px;
   transition: background-color 0.2s ease;
-
   margin: 0.7rem 0;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(0, 0, 0, 0.025);
 }
 
 .questionLink:hover {
@@ -293,7 +291,7 @@
     padding: 0.25rem 0.3rem;
     margin: 0.7rem 0;
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(0, 0, 0, 0.025);
   }
 
   .sidebarContainer {

@@ -3,51 +3,55 @@
     "id": "git-q1",
     "question": "Git nima va u nima uchun ishlatiladi?",
     "topic": "Git Basics",
-    "description": "Git - bu sizning kodingiz uchun 'vaqt mashinasi'. U loyihadagi barcha o'zgarishlarni eslab qoladi va jamoa bo'lib ishlashni osonlashtiradi.",
+    "description": "Git - bu dasturiy ta'minotni ishlab chiqish jarayonida kod o'zgarishlarini kuzatib borish, boshqarish va jamoaviy hamkorlikni tashkil etish uchun mo'ljallangan, taqsimlangan versiyalarni boshqarish tizimi (DVCS).",
     "detailedExplanation": [
       {
         "type": "paragraph",
-        "content": "Eng oddiy tushuntirish: Git - bu kompyuter o'yinidagi 'saqlash nuqtasi' (save point)ga o'xshaydi. Siz kod yozasiz va ma'lum bir nuqtaga kelganda, `commit` (ya'ni 'saqlash') qilasiz. Agar keyinroq nimadir noto'g'ri ketsa yoki kodni 'buzib' qo'ysangiz, siz har doim o'sha oxirgi saqlangan nuqtaga bexato qaytib ola olasiz."
+        "content": "Git - bu Linus Torvalds tomonidan yaratilgan, zamonaviy, taqsimlangan versiyalarni boshqarish tizimi (Distributed Version Control System - DVCS). Uning asosiy vazifasi - loyiha fayllaridagi o'zgarishlar tarixini samarali va ishonchli tarzda qayd etib borishdir."
       },
       {
         "type": "paragraph",
-        "content": "Git ikkita asosiy muammoni hal qiladi:\n1. **Tarixni saqlash:** U sizning loyihangizda kim, qachon va qanday o'zgarish qilganini to'liq eslab qoladi. Siz istalgan vaqtda eski versiyani ko'rishingiz mumkin.\n2. **Jamoaviy ishlash:** Bir nechta dasturchi bitta loyiha ustida bir-biriga xalaqit bermasdan ishlashi mumkin. Har kim o'z vazifasini **'branch' (shox)** deb ataladigan alohida nusxada bajaradi. Bu xuddi asosiy daraxtning bitta shoxida ishlagandek. Ishingiz bitgach, o'z shoxingizni asosiy daraxtga 'birlashtirasiz' (merge)."
+        "content": "Git ikkita fundamental muammoni hal qiladi:\n1. **Versiyalarni boshqarish:** U loyihaning har bir saqlangan holatini (versiyasini) eslab qoladi, bu esa dasturchilarga istalgan vaqtda oldingi versiyalarga qaytish, o'zgarishlarni solishtirish va xatoliklarni tahlil qilish imkonini beradi.\n2. **Jamoaviy hamkorlik:** U bir loyiha ustida bir nechta dasturchining bir vaqtda va mustaqil ishlashini ta'minlaydi."
       },
       {
         "type": "paragraph",
-        "content": "Texnik jihatdan, Git - bu **'taqsimlangan' (distributed)** tizim. Bu shuni anglatadiki, server (masalan, GitHub) ishdan chiqsa ham, har bir dasturchining kompyuterida loyihaning to'liq nusxasi va tarixi saqlanib qoladi. Shuningdek, u ma'lumotlarni **'snapshot' (lahzali tasvir)** ko'rinishida saqlaydi, ya'ni har bir commitda loyihaning o'sha paytdagi butun holatini 'rasmga oladi'. Bu uni juda tez va samarali qiladi."
+        "content": "Bunga erishishning asosiy vositasi bu **'branching' (shoxlash)** mexanizmidir. Dasturchilar asosiy kod bazasiga (`main` branch) ta'sir qilmagan holda, yangi funksiyalar yoki tuzatishlar uchun alohida 'branch'lar yaratadilar. Ish yakunlangandan so'ng, bu o'zgarishlar asosiy bazaga **'merge' (birlashtirish)** orqali qo'shiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Gitning texnik afzalligi uning **'taqsimlangan' (distributed)** arxitekturasidir. Har bir dasturchining kompyuterida omborning to'liq nusxasi va tarixi mavjud bo'ladi, bu esa lokal operatsiyalarni (commit, branch almashtirish) juda tezkor qiladi. Shuningdek, u ma'lumotlarni fayl o'zgarishlari (deltalar) sifatida emas, balki har bir `commit`da loyihaning to'liq **'snapshot' (lahzali tasviri)** sifatida saqlaydi. Bu yondashuv ma'lumotlar yaxlitligini (data integrity) va samaradorlikni ta'minlaydi."
       }
     ],
     "codeExamples": [],
-    "interviewAnswer": "Eng sodda javob: Git - bu kod uchun 'vaqt mashinasi'. U bizga xatolardan qo'rqmasdan ishlash, eski versiyalarga qaytish va jamoa bilan birga ishlash imkonini beradi. Professionalroq aytganda, bu har bir dasturchida loyihaning to'liq nusxasi bo'lishini ta'minlaydigan 'taqsimlangan' tizim bo'lib, 'snapshot'lar yordamida tez ishlaydi.",
+    "interviewAnswer": "Git - bu kod o'zgarishlarini kuzatib boruvchi, taqsimlangan versiyalarni boshqarish tizimi (DVCS). Uning asosiy vazifasi - loyiha tarixini 'snapshot'lar yordamida ishonchli saqlash va jamoaviy ishlashni 'branching' va 'merging' orqali samarali tashkil etishdir.",
     "keyTerms": [
       {
         "term": "VCS (Version Control System)",
-        "definition": "Fayllardagi o'zgarishlarni vaqt bo'yicha yozib boruvchi va boshqaruvchi tizim."
+        "definition": "Versiyalarni Boshqarish Tizimi - Loyiha fayllaridagi o'zgarishlarni vaqt o'tishi bilan qayd etib boruvchi dasturiy ta'minot."
+      },
+      {
+        "term": "DVCS (Distributed VCS)",
+        "definition": "Taqsimlangan VCS - Har bir ishtirokchida loyiha tarixining to'liq nusxasi mavjud bo'lgan VCS arxitekturasi."
       },
       {
         "term": "Repository (Ombor)",
-        "definition": "Loyihaning barcha fayllari va uning to'liq tarixini saqlovchi joy (ko'pincha papka)."
+        "definition": "Loyihaning barcha fayllari, metadata va to'liq tarixini o'z ichiga olgan ma'lumotlar bazasi (.git papkasi)."
       },
       {
-        "term": "Commit (Saqlash nuqtasi)",
-        "definition": "Loyihaning ma'lum bir vaqtdagi holatini ('snapshot'ini) tarixga saqlash amali."
+        "term": "Commit (Versiyani qayd etish)",
+        "definition": "Loyiha holatining ma'lum bir vaqtdagi 'snapshot'ini (lahzali tasvirini) ombor tarixiga saqlash amali."
       },
       {
         "term": "Branch (Shox)",
-        "definition": "Asosiy kodga tegmasdan, yangi funksiya yoki tuzatish ustida ishlash uchun yaratilgan loyihaning parallel nusxasi."
+        "definition": "Asosiy rivojlanish yo'nalishidan ajralib chiqqan, mustaqil ish olib borish uchun mo'ljallangan parallel tarix yo'nalishi."
       },
       {
         "term": "Merge (Birlashtirish)",
-        "definition": "Bir 'branch'dagi (shoxdagi) o'zgarishlarni boshqa 'branch'ga (masalan, asosiy shoxga) qo'shish jarayoni."
-      },
-      {
-        "term": "Distributed (Taqsimlangan)",
-        "definition": "Markaziy serverga bog'lanib qolmagan, har bir foydalanuvchida loyihaning to'liq nusxasi mavjud bo'lgan tizim."
+        "definition": "Bir 'branch'dagi o'zgarishlar tarixini boshqa 'branch' tarixi bilan birlashtirish jarayoni."
       },
       {
         "term": "Snapshot (Lahzali tasvir)",
-        "definition": "Gitning ma'lumot saqlash usuli. Har bir 'commit'da loyihaning o'sha paytdagi barcha fayllarining holatini 'rasmga oladi'."
+        "definition": "Gitning ma'lumotlarni saqlash modeli; har bir commitda loyihaning o'sha paytdagi to'liq holatini qayd etadi."
       }
     ]
   },

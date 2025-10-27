@@ -33,11 +33,13 @@ const topicMeta = {
   html: {
     label: "HTML",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M4.3 3h15.4l-1.4 15.9L12 21l-6.3-2.1z"
-        />
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
+        <path fill="currentColor" d="M4.3 3h15.4l-1.4 15.9L12 21l-6.3-2.1z" />
         <path
           fill="currentColor"
           opacity="0.2"
@@ -49,11 +51,13 @@ const topicMeta = {
   css: {
     label: "CSS",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M4.3 3h15.4l-1.2 14.1L12 21l-6.5-2.2z"
-        />
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
+        <path fill="currentColor" d="M4.3 3h15.4l-1.2 14.1L12 21l-6.5-2.2z" />
         <path
           fill="currentColor"
           opacity="0.2"
@@ -65,7 +69,12 @@ const topicMeta = {
   javascript: {
     label: "JavaScript",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
         <rect x="4" y="4" width="16" height="16" rx="4" fill="currentColor" />
         <text
           x="12"
@@ -84,7 +93,12 @@ const topicMeta = {
   react: {
     label: "React",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
         <g
           stroke="currentColor"
           strokeWidth="1.4"
@@ -93,8 +107,20 @@ const topicMeta = {
           opacity="0.85"
         >
           <ellipse cx="12" cy="12" rx="8" ry="3.8" />
-          <ellipse cx="12" cy="12" rx="8" ry="3.8" transform="rotate(60 12 12)" />
-          <ellipse cx="12" cy="12" rx="8" ry="3.8" transform="rotate(-60 12 12)" />
+          <ellipse
+            cx="12"
+            cy="12"
+            rx="8"
+            ry="3.8"
+            transform="rotate(60 12 12)"
+          />
+          <ellipse
+            cx="12"
+            cy="12"
+            rx="8"
+            ry="3.8"
+            transform="rotate(-60 12 12)"
+          />
         </g>
         <circle cx="12" cy="12" r="2.3" fill="currentColor" opacity="0.8" />
       </svg>
@@ -103,7 +129,12 @@ const topicMeta = {
   nextjs: {
     label: "Next.js",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
         <rect
           x="4"
           y="4"
@@ -125,7 +156,12 @@ const topicMeta = {
   tailwind: {
     label: "Tailwind",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
         <path
           fill="currentColor"
           opacity="0.9"
@@ -137,7 +173,12 @@ const topicMeta = {
   typescript: {
     label: "TypeScript",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
         <rect x="4" y="4" width="16" height="16" rx="4" fill="currentColor" />
         <text
           x="12"
@@ -156,12 +197,13 @@ const topicMeta = {
   git: {
     label: "Git",
     icon: (
-      <svg className={styles.navIconSvg} viewBox="0 0 24 24" role="img" aria-hidden="true">
-        <path
-          d="M12 5l7 7-7 7-7-7z"
-          fill="currentColor"
-          opacity="0.92"
-        />
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
+        <path d="M12 5l7 7-7 7-7-7z" fill="currentColor" opacity="0.92" />
         <path
           d="M12 9v6m3-3h-6"
           stroke="#ffffff"
@@ -178,9 +220,7 @@ const topicMeta = {
 const getTopicMeta = (topic) => {
   const key =
     topic.key ??
-    (typeof topic.path === "string"
-      ? topic.path.split("/").pop()
-      : undefined);
+    (typeof topic.path === "string" ? topic.path.split("/").pop() : undefined);
   return topicMeta[key] ?? { label: topic.name };
 };
 
@@ -335,6 +375,7 @@ function Sidebar({
             <h3 className={styles.questionsHeader} ref={questionsListRef}>
               Savollar
             </h3>
+
             {isLoading ? (
               <p>Yuklanmoqda...</p>
             ) : (

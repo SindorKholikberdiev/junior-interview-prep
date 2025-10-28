@@ -1,0 +1,2391 @@
+[
+  {
+    "id": "rn-q1",
+    "question": "React Native nima va u oddiy React'dan (React.js) qanday farq qiladi?",
+    "topic": "React Native Basics",
+    "description": "React Native — bu React tamoyillari yordamida haqiqiy (`native`) iOS va Android ilovalarini yaratish uchun mo'ljallangan `framework`'dir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**React (yoki React.js)** — bu veb-brauzerlar uchun `user interface`'lar (`UI`) yaratish uchun `JavaScript` kutubxonasi. U `HTML` elementlarini `render` qilish uchun `Virtual DOM`'dan foydalanadi va `ReactDOM` kutubxonasi orqali haqiqiy `DOM` bilan ishlaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**React Native** — bu `React`'ning o'zini olib, uni mobil ilovalar yaratish uchun moslashtiradigan `framework`'dir. Asosiy farqi shundaki, React Native veb-texnologiyalari (`HTML`, `CSS`) o'rniga, har bir platformaning (iOS va Android) haqiqiy, **`native UI` komponentlarini** (`UIView`, `UILabel`, `android.view`, `android.widget`) `render` qiladi. Bu `JavaScript` logikangizni (biznes mantiq) bir marta yozib, uni `native UI` bilan ishlatish imkonini beradi. U `DOM` o'rniga `Bridge` (ko'prik) yoki yangi `JSI (JavaScript Interface)` orqali `JavaScript thread`'i va `native thread`'i o'rtasida aloqa qiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "React (Veb) JSX:",
+        "code": [
+          "import React from 'react';",
+          "function WebComponent() {",
+          "  return (",
+          "    <div className=\"container\">",
+          "      <p>Salom Veb!</p>",
+          "      <button onClick={() => alert('Bosildi!')}>Bos</button>",
+          "    </div>",
+          "  );",
+          "}"
+        ]
+      },
+      {
+        "title": "React Native JSX:",
+        "code": [
+          "import React from 'react';",
+          "import { View, Text, Button, StyleSheet } from 'react-native';",
+          "function NativeComponent() {",
+          "  return (",
+          "    <View style={styles.container}>",
+          "      <Text>Salom Native!</Text>",
+          "      <Button title=\"Bos\" onPress={() => alert('Bosildi!')} />",
+          "    </View>",
+          "  );",
+          "}",
+          "const styles = StyleSheet.create({ container: { flex: 1 } });"
+        ]
+      }
+    ],
+    "interviewAnswer": "`React` — bu veb (`DOM`) uchun `UI` kutubxonasi. `React Native` — bu `React`'dan foydalanib, haqiqiy (`native`) iOS va Android ilovalarini yaratish uchun `framework`. Asosiy farqi: React Native `HTML` (`div`, `p`) o'rniga `native` komponentlarni (`<View>`, `<Text>`) `render` qiladi va `styling` uchun `CSS` o'rniga `StyleSheet API` (yoki shunga o'xshash) ishlatiladi.",
+    "keyTerms": [
+      {
+        "term": "React Native",
+        "definition": "React yordamida `native` iOS va Android ilovalarini yaratish uchun `framework`."
+      },
+      {
+        "term": "React.js",
+        "definition": "Veb (`DOM`) uchun `UI` yaratish uchun `JavaScript` kutubxonasi."
+      },
+      {
+        "term": "Native UI Components",
+        "definition": "Har bir platformaning (iOS/Android) o'zining standart `UI` elementlari (masalan, `UIView`, `android.view`)."
+      },
+      {
+        "term": "Bridge",
+        "definition": "React Native'ning eski arxitekturasida `JavaScript thread`'i va `Native thread`'i o'rtasidagi asinxron aloqa vositasi."
+      },
+      {
+        "term": "JSI (JavaScript Interface)",
+        "definition": "React Native'ning yangi arxitekturasida (`New Architecture`) `JavaScript` va `Native` kod o'rtasida to'g'ridan-to'g'ri, sinxron aloqa qilish imkonini beruvchi interfeys."
+      }
+    ]
+  },
+  {
+    "id": "rn-q2",
+    "question": "`Native` komponentlar (`View`, `Text`, `Image`, `TextInput`) nima?",
+    "topic": "React Native Core Components",
+    "description": "React Native veb'dagi `<div>`, `<p>`, `<img>` kabi standartlarga mos keladigan o'zining asosiy (`core`) komponentlar to'plamini taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "React Native'da siz to'g'ridan-to'g'ri `HTML` `tag`'larini ishlata olmaysiz. Buning o'rniga, har bir platforma uchun `native` `UI` elementlariga 'tarjima' qilinadigan maxsus komponentlardan foydalanasiz. Eng asosiy `Core Components`:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`<View>`:** `UI` yaratishdagi eng asosiy qurilish bloki. U `layout`, `styling` (`Flexbox` orqali) va boshqa `child` komponentlar uchun konteyner sifatida ishlatiladi. Vebdagi `<div>`'ning `native` analogi.",
+          "**`<Text>`:** Matnni ko'rsatish uchun ishlatiladigan yagona komponent. Barcha matnlar `<Text>` `tag`i ichida bo'lishi shart. Vebdagi `<p>`, `<span>`, `<h1>` `tag`'larining o'rnini bosadi.",
+          "**`<Image>`:** Rasmlarni ko'rsatish uchun ishlatiladi. U lokal (`require('./img.png')`) yoki tarmoqdagi (`uri: 'https://...'`) rasmlarni qo'llab-quvvatlaydi. Vebdagi `<img>`'ga o'xshaydi.",
+          "**`<TextInput>`:** Foydalanuvchidan matn kiritishni qabul qiladigan `form` elementi. Vebdagi `<input type=\"text\">`'ga o'xshaydi.",
+          "**`<ScrollView>`:** Ekranga sig'maydigan kontentni `scroll` qilish imkonini beruvchi konteyner. Katta hajmdagi kontent uchun `<FlatList>` afzalroq.",
+          "**`<Button>`:** Platformaning standart tugmasini `render` qiladigan oddiy komponent. Ko'proq moslashuvchanlik uchun odatda `TouchableOpacity` yoki `TouchableHighlight` ishlatiladi.",
+          "**`<StyleSheet>`:** `CSS`'ga o'xshash `JavaScript` obyektlari yordamida stillarni aniqlash va optimallashtirish uchun ishlatiladigan `API`."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Asosiy Komponentlar Misoli:",
+        "code": [
+          "import React, { useState } from 'react';",
+          "import { View, Text, Image, TextInput, Button, StyleSheet } from 'react-native';",
+          "",
+          "function Profile() {",
+          "  const [name, setName] = useState('');",
+          "  return (",
+          "    <View style={styles.container}>",
+          "      <Image",
+          "        source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}",
+          "        style={styles.logo}",
+          "      />",
+          "      <Text style={styles.title}>React Native'ga Xush Kelibsiz!</Text>",
+          "      <TextInput",
+          "        style={styles.input}",
+          "        placeholder=\"Ismingizni kiriting...\"",
+          "        onChangeText={setName} // value={name} bilan controlled component",
+          "      />",
+          "      <Button title=\"Yuborish\" onPress={() => alert(`Salom, ${name}!`)} />",
+          "    </View>",
+          "  );",
+          "}",
+          "",
+          "const styles = StyleSheet.create({",
+          "  container: { flex: 1, padding: 20, alignItems: 'center' },",
+          "  logo: { width: 50, height: 50, marginBottom: 10 },",
+          "  title: { fontSize: 18, fontWeight: 'bold' },",
+          "  input: { height: 40, borderColor: 'gray', borderWidth: 1, width: '100%', padding: 10, marginVertical: 10 }",
+          "});"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native `HTML` o'rniga o'zining asosiy (`core`) komponentlaridan foydalanadi. Eng muhimlari: `<View>` (vebdagi `<div>` kabi konteyner), `<Text>` (barcha matnlar uchun), `<Image>` (rasmlar uchun), `<TextInput>` (`input` maydoni), `<ScrollView>` (kontentni `scroll` qilish uchun) va `<Button>` (oddiy tugma). Styling esa `StyleSheet` `API` orqali `JavaScript` obyektlari bilan qilinadi.",
+    "keyTerms": [
+      {
+        "term": "Core Components",
+        "definition": "React Native tomonidan taqdim etiladigan asosiy, platformalararo `UI` qurilish bloklari."
+      },
+      {
+        "term": "<View>",
+        "definition": "React Native'dagi asosiy `layout` va konteyner komponenti."
+      },
+      {
+        "term": "<Text>",
+        "definition": "React Native'da matnni ko'rsatish uchun mo'ljallangan komponent."
+      },
+      {
+        "term": "<Image>",
+        "definition": "React Native'da rasmlarni ko'rsatish uchun komponent."
+      },
+      {
+        "term": "<TextInput>",
+        "definition": "React Native'da matn kiritish maydoni."
+      },
+      {
+        "term": "StyleSheet",
+        "definition": "React Native'da stillarni aniqlash va optimallashtirish uchun `API`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q3",
+    "question": "React Native'da `Styling` qanday amalga oshiriladi va u veb (`CSS`)'dan qanday farq qiladi?",
+    "topic": "React Native Styling",
+    "description": "React Native `CSS`'dan foydalanmaydi. Uning o'rniga `JavaScript`'da yoziladigan `StyleSheet API`'dan foydalanadi, bu `CSS`'ga juda o'xshaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "React Native'da stillar `JavaScript` obyektlari yordamida aniqlanadi. Odatda `StyleSheet.create()` metodi ishlatiladi, bu kodni aniqroq qiladi va kelajakdagi `performance` optimizatsiyalari uchun imkoniyat yaratadi. Asosiy farqlar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`JavaScript` Obyektlari:** Stillar `CSS` matni o'rniga `JavaScript` obyektlari sifatida yoziladi.",
+          "**`camelCase` Xususiyatlari:** `CSS`'dagi `background-color`, `font-size` kabi xususiyatlar `camelCase`'ga o'giriladi: `backgroundColor`, `fontSize`.",
+          "**`Flexbox` (Standart):** `Layout` uchun asosiy vosita `Flexbox` hisoblanadi. React Native'da `display: 'flex'` barcha `<View>` elementlari uchun standart qiymat (`default`) emas, lekin `Flexbox` `layout` qurishning asosiy usuli. Muhim farqi: React Native'da standart `flexDirection` **`column`** (`veb`'da esa `row`).",
+          "**O'lchov Birliklari Yo'q (`px`):** O'lchov birliklari (`px`, `em`, `rem`) ishlatilmaydi. Barcha raqamlar `density-independent pixels` (zichlikka bog'liq bo'lmagan piksellar) sifatida qabul qilinadi, bu esa ularni turli ekran o'lchamlariga avtomatik moslashtiradi.",
+          "**Cheklangan `CSS` Xususiyatlari:** Vebdagi barcha `CSS` xususiyatlari ham React Native'da mavjud emas (masalan, `float`, `display: grid` (ba'zi kutubxonalar orqali mumkin))."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "StyleSheet.create() Misoli:",
+        "code": [
+          "import { View, Text, StyleSheet } from 'react-native';",
+          "",
+          "function MyStyledComponent() {",
+          "  return (",
+          "    <View style={styles.container}>",
+          "      <Text style={styles.title}>Bu Sarlavha</Text>",
+          "      <View style={[styles.box, styles.blueBox]} />",
+          "    </View>",
+          "  );",
+          "}",
+          "",
+          "// 1. Stillar obyektini yaratish",
+          "const styles = StyleSheet.create({",
+          "  container: {",
+          "    flex: 1,",
+          "    backgroundColor: '#fff',",
+          "    alignItems: 'center',",
+          "    justifyContent: 'center',",
+          "  },",
+          "  title: {",
+          "    fontSize: 24, // '24px' emas, faqat 24",
+          "    fontWeight: 'bold',",
+          "    color: 'tomato'",
+          "  },",
+          "  box: {",
+          "    width: 100,",
+          "    height: 100,",
+          "    borderWidth: 2,",
+          "    borderColor: 'black'",
+          "  },",
+          "  blueBox: {",
+          "    backgroundColor: 'blue'",
+          "  }",
+          "});",
+          "",
+          "// Bir nechta stilni birlashtirish:",
+          "// <View style={[styles.box, styles.blueBox]} />"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native `CSS` o'rniga `JavaScript` obyektlari va `StyleSheet.create()` `API`'sidan foydalanadi. `CSS` xususiyatlari `camelCase`'da yoziladi (`backgroundColor`). `Layout` asosan `Flexbox` bilan qilinadi va standart `flexDirection` `column` hisoblanadi. O'lchov birliklari (`px`, `em`) ishlatilmaydi, raqamlarning o'zi yoziladi.",
+    "keyTerms": [
+      {
+        "term": "StyleSheet API",
+        "definition": "React Native'da stillarni `JavaScript` obyekti sifatida aniqlash va optimallashtirish uchun `API`."
+      },
+      {
+        "term": "camelCase",
+        "definition": "CSS'dagi `kebab-case` (`font-size`) o'rniga `JavaScript`'da ishlatiladigan yozuv usuli (`fontSize`)."
+      },
+      {
+        "term": "Flexbox",
+        "definition": "React Native'da `layout` qurish uchun asosiy va standart vosita."
+      },
+      {
+        "term": "Density-Independent Pixels",
+        "definition": "Turli ekran zichliklariga avtomatik moslashadigan o'lchov birligi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q4",
+    "question": "React Native'da `Flexbox` qanday ishlaydi va u vebdagi `Flexbox`'dan qanday farq qiladi?",
+    "topic": "React Native Layout",
+    "description": "`Flexbox` React Native'da `layout` qurishning asosiy usuli bo'lib, u vebdagi `Flexbox` bilan deyarli bir xil ishlaydi, ammo bir nechta muhim farqlari bor.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "React Native'dagi `Flexbox` vebdagi `CSS Flexbox` bilan bir xil konsepsiyalarga (`container`, `items`, `main axis`, `cross axis`) asoslanadi. `justifyContent`, `alignItems`, `flex` kabi xususiyatlar bir xil maqsadda ishlatiladi. Biroq, asosiy farqlar mavjud:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Standart `flexDirection`:** Vebdagi standart `flexDirection` `row` (gorizontal). React Native'da esa standart `flexDirection` **`column`** (vertikal). Bu mobil ekranlar uchun mantiqiyroq.",
+          "**`flex` Xususiyati:** React Native'da `flex` xususiyati faqat bitta son qiymatini qabul qiladi (`flex: 1`). U vebdagi `flex-grow` (`flex: 1`), `flex-shrink` (`flex: 1`), va `flex-basis` (`flex: '0%'`)'ning qisqartmasi kabi ishlaydi. `flex: 1` elementga mavjud bo'sh joyni egallashni buyuradi.",
+          "**O'lchov Birliklari:** Vebdagi kabi `px`, `em` ishlatilmaydi. Faqat sonlar (zichlikka bog'liq bo'lmagan piksellar) yoki foizlar (`%`) ishlatiladi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ekran Boshqaruvi Misoli:",
+        "code": [
+          "// Bu layout ekranni uch qismga bo'ladi (20%, 60%, 20%)",
+          "<View style={{ flex: 1, flexDirection: 'column' }}>",
+          "  <View style={{ flex: 1, backgroundColor: 'red' }} />",
+          "  <View style={{ flex: 3, backgroundColor: 'green' }} />",
+          "  <View style={{ flex: 1, backgroundColor: 'blue' }} />",
+          "</View>",
+          "",
+          "// Bu layout elementlarni gorizontal markazga tekislaydi",
+          "<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>",
+          "  <Text>Markazda</Text>",
+          "</View>"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da `Flexbox` `layout` qurishning asosiy usuli va vebdagiga juda o'xshaydi (`justifyContent`, `alignItems` bor). Asosiy farqlari: 1) Standart `flexDirection` **`column`** (vebda `row`). 2) `flex` xususiyati faqat bitta son (`flex: 1`) qabul qiladi va `flex-grow` kabi ishlaydi.",
+    "keyTerms": [
+      {
+        "term": "flex: 1",
+        "definition": "Elementga mavjud bo'sh joyni egallashni buyuradigan qoida."
+      },
+      {
+        "term": "flexDirection: 'column'",
+        "definition": "React Native'dagi `Flexbox`'ning standart yo'nalishi (elementlar vertikal joylashadi)."
+      }
+    ]
+  },
+  {
+    "id": "rn-q5",
+    "question": "React Native'da `Touchable` komponentlari (`TouchableOpacity`, `TouchableHighlight`, `Pressable`) nima?",
+    "topic": "React Native Components",
+    "description": "Vebdagi `<a>` yoki `<button>`'ning o'rniga, React Native'da bosish (`touch`) hodisalarini qabul qilish uchun maxsus `wrapper` komponentlar ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Oddiy `<Button>` komponenti `styling` uchun juda cheklangan. Ko'proq moslashuvchanlik uchun `Touchable` komponentlaridan biri bilan o'zingizning tugmangizni yaratasiz:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`<TouchableOpacity>`:** Eng ko'p ishlatiladigan tugma. Element bosilganda uning shaffofligini (`opacity`) vaqtinchalik kamaytirib, vizual `feedback` (javob) beradi.",
+          "**`<TouchableHighlight>`:** Element bosilganda uning fon rangini o'zgartiradi (`underlayColor` `prop`'i orqali). Odatda `solid` fonli `button`'lar uchun yaxshi.",
+          "**`<TouchableWithoutFeedback>`:** Element bosilganda hech qanday vizual `feedback` bermaydi. Bu ba'zi maxsus holatlarda kerak bo'lishi mumkin.",
+          "**`<Pressable>` (Yangi va Tavsiya Etilgan):** Yuqoridagilarning barchasini o'rnini bosadigan, ancha kuchliroq va zamonaviyroq komponent. U `onPressIn`, `onPressOut`, `onLongPress` kabi ko'proq hodisalarni qo'llab-quvvatlaydi va bosilgan holatga (`pressed`) qarab stilni dinamik o'zgartirish (`style={({ pressed }) => ...}`) imkonini beradi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`TouchableOpacity` va `Pressable` Misoli:",
+        "code": [
+          "import { TouchableOpacity, Pressable, Text, StyleSheet } from 'react-native';",
+          "",
+          "<TouchableOpacity style={styles.button} onPress={() => alert('Opacity!')}>",
+          "  <Text style={styles.text}>TouchableOpacity</Text>",
+          "</TouchableOpacity>",
+          "",
+          "<Pressable ",
+          "  style={({ pressed }) => [",
+          "    styles.button,",
+          "    { backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white' } // Bosilganda fonni o'zgartirish",
+          "  ]}",
+          "  onPress={() => alert('Pressable!')}",
+          ">",
+          "  {({ pressed }) => (",
+          "    <Text style={styles.text}>{pressed ? 'Bosildi!' : 'Pressable'}</Text>",
+          "  )}",
+          "</Pressable>"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da `HTML`'dagi `<a>` yoki `<button>` yo'q. Bosish hodisalarini qabul qilish uchun `Touchable` `wrapper`'lar ishlatiladi. `TouchableOpacity` bosilganda shaffof bo'ladi. `TouchableHighlight` bosilganda fon rangini o'zgartiradi. `Pressable` esa yangi va tavsiya etilgan komponent bo'lib, u bosilgan holatga (`pressed`) qarab stil berish kabi ko'proq imkoniyatlarga ega.",
+    "keyTerms": [
+      {
+        "term": "TouchableOpacity",
+        "definition": "Bosilganda shaffof bo'ladigan `touch` `wrapper`."
+      },
+      {
+        "term": "TouchableHighlight",
+        "definition": "Bosilganda fon rangini o'zgartiradigan `touch` `wrapper`."
+      },
+      {
+        "term": "Pressable",
+        "definition": "Zamonaviy va moslashuvchan `touch` hodisalarini boshqaruvchi komponent."
+      }
+    ]
+  },
+  {
+    "id": "rn-q6",
+    "question": "`ScrollView` va `FlatList` o'rtasida qanday farq bor va qachon qaysi birini ishlatish kerak?",
+    "topic": "React Native Lists",
+    "description": "Ikkalasi ham ekranga sig'maydigan kontentni `scroll` qilish uchun ishlatiladi, ammo ular `performance` jihatdan katta farq qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`<ScrollView>`:** Oddiy konteyner. U `render` bo'lganda, ichidagi **barcha `child` elementlarni** darhol `render` qiladi. Bu qisqa ro'yxatlar yoki `form` kabi har xil turdagi kontentni `scroll` qilish uchun qulay. Agar ro'yxatda yuzlab yoki minglab elementlar bo'lsa, `ScrollView` barchasini birdaniga `render` qilishga harakat qiladi, bu esa dasturning qotib qolishiga (`freeze`) va xotira muammolariga olib kelishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`<FlatList>` (va `<SectionList>`):** Bu komponentlar **virtualizatsiya (`virtualization`)** mexanizmidan foydalanadi. Ular faqat ekranda ko'rinib turgan (yoki ko'rinishga yaqin bo'lgan) elementlarnigina `render` qiladi. Foydalanuvchi `scroll` qilganda, eskirgan elementlar `unmount` qilinadi va yangilari `mount` qilinadi. Bu juda katta hajmdagi ma'lumotlar ro'yxatlari bilan ishlashda `performance` va xotira sarfini keskin yaxshilaydi. `<FlatList>`'ga ma'lumotlar `data` `prop`'i orqali massiv sifatida, har bir elementni qanday `render` qilish esa `renderItem` `prop`'i orqali funksiya sifatida beriladi. Shuningdek, u `keyExtractor` (`key`'larni berish uchun), `onEndReached` (ro'yxat oxiriga yetganda keyingi ma'lumotlarni yuklash - `infinite scroll`) kabi qo'shimcha imkoniyatlarga ega."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`ScrollView` (Oddiy holat):",
+        "code": [
+          "<ScrollView>",
+          "  <Text>Element 1</Text>",
+          "  <Text>Element 2</Text>",
+          "  <Image ... />",
+          "  {/* Barcha elementlar render bo'ladi */}",
+          "</ScrollView>"
+        ]
+      },
+      {
+        "title": "`FlatList` (Katta ro'yxat):",
+        "code": [
+          "const DATA = [{id: '1', title: 'Bir'}, {id: '2', title: 'Ikki'} /* ... 1000ta element */];",
+          "<FlatList",
+          "  data={DATA}",
+          "  renderItem={({ item }) => <Text>{item.title}</Text>}",
+          "  keyExtractor={item => item.id}",
+          "/>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Ikkalasi ham `scroll` qiladi. Lekin `ScrollView` ichidagi **barcha** elementlarni birdaniga `render` qiladi (qisqa ro'yxatlar uchun). `FlatList` esa **virtualizatsiya** ishlatadi: u faqat ekranda ko'rinib turgan elementlarni `render` qiladi (juda katta ro'yxatlar uchun, `performance` uchun). Katta ro'yxatlar uchun har doim `FlatList` ishlatish kerak.",
+    "keyTerms": [
+      {
+        "term": "<ScrollView>",
+        "definition": "Barcha `child` elementlarni birdaniga `render` qiladigan `scroll` konteyner."
+      },
+      {
+        "term": "<FlatList>",
+        "definition": "`Virtualization` yordamida faqat kerakli elementlarni `render` qiladigan, optimallashtirilgan ro'yxat komponenti."
+      },
+      {
+        "term": "Virtualization",
+        "definition": "Faqat ekranda ko'rinadigan elementlarni `render` qilish orqali `performance`'ni optimallashtirish texnikasi."
+      },
+      {
+        "term": "data prop",
+        "definition": "`FlatList`'ga ma'lumotlar massivini uzatish uchun `prop`."
+      },
+      {
+        "term": "renderItem prop",
+        "definition": "`FlatList`'dagi har bir elementni qanday `render` qilishni belgilaydigan `prop` funksiya."
+      },
+      {
+        "term": "keyExtractor prop",
+        "definition": "`FlatList`'dagi har bir element uchun unikal `key`'ni qaytaradigan `prop` funksiya."
+      }
+    ]
+  },
+  {
+    "id": "rn-q7",
+    "question": "React Native'da `Navigation` (sahifalararo o'tish) qanday amalga oshiriladi?",
+    "topic": "React Native Navigation",
+    "description": "Vebdagi `React Router`'dan farqli o'laroq, React Native'da `navigation` uchun o'rnatilgan yagona yechim yo'q.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`Navigation`'ni amalga oshirish uchun odatda `third-party` (tashqi) kutubxonalardan foydalaniladi. Eng mashhuri va `React` jamoasi tomonidan tavsiya etilgani — **`React Navigation`** kutubxonasidir."
+      },
+      {
+        "type": "paragraph",
+        "content": "`React Navigation` turli xil `navigator`'larni taqdim etadi, ular mobil ilovalarda keng tarqalgan `UI pattern`'larini yaratishga yordam beradi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Stack Navigator`:** Eng keng tarqalgani. Yangi sahifani avvalgisining ustiga 'stack' (taxlash) orqali ochadi (`parent` sahifaga qaytish uchun 'orqaga' tugmasi paydo bo'ladi).",
+          "**`Tab Navigator`:** Ekran pastida yoki yuqorisida `tab`'lar (`Bottom Tab Navigator`, `Material Top Tab Navigator`) yaratadi.",
+          "**`Drawer Navigator`:** Ekran chetidan chiqadigan yon menyu (`drawer`) yaratadi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Bu `navigator`'lar bir-birining ichiga joylashtirilishi (`nesting`) mumkin (masalan, har bir `tab` o'zining `stack navigator`'iga ega bo'lishi). Navigatsiya `navigation` `prop`'i (masalan, `navigation.navigate('Details')`) orqali boshqariladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Stack Navigator (React Navigation v6):",
+        "code": [
+          "// Avval kerakli paketlarni o'rnatish kerak: npm install @react-navigation/native @react-navigation/native-stack",
+          "import { NavigationContainer } from '@react-navigation/native';",
+          "import { createNativeStackNavigator } from '@react-navigation/native-stack';",
+          "",
+          "function HomeScreen({ navigation }) {",
+          "  return <Button title=\"Details'ga o'tish\" onPress={() => navigation.navigate('Details')} />;",
+          "}",
+          "function DetailsScreen() { return <Text>Details Sahifasi</Text>; }",
+          "",
+          "const Stack = createNativeStackNavigator();",
+          "",
+          "function App() {",
+          "  return (",
+          "    <NavigationContainer>",
+          "      <Stack.Navigator initialRouteName=\"Home\">",
+          "        <Stack.Screen name=\"Home\" component={HomeScreen} />",
+          "        <Stack.Screen name=\"Details\" component={DetailsScreen} />",
+          "      </Stack.Navigator>",
+          "    </NavigationContainer>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da `navigation` o'rnatilgan emas. Eng mashhur yechim — bu **`React Navigation`** kutubxonasi. U `Stack Navigator` (sahifalarni ustma-ust ochish), `Tab Navigator` (pastki menyu) va `Drawer Navigator` (yon menyu) kabi `native` `pattern`'larni taqdim etadi. Navigatsiya `navigation.navigate('RouteName')` orqali boshqariladi.",
+    "keyTerms": [
+      {
+        "term": "React Navigation",
+        "definition": "React Native uchun eng mashhur `navigation` kutubxonasi."
+      },
+      {
+        "term": "Stack Navigator",
+        "definition": "Sahifalarni ustma-ust 'taxlab' ochadigan `navigator`."
+      },
+      {
+        "term": "Tab Navigator",
+        "definition": "Ekran pastida/yuqorisida `tab`'lar bilan navigatsiya qilish."
+      },
+      {
+        "term": "Drawer Navigator",
+        "definition": "Ekran chetidan chiqadigan yon menyu."
+      },
+      {
+        "term": "navigation.navigate()",
+        "definition": "Boshqa sahifaga o'tish uchun ishlatiladigan asosiy funksiya."
+      }
+    ]
+  },
+  {
+    "id": "rn-q8",
+    "question": "React Native'da `native` modulni (`native module`) qanday ulash (`linking`) mumkin?",
+    "topic": "React Native Modules",
+    "description": "Ba'zi React Native kutubxonalari `JavaScript`'dan tashqari `native` kod (Swift/Objective-C iOS uchun, Kotlin/Java Android uchun) o'z ichiga oladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu kutubxonalar (`react-native-maps`, `react-native-camera` kabi) `JavaScript` va `native` qismlar o'rtasida aloqa o'rnatishi uchun ularni 'bog'lash' (`linking`) kerak bo'ladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Avtomatik `Linking` (React Native 0.60+):** Zamonaviy React Native versiyalarida bu jarayon deyarli to'liq avtomatlashtirilgan. Odatda, `npm install <library-name>` buyrug'idan keyin `iOS` uchun `pod install` (`cd ios && pod install`) buyrug'ini ishga tushirish kifoya. Qolgan bog'lanishlar `build` paytida avtomatik amalga oshiriladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Qo'lda `Linking` (`Manual Linking`) (Eski usul yoki maxsus holatlar):** Agar avtomatik `linking` ishlamasa, kutubxona hujjatlariga qarab, `native` kodni qo'lda (`Xcode` loyiha sozlamalarida `iOS` uchun, `build.gradle` fayllarida `Android` uchun) ro'yxatdan o'tkazish kerak bo'ladi. Bu hozirda kamdan-kam talab etiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Avtomatik `Linking` Jarayoni:",
+        "code": [
+          "1. npm install react-native-maps",
+          "2. cd ios",
+          "3. pod install",
+          "4. cd ..",
+          "5. npx react-native run-ios (yoki run-android)"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'ning zamonaviy (0.60+) versiyalarida `native module`'larni `linking` qilish asosan avtomatik. `npm install`'dan keyin `iOS` uchun `cd ios && pod install` buyrug'ini ishga tushirish odatda yetarli. `Android` uchun ko'pincha `build` paytida avtomatik bog'lanadi. Qo'lda `linking` eski loyihalarda yoki maxsus holatlarda talab qilinishi mumkin.",
+    "keyTerms": [
+      {
+        "term": "Native Module",
+        "definition": "Ma'lum bir platforma (iOS/Android) uchun `native` tilda (Swift/Kotlin/Java) yozilgan kod."
+      },
+      {
+        "term": "Linking",
+        "definition": "`JavaScript` kodini `native module` bilan bog'lash jarayoni."
+      },
+      {
+        "term": "CocoaPods (pod install)",
+        "definition": "`iOS` loyihalari uchun `dependency manager` (`npm`'ning `iOS`'dagi analogi)."
+      }
+    ]
+  },
+  {
+    "id": "rn-q9",
+    "question": "React Native'da `performance` muammolarini qanday aniqlash (`debug`) va optimallashtirish mumkin?",
+    "topic": "React Native Performance",
+    "description": "React Native `performance` muammolari odatda `JavaScript thread`'i yoki `native thread`'lar orasidagi aloqada yuzaga keladi.",
+    "detailedExplanation": [
+      { "type": "paragraph", "content": "**Aniqlash (`Debugging`):**" },
+      {
+        "type": "list",
+        "items": [
+          "**`Flipper` (Tavsiya etilgan):** `Meta` tomonidan ishlab chiqilgan kuchli `desktop debugging` platformasi. U `React DevTools`, `network inspector`, `native layout inspector`, `crash reporter` va `performance` profiler'ini o'z ichiga oladi.",
+          "**`React DevTools`:** Komponentlar ierarxiyasini, `props` va `state`'ni tekshirish, keraksiz `re-render`'larni aniqlash (`profiler` yordamida) uchun.",
+          "**`console.log`:** Oddiy, ammo samarali usul. `JavaScript thread`'ida nima bo'layotganini ko'rish uchun.",
+          "**`Debug Menu`:** Ilovada `device`'ni silkitish (yoki `simulator`'da `Cmd+D`/`Ctrl+M`) orqali ochiladi. U yerdan `Chrome Debugging` (eski usul), `Fast Refresh`, `Performance Monitor` kabi vositalarni yoqish mumkin."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "**Optimallashtirish (`Optimization`):**"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**Keraksiz `Re-render`'larni Kamaytirish:** `React.memo`, `useMemo`, `useCallback`'dan foydalanish.",
+          "**`FlatList`'ni To'g'ri Ishlatish:** Katta ro'yxatlar uchun har doim `FlatList` (yoki `SectionList`) ishlatish, `ScrollView` emas. `keyExtractor`'ni to'g'ri berish, `getItemLayout`'ni (agar `item` balandligi bir xil bo'lsa) taqdim etish.",
+          "**`JavaScript Thread`'ni Bloklamaslik:** Murakkab hisob-kitoblarni (`JSON.parse`, `sort`) `JavaScript thread`'ida bajarmaslik. Agar iloji bo'lsa, ularni `native` tomonga o'tkazish yoki `Web Worker`'larga o'xshash yechimlardan (`react-native-threads`) foydalanish.",
+          "**`Image`'larni Optimallashtirish:** `react-native-fast-image` kabi kutubxonalardan foydalanish, rasmlarni to'g'ri o'lchamda so'rash.",
+          "**`New Architecture`'ga O'tish:** Iloji bo'lsa, yangi `JSI` va `Fabric` (`UI thread`'ini optimallashtiradigan) arxitekturasiga o'tish.",
+          "**`console.log`'larni O'chirish:** `Production build`'dan barcha `console.log`'larni olib tashlash."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Performance`'ni aniqlash uchun `Flipper` (yoki `React DevTools Profiler`) yordamida keraksiz `re-render`'larni topish kerak. Optimallashtirish usullari: 1) Katta ro'yxatlar uchun har doim `FlatList` ishlatish (`ScrollView` o'rniga). 2) `React.memo`, `useMemo`, `useCallback` bilan `re-render`'larni kamaytirish. 3) `JavaScript thread`'ini bloklaydigan og'ir hisob-kitoblardan qochish. 4) `Production`'dan `console.log`'larni olib tashlash. 5) `Image`'larni optimallashtirish.",
+    "keyTerms": [
+      {
+        "term": "Flipper",
+        "definition": "React Native uchun `desktop`'da ishlaydigan kuchli `debugging` platformasi."
+      },
+      {
+        "term": "JavaScript Thread",
+        "definition": "React Native'da `JavaScript` kodi (sizning biznes mantiqingiz) ishlaydigan `thread`."
+      },
+      {
+        "term": "Native Thread (UI Thread)",
+        "definition": "Platformaning `native UI`'si ishlaydigan asosiy `thread`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q10",
+    "question": "`Expo` nima va u 'oddiy' `React Native`'dan (`React Native CLI`) qanday farq qiladi?",
+    "topic": "React Native Ecosystem",
+    "description": "Expo — bu React Native atrofida qurilgan, `development` jarayonini keskin soddalashtiradigan vositalar va xizmatlar to'plami (`framework` va platforma).",
+    "detailedExplanation": [
+      { "type": "paragraph", "content": "**`Expo` (Managed Workflow):**" },
+      {
+        "type": "list",
+        "items": [
+          "**Sodda Sozlash:** Loyihani `create-expo-app` bilan bir necha soniyada boshlash mumkin. `Xcode` yoki `Android Studio` o'rnatish shart emas.",
+          "**`Native` Kod Yozilmaydi:** Siz faqat `JavaScript`/`TypeScript` yozasiz. `Expo SDK` `native API`'larning (kamera, `GPS`, `filesystem`, `notifications`) ko'pchiligini `JavaScript` orqali taqdim etadi.",
+          "**Oson Sinov (`Expo Go`):** `Expo Go` mobil ilovasi yordamida `QR code`'ni skanerlab, dasturingizni o'z telefoningizda bir necha soniyada ishga tushirishingiz mumkin.",
+          "**Oson `Build` va `Deploy`:** `Expo Application Services` (EAS) yordamida `iOS` (`.ipa`) va `Android` (`.apk`/`.aab`) `build`'larini bulutda yaratish va `App Store`/`Play Store`'ga yuborish oson.",
+          "**Cheklovlar:** Faqat `Expo SDK` taqdim etgan `native module`'lardan foydalana olasiz. Agar sizga `Expo` qo'llab-quvvatlamaydigan maxsus `native` kod kerak bo'lsa, `eject` qilishingiz (`Expo bare workflow`) yoki `dev client` yaratishingiz kerak bo'ladi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "**`React Native CLI` (Bare Workflow):**"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**To'liq Nazorat:** Sizda `native` loyihalar (`ios` va `android` papkalari) ustidan to'liq nazorat bor.",
+          "**`Native` Kod Yozish:** `Swift`/`Objective-C` yoki `Kotlin`/`Java`'da o'zingizning `native module`'laringizni yoza olasiz yoki istalgan `third-party native` kutubxonani o'rnata olasiz.",
+          "**Murakkab Sozlash:** `Xcode` va `Android Studio`'ni to'liq sozlashni, `native` `dependency`'larni (`CocoaPods`, `Gradle`) boshqarishni talab qiladi.",
+          "**`Build` Jarayoni:** `Build`'lar sizning kompyuteringizda (`Xcode` yoki `Android Studio` orqali) amalga oshiriladi, bu murakkabroq va sekinroq bo'lishi mumkin."
+        ]
+      }
+    ],
+    "interviewAnswer": "Ikkalasi ham React Native ilovalari yaratadi. **`Expo`** — bu `development`'ni osonlashtiradigan vositalar to'plami. `Expo` (`managed workflow`) bilan siz `Xcode` yoki `Android Studio`'siz ishlaysiz, faqat `JavaScript` yozasiz va `Expo Go` ilovasi orqali tezda test qilasiz, ammo faqat `Expo SDK` qo'llab-quvvatlaydigan `native API`'lar bilan cheklanasiz. **`React Native CLI`** (`bare workflow`) esa sizga `native` kod (`ios`/`android` papkalari) ustidan to'liq nazorat beradi, istalgan `native module`'ni ishlatishga imkon beradi, lekin sozlash va `build` qilish murakkabroq.",
+    "keyTerms": [
+      {
+        "term": "Expo",
+        "definition": "React Native `development`'ini soddalashtiradigan vositalar va xizmatlar platformasi."
+      },
+      {
+        "term": "Expo Go",
+        "definition": "Loyihani `QR code` skanerlash orqali telefonda tezda ishga tushirish uchun mobil ilova."
+      },
+      {
+        "term": "Managed Workflow (Expo)",
+        "definition": "Foydalanuvchi `native` kodga tegmaydigan, `Expo` tomonidan boshqariladigan `development` jarayoni."
+      },
+      {
+        "term": "Bare Workflow (React Native CLI)",
+        "definition": "Foydalanuvchi `native` loyihalar (`ios`/`android`) ustidan to'liq nazoratga ega bo'lgan `development` jarayoni."
+      },
+      {
+        "term": "EAS (Expo Application Services)",
+        "definition": "Ilovalarni bulutda `build` qilish va `deploy` qilish uchun `Expo` xizmati."
+      }
+    ]
+  },
+
+  {
+    "id": "rn-q11",
+    "question": "React Native'da `Platform` modulidan qanday foydalaniladi?",
+    "topic": "React Native APIs",
+    "description": "`Platform` moduli ilova qaysi platformada (iOS yoki Android) ishlayotganini aniqlash uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `React Native`'dan `import` qilinadigan oddiy obyekt. U platformaga xos stillar (`platform-specific styles`) yoki komponentlarni `render` qilish uchun `conditional rendering`'da juda foydali."
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Platform.OS`:** Hozirgi operatsion tizimni `string` sifatida qaytaradi (`'ios'` yoki `'android'`).",
+          "**`Platform.Version`:** Qurilmaning OS versiyasini (`string` yoki `number`) qaytaradi.",
+          "**`Platform.select(config)`:** Platformaga qarab farqli qiymatlarni qaytaradigan yordamchi funksiya. U `ios` va `android` kalitlariga ega obyekt qabul qiladi va joriy platformaga mos keladigan qiymatni qaytaradi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Platformaga Xos Stil:",
+        "code": [
+          "import { Platform, StyleSheet, Text, View } from 'react-native';",
+          "",
+          "const styles = StyleSheet.create({",
+          "  container: {",
+          "    flex: 1,",
+          "    paddingTop: Platform.OS === 'android' ? 25 : 0 // Android uchun qo'shimcha padding",
+          "  },",
+          "  text: {",
+          "    color: Platform.OS === 'ios' ? 'blue' : 'green'",
+          "  }",
+          "});"
+        ]
+      },
+      {
+        "title": "`Platform.select` Misoli:",
+        "code": [
+          "const headerStyle = Platform.select({",
+          "  ios: { backgroundColor: 'lightgrey' },",
+          "  android: { backgroundColor: 'white', elevation: 4 }",
+          "});",
+          "",
+          "<View style={headerStyle}>...</View>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Platform` moduli ilova qaysi OS'da (`'ios'` yoki `'android'`) ishlayotganini aniqlash uchun ishlatiladi. `Platform.OS === 'android'` kabi tekshiruvlar yoki `Platform.select({ ios: ..., android: ... })` metodi yordamida platformaga xos stillar yoki komponentlarni `render` qilish mumkin.",
+    "keyTerms": [
+      {
+        "term": "Platform Module",
+        "definition": "Joriy operatsion tizimni (`iOS`/`Android`) aniqlash uchun `React Native` moduli."
+      },
+      {
+        "term": "Platform.OS",
+        "definition": "Joriy OS'ni (`'ios'` yoki `'android'`) `string` sifatida qaytaradi."
+      },
+      {
+        "term": "Platform.select()",
+        "definition": "Platformaga qarab farqli qiymatlarni (stillar, komponentlar) tanlashga yordam beradigan funksiya."
+      }
+    ]
+  },
+  {
+    "id": "rn-q12",
+    "question": "React Native'da `props` va `state` vebdagi React'dan farq qiladimi?",
+    "topic": "React Native Basics",
+    "description": "Yo'q, `React`'ning asosiy konsepsiyalari (`props` va `state`) React Native'da xuddi vebdagidek ishlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Props` (Properties):** Hali ham `parent` komponentdan `child` komponentga ma'lumot uzatishning bir tomonlama (`one-way data flow`) usuli. Ular `read-only` (o'zgarmas) hisoblanadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`State` (Holat):** Hali ham komponentning ichki, o'zgaruvchan ma'lumotlari. `useState` `Hook`'i yordamida yaratiladi va `setState` funksiyasi orqali yangilanadi. `State` o'zgarishi komponentni qayta `render` qiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Farq `render` qilinayotgan narsada, ma'lumotlarni boshqarishda emas. Veb'da `state` o'zgarishi `HTML` `tag`'larining o'zgarishiga olib kelsa, React Native'da `state` o'zgarishi `native` komponentlarning (`<View>`, `<Text>`) o'zgarishiga olib keladi. Asosiy `React` mantig'i (`lifecycle`, `hooks`, `state management`) 100% bir xil."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Vebdagi va Nativedagi State Bir Xil:",
+        "code": [
+          "// Bu kod React'da ham, React Native'da ham ishlaydi (faqat JSX o'zgaradi)",
+          "import { useState } from 'react';",
+          "",
+          "function Counter() {",
+          "  const [count, setCount] = useState(0);",
+          "",
+          "  const increment = () => setCount(prevCount => prevCount + 1);",
+          "  ",
+          "  // Veb'da:",
+          "  // return <button onClick={increment}>{count}</button>;",
+          "",
+          "  // React Native'da:",
+          "  // return <Button title={String(count)} onPress={increment} />;",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "Yo'q, `props` va `state` konsepsiyalari React Native'da xuddi React.js'dagidek ishlaydi. `Props` `parent`'dan `child`'ga uzatiladigan `read-only` ma'lumotlar. `State` (`useState`) komponentning ichki, o'zgaruvchan xotirasi. Farq ular `render` qiladigan narsada (`native` komponentlar vs `HTML`), ularning qanday ishlashida emas.",
+    "keyTerms": [
+      {
+        "term": "Props",
+        "definition": "Komponentga `parent`'dan uzatiladigan ma'lumotlar."
+      },
+      {
+        "term": "State",
+        "definition": "Komponentning ichki, o'zgaruvchan holati."
+      }
+    ]
+  },
+  {
+    "id": "rn-q13",
+    "question": "React Native `New Architecture` (Yangi Arxitektura) nima va `JSI` nima?",
+    "topic": "React Native Internals",
+    "description": "`New Architecture` React Native'ning eski arxitekturasidagi `performance` muammolarini, ayniqsa `Bridge` bilan bog'liq muammolarni hal qilish uchun yaratilgan yangi tizim.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Eski Arxitektura (`Bridge`):** `JavaScript Thread` (sizning kodingiz) va `Native Thread` (`UI` va `native modules`) alohida ishlagan va bir-biri bilan asinxron `Bridge` (ko'prik) orqali `JSON` `string`'lari yuborib aloqa qilgan. Bu `Bridge` ma'lumot uzatishda 'tiqilinch' (`bottleneck`) bo'lishi va `UI` qotib qolishiga sabab bo'lishi mumkin edi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Yangi Arxitektura (`New Architecture`):** Ikki asosiy komponentdan iborat:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**1. `JSI` (JavaScript Interface):** Bu yangi interfeys `Bridge`'ni almashtiradi. U `JavaScript` va `Native` kodga bir-biri bilan **to'g'ridan-to'g'ri, sinxron** ravishda murojaat qilish imkonini beradi (`C++` obyekti orqali). Bu `Bridge`'dagi `JSON serialization/deserialization` xarajatlarini yo'qotadi va aloqani ancha tezlashtiradi.",
+          "**2. `Fabric`:** `UI`'ni `render` qilish uchun yangi `rendering system`. U `JSI`'dan foydalanib, `UI` operatsiyalarini sinxron bajarishga, `UI thread`'ida prioritetlarni yaxshiroq boshqarishga va `React 18+`'ning `concurrent features`'larini qo'llab-quvvatlashga yordam beradi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Yangi arxitektura ilovalarni tezroq, `performance`'i yaxshiroq va `native` ilovalarga yanada yaqinroq qilishni maqsad qilgan."
+      }
+    ],
+    "interviewAnswer": "`New Architecture` React Native'ning `performance`'ini yaxshilaydigan yangi tizim. Uning asosiy qismi `JSI` (JavaScript Interface) bo'lib, u eski asinxron `Bridge` o'rniga `JavaScript` va `Native` kod o'rtasida to'g'ridan-to'g'ri, sinxron aloqani ta'minlaydi. Bu `Bridge`'dagi 'tiqilinch'ni yo'qotadi. `Fabric` esa yangi `rendering system`'dir.",
+    "keyTerms": [
+      {
+        "term": "New Architecture",
+        "definition": "React Native'ning `Bridge`'ni `JSI` va `Fabric` bilan almashtiradigan yangi, tezkor arxitekturasi."
+      },
+      {
+        "term": "Bridge",
+        "definition": "Eski arxitekturada JS va Native `thread`'lar o'rtasidagi asinxron aloqa."
+      },
+      {
+        "term": "JSI (JavaScript Interface)",
+        "definition": "Yangi arxitekturada JS va Native kod o'rtasida to'g'ridan-to'g'ri, sinxron aloqani ta'minlaydigan interfeys."
+      },
+      {
+        "term": "Fabric",
+        "definition": "React Native'ning yangi, optimallashtirilgan `rendering system`'i."
+      }
+    ]
+  },
+  {
+    "id": "rn-q14",
+    "question": "React Native'da `dimensions` `API` nima uchun ishlatiladi?",
+    "topic": "React Native APIs",
+    "description": "`Dimensions` `API` qurilma ekranining o'lchamlarini (`width` va `height`) olish uchun ishlatiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Bu `API` `responsive layout`'lar yaratishda foydali. U asosan `Dimensions.get('window')` yoki `Dimensions.get('screen')` metodlari orqali chaqiriladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Dimensions.get('window')`:** Ekranning ilova uchun mavjud bo'lgan ko'rinish maydoni o'lchamlarini (`viewport`) qaytaradi (masalan, `status bar`'ni hisobga olmasligi mumkin). Bu o'lchamlar qurilma aylantirilganda (`orientation change`) o'zgarishi mumkin.",
+          "**`Dimensions.get('screen')`:** Qurilma ekranining to'liq o'lchamlarini qaytaradi (`iOS`'da `window` bilan bir xil, `Android`'da farq qilishi mumkin)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Odatda `window` o'lchamlarini ishlatish tavsiya etiladi. `useWindowDimensions` `Hook`'i esa qurilma o'lchamlari o'zgarganda (masalan, aylantirilganda) komponentni avtomatik qayta `render` qiladigan qulayroq usuldir."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`Dimensions.get` (Statik):",
+        "code": [
+          "import { Dimensions, StyleSheet } from 'react-native';",
+          "const windowWidth = Dimensions.get('window').width;",
+          "const windowHeight = Dimensions.get('window').height;",
+          "const styles = StyleSheet.create({",
+          "  container: { width: windowWidth * 0.8 } // Ekran kengligining 80%",
+          "});"
+        ]
+      },
+      {
+        "title": "`useWindowDimensions` Hook (Dinamik):",
+        "code": [
+          "import { useWindowDimensions, StyleSheet } from 'react-native';",
+          "function MyComponent() {",
+          "  const { width, height } = useWindowDimensions(); // Qurilma aylansa avtomatik yangilanadi",
+          "  return <View style={{ width: width * 0.8, height: height * 0.5 }} />;",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Dimensions` `API` qurilma ekranining kengligi va balandligini (`Dimensions.get('window').width`) olish uchun ishlatiladi. Bu `responsive layout` qurishda kerak bo'ladi. Hozirda `useWindowDimensions` `Hook`'ini ishlatish tavsiya etiladi, chunki u ekran o'lchamlari o'zgarganda avtomatik yangilanadi.",
+    "keyTerms": [
+      {
+        "term": "Dimensions API",
+        "definition": "Qurilma ekrani o'lchamlarini olish uchun `API`."
+      },
+      {
+        "term": "useWindowDimensions",
+        "definition": "Qurilma o'lchamlarini oladigan va o'zgarishlarga avtomatik `re-render` qiladigan `Hook`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q15",
+    "question": "React Native'da `AsyncStorage` nima va u qachon ishlatiladi?",
+    "topic": "React Native Storage",
+    "description": "`AsyncStorage` — bu React Native ilovalarida ma'lumotlarni (`key-value` juftliklari sifatida) qurilmaning o'zida doimiy (`persistent`) saqlash uchun mo'ljallangan asinxron, `unencrypted` (shifrlanmagan) `storage` mexanizmi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "U vebdagi `localStorage`'ga o'xshaydi, ammo `localStorage` sinxron ishlaganidan farqli o'laroq, `AsyncStorage` **asinxron** ishlaydi va barcha metodlari (`setItem`, `getItem`, `removeItem`) `Promise` qaytaradi. Bu uni asosiy `thread`'ni bloklamasdan ishlatish imkonini beradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "U kichik hajmdagi ma'lumotlarni (masalan, foydalanuvchi sozlamalari, `auth token`'lar, ilova holati) saqlash uchun ishlatiladi. Katta hajmdagi yoki murakkab, strukturaviy ma'lumotlar uchun `SQLite` yoki `WatermelonDB`/`Realm` kabi haqiqiy `database` yechimlarini ishlatish yaxshiroq. `AsyncStorage` React Native'ning asosiy kutubxonasidan chiqarilgan va hozirda `third-party` paket (`@react-native-async-storage/async-storage`) sifatida o'rnatiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ishlatish Misoli (async/await bilan):",
+        "code": [
+          "import AsyncStorage from '@react-native-async-storage/async-storage';",
+          "",
+          "const storeData = async (key, value) => {",
+          "  try {",
+          "    await AsyncStorage.setItem(key, value);",
+          "  } catch (e) {",
+          "    // Xatolikni saqlash",
+          "  }",
+          "};",
+          "",
+          "const getData = async (key) => {",
+          "  try {",
+          "    const value = await AsyncStorage.getItem(key);",
+          "    if(value !== null) {",
+          "      return value;",
+          "    }",
+          "  } catch(e) {",
+          "    // Xatolikni o'qish",
+          "  }",
+          "};"
+        ]
+      }
+    ],
+    "interviewAnswer": "`AsyncStorage` React Native'da ma'lumotlarni qurilmada doimiy (`key-value` formatda) saqlash uchun ishlatiladigan `API`. U vebdagi `localStorage`'ga o'xshaydi, lekin eng muhim farqi — u **asinxron** ishlaydi va `Promise` qaytaradi (masalan, `await AsyncStorage.setItem()`). U `auth token`'lar yoki sozlamalar kabi kichik ma'lumotlar uchun ishlatiladi.",
+    "keyTerms": [
+      {
+        "term": "AsyncStorage",
+        "definition": "React Native'da ma'lumotlarni qurilmada doimiy saqlash uchun asinxron `API`."
+      },
+      {
+        "term": "Persistent Storage",
+        "definition": "Ilova yopilib ochilganda ham saqlanib qoladigan xotira."
+      },
+      {
+        "term": "Asynchronous",
+        "definition": "Asosiy `thread`'ni bloklamasdan ishlaydigan operatsiya."
+      }
+    ]
+  },
+  {
+    "id": "rn-q16",
+    "question": "`React` va `React Native` o'rtasida kodni bo'lishish (`code sharing`) mumkinmi?",
+    "topic": "React Native Development",
+    "description": "Ha, `React` (veb) va `React Native` (mobil) o'rtasida kodning ma'lum qismlarini bo'lishish mumkin, ammo bu odatda `UI` qismiga emas, balki biznes mantiqi (`business logic`) qismiga taalluqli.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Nima bo'lishish mumkin emas:** `UI` (Render) qismi. Veb `HTML` (`div`, `p`) ishlatadi, `Native` esa `Native Components` (`View`, `Text`) ishlatadi. Bu ikki qism bir-biriga mos kelmaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Nima bo'lishish mumkin:** Asosiy biznes mantiqi. Agar siz `state management` (masalan, `Redux`/`Zustand` `store`'lari va `reducer`'lar), `utility` funksiyalari (ma'lumotlarni formatlash, hisoblash), `API` so'rovlari mantiqini `React`'dan alohida (`pure JavaScript` fayllari yoki `custom Hooks`'lar) yozsangiz, o'sha mantiqni ham veb, ham `native` ilovada `import` qilib ishlatish mumkin. Bu `monorepo` (`yarn workspaces`, `npm workspaces`, `NX`, `Lerna`) yondashuvlari yordamida osonlashtirilishi mumkin. `React Native Web` kabi kutubxonalar esa `React Native` komponentlarini veb'da `render` qilishga harakat qiladi, bu ham kod bo'lishishning bir usuli."
+      }
+    ],
+    "interviewAnswer": "Ha, mumkin, lekin asosan `UI` kodini emas, balki **biznes mantiqini (`business logic`)**. `UI` komponentlari farqli (`<div>` vs `<View>`). Lekin `state management` (`Redux` `reducer`'lari), `utility` funksiyalari va `custom Hook`'lar (agar ular `UI`'ga bog'liq bo'lmasa) kabi `JavaScript` mantiqini ikkala platforma o'rtasida bo'lishish mumkin. Bu `monorepo` arxitekturasi bilan osonlashadi.",
+    "keyTerms": [
+      {
+        "term": "Code Sharing",
+        "definition": "Bir xil kod bazasini bir nechta platforma (veb, mobil) o'rtasida bo'lishish."
+      },
+      {
+        "term": "Business Logic",
+        "definition": "Dasturning `UI`'ga bog'liq bo'lmagan asosiy mantiqiy qismi."
+      },
+      {
+        "term": "Monorepo",
+        "definition": "Bir nechta loyiha yoki paketlarni bitta `Git repository`'sida saqlash va boshqarish yondashuvi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q17",
+    "question": "React Native'da `Platform-Specific Extensions` (`.ios.js` va `.android.js`) nima?",
+    "topic": "React Native Development",
+    "description": "Bu React Native'ning `bundler`'i (Metro) tomonidan qo'llab-quvvatlanadigan fayl nomlash konvensiyasi bo'lib, platformaga xos kodni osonlik bilan ajratish imkonini beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Tasavvur qiling, sizda `iOS` va `Android` uchun har xil ko'rinishi yoki funksionalligi bo'lishi kerak bo'lgan `MyButton` komponenti bor. Siz uchta fayl yaratishingiz mumkin:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`MyButton.ios.js`:** Faqat `iOS` uchun maxsus kod.",
+          "**`MyButton.android.js`:** Faqat `Android` uchun maxsus kod.",
+          "**`MyButton.js`:** Umumiy, ikkala platforma uchun ham ishlaydigan kod (yoki `MyButton.native.js`)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Endi, boshqa faylda `import MyButton from './MyButton';` deb chaqirganingizda, `React Native` `bundler`'i joriy platformaga qarab to'g'ri faylni avtomatik tanlab oladi. Agar `Android`'da ishlayotgan bo'lsa, `MyButton.android.js`'ni, agar `iOS`'da bo'lsa, `MyButton.ios.js`'ni oladi. Agar platformaga xos fayl topilmasa, standart `MyButton.js`'ni oladi. Bu kodni `Platform.OS` tekshiruvlari bilan to'ldirishdan ko'ra ancha toza yechim."
+      }
+    ],
+    "interviewAnswer": "Platformaga xos fayl kengaytmalari (`.ios.js` va `.android.js`) `React Native`'ga platformaga qarab har xil komponent yoki kodni avtomatik ravishda yuklash imkonini beradi. `import Button from './Button'` qilganingizda, `iOS`'da `Button.ios.js`, `Android`'da `Button.android.js` avtomatik tanlanadi. Bu `Platform.OS`'li `if` shartlaridan ko'ra tozaroq yechim.",
+    "keyTerms": [
+      {
+        "term": ".ios.js / .android.js",
+        "definition": "Platformaga xos kodni ajratish uchun ishlatiladigan fayl kengaytmalari."
+      },
+      {
+        "term": "Metro Bundler",
+        "definition": "React Native uchun standart `JavaScript bundler`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q18",
+    "question": "React Native'da `Fast Refresh` nima va u `Hot Reloading`'dan qanday farq qiladi?",
+    "topic": "React Native Debugging",
+    "description": "`Fast Refresh` — bu React Native'da `development` paytida kod o'zgarishlarini darhol ilovada ko'rish uchun ishlatiladigan zamonaviy mexanizm.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Hot Reloading` (Eski Usul):** Avvalgi mexanizm edi. U o'zgargan faylni ilovaga 'injekte' qilishga harakat qilardi, lekin ko'pincha `state`'ni yo'qotib qo'yardi yoki barqaror ishlamasdi, ayniqsa `functional component`'lar va `Hook`'lar bilan. `State` o'zgarganda ko'pincha ilovani to'liq qayta yuklash (`full reload`) kerak bo'lardi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Fast Refresh` (Yangi Usul):** `Hot Reloading`'ning o'rnini bosgan ancha barqaror va ishonchli yechim. Uning asosiy afzalliklari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`State`'ni Saqlash:** `React` komponentlariga (ham `functional`, ham `class`) o'zgartirish kiritilganda, `Fast Refresh` komponentni qayta `render` qiladi, lekin uning **`state`'ini saqlab qoladi**. Bu `UI`'ni `debug` qilishni ancha tezlashtiradi.",
+          "**Xatoliklarni Yaxshi Boshqarish:** Agar `render` paytida sintaksis xatosi yoki `runtime` xatosi yuz bersa, `Fast Refresh` to'liq xatolik ekranini ko'rsatadi va xato tuzatilgandan so'ng avtomatik qayta yuklaydi.",
+          "**To'liq Qayta Yuklash (`Full Reload`):** Agar `Hook`'lar yoki `React`'dan tashqaridagi fayllarga o'zgartirish kiritilsa (masalan, `style`'lar, `utility` funksiyalar), `Fast Refresh` buni avtomatik sezadi va ilovani to'liq qayta yuklaydi (`full reload`)."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Fast Refresh` kod o'zgarishlarini ilovada tez ko'rish uchun `development` vositasi. U eski `Hot Reloading`'dan yaxshiroq, chunki u `functional component`'lar va `Hook`'lar uchun ham ishlaydi va komponent qayta `render` bo'lganda uning **`state`'ini saqlab qoladi** (masalan, `counter`'dagi son nolga qaytib ketmaydi). Agar `state`'ni saqlab bo'lmasa, avtomatik `full reload` qiladi."
+  },
+  {
+    "id": "rn-q19",
+    "question": "React Native ilovasini qanday qilib `debug` qilish mumkin?",
+    "topic": "React Native Debugging",
+    "description": "React Native `debugging` uchun bir nechta o'rnatilgan va tashqi vositalarni taqdim etadi.",
+    "detailedExplanation": [
+      { "type": "paragraph", "content": "Asosiy usullar:" },
+      {
+        "type": "list",
+        "items": [
+          "**`Flipper`:** Hozirgi kunda eng kuchli va tavsiya etiladigan `desktop debugging` platformasi. U `React DevTools` (`props`/`state`'ni tekshirish), `layout inspector` (`native UI` stillarini `debug` qilish), `network inspector` (`API` so'rovlarini kuzatish), `crash reporter` va `performance profiler` kabi ko'plab vositalarni birlashtiradi.",
+          "**`Debug Menu`:** Ilovada `shake` (`silkitish`) orqali (yoki `simulator`'da `Cmd+D`/`Ctrl+M`) ochiladi. Bu menyudan `Fast Refresh`'ni yoqish/o'chirish, `Performance Monitor`'ni yoqish (FPS, `UI`/`JS thread`'larini ko'rsatadi) yoki `JavaScript`'ni `Chrome`'da `debug` qilishni (`Debug JS Remotely`) yoqish mumkin.",
+          "**`Chrome Developer Tools`:** `Debug Menu`'dan `Debug JS Remotely`'ni yoqish orqali, siz `Chrome DevTools`'ning `Console`'ida `console.log`'larni ko'rishingiz, `breakpoint`'lar qo'yishingiz va kodni qadamma-qadam bajarishingiz mumkin (bu eski `Bridge` arxitekturasi uchun).",
+          "**`React DevTools`:** `Flipper` ichida yoki alohida `standalone` dastur (`react-devtools` `npm package`) sifatida ishlatilishi mumkin. Komponentlar ierarxiyasini va ularning `state`/`props`'larini tekshirish uchun juda muhim.",
+          "**`console.log()`:** Eng oddiy, ammo ko'pincha eng tezkor usul. Natijalar `terminal`'da (`Metro bundler` chiqishida), `Chrome DevTools` `console`'ida yoki `Flipper` `console`'ida ko'rinadi."
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'ni `debug` qilish uchun: 1) **`Flipper`** (tavsiya etiladi) — `React DevTools`, `layout inspector`, `network inspector`'ni o'z ichiga olgan `desktop` ilovasi. 2) **`Debug Menu`** (qurilmani `silkitish`) — `Performance Monitor`'ni yoqish yoki `Chrome Debugging`'ni boshlash uchun. 3) **`React DevTools`** (alohida yoki `Flipper` ichida) — komponent `props`/`state`'ini tekshirish uchun. 4) Oddiy `console.log()`."
+  },
+  {
+    "id": "rn-q20",
+    "question": "React Native'da `responsive layout` qurishning asosiy usullari qanday?",
+    "topic": "React Native Layout",
+    "description": "React Native'da `responsive layout` qurish vebdagidan biroz farq qiladi, chunki biz asosan `Flexbox` va qurilma o'lchamlariga tayanib ishlaymiz.",
+    "detailedExplanation": [
+      { "type": "paragraph", "content": "Asosiy yondashuvlar:" },
+      {
+        "type": "list",
+        "items": [
+          "**`Flexbox`:** Asosiy vosita. `flex: 1` ishlatish elementga mavjud bo'sh joyni egallashni aytadi. `flexDirection: 'row'` yoki `'column'` yordamida elementlarni joylashtirish va `justifyContent`/`alignItems` bilan tekislash `responsive` dizaynning asosini tashkil qiladi.",
+          "**`Dimensions` `API` yoki `useWindowDimensions` Hook:** Qurilma ekranining haqiqiy kengligi (`width`) va balandligi (`height`)'ni olib, stillarni shunga mos ravishda dinamik belgilash. `useWindowDimensions` qurilma aylantirilganda avtomatik yangilanishi sababli afzalroq.",
+          "**Foizlar (`%`):** Element o'lchamlarini `parent` elementga nisbatan foizlarda belgilash (`width: '50%'`).",
+          "**`Platform` Moduli:** `iOS` va `Android` uchun (`Platform.OS === 'ios'`) alohida stillar berish.",
+          "**`Platform-Specific Extensions`:** (`.ios.js`, `.android.js`) fayllari yordamida butunlay boshqa komponentlarni `render` qilish.",
+          "**`react-native-size-matters` kabi kutubxonalar:** Turli ekran o'lchamlari va zichliklari uchun o'lchamlarni (masalan, `font-size`, `margin`) avtomatik masshtablash (`scaling`) uchun `utility` funksiyalar taqdim etadi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Responsive layout` qurish usullari: 1) **`Flexbox`**'dan keng foydalanish (`flex: 1`, `flexDirection`). 2) **`useWindowDimensions`** `Hook`'i yoki **`Dimensions` `API`** yordamida ekran o'lchamlarini olib, stillarni dinamik hisoblash. 3) O'lchamlarni **foizlarda (`%`)** berish. 4) **`Platform` moduli** (`Platform.OS`) yoki fayl kengaytmalari (`.ios.js`, `.android.js`) yordamida platformaga xos stillar berish."
+  },
+  {
+    "id": "rn-q21",
+    "question": "React Native'da `SafeAreaView` nima uchun ishlatiladi?",
+    "topic": "React Native Layout",
+    "description": "`SafeAreaView` — bu `iOS` qurilmalarida (ayniqsa `iPhone X` va undan yangi modellarda) kontentning 'xavfsiz hudud' (`safe area`) ichida `render` qilinishini ta'minlaydigan komponent.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Zamonaviy `iOS` qurilmalarida ekranning yuqori qismida `notch` (kamera va sensorlar joylashgan 'o'yiq') va pastki qismida `home indicator` (boshqaruv chizig'i) mavjud. Bu hududlar ilova kontentini to'sib qo'yishi mumkin. `<SafeAreaView>` komponenti o'zining `child` elementlariga avtomatik ravishda kerakli `padding` qo'shib, ularni shu 'xavfli' hududlardan chetda, faqat ko'rinadigan 'xavfsiz' maydonda `render` qiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Bu komponent asosan `iOS` 11+ versiyalari uchun mo'ljallangan. `Android` qurilmalarida u odatda sezilarli ta'sir ko'rsatmaydi (chunki `Android` `status bar`'ni boshqacha boshqaradi), ammo uni ishlatish zararsizdir. U odatda ilovaning asosiy ekranlarini o'rash uchun ishlatiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Ishlatilishi:",
+        "code": [
+          "import { View, Text, SafeAreaView, StyleSheet } from 'react-native';",
+          "",
+          "function MyScreen() {",
+          "  return (",
+          "    <SafeAreaView style={styles.container}>",
+          "      <View>",
+          "        <Text>Bu kontent 'notch' yoki 'home indicator' ostiga tushmaydi.</Text>",
+          "      </View>",
+          "    </SafeAreaView>",
+          "  );",
+          "}",
+          "",
+          "const styles = StyleSheet.create({",
+          "  container: {",
+          "    flex: 1,",
+          "  }",
+          "});"
+        ]
+      }
+    ],
+    "interviewAnswer": "`SafeAreaView` `iOS` qurilmalarida (`iPhone X` va yangiroq) kontentning `notch` (yuqoridagi 'o'yiq') yoki `home indicator` (pastdagi chiziq) kabi `UI` elementlari bilan to'silib qolishini oldini oladigan komponent. U avtomatik ravishda kerakli `padding` qo'shib, kontentni faqat 'xavfsiz hudud' ichida saqlaydi.",
+    "keyTerms": [
+      {
+        "term": "SafeAreaView",
+        "definition": "Kontentni iOS'ning 'xavfsiz hududi' ichida saqlaydigan komponent."
+      },
+      {
+        "term": "Notch",
+        "definition": "iPhone X va yangiroq modellarda ekran yuqorisidagi kamera/sensorlar joylashgan 'o'yiq'."
+      },
+      {
+        "term": "Home Indicator",
+        "definition": "iPhone X va yangiroq modellarda ekran pastidagi imo-ishoralarni boshqarish chizig'i."
+      }
+    ]
+  },
+  {
+    "id": "rn-q22",
+    "question": "React Native'da `Gesture Responder System` nima?",
+    "topic": "React Native Events",
+    "description": "`Gesture Responder System` — bu React Native'da murakkab `touch` (sensorli) hodisalarni boshqarish uchun ishlatiladigan ichki tizim.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Oddiy `onPress` hodisasi (`<Button>`, `<TouchableOpacity>`) bitta bosishni aniqlaydi. Ammo `swipe` (surish), `pinch` (chimdib kattalashtirish/kichraytirish), `pan` (sudrab yurish) kabi murakkabroq imo-ishoralarni (`gestures`) amalga oshirish uchun React Native'ning `Gesture Responder System`'idan foydalanish kerak. Bu tizim `View` komponentining maxsus `props`'lari (`onStartShouldSetResponder`, `onMoveShouldSetResponder`, `onResponderGrant`, `onResponderMove`, `onResponderRelease` va hokazo) orqali ishlaydi. Bu `props`'lar qaysi komponent hozirda `touch` hodisasiga 'javobgar' (`responder`) ekanligini aniqlash uchun murakkab 'muzokara' olib boradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Bu `API` ancha past darajali (`low-level`) va murakkab bo'lgani uchun, ko'pchilik dasturchilar uning o'rniga **`React Native Gesture Handler`** nomli `third-party` kutubxonadan foydalanishni afzal ko'radi. Bu kutubxona `native` `thread`'da ishlaydigan, `performance`'i yuqori bo'lgan, `swipe`'lar, `pan`'lar, `rotation`'lar uchun tayyor, deklarativ komponentlarni taqdim etadi."
+      }
+    ],
+    "interviewAnswer": "`Gesture Responder System` — bu React Native'da `swipe`, `pinch`, `pan` kabi murakkab `touch` hodisalarini boshqaradigan past darajali (`low-level`) `API` (`onStartShouldSetResponder` kabi `props` orqali). U qaysi komponent `touch`'ga 'javobgar' bo'lishini aniqlaydi. Ko'pincha, bu `API`'ni to'g'ridan-to'g'ri ishlatish o'rniga, `React Native Gesture Handler` kutubxonasidan foydalaniladi.",
+    "keyTerms": [
+      {
+        "term": "Gesture Responder System",
+        "definition": "React Native'da murakkab `touch` hodisalarini boshqarish uchun ichki tizim."
+      },
+      {
+        "term": "Gesture",
+        "definition": "Sensorli ekrandagi imo-ishora (masalan, `swipe`, `pinch`)."
+      },
+      {
+        "term": "Responder",
+        "definition": "Joriy `touch` hodisasiga javob berayotgan komponent."
+      },
+      {
+        "term": "React Native Gesture Handler",
+        "definition": "Murakkab `gesture`'larni `native thread`'da bajarish uchun mashhur kutubxona."
+      }
+    ]
+  },
+  {
+    "id": "rn-q23",
+    "question": "React Native'da `Animated` `API` nima va u qanday ishlaydi?",
+    "topic": "React Native Animations",
+    "description": "`Animated` `API` — bu React Native'da suyuq (`fluid`) va `performance`'i yuqori bo'lgan animatsiyalarni yaratish uchun o'rnatilgan kutubxona.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uning asosiy g'oyasi — animatsiyalarni iloji boricha deklarativ tarzda aniqlash va ularni `JavaScript thread`'idan olib, **`native thread`'da (UI Thread)** ishga tushirish (`useNativeDriver: true` opsiyasi bilan). Bu `JavaScript thread`'i band bo'lganda ham animatsiyaning silliq (60 FPS) davom etishini ta'minlaydi."
+      },
+      { "type": "paragraph", "content": "Asosiy qismlari:" },
+      {
+        "type": "list",
+        "items": [
+          "**`Animated.Value`:** Animatsiyalanadigan bitta qiymatni saqlaydi (masalan, `opacity` yoki `position`). `new Animated.Value(0)` bilan yaratiladi.",
+          "**`Animated.View`, `Animated.Text`, `Animated.ScrollView`:** Animatsiyalanadigan qiymatlarni `style` `prop`'iga qabul qila oladigan maxsus komponentlar.",
+          "**Animatsiya Turlari (`Animated.timing`, `Animated.spring`, `Animated.decay`):** Qiymatni vaqt o'tishi bilan qanday o'zgartirishni aniqlaydigan funksiyalar. Masalan, `Animated.timing(myValue, { toValue: 1, duration: 500, useNativeDriver: true })` qiymatni 500ms ichida 1 ga silliq o'zgartiradi.",
+          "**Birlashtirish (`Animated.sequence`, `Animated.parallel`):** Bir nechta animatsiyalarni ketma-ket yoki parallel ishga tushirish uchun."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Yangi va zamonaviyroq alternativa sifatida **`React Native Reanimated`** kutubxonasi ham mavjud bo'lib, u yanada kuchliroq imkoniyatlarni va `UI thread`'ida ishlaydigan murakkabroq mantiqni taqdim etadi."
+      }
+    ],
+    "interviewAnswer": "`Animated` `API` React Native'da `performance`'i yuqori animatsiyalar yaratish uchun. U `Animated.Value` (o'zgaruvchi qiymat), `Animated.timing`/`Animated.spring` (animatsiya turi) va `Animated.View`/`Animated.Text` (animatsiyalanadigan komponentlar)dan foydalanadi. Eng muhim xususiyati `useNativeDriver: true` opsiyasi bo'lib, u animatsiyani `JavaScript thread`'idan mustaqil ravishda, `native (UI) thread`'da bajaradi va silliq ishlashni ta'minlaydi.",
+    "keyTerms": [
+      {
+        "term": "Animated API",
+        "definition": "React Native'da animatsiyalar yaratish uchun o'rnatilgan kutubxona."
+      },
+      {
+        "term": "Animated.Value",
+        "definition": "Animatsiyalanadigan qiymatni saqlovchi obyekt."
+      },
+      {
+        "term": "Animated.timing()",
+        "definition": "Qiymatni vaqt bo'yicha silliq o'zgartiradigan animatsiya funksiyasi."
+      },
+      {
+        "term": "useNativeDriver: true",
+        "definition": "Animatsiyani `native thread`'da bajarishni yoqadigan, `performance` uchun juda muhim ops."
+      },
+      {
+        "term": "React Native Reanimated",
+        "definition": "`Animated` `API`'ga nisbatan kuchliroq va zamonaviyroq animatsiya kutubxonasi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q24",
+    "question": "React Native ilovalarida `state management` qanday amalga oshiriladi?",
+    "topic": "React Native State Management",
+    "description": "React Native'da `state management` xuddi React vebdagidek amalga oshiriladi, chunki ikkalasi ham bir xil `React` asosiga qurilgan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Kichik va o'rta ilovalar uchun `React`'ning o'zining vositalari ko'pincha yetarli:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`useState`:** Oddiy, lokal komponent `state`'i uchun.",
+          "**`useReducer`:** Murakkabroq lokal `state` logikasi uchun.",
+          "**`useContext` + `useState`/`useReducer`:** Ilova bo'ylab global `state`'ni (`theme`, `user auth`) `prop drilling`'siz bo'lishish uchun."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Kattaroq va murakkabroq ilovalar uchun `third-party` kutubxonalar ishlatiladi. Bular ham vebdagilar bilan bir xil:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`Redux` (va `react-redux` + `Redux Toolkit`):** Katta hajmdagi global `state`'ni boshqarish uchun an'anaviy, kuchli yechim. `Debugging` (`Redux DevTools`) uchun qulay.",
+          "**`Zustand`:** `Redux`'ga qaraganda ancha sodda, kamroq `boilerplate` talab qiladigan, `hook`-based yechim. Hozirda juda mashhur.",
+          "**`Jotai` / `Recoil`:** `Atomic state management` yondashuvini qo'llaydi, `state`'ni kichik atomlarga bo'lib boshqaradi.",
+          "**`MobX`:** `Observable`'larga asoslangan, `OOP`'ga yaqinroq yondashuv."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Tanlov loyihaning murakkabligi va jamoaning tajribasiga bog'liq."
+      }
+    ],
+    "interviewAnswer": "React Native'da `state management` React vebdagidek. Kichik ilovalar uchun `useState`, `useReducer` va `useContext` (global `state` uchun) ishlatiladi. Katta va murakkab ilovalar uchun esa `Redux` (ko'pincha `Redux Toolkit` bilan), `Zustand` yoki `Jotai` kabi tashqi `state management` kutubxonalari qo'llaniladi.",
+    "keyTerms": [
+      {
+        "term": "State Management",
+        "definition": "Ilovaning holatini (ma'lumotlarini) saqlash va boshqarish jarayoni."
+      },
+      {
+        "term": "Redux",
+        "definition": "JavaScript ilovalari uchun bashorat qilinadigan `state container`."
+      },
+      {
+        "term": "Zustand",
+        "definition": "`Hook`'larga asoslangan sodda va tezkor `state management` kutubxonasi."
+      },
+      {
+        "term": "Context API",
+        "definition": "`React`'ning o'zida `prop drilling`'siz global `state`'ni bo'lishish mexanizmi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q25",
+    "question": "React Native'da `props` orqali `styling`'ni qanday o'zgartirish mumkin?",
+    "topic": "React Native Styling",
+    "description": "`Props` yordamida komponentning stillarini dinamik ravishda o'zgartirish mumkin, bu qayta ishlatiladigan komponentlar yaratishda keng qo'llaniladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Buning uchun `style` `prop`'iga `StyleSheet` obyektlari massivini (`array`) berish usulidan foydalaniladi. `React Native` massivdagi stillarni tartib bo'yicha birlashtiradi (keyinroq kelgani oldingisini `override` qiladi)."
+      },
+      {
+        "type": "paragraph",
+        "content": "Shuningdek, shartli (`conditional`) stillarni `ternary operator` yoki `logical &&` yordamida ham qo'llash mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Stillar Massivi (`Array`) Yordamida:",
+        "code": [
+          "// 'primary' prop'iga qarab tugma rangini o'zgartiradigan komponent",
+          "function MyButton({ title, primary }) {",
+          "  return (",
+          "    <TouchableOpacity style={[",
+          "      styles.buttonBase, // Asosiy stil",
+          "      primary ? styles.buttonPrimary : styles.buttonSecondary // Shartli stil",
+          "    ]}>",
+          "      <Text>{title}</Text>",
+          "    </TouchableOpacity>",
+          "  );",
+          "}",
+          "",
+          "const styles = StyleSheet.create({",
+          "  buttonBase: { padding: 10, borderRadius: 5 },",
+          "  buttonPrimary: { backgroundColor: 'blue' },",
+          "  buttonSecondary: { backgroundColor: 'grey' }",
+          "});",
+          "",
+          "// Ishlatilishi: <MyButton title=\"Click\" primary={true} />"
+        ]
+      },
+      {
+        "title": "Shartli `Spread` Bilan (Obyekt ichida):",
+        "code": [
+          "<View style={{",
+          "  ...styles.base,",
+          "  backgroundColor: isDisabled ? 'grey' : 'green'",
+          "}} />"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Props` orqali `styling`'ni o'zgartirish uchun `style` `prop`'iga stillar massivini (`array`) berish mumkin. Masalan: `style={[styles.base, props.isPrimary ? styles.primary : styles.secondary]}`. Bu asosiy stil ustiga `props`'ga bog'liq bo'lgan shartli stilni qo'llaydi.",
+    "keyTerms": [
+      {
+        "term": "Style Array",
+        "definition": "Bir nechta stil obyektlarini birlashtirish uchun `style` `prop`'iga massiv uzatish."
+      },
+      {
+        "term": "Conditional Styling",
+        "definition": "`Props` yoki `state`'ga qarab stillarni dinamik ravishda o'zgartirish."
+      }
+    ]
+  },
+  {
+    "id": "rn-q26",
+    "question": "React Native'da `Absolute` va `Relative` `position`'lar qanday ishlaydi?",
+    "topic": "React Native Layout",
+    "description": "React Native `positioning` (`joylashuv`) uchun vebdagi `CSS`'ga o'xshash `position` xususiyatini qo'llab-quvvatlaydi, ammo ba'zi farqlari bor.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`position: 'relative'` (Standart qiymat):** Bu React Native'dagi standart qiymat (`default`). Element oddiy `Flexbox` oqimi bo'yicha joylashadi. Unga `top`, `left`, `bottom`, `right` qiymatlarini berish, uni o'zining **asl joyiga nisbatan** siljitadi, lekin u egallashi kerak bo'lgan joy bo'sh qoladi va boshqa elementlarga ta'sir qilmaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`position: 'absolute'`:** Elementni oddiy `layout` oqimidan **butunlay chiqarib oladi**. U boshqa `sibling` elementlarga ta'sir qilmaydi va ular uning joyini egallaydi. Uning joylashuvi `top`, `left`, `bottom`, `right` qiymatlari yordamida **eng yaqin `parent` elementiga nisbatan** belgilanadi. Agar hech qaysi `parent`'da `position: 'relative'` yoki `position: 'absolute'` bo'lmasa, u ildiz (`root`) `View`'ga nisbatan joylashadi. Bu elementlarni bir-birining ustiga qo'yish (`overlay`) uchun ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Veb'dan farqli o'laroq, React Native `position: 'fixed'` yoki `position: 'sticky'`'ni to'g'ridan-to'g'ri qo'llab-quvvatlamaydi (`Modal` yoki `ScrollView` `stickyHeaderIndices` kabi alternativ yechimlar ishlatiladi)."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Absolute Position (Overlay):",
+        "code": [
+          "<View style={{ flex: 1, position: 'relative' }}>",
+          "  <View style={{ flex: 1, backgroundColor: 'blue' }} />",
+          "  {/* Bu element oqimdan chiqadi va ota-onaning yuqori o'ng burchagiga joylashadi */}",
+          "  <View style={{",
+          "    position: 'absolute',",
+          "    top: 10,",
+          "    right: 10,",
+          "    width: 50,",
+          "    height: 50,",
+          "    backgroundColor: 'red'",
+          "  }} />",
+          "</View>"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da `position: 'relative'` (standart) element o'z joyiga nisbatan siljiydi. `position: 'absolute'` esa elementni oqimdan chiqaradi va uni eng yaqin `parent` elementga nisbatan `top`/`left`/`bottom`/`right` orqali joylashtiradi. Bu elementlarni ustma-ust qo'yish (`overlay`) uchun ishlatiladi. `fixed` va `sticky` standartda yo'q.",
+    "keyTerms": [
+      {
+        "term": "position: 'relative'",
+        "definition": "Elementning o'zining oddiy joylashuviga nisbatan siljishi."
+      },
+      {
+        "term": "position: 'absolute'",
+        "definition": "Elementning `layout` oqimidan chiqib, `parent`'ga nisbatan joylashishi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q27",
+    "question": "React Native'da `Native-Specific` (`.native.js`) fayllar nima?",
+    "topic": "React Native Development",
+    "description": "`.native.js` fayl kengaytmasi `React Native` va `React Native Web` o'rtasida kod bo'lishishda (`code sharing`) ishlatiladigan konvensiyadir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Agar siz bitta kod bazasidan ham veb-sayt (`React.js` + `React Native Web`), ham mobil ilova (`React Native`) qurayotgan bo'lsangiz, ba'zi komponentlar platformaga xos bo'lishi kerak. Masalan, veb'da `<div>`, `native`'da `<View>` ishlatiladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Siz uchta fayl yaratishingiz mumkin:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`MyComponent.js`:** Veb (`React Native Web`) uchun `<div>` ishlatadigan kod.",
+          "**`MyComponent.native.js`:** `React Native` (iOS va Android) uchun `<View>` ishlatadigan kod.",
+          "**`MyComponent.ios.js` / `MyComponent.android.js`:** Agar `native` platformalar ham bir-biridan farq qilsa."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "`import MyComponent from './MyComponent';` deb chaqirganingizda, `React Native` `bundler`'i (`Metro`) `.native.js` faylini, veb `bundler`'i (`Webpack`/`Vite`) esa oddiy `.js` faylini avtomatik tanlaydi."
+      }
+    ],
+    "interviewAnswer": "`.native.js` fayl kengaytmasi `React Native` va `React Native Web` o'rtasida kod bo'lishishda ishlatiladi. `import MyComponent from './MyComponent'` qilganda, `React Native` avtomatik `.native.js` faylini, veb (`React Native Web`) esa `.js` faylini tanlaydi. Bu platformaga xos komponentlarni (`<View>` vs `<div>`) ajratishga yordam beradi.",
+    "keyTerms": [
+      {
+        "term": "React Native Web",
+        "definition": "React Native komponentlarini veb-brauzerda `render` qilish imkonini beruvchi kutubxona."
+      },
+      {
+        "term": ".native.js",
+        "definition": "Faqat React Native (`iOS`/`Android`) uchun mo'ljallangan kodni belgilovchi fayl kengaytmasi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q28",
+    "question": "React Native ilovasining `bundle` hajmini qanday kamaytirish mumkin?",
+    "topic": "React Native Performance",
+    "description": "Ilova `bundle` hajmini kamaytirish (`app store`'dagi yuklab olish hajmi va ishga tushish vaqti) `performance` uchun muhim.",
+    "detailedExplanation": [
+      { "type": "paragraph", "content": "Usullar:" },
+      {
+        "type": "list",
+        "items": [
+          "**`Hermes`'dan Foydalanish:** `Hermes` — bu `Android` (va endi `iOS`'da ham) uchun optimallashtirilgan ochiq kodli `JavaScript` dvigateli. U ilovaning ishga tushish vaqtini (`startup time`) tezlashtiradi, xotira sarfini kamaytiradi va `bundle` hajmini (`.apk`/`.ipa`) kichraytirishi mumkin. Yangi loyihalarda u odatda standart yoqilgan bo'ladi.",
+          "**Keraksiz Bog'liqliklarni (`dependencies`) Olib Tashlash:** `npm prune` yoki `yarn autoclean` yordamida ishlatilmayotgan paketlarni olib tashlash. `bundle-analyzer` kabi vositalar yordamida `bundle`'da nima ko'p joy egallayotganini tahlil qilish.",
+          "**Rasmlarni Optimallashtirish:** Rasmlarni `WebP` kabi zamonaviy formatlarga o'tkazish, ularni siqish (`compress`) va to'g'ri o'lchamlarda ishlatish.",
+          "**ProGuard (`Android`) / App Thinning (`iOS`):** `Native` `build` vositalari yordamida ishlatilmayotgan `native` kodni va resurslarni olib tashlash.",
+          "**`Code Splitting` (Dinamik `import`):** Garchi `React Native`'da vebdagidek oson bo'lmasa-da, `Metro` `bundler`'i `RAM bundles` yoki `inline requires` kabi usullarni qo'llab-quvvatlaydi, bu esa dastlabki yuklanish vaqtini kamaytirishga yordam beradi."
+        ]
+      }
+    ],
+    "interviewAnswer": "`Bundle` hajmini kamaytirish uchun: 1) **`Hermes`** `JavaScript` dvigatelini yoqish (eng muhimi). 2) Keraksiz `npm` paketlarni olib tashlash va `bundle-analyzer` bilan tahlil qilish. 3) Rasmlarni optimallashtirish (`WebP` formati, siqish). 4) `Android` uchun `ProGuard`'ni yoqish.",
+    "keyTerms": [
+      {
+        "term": "Hermes",
+        "definition": "React Native uchun optimallashtirilgan `JavaScript` dvigateli."
+      },
+      {
+        "term": "Bundle Analyzer",
+        "definition": "Yakuniy `JavaScript bundle`'i tarkibini vizual tahlil qilish uchun vosita."
+      },
+      {
+        "term": "ProGuard",
+        "definition": "`Android` `build`'ida ishlatilmayotgan `Java` kodini olib tashlaydigan vosita."
+      }
+    ]
+  },
+  {
+    "id": "rn-q29",
+    "question": "React Native'da `Accessibility` (`a11y`) qanday ta'minlanadi?",
+    "topic": "React Native Accessibility",
+    "description": "React Native `native` platformalarning `accessibility` `API`'lariga kirish uchun `React`'ga o'xshash `props`'lar to'plamini taqdim etadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Ilovalarni imkoniyati cheklangan foydalanuvchilar (masalan, `VoiceOver` (`iOS`) yoki `TalkBack` (`Android`) `screen reader`'laridan foydalanuvchilar) uchun qulay qilish muhim. Asosiy `accessibility` `props`'lari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`accessible={true}`:** Elementni `accessibility` uchun 'ko'rinadigan' qiladi. `React Native` avtomatik ravishda ba'zi elementlarni (`<Text>`, `<Button>`, `<Touchable>`) `accessible` qiladi.",
+          "**`accessibilityLabel=\"matn\"`:** `Screen reader` o'qishi kerak bo'lgan matn. Agar elementda matnli kontent bo'lmasa (masalan, faqat `icon`'li tugma), bu juda muhim.",
+          "**`accessibilityHint=\"matn\"`:** Element nima qilishini tushuntiruvchi qo'shimcha matn (masalan, 'Ikki marta bosing...').",
+          "**`accessibilityRole=\"rol\"`:** Elementning `native` ro'lini belgilaydi (masalan, `'button'`, `'header'`, `'link'`, `'summary'`). Bu `screen reader`'ga element nima ekanligini aytadi.",
+          "**`accessibilityState={{...}}`:** Elementning joriy holatini (`disabled`, `checked`, `selected`) belgilaydi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Accessible Tugma Misoli (Faqat Icon bilan):",
+        "code": [
+          "<TouchableOpacity",
+          "  accessible={true}",
+          "  accessibilityLabel=\"Sozlamalar\"",
+          "  accessibilityHint=\"Sozlamalar sahifasiga o'tish uchun bosing\"",
+          "  accessibilityRole=\"button\"",
+          "  onPress={this.goToSettings}",
+          ">",
+          "  <Icon name=\"settings\" size={30} />",
+          "</TouchableOpacity>"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da `accessibility` `accessible`, `accessibilityLabel`, `accessibilityHint`, `accessibilityRole` va `accessibilityState` kabi maxsus `props`'lar yordamida ta'minlanadi. Bu `props`'lar `screen reader`'larga (`VoiceOver`, `TalkBack`) elementning nima ekanligini, uning holatini va nima qilishini tushuntiradi. Masalan, faqat `icon`'li tugma uchun `accessibilityLabel` berish shart.",
+    "keyTerms": [
+      {
+        "term": "Accessibility (a11y)",
+        "definition": "Ilovani imkoniyati cheklangan odamlar ham ishlata olishini ta'minlash."
+      },
+      {
+        "term": "Screen Reader",
+        "definition": "Ekrandagi kontentni ovoz chiqarib o'qiydigan yordamchi texnologiya (masalan, `VoiceOver`)."
+      },
+      {
+        "term": "accessibilityLabel",
+        "definition": "`Screen reader` o'qishi kerak bo'lgan asosiy matnli yorliq."
+      },
+      {
+        "term": "accessibilityRole",
+        "definition": "Elementning `native`'dagi rolini (`button`, `header`) belgilovchi `prop`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q30",
+    "question": "React Native'da `Hot Reloading`, `Fast Refresh`, `Live Reload` o'rtasida qanday farq bor?",
+    "topic": "React Native Debugging",
+    "description": "Bu uchala termin ham `development` paytida kod o'zgarishlarini ilovada tez ko'rish bilan bog'liq, ammo ular turlicha ishlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Live Reload`:** Eng eskisi va oddiysi. Kod fayli o'zgarganda, u butun ilovani **boshidan qayta yuklaydi**. Bu ilovaning `state`'ini to'liq yo'qotadi (masalan, siz bo'lgan sahifadan bosh sahifaga qaytib qolasiz)."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Hot Reloading` (Hot Module Replacement - HMR):** `Live Reload`'dan yaxshiroq. U faqat o'zgargan faylni (modulni) qayta yuklashga harakat qiladi va ilovani to'liq qayta ishga tushirmaydi. Biroq, u ko'pincha `React` komponentlarining `state`'ini saqlab qola olmasdi va barqaror ishlamasdi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Fast Refresh` (Hozirgi standart):** `Hot Reloading`'ning zamonaviy, ishonchli o'rnini bosuvchi. U `React` uchun maxsus ishlab chiqilgan. `React` komponentiga o'zgartirish kiritilsa, `Fast Refresh` **komponent `state`'ini saqlab qolgan holda** faqat o'sha komponentni qayta `render` qiladi. Agar `state`'ni saqlab bo'lmaydigan o'zgarish kiritilsa (masalan, `Hook`'lar tartibi o'zgarsa), u faqat o'sha faylni qayta yuklaydi. Agar `React`'dan tashqaridagi fayl o'zgarsa, u `Live Reload` kabi to'liq qayta yuklash qiladi. Bu eng yaxshi `development experience`'ni ta'minlaydi."
+      }
+    ],
+    "interviewAnswer": "`Live Reload` ilovani to'liq qayta yuklaydi (`state` yo'qoladi). `Hot Reloading` (eski) faqat o'zgargan modulni qayta yuklashga harakat qilardi, lekin `state`'ni ko'pincha yo'qotardi. `Fast Refresh` (yangi, standart) esa komponent o'zgarganda uning `state`'ini saqlab qolgan holda qayta `render` qiladi, bu ancha tez va qulay.",
+    "keyTerms": [
+      {
+        "term": "Live Reload",
+        "definition": "Kod o'zgarganda ilovani to'liq qayta ishga tushirish."
+      },
+      {
+        "term": "Hot Reloading",
+        "definition": "Kod o'zgarganda faqat o'zgargan modulni almashtirishga urinish (eski usul)."
+      },
+      {
+        "term": "Fast Refresh",
+        "definition": "Kod o'zgarganda komponent `state`'ini saqlab qolgan holda qayta `render` qilish (yangi usul)."
+      }
+    ]
+  },
+  {
+    "id": "rn-q31",
+    "question": "React Native'da `Hermes` nima?",
+    "topic": "React Native Performance",
+    "description": "`Hermes` — bu `Facebook`/`Meta` tomonidan `React Native` uchun maxsus optimallashtirilgan ochiq kodli `JavaScript` dvigatelidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Uning asosiy maqsadi `React Native` ilovalarining `performance`'ini, ayniqsa ishga tushish vaqtini (`startup time`), xotira sarfini (`memory usage`) va `bundle` hajmini (`app size`) yaxshilashdir. `Hermes` `JavaScript` kodini `build time`'da optimallashtirilgan `bytecode`'ga o'giradi, bu esa `runtime`'da `parsing` va `compilation`'ga ketadigan vaqtni tejaydi. Yangi `React Native` loyihalarida (`v0.64+`'dan boshlab `Android`'da, `v0.70+`'dan boshlab `iOS`'da) `Hermes` standart (`default`) `JavaScript` dvigateli sifatida yoqilgan."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Yoqish (Android - `android/app/build.gradle`):",
+        "code": ["project.ext.react = [ enableHermes: true ]"]
+      },
+      {
+        "title": "Yoqish (iOS - `ios/Podfile`):",
+        "code": [":hermes_enabled => true"]
+      }
+    ],
+    "interviewAnswer": "`Hermes` `React Native` uchun optimallashtirilgan `JavaScript` dvigateli. U ilovaning ishga tushish vaqtini (`startup time`) tezlashtiradi, xotira sarfini kamaytiradi va `bundle` hajmini kichraytiradi. U `JavaScript`'ni `build time`'da `bytecode`'ga o'girish orqali ishlaydi.",
+    "keyTerms": [
+      {
+        "term": "Hermes",
+        "definition": "React Native uchun optimallashtirilgan JavaScript dvigateli."
+      },
+      {
+        "term": "Bytecode",
+        "definition": "Mashina kodiga yaqin, `virtual machine` (masalan, `Hermes`) tushunadigan past darajali kod."
+      },
+      {
+        "term": "Startup Time",
+        "definition": "Ilovaning ishga tushishi uchun ketadigan vaqt."
+      }
+    ]
+  },
+  {
+    "id": "rn-q32",
+    "question": "React Native'da `console.log` o'rniga `debugging` uchun qanday yaxshiroq vositalar mavjud?",
+    "topic": "React Native Debugging",
+    "description": "Garchi `console.log` foydali bo'lsa-da, u `performance`'ga salbiy ta'sir qilishi mumkin. Zamonaviy vositalar ko'proq imkoniyat beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**1. Flipper (Tavsiya etiladi):** `Meta` tomonidan yaratilgan, `desktop`'da ishlaydigan kuchli `debugging` platformasi. U quyidagilarni o'z ichiga oladi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "`React DevTools`: Komponent ierarxiyasi, `props` va `state`'ni tekshirish.",
+          "`Layout Inspector`: `Native UI` elementlarini, ularning stillari va `box model`'ini tekshirish.",
+          "`Network Inspector`: Barcha `API` so'rovlarini (`fetch`, `XHR`) kuzatish.",
+          "`Performance Profiler`: `UI` va `JS thread`'laridagi `bottleneck`'larni topish.",
+          "`Crash Reporter`: Ilova `crash` bo'lganda `log`'larni ko'rish.",
+          "`Custom Plugins`: Qo'shimcha `debugging` imkoniyatlarini qo'shish."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "**2. React DevTools (Alohida):** `Flipper`'dan tashqari, `react-devtools` `npm package`'ini o'rnatib, alohida `standalone` dastur sifatida ham ishga tushirish mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**3. Chrome/Edge DevTools (JavaScript `Debugging`):** `Debug Menu`'dan `Debug JS Remotely`'ni yoqish orqali `JavaScript` kodini `breakpoint`'lar qo'yib, qadamma-qadam tahlil qilish mumkin (eski arxitektura bilan yaxshi ishlaydi)."
+      },
+      {
+        "type": "paragraph",
+        "content": "`console.log`'larni `production build`'dan oldin olib tashlash kerak (`babel-plugin-transform-remove-console` yordamida avtomatlashtirish mumkin), chunki ular `JavaScript thread`'ini bloklashi mumkin."
+      }
+    ],
+    "interviewAnswer": "`console.log`'dan yaxshiroq vosita bu **`Flipper`**. U `React DevTools` (`props`/`state`), `Native Layout Inspector`, `Network Inspector` va `Performance Profiler`'ni o'z ichiga olgan to'liq `debugging` platformasidir. Shuningdek, `Chrome DevTools` orqali `breakpoint`'lar bilan `JavaScript`'ni `debug` qilish mumkin.",
+    "keyTerms": [
+      {
+        "term": "Flipper",
+        "definition": "React Native uchun `desktop`'da ishlaydigan kuchli `debugging` platformasi."
+      },
+      {
+        "term": "React DevTools",
+        "definition": "Komponent ierarxiyasi, `props` va `state`'ni tekshirish vositasi."
+      },
+      {
+        "term": "Layout Inspector",
+        "definition": "`Native UI` elementlari va ularning stillarini tekshirish vositasi."
+      },
+      {
+        "term": "Network Inspector",
+        "definition": "`API` so'rovlarini kuzatish vositasi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q33",
+    "question": "React Native'da `Native UI` va `Web View` komponentlari o'rtasida qanday farq bor?",
+    "topic": "React Native Components",
+    "description": "`Native UI` komponentlari haqiqiy `native` elementlarni `render` qiladi, `Web View` esa ilova ichida kichik brauzer ochadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Native UI` Komponentlari (`<View>`, `<Text>`, `<Button>`):** Bular React Native'ning asosiy qurilish bloklari. Ular `JavaScript`'dagi `JSX`'dan `Bridge`/`JSI` orqali `iOS`'da `UIView`, `Android`'da `android.view` kabi haqiqiy platforma elementlariga o'giriladi. Bu yuqori `performance` va haqiqiy `native` 'his' (`look and feel`) beradi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Web View` (`react-native-webview`):** Bu alohida komponent bo'lib, u sizning ilovangiz ichida izolyatsiyalangan brauzer oynasini (`WebView` `native` komponenti) yaratadi. U ma'lum bir `URL`'ni (`<WebView source={{ uri: '...' }}`) yoki statik `HTML` `string`'ini (`<WebView source={{ html: '...' }}`) yuklash uchun ishlatiladi. `Web View` `native` komponentlarga qaraganda sekinroq ishlaydi va `native` 'his' bermaydi. U odatda ilovaga tashqi veb-sahifani (masalan, `login` sahifasi, `maxfiylik siyosati` hujjati) joylashtirish yoki murakkab, `JavaScript`'ga asoslangan veb-kontentni (`chart`'lar, `data grid`'lar) ko'rsatish uchun ishlatiladi."
+      }
+    ],
+    "interviewAnswer": "`Native UI` komponentlari (`<View>`, `<Text>`) haqiqiy platforma elementlariga (`UIView`) aylanadi va yuqori `performance` beradi. `Web View` (`react-native-webview`) esa ilova ichida kichik brauzer oynasini ochadi va veb-sahifani (`URL` yoki `HTML string`) ko'rsatadi. `Web View` `native` emas va odatda sekinroq ishlaydi.",
+    "keyTerms": [
+      {
+        "term": "Native UI",
+        "definition": "Platformaning o'zining (iOS/Android) `UI` elementlari."
+      },
+      {
+        "term": "Web View",
+        "definition": "Ilova ichiga veb-sahifani joylashtirish uchun mo'ljallangan `native` komponent."
+      }
+    ]
+  },
+  {
+    "id": "rn-q34",
+    "question": "React Native'da `Dimensions` `API` va `useWindowDimensions` `Hook`'i o'rtasidagi asosiy farq nima?",
+    "topic": "React Native APIs",
+    "description": "Ikkalasi ham ekran o'lchamlarini olish uchun, ammo `useWindowDimensions` dinamik o'zgarishlarga avtomatik reaksiya bildiradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Dimensions.get('window')`:** Bu `API` chaqirilgan paytdagi ekran (`viewport`) o'lchamlarini (`width`, `height`) qaytaradi. U **statik** hisoblanadi. Agar foydalanuvchi qurilmani aylantirsa (`orientation change`) yoki ekran o'lchami o'zgarsa, bu `API` qaytargan qiymatlar avtomatik yangilanmaydi. O'zgarishlarni qo'lda tinglash (`Dimensions.addEventListener`) va `state`'ni yangilash kerak bo'ladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`useWindowDimensions()`:** Bu `React Hook`'i (React Native 0.61+'da qo'shilgan). U `Dimensions.get('window')` kabi o'lchamlarni qaytaradi, ammo uning asosiy afzalligi — u ekran o'lchamlari (masalan, qurilma aylantirilganda) o'zgarganda avtomatik ravishda **komponentni qayta `render` qiladi** va yangi o'lchamlarni taqdim etadi. Bu `responsive layout`'larni qurishni ancha osonlashtiradi va `event listener`'larni qo'lda boshqarish zaruratini yo'q qiladi."
+      }
+    ],
+    "interviewAnswer": "`Dimensions.get('window')` chaqirilgan paytdagi statik o'lchamlarni beradi; ekran o'lchami o'zgarganda avtomatik yangilanmaydi. `useWindowDimensions()` `Hook`'i esa ekran o'lchamlarini qaytaradi va o'lchamlar o'zgarganda (masalan, qurilma aylantirilganda) komponentni avtomatik qayta `render` qiladi. `useWindowDimensions` afzalroq.",
+    "keyTerms": [
+      {
+        "term": "Dimensions API",
+        "definition": "Qurilma ekrani o'lchamlarini olish uchun `API`."
+      },
+      {
+        "term": "useWindowDimensions",
+        "definition": "Qurilma o'lchamlarini oladigan va o'zgarishlarga avtomatik `re-render` qiladigan `Hook`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q35",
+    "question": "React Native'da `device token` (qurilma tokeni) nima va u `push notifications` bilan qanday bog'liq?",
+    "topic": "React Native Push Notifications",
+    "description": "`Device token` — bu har bir alohida qurilma (`device`) va ilova (`app`) juftligi uchun `Apple` (APNS) yoki `Google` (FCM) tomonidan beriladigan unikal identifikator.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`Push notification`'lar (ilovaga tashqaridan yuboriladigan xabarnomalar) to'g'ridan-to'g'ri sizning `backend`'ingizdan qurilmaga yuborilmaydi. Jarayon quyidagicha:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "1. Ilova birinchi marta ishga tushganda, u foydalanuvchidan `notification` yuborish uchun ruxsat so'raydi.",
+          "2. Ruxsat olingach, ilova `Apple Push Notification Service` (APNS) yoki `Firebase Cloud Messaging` (FCM)'ga murojaat qiladi.",
+          "3. APNS/FCM bu qurilma/ilova uchun unikal `device token`'ni generatsiya qiladi va ilovaga qaytaradi.",
+          "4. Ilova bu `device token`'ni o'zining `backend` serveriga (`database`'ga) yuboradi va uni shu foydalanuvchiga bog'lab qo'yadi.",
+          "5. Keyinchalik, `backend` shu foydalanuvchiga `push notification` yubormoqchi bo'lganda, u `device token`'dan foydalanib, APNS/FCM'ga so'rov yuboradi. APNS/FCM esa xabarni to'g'ridan-to'g'ri kerakli qurilmaga yetkazadi."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "React Native'da bu jarayonni boshqarish uchun `react-native-push-notification` yoki `Firebase`'ning `messaging` moduli kabi kutubxonalardan foydalaniladi."
+      }
+    ],
+    "interviewAnswer": "`Device token` — bu `Apple` (APNS) yoki `Google` (FCM) tomonidan har bir qurilma/ilova juftligi uchun beriladigan unikal identifikator. U `push notification` yuborish uchun 'manzil' sifatida ishlatiladi. Ilova bu `token`'ni olib, `backend`'ga yuboradi. `Backend` esa `push notification` yuborish uchun shu `token` orqali APNS/FCM'ga murojaat qiladi.",
+    "keyTerms": [
+      {
+        "term": "Device Token",
+        "definition": "Push notification yuborish uchun qurilmaning unikal manzili."
+      },
+      {
+        "term": "Push Notification",
+        "definition": "Ilova yopiq bo'lganda ham serverdan qurilmaga yuboriladigan xabarnoma."
+      },
+      {
+        "term": "APNS (Apple Push Notification Service)",
+        "definition": "iOS qurilmalari uchun `push notification` xizmati."
+      },
+      {
+        "term": "FCM (Firebase Cloud Messaging)",
+        "definition": "Android (va boshqa platformalar) uchun `push notification` xizmati."
+      }
+    ]
+  },
+  {
+    "id": "rn-q36",
+    "question": "React Native'da `linking` qanday ishlaydi (`deep linking` va tashqi `link`'lar)?",
+    "topic": "React Native Navigation",
+    "description": "React Native'da `linking` ikki asosiy maqsadda ishlatiladi: 1) Ilova ichidan tashqi `URL`'larni (masalan, veb-saytlarni) ochish. 2) Tashqi `URL`'lar (`deep links`) orqali ilovani ochish va ma'lum bir sahifaga yo'naltirish.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**1. Tashqi `Link`'larni Ochish:** Buning uchun React Native'ning o'rnatilgan `Linking` `API`'sidan foydalaniladi. `Linking.openURL(url)` metodi brauzerni yoki boshqa ilovani (masalan, `tel:`, `mailto:`) ochadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**2. `Deep Linking` (Ilovaga Kirish):** Bu foydalanuvchini veb-saytdan, `email`'dan yoki boshqa ilovadan to'g'ridan-to'g'ri sizning ilovangizning ma'lum bir sahifasiga olib kirish imkonini beradi (masalan, `myapp://products/123`). Buning uchun `native` sozlamalar (`Android`'da `AndroidManifest.xml`, `iOS`'da `Info.plist` va `Xcode` sozlamalari) orqali ilova qaysi `URL` sxemalarini (`myapp://`) yoki domenlarni (`https://myapp.com/products`) tinglashini sozlash kerak. `React Navigation` kabi `navigation` kutubxonalari bu kiruvchi `link`'larni ushlab olish va to'g'ri sahifaga yo'naltirish uchun o'rnatilgan `deep linking` konfiguratsiyasiga ega."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Tashqi URL'ni Ochish:",
+        "code": [
+          "import { Linking, Button } from 'react-native';",
+          "<Button title=\"Google'ni ochish\" onPress={() => Linking.openURL('https://google.com')} />"
+        ]
+      },
+      {
+        "title": "Tashqi Qo'ng'iroq Qilish:",
+        "code": [
+          "<Button title=\"Qo'ng'iroq qilish\" onPress={() => Linking.openURL('tel:+123456789')} />"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da `Linking` `API`'si ikki maqsadda ishlatiladi: 1) `Linking.openURL(url)` orqali tashqi ilovalarni (brauzer, telefon) ochish. 2) `Deep linking` — tashqi `URL` (`myapp://...` yoki `https://...`) orqali ilovani ochish va `React Navigation` yordamida to'g'ri sahifaga yo'naltirish.",
+    "keyTerms": [
+      {
+        "term": "Linking API",
+        "definition": "Tashqi `URL`'lar bilan ishlash uchun React Native `API`'si."
+      },
+      {
+        "term": "Deep Linking",
+        "definition": "`URL` orqali ilovani ochib, to'g'ridan-to'g'ri ma'lum bir sahifasiga o'tish."
+      }
+    ]
+  },
+  {
+    "id": "rn-q37",
+    "question": "React Native'da `JavaScript thread` va `Native (UI) thread` o'rtasidagi farq nima?",
+    "topic": "React Native Internals",
+    "description": "React Native ilovalari odatda kamida ikkita asosiy `thread`'da (oqimda) ishlaydi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**1. `Native (UI) Thread`:** Bu ilovaning asosiy `thread`'i. U `native` `UI` elementlarini `render` qilish, `touch` hodisalarini qabul qilish va barcha `native` `API` chaqiruvlarini (masalan, kamera, `GPS`) boshqarish uchun mas'ul. Agar bu `thread` bloklansa, ilova 'qotib qoladi' (`freeze`) va foydalanuvchi bilan interaksiya qila olmaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**2. `JavaScript Thread`:** Bu yerda sizning barcha `JavaScript` kodingiz (biznes mantiqi, `React` komponentlaringiz, `state` yangilanishlari) ishlaydi. `React Native` `render` jarayonida `JavaScript thread`'i `UI` qanday ko'rinishi kerakligi haqida `JSON` ma'lumot tayyorlaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Aloqa (`Eski Arxitektura`):** Eski arxitekturada bu ikki `thread` bir-biri bilan asinxron **`Bridge`** orqali 'gaplashgan'. `JS thread`'i `UI` o'zgarishlari haqidagi ma'lumotni `JSON` sifatida `Bridge`'ga yuborgan, `Native thread` esa uni olib, `UI`'ni yangilagan. `Native thread`'dan kelgan hodisalar (masalan, `onPress`) ham `Bridge` orqali `JS thread`'iga yuborilgan. Bu asinxron aloqa ba'zan `bottleneck` bo'lishi mumkin edi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Aloqa (`Yangi Arxitektura`):** Yangi arxitektura (`JSI`) bu `thread`'lar o'rtasida to'g'ridan-to'g'ri sinxron aloqa o'rnatishga imkon beradi, bu esa `Bridge`'dagi kechikishlarni yo'qotadi."
+      }
+    ],
+    "interviewAnswer": "React Native'da ikkita asosiy `thread` bor: 1) **`Native (UI) Thread`**: `UI`'ni `render` qiladi va `native` amallarni bajaradi (ilovaning 'tanasi'). 2) **`JavaScript Thread`**: Sizning `React` kodingiz va biznes mantiqingiz ishlaydi (ilovaning 'miyasi'). Eski arxitekturada ular asinxron `Bridge` orqali `JSON` bilan aloqa qilgan, yangi arxitekturada (`JSI`) esa to'g'ridan-to'g'ri sinxron aloqa qiladi.",
+    "keyTerms": [
+      {
+        "term": "JavaScript Thread",
+        "definition": "React Native'da `JavaScript` kodi (biznes mantiqi) ishlaydigan `thread`."
+      },
+      {
+        "term": "Native Thread (UI Thread)",
+        "definition": "Platformaning `native UI`'si ishlaydigan asosiy `thread`."
+      },
+      {
+        "term": "Thread",
+        "definition": "Dastur bajarilishining alohida oqimi."
+      }
+    ]
+  },
+  {
+    "id": "rn-q38",
+    "question": "React Native'da `Native Code` (Swift/Objective-C/Kotlin/Java) yozish qachon zarur bo'ladi?",
+    "topic": "React Native Modules",
+    "description": "Garchi React Native ko'p narsani `JavaScript`'da qilishga imkon bersa-da, ba'zi hollarda `native` kod yozishga to'g'ri keladi.",
+    "detailedExplanation": [
+      { "type": "paragraph", "content": "Qachon zarur bo'lishi mumkin:" },
+      {
+        "type": "list",
+        "items": [
+          "**`CPU`-og'ir Vazifalar:** Murakkab hisob-kitoblar, rasmlarni/videolarni qayta ishlash, shifrlash (`encryption`) kabi `JavaScript thread`'ini bloklab qo'yishi mumkin bo'lgan vazifalar uchun. `Native` kod odatda bunday vazifalarni tezroq bajaradi.",
+          "**Maxsus `Native API`'lar:** `React Native` yoki `Expo` `SDK`'si taqdim etmaydigan maxsus platforma `API`'laridan (masalan, `Apple`'ning `HealthKit` yoki `Android`'ning maxsus `Bluetooth` funksiyalari) foydalanish kerak bo'lganda.",
+          "**Mavjud `Native` Kutubxonalarni Integratsiya Qilish:** Agar kompaniyangizda allaqachon mavjud bo'lgan `native` `SDK` yoki kutubxona bo'lsa va uni `React Native`'da ishlatish kerak bo'lsa.",
+          "**`Performance`-kritik `UI` Komponentlar:** Murakkab `gesture`'lar yoki `real-time` `grafika` (`AR/VR`, `3D`) talab qiladigan, `JavaScript` `Bridge`'ining kechikishlariga toqat qila olmaydigan maxsus `UI` komponentlarini yaratishda."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Buning uchun siz `Native Module` (orqa fon mantiqi uchun) yoki `Native UI Component` (`UI` uchun) yaratishingiz va uni `React Native`'ga 'bog'lashingiz' (`bridge` yoki `JSI` orqali) kerak bo'ladi. Bu `Expo`'ning `managed workflow`'ida mumkin emas, `React Native CLI` (`bare workflow`) yoki `Expo dev client` talab qilinadi."
+      }
+    ],
+    "interviewAnswer": "`Native` kod yozish (`React Native CLI` bilan) quyidagi hollarda kerak: 1) `CPU`-og'ir vazifalar uchun `performance` kerak bo'lganda. 2) React Native taqdim etmaydigan maxsus `native API`'larga (masalan, `HealthKit`) kirish kerak bo'lganda. 3) Mavjud `native` `SDK`'larni integratsiya qilish kerak bo'lganda. 4) Juda murakkab, `performance`-kritik `UI` (masalan, `3D`) yaratish kerak bo'lganda.",
+    "keyTerms": [
+      {
+        "term": "Native Code",
+        "definition": "Swift, Objective-C, Kotlin yoki Java'da yozilgan platformaga xos kod."
+      },
+      {
+        "term": "Native Module",
+        "definition": "`JavaScript`'dan chaqirish mumkin bo'lgan `native` funksionallik."
+      }
+    ]
+  },
+  {
+    "id": "rn-q39",
+    "question": "React Native'da `StyleSheet.create` va `Inline Styles` o'rtasida qanday farq bor?",
+    "topic": "React Native Styling",
+    "description": "Ikkalasi ham stil berish usuli, ammo `StyleSheet.create` `performance` va tushunarlilik jihatidan afzalroq.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`Inline Styles` (`style={{ color: 'red' }}`):** Stillarni to'g'ridan-to'g'ri `JSX` ichida obyekt sifatida berish. Bu qulay, ammo kamchiliklari bor: 1) Har bir `render`'da yangi stil obyekti yaratiladi, bu `performance`'ga biroz ta'sir qilishi mumkin. 2) Kodni chalkashtiradi, `JSX`'ni o'qishni qiyinlashtiradi. 3) Stillarni qayta ishlatish qiyin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`StyleSheet.create({ ... })`:** Stillarni `render` funksiyasidan tashqarida, markazlashgan obyektda aniqlash. Afzalliklari: 1) **`Performance`:** Stil obyekti faqat bir marta yaratiladi va `JavaScript thread`'i va `native thread` o'rtasida samaraliroq uzatiladi. React Native stillarni `ID` bo'yicha `cache`'lashi mumkin. 2) **Kod Tozaligi:** Mantiq (`JSX`) va ko'rinish (`styles`) ajratiladi. 3. **Xatoliklarni Aniqlash:** `StyleSheet.create` yaroqsiz (`invalid`) `CSS` xususiyatlari yoki qiymatlari haqida `development` paytida ogohlantirish berishi mumkin."
+      }
+    ],
+    "examples": [
+      {
+        "title": "Inline Style (Kamroq Tavsiya Etiladi):",
+        "code": ["<Text style={{ fontSize: 20, color: 'blue' }}>Salom</Text>"]
+      },
+      {
+        "title": "StyleSheet (Tavsiya Etiladi):",
+        "code": [
+          "<Text style={styles.title}>Salom</Text>",
+          "// ... fayl oxirida ...",
+          "const styles = StyleSheet.create({",
+          "  title: {",
+          "    fontSize: 20,",
+          "    color: 'blue'",
+          "  }",
+          "});"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Inline styles` (`style={{...}}`) har `render`'da yangi obyekt yaratadi va `JSX`'ni chalkashtiradi. `StyleSheet.create()` stillarni bir marta yaratadi, `performance`'ni yaxshilaydi (stillarni `ID` bo'yicha `native` tomonga yuboradi), kodni toza saqlaydi va xatoliklarni tekshiradi. `StyleSheet.create` afzalroq.",
+    "keyTerms": [
+      {
+        "term": "Inline Styles",
+        "definition": "Stillarni `JSX`'dagi `style` `prop`'iga obyekt sifatida berish."
+      },
+      {
+        "term": "StyleSheet.create",
+        "definition": "Stillarni oldindan aniqlash va optimallashtirish uchun `API`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q40",
+    "question": "React Native'da `eject` qilish (yoki `prebuild`) nima degani?",
+    "topic": "Expo",
+    "description": "`Eject` (`chiqarib olish`) — bu `Expo`'ning `managed workflow`'idan `bare workflow`'ga (ya'ni `React Native CLI` loyihasiga) o'tish jarayonidir.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "Agar siz loyihani `Expo`'ning `managed workflow`'ida boshlasangiz, siz `native` kod (`ios` va `android` papkalari) bilan bevosita ishlay olmaysiz va faqat `Expo SDK` qo'llab-quvvatlaydigan `native module`'lardan foydalana olasiz. Agar loyihangizga `Expo` qo'llab-quvvatlamaydigan maxsus `native module` (masalan, `react-native-webrtc`) kerak bo'lib qolsa, siz `eject` qilishingiz kerak bo'ladi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`npm run eject`** (yoki zamonaviy `Expo SDK`'larda `npx expo prebuild`):** Bu buyruq `ios` va `android` papkalarini generatsiya qiladi, kerakli `native` sozlamalarni yaratadi va loyihangizni `managed workflow`'dan `bare workflow`'ga o'tkazadi. **Bu jarayon orqaga qaytarilmaydi (`irreversible`).** `Eject` qilgandan so'ng, siz `Expo Go` ilovasidan foydalana olmaysiz va `build`'larni `Xcode` va `Android Studio` orqali qo'lda qilishingiz (yoki `EAS Build`'dan foydalanishingiz) kerak bo'ladi. Hozirda `eject` o'rniga `Expo Dev Client` yaratish tavsiya etiladi, bu `managed workflow`'ning qulayliklarini saqlab qolgan holda maxsus `native module`'larni qo'shish imkonini beradi."
+      }
+    ],
+    "interviewAnswer": "`Eject` (`npx expo prebuild`) — bu `Expo`'ning `managed workflow`'idan `bare workflow`'ga (ya'ni `React Native CLI` loyihasiga) o'tish jarayoni. Bu `Expo SDK` qo'llab-quvvatlamaydigan maxsus `native` kod yoki `module`'larni ishlatish kerak bo'lganda qilinadi. Bu jarayon orqaga qaytarilmaydi (`irreversible`) va `Expo Go`'dan foydalanishni to'xtatadi. Hozirda alternativa sifatida `Expo Dev Client` tavsiya etiladi.",
+    "keyTerms": [
+      {
+        "term": "Eject",
+        "definition": "Expo `managed workflow`'dan `bare workflow`'ga o'tish jarayoni."
+      },
+      {
+        "term": "Managed Workflow (Expo)",
+        "definition": "Foydalanuvchi `native` kodga tegmaydigan, `Expo` tomonidan boshqariladigan `development`."
+      },
+      {
+        "term": "Bare Workflow (React Native CLI)",
+        "definition": "Foydalanuvchi `native` loyihalar (`ios`/`android`) ustidan to'liq nazoratga ega bo'lgan `development`."
+      },
+      {
+        "term": "Expo Dev Client",
+        "definition": "Maxsus `native module`'larni `managed workflow`'ning qulayliklari bilan birga ishlatishga imkon beruvchi vosita."
+      }
+    ]
+  },
+  {
+    "id": "rn-q41",
+    "question": "React Native'da `absolute` o'lchamlar (masalan, `width: 100`) va `flex` o'lchamlari (`flex: 1`) qachon ishlatiladi?",
+    "topic": "React Native Layout",
+    "description": "To'g'ri `layout` qurish uchun qat'iy (`absolute`) o'lchamlarni va moslashuvchan (`flex`) o'lchamlarni qachon ishlatishni bilish muhim.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Qat'iy O'lchamlar (masalan, `width: 100`, `height: 50`):** Elementning o'lchami oldindan aniq ma'lum bo'lganda va ekran o'lchamiga qarab o'zgarmasligi kerak bo'lganda ishlatiladi. Masalan, `avatar` rasmlari, `icon`'lar, `border` qalinligi yoki aniq o'lchamdagi tugmalar."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`flex: 1` (va boshqa `flex` qiymatlar):** Elementning o'lchami moslashuvchan (`flexible`) bo'lishi va mavjud bo'sh joyga qarab o'zgarishi kerak bo'lganda ishlatiladi. `flex: 1` elementga o'z `parent`'ining bo'sh joyini to'liq egallashni buyuradi (agar u yagona `flex: 1` bo'lsa). Bir nechta `flex` elementlar bo'sh joyni o'z `flex` qiymatlariga proportsional ravishda bo'lishadi (`flex: 2` elementi `flex: 1` elementidan ikki baravar ko'p joy oladi). Bu `responsive design` va turli ekran o'lchamlariga moslashish uchun asosiy vositadir."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "<View style={{ flex: 1 }}>",
+          "  {/* Bu qism balandligi aniq 50 */} ",
+          "  <View style={{ height: 50, backgroundColor: 'red' }} />",
+          "  {/* Bu qism qolgan barcha bo'sh joyni egallaydi */} ",
+          "  <View style={{ flex: 1, backgroundColor: 'blue' }} />",
+          "  {/* Bu qism balandligi aniq 60 */} ",
+          "  <View style={{ height: 60, backgroundColor: 'green' }} />",
+          "</View>"
+        ]
+      }
+    ],
+    "interviewAnswer": "Qat'iy o'lchamlar (`width: 100`) o'lchami aniq va o'zgarmas elementlar (`icon`, `avatar`) uchun ishlatiladi. `flex: 1` esa moslashuvchan `layout` uchun, elementga mavjud bo'sh joyni egallashni buyurish uchun ishlatiladi. Asosiy `layout`'lar deyarli har doim `flex` bilan quriladi.",
+    "keyTerms": [
+      {
+        "term": "Absolute Sizing",
+        "definition": "Element o'lchamini `density-independent pixels`'da aniq belgilash."
+      },
+      {
+        "term": "Flex Sizing",
+        "definition": "Element o'lchamini mavjud bo'sh joyga nisbatan (`flex: 1`) belgilash."
+      }
+    ]
+  },
+  {
+    "id": "rn-q42",
+    "question": "React Native'da `shadow` (soya) va `elevation` qanday ishlatiladi?",
+    "topic": "React Native Styling",
+    "description": "Elementlarga soya berish `iOS` va `Android`'da turlicha amalga oshiriladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`iOS` uchun:** Vebdagi `CSS`'ga o'xshash maxsus `shadow` `props`'lardan foydalaniladi. Bular: `shadowColor` (soya rangi, odatda qora), `shadowOffset` (soyaning siljishi, `{ width: number, height: number }` obyekti), `shadowOpacity` (soya shaffofligi, 0 dan 1 gacha) va `shadowRadius` (soyaning yumshoqligi/tarqalishi). Bu `props`'lar faqat `iOS`'da ishlaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`Android` uchun:** `Android` soya uchun `elevation` (ko'tarilish) konsepsiyasidan foydalanadi. Bu bitta `elevation: number` `prop`'i bilan beriladi. Qiymat qanchalik katta bo'lsa, element shunchalik 'yuqorida' ko'rinadi va soyasi kattaroq bo'ladi. Bu `prop` faqat `Android`'da ishlaydi."
+      },
+      {
+        "type": "paragraph",
+        "content": "Kross-platforma soya yaratish uchun odatda `Platform.select` ishlatiladi yoki bu logikani o'z ichiga olgan `Card` kabi `wrapper` komponent yaratiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Kross-platforma Soya:",
+        "code": [
+          "import { StyleSheet, Platform } from 'react-native';",
+          "const styles = StyleSheet.create({",
+          "  card: {",
+          "    backgroundColor: 'white',",
+          "    borderRadius: 8,",
+          "    padding: 16,",
+          "    ...Platform.select({",
+          "      ios: {",
+          "        shadowColor: '#000',",
+          "        shadowOffset: { width: 0, height: 2 },",
+          "        shadowOpacity: 0.1,",
+          "        shadowRadius: 4,",
+          "      },",
+          "      android: {",
+          "        elevation: 5,",
+          "      },",
+          "    }),",
+          "  }",
+          "});"
+        ]
+      }
+    ],
+    "interviewAnswer": "React Native'da soya berish platformaga xos. `iOS`'da `shadowColor`, `shadowOffset`, `shadowOpacity`, `shadowRadius` `props`'lari ishlatiladi. `Android`'da esa `elevation` nomli yagona `prop` ishlatiladi. Odatda `Platform.select` yordamida kross-platforma yechim qilinadi.",
+    "keyTerms": [
+      {
+        "term": "shadow props (iOS)",
+        "definition": "iOS'da soya yaratish uchun ishlatiladigan maxsus stil `props`'lari to'plami."
+      },
+      {
+        "term": "elevation (Android)",
+        "definition": "Android'da soya yaratish uchun ishlatiladigan (Z-o'qidagi balandlikni bildiruvchi) stil `prop`'i."
+      }
+    ]
+  },
+  {
+    "id": "rn-q43",
+    "question": "React Native'da `Image` komponentining `source` `prop`'i qanday ishlaydi (lokal va tarmoq)?",
+    "topic": "React Native Core Components",
+    "description": "`<Image>` komponenti rasmlarni ko'rsatadi va `source` `prop`'i orqali rasm manbasini oladi, bu manba lokal yoki tarmoqdan bo'lishi mumkin.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Lokal Rasmlar:** Loyiha papkasidagi rasmlarni ko'rsatish uchun `JavaScript`'ning `require()` funksiyasidan foydalaniladi. `require()`'ga berilgan yo'l statik bo'lishi kerak. `React Native` `bundler`'i (`Metro`) bu rasmni topadi, uning o'lchamlarini aniqlaydi va ilova `bundle`'iga qo'shadi."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Tarmoq Rasmlari (`Network Images`):** Internetdagi rasmni ko'rsatish uchun `source` `prop`'iga `{ uri: 'URL' }` ko'rinishidagi obyekt beriladi. Tarmoq rasmlari uchun **`width` va `height` stillarini aniq ko'rsatish shart**, chunki `bundler` ularning o'lchamlarini oldindan bila olmaydi (agar `flex` o'lcham ishlatilmasa)."
+      },
+      {
+        "type": "paragraph",
+        "content": "`Base64` formatidagi rasmlarni ham `data:` `URI`'si orqali ko'rsatish mumkin."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Lokal Rasm (require):",
+        "code": [
+          "<Image",
+          "  source={require('./assets/my-icon.png')}",
+          "  style={{ width: 50, height: 50 }}",
+          "/>"
+        ]
+      },
+      {
+        "title": "Tarmoq Rasmi (uri):",
+        "code": [
+          "<Image",
+          "  source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}",
+          "  style={{ width: 50, height: 50 }} // O'lcham berish shart!",
+          "/>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Image` komponentining `source` `prop`'i ikki xil qiymat qabul qiladi: 1) Lokal rasmlar uchun `require('./path/to/image.png')` ishlatiladi. 2) Tarmoqdagi rasmlar uchun `{ uri: 'https://example.com/image.jpg' }` obyekti ishlatiladi. Tarmoq rasmlari uchun `width` va `height` stillarini aniq berish shart.",
+    "keyTerms": [
+      {
+        "term": "require()",
+        "definition": "Lokal resurslarni (rasm, fayl) `JavaScript` `bundle`'iga kiritish uchun ishlatiladigan funksiya."
+      },
+      {
+        "term": "uri",
+        "definition": "Tarmoq resursining (`Uniform Resource Identifier`) manzili."
+      }
+    ]
+  },
+  {
+    "id": "rn-q44",
+    "question": "React Native'da `Modal` komponenti qanday ishlatiladi?",
+    "topic": "React Native Core Components",
+    "description": "`Modal` komponenti kontentni ilovaning qolgan qismi ustida vaqtinchalik ko'rsatish uchun ishlatiladigan `native` `view`'ni `render` qiladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`Modal` komponenti `React`'dagi `Portal`'ga o'xshab ishlaydi, u `render` qilinganda `UI` ierarxiyasida yangi, yuqori darajadagi 'qavat' ochadi. Uning asosiy `props`'lari:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`visible={boolean}`:** `Modal`'ning ko'rinishi yoki yashirinligini boshqaradi (odatda `useState` `Hook`'iga bog'lanadi).",
+          "**`animationType=\"type\"`:** `Modal` qanday paydo bo'lishini belgilaydi (`'slide'` - pastdan chiqadi, `'fade'` - shaffoflik bilan paydo bo'ladi, `'none'` - animatsiyasiz).",
+          "**`transparent={boolean}`:** `Modal`'ning orqa foni shaffof bo'lishiga ruxsat berish (qolgan ilova ko'rinib turishi uchun).",
+          "**`onRequestClose={() => ...}`:** `Android`'dagi 'orqaga' (`back`) tugmasi bosilganda ishga tushadigan `callback`. Bu `prop`'ni berish majburiy hisoblanadi."
+        ]
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Oddiy Modal Misoli:",
+        "code": [
+          "import { Modal, View, Text, Button, StyleSheet } from 'react-native';",
+          "import { useState } from 'react';",
+          "",
+          "function MyComponent() {",
+          "  const [modalVisible, setModalVisible] = useState(false);",
+          "",
+          "  return (",
+          "    <View style={styles.container}>",
+          "      <Modal",
+          "        animationType=\"slide\"",
+          "        transparent={true}",
+          "        visible={modalVisible}",
+          "        onRequestClose={() => {",
+          "          setModalVisible(!modalVisible);",
+          "        }}",
+          "      >",
+          "        <View style={styles.modalView}>",
+          "          <Text>Bu Modal!</Text>",
+          "          <Button title=\"Yopish\" onPress={() => setModalVisible(false)} />",
+          "        </View>",
+          "      </Modal>",
+          "      <Button title=\"Modalni ochish\" onPress={() => setModalVisible(true)} />",
+          "    </View>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`Modal` komponenti kontentni boshqa `UI` ustida ko'rsatish uchun ishlatiladi. Uning ko'rinishi `visible` `prop`'i (`state`'ga bog'lanadi) bilan boshqariladi. `animationType` (`'slide'`, `'fade'`) uning paydo bo'lish animatsiyasini, `transparent` orqa fon shaffofligini belgilaydi. `Android` uchun `onRequestClose` `prop`'ini berish kerak.",
+    "keyTerms": [
+      {
+        "term": "Modal",
+        "definition": "Ilova kontenti ustida paydo bo'ladigan vaqtinchalik `view`."
+      },
+      {
+        "term": "visible prop",
+        "definition": "`Modal`'ning ko'rinishini (`true`/`false`) boshqaradigan `prop`."
+      },
+      {
+        "term": "animationType prop",
+        "definition": "`Modal`'ning paydo bo'lish (`'slide'`, `'fade'`) animatsiyasini belgilaydigan `prop`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q45",
+    "question": "`npm` (yoki `yarn`) va `pod install` o'rtasida qanday bog'liqlik bor?",
+    "topic": "React Native Modules",
+    "description": "`npm`/`yarn` `JavaScript` bog'liqliklarini, `pod install` esa `iOS` `native` bog'liqliklarini o'rnatadi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "React Native loyihasida ikkita `dependency management` tizimi parallel ishlaydi:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "**`npm` (yoki `yarn`):** Loyihaning `JavaScript` bog'liqliklarini (`react`, `react-native`, `axios` va hokazo) `node_modules` papkasiga o'rnatadi va `package.json` faylini boshqaradi.",
+          "**`CocoaPods` (`pod` buyrug'i):** Bu **`iOS` platformasi uchun** `dependency manager`. Ko'pgina React Native `native module`'lari (`react-native-maps`, `react-native-gesture-handler`) `iOS` uchun `native` kodni (`Swift`/`Objective-C`) o'z ichiga oladi. `npm install` bu `native` kodni `node_modules`'ga yuklaydi, lekin `iOS` loyihasi (`Xcode`) uni hali 'tanimaydi'. `cd ios && pod install` buyrug'i `ios/Podfile` faylini o'qiydi, `node_modules`'dagi kerakli `native` qismlarni topadi va ularni `Xcode` loyihasiga to'g'ri `link` (`bog'lash`) qiladi (`ios/Pods` papkasini yaratadi)."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Shuning uchun, `native` `module`'ni o'z ichiga olgan yangi `npm` paket o'rnatilgandan so'ng, `iOS` uchun har doim `cd ios && pod install` buyrug'ini ishga tushirish kerak. `Android` esa `Gradle` tizimidan foydalanadi va bu jarayonni odatda `build` paytida avtomatik amalga oshiradi."
+      }
+    ],
+    "interviewAnswer": "`npm`/`yarn` `JavaScript` paketlarini (`node_modules`) o'rnatadi. `pod install` (`CocoaPods`) esa **`iOS` uchun** `native` bog'liqliklarni (`npm` orqali kelgan `native module`'larning `Swift`/`Objective-C` qismlarini) `Xcode` loyihasiga to'g'ri bog'laydi (`link` qiladi). Yangi `native module` o'rnatgandan keyin har doim `pod install` qilish kerak.",
+    "keyTerms": [
+      {
+        "term": "npm / yarn",
+        "definition": "JavaScript uchun `dependency manager`."
+      },
+      {
+        "term": "CocoaPods (pod)",
+        "definition": "`iOS` (`Swift`/`Objective-C`) uchun `dependency manager`."
+      },
+      {
+        "term": "pod install",
+        "definition": "`iOS` `native` bog'liqliklarini `Xcode` loyihasiga o'rnatuvchi va bog'lovchi buyruq."
+      }
+    ]
+  },
+  {
+    "id": "rn-q46",
+    "question": "React Native'da `assets` (rasmlar, shriftlar) qanday boshqariladi?",
+    "topic": "React Native Assets",
+    "description": "React Native'da `assets`'ni boshqarish uchun `Metro bundler`'idan foydalaniladi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**Rasmlar (`Images`):** Rasmlarni `require()` orqali `import` qilish (`<Image source={require('./img.png')} />`) eng yaxshi usul. Bu `Metro`'ga rasmni topish, uni `platforma`'ga (`iOS`/`Android`) mos keladigan turli o'lchamlarda (`@1x`, `@2x`, `@3x`) avtomatik tanlash va ilova `bundle`'iga qo'shish imkonini beradi. Fayl nomlarini `my-icon@2x.png`, `my-icon@3x.png` kabi nomlash orqali turli ekran zichliklari uchun maxsus rasmlar taqdim etish mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**Shriftlar (`Custom Fonts`):** Maxsus shriftlarni qo'shish biroz murakkabroq:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "1. Shrift fayllarini (`.ttf`, `.otf`) loyihaning `assets/fonts` kabi papkasiga joylashtirish.",
+          "2. Loyiha ildizida `react-native.config.js` faylini yaratish va `assets`'ni ro'yxatga olish.",
+          "3. `npx react-native-asset` (yoki `link`) buyrug'ini ishga tushirish. Bu shrift fayllarini `native` loyihalarga (`iOS`'da `Info.plist`, `Android`'da `res/font` papkasiga) avtomatik qo'shadi.",
+          "4. Shundan so'ng ilovani qayta `build` qilish (`run-ios`/`run-android`) va `CSS`'da `fontFamily: 'Shrift-Nomi'` (fayl nomi emas) orqali ishlatish kerak."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "`Expo`'da esa shriftlarni `expo-font` kutubxonasining `useFonts` `Hook`'i yordamida ilova ishga tushganda `JavaScript` orqali yuklash mumkin."
+      }
+    ],
+    "interviewAnswer": "Rasmlar `require('./img.png')` orqali `import` qilinadi, `Metro` ularni avtomatik `bundle` qiladi va `@2x`/`@3x` o'lchamlarini tanlaydi. Maxsus shriftlar (`.ttf`) esa `assets` papkasiga qo'shiladi, `react-native.config.js`'da ro'yxatga olinadi va `npx react-native-asset` buyrug'i bilan `native` loyihalarga 'bog'lanadi'.",
+    "keyTerms": [
+      {
+        "term": "Assets",
+        "definition": "Ilova ishlatadigan statik fayllar (rasmlar, shriftlar, videolar)."
+      },
+      {
+        "term": "@2x / @3x",
+        "definition": "Turli ekran zichliklari (Retina) uchun rasm versiyalarini belgilovchi nomlash konvensiyasi."
+      },
+      {
+        "term": "react-native-asset",
+        "definition": "`Assets`'ni (ayniqsa shriftlarni) `native` loyihalarga avtomatik bog'laydigan buyruq."
+      }
+    ]
+  },
+  {
+    "id": "rn-q47",
+    "question": "React Native'da `reanimated` kutubxonasi nima uchun `Animated` `API`'sidan afzalroq bo'lishi mumkin?",
+    "topic": "React Native Animations",
+    "description": "`React Native Reanimated` — bu standart `Animated` `API`'siga qaraganda ancha kuchliroq va `performance`'i yuqori bo'lgan animatsiya kutubxonasi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`Animated` `API` (`useNativeDriver: true` bilan) oddiy animatsiyalarni `UI thread`'da yaxshi bajaradi, lekin u `JavaScript` va `UI thread`'lari o'rtasida `serializable` (JSON'ga o'girsa bo'ladigan) ma'lumotlarni yuborish bilan cheklangan. Murakkab mantiq (masalan, `scroll`'ga bog'liq animatsiyalar, `gesture`'larga bog'liq murakkab javoblar) baribir `JavaScript thread`'ini jalb qilishi va sekinlashishi mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`React Native Reanimated` (ayniqsa v2+):** Bu kutubxona butunlay boshqacha yondashadi. U animatsiya mantiqini `JavaScript`'da yozishga, lekin uni **to'liq `UI thread`'ida** bajariladigan maxsus `worklet`'larga aylantirishga imkon beradi. `JSI` (yangi arxitektura) yordamida `UI thread` bilan to'g'ridan-to'g'ri va sinxron ishlaydi. Bu `JavaScript thread`'i band bo'lganda ham juda murakkab, `gesture`'larga bog'liq animatsiyalarning 60 FPS'da silliq ishlashini ta'minlaydi. `useSharedValue` (`Animated.Value` o'rniga) va `useAnimatedStyle` kabi `Hook`'lardan foydalanadi."
+      }
+    ],
+    "interviewAnswer": "Standart `Animated` `API` (`useNativeDriver: true`) oddiy animatsiyalarni `UI thread`'da yaxshi bajaradi, lekin murakkab mantiq uchun `JavaScript thread`'iga qaytishi mumkin. `Reanimated` (v2+) esa `worklet`'lar va `JSI` yordamida animatsiya mantiqining o'zini **to'liq `UI thread`'ida** bajarishga imkon beradi. Bu `JavaScript thread`'ini bloklamasdan, juda murakkab va `gesture`'larga bog'liq animatsiyalarni ham 60 FPS'da silliq ishlashini ta'minlaydi.",
+    "keyTerms": [
+      {
+        "term": "React Native Reanimated",
+        "definition": "`UI thread`'da ishlaydigan, yuqori `performance`'li animatsiyalar uchun kutubxona."
+      },
+      {
+        "term": "Worklet",
+        "definition": "`Reanimated`'da `UI thread`'ida ishga tushirilishi mumkin bo'lgan kichik `JavaScript` funksiyalari."
+      },
+      {
+        "term": "useSharedValue",
+        "definition": "`Reanimated`'da `UI thread`'i va `JS thread`'i o'rtasida bo'lishilishi mumkin bo'lgan animatsiyalanuvchi qiymat."
+      },
+      {
+        "term": "useAnimatedStyle",
+        "definition": "`Shared value`'larga asoslangan animatsiyalangan stillarni yaratish uchun `Hook`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q48",
+    "question": "React Native'da `JavaScript` kodini yangilash uchun ilovani qayta `App Store` / `Play Store`'ga yuklash shartmi?",
+    "topic": "React Native OTA Updates",
+    "description": "Yo'q, `JavaScript` o'zgarishlari uchun to'liq ilovani yangilash shart emas. Buning uchun `Over-the-Air` (OTA) `update`'lardan foydalanish mumkin.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "React Native ilovasi ikkita asosiy qismdan iborat: 1) `Native` kod (ilovaning 'qobig'i'). 2) `JavaScript bundle` (ilovaning mantiqi va `UI`). Agar siz faqat `JavaScript` kodiga (komponentlar, mantiq, stillar) o'zgartirish kiritsangiz, yangi `JavaScript bundle`'ini yaratib, uni `App Store`/`Play Store`'ning uzoq davom etadigan `review` (ko'rib chiqish) jarayonlaridan o'tkazmasdan, to'g'ridan-to'g'ri foydalanuvchilarning ilovalariga yuborishingiz mumkin."
+      },
+      {
+        "type": "paragraph",
+        "content": "Bu **`OTA (Over-the-Air)` `Updates`** deb ataladi. Foydalanuvchi ilovani ochganda, u orqa fonda yangi `JavaScript bundle` mavjudligini tekshiradi, uni yuklab oladi va keyingi safar ilova ochilganda yangi kodni ishga tushiradi. Bu `bug`'larni tezda tuzatish va kichik yangilanishlarni tezda chiqarish uchun juda kuchli vositadir. Bu funksionallikni `Expo` (`EAS Update`) 'qutidan tashqarida' taqdim etadi, `React Native CLI` loyihalari uchun esa `Microsoft`'ning **`CodePush`** xizmati keng qo'llaniladi. Agar siz `native` kodga (masalan, yangi `native module` qo'shsangiz) o'zgartirish kiritsangiz, u holda ilovani `Store`'lar orqali qayta yuklash shart bo'ladi."
+      }
+    ],
+    "interviewAnswer": "Yo'q, agar o'zgarishlar faqat `JavaScript` kodida bo'lsa. **`OTA (Over-the-Air) Updates`** yordamida (`Expo EAS Update` yoki `CodePush` xizmatlari orqali) yangi `JavaScript bundle`'ini `App Store`/`Play Store`'siz to'g'ridan-to'g'ri foydalanuvchilarga yuborish mumkin. Bu `bug`'larni tez tuzatishga imkon beradi. Agar `native` kod o'zgarsa, `Store` orqali yangilash shart.",
+    "keyTerms": [
+      {
+        "term": "OTA (Over-the-Air) Update",
+        "definition": "Ilovani `App Store`'larsiz, `JavaScript bundle`'ini to'g'ridan-to'g'ri yangilash."
+      },
+      {
+        "term": "JavaScript Bundle",
+        "definition": "Barcha `JavaScript` kodini o'z ichiga olgan bitta fayl."
+      },
+      {
+        "term": "CodePush",
+        "definition": "`React Native CLI` loyihalari uchun `OTA updates` xizmati."
+      },
+      {
+        "term": "EAS Update",
+        "definition": "`Expo` loyihalari uchun `OTA updates` xizmati."
+      }
+    ]
+  },
+  {
+    "id": "rn-q49",
+    "question": "React Native'da `SectionList` nima va u `FlatList`'dan qanday farq qiladi?",
+    "topic": "React Native Lists",
+    "description": "`SectionList` — bu `FlatList`'ga o'xshash, `virtualization`'dan foydalanadigan ro'yxat komponenti, ammo u ma'lumotlarni **bo'limlarga (`sections`)** ajratib ko'rsatish uchun mo'ljallangan.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "`FlatList` bitta tekis (`flat`) massivni qabul qiladi (`data={...}`). `SectionList` esa murakkabroq ma'lumotlar strukturasini (`sections` `prop`'i orqali) kutadi. Bu struktura obyektlar massivi bo'lib, har bir obyekt bo'limni ifodalaydi va `title` (bo'lim sarlavhasi) hamda `data` (o'sha bo'lim elementlari massivi) `key`'lariga ega bo'lishi kerak. `SectionList` avtomatik ravishda har bir bo'lim uchun sarlavha (`header`) va elementlar orasida ajratgichlar (`separator`) `render` qilish imkoniyatini beradi (`renderSectionHeader` va `ItemSeparatorComponent` `props`'lari orqali). U telefon sozlamalari, kontaktlar ro'yxati (alfavit bo'yicha guruhlangan) kabi guruhlangan ro'yxatlar uchun ideal."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "`SectionList` Misoli:",
+        "code": [
+          "import { SectionList, Text, View, StyleSheet } from 'react-native';",
+          "",
+          "const DATA = [",
+          "  { title: 'A Harfi', data: ['Ali', 'Anvar'] },",
+          "  { title: 'V Harfi', data: ['Vali', 'Vohid'] },",
+          "];",
+          "",
+          "<SectionList",
+          "  sections={DATA}",
+          "  keyExtractor={(item, index) => item + index}",
+          "  renderItem={({ item }) => (",
+          "    <View style={styles.item}><Text>{item}</Text></View>",
+          "  )}",
+          "  renderSectionHeader={({ section: { title } }) => (",
+          "    <Text style={styles.header}>{title}</Text>",
+          "  )}",
+          "/>"
+        ]
+      }
+    ],
+    "interviewAnswer": "`FlatList` oddiy, tekis ro'yxatlarni `render` qiladi. `SectionList` esa ma'lumotlarni bo'limlarga (`sections`) ajratib, har bir bo'lim uchun sarlavha (`header`) bilan ko'rsatish uchun ishlatiladi (masalan, kontaktlar ro'yxati). Ikkalasi ham `virtualization`'dan foydalanadi.",
+    "keyTerms": [
+      {
+        "term": "SectionList",
+        "definition": "Ma'lumotlarni bo'limlar va sarlavhalar bilan `render` qiladigan optimallashtirilgan ro'yxat."
+      },
+      {
+        "term": "sections prop",
+        "definition": "`SectionList`'ga ma'lumotlarni uzatish uchun maxsus formatdagi `prop` (`[{title: '...', data: [...]}]`)."
+      },
+      {
+        "term": "renderSectionHeader",
+        "definition": "Har bir bo'lim sarlavhasini qanday `render` qilishni belgilaydigan `prop`."
+      }
+    ]
+  },
+  {
+    "id": "rn-q50",
+    "question": "React Native'da `TouchableOpacity` va `TouchableNativeFeedback` o'rtasida qanday farq bor?",
+    "topic": "React Native Components",
+    "description": "Ikkalasi ham bosish hodisalarini qabul qiladi, ammo turli platformalarda turli xil vizual `feedback` beradi.",
+    "detailedExplanation": [
+      {
+        "type": "paragraph",
+        "content": "**`<TouchableOpacity>`:** Bu kross-platforma (ham `iOS`, ham `Android`'da ishlaydi) komponent. U bosilganda elementning shaffofligini (`opacity`) silliq kamaytirib, vizual `feedback` beradi. Bu eng ko'p ishlatiladigan `touchable` komponent."
+      },
+      {
+        "type": "paragraph",
+        "content": "**`<TouchableNativeFeedback>`:** Bu komponent **faqat `Android`** platformasida ishlaydi va `Android`'ning standart 'to'lqin' (`ripple`) effektini (yoki 'selection' effektini) ko'rsatadi. U `iOS`'da ishlamaydi. Agar siz `Android`'ga xos `native` ko'rinishga erishmoqchi bo'lsangiz, buni ishlatishingiz mumkin (lekin `iOS` uchun alohida yechim, masalan `TouchableOpacity`, `Platform.OS` orqali berishingiz kerak bo'ladi). U `child` sifatida faqat bitta `View` elementini qabul qiladi."
+      }
+    ],
+    "codeExamples": [
+      {
+        "title": "Misol:",
+        "code": [
+          "import { TouchableOpacity, TouchableNativeFeedback, Platform, View, Text } from 'react-native';",
+          "",
+          "const ButtonComponent = () => {",
+          "  if (Platform.OS === 'android') {",
+          "    return (",
+          "      <TouchableNativeFeedback onPress={() => {}} background={TouchableNativeFeedback.Ripple('red')}>",
+          "        <View style={styles.button}><Text>Android (Ripple)</Text></View>",
+          "      </TouchableNativeFeedback>",
+          "    );",
+          "  }",
+          "  return (",
+          "    <TouchableOpacity onPress={() => {}} style={styles.button}>",
+          "      <Text>iOS (Opacity)</Text>",
+          "    </TouchableOpacity>",
+          "  );",
+          "}"
+        ]
+      }
+    ],
+    "interviewAnswer": "`TouchableOpacity` kross-platforma (`iOS`/`Android`) ishlaydi va bosilganda elementni shaffof (`opacity`) qiladi. `TouchableNativeFeedback` esa **faqat `Android`**'da ishlaydi va `Android`'ning standart 'to'lqin' (`ripple`) effektini ko'rsatadi.",
+    "keyTerms": [
+      {
+        "term": "TouchableOpacity",
+        "definition": "Bosilganda shaffof bo'ladigan kross-platforma `touch` `wrapper`."
+      },
+      {
+        "term": "TouchableNativeFeedback",
+        "definition": "Bosilganda `Android`'ning `native` 'ripple' effektini ko'rsatadigan, faqat `Android` uchun mo'ljallangan `wrapper`."
+      },
+      {
+        "term": "Ripple Effect",
+        "definition": "`Android`'da tugma bosilganda suv to'lqiniga o'xshash tarqaladigan vizual `feedback`."
+      }
+    ]
+  }
+]

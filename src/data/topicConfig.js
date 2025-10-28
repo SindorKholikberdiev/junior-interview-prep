@@ -7,6 +7,7 @@ export const topics = [
   { name: "Tailwind CSS", path: "/topic/tailwind", key: "tailwind" },
   { name: "TypeScript", path: "/topic/typescript", key: "typescript" },
   { name: "Git", path: "/topic/git", key: "git" },
+  { name: "React Native", path: "/topic/reactNative", key: "reactNative" },
 ];
 
 export const dataMap = {
@@ -18,4 +19,5 @@ export const dataMap = {
   tailwind: () => import("./tailwindQuestions.json"),
   typescript: () => import("./typescriptQuestions.json"),
   git: () => import("./gitQuestions.json"),
+  reactNative: () => import("./reactNativeQuestions.json"),
 };

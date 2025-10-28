@@ -126,6 +126,51 @@ const topicMeta = {
       </svg>
     ),
   },
+  reactNative: {
+    label: "React Native",
+    icon: (
+      <svg
+        className={styles.navIconSvg}
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
+        <rect
+          x="4.6"
+          y="3.2"
+          width="14.8"
+          height="17.6"
+          rx="2.4"
+          fill="currentColor"
+          opacity="0.18"
+        />
+        <g
+          stroke="currentColor"
+          strokeWidth="1.2"
+          fill="none"
+          strokeLinecap="round"
+          opacity="0.9"
+        >
+          <ellipse cx="12" cy="12" rx="6.6" ry="3.1" />
+          <ellipse
+            cx="12"
+            cy="12"
+            rx="6.6"
+            ry="3.1"
+            transform="rotate(60 12 12)"
+          />
+          <ellipse
+            cx="12"
+            cy="12"
+            rx="6.6"
+            ry="3.1"
+            transform="rotate(-60 12 12)"
+          />
+        </g>
+        <circle cx="12" cy="12" r="1.9" fill="currentColor" opacity="0.85" />
+      </svg>
+    ),
+  },
   nextjs: {
     label: "Next.js",
     icon: (

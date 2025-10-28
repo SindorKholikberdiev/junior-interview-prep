@@ -14,6 +14,7 @@ const dataMap = {
   tailwind: () => import('../data/tailwindQuestions.json'),
   typescript: () => import('../data/typescriptQuestions.json'),
   git: () => import('../data/gitQuestions.json'),
+  reactNative: () => import('../data/reactNativeQuestions.json'),
 };
 
 const normalizeAnswerData = (question) => {
